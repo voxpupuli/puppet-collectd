@@ -1,0 +1,13 @@
+LoadPlugin df
+
+<Plugin df>
+  <% mountpoints.each do |mp| -%>
+  MountPoint "<%= mp %>"
+  <% end -%>
+  <% fstypes.each do |fs| -%>
+  FSType "<%= fs %>"
+  <% end -%>
+  IgnoreSelected <%= ignoreselected %>
+  ReportByDevice <%= reportbydevice %>
+  ReportInodes <%= reportinodes %>
+</Plugin>
