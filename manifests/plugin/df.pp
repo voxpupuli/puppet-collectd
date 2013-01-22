@@ -1,9 +1,9 @@
 class collectd::plugin::df (
-  mountpoints,
-  fstypes,
-  ignoreselected = 'false',
-  reportbydevice = 'false',
-  reportinodes   = 'true'
+  $mountpoints,
+  $fstypes,
+  $ignoreselected = 'false',
+  $reportbydevice = 'false',
+  $reportinodes   = 'true'
 ) {
   include collectd::params
 
@@ -11,8 +11,9 @@ class collectd::plugin::df (
   $main_configs_file = $collectd::params::main_configs_file
 
   file_line { 'include_df_conf':
-    line => "Include \"${conf_dir}/df.conf\"",
-    path => $main_configs_file
+    line    => "Include \"${conf_dir}/df.conf\"",
+    path    => $main_configs_file,
+    require => Package['collectd'],
   }
 
   file { 'df.conf':

@@ -5,8 +5,9 @@ class collectd::plugin::openvpn {
   $main_configs_file = $collectd::params::main_configs_file
 
   file_line { 'include_openvpn_conf':
-    line => "Include \"${conf_dir}/openvpn.conf\"",
-    path => $main_configs_file
+    line    => "Include \"${conf_dir}/openvpn.conf\"",
+    path    => $main_configs_file,
+    require => Package['collectd'],
   }
 
   file { 'openvpn.conf':

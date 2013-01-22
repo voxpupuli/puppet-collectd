@@ -24,7 +24,8 @@ class collectd {
   # Do not make modifications, but refresh the service
   # when the file is changed
   file { 'collectd.conf':
-    path      => "${collectd::params::plugin_conf_dir}/collectd.conf",
+    notify  => Service['collectd'],
+    path    => "${collectd::params::collectd_dir}/collectd.conf",
     require => File[$collectd::params::collectd_dir],
   }
 
@@ -32,7 +33,7 @@ class collectd {
     ensure    => running,
     name      => $collectd::params::service_name,
     enable    => true,
-    subscribe => File['collectd.conf'],
+#    subscribe => File['collectd.conf'],
     require   => Package['collectd'],
   }
 }

@@ -25,6 +25,4 @@ class collectd::params {
     }
   }
 
-  # TODO: probably have a $write_graphite_host and $write_graphite_port for write_graphite
-  # TODO: have a $ntpd_host and $ntpd_port for ntpd plugin since this is public
 }
