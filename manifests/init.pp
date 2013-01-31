@@ -8,9 +8,6 @@ class collectd {
     before   => File['collectd.conf'],
   }
 
-  file { $collectd::params::collectd_dir:
-    ensure => directory,
-  }
 
   # Where additional configurations are stored
   file { 'collectd.d':
@@ -25,15 +22,20 @@ class collectd {
   # when the file is changed
   file { 'collectd.conf':
     notify  => Service['collectd'],
-    path    => "${collectd::params::collectd_dir}/collectd.conf",
-    require => File[$collectd::params::collectd_dir],
+    path    => $collectd::params::config_file,
+  }
+
+  # Include conf_d directory
+  file_line { 'include_conf_d':
+    line    => "Include \"${collectd::params::plugin_conf_dir}/\"",
+    path    => $collectd::params::config_file,
+    notify  => Service['collectd'],
   }
 
   service { 'collectd':
     ensure    => running,
     name      => $collectd::params::service_name,
     enable    => true,
-#    subscribe => File['collectd.conf'],
     require   => Package['collectd'],
   }
 }

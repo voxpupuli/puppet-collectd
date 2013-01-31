@@ -7,7 +7,7 @@ class collectd::params {
       $collectd_dir      = '/etc/collectd'
       $plugin_conf_dir   = "${collectd_dir}/collectd.d"
       $service_name      = 'collectd'
-      $main_configs_file = "${collectd_dir}/collectd.conf"
+      $config_file      = "${collectd_dir}/collectd.conf"
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -15,7 +15,7 @@ class collectd::params {
       $collectd_dir      = '/etc/opt/csw'
       $plugin_conf_dir   = "${collectd_dir}/collectd.d"
       $service_name      = 'collectd'
-      $main_configs_file = "/etc/opt/csw/collectd.conf"
+      $config_file      = "${collectd_dir}/collectd.conf"
     }
     'Redhat': {
       fail('Not implemented yet.')

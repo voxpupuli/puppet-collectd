@@ -4,14 +4,7 @@ class collectd::plugin::disk (
 ) {
   include collectd::params
 
-  $conf_dir          = $collectd::params::plugin_conf_dir
-  $main_configs_file = $collectd::params::main_configs_file
-
-  file_line { 'include_disk_conf':
-    line    => "Include \"${conf_dir}/disk.conf\"",
-    path    => $main_configs_file,
-    require => Package['collectd'],
-  }
+  $conf_dir = $collectd::params::plugin_conf_dir
 
   file { 'disk.conf':
     path      => "${conf_dir}/disk.conf",
