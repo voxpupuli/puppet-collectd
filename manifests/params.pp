@@ -5,7 +5,7 @@ class collectd::params {
       $package           = 'collectd'
       $provider          = 'apt'
       $collectd_dir      = '/etc/collectd'
-      $plugin_conf_dir   = "${collectd_dir}/collectd.d"
+      $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file      = "${collectd_dir}/collectd.conf"
     }
@@ -13,7 +13,7 @@ class collectd::params {
       $package           = 'CSWcollectd'
       $provider          = 'pkgutil'
       $collectd_dir      = '/etc/opt/csw'
-      $plugin_conf_dir   = "${collectd_dir}/collectd.d"
+      $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file      = "${collectd_dir}/collectd.conf"
     }
