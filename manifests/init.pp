@@ -1,8 +1,12 @@
 class collectd(
-  $purge   = undef,
-  $recurse = undef,
+  $fqdnlookup   = 'true',
+  $purge        = undef,
+  $recurse      = undef,
+  $purge_config = false,
 ) {
   include collectd::params
+
+  $plugin_conf_dir = $collectd::params::plugin_conf_dir
 
   package { 'collectd':
     ensure   => installed,
@@ -11,8 +15,6 @@ class collectd(
     before   => File['collectd.conf'],
   }
 
-
-  # Where additional configurations are stored
   file { 'collectd.d':
     ensure  => directory,
     name    => $collectd::params::plugin_conf_dir,
@@ -23,18 +25,24 @@ class collectd(
     recurse => $recurse,
   }
 
-  # Do not make modifications, but refresh the service
-  # when the file is changed
-  file { 'collectd.conf':
-    notify  => Service['collectd'],
-    path    => $collectd::params::config_file,
+  $conf_content = $purge_config ? {
+    false => undef,
+    true  => template('collectd/collectd.conf.erb'),
   }
 
-  # Include conf_d directory
-  file_line { 'include_conf_d':
-    line    => "Include \"${collectd::params::plugin_conf_dir}/\"",
+  file { 'collectd.conf':
     path    => $collectd::params::config_file,
+    content => $conf_content,
     notify  => Service['collectd'],
+  }
+
+  if $purge_config != true {
+    # Include conf_d directory
+    file_line { 'include_conf_d':
+      line    => "Include \"${collectd::params::plugin_conf_dir}/\"",
+      path    => $collectd::params::config_file,
+      notify  => Service['collectd'],
+    }
   }
 
   service { 'collectd':
