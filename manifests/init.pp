@@ -1,4 +1,7 @@
-class collectd {
+class collectd(
+  $purge   = undef,
+  $recurse = undef,
+) {
   include collectd::params
 
   package { 'collectd':
@@ -11,11 +14,13 @@ class collectd {
 
   # Where additional configurations are stored
   file { 'collectd.d':
-    ensure => directory,
-    name   => $collectd::params::plugin_conf_dir,
-    mode   => '0644',
-    owner  => 'root',
-    group  => 'root',
+    ensure  => directory,
+    name    => $collectd::params::plugin_conf_dir,
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
+    purge   => $purge,
+    recurse => $recurse,
   }
 
   # Do not make modifications, but refresh the service
