@@ -16,6 +16,6 @@ class collectd::plugin::openvpn (
     owner     => 'root',
     group     => 'root',
     content   => template('collectd/openvpn.conf.erb'),
-    subscribe => Service['collectd'],
+    notify    => Service['collectd'],
   }
 }

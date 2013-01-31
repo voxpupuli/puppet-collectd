@@ -16,6 +16,6 @@ class collectd::plugin::df (
     owner     => 'root',
     group     => 'root',
     content   => template('collectd/df.conf.erb'),
-    subscribe => Service['collectd'],
+    notify    => Service['collectd'],
   }
 }

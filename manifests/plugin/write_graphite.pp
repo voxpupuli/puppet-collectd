@@ -12,5 +12,6 @@ class collectd::plugin::write_graphite (
     owner     => 'root',
     group     => 'root',
     content   => template('collectd/write_graphite.conf.erb'),
+    notify    => Service['collectd'],
   }
 }
