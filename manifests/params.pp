@@ -7,7 +7,7 @@ class collectd::params {
       $collectd_dir      = '/etc/collectd'
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
-      $config_file      = "${collectd_dir}/collectd.conf"
+      $config_file       = "${collectd_dir}/collectd.conf"
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -15,10 +15,15 @@ class collectd::params {
       $collectd_dir      = '/etc/opt/csw'
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
-      $config_file      = "${collectd_dir}/collectd.conf"
+      $config_file       = "${collectd_dir}/collectd.conf"
     }
     'Redhat': {
-      fail('Not implemented yet.')
+      $package           = "collectd.$::architecture"
+      $provider          = 'yum'
+      $collectd_dir      = '/etc/collectd.d'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'collectd'
+      $config_file       = "/etc/collectd.conf"
     }
     default: {
       fail("${::osfamily} is not supported.")
