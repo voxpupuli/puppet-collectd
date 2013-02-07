@@ -8,6 +8,7 @@ Puppet module for configuring collectd and plugins.
 
 * Debian
 * Solaris
+* Redhat
 
 ## Usage
 
