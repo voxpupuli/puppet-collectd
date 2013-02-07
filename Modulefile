@@ -1,0 +1,8 @@
+name    'pdxcat-collectd'
+version '0.0.1'
+source 'https://github.com/pdxcat/puppet-module-collectd'
+author 'Computer Action Team'
+license 'Apache License 2.0'
+summary 'Collectd Module for Puppet'
+description 'Collectd Module for Puppet'
+project_page 'https://github.com/pdxcat/puppet-module-collectd'
