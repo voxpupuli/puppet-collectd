@@ -3,6 +3,8 @@ class collectd(
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
+  $interval     = 10,
+  $timeout      = 2,
 ) {
   include collectd::params
 
