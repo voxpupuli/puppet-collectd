@@ -48,7 +48,7 @@ class collectd(
     }
   }
 
-  service {'collectd':
+  service { 'collectd':
     ensure    => running,
     name      => $collectd::params::service_name,
     enable    => true,
