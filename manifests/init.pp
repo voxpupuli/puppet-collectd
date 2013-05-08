@@ -1,10 +1,11 @@
 class collectd(
-  $fqdnlookup   = 'true',
+  $fqdnlookup   = true,
+  $interval     = 10,
+  $threads      = 5,
+  $timeout      = 2,
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
-  $interval     = 10,
-  $timeout      = 2,
 ) {
   include collectd::params
 
@@ -47,7 +48,7 @@ class collectd(
     }
   }
 
-  service { 'collectd':
+  service {'collectd':
     ensure    => running,
     name      => $collectd::params::service_name,
     enable    => true,
