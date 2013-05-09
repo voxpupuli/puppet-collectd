@@ -15,7 +15,7 @@ class collectd(
     ensure   => installed,
     name     => $collectd::params::package,
     provider => $collectd::params::provider,
-    before   => File['collectd.conf'],
+    before   => File['collectd.conf', 'collectd.d'],
   }
 
   file { 'collectd.d':

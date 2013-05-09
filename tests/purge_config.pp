@@ -12,6 +12,7 @@ collectd::plugin { 'disk': }
 collectd::plugin { 'entropy': }
 collectd::plugin { 'interface': }
 collectd::plugin { 'irq': }
+collectd::plugin { 'iptables': }
 collectd::plugin { 'load': }
 collectd::plugin { 'memory': }
 collectd::plugin { 'processes': }

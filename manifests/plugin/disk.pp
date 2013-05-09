@@ -1,14 +1,15 @@
 class collectd::plugin::disk (
-  $disks,
-  $ignoreselected = 'false'
+  $disks          = 'UNSET',
+  $ignoreselected = 'false',
+  $ensure         = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file { 'disk.conf':
+    ensure    => $collectd::plugin::disk::ensure,
     path      => "${conf_dir}/disk.conf",
-    ensure    => file,
     mode      => '0644',
     owner     => 'root',
     group     => 'root',

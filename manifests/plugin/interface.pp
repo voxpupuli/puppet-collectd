@@ -1,14 +1,15 @@
 class collectd::plugin::interface (
-  $interfaces,
-  $ignoreselected = 'false'
+  $interfaces     = 'UNSET',
+  $ignoreselected = 'false',
+  $ensure         = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file { 'interface.conf':
+    ensure    => $collectd::plugin::interface::ensure,
     path      => "${conf_dir}/interface.conf",
-    ensure    => file,
     mode      => '0644',
     owner     => 'root',
     group     => 'root',
