@@ -1,0 +1,26 @@
+Version 0.0.2
+
+185e16f Modifications for following puppetlabs style guide and add smoke tests for interface, irq and iptables
+d68275f Added interface, irq and iptables support. Untested though.
+b8312cc Added use of scope.lookupvar, allow configuration of threads and option to choose between hostname and fqdn
+
+Version 0.0.1
+
+8c64104 Add interval and timeout parameters
+e48288d Add redhat support to the collectd module.
+b6e3649 Add readme, module, and license files to collectd module.
+fb6b92f Fix bug in collectd::plugin define
+4096cca Add purge_config option to collectd class
+2a2974c Add purge option to collectd class
+8acbef3 Add syslog plugin
+137c919 Add ensure option for collectd::plugin
+3406430 Fix plugins with wrong metaparams
+315af94 Add collectd::plugin define for unconfigured plugins
+c085ebc Change include plugin file to include conf.d
+171bddd Template openvpn plugin and parameterize the class
+09c4df5 Add mysql plugin to collectd.
+36f3465 Add disk plugin to collectd.
+1e27a29 Fix collectd service subscription to conf file.
+15f1ea7 Add Solaris collectd parameters
+c013e73 Add collectd df plugin support
+9cac9c4 Add collectd support.

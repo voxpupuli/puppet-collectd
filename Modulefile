@@ -1,5 +1,5 @@
 name    'pdxcat-collectd'
-version '0.0.1'
+version '0.0.2'
 source 'https://github.com/pdxcat/puppet-module-collectd'
 author 'Computer Action Team'
 license 'Apache License 2.0'
