@@ -18,7 +18,7 @@ class collectd::params {
       $config_file       = "${collectd_dir}/collectd.conf"
     }
     'Redhat': {
-      $package           = "collectd.$::architecture"
+      $package           = "collectd.${::architecture}"
       $provider          = 'yum'
       $collectd_dir      = '/etc/collectd.d'
       $plugin_conf_dir   = $collectd_dir

@@ -1,10 +1,11 @@
 class collectd(
-  $fqdnlookup   = 'true',
+  $fqdnlookup   = true,
+  $interval     = 10,
+  $threads      = 5,
+  $timeout      = 2,
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
-  $interval     = 10,
-  $timeout      = 2,
 ) {
   include collectd::params
 
@@ -14,7 +15,7 @@ class collectd(
     ensure   => installed,
     name     => $collectd::params::package,
     provider => $collectd::params::provider,
-    before   => File['collectd.conf'],
+    before   => File['collectd.conf', 'collectd.d'],
   }
 
   file { 'collectd.d':

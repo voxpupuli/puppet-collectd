@@ -4,14 +4,15 @@ class collectd::plugin::openvpn (
   $collectcompression     = 'true',
   $collectindividualusers = 'true',
   $collectusercount       = 'false',
+  $ensure                 = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file { 'openvpn.conf':
+    ensure    => $collectd::plugin::openvpn::ensure,
     path      => "${conf_dir}/openvpn.conf",
-    ensure    => file,
     mode      => '0644',
     owner     => 'root',
     group     => 'root',

@@ -1,16 +1,17 @@
 class collectd::plugin::mysql (
-  $database,
-  $host,
-  $username,
-  $password,
-  $port = '3306',
+  $database = 'UNSET',
+  $host     = 'UNSET',
+  $username = 'UNSET',
+  $password = 'UNSET',
+  $port     = '3306',
+  $ensure   = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file { 'mysql.conf':
-    ensure  => file,
+    ensure  => $collectd::plugin::mysql::ensure,
     path    => "${conf_dir}/mysql.conf",
     mode    => '0644',
     owner   => 'root',
