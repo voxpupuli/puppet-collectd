@@ -1,5 +1,5 @@
 include collectd
 
 class { 'collectd::plugin::syslog':
-  log_level => 'debug'
+  log_level => 'debug',
 }

@@ -1,5 +1,5 @@
-class collectd::plugin::disk (
-  $disks          = 'UNSET',
+class collectd::plugin::irq (
+  $irqs           = 'UNSET',
   $ignoreselected = 'false',
   $ensure         = present
 ) {
@@ -7,14 +7,13 @@ class collectd::plugin::disk (
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
-  file { 'disk.conf':
-    ensure    => $collectd::plugin::disk::ensure,
-    path      => "${conf_dir}/disk.conf",
+  file { 'irq.conf':
+    ensure    => $collectd::plugin::irq::ensure,
+    path      => "${conf_dir}/irq.conf",
     mode      => '0644',
     owner     => 'root',
     group     => 'root',
-    content   => template('collectd/disk.conf.erb'),
+    content   => template('collectd/irq.conf.erb'),
     notify    => Service['collectd']
   }
-
 }
