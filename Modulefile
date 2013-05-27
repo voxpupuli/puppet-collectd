@@ -1,8 +1,10 @@
-name    'pdxcat-collectd'
+name 'pdxcat-collectd'
 version '0.0.2'
-source 'https://github.com/pdxcat/puppet-module-collectd'
+
 author 'Computer Action Team'
 license 'Apache License 2.0'
+project_page 'https://github.com/pdxcat/puppet-module-collectd'
+source 'https://github.com/pdxcat/puppet-module-collectd'
 summary 'Collectd Module for Puppet'
 description 'Collectd Module for Puppet'
-project_page 'https://github.com/pdxcat/puppet-module-collectd'
+dependency 'puppetlabs/stdlib', '>=2.0.0'
