@@ -4,11 +4,11 @@ LoadPlugin write_graphite
 <Plugin write_graphite>
  <Carbon>
    Host "<%= @graphitehost %>"
-   Port "2003"
+   Port "<%= @graphiteport %>"
    Prefix "collectd."
    #Postfix ""
    EscapeCharacter "_"
-   StoreRates false
+   StoreRates <%=  @storerates %>
    AlwaysAppendDS false
  </Carbon>
 </Plugin>
