@@ -29,8 +29,8 @@ class collectd(
   }
 
   $conf_content = $purge_config ? {
-    false => undef,
-    true  => template('collectd/collectd.conf.erb'),
+    true    => template('collectd/collectd.conf.erb'),
+    default => undef,
   }
 
   file { 'collectd.conf':
