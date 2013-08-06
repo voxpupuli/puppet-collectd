@@ -8,7 +8,9 @@ FQDNLookup true
 <% end %>
 #BaseDir "/var/lib/collectd"
 #PluginDir "/usr/lib/collectd"
-#TypesDB "/usr/share/collectd/types.db" "/etc/collectd/my_types.db"
+<% if @enable_typesdb %>
+TypesDB "/usr/share/collectd/types.db"
+<% end %>
 Interval <%= @interval %>
 Timeout <%= @timeout %>
 ReadThreads <%= @threads %>

@@ -1,11 +1,12 @@
 class collectd(
-  $fqdnlookup   = true,
-  $interval     = 10,
-  $threads      = 5,
-  $timeout      = 2,
-  $purge        = undef,
-  $recurse      = undef,
-  $purge_config = false,
+  $fqdnlookup     = true,
+  $interval       = 10,
+  $threads        = 5,
+  $timeout        = 2,
+  $purge          = undef,
+  $recurse        = undef,
+  $purge_config   = false,
+  $enable_typesdb = false
 ) {
   include collectd::params
 
