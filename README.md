@@ -56,11 +56,25 @@ collectd::plugin { 'battery': }
 
 where 'battery' is the name of the plugin.
 
-Additional Plugins
+Configurable Plugins
 ------------------
 
-Some non-default plugins are shipped with this module. Configure
-these plugins with, for example
+Parameters will vary widely between plugins. See the collectd
+documentation for each plugin for configurable attributes.
+
+* `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
+* `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `interface`
+* `iptables`
+* `irq`
+* `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
+* `network
+* `nginx`
+* `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
+* `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
+
+####Class: `collectd::plugin::df`
 
 ```puppet
 class { 'collectd::plugin::df':
@@ -70,5 +84,46 @@ class { 'collectd::plugin::df':
 }
 ```
 
-Parameters will vary widely between plugins. See the collectd
-documentation for each plugin for configurable attributes.
+####Class: `collectd::plugin::disk`
+
+```puppet
+class { 'collectd::plugin::disk':
+  disks          => ['/^dm/'],
+  ignoreselected => 'true'
+}
+```
+
+####Class: `collectd::plugin::mysql`
+
+class { 'collectd::plugin::mysql':
+  database  => 'betadase',
+  host      => 'localhost',
+  username  => 'stahmna',
+  password  => 'secret',
+  port      => '3306',
+}
+
+####Class: `collectd::plugin::openvpn`
+
+```puppet
+class { 'collectd::plugin::openvpn':
+  collectindividualusers => 'false',
+  collectusercount       => 'true',
+}
+```
+
+####Class: `collectd::plugin::syslog`
+
+```puppet
+class { 'collectd::plugin::syslog':
+  log_level => 'warning'
+}
+```
+
+####Class: `collectd::plugin::write_graphite`
+
+```puppet
+class { 'collectd::plugin::write_graphite':
+  graphitehost => 'graphite.examle.org',
+}
+```
