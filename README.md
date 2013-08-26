@@ -68,7 +68,7 @@ documentation for each plugin for configurable attributes.
 * `iptables`
 * `irq`
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
-* `network
+* `network`
 * `nginx`
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
@@ -95,6 +95,7 @@ class { 'collectd::plugin::disk':
 
 ####Class: `collectd::plugin::mysql`
 
+```puppet
 class { 'collectd::plugin::mysql':
   database  => 'betadase',
   host      => 'localhost',
@@ -102,6 +103,7 @@ class { 'collectd::plugin::mysql':
   password  => 'secret',
   port      => '3306',
 }
+```
 
 ####Class: `collectd::plugin::openvpn`
 
