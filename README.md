@@ -1,6 +1,8 @@
 Collectd module for Puppet
 ==========================
 
+[![Build Status](https://travis-ci.org/pdxcat/puppet-module-collectd.png?branch=master)](https://travis-ci.org/pdxcat/puppet-module-collectd)
+
 Description
 -----------
 
