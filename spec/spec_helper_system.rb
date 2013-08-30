@@ -22,7 +22,7 @@ RSpec.configure do |c|
     puppet_install
 
     # Install modules and dependencies
-    puppet_module_install(:source => proj_root, :module_name => 'mysql')
+    puppet_module_install(:source => proj_root, :module_name => 'collectd')
     shell('puppet module install puppetlabs-stdlib')
   end
 end
