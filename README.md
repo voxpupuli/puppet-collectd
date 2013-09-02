@@ -62,6 +62,7 @@ Configurable Plugins
 Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
+* `bind`
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `interface`
