@@ -1,3 +1,24 @@
+0.0.4 - pdxcat/collectd - 2013/08/26
+
+  9f3f0f6 Add bind plugin to readme
+  f052087 Add bind plugin
+  fc0c4c1 Add basic rspec-system test
+  0b2ec92 Fix README formatting issues
+  71dcad0 Add configurable plugins to the README
+  72b9f17 Add test for file_line
+  7eae468 Add buildstatus to the README
+  b2cb208 Add travis.yml file
+  8cc16a8 Add purge_config enabled test
+  26683f0 Add spec test for collectd class
+  3f30650 Add spec helper files
+  0bee1d7 Add nginx plugin
+  e2d558a Fix network plugin config syntax
+  79d8a68 Add network plugin
+  c1085d7 Merge pull request #5 from agenticarus/newer-stdlib
+  88678bf Depend on newer version of stdlib
+  7dd9aaa added colorz to the README
+  628ed78 Added configuration for StoreRates and Port.
+
 0.0.3 - pdxcat/collectd - 2013/05/27
 
   f51660f Fixed test for collectd::plugin::irq
