@@ -58,6 +58,7 @@ documentation for each plugin for configurable attributes.
 * `bind`
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `interface`
 * `iptables`
 * `irq`
@@ -65,7 +66,9 @@ documentation for each plugin for configurable attributes.
 * `network`
 * `nginx`
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
+* `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 
 ####Class: `collectd::plugin::df`
@@ -84,6 +87,17 @@ class { 'collectd::plugin::df':
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
   ignoreselected => 'true'
+}
+```
+
+####Class: `collectd::plugin::filecount`
+
+```puppet
+class { 'collectd::plugin::filecount':
+  directories => {
+    'active'   => '/var/spool/postfix/active',
+    'incoming' => '/var/spool/postfix/incoming'
+  },
 }
 ```
 
@@ -108,6 +122,30 @@ class { 'collectd::plugin::openvpn':
 }
 ```
 
+####Class: `collectd::plugin::snmp`
+
+```puppet
+class {'collectd::plugin::snmp':
+  data  =>  {
+    amavis_incoming_messages => {
+      'Type'     => 'counter',
+      'Table'    => false,
+      'Instance' => 'amavis.inMsgs',
+      'Values'   => ['AMAVIS-MIB::inMsgs.0']
+    }
+  },
+  hosts => {
+    debianvm => {
+      'Address'   => '127.0.0.1',
+      'Version'   => 2,
+      'Community' => 'public',
+      'Collect'   => ['amavis_incoming_messages'],
+      'Interval'  => 10
+    }
+  },
+}
+```
+
 ####Class: `collectd::plugin::syslog`
 
 ```puppet
@@ -116,6 +154,15 @@ class { 'collectd::plugin::syslog':
 }
 ```
 
+####Class: `collectd::plugin::unixsock`
+
+```puppet
+class {'collectd::plugin::unixsock':
+  socketfile  => '/var/run/collectd-sock',
+  socketgroup => 'nagios',
+}
+
+```
 ####Class: `collectd::plugin::write_graphite`
 
 ```puppet
@@ -123,9 +170,10 @@ class { 'collectd::plugin::write_graphite':
   graphitehost => 'graphite.examle.org',
 }
 ```
+
 ##Limitations
 
-This module has been tested on Ubuntu Precise, CentOS 5/6 and Solaris 10.
+This module has been tested on Ubuntu Precise, CentOS 5/6, Solaris 10, and Debian 6/7.
 
 ##Development
 
