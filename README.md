@@ -8,13 +8,6 @@ Description
 
 Puppet module for configuring collectd and plugins.
 
-Supported Platforms
--------------------
-
-* Debian
-* Solaris
-* Redhat
-
 Usage
 -----
 
@@ -130,3 +123,19 @@ class { 'collectd::plugin::write_graphite':
   graphitehost => 'graphite.examle.org',
 }
 ```
+##Limitations
+
+This module has been tested on Ubuntu Precise, CentOS 5/6 and Solaris 10.
+
+##Development
+
+### Running tests
+
+This project contains tests for both [rspec-puppet](http://rspec-puppet.com/) and [rspec-system](https://github.com/puppetlabs/rspec-system) to verify functionality. For in-depth information please see their respective documentation.
+
+Quickstart:
+
+    gem install bundler
+    bundle install
+    bundle exec rake spec
+    bundle exec rake spec:system
