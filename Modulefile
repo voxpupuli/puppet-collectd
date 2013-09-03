@@ -8,4 +8,4 @@ summary 'Puppet module for Collectd'
 description 'Module for collectd configuration'
 
 ## Add dependencies, if any:
-dependency 'puppetlabs/stdlib', '>=2.6.0'
+dependency 'puppetlabs/stdlib', '>=3.0.0'
