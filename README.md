@@ -62,6 +62,7 @@ documentation for each plugin for configurable attributes.
 * `interface`
 * `iptables`
 * `irq`
+* `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network`
 * `nginx`
@@ -98,6 +99,15 @@ class { 'collectd::plugin::filecount':
     'active'   => '/var/spool/postfix/active',
     'incoming' => '/var/spool/postfix/incoming'
   },
+}
+```
+
+####Class: `collectd::plugin::memcached`
+
+```puppet
+class { 'collectd::plugin::memcached':
+  host => '192.168.122.1',
+  port => '11211',
 }
 ```
 
