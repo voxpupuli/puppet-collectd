@@ -69,6 +69,7 @@ documentation for each plugin for configurable attributes.
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
+* `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 
@@ -161,6 +162,16 @@ class {'collectd::plugin::snmp':
 ```puppet
 class { 'collectd::plugin::syslog':
   log_level => 'warning'
+}
+```
+
+####Class: `collectd::plugin::tcpconns`
+
+```puppet
+class { 'collectd::plugin::tcpconns':
+  localports  => ['25', '12026'],
+  remoteports => ['25'],
+  listening   => false,
 }
 ```
 
