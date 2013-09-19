@@ -66,6 +66,7 @@ documentation for each plugin for configurable attributes.
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network`
 * `nginx`
+* `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
@@ -121,6 +122,17 @@ class { 'collectd::plugin::mysql':
   username  => 'stahmna',
   password  => 'secret',
   port      => '3306',
+}
+```
+
+####Class: `collectd::plugin::ntpd`
+
+```puppet
+class { 'collectd::plugin::ntpd':
+  host           => 'localhost',
+  port           => '123',
+  reverselookups => 'false',
+  includeunitid  => 'false',
 }
 ```
 
