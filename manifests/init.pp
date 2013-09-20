@@ -6,7 +6,7 @@ class collectd(
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
-  $version	= installed,
+  $version      = installed,
 ) {
   include collectd::params
 
