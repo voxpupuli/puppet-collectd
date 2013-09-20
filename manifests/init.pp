@@ -6,13 +6,14 @@ class collectd(
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
+  $version      = installed,
 ) {
   include collectd::params
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
 
   package { 'collectd':
-    ensure   => installed,
+    ensure   => $version,
     name     => $collectd::params::package,
     provider => $collectd::params::provider,
     before   => File['collectd.conf', 'collectd.d'],
