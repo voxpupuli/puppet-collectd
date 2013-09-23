@@ -1,9 +1,13 @@
 # https://collectd.org/wiki/index.php/Graphite
 class collectd::plugin::write_graphite (
-  $ensure       = present,
-  $graphitehost = 'localhost',
-  $graphiteport = 2003,
-  $storerates   = false,
+  $ensure          = present,
+  $graphitehost    = 'localhost',
+  $graphiteport    = 2003,
+  $storerates      = false,
+  $graphiteprefix  = 'collectd.',
+  $graphitepostfix = undef,
+  $escapecharacter = '_',
+  $alwaysappendds  = false,
 ) {
   include collectd::params
 
