@@ -1,0 +1,14 @@
+# Created and managed by puppet
+#
+
+<% @enabled_plugins.each do |plugin| -%>
+<% if (scope.function_versioncmp([@collectd_version, plugins[plugin]['version']]) >= 0) -%>
+# <%=  plugins[plugin]['name'] %>
+# <%=  plugins[plugin]['url'] %>
+LoadPlugin <%= plugin %>
+<% if plugin_config[plugin] -%>
+<%= plugin_config[plugin] %>
+<% end -%>
+
+<% end -%>
+<% end -%>
