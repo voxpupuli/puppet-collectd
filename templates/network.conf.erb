@@ -3,6 +3,7 @@ LoadPlugin network
 
 <Plugin network>
 <% if @server -%>
+<% if (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
   <Server "<%= @server %>" "<%= @serverport %>">
 <% if @server_securitylevel -%>
     SecurityLevel <%= @server_securitylevel %>
@@ -17,8 +18,12 @@ LoadPlugin network
     Interface <%= @server_interface %>
 <% end -%>
   </Server>
+<% else -%>
+  Server "<%= @server %>" "<%= @serverport %>"
+<% end -%>
 <% end -%>
 <% if @listen -%>
+<% if (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
   <Listen "<%= @listen %>" "<%= @listenport %>">
 <% if @listen_securitylevel -%>
     SecurityLevel <%= @listen_securitylevel %>
@@ -30,6 +35,9 @@ LoadPlugin network
     Interface <%= @listen_interface %>
 <% end -%>
   </Listen>
+<% else -%>
+  Listen "<%= @listen %>" "<%= @listenport %>"
+<% end -%>
 <% end -%>
 <% if @timetolive -%>
   TimeToLive <%= @timetolive %>

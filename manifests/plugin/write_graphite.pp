@@ -2,6 +2,10 @@ class collectd::plugin::write_graphite (
   $graphitehost = 'localhost',
   $storerates   = false,
   $graphiteport = '2003',
+  $graphiteprefix = 'collectd.',
+  $graphitepostfix = undef,
+  $escapecharacter = '_',
+  $alwaysappendds = 'false',
   $ensure       = present
 ) {
   include collectd::params
