@@ -1,3 +1,16 @@
+0.0.5 - pdxcat/collectd - 2013/09/24
+
+  6adca9a add ntpd plugin
+  ab55fb4 Added tcpconns plugin and example for it in README
+  677ff72 Adding a new generic write_network plugin define
+  8cdd8b7 Added memcached plugin and example for it in README
+  c3e4a02 Added examples to README for filecount, SNMP and unixsock
+  f798c84 Added support for file count plugin
+  66f7392 Added support for SNMP and bumped stdlib dependency version to 3.0.0
+  7118450 Added support for unix socket plugin
+  a062b11 Fixed source URL
+  1b214a2 Add testing docs to README
+
 0.0.4 - pdxcat/collectd - 2013/08/26
 
   9f3f0f6 Add bind plugin to readme
