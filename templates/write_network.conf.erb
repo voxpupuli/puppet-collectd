@@ -2,5 +2,7 @@
 LoadPlugin "network"
 
 <Plugin "network">
-  Server "<%= @serverhost %>" "<%= @serverport %>"
+<% @servers.each do |servername,serverhash| -%>
+  Server "<%= servername %>" "<%= serverhash['serverport'] %>"
+<% end -%>
 </Plugin>
