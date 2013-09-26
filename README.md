@@ -55,6 +55,7 @@ Configurable Plugins
 Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
+* `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
@@ -73,6 +74,21 @@ documentation for each plugin for configurable attributes.
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
+
+####Class: `collectd::plugin::apache`
+
+```puppet
+class { 'collectd::plugin::apache':
+  instances => {
+    'apache80' => {
+      'url' => 'http://localhost/mod_status?auto', 'user' => 'collectd', 'password' => 'hoh2Coo6'
+    },
+    'lighttpd8080' => {
+      'url' => 'http://localhost:8080/mod_status?auto'
+    }
+  },
+}
+```
 
 ####Class: `collectd::plugin::df`
 
