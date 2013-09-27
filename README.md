@@ -57,6 +57,7 @@ documentation for each plugin for configurable attributes.
 
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`
+* `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
@@ -87,6 +88,19 @@ class { 'collectd::plugin::apache':
       'url' => 'http://localhost:8080/mod_status?auto'
     }
   },
+}
+```
+
+####Class: `collectd::plugin::curl_json`
+
+```puppet
+collectd::plugin::curl_json {
+  'rabbitmq_overview':
+    url => 'http://localhost:55672/api/overview',
+    instance => 'rabbitmq_overview',
+    keys => {
+      'message_stats/publish' => {'type' => 'gauge'},
+    }
 }
 ```
 
