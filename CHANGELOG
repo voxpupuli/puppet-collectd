@@ -1,3 +1,19 @@
+2013-09-27 Release 0.1.0
+
+Summary:
+
+Add curl_json and apache plugin
+
+Backwards-incompatible changes:
+
+ - The write_network plugin now accepts a hash of servers
+
+Features:
+
+ - Add curl_json plugin
+ - Added collectd package version parameter
+ - Add apache plugin
+
 0.0.5 - pdxcat/collectd - 2013/09/24
 
   6adca9a add ntpd plugin
