@@ -23,7 +23,15 @@ class collectd::params {
       $collectd_dir      = '/etc/collectd.d'
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
-      $config_file       = "/etc/collectd.conf"
+      $config_file       = '/etc/collectd.conf'
+    }
+    'Suse': {
+      $package           = 'collectd'
+      $provider          = 'zypper'
+      $collectd_dir      = '/etc/collectd'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'collectd'
+      $config_file       = '/etc/collectd.conf'
     }
     default: {
       fail("${::osfamily} is not supported.")
