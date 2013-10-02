@@ -41,9 +41,17 @@ class collectd(
   }
 
   if $purge_config != true {
-    # Include conf_d directory
+    # former include of conf_d directory
     file_line { 'include_conf_d':
+      ensure  => absent,
       line    => "Include \"${collectd::params::plugin_conf_dir}/\"",
+      path    => $collectd::params::config_file,
+      notify  => Service['collectd'],
+    }
+    # include (conf_d directory)/*.conf
+    file_line { 'include_conf_d_dot_conf':
+      ensure  => present,
+      line    => "Include \"${collectd::params::plugin_conf_dir}/*.conf\"",
       path    => $collectd::params::config_file,
       notify  => Service['collectd'],
     }
