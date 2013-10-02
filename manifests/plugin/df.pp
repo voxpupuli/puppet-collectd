@@ -1,9 +1,9 @@
 class collectd::plugin::df (
-  $mountpoints    = 'UNSET',
-  $fstypes        = 'UNSET',
-  $ignoreselected = 'false',
-  $reportbydevice = 'false',
-  $reportinodes   = 'true',
+  $mountpoints    = [],
+  $fstypes        = [],
+  $ignoreselected = false,
+  $reportbydevice = false,
+  $reportinodes   = true,
   $ensure         = present,
 ) {
   include collectd::params
