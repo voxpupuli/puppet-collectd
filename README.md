@@ -71,7 +71,7 @@ documentation for each plugin for configurable attributes.
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
-* `syslog` (see [collectd::plugin::sylog](#class-collectdpluginsylog) below)
+* `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
