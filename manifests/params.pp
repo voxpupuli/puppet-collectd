@@ -1,3 +1,4 @@
+#
 class collectd::params {
 
   case $::osfamily {

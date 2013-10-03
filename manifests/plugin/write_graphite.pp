@@ -1,12 +1,14 @@
+# https://collectd.org/wiki/index.php/Graphite
 class collectd::plugin::write_graphite (
+  $ensure       = present,
   $graphitehost = 'localhost',
+  $graphiteport = 2003,
   $storerates   = false,
-  $graphiteport = '2003',
-  $ensure       = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_bool($storerates)
 
   file { 'write_graphite.conf':
     ensure    => $collectd::plugin::write_graphite::ensure,

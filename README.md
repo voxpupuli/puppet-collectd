@@ -56,18 +56,18 @@ Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
-* `bind`
+* `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
-* `interface`
-* `iptables`
-* `irq`
+* `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
+* `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
+* `irq` (see [collectd::plugin::irq](#class-collectdpluginirp) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
-* `network`
-* `nginx`
+* `network` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
+* `nginx` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
@@ -112,7 +112,7 @@ collectd::plugin::curl_json {
 class { 'collectd::plugin::df':
   mountpoints    => ['/u'],
   fstypes        => ['nfs','tmpfs','autofs','gpfs','proc','devpts'],
-  ignoreselected => 'true',
+  ignoreselected => true,
 }
 ```
 
@@ -121,7 +121,7 @@ class { 'collectd::plugin::df':
 ```puppet
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
-  ignoreselected => 'true'
+  ignoreselected => true
 }
 ```
 
@@ -132,6 +132,33 @@ class { 'collectd::plugin::filecount':
   directories => {
     'active'   => '/var/spool/postfix/active',
     'incoming' => '/var/spool/postfix/incoming'
+  },
+}
+```
+####Class: `collectd::plugin::interface`
+
+```puppet
+class { 'collectd::plugin::interface':
+  interfaces     => ['lo'],
+  ignoreselected => true
+}
+```
+
+####Class: `collectd::plugin::irq`
+
+```puppet
+class { 'collectd::plugin::irq':
+  irqs           => ['7', '23'],
+  ignoreselected => true,
+}
+```
+####Class: `collectd::plugin::iptables`
+
+```puppet
+class { 'collectd::plugin::iptables':
+  chains  => {
+    'nat'    => 'In_SSH',
+    'filter' => 'HTTP'
   },
 }
 ```
@@ -162,9 +189,9 @@ class { 'collectd::plugin::mysql':
 ```puppet
 class { 'collectd::plugin::ntpd':
   host           => 'localhost',
-  port           => '123',
-  reverselookups => 'false',
-  includeunitid  => 'false',
+  port           => 123,
+  reverselookups => false,
+  includeunitid  => false,
 }
 ```
 
@@ -172,8 +199,8 @@ class { 'collectd::plugin::ntpd':
 
 ```puppet
 class { 'collectd::plugin::openvpn':
-  collectindividualusers => 'false',
-  collectusercount       => 'true',
+  collectindividualusers => false,
+  collectusercount       => true,
 }
 ```
 
