@@ -1,3 +1,4 @@
+# https://collectd.org/wiki/index.php/Plugin:SysLog
 class collectd::plugin::syslog (
   $ensure    = present,
   $log_level = 'info'

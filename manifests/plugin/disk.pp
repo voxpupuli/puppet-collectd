@@ -1,11 +1,14 @@
+# https://collectd.org/wiki/index.php/Plugin:Disk
 class collectd::plugin::disk (
-  $disks          = 'UNSET',
-  $ignoreselected = 'false',
-  $ensure         = present
+  $ensure         = present,
+  $disks          = [],
+  $ignoreselected = false,
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_array($disks)
+  validate_bool($ignoreselected)
 
   file { 'disk.conf':
     ensure    => $collectd::plugin::disk::ensure,

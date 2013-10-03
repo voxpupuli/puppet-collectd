@@ -1,3 +1,4 @@
+#
 define collectd::plugin::tail::file (
   $filename,
   $instance,

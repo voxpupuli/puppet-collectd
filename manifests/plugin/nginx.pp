@@ -1,11 +1,12 @@
+# https://collectd.org/wiki/index.php/Plugin:nginx
 class collectd::plugin::nginx (
   $url,
-  $user = undef,
-  $password = undef,
+  $ensure     = present,
+  $user       = undef,
+  $password   = undef,
   $verifypeer = undef,
   $verifyhost = undef,
-  $cacert = undef,
-  $ensure = present
+  $cacert     = undef,
 ) {
   include collectd::params
 

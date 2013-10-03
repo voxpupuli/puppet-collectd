@@ -1,3 +1,4 @@
+# https://collectd.org/wiki/index.php/Plugin:TCPConns
 class collectd::plugin::tcpconns (
   $localports  = undef,
   $remoteports = undef,

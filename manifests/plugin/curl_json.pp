@@ -3,11 +3,12 @@ define collectd::plugin::curl_json (
   $url,
   $instance,
   $keys,
-  $user=undef,
-  $password=undef,
+  $user     = undef,
+  $password = undef,
 ) {
 
   include collectd::params
+  validate_hash($keys)
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

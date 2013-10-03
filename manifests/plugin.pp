@@ -1,15 +1,16 @@
+#
 define collectd::plugin (
   $ensure = 'present',
 ) {
 
-include collectd::params
+  include collectd::params
 
-$plugin = $name
-$conf_dir = $collectd::params::plugin_conf_dir
+  $plugin = $name
+  $conf_dir = $collectd::params::plugin_conf_dir
 
-file { "${plugin}.load":
-    path    => "${conf_dir}/${plugin}.conf",
+  file { "${plugin}.load":
     ensure  => $ensure,
+    path    => "${conf_dir}/${plugin}.conf",
     owner   => root,
     group   => root,
     mode    => '0644',

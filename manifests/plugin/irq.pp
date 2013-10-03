@@ -1,11 +1,14 @@
+# https://collectd.org/wiki/index.php/Plugin:IRQ
 class collectd::plugin::irq (
-  $irqs           = 'UNSET',
-  $ignoreselected = 'false',
-  $ensure         = present
+  $ensure         = present,
+  $irqs           = [],
+  $ignoreselected = false,
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_array($irqs)
+  validate_bool($ignoreselected)
 
   file { 'irq.conf':
     ensure    => $collectd::plugin::irq::ensure,

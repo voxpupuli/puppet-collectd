@@ -1,24 +1,29 @@
+# https://collectd.org/wiki/index.php/Plugin:Network
 class collectd::plugin::network (
-  $server = undef,
-  $serverport = 25826,
-  $server_securitylevel = 'None',
-  $server_username = undef,
-  $server_password = undef,
-  $server_interface = undef,
-  $listen = undef,
-  $listenport = 25826,
+  $ensure               = present,
+  $forward              = false,
+  $listen               = undef,
+  $listen_authfile      = undef,
+  $listen_interface     = undef,
   $listen_securitylevel = 'None',
-  $listen_authfile = undef,
-  $listen_interface = undef,
-  $timetolive = undef,
-  $maxpacketsize = undef,
-  $forward = 'false',
-  $reportstats = 'false',
-  $ensure = present
+  $listenport           = 25826,
+  $maxpacketsize        = undef,
+  $reportstats          = false,
+  $server               = undef,
+  $server_interface     = undef,
+  $server_password      = undef,
+  $server_securitylevel = 'None',
+  $server_username      = undef,
+  $serverport           = 25826,
+  $timetolive           = undef,
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_bool(
+    $forward,
+    $reportstats,
+  )
 
   file { 'network.conf':
     ensure  => $collectd::plugin::network::ensure,
