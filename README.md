@@ -66,8 +66,8 @@ documentation for each plugin for configurable attributes.
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirp) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
-* `network` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
-* `nginx` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
+* `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
+* `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
@@ -90,6 +90,14 @@ class { 'collectd::plugin::apache':
       'url' => 'http://localhost:8080/mod_status?auto'
     }
   },
+}
+```
+
+####Class: `collectd::plugin::bind`
+
+```puppet
+class { 'collectd::plugin::bind':
+  url    => 'http://localhost:8053/',
 }
 ```
 
@@ -152,6 +160,7 @@ class { 'collectd::plugin::irq':
   ignoreselected => true,
 }
 ```
+
 ####Class: `collectd::plugin::iptables`
 
 ```puppet
@@ -181,6 +190,23 @@ class { 'collectd::plugin::mysql':
   username  => 'stahmna',
   password  => 'secret',
   port      => '3306',
+}
+```
+
+####Class: `collectd::plugin::network`
+
+```puppet
+class { 'collectd::plugin::network':
+}
+```
+
+####Class: `collectd::plugin::nginx`
+
+```puppet
+class { 'collectd::plugin::nginx':
+  url      => 'https://localhost:8433',
+  user     => 'stats',
+  password => 'uleePi4A',
 }
 ```
 
