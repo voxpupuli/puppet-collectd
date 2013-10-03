@@ -1,15 +1,14 @@
+# https://collectd.org/wiki/index.php/Plugin:SNMP
 class collectd::plugin::snmp (
+  $ensure = present,
   $data   = undef,
   $hosts  = undef,
-  $ensure = present
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
-  if ! is_hash($data) or ! is_hash($hosts) {
-    fail('Both data and hosts parameters must be hashes')
-  }
+  validate_hash($data, $hosts)
 
   file { 'snmp.conf':
     ensure    => $ensure,

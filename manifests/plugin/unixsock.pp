@@ -1,3 +1,4 @@
+# https://collectd.org/wiki/index.php/Plugin:UnixSock
 class collectd::plugin::unixsock (
   $socketfile  = '/var/run/collectd-socket',
   $socketgroup = 'collectd',
@@ -7,6 +8,7 @@ class collectd::plugin::unixsock (
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_absolute_path($socketfile)
 
   file { 'unixsock.conf':
     ensure    => $collectd::plugin::unixsock::ensure,

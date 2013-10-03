@@ -1,7 +1,8 @@
+# https://collectd.org/wiki/index.php/Plugin:memcached
 class collectd::plugin::memcached (
+  $ensure = present,
   $host   = '127.0.0.1',
   $port   = '11211',
-  $ensure = present
 ) {
   include collectd::params
 
@@ -10,7 +11,7 @@ class collectd::plugin::memcached (
   file { 'memcached.conf':
     ensure    => $ensure,
     path      => "${conf_dir}/memcached.conf",
-    mode      => 0644,
+    mode      => '0644',
     owner     => 'root',
     group     => 'root',
     content   => template('collectd/memcached.conf.erb'),

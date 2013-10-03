@@ -1,10 +1,13 @@
+# https://collectd.org/wiki/index.php/Plugin:MySQL
+# TODO: blkperl 2013/10/02 refactor to a define like
+# collectd::plugin::tail::file
 class collectd::plugin::mysql (
+  $ensure   = present,
   $database = 'UNSET',
   $host     = 'UNSET',
   $username = 'UNSET',
   $password = 'UNSET',
   $port     = '3306',
-  $ensure   = present
 ) {
   include collectd::params
 

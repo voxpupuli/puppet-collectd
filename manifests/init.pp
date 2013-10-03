@@ -1,16 +1,18 @@
+#
 class collectd(
   $fqdnlookup   = true,
   $interval     = 10,
+  $purge        = undef,
+  $purge_config = false,
+  $recurse      = undef,
   $threads      = 5,
   $timeout      = 2,
-  $purge        = undef,
-  $recurse      = undef,
-  $purge_config = false,
   $version      = installed,
 ) {
   include collectd::params
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
+  validate_bool($purge_config, $fqdnlookup)
 
   package { 'collectd':
     ensure   => $version,

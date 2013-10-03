@@ -1,11 +1,14 @@
+# https://collectd.org/wiki/index.php/Plugin:Interface
 class collectd::plugin::interface (
-  $interfaces     = 'UNSET',
-  $ignoreselected = 'false',
-  $ensure         = present
+  $ensure         = present,
+  $interfaces     = [],
+  $ignoreselected = false,
 ) {
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
+  validate_array($interfaces)
+  validate_bool($ignoreselected)
 
   file { 'interface.conf':
     ensure    => $collectd::plugin::interface::ensure,
