@@ -72,6 +72,7 @@ documentation for each plugin for configurable attributes.
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
+* `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
@@ -215,6 +216,28 @@ class { 'collectd::plugin::tcpconns':
   localports  => ['25', '12026'],
   remoteports => ['25'],
   listening   => false,
+}
+```
+####Class: `collectd::plugin::tail`
+
+```puppet
+collectd::plugin::tail::file { 'exim-log':
+  filename => '/var/log/exim4/mainlog',
+  instance => 'exim',
+  matches  => [
+    {
+      regex    => 'S=([1-9][0-9]*)',
+      dstype   => 'CounterAdd',
+      type     => 'ipt_bytes',
+      instance => 'total',
+    },
+    {
+      regex    => '\\<R=local_user\\>',
+      dstype   => 'CounterInc',
+      type     => 'counter',
+      instance => 'local_user',
+    }
+  ]
 }
 ```
 
