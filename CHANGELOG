@@ -1,3 +1,32 @@
+2013-10-20 Release 1.0.0
+
+Summary:
+
+This release breaks some backwards compatibility
+on some plugins where they improperly used strings instead of
+booleans parameters. This release also includes osfamily
+support for SUSE and FreeBSB and support for four new plugins.
+
+Backwards-incompatible changes:
+
+ - Plugins that use to accept strings now use booleans
+   for a more consistent interface across the various plugins
+ - The main collectd config file now only includes *.conf files
+   to allow plugin specific files to be placed in the conf.d
+   directory.
+ - The mysql plugin now supports multiple databases via the
+   collectd::plugin::mysql::database define. This change breaks
+   backwards compatiblity on the mysql plugin.
+
+Features:
+
+ - osfamily support for SUSE
+ - osfamily support for FreeBSD
+ - tail plugin
+ - exec plugin
+ - python plugin
+ - write_riemann plugin
+
 2013-09-27 Release 0.1.0
 
 Summary:
