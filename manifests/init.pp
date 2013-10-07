@@ -26,7 +26,7 @@ class collectd(
     name    => $collectd::params::plugin_conf_dir,
     mode    => '0644',
     owner   => 'root',
-    group   => 'root',
+    group   => $collectd::params::root_group,
     purge   => $purge,
     recurse => $recurse,
   }

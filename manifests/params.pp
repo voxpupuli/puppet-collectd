@@ -9,6 +9,7 @@ class collectd::params {
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
+      $root_group        = 'root'
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -17,6 +18,7 @@ class collectd::params {
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
+      $root_group        = 'root'
     }
     'Redhat': {
       $package           = "collectd.${::architecture}"
@@ -25,6 +27,7 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
+      $root_group        = 'root'
     }
     'Suse': {
       $package           = 'collectd'
@@ -33,6 +36,16 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
+      $root_group        = 'root'
+    }
+    'FreeBSD': {
+      $package           = 'collectd5'
+      $provider          = undef
+      $collectd_dir      = '/usr/local/etc/collectd'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'collectd'
+      $config_file       = '/usr/local/etc/collectd.conf'
+      $root_group        = 'wheel'
     }
     default: {
       fail("${::osfamily} is not supported.")
