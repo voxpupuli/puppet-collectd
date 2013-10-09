@@ -1,4 +1,4 @@
-# See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_curl_json
+# See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
 define collectd::plugin::exec (
   $user,
   $group,
