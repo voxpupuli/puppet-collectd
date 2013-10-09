@@ -60,6 +60,7 @@ documentation for each plugin for configurable attributes.
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
@@ -130,6 +131,17 @@ class { 'collectd::plugin::df':
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
   ignoreselected => true
+}
+```
+
+####Class: `collectd::plugin::exec`
+
+```puppet
+collectd::plugin::exec {
+  'dummy':
+    user => nobody,
+    group => nogroup,
+    exec => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat N:1"],
 }
 ```
 
