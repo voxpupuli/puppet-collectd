@@ -64,7 +64,7 @@ documentation for each plugin for configurable attributes.
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
-* `irq` (see [collectd::plugin::irq](#class-collectdpluginirp) below)
+* `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
