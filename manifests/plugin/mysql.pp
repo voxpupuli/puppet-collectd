@@ -2,13 +2,21 @@
 # TODO: blkperl 2013/10/02 refactor to a define like
 # collectd::plugin::tail::file
 class collectd::plugin::mysql (
-  $ensure   = present,
-  $database = 'UNSET',
-  $host     = 'UNSET',
-  $username = 'UNSET',
-  $password = 'UNSET',
-  $port     = '3306',
+  $ensure      = present,
+  $database    = 'UNSET',
+  $host        = 'UNSET',
+  $username    = 'UNSET',
+  $password    = 'UNSET',
+  $port        = '3306',
+  $masterstats = false,
+  $slavestats  = false,
 ) {
+  validate_bool($masterstats, $slavestats)
+
+  if ($collectd::plugin::mysql::masterstats == true and $collectd::plugin::mysql::slavestats == true) {
+    fail('master and slave statistics are mutually exclusive.')
+  }
+
   include collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
