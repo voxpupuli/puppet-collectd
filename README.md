@@ -197,11 +197,12 @@ class { 'collectd::plugin::memcached':
 
 ```puppet
 class { 'collectd::plugin::mysql':
-  database  => 'betadase',
-  host      => 'localhost',
-  username  => 'stahmna',
-  password  => 'secret',
-  port      => '3306',
+  database    => 'betadase',
+  host        => 'localhost',
+  username    => 'stahmna',
+  password    => 'secret',
+  port        => '3306',
+  masterstats => true,
 }
 ```
 
