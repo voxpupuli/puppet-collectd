@@ -248,10 +248,10 @@ class { 'collectd::plugin::openvpn':
 ```puppet
 collectd::plugin::python {
   'elasticsearch':
-    modulepath => '/usr/lib/collectd',
-    module => 'elasticsearch',
+    modulepath    => '/usr/lib/collectd',
+    module        => 'elasticsearch',
     script_source => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-    config => {"Cluster" => "elasticsearch"},
+    config        => {'Cluster' => 'elasticsearch'},
 }
 ```
 
