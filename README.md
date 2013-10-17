@@ -71,6 +71,7 @@ documentation for each plugin for configurable attributes.
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
@@ -239,6 +240,17 @@ class { 'collectd::plugin::ntpd':
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
+}
+```
+
+####Class: `collectd::plugin::python`
+
+```puppet
+collectd::plugin::python {
+  modulepath => '/usr/lib/collectd',
+  module => 'elasticsearch',
+  script_source => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
+  config => {"Cluster" => "elasticsearch"},
 }
 ```
 
