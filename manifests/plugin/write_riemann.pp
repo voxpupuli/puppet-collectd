@@ -15,7 +15,7 @@ class collectd::plugin::write_riemann (
   validate_bool($always_append_ds)
 
   file { 'write_riemann.conf':
-    ensure  => $collectd::plugin::write_riemann::ensure,
+    ensure  => $ensure,
     path    => "${conf_dif}/write_riemann.conf",
     mode    => '0644',
     owner   => 'root',
