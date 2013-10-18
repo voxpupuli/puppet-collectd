@@ -78,6 +78,7 @@ documentation for each plugin for configurable attributes.
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
+* `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 
 ####Class: `collectd::plugin::apache`
 
@@ -332,6 +333,15 @@ class { 'collectd::plugin::write_network':
     'collect1.example.org' => { 'serverport' => '25826' },
     'collect2.example.org' => { 'serverport' => '25826' }
   }
+}
+```
+
+####Class: `collectd::plugin::write_riemann`
+
+```puppet
+class { 'collectd::plugin::write_riemann':
+  riemann_host => 'riemann.example.org',
+  riemann_port => 5555,
 }
 ```
 
