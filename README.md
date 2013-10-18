@@ -58,6 +58,7 @@ documentation for each plugin for configurable attributes.
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
+* `cpu` (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
@@ -113,6 +114,12 @@ collectd::plugin::curl_json {
       'message_stats/publish' => {'type' => 'gauge'},
     }
 }
+```
+
+####Class: `collectd::plugin::cpu`
+
+```puppet
+class { 'collectd::plugin::cpu': }
 ```
 
 ####Class: `collectd::plugin::df`
