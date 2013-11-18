@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:BIND
 class collectd::plugin::bind (
   $url,
-  $ensure         = present
+  $ensure         = present,
   $memorystats    = true,
   $opcodes        = true,
   $parsetime      = false,
