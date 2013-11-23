@@ -47,6 +47,15 @@ class collectd::params {
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
     }
+    'Archlinux': {
+      $package           = 'collectd'
+      $provider          = undef
+      $collectd_dir      = '/etc/collectd.d'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'collectd'
+      $config_file       = '/etc/collectd.conf'
+      $root_group        = 'wheel'
+    }
     default: {
       fail("${::osfamily} is not supported.")
     }
