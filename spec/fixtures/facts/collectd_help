@@ -1,0 +1,22 @@
+Usage: collectd [OPTIONS]
+
+Available options:
+  General:
+    -C <file>       Configuration file.
+                    Default: /etc/collectd/collectd.conf
+    -t              Test config and exit.
+    -T              Test plugin read and exit.
+    -P <file>       PID-file.
+                    Default: /var/run/collectd.pid
+    -f              Don't fork to the background.
+    -h              Display help (this message)
+
+Builtin defaults:
+  Config file       /etc/collectd/collectd.conf
+  PID file          /var/run/collectd.pid
+  Plugin directory  /usr/lib/collectd
+  Data directory    /var/lib/collectd
+
+collectd 5.1.0, http://collectd.org/
+by Florian octo Forster <octo@verplant.org>
+for contributions see `AUTHORS'
