@@ -71,6 +71,7 @@ documentation for each plugin for configurable attributes.
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
@@ -241,6 +242,15 @@ class { 'collectd::plugin::ntpd':
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
+}
+```
+
+####Class: `collectd::plugin::ping`
+
+```puppet
+collectd::plugin::ping {
+  'example':
+    hosts => ['example.com'],
 }
 ```
 
