@@ -5,29 +5,29 @@ LoadPlugin network
 <% if @server -%>
   <Server "<%= @server %>" "<%= @serverport %>">
 <% if @server_securitylevel -%>
-    SecurityLevel <%= @server_securitylevel %>
+    SecurityLevel "<%= @server_securitylevel %>"
 <% end -%>
 <% if @server_username -%>
-    Username <%= @server_username %>
+    Username "<%= @server_username %>"
 <% end -%>
 <% if @server_password -%>
-    Password <%= @server_password %>
+    Password "<%= @server_password %>"
 <% end -%>
 <% if @server_interface -%>
-    Interface <%= @server_interface %>
+    Interface "<%= @server_interface %>"
 <% end -%>
   </Server>
 <% end -%>
 <% if @listen -%>
   <Listen "<%= @listen %>" "<%= @listenport %>">
 <% if @listen_securitylevel -%>
-    SecurityLevel <%= @listen_securitylevel %>
+    SecurityLevel "<%= @listen_securitylevel %>"
 <% end -%>
 <% if @listen_authfile -%>
-    AuthFile <%= @listen_authfile %>
+    AuthFile "<%= @listen_authfile %>"
 <% end -%>
 <% if @listen_interface -%>
-    Interface <%= @listen_interface %>
+    Interface "<%= @listen_interface %>"
 <% end -%>
   </Listen>
 <% end -%>
@@ -38,9 +38,9 @@ LoadPlugin network
   MaxPacketSize <%= @maxpacketsize %>
 <% end -%>
 <% if @forward -%>
-  Forward <%= @forward %>
+  Forward "<%= @forward %>"
 <% end -%>
 <% if @reportstats -%>
-  ReportStats <%= @reportstats %>
+  ReportStats "<%= @reportstats %>"
 <% end -%>
 </Plugin>
