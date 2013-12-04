@@ -1,7 +1,8 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
-  $processes        = undef,
-  $process_matches  = undef,
+  $ensure          = present,
+  $processes       = undef,
+  $process_matches = undef,
 ) {
   include collectd::params
 
@@ -12,6 +13,7 @@ class collectd::plugin::processes (
 
   file {
     "processes.load":
+      ensure  => $ensure,
       path    => "${conf_dir}/processes.conf",
       owner   => root,
       group   => root,
