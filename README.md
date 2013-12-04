@@ -73,6 +73,7 @@ documentation for each plugin for configurable attributes.
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
+* `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
@@ -263,6 +264,15 @@ collectd::plugin::python {
     module        => 'elasticsearch',
     script_source => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
     config        => {'Cluster' => 'elasticsearch'},
+}
+```
+
+####Class: `collectd::plugin::rrdcached`
+
+```puppet
+class { 'collectd::plugin::rrdcached':
+  daemonaddress => 'unix:/var/run/rrdcached.sock',
+  datadir       => '/var/lib/rrdcached/db/collectd',
 }
 ```
 
