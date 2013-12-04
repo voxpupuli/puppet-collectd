@@ -72,7 +72,7 @@ documentation for each plugin for configurable attributes.
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
-* `processes` (see [collectd::plugin:processes](#class-collectdpluginping) below)
+* `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
