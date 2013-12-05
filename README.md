@@ -72,6 +72,7 @@ documentation for each plugin for configurable attributes.
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
+* `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
@@ -252,6 +253,17 @@ class { 'collectd::plugin::openvpn':
 collectd::plugin::ping {
   'example':
     hosts => ['example.com'],
+}
+```
+
+####Class: `collectd::plugin::processes`
+
+```puppet
+class { 'collectd::plugin::processes':
+  processes => ['process1', 'process2'],
+  process_matches => [
+    { name => 'process-all', regex => 'process.*' }
+  ],
 }
 ```
 
