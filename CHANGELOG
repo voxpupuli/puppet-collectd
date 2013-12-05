@@ -1,3 +1,24 @@
+2013-12-04 Release 1.0.1
+
+Summary:
+
+This release introduces Archlinux osfamily support and support for
+three new plugins ping, rrdcached, and processes.
+
+Features:
+
+ - Initial version of rrdcached plugin
+ - Add configurable processes plugin
+ - Add quotes for string values in network plugin
+ - Add ping plugin
+ - Add support for Archlinux
+ - Allow to set all write_graphite options.
+
+Bugs:
+
+ - Fixed missing double quotes in unixsock plugin template
+ - Added comma to syntax error in bind.pp
+
 2013-10-20 Release 1.0.0
 
 Summary:
