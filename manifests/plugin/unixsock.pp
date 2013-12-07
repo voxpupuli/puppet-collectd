@@ -15,7 +15,7 @@ class collectd::plugin::unixsock (
     path      => "${conf_dir}/unixsock.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/unixsock.conf.erb'),
     notify    => Service['collectd']
   }

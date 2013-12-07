@@ -13,9 +13,8 @@ class collectd::plugin::memcached (
     path      => "${conf_dir}/memcached.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/memcached.conf.erb'),
     notify    => Service['collectd']
   }
 }
-

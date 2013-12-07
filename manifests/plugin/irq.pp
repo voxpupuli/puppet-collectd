@@ -15,7 +15,7 @@ class collectd::plugin::irq (
     path      => "${conf_dir}/irq.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/irq.conf.erb'),
     notify    => Service['collectd']
   }

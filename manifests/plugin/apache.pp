@@ -13,7 +13,7 @@ class collectd::plugin::apache (
     path      => "${conf_dir}/apache.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/apache.conf.erb'),
     notify    => Service['collectd']
   }

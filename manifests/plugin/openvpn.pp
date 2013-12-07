@@ -23,7 +23,7 @@ class collectd::plugin::openvpn (
     path      => "${conf_dir}/openvpn.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/openvpn.conf.erb'),
     notify    => Service['collectd'],
   }

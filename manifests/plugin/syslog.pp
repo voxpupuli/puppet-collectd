@@ -12,7 +12,7 @@ class collectd::plugin::syslog (
     path      => "${conf_dir}/syslog.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/syslog.conf.erb'),
     notify    => Service['collectd'],
   }

@@ -13,7 +13,7 @@ class collectd::plugin::iptables (
     path      => "${conf_dir}/iptables.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/iptables.conf.erb'),
     notify    => Service['collectd']
   }
