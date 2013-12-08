@@ -13,9 +13,8 @@ class collectd::plugin::filecount (
     path      => "${conf_dir}/filecount.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/filecount.conf.erb'),
     notify    => Service['collectd']
   }
 }
-

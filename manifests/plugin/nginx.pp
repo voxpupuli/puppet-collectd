@@ -17,7 +17,7 @@ class collectd::plugin::nginx (
     path    => "${conf_dir}/nginx.conf",
     mode    => '0644',
     owner   => 'root',
-    group   => 'root',
+    group   => $collectd::params::root_group,
     content => template('collectd/nginx.conf.erb'),
     notify  => Service['collectd']
   }

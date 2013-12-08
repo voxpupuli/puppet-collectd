@@ -15,7 +15,7 @@ class collectd::plugin::snmp (
     path      => "${conf_dir}/snmp.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/snmp.conf.erb'),
     notify    => Service['collectd']
   }

@@ -20,7 +20,7 @@ define collectd::plugin::tail::file (
     path      => "${conf_dir}/tail-${name}.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/tail-file.conf.erb'),
     notify    => Service['collectd'],
   }

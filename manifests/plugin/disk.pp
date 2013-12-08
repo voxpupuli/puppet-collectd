@@ -15,7 +15,7 @@ class collectd::plugin::disk (
     path      => "${conf_dir}/disk.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/disk.conf.erb'),
     notify    => Service['collectd']
   }

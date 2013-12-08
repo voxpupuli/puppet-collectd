@@ -15,7 +15,7 @@ class collectd::plugin::interface (
     path      => "${conf_dir}/interface.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/interface.conf.erb'),
     notify    => Service['collectd']
   }

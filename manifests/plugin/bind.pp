@@ -30,7 +30,7 @@ class collectd::plugin::bind (
     path    => "${conf_dir}/bind.conf",
     mode    => '0644',
     owner   => 'root',
-    group   => 'root',
+    group   => $collectd::params::root_group,
     content => template('collectd/bind.conf.erb'),
     notify  => Service['collectd']
   }

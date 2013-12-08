@@ -28,9 +28,8 @@ class collectd::plugin::tcpconns (
     path      => "${conf_dir}/tcpconns.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/tcpconns.conf.erb'),
     notify    => Service['collectd']
   }
 }
-

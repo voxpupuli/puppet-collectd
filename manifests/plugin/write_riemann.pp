@@ -19,9 +19,8 @@ class collectd::plugin::write_riemann (
     path    => "${conf_dif}/write_riemann.conf",
     mode    => '0644',
     owner   => 'root',
-    group   => 'root',
+    group   => $collectd::params::root_group,
     content => template('collectd/write_riemann.conf.erb'),
     notify  => Service['collectd'],
   }
 }
-

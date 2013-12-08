@@ -15,7 +15,7 @@ class collectd::plugin::ntpd (
     path      => "${conf_dir}/ntpd.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/ntpd.conf.erb'),
     notify    => Service['collectd'],
   }

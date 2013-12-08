@@ -13,7 +13,7 @@ class collectd::plugin::write_network (
     path      => "${conf_dir}/write_network.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/write_network.conf.erb'),
     notify    => Service['collectd'],
   }

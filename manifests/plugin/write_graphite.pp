@@ -19,7 +19,7 @@ class collectd::plugin::write_graphite (
     path      => "${conf_dir}/write_graphite.conf",
     mode      => '0644',
     owner     => 'root',
-    group     => 'root',
+    group     => $collectd::params::root_group,
     content   => template('collectd/write_graphite.conf.erb'),
     notify    => Service['collectd'],
   }

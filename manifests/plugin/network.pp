@@ -30,7 +30,7 @@ class collectd::plugin::network (
     path    => "${conf_dir}/network.conf",
     mode    => '0644',
     owner   => 'root',
-    group   => 'root',
+    group   => $collectd::params::root_group,
     content => template('collectd/network.conf.erb'),
     notify  => Service['collectd']
   }
