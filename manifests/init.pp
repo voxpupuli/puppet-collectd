@@ -7,12 +7,14 @@ class collectd(
   $recurse      = undef,
   $threads      = 5,
   $timeout      = 2,
+  $typesdb      = [],
   $version      = installed,
 ) {
   include collectd::params
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
+  validate_array($typesdb)
 
   package { 'collectd':
     ensure   => $version,
