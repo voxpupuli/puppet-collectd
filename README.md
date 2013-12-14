@@ -55,6 +55,7 @@ Configurable Plugins
 Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
+* `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
@@ -83,6 +84,17 @@ documentation for each plugin for configurable attributes.
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
+
+####Class: `collectd::plugin::amqp`
+
+```puppet
+class { 'collectd::plugin::amqp':
+  amqphost => '127.0.0.1',
+  amqpvhost => 'myvirtualhost',
+  graphiteprefix => 'collectdmetrics',
+  amqppersistent => true,
+}
+```
 
 ####Class: `collectd::plugin::apache`
 
