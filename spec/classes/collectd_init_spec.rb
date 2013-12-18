@@ -24,7 +24,7 @@ describe 'collectd' do
 
   it { should contain_file_line('include_conf_d') }
 
- context 'on non supported opearting systems' do
+ context 'on non supported operating systems' do
    let :facts do
      {:osfamily => 'foo'}
    end
