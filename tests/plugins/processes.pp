@@ -1,8 +1,9 @@
 include collectd
 
 class { 'collectd::plugin::processes':
-  processes => [ 'process1', 'process2' ],
+  processes       => [ 'process1', 'process2' ],
   process_matches => [
-    { name => 'process-all', regex => 'process[0-9]' },
+    { name  => 'process-all',
+      regex => 'process[0-9]' },
   ],
 }
