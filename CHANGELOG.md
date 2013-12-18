@@ -1,11 +1,24 @@
-2013-12-04 Release 1.0.1
+## 2013-12-17 Release 1.0.2
 
-Summary:
+### Summary:
+
+This release adds the AMQP plugin and a collectd version fact.
+
+### Features:
+
+- Add AMQP plugin
+- Add class parameter typesdb
+- Use collectd::params::root_group instead of fixed group name
+- Add collectd version fact
+
+## 2013-12-04 Release 1.0.1
+
+### Summary:
 
 This release introduces Archlinux osfamily support and support for
 three new plugins ping, rrdcached, and processes.
 
-Features:
+### Features:
 
  - Initial version of rrdcached plugin
  - Add configurable processes plugin
@@ -14,21 +27,21 @@ Features:
  - Add support for Archlinux
  - Allow to set all write_graphite options.
 
-Bugs:
+### Bugs:
 
  - Fixed missing double quotes in unixsock plugin template
  - Added comma to syntax error in bind.pp
 
-2013-10-20 Release 1.0.0
+## 2013-10-20 Release 1.0.0
 
-Summary:
+### Summary:
 
 This release breaks some backwards compatibility
 on some plugins where they improperly used strings instead of
 booleans parameters. This release also includes osfamily
 support for SUSE and FreeBSB and support for four new plugins.
 
-Backwards-incompatible changes:
+### Backwards-incompatible changes:
 
  - Plugins that use to accept strings now use booleans
    for a more consistent interface across the various plugins
@@ -39,7 +52,7 @@ Backwards-incompatible changes:
    collectd::plugin::mysql::database define. This change breaks
    backwards compatiblity on the mysql plugin.
 
-Features:
+### Features:
 
  - osfamily support for SUSE
  - osfamily support for FreeBSD
@@ -48,17 +61,17 @@ Features:
  - python plugin
  - write_riemann plugin
 
-2013-09-27 Release 0.1.0
+## 2013-09-27 Release 0.1.0
 
-Summary:
+### Summary:
 
 Add curl_json and apache plugin
 
-Backwards-incompatible changes:
+### Backwards-incompatible changes:
 
  - The write_network plugin now accepts a hash of servers
 
-Features:
+### Features:
 
  - Add curl_json plugin
  - Added collectd package version parameter
