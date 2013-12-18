@@ -12,7 +12,7 @@ class collectd::plugin::processes (
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file {
-    "processes.conf":
+    'processes.conf':
       ensure  => $ensure,
       path    => "${conf_dir}/processes.conf",
       owner   => root,
