@@ -5,7 +5,7 @@ LoadPlugin "exec"
 <% if @exec %>
     Exec "<%= @user %>:<%= @group %>" <% @exec.each do |exec| -%>"<%= exec %>"<% end -%>
 <% end %>
-<% if @notification_exec %>
+<% if !@notification_exec.empty? %>
     NotificationExec "<%= @user %>:<%= @group %>" <% @notification_exec.each do |exec| -%>"<%= exec %>"<% end -%>
 <% end %>
 </Plugin>
