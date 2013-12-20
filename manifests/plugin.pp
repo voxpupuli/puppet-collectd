@@ -10,7 +10,7 @@ define collectd::plugin (
 
   file { "${plugin}.load":
     ensure  => $ensure,
-    path    => "${conf_dir}/${plugin}.conf",
+    path    => "${conf_dir}/00-${plugin}.conf",
     owner   => root,
     group   => root,
     mode    => '0644',
