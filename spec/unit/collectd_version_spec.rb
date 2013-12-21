@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'collectd_version', :type => :fact do
+  before { Facter.clear }
+  after { Facter.clear }
 
   it 'should be 5.1.0 according to output' do
     Facter::Util::Resolution.stubs(:which).with("collectd").returns("/usr/sbin/collectd")
