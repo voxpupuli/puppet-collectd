@@ -8,6 +8,7 @@ class collectd::plugin::write_graphite (
   $graphitepostfix = undef,
   $escapecharacter = '_',
   $alwaysappendds  = false,
+  $protocol        = 'tcp',
 ) {
   include collectd::params
 
