@@ -73,6 +73,7 @@ documentation for each plugin for configurable attributes.
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
+* `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql) below)
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
@@ -265,6 +266,29 @@ class { 'collectd::plugin::openvpn':
 collectd::plugin::ping {
   'example':
     hosts => ['example.com'],
+}
+```
+
+####Class: `collectd::plugin::postgresql`
+
+```puppet
+class { 'collectd::plugin::postgresql':
+  databases => {
+    'postgres' => {
+      'host'     => '/var/run/postgresql/',
+      'user'     => 'postgres',
+      'password' => 'postgres',
+      'sslmode'  => 'disable',
+      'query'    => [ 'query_plans', 'queries', 'table_states', 'disk_io' ],
+    },
+    'devdb' => {
+      'host'     => 'host.example.com',
+      'port'     => '5432',
+      'user'     => 'postgres',
+      'password' => 'secret',
+      'sslmode'  => 'prefer',
+    }
+  }
 }
 ```
 
