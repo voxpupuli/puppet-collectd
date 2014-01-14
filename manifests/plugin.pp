@@ -18,4 +18,11 @@ define collectd::plugin (
     notify  => Service['collectd'],
   }
 
+  # Older versions of this module didn't use the "00-" prefix.
+  # Delete those potentially left over files just to be sure.
+  file { "old_${plugin}.load":
+    ensure  => absent,
+    path    => "${conf_dir}/${plugin}.conf",
+    notify  => Service['collectd'],
+  }
 }
