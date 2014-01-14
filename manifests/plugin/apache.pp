@@ -8,7 +8,7 @@ class collectd::plugin::apache (
   $conf_dir = $collectd::params::plugin_conf_dir
   validate_hash($instances)
 
-  file { 'aapche.conf':
+  file { 'apache.conf':
     ensure    => $collectd::plugin::apache::ensure,
     path      => "${conf_dir}/apache.conf",
     mode      => '0644',
