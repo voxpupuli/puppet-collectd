@@ -66,7 +66,9 @@ documentation for each plugin for configurable attributes.
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
+* `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
+* `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
@@ -78,6 +80,7 @@ documentation for each plugin for configurable attributes.
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
@@ -202,6 +205,12 @@ class { 'collectd::plugin::iptables':
 }
 ```
 
+####Class: `collectd::plugin::load`
+
+```puppet
+class { 'collectd::plugin::load': }
+```
+
 ####Class: `collectd::plugin::memcached`
 
 ```puppet
@@ -209,6 +218,12 @@ class { 'collectd::plugin::memcached':
   host => '192.168.122.1',
   port => '11211',
 }
+```
+
+####Class: `collectd::plugin::memory`
+
+```puppet
+class { 'collectd::plugin::memory': }
 ```
 
 ####Class: `collectd::plugin::mysql`
@@ -324,6 +339,21 @@ class { 'collectd::plugin::rrdcached':
 }
 ```
 
+####Class: `collectd::plugin::rrdtool`
+
+```puppet
+class { 'collectd::plugin::rrdtool':
+  datadir       => '/var/lib/collectd/rrd',
+  createfilesasync = false,
+  rrarows          = 1200,
+  rratimespan      = [3600, 86400, 604800, 2678400, 31622400],
+  xff              = 0.1,
+  cacheflush       = 900,
+  cachetimeout     = 120,
+  writespersecond  = 50
+}
+```
+
 ####Class: `collectd::plugin::snmp`
 
 ```puppet
@@ -353,6 +383,15 @@ class {'collectd::plugin::snmp':
 ```puppet
 class { 'collectd::plugin::syslog':
   log_level => 'warning'
+}
+```
+
+####Class: `collectd::plugin::swap`
+
+```puppet
+class { 'collectd::plugin::swap':
+  reportbydevice => false,
+  reportbytes    => true
 }
 ```
 
