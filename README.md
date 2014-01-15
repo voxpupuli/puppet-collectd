@@ -66,7 +66,9 @@ documentation for each plugin for configurable attributes.
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
+* `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
+* `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
@@ -203,6 +205,12 @@ class { 'collectd::plugin::iptables':
 }
 ```
 
+####Class: `collectd::plugin::load`
+
+```puppet
+class { 'collectd::plugin::load': }
+```
+
 ####Class: `collectd::plugin::memcached`
 
 ```puppet
@@ -210,6 +218,12 @@ class { 'collectd::plugin::memcached':
   host => '192.168.122.1',
   port => '11211',
 }
+```
+
+####Class: `collectd::plugin::memory`
+
+```puppet
+class { 'collectd::plugin::memory': }
 ```
 
 ####Class: `collectd::plugin::mysql`
