@@ -2,7 +2,7 @@
 LoadPlugin rrdtool
 
 <Plugin rrdtool>
-  DataDir <%= @datadir %>
+  DataDir "<%= @datadir %>"
   CreateFilesAsync <%= @createfilesasync %>
   RRARows <%= @rrarows %>
 <% @rratimespan.each do |timespan| -%>
