@@ -339,6 +339,21 @@ class { 'collectd::plugin::rrdcached':
 }
 ```
 
+####Class: `collectd::plugin::rrdtool`
+
+```puppet
+class { 'collectd::plugin::rrdtool':
+  datadir       => '/var/lib/collectd/rrd',
+  createfilesasync = false,
+  rrarows          = 1200,
+  rratimespan      = [3600, 86400, 604800, 2678400, 31622400],
+  xff              = 0.1,
+  cacheflush       = 900,
+  cachetimeout     = 120,
+  writespersecond  = 50
+}
+```
+
 ####Class: `collectd::plugin::snmp`
 
 ```puppet
