@@ -6,12 +6,14 @@ LoadPlugin write_graphite
    Host "<%= @graphitehost %>"
    Port "<%= @graphiteport %>"
    Prefix "<%= @graphiteprefix %>"
-   <% if @graphitepostfix -%>
+<% if @graphitepostfix -%>
    Postfix "<%= @graphitepostfix %>"
-   <% end -%>
+<% end -%>
    EscapeCharacter "<%= @escapecharacter %>"
    StoreRates <%=  @storerates %>
    AlwaysAppendDS <%= @alwaysappendds %>
+<% if (scope.function_versioncmp([@collectd_version, '5.4']) >= 0) -%>
    Protocol "<%= @protocol %>"
+<% end -%>
  </Carbon>
 </Plugin>
