@@ -5,7 +5,11 @@
     Host "<%= @host %>"
     User "<%= @username %>"
     Password "<%= @password %>"
+<% if (scope.function_versioncmp([@collectd_version, '5.0']) >= 0) -%>
     Port "<%= @port %>"
+<% else -%>
+    Port <%= @port %>
+<% end -%>
     MasterStats <%= @masterstats %>
     SlaveStats <%= @slavestats %>
   </Database>
