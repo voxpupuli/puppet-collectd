@@ -6,7 +6,7 @@ LoadPlugin rrdtool
   CreateFilesAsync <%= @createfilesasync %>
   RRARows <%= @rrarows %>
 <% @rratimespan.each do |timespan| -%>
-	RRATimeSpan <%= timespan %>
+  RRATimeSpan <%= timespan %>
 <% end -%>
   XFF <%= @xff %>
   CacheFlush <%= @cacheflush %>
