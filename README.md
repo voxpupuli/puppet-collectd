@@ -212,6 +212,13 @@ class { 'collectd::plugin::memcached':
 }
 ```
 
+####Class: `collectd::plugin::memory`
+
+```puppet
+class { 'collectd::plugin::memory':
+}
+```
+
 ####Class: `collectd::plugin::mysql`
 
 ```puppet
