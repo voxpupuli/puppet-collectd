@@ -79,6 +79,7 @@ documentation for each plugin for configurable attributes.
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
+* `rrdtool` (see [collectd::plugin::rrdrrdtool](#class-collectdpluginrrdtool) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
