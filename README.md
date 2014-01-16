@@ -78,6 +78,7 @@ documentation for each plugin for configurable attributes.
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
@@ -208,6 +209,13 @@ class { 'collectd::plugin::iptables':
 class { 'collectd::plugin::memcached':
   host => '192.168.122.1',
   port => '11211',
+}
+```
+
+####Class: `collectd::plugin::memory`
+
+```puppet
+class { 'collectd::plugin::memory':
 }
 ```
 
@@ -353,6 +361,15 @@ class {'collectd::plugin::snmp':
 ```puppet
 class { 'collectd::plugin::syslog':
   log_level => 'warning'
+}
+```
+
+####Class: `collectd::plugin::swap`
+
+```puppet
+class { 'collectd::plugin::swap':
+  reportbydevice => false,
+  reportbytes    => true
 }
 ```
 
