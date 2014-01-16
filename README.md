@@ -79,6 +79,7 @@ documentation for each plugin for configurable attributes.
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
+* `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
@@ -338,6 +339,21 @@ collectd::plugin::python {
 class { 'collectd::plugin::rrdcached':
   daemonaddress => 'unix:/var/run/rrdcached.sock',
   datadir       => '/var/lib/rrdcached/db/collectd',
+}
+```
+
+####Class: `collectd::plugin::rrdtool`
+
+```puppet
+class { 'collectd::plugin::rrdtool':
+  datadir       => '/var/lib/collectd/rrd',
+  createfilesasync = false,
+  rrarows          = 1200,
+  rratimespan      = [3600, 86400, 604800, 2678400, 31622400],
+  xff              = 0.1,
+  cacheflush       = 900,
+  cachetimeout     = 120,
+  writespersecond  = 50
 }
 ```
 
