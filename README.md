@@ -78,6 +78,7 @@ documentation for each plugin for configurable attributes.
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
@@ -345,6 +346,15 @@ class {'collectd::plugin::snmp':
       'Interval'  => 10
     }
   },
+}
+```
+
+####Class: `collectd::plugin::swap`
+
+```puppet
+class { 'collectd::plugin::swap':
+  reportbydevice => false,
+  reportbytes    => true
 }
 ```
 
