@@ -1,3 +1,32 @@
+## 2014-01-18 Release 1.1.0
+
+### Summary:
+
+This release adds support for new plugins and fixes multiple bugs in
+several plugin configurations.
+
+### Features:
+
+- Added load plugin
+- Added memory plugin
+- Added rrdtool plugin
+- Added swap plugin
+- Initial version of PostgreSQL plugin
+- Add protocol paramter to write_graphite plugin
+- add tests for network module
+- Support pre-4.7 network configs.
+
+### Bugs:
+
+- Fix bug that always creates notification in exec on empty params
+- fix typo in apache plugin manifest
+- Make sure that plugins are always loaded before their configuration
+- Add version check around emitting Protocol config
+- mysql: use double quotes according to version
+- Allow for alphanumeric collectd version numbers
+- (gh-85) Fix null versioncmp bug in plugin templates
+- (gh-69) Fix package name on RedHat
+
 ## 2013-12-17 Release 1.0.2
 
 ### Summary:
