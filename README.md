@@ -86,6 +86,7 @@ documentation for each plugin for configurable attributes.
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
+* `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
@@ -436,6 +437,13 @@ collectd::plugin::tail::file { 'exim-log':
 class {'collectd::plugin::unixsock':
   socketfile  => '/var/run/collectd-sock',
   socketgroup => 'nagios',
+}
+```
+
+####Class: `collectd::plugin::uptime`
+
+```puppet
+class {'collectd::plugin::uptime':
 }
 
 ```
