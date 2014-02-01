@@ -86,6 +86,7 @@ documentation for each plugin for configurable attributes.
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
+* `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
@@ -438,6 +439,26 @@ class {'collectd::plugin::unixsock':
   socketgroup => 'nagios',
 }
 
+```
+
+####Class: `collectd::plugin::varnish`
+
+```puppet
+class { 'collectd::plugin::varnish':
+  instances => {
+    'instanceName' => {
+      'CollectCache' => 'true',
+      'CollectBackend' => 'true',
+      'CollectConnections' => 'true',
+      'CollectSHM' => 'true',
+      'CollectESI' => 'false',
+      'CollectFetch' => 'true',
+      'CollectHCB' => 'false',
+      'CollectTotals' => 'true',
+      'CollectWorkers' => 'true',
+    }
+  },
+}
 ```
 
 ####Class: `collectd::plugin::write_graphite`
