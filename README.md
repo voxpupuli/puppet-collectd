@@ -61,6 +61,7 @@ documentation for each plugin for configurable attributes.
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
@@ -154,6 +155,13 @@ class { 'collectd::plugin::df':
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
   ignoreselected => true
+}
+```
+
+####Class: `collectd::plugin::entropy`
+
+```puppet
+collectd::plugin::entropy {
 }
 ```
 
