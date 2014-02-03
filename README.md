@@ -87,6 +87,7 @@ documentation for each plugin for configurable attributes.
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
+* `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
 * `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
@@ -446,7 +447,13 @@ class {'collectd::plugin::unixsock':
   socketfile  => '/var/run/collectd-sock',
   socketgroup => 'nagios',
 }
+```
 
+####Class: `collectd::plugin::users`
+
+```puppet
+class {'collectd::plugin::users':
+}
 ```
 
 ####Class: `collectd::plugin::varnish`
