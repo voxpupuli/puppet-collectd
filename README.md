@@ -87,6 +87,7 @@ documentation for each plugin for configurable attributes.
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
+* `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
 * `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
@@ -449,8 +450,14 @@ class {'collectd::plugin::unixsock':
 }
 ```
 
-####Class: `collectd::plugin::users`
+####Class: `collectd::plugin::uptime`
 
+```puppet
+class {'collectd::plugin::uptime':
+}
+```
+
+####Class: `collectd::plugin::users`
 ```puppet
 class {'collectd::plugin::users':
 }
