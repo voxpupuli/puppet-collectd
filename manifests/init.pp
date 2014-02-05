@@ -1,14 +1,15 @@
 #
 class collectd(
-  $fqdnlookup   = true,
-  $interval     = 10,
-  $purge        = undef,
-  $purge_config = false,
-  $recurse      = undef,
-  $threads      = 5,
-  $timeout      = 2,
-  $typesdb      = [],
-  $version      = installed,
+  $collectd_hostname = $::hostname,
+  $fqdnlookup        = true,
+  $interval          = 10,
+  $purge             = undef,
+  $purge_config      = false,
+  $recurse           = undef,
+  $threads           = 5,
+  $timeout           = 2,
+  $typesdb           = [],
+  $version           = installed,
 ) {
   include collectd::params
 
