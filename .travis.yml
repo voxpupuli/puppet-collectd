@@ -5,25 +5,20 @@ language: ruby
 bundler_args: --without development
 script: "bundle exec rake travis SPEC_OPTS='--format documentation'"
 rvm:
-  - 1.8.7
   - 1.9.3
   - 2.0.0
+  - 2.1.0
+  - ruby-head
 env:
   matrix:
-    - PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.6.0"
-    - PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.7.0"
-    - PUPPET_GEM_VERSION="~> 3.0"
+    - PUPPET_GEM_VERSION=">= 3.4"   FACTER_GEM_VERSION=">= 1.7"
 matrix:
-  exclude:
-    - rvm: 1.9.3
-      env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.6.0"
-    - rvm: 1.9.3
-      env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.7.0"
-    - rvm: 2.0.0
-      env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.6.0"
-    - rvm: 2.0.0
-      env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.7.0"
-    - rvm: 1.8.7
-      env: PUPPET_GEM_VERSION="~> 3.2.0"
+  fast_finish: true
+  allow_failures:
+    - rvm: 2.1.0
+    - rvm: ruby-head
+  include:
+  - rvm: 1.8.7
+    env: PUPPET_GEM_VERSION="~> 2.7" FACTER_GEM_VERSION="~> 1.6"
 notifications:
   email: false
