@@ -80,6 +80,7 @@ documentation for each plugin for configurable attributes.
 * `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql) below)
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
+* `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
@@ -351,6 +352,23 @@ collectd::plugin::python {
     module        => 'elasticsearch',
     script_source => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
     config        => {'Cluster' => 'elasticsearch'},
+}
+```
+
+####Class: `collectd::plugin::redis`
+
+```puppet
+class { 'collectd::plugin::redis':
+  nodes => {
+    'node1' => {
+      'host'     => 'localhost',
+    },
+    'node2' => {
+      'host'     => 'node2.example.com',
+      'port'     => '6380',
+      'timeout'  => '3000',
+    }
+  }
 }
 ```
 
