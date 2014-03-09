@@ -10,7 +10,8 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
-      $varnish_package    = 'core'
+      $varnish_package   = 'core'
+      $manage_package    = true
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -21,6 +22,7 @@ class collectd::params {
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
       $varnish_package    = undef
+      $manage_package    = true
     }
     'Redhat': {
       $package           = 'collectd'
@@ -31,6 +33,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
       $varnish_package    = 'varnish'
+      $manage_package    = true
     }
     'Suse': {
       $package           = 'collectd'
@@ -41,6 +44,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
       $varnish_package    = undef
+      $manage_package    = true
     }
     'FreeBSD': {
       $package           = 'collectd5'
@@ -51,6 +55,7 @@ class collectd::params {
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
       $varnish_package    = undef
+      $manage_package    = true
     }
     'Archlinux': {
       $package           = 'collectd'
@@ -61,6 +66,19 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
       $varnish_package    = undef
+      $manage_package    = true
+    }
+    'Darwin': {
+      $package           = 'collectd'
+      $provider          = 'homebrew'
+      $collectd_dir      = '/usr/local/etc/collectd.d'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'homebrew.mxcl.collectd'
+      $config_file       = '/usr/local/etc/collectd.conf'
+      $root_group        = 'wheel'
+      $varnish_package   = undef
+      $manage_package    = false
+
     }
     default: {
       fail("${::osfamily} is not supported.")

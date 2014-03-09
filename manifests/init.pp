@@ -1,26 +1,36 @@
 #
 class collectd(
-  $fqdnlookup   = true,
-  $interval     = 10,
-  $purge        = undef,
-  $purge_config = false,
-  $recurse      = undef,
-  $threads      = 5,
-  $timeout      = 2,
-  $typesdb      = [],
-  $version      = installed,
-) {
-  include collectd::params
+  $fqdnlookup     = true,
+  $interval       = 10,
+  $purge          = undef,
+  $purge_config   = false,
+  $recurse        = undef,
+  $threads        = 5,
+  $timeout        = 2,
+  $typesdb        = [],
+  $package        = $collectd::params::package,
+  $provider       = $collectd::params::provider,
+  $collectd_dir   = $collectd::params::collectd_dir,
+  $plugin_conf_dir= $collectd::params::plugin_conf_dir,
+  $service_name   = $collectd::params::service_name,
+  $config_file    = $collectd::params::config_file,
+  $root_group     = $collectd::params::root_group,
+  $varnish_package= $collectd::params::varnish_package,
+  $manage_package = $collectd::params::manage_package,
+  $version        = installed
+) inherits collectd::params {
 
-  $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
   validate_array($typesdb)
 
-  package { 'collectd':
-    ensure   => $version,
-    name     => $collectd::params::package,
-    provider => $collectd::params::provider,
-    before   => File['collectd.conf', 'collectd.d'],
+  if $manage_package == true {
+    package { $package:
+      ensure   => $version,
+      name     => $collectd::params::package,
+      provider => $collectd::params::provider,
+      before   => File['collectd.conf', 'collectd.d'],
+    }
+    Package[$package] -> Service[$service_name]
   }
 
   file { 'collectd.d':
@@ -63,8 +73,7 @@ class collectd(
 
   service { 'collectd':
     ensure    => running,
-    name      => $collectd::params::service_name,
+    name      => $service_name,
     enable    => true,
-    require   => Package['collectd'],
   }
 }
