@@ -8,6 +8,7 @@ define collectd::plugin::mysql::database (
   $port        = '3306',
   $masterstats = false,
   $slavestats  = false,
+  $socket      = undef,
 ) {
   include collectd::params
   include collectd::plugin::mysql
@@ -16,6 +17,9 @@ define collectd::plugin::mysql::database (
 
   validate_string($database, $host, $username, $password, $port)
   validate_bool($masterstats, $slavestats)
+  if $socket {
+    validate_string($socket)
+  }
 
   if ($masterstats == true and $slavestats == true) {
     fail('master and slave statistics are mutually exclusive.')
