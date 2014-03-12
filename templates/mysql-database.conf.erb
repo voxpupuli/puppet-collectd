@@ -12,5 +12,8 @@
 <% end -%>
     MasterStats <%= @masterstats %>
     SlaveStats <%= @slavestats %>
+<%- if @socket -%>
+    Socket "<%= @socket %>"
+<%- end -%>
   </Database>
 </Plugin>
