@@ -17,7 +17,7 @@ class collectd::plugin::varnish (
 ) {
   include collectd::params
 
-  if versioncmp(collectd_version, 5.4) == -1 {
+  if versioncmp($::collectd_version, 5.4) == -1 {
     fail('Only collectd v5.4 and varnish v3 are supported!')
   }
 
