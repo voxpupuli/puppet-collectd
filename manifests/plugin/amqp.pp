@@ -12,19 +12,11 @@ class collectd::plugin::amqp (
   $graphiteprefix  = 'collectd.',
   $escapecharacter = '_',
 ) {
-  include collectd::params
 
   validate_bool($amqppersistent)
 
-  $conf_dir = $collectd::params::plugin_conf_dir
-
-  file { 'amqp.conf':
-    ensure    => $collectd::plugin::amqp::ensure,
-    path      => "${conf_dir}/amqp.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => 'root',
-    content   => template('collectd/amqp.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'contextswitch':
+    ensure  => $ensure,
+    content => template('collectd/plugin/amqp.conf.erb'),
   }
 }
