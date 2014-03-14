@@ -7,9 +7,7 @@ class collectd::plugin::df (
   $reportbydevice = false,
   $reportinodes   = true,
 ) {
-  include collectd::params
 
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_array(
     $fstypes,
     $mountpoints,
@@ -20,13 +18,8 @@ class collectd::plugin::df (
     $reportinodes,
   )
 
-  file { 'df.conf':
-    ensure    => $collectd::plugin::df::ensure,
-    path      => "${conf_dir}/df.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/df.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'df':
+    ensure  => $ensure,
+    content => template('collectd/plugin/df.conf.erb'),
   }
 }
