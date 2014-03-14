@@ -10,7 +10,6 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
-      $varnish_package    = 'core'
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -20,7 +19,6 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
-      $varnish_package    = undef
     }
     'Redhat': {
       $package           = 'collectd'
@@ -30,7 +28,6 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
-      $varnish_package    = 'varnish'
     }
     'Suse': {
       $package           = 'collectd'
@@ -40,7 +37,6 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
-      $varnish_package    = undef
     }
     'FreeBSD': {
       $package           = 'collectd5'
@@ -50,7 +46,6 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
-      $varnish_package    = undef
     }
     'Archlinux': {
       $package           = 'collectd'
@@ -60,11 +55,9 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
-      $varnish_package    = undef
     }
     default: {
       fail("${::osfamily} is not supported.")
     }
   }
-
 }
