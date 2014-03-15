@@ -1,0 +1,17 @@
+<% if @nodes -%>
+<Plugin redis>
+<%   @nodes.each do |name,params| -%>
+  <Node "<%= name %>">
+<%     if params['host'] -%>
+    Host "<%= params['host'] %>"
+<%     end -%>
+<%     if params['port'] -%>
+    Port "<%= params['port'] %>"
+<%     end -%>
+<%     if params['timeout'] -%>
+    Timeout "<%= params['timeout'] %>"
+<%     end -%>
+  </Node>
+<%   end -%>
+</Plugin>
+<% end -%>
