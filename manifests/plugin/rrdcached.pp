@@ -11,19 +11,11 @@ class collectd::plugin::rrdcached (
   $rratimespan      = [],
   $xff              = undef,
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_array($rratimespan)
   validate_bool($createfiles, $createfilesasync)
 
-  file { 'rrdcached.conf':
-    ensure    => $collectd::plugin::interface::ensure,
-    path      => "${conf_dir}/rrdcached.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/rrdcached.conf.erb'),
-    notify    => Service['collectd']
+  collectd::plugin {'rrdcached':
+    ensure  => $ensure,
+    content => template('collectd/plugin/rrdcached.conf.erb'),
   }
 }
