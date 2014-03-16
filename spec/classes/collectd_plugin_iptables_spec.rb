@@ -9,10 +9,10 @@ describe 'collectd::plugin::iptables', :type => :class do
     let :params do
       {:chains => { 'nat' => 'In_SSH' }}
     end
-    it 'Will create /etc/collectd.d/iptables.conf' do
-      should contain_file('iptables.conf').with({
+    it 'Will create /etc/collectd.d/10-iptables.conf' do
+      should contain_file('iptables.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/iptables.conf',
+        :path    => '/etc/collectd.d/10-iptables.conf',
         :content => /Chain nat In_SSH/,
       })
     end
@@ -22,10 +22,10 @@ describe 'collectd::plugin::iptables', :type => :class do
     let :params do
       {:chains => { 'nat' => 'In_SSH' }, :ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/iptables.conf' do
-      should contain_file('iptables.conf').with({
+    it 'Will not create /etc/collectd.d/10-iptables.conf' do
+      should contain_file('iptables.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/iptables.conf',
+        :path   => '/etc/collectd.d/10-iptables.conf',
       })
     end
   end
