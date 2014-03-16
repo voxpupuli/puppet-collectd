@@ -17,21 +17,13 @@ class collectd::plugin::network (
   $serverport           = 25826,
   $timetolive           = undef,
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_bool(
     $forward,
     $reportstats,
   )
 
-  file { 'network.conf':
-    ensure  => $collectd::plugin::network::ensure,
-    path    => "${conf_dir}/network.conf",
-    mode    => '0644',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
-    content => template('collectd/network.conf.erb'),
-    notify  => Service['collectd']
+  collectd::plugin {'network':
+    ensure  => $ensure,
+    content => template('collectd/plugin/network.conf.erb'),
   }
 }
