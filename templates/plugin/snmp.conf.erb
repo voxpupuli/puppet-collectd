@@ -1,0 +1,21 @@
+<% if @data or @hosts -%>
+<Plugin snmp>
+<% @data.each_pair do |key,val| -%>
+  <Data "<%=key %>">
+    Type "<%= val['Type'] %>"
+    Table <%= val['Table'] %>
+    Instance "<%= val['Instance'] %>"
+    Values <% val['Values'].each do |x| -%>"<%= x %>" <% end %>
+  </Data>
+<% end -%>
+<% @hosts.each_pair do |key,val| -%>
+  <Host "<%=key %>">
+    Address "<%= val['Address'] %>"
+    Version <%= val['Version'] %>
+    Community "<%= val['Community'] %>"
+    Collect <% val['Collect'].each do |x| -%>"<%= x -%>" <% end %>
+    Interval <%= val['Interval'] %>
+  </Host>
+<% end -%>
+</Plugin>
+<% end -%>
