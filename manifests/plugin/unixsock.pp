@@ -5,18 +5,10 @@ class collectd::plugin::unixsock (
   $socketperms = '0770',
   $ensure      = present
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_absolute_path($socketfile)
 
-  file { 'unixsock.conf':
-    ensure    => $collectd::plugin::unixsock::ensure,
-    path      => "${conf_dir}/unixsock.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/unixsock.conf.erb'),
-    notify    => Service['collectd']
+  collectd::plugin {'unixsock':
+    ensure  => $ensure,
+    content => template('collectd/plugin/unixsock.conf.erb'),
   }
 }
