@@ -5,9 +5,6 @@ class collectd::plugin::tcpconns (
   $listening   = false,
   $ensure      = present
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
 
   if ! $localports and ! $remoteports {
     fail('Either local or remote ports need to be specified')
@@ -23,13 +20,8 @@ class collectd::plugin::tcpconns (
 
   validate_bool($listening)
 
-  file { 'tcpconns.conf':
-    ensure    => $ensure,
-    path      => "${conf_dir}/tcpconns.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/tcpconns.conf.erb'),
-    notify    => Service['collectd']
+  collectd::plugin {'tcpconns':
+    ensure  => $ensure,
+    content => template('collectd/plugin/tcpconns.conf.erb'),
   }
 }
