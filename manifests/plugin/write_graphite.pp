@@ -3,7 +3,7 @@ class collectd::plugin::write_graphite (
   $ensure          = present,
   $graphitehost    = 'localhost',
   $graphiteport    = 2003,
-  $storerates      = false,
+  $storerates      = true,
   $graphiteprefix  = 'collectd.',
   $graphitepostfix = undef,
   $escapecharacter = '_',
