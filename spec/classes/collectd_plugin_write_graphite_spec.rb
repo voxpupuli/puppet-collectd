@@ -30,7 +30,7 @@ describe 'collectd::plugin::write_graphite', :type => :class do
     end
 
     it 'Should include protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
-      should contain_file('write_graphite.conf') \
+      should contain_file('write_graphite.load') \
         .with_content(/.*Protocol \"udp\".*/)
     end
   end
