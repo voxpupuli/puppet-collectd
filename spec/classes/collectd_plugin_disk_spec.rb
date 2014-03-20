@@ -9,10 +9,10 @@ describe 'collectd::plugin::disk', :type => :class do
     let :params do
       {:disks => ['sda']}
     end
-    it 'Will create /etc/collectd.d/disk.conf' do
-      should contain_file('disk.conf').with({
+    it 'Will create /etc/collectd.d/10-disk.conf' do
+      should contain_file('disk.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/disk.conf',
+        :path    => '/etc/collectd.d/10-disk.conf',
         :content => /Disk  "sda"/,
       })
     end
@@ -22,10 +22,10 @@ describe 'collectd::plugin::disk', :type => :class do
     let :params do
       {:disks => ['sda'], :ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/disk.conf' do
-      should contain_file('disk.conf').with({
+    it 'Will not create /etc/collectd.d/10-disk.conf' do
+      should contain_file('disk.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/disk.conf',
+        :path   => '/etc/collectd.d/10-disk.conf',
       })
     end
   end

@@ -6,10 +6,10 @@ describe 'collectd::plugin::unixsock', :type => :class do
   end
 
   context ':ensure => present and default parameters' do
-    it 'Will create /etc/collectd.d/unixsock.conf' do
-      should contain_file('unixsock.conf').with({
+    it 'Will create /etc/collectd.d/10-unixsock.conf' do
+      should contain_file('unixsock.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/unixsock.conf',
+        :path    => '/etc/collectd.d/10-unixsock.conf',
         :content => /SocketFile  \"\/var\/run\/collectd-socket\".+SocketGroup \"collectd\".+SocketPerms \"0770"/m,
       })
     end
@@ -19,10 +19,10 @@ describe 'collectd::plugin::unixsock', :type => :class do
     let :params do
       {:ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/unixsock.conf' do
-      should contain_file('unixsock.conf').with({
+    it 'Will not create /etc/collectd.d/10-unixsock.conf' do
+      should contain_file('unixsock.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/unixsock.conf',
+        :path   => '/etc/collectd.d/10-unixsock.conf',
       })
     end
   end

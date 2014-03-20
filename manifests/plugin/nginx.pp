@@ -8,17 +8,9 @@ class collectd::plugin::nginx (
   $verifyhost = undef,
   $cacert     = undef,
 ) {
-  include collectd::params
 
-  $conf_dir = $collectd::params::plugin_conf_dir
-
-  file { 'nginx.conf':
-    ensure  => $collectd::plugin::nginx::ensure,
-    path    => "${conf_dir}/nginx.conf",
-    mode    => '0644',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
-    content => template('collectd/nginx.conf.erb'),
-    notify  => Service['collectd']
+  collectd::plugin {'nginx':
+    ensure  => $ensure,
+    content => template('collectd/plugin/nginx.conf.erb'),
   }
 }

@@ -9,10 +9,10 @@ describe 'collectd::plugin::tcpconns', :type => :class do
     let :params do
       {:localports => [22,25]}
     end
-    it 'Will create /etc/collectd.d/tcpconns.conf' do
-      should contain_file('tcpconns.conf').with({
+    it 'Will create /etc/collectd.d/10-tcpconns.conf' do
+      should contain_file('tcpconns.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/tcpconns.conf',
+        :path    => '/etc/collectd.d/10-tcpconns.conf',
         :content => /LocalPort "22".+LocalPort "25"/m,
       })
     end
@@ -22,10 +22,10 @@ describe 'collectd::plugin::tcpconns', :type => :class do
     let :params do
       {:localports => [22,25], :remoteports => [3306]}
     end
-    it 'Will create /etc/collectd.d/tcpconns.conf' do
-      should contain_file('tcpconns.conf').with({
+    it 'Will create /etc/collectd.d/10-tcpconns.conf' do
+      should contain_file('tcpconns.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/tcpconns.conf',
+        :path    => '/etc/collectd.d/10-tcpconns.conf',
         :content => /LocalPort "22".+LocalPort "25".+RemotePort "3306"/m,
       })
     end
@@ -35,10 +35,10 @@ describe 'collectd::plugin::tcpconns', :type => :class do
     let :params do
       {:localports => [22], :ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/tcpconns.conf' do
-      should contain_file('tcpconns.conf').with({
+    it 'Will not create /etc/collectd.d/10-tcpconns.conf' do
+      should contain_file('tcpconns.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/tcpconns.conf',
+        :path   => '/etc/collectd.d/10-tcpconns.conf',
       })
     end
   end

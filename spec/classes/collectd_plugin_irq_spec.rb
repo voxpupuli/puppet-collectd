@@ -9,10 +9,10 @@ describe 'collectd::plugin::irq', :type => :class do
     let :params do
       {:irqs => [90,91,92]}
     end
-    it 'Will create /etc/collectd.d/irq.conf' do
-      should contain_file('irq.conf').with({
+    it 'Will create /etc/collectd.d/10-irq.conf' do
+      should contain_file('irq.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/irq.conf',
+        :path    => '/etc/collectd.d/10-irq.conf',
         :content => /Irq  \"90\"\n.+Irq  \"91\"\n.+Irq  \"92\"/m,
       })
     end
@@ -22,10 +22,10 @@ describe 'collectd::plugin::irq', :type => :class do
     let :params do
       {:irqs => [90,91,92], :ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/irq.conf' do
-      should contain_file('irq.conf').with({
+    it 'Will not create /etc/collectd.d/10-irq.conf' do
+      should contain_file('irq.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/irq.conf',
+        :path   => '/etc/collectd.d/10-irq.conf',
       })
     end
   end

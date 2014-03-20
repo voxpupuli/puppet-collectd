@@ -3,18 +3,10 @@ class collectd::plugin::iptables (
   $ensure = present,
   $chains = [],
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_hash($chains)
 
-  file { 'iptables.conf':
-    ensure    => $collectd::plugin::iptables::ensure,
-    path      => "${conf_dir}/iptables.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/iptables.conf.erb'),
-    notify    => Service['collectd']
+  collectd::plugin {'iptables':
+    ensure  => $ensure,
+    content => template('collectd/plugin/iptables.conf.erb'),
   }
 }

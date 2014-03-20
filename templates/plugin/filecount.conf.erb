@@ -1,0 +1,13 @@
+<Plugin "filecount">
+<% @directories.each_pair do |key,val| -%>
+<%   if val.is_a? Array -%>
+  <Directory "<%= key -%>">
+    Instance "<%= val['instance'] %>"
+  </Directory>
+<%   else -%>
+  <Directory "<%= val -%>">
+    Instance "<%= key %>"
+  </Directory>
+<%   end -%>
+<% end -%>
+</Plugin>

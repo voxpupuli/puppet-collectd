@@ -9,10 +9,10 @@ describe 'collectd::plugin::filecount', :type => :class do
     let :params do
       {:directories => { 'active' => '/var/spool/postfix/active' }}
     end
-    it 'Will create /etc/collectd.d/filecount.conf' do
-      should contain_file('filecount.conf').with({
+    it 'Will create /etc/collectd.d/10-filecount.conf' do
+      should contain_file('filecount.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/filecount.conf',
+        :path    => '/etc/collectd.d/10-filecount.conf',
         :content => /Directory "\/var\/spool\/postfix\/active"/,
       })
     end
@@ -22,10 +22,10 @@ describe 'collectd::plugin::filecount', :type => :class do
     let :params do
       {:directories => { 'active' => '/var/spool/postfix/active' }, :ensure => 'absent'}
     end
-    it 'Will not create /etc/collectd.d/filecount.conf' do
-      should contain_file('filecount.conf').with({
+    it 'Will not create /etc/collectd.d/10-filecount.conf' do
+      should contain_file('filecount.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/filecount.conf',
+        :path   => '/etc/collectd.d/10-filecount.conf',
       })
     end
   end

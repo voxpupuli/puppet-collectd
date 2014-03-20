@@ -1,0 +1,14 @@
+<Plugin amqp>
+  <Publish "graphite">
+    Host "<%= @amqphost %>"
+    Port "<%= @amqpport %>"
+    VHost "<%= @amqpvhost%>"
+    User "<%= @amqpuser %>"
+    Password "<%= @amqppass %>"
+    Format "<%= @amqpformat %>"
+    Exchange "<%= @amqpexchange %>"
+    Persistent <%= @amqppersistent %>
+    GraphitePrefix "<%= @graphiteprefix %>"
+    GraphiteEscapeChar "<%= @escapecharacter %>"
+  </Publish>
+</Plugin>
