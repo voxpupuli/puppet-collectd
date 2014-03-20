@@ -3,20 +3,20 @@ class collectd::plugin::write_network (
   $ensure  = 'present',
   $servers = { 'localhost'  =>  { 'serverport' => '25826' } },
 ) {
-  include collectd::params
 
   warning('Deprecated. This class may be removed in the future. Use collectd::plugin::network instead.')
 
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_hash($servers)
 
-  file { 'write_network.conf':
-    ensure    => $ensure,
-    path      => "${conf_dir}/write_network.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/write_network.conf.erb'),
-    notify    => Service['collectd'],
+  $servernames = keys($servers)
+  if empty($servernames) {
+    fail("servers cannot be empty")
+  }
+  $servername = $servernames[0]
+  $serverport = $servers[$servername]['serverport']
+
+  class { 'collectd::plugin::network':
+    server               => $servername,
+    serverport           => $serverport,
   }
 }
