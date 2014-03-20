@@ -1,23 +1,23 @@
 # https://collectd.org/wiki/index.php/Plugin:Varnish
 class collectd::plugin::varnish (
-  $ensure           = present,
-  $instances        = {
+  $ensure    = present,
+  $instances = {
       'localhost' => {
-        'CollectCache' => 'true',
-        'CollectBackend' => 'true',
+        'CollectCache'       => 'true',
+        'CollectBackend'     => 'true',
         'CollectConnections' => 'true',
-        'CollectSHM' => 'true',
-        'CollectESI' => 'false',
-        'CollectFetch' => 'true',
-        'CollectHCB' => 'false',
-        'CollectTotals' => 'true',
-        'CollectWorkers' => 'true',
+        'CollectSHM'         => 'true',
+        'CollectESI'         => 'false',
+        'CollectFetch'       => 'true',
+        'CollectHCB'         => 'false',
+        'CollectTotals'      => 'true',
+        'CollectWorkers'     => 'true',
+      }
     }
-  }
 ) {
   include collectd::params
 
-  if versioncmp(collectd_version, 5.4) == -1 {
+  if versioncmp($::collectd_version, 5.4) == -1 {
     fail('Only collectd v5.4 and varnish v3 are supported!')
   }
 
@@ -26,12 +26,10 @@ class collectd::plugin::varnish (
     $instances
   )
 
-  if $collectd::params::varnish_pacakge {
-
-    package { "${collectd::params::package}-${collectd::params::varnish_package}":
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-varnish':
       ensure => installed
     }
-
   }
 
   file { 'varnish.conf':
