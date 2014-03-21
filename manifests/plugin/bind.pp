@@ -11,9 +11,7 @@ class collectd::plugin::bind (
   $zonemaintstats = true,
   $views          = [],
 ) {
-  include collectd::params
 
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_bool(
     $memorystats,
     $opcodes,
@@ -25,13 +23,8 @@ class collectd::plugin::bind (
   )
   validate_array($views)
 
-  file { 'bind.conf':
-    ensure  => $collectd::plugin::bind::ensure,
-    path    => "${conf_dir}/bind.conf",
-    mode    => '0644',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
-    content => template('collectd/bind.conf.erb'),
-    notify  => Service['collectd']
+  collectd::plugin {'bind':
+    ensure  => $ensure,
+    content => template('collectd/plugin/bind.conf.erb'),
   }
 }

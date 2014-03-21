@@ -6,17 +6,8 @@ class collectd::plugin::ntpd (
   $reverselookups   = false,
   $includeunitid    = false,
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
-
-  file { 'ntpd.conf':
-    ensure    => $collectd::plugin::ntpd::ensure,
-    path      => "${conf_dir}/ntpd.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/ntpd.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'ntpd':
+    ensure  => $ensure,
+    content => template('collectd/plugin/ntpd.conf.erb'),
   }
 }

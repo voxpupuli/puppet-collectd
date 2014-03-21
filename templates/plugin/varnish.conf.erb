@@ -1,0 +1,33 @@
+<Plugin varnish>
+<% @instances.each do |instance,params| -%>
+  <Instance "<%= instance %>">
+<%   if params['CollectCache'] -%>
+    CollectCache <%= params['CollectCache'] %>
+<%   end -%>
+<%   if params['CollectBackend'] -%>
+    CollectBackend <%= params['CollectBackend'] %>
+<%   end -%>
+<%   if params['CollectConnections'] -%>
+    CollectConnections <%= params['CollectConnections'] %>
+<%   end -%>
+<%   if params['CollectSHM'] -%>
+    CollectSHM <%= params['CollectSHM'] %>
+<%   end -%>
+<%   if params['CollectESI'] -%>
+    CollectESI <%= params['CollectESI'] %>
+<%   end -%>
+<%   if params['CollectFetch'] -%>
+    CollectFetch <%= params['CollectFetch'] %>
+<%   end -%>
+<%   if params['CollectHCB'] -%>
+    CollectHCB <%= params['CollectHCB'] %>
+<%   end -%>
+<%   if params['CollectTotals'] -%>
+    CollectTotals <%= params['CollectTotals'] %>
+<%   end -%>
+<%   if params['CollectWorkers'] -%>
+    CollectWorkers <%= params['CollectWorkers'] %>
+<%   end -%>
+  </Instance>
+<% end -%>
+</Plugin>

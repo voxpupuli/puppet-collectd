@@ -10,18 +10,10 @@ class collectd::plugin::write_graphite (
   $alwaysappendds  = false,
   $protocol        = 'tcp',
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($storerates)
 
-  file { 'write_graphite.conf':
-    ensure    => $collectd::plugin::write_graphite::ensure,
-    path      => "${conf_dir}/write_graphite.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/write_graphite.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'write_graphite':
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_graphite.conf.erb'),
   }
 }

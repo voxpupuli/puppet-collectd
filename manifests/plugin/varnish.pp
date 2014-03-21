@@ -21,10 +21,7 @@ class collectd::plugin::varnish (
     fail('Only collectd v5.4 and varnish v3 are supported!')
   }
 
-  $conf_dir = $collectd::params::plugin_conf_dir
-  validate_hash(
-    $instances
-  )
+  validate_hash($instances)
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-varnish':
@@ -32,13 +29,8 @@ class collectd::plugin::varnish (
     }
   }
 
-  file { 'varnish.conf':
-    ensure    => $collectd::plugin::varnish::ensure,
-    path      => "${conf_dir}/varnish.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/varnish.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'varnish':
+    ensure => $ensure,
+    content   => template('collectd/plugin/varnish.conf.erb'),
   }
 }

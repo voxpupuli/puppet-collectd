@@ -6,10 +6,10 @@ describe 'collectd::plugin::processes', :type => :class do
   end
 
   context ':ensure => present, default params' do
-    it 'Will create /etc/collectd.d/processes.conf' do
-      should contain_file('processes.conf').with({
+    it 'Will create /etc/collectd.d/10-processes.conf' do
+      should contain_file('processes.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/processes.conf',
+        :path    => '/etc/collectd.d/10-processes.conf',
         :content => //,
       })
     end
@@ -25,10 +25,10 @@ describe 'collectd::plugin::processes', :type => :class do
       }
     end
 
-    it 'Will create /etc/collectd.d/processes.conf' do
-      should contain_file('processes.conf').with({
+    it 'Will create /etc/collectd.d/10-processes.conf' do
+      should contain_file('processes.load').with({
         :ensure  => 'present',
-        :path    => '/etc/collectd.d/processes.conf',
+        :path    => '/etc/collectd.d/10-processes.conf',
         :content => /<Plugin "processes">\n\s*Process "process1"\n\s*ProcessMatch "process-all" "process\[0-9\]"\n<\/Plugin>/,
       })
     end
@@ -39,10 +39,10 @@ describe 'collectd::plugin::processes', :type => :class do
       {:ensure => 'absent'}
     end
 
-    it 'Will not create /etc/collectd.d/processes.conf' do
-      should contain_file('processes.conf').with({
+    it 'Will not create /etc/collectd.d/10-processes.conf' do
+      should contain_file('processes.load').with({
         :ensure => 'absent',
-        :path   => '/etc/collectd.d/processes.conf',
+        :path   => '/etc/collectd.d/10-processes.conf',
       })
     end
   end

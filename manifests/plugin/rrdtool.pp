@@ -10,9 +10,6 @@ class collectd::plugin::rrdtool (
   $cachetimeout     = 120,
   $writespersecond  = 50
 ) {
-  include collectd::params
-
-  $conf_dir = $collectd::params::plugin_conf_dir
   validate_string(
     $datadir
   )
@@ -45,13 +42,8 @@ class collectd::plugin::rrdtool (
     fail('writespersecond must be an integer!')
   }
 
-  file { 'rrdtool.conf':
-    ensure    => $collectd::plugin::rrdtool::ensure,
-    path      => "${conf_dir}/rrdtool.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/rrdtool.conf.erb'),
-    notify    => Service['collectd'],
+  collectd::plugin {'rrdtool':
+    ensure  => $ensure,
+    content => template('collectd/plugin/rrdtool.conf.erb'),
   }
 }
