@@ -5,6 +5,8 @@ class collectd::plugin::write_network (
 ) {
   include collectd::params
 
+  warning('Deprecated. This class may be removed in the future. Use collectd::plugin::network instead.')
+
   $conf_dir = $collectd::params::plugin_conf_dir
   validate_hash($servers)
 

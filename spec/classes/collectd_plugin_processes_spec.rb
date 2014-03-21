@@ -10,7 +10,7 @@ describe 'collectd::plugin::processes', :type => :class do
       should contain_file('processes.conf').with({
         :ensure  => 'present',
         :path    => '/etc/collectd.d/processes.conf',
-        :content => /<Plugin "processes">\n<\/Plugin>/,
+        :content => //,
       })
     end
   end

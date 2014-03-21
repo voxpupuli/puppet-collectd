@@ -25,7 +25,7 @@ class collectd(
 
   file { 'collectd.d':
     ensure  => directory,
-    name    => $collectd::params::plugin_conf_dir,
+    path    => $collectd::params::plugin_conf_dir,
     mode    => '0644',
     owner   => 'root',
     group   => $collectd::params::root_group,

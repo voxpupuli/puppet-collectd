@@ -60,5 +60,4 @@ class collectd::params {
       fail("${::osfamily} is not supported.")
     }
   }
-
 }

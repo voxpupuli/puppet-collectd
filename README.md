@@ -58,9 +58,11 @@ documentation for each plugin for configurable attributes.
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
+* `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
@@ -78,6 +80,7 @@ documentation for each plugin for configurable attributes.
 * `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql) below)
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
+* `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
@@ -86,6 +89,9 @@ documentation for each plugin for configurable attributes.
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
+* `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
+* `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
+* `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
@@ -124,6 +130,15 @@ class { 'collectd::plugin::bind':
 }
 ```
 
+####Class: `collectd::plugin::csv`
+
+```puppet
+class { 'collectd::plugin::csv':
+  datadir    => '/etc/collectd/var/lib/collectd/csv',
+  storerates => false,
+}
+```
+
 ####Class: `collectd::plugin::curl_json`
 
 ```puppet
@@ -153,6 +168,13 @@ class { 'collectd::plugin::df':
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
   ignoreselected => true
+}
+```
+
+####Class: `collectd::plugin::entropy`
+
+```puppet
+collectd::plugin::entropy {
 }
 ```
 
@@ -333,6 +355,23 @@ collectd::plugin::python {
 }
 ```
 
+####Class: `collectd::plugin::redis`
+
+```puppet
+class { 'collectd::plugin::redis':
+  nodes => {
+    'node1' => {
+      'host'     => 'localhost',
+    },
+    'node2' => {
+      'host'     => 'node2.example.com',
+      'port'     => '6380',
+      'timeout'  => '3000',
+    }
+  }
+}
+```
+
 ####Class: `collectd::plugin::rrdcached`
 
 ```puppet
@@ -437,7 +476,39 @@ class {'collectd::plugin::unixsock':
   socketfile  => '/var/run/collectd-sock',
   socketgroup => 'nagios',
 }
+```
 
+####Class: `collectd::plugin::uptime`
+
+```puppet
+class {'collectd::plugin::uptime':
+}
+```
+
+####Class: `collectd::plugin::users`
+```puppet
+class {'collectd::plugin::users':
+}
+```
+
+####Class: `collectd::plugin::varnish`
+
+```puppet
+class { 'collectd::plugin::varnish':
+  instances => {
+    'instanceName' => {
+      'CollectCache' => 'true',
+      'CollectBackend' => 'true',
+      'CollectConnections' => 'true',
+      'CollectSHM' => 'true',
+      'CollectESI' => 'false',
+      'CollectFetch' => 'true',
+      'CollectHCB' => 'false',
+      'CollectTotals' => 'true',
+      'CollectWorkers' => 'true',
+    }
+  },
+}
 ```
 
 ####Class: `collectd::plugin::write_graphite`
