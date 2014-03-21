@@ -15,7 +15,7 @@ class collectd::plugin::amqp (
 
   validate_bool($amqppersistent)
 
-  collectd::plugin {'contextswitch':
+  collectd::plugin {'amqp':
     ensure  => $ensure,
     content => template('collectd/plugin/amqp.conf.erb'),
   }
