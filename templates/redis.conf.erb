@@ -11,7 +11,7 @@ LoadPlugin redis
     Port "<%= ihash['port'] %>"
 <% end -%>
 <% if ihash['timeout'] -%>
-    Timeout "<%= ihash['timeout'] %>"
+    Timeout <%= ihash['timeout'] %>
 <% end -%>
   </Node>
 <% end -%>
