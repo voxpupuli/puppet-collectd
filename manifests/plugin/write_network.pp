@@ -10,7 +10,7 @@ class collectd::plugin::write_network (
 
   $servernames = keys($servers)
   if empty($servernames) {
-    fail("servers cannot be empty")
+    fail('servers cannot be empty')
   }
   $servername = $servernames[0]
   $serverport = $servers[$servername]['serverport']
