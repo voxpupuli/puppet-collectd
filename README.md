@@ -73,6 +73,7 @@ documentation for each plugin for configurable attributes.
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
+* `nfs`  (see [collectd::plugin::nfs](#class-collectdpluginnfs) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
@@ -268,6 +269,13 @@ collectd::plugin::mysql::database { 'betadase':
 
 ```puppet
 class { 'collectd::plugin::network':
+}
+```
+
+####Class: `collectd::plugin::nfs`
+
+```puppet
+class { 'collectd::plugin::nfs':
 }
 ```
 
