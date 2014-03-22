@@ -529,6 +529,8 @@ class { 'collectd::plugin::write_graphite':
 
 ####Class: `collectd::plugin::write_network`
 
+**Deprecated**
+
 ```puppet
 class { 'collectd::plugin::write_network':
   servers => {
