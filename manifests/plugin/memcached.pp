@@ -2,7 +2,7 @@
 class collectd::plugin::memcached (
   $ensure = present,
   $host   = '127.0.0.1',
-  $port   = '11211',
+  $port   = 11211,
 ) {
   collectd::plugin {'memcached':
     ensure  => $ensure,
