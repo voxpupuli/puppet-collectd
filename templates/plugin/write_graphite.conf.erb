@@ -9,6 +9,7 @@
     EscapeCharacter "<%= @escapecharacter %>"
     StoreRates <%=  @storerates %>
     AlwaysAppendDS <%= @alwaysappendds %>
+    SeparateInstances <%= @separateinstances %>
 <% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.4']) >= 0) -%>
     Protocol "<%= @protocol %>"
 <% end -%>
