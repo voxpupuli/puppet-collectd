@@ -23,7 +23,7 @@ class collectd::plugin::postgresql (
   file { 'postgresql.conf':
     ensure    => $collectd::plugin::postgresql::ensure,
     path      => "${conf_dir}/postgresql.conf",
-    mode      => '0644',
+    mode      => '0640',
     owner     => 'root',
     group     => $collectd::params::root_group,
     content   => template('collectd/postgresql.conf.erb'),
