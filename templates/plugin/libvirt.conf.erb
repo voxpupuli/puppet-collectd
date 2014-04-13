@@ -1,0 +1,28 @@
+<Plugin libvirt>
+  Connection "<%= @connection %>"
+<% if @refresh_interval != nil -%>
+  RefreshInterval <%= @refresh_interval %>
+<% end -%>
+<% if @domain != nil -%>
+  Domain "<%= @domain %>"
+<% end -%>
+<% if @block_device != nil -%>
+  BlockDevice "<%= @block_device %>"
+<% end -%>
+<% if @interface_device != nil -%>
+  InterfaceDevice "<%= @interface_device %>"
+<% end -%>
+<% if @ignore_selected != nil -%>
+  IgnoreSelected <%= @ignore_selected %>
+<% end -%>
+<% if @hostname_format != nil -%>
+  HostnameFormat "<%= @hostname_format %>"
+<% end -%>
+<% if @interface_format != nil
+     if @collectd_version and (scope.function_versioncmp([@collectd_version, '5']) >= 0) -%>
+  InterfaceFormat "<%= @interface_format %>"
+<%   else
+       scope.function_warning(['ignoring interface_format parameter because collectd_version is < 5 or undefined'])
+     end
+   end -%>
+</Plugin>

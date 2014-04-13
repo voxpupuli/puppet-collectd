@@ -70,6 +70,7 @@ documentation for each plugin for configurable attributes.
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
+* `libvirt` (see [collectd::plugin::libvirt](#class-collectdpluginlibvirt) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
@@ -242,6 +243,18 @@ class { 'collectd::plugin::iptables':
 
 ```puppet
 class { 'collectd::plugin::load':
+}
+```
+
+####Class: `collectd::plugin::libvirt`
+
+The interface_format parameter was introduced in collectd 5.0 and will
+therefore be ignored (with a warning) when specified with older versions.
+
+```puppet
+class { 'collectd::plugin::libvirt':
+  connection       => 'qemu:///system',
+  interface_format => 'address'
 }
 ```
 
