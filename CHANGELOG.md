@@ -1,3 +1,35 @@
+## 2014-04-14 Release 2.0.0
+
+### Summary:
+
+This release adds support for several new plugins and contains
+some backwards-incompatible code refactors.
+
+### Backwards-incompatible changes:
+
+- Storerates=true is now the default for the Graphite plugin
+- Deprecate write_network plugin, use network plugin instead
+- Make sure plugin configs are not world readable.
+- Handle plugin order with collectd::plugin resource type
+  (all collectd plugins config files will be renumbered from
+   00-$name.conf to 10-$name.conf)
+
+### Features:
+
+- New plugins CSV, uptime, users, entropy, varnish, redis,
+  contextswitch, cpu, nfs, vmem, libvirt
+- Add socket parameter to mysql plugin
+- Add reportbytes to swap plugin
+- Add SeparateInstances setting to write_graphite plugin
+- Add metadata.json for Forge search support
+
+### Bugs:
+
+- Fix port parameter quotes in memcached plugin
+- Fix collectd conf dir path parameter assignment
+- Fix processes plugin configuration
+- Force ReportReserved to true in df plugin
+
 ## 2014-01-18 Release 1.1.0
 
 ### Summary:
