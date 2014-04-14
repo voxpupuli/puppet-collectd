@@ -1,3 +1,9 @@
+## 2014-04-14 Release 2.0.1
+
+### Summary:
+
+Fix issue with metadata.json preventing Forge uploads
+
 ## 2014-04-14 Release 2.0.0
 
 ### Summary:
