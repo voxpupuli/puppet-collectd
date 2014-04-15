@@ -14,15 +14,6 @@ describe 'collectd::plugin::varnish', :type => :class do
 content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
-    CollectCache true
-    CollectBackend true
-    CollectConnections true
-    CollectSHM true
-    CollectESI false
-    CollectFetch true
-    CollectHCB false
-    CollectTotals true
-    CollectWorkers true
   </Instance>
 </Plugin>
 EOS
@@ -42,15 +33,6 @@ EOS
 content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
-    CollectCache true
-    CollectBackend true
-    CollectConnections true
-    CollectSHM true
-    CollectESI false
-    CollectFetch true
-    CollectHCB false
-    CollectTotals true
-    CollectWorkers true
   </Instance>
 </Plugin>
 EOS
@@ -72,15 +54,6 @@ EOS
 content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
-    CollectCache true
-    CollectBackend true
-    CollectConnections true
-    CollectSHM true
-    CollectESI false
-    CollectFetch true
-    CollectHCB false
-    CollectTotals true
-    CollectWorkers true
   </Instance>
 </Plugin>
 EOS
