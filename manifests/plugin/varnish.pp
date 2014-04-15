@@ -3,15 +3,6 @@ class collectd::plugin::varnish (
   $ensure    = present,
   $instances = {
       'localhost' => {
-        'CollectCache'       => true,
-        'CollectBackend'     => true,
-        'CollectConnections' => true,
-        'CollectSHM'         => true,
-        'CollectESI'         => false,
-        'CollectFetch'       => true,
-        'CollectHCB'         => false,
-        'CollectTotals'      => true,
-        'CollectWorkers'     => true,
       }
     }
 ) {
