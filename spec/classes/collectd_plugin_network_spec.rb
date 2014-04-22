@@ -26,7 +26,7 @@ describe 'collectd::plugin::network', :type => :class do
       should contain_file('network.load').with({
         :ensure  => 'present',
         :path    => '/etc/collectd.d/10-network.conf',
-        :content => /<Plugin network>\n  TimeToLive 42\n<\/Plugin>\n/,
+        :content => /<Plugin network>\n  TimeToLive 42\n\n<\/Plugin>\n/,
       })
     end
   end
