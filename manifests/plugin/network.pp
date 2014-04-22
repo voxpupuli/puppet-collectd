@@ -5,22 +5,18 @@ class collectd::plugin::network (
   $maxpacketsize        = undef,
   $forward              = false,
   $reportstats          = false,
-  $listen               = undef,
-  $listen_authfile      = undef,
-  $listen_interface     = undef,
-  $listen_securitylevel = 'None',
-  $listenport           = 25826,
-  $server               = undef,
-  $server_interface     = undef,
-  $server_password      = undef,
-  $server_securitylevel = 'None',
-  $server_username      = undef,
-  $serverport           = 25826,
 ) {
   validate_bool(
     $forward,
     $reportstats,
   )
+
+  if $timetolive {
+    validate_re($timetolive, '[0-9]+')
+  }
+  if $maxpacketsize {
+    validate_re($maxpacketsize, '[0-9]+')
+  }
 
   collectd::plugin {'network':
     ensure  => $ensure,
