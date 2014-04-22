@@ -291,6 +291,17 @@ collectd::plugin::mysql::database { 'betadase':
 ```puppet
 class { 'collectd::plugin::network':
 }
+
+collectd::plugin::network::listen{'10.10.10.10':
+  securitylevel => 'Encrypt',
+  authfile      => '/etc/collectd/passwd',
+}
+
+collectd::plugin::network::server{'10.10.10.10':
+  securitylevel => 'Encrypt',
+  username      => 'node01',
+  password      => 'node01verysecret',
+}
 ```
 
 ####Class: `collectd::plugin::nfs`
