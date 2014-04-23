@@ -290,6 +290,23 @@ collectd::plugin::mysql::database { 'betadase':
 
 ```puppet
 class { 'collectd::plugin::network':
+  timetolive    => '70',
+  maxpacketsize => '42',
+  forward       => false,
+  reportstats   => true,
+  servers       => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'username'      => 'foo',
+    'password'      => 'bar',},
+  },
+  listeners     => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'authfile'      => '/etc/collectd/passwd',},
+  },
 }
 ```
 
