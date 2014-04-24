@@ -6,6 +6,7 @@ class collectd::plugin::df (
   $mountpoints    = [],
   $reportbydevice = false,
   $reportinodes   = true,
+  $reportreserved = true,
 ) {
 
   validate_array(
@@ -16,6 +17,7 @@ class collectd::plugin::df (
     $ignoreselected,
     $reportbydevice,
     $reportinodes,
+    $reportreserved,
   )
 
   collectd::plugin {'df':
