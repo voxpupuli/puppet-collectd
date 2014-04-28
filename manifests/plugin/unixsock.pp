@@ -1,9 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:UnixSock
 class collectd::plugin::unixsock (
-  $socketfile  = '/var/run/collectd-socket',
-  $socketgroup = 'collectd',
-  $socketperms = '0770',
-  $ensure      = present
+  $socketfile   = '/var/run/collectd-socket',
+  $socketgroup  = 'collectd',
+  $socketperms  = '0770',
+  $deletesocket = false,
+  $ensure       = present
 ) {
   validate_absolute_path($socketfile)
 
