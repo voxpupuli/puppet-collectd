@@ -503,8 +503,10 @@ collectd::plugin::tail::file { 'exim-log':
 
 ```puppet
 class {'collectd::plugin::unixsock':
-  socketfile  => '/var/run/collectd-sock',
-  socketgroup => 'nagios',
+  socketfile   => '/var/run/collectd-sock',
+  socketgroup  => 'nagios',
+  socketperms  => '0770',
+  deletesocket => false,
 }
 ```
 
