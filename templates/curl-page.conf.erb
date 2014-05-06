@@ -1,0 +1,30 @@
+<Plugin curl>
+  <Page "<%= name %>">
+    URL "<%= @url %>"
+<% if @user -%>
+    User "<%= @user %>"
+<% end -%>
+<% if @password -%>
+    Password "<%= @password %>"
+<% end -%>
+<% if @verifypeer -%>
+    VerifyPeer "<%= @verifypeer %>"
+<% end -%>
+<% if @verifyhost %>
+    VerifyHost "<%= @verifyhost %>"
+<% end -%>
+<% if @cacert -%>
+    CACert "<%= @cacert %>"
+<% end -%>
+<% if @header -%>
+    Header "<%= @header %>"
+<% end -%>
+<% if @post -%>
+    Post "<%= @post %>"
+<% end -%>
+<% if @measureresponsetime -%>
+    MeasureResponseTime "<%= @measureresponsetime %>"
+<% end -%>
+<%= scope.function_template(["collectd/match.tpl.erb"]) %>
+  </Page>
+</Plugin>
