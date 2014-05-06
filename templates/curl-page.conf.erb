@@ -16,10 +16,10 @@
 <% if @cacert -%>
     CACert "<%= @cacert %>"
 <% end -%>
-<% if @header -%>
+<% if @header and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.3']) >= 0) -%>
     Header "<%= @header %>"
 <% end -%>
-<% if @post -%>
+<% if @post and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.3']) >= 0) -%>
     Post "<%= @post %>"
 <% end -%>
 <% if @measureresponsetime -%>
