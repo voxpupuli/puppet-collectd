@@ -60,6 +60,7 @@ documentation for each plugin for configurable attributes.
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
+* `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
@@ -149,6 +150,46 @@ class { 'collectd::plugin::cpu':
 class { 'collectd::plugin::csv':
   datadir    => '/etc/collectd/var/lib/collectd/csv',
   storerates => false,
+}
+```
+
+####Class: `collectd::plugin::curl`
+
+```puppet
+collectd::plugin::curl::page {
+  'stock_quotes':
+    url      => 'http://finance.google.com/finance?q=NYSE%3AAMD',
+    user     => 'foo',
+    password => 'bar',
+    matches  => [
+      {
+        'dstype'   => 'GaugeAverage',
+        'instance' => 'AMD',
+        'regex'    => ']*> *([0-9]*\\.[0-9]+) *',
+        'type'     => 'stock_value',
+      }],
+}
+```
+
+You can as well configure this plugin with a parameterized class : 
+
+```puppet
+class { 'collectd::plugin::curl':
+  pages => {
+    'stock_GM' => {
+      url      => 'http://finance.google.com/finance?q=NYSE%3AGM',
+      user     => 'foo',
+      password => 'bar',
+      matches  => [
+        {
+          'dstype'   => 'GaugeAverage',
+          'instance' => 'AMD',
+          'regex'    => ']*> *([0-9]*\\.[0-9]+) *',
+          'type'     => 'stock_value',
+        },
+      ],
+    },
+  },
 }
 ```
 
