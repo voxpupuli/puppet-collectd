@@ -60,11 +60,5 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       expect {should}.to raise_error(Puppet::Error,/String/)
     end
   end
-
-  context 'neither :remoteports nor :localports defined' do
-    it 'Will raise an error about :remoteports or :localports not defined' do
-      expect {should}.to raise_error(Puppet::Error,/need to be specified/)
-    end
-  end
 end
 
