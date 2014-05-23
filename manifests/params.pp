@@ -62,7 +62,7 @@ class collectd::params {
       $collectd_dir      = '/etc/collectd.d'
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
-      $config_file       = "/etc/collectd.conf"
+      $config_file       = '/etc/collectd.conf'
       $root_group        = 'collectd'
     }
 
