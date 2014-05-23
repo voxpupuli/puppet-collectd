@@ -56,6 +56,16 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
     }
+    'Gentoo': {
+      $package           = 'app-admin/collectd'
+      $provider          = 'portage'
+      $collectd_dir      = '/etc/collectd.d'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'collectd'
+      $config_file       = "/etc/collectd.conf"
+      $root_group        = 'root'
+    }
+
     default: {
       fail("${::osfamily} is not supported.")
     }
