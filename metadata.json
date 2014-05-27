@@ -41,6 +41,9 @@
         "10.04",
         "12.04"
       ]
+    },
+    {
+      "operatingsystem": "Gentoo"
     }
   ],
   "requirements": [
@@ -54,7 +57,7 @@
     }
   ],
   "name": "pdxcat-collectd",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "source": "https://github.com/pdxcat/puppet-module-collectd",
   "author": "Computer Action Team",
   "license": "Apache Version 2.0",
