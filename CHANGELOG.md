@@ -1,3 +1,17 @@
+## 2014-04-14 Release 2.1.0
+
+### Summary:
+
+This release adds Gentoo osfamily support and minor plugin changes
+
+### Features:
+
+- adding Gentoo support
+- tcpconn plugin: $localports and $remoteports can me left undef if $listening is not set
+- unixsock plugin: Implement the "DeleteSocket" option.
+- add reportreserved parameter for df plugin
+
+
 ## 2014-04-14 Release 2.0.1
 
 ### Summary:
