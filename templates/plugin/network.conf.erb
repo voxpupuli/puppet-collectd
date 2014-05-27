@@ -1,39 +1,39 @@
 <Plugin network>
-<% if @server -%>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
-  <Server "<%= @server %>" "<%= @serverport %>">
-<% if @server_securitylevel -%>
-    SecurityLevel "<%= @server_securitylevel %>"
+<% @servers.sort.each do |name,params| -%>
+<% if @collectd_version and (scope.function_versioncmp([collectd_version, '4.7']) >= 0) -%>
+  <Server "<%= name %>" "<%= params['port'] %>">
+<% if params['securitylevel'] -%>
+    SecurityLevel "<%= params['securitylevel'] %>"
 <% end -%>
-<% if @server_username -%>
-    Username "<%= @server_username %>"
+<% if params['username'] -%>
+    Username "<%= params['username'] %>"
 <% end -%>
-<% if @server_password -%>
-    Password "<%= @server_password %>"
+<% if params['password'] -%>
+    Password "<%= params['password'] %>"
 <% end -%>
-<% if @server_interface -%>
-    Interface "<%= @server_interface %>"
-<% end -%>
+<% if params['interface'] -%>
+    Interface "<%= params['interface'] %>"
+<% end %>
   </Server>
 <% else -%>
-  Server "<%= @server %>" "<%= @serverport %>"
+  Server "<%= name %>" "<%= params['port'] %>"
 <% end -%>
 <% end -%>
-<% if @listen -%>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
-  <Listen "<%= @listen %>" "<%= @listenport %>">
-<% if @listen_securitylevel -%>
-    SecurityLevel "<%= @listen_securitylevel %>"
+<% @listeners.sort.each do |name,params| -%>
+<% if @collectd_version and (scope.function_versioncmp([collectd_version, '4.7']) >= 0) -%>
+  <Listen "<%= name %>" "<%= params['port'] %>">
+<% if params['securitylevel'] -%>
+    SecurityLevel "<%= params['securitylevel'] %>"
 <% end -%>
-<% if @listen_authfile -%>
-    AuthFile "<%= @listen_authfile %>"
+<% if params['authfile'] -%>
+    AuthFile "<%= params['authfile'] %>"
 <% end -%>
-<% if @listen_interface -%>
-    Interface "<%= @listen_interface %>"
-<% end -%>
+<% if params['interface'] -%>
+    Interface "<%= params['interface'] %>"
+<% end %>
   </Listen>
 <% else -%>
-  Listen "<%= @listen %>" "<%= @listenport %>"
+  Listen "<%= name %>" "<%= params['port'] %>"
 <% end -%>
 <% end -%>
 <% if @timetolive -%>

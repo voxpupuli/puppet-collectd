@@ -97,7 +97,6 @@ documentation for each plugin for configurable attributes.
 * `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `vmem` (see [collectd::plugin::vmem](#class-collectdpluginvmem) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
-* `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 
 ####Class: `collectd::plugin::amqp`
@@ -290,6 +289,23 @@ collectd::plugin::mysql::database { 'betadase':
 
 ```puppet
 class { 'collectd::plugin::network':
+  timetolive    => '70',
+  maxpacketsize => '42',
+  forward       => false,
+  reportstats   => true,
+  servers       => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'username'      => 'foo',
+    'password'      => 'bar',},
+  },
+  listeners     => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'authfile'      => '/etc/collectd/passwd',},
+  },
 }
 ```
 
@@ -556,19 +572,6 @@ class { 'collectd::plugin::vmem':
 ```puppet
 class { 'collectd::plugin::write_graphite':
   graphitehost => 'graphite.examle.org',
-}
-```
-
-####Class: `collectd::plugin::write_network`
-
-**Deprecated**
-
-```puppet
-class { 'collectd::plugin::write_network':
-  servers => {
-    'collect1.example.org' => { 'serverport' => '25826' },
-    'collect2.example.org' => { 'serverport' => '25826' }
-  }
 }
 ```
 
