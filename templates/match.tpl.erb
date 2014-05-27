@@ -1,0 +1,13 @@
+<% @matches.each do |match| -%>
+  <Match>
+    Regex "<%= match['regex'] %>"
+<% if match['excluderegex'] -%>
+    ExcludeRegex "<%= match['excluderegex'] %>"
+<% end -%>
+    DSType "<%= match['dstype'] %>"
+    Type "<%= match['type'] %>"
+<% if match['instance'] -%>
+    Instance "<%= match['instance'] %>"
+<% end -%>
+  </Match>
+<% end -%>
