@@ -1,0 +1,27 @@
+<Plugin "write_http">
+<% @urls.each do |name,values| -%>
+  <URL "<%= name %>">
+<% if values['user'] -%>
+    User "<%= values['user'] %>"
+<% end -%>
+<% if values['password'] -%>
+    Password "<%= values['password'] %>"
+<% end -%>
+<% if values['verifypeer'] -%>
+    VerifyPeer "<%= values['verifypeer'] %>"
+<% end -%>
+<% if values['verifyhost'] -%>
+    VerifyHost "<%= values['verifyhost'] %>"
+<% end -%>
+<% if values['cacert'] -%>
+    CACert "<%= values['cacert'] %>"
+<% end -%>
+<% if values['format'] -%>
+    Format "<%= values['format'] %>"
+<% end -%>
+<% if values['storerates'] -%>
+    StoreRates "<%= values['storerates'] %>"
+<% end -%>
+  </URL>
+<% end -%>
+</Plugin>
