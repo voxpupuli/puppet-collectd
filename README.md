@@ -87,6 +87,7 @@ documentation for each plugin for configurable attributes.
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
@@ -448,6 +449,20 @@ class {'collectd::plugin::snmp':
       'Interval'  => 10
     }
   },
+}
+```
+
+####Class: `collectd::plugin::statsd`
+
+```puppet
+class { 'collectd::plugin::statsd':
+  host            => '0.0.0.0',
+  port            => 8125,
+  deletecounters  => false,
+  deletetimers    => false,
+  deletegauges    => false,
+  deletesets      => false,
+  timerpercentile => 50,
 }
 ```
 
