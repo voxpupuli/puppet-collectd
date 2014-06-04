@@ -1,0 +1,23 @@
+<Plugin statsd>
+<% if @host -%>
+  Host "<%= @host %>"
+<% end -%>
+<% if @port -%>
+  Port <%= port %>
+<% end -%>
+<% if @deletecounters -%>
+  DeleteCounters <%= deletecounters %>
+<% end -%>
+<% if @deletetimers -%>
+  DeleteTimers <%= deletetimers %>
+<% end -%>
+<% if @deletegauges -%>
+  DeleteGauges <%= deletegauges %>
+<% end -%>
+<% if @deletesets -%>
+  Deletesets <%= deletesets %>
+<% end -%>
+<% if @timerpercentile -%>
+  TimerPercentile <%= timerpercentile %>
+<% end -%>
+</Plugin>
