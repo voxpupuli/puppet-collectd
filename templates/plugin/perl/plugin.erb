@@ -1,0 +1,48 @@
+<Plugin perl>
+<% if @enable_debugger -%>
+  EnableDebugger "<% @enable_debugger %>"
+<% end -%>
+<% if @include_dir -%>
+<% @include_dirs.each do |dir| -%>
+  IncludeDir "<%= dir %>"
+<% end -%>
+<% end -%>
+  LoadPlugin "<%= @module %>"
+<% if ! @config.empty? -%>
+  <Plugin "<%= @name %>">
+<% @config.each do |key,value| -%>
+<% if value.is_a?(Array) -%>
+<% value.each do |v| -%>
+    <%= key %> "<%= v %>"
+<% end -%>
+<% elsif value.is_a?(Hash) -%>
+    <<%=key%>>
+<% value.each do |k,v| -%>
+<% if v.is_a?(String) -%>
+      <%=k%> "<%=v%>"
+<% elsif v.is_a?(Array) -%>
+<% v.each do |l| -%>
+      <%= k %> "<%= l %>"
+<% end -%>
+<% elsif v.is_a?(Hash) -%>
+      <<%=k%>>
+<% v.each do |i,j| -%>
+<% if j.is_a?(Array) -%>
+<% j.each do |k| -%>
+        <%=i%> "<%=k%>"
+<% end -%>
+<% else -%>
+        <%=i%> "<%=j%>"
+<% end -%>
+<% end -%>
+      </<%=k%>>
+<% end -%>
+<% end -%>
+    </<%=key%>>
+<% else -%>
+    <%= key -%> "<%= value -%>"
+<% end -%>
+<% end -%>
+  </Plugin>
+<% end -%>
+</Plugin>
