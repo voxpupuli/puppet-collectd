@@ -612,6 +612,22 @@ class { 'collectd::plugin::write_riemann':
 
 This module has been tested on Ubuntu Precise, CentOS 5/6, Solaris 10, and Debian 6/7.
 
+##Testing
+
+You can run smoke tests using your unprivileged user by overriding the `osfamily`:
+
+```Shell
+# mkdir /tmp/collectd
+# FACTER_osfamily=Smoke/Test puppet apply tests/plugins/df.pp
+Notice: Compiled catalog for ccfawe.in2p3.fr in environment production in 1.02 seconds
+Notice: /Stage[main]/Collectd/File[collectd.conf]/ensure: created
+Notice: /Stage[main]/Collectd/File_line[include_conf_d_dot_conf]/ensure: created
+Notice: /Stage[main]/Collectd/File[collectd.d]/ensure: created
+Notice: /Stage[main]/Collectd::Plugin::Df/Collectd::Plugin[df]/File[df.load]/ensure: created
+Notice: /Stage[main]/Collectd/Service[collectd]: Triggered 'refresh' from 3 events
+Notice: Finished catalog run in 1.41 seconds
+```
+
 ##Development
 
 ### Running tests

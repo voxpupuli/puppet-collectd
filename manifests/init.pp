@@ -27,8 +27,6 @@ class collectd(
     ensure  => directory,
     path    => $collectd::params::plugin_conf_dir,
     mode    => '0755',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
     purge   => $purge,
     recurse => $recurse,
   }
@@ -39,6 +37,7 @@ class collectd(
   }
 
   file { 'collectd.conf':
+    ensure  => present,
     path    => $collectd::params::config_file,
     content => $conf_content,
     notify  => Service['collectd'],
