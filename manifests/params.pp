@@ -2,6 +2,14 @@
 class collectd::params {
 
   case $::osfamily {
+    'Smoke/Test': {
+      $package           = 'collectd'
+      $provider          = 'apt'
+      $collectd_dir      = '/tmp/collectd'
+      $plugin_conf_dir   = "${collectd_dir}/conf.d"
+      $service_name      = 'collectd'
+      $config_file       = "${collectd_dir}/collectd.conf"
+    }
     'Debian': {
       $package           = 'collectd'
       $provider          = 'apt'
@@ -10,6 +18,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
+      $root_user         = 'root'
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -19,6 +28,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
+      $root_user         = 'root'
     }
     'Redhat': {
       $package           = 'collectd'
@@ -28,6 +38,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
+      $root_user         = 'root'
     }
     'Suse': {
       $package           = 'collectd'
@@ -37,6 +48,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
+      $root_user         = 'root'
     }
     'FreeBSD': {
       $package           = 'collectd5'
@@ -46,6 +58,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
+      $root_user         = 'root'
     }
     'Archlinux': {
       $package           = 'collectd'
@@ -55,6 +68,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
+      $root_user         = 'root'
     }
     'Gentoo': {
       $package           = 'app-admin/collectd'
@@ -64,10 +78,19 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'collectd'
+      $root_user         = 'root'
     }
 
     default: {
       fail("${::osfamily} is not supported.")
     }
   }
+
+  if $collectd::params::root_group {
+    File { group => $collectd::params::root_group }
+  }
+  if $collectd::params::root_owner {
+    File { owner => $collectd::params::root_owner }
+  }
+
 }

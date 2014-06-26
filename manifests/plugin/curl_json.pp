@@ -15,8 +15,6 @@ define collectd::plugin::curl_json (
   file {
     "${name}.load":
       path    => "${conf_dir}/${name}.conf",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
       mode    => '0644',
       content => template('collectd/curl_json.conf.erb'),
       notify  => Service['collectd'],
