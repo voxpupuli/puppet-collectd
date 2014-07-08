@@ -70,6 +70,7 @@ documentation for each plugin for configurable attributes.
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
+* `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `libvirt` (see [collectd::plugin::libvirt](#class-collectdpluginlibvirt) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
@@ -245,6 +246,15 @@ class { 'collectd::plugin::iptables':
 
 ```puppet
 class { 'collectd::plugin::load':
+}
+```
+
+####Class: `collectd::plugin::logfile`
+
+```puppet
+class { 'collectd::plugin::logfile':
+  log_level => 'warning',
+  log_file => '/var/log/collected.log'
 }
 ```
 
