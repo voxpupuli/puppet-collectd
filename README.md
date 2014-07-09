@@ -610,17 +610,20 @@ class { 'collectd::plugin::write_riemann':
 
 ##Limitations
 
-This module has been tested on Ubuntu Precise, CentOS 5/6, Solaris 10, and Debian 6/7.
+See metadata.json for supported platforms
 
 ##Development
 
 ### Running tests
 
-This project contains tests for both [rspec-puppet](http://rspec-puppet.com/) and [rspec-system](https://github.com/puppetlabs/rspec-system) to verify functionality. For in-depth information please see their respective documentation.
+This project contains tests for [rspec-puppet](http://rspec-puppet.com/).
 
 Quickstart:
 
-    gem install bundler
-    bundle install
-    bundle exec rake spec
-    bundle exec rake spec:system
+```bash
+gem install bundler
+bundle install
+bundle exec rake lint
+bundle exec rake validate
+bundle exec rake spec SPEC_OPTS='--format documentation'
+```
