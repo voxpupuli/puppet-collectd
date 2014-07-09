@@ -610,7 +610,7 @@ class { 'collectd::plugin::write_riemann':
 
 ##Limitations
 
-This module has been tested on Ubuntu LTS, CentOS 5/6/7, Solaris 10, and Debian 6/7.
+See metadata.json for supported platforms
 
 ##Development
 
