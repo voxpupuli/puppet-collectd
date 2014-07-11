@@ -2,6 +2,7 @@
 class collectd(
   $fqdnlookup   = true,
   $interval     = 10,
+  $include      = [],
   $purge        = undef,
   $purge_config = false,
   $recurse      = undef,
@@ -14,7 +15,7 @@ class collectd(
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
-  validate_array($typesdb)
+  validate_array($include, $typesdb)
 
   package { 'collectd':
     ensure   => $version,
