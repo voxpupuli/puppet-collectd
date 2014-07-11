@@ -17,3 +17,6 @@ Interval <%= @interval %>
 Timeout <%= @timeout %>
 ReadThreads <%= @threads %>
 Include "<%= @plugin_conf_dir %>/*.conf"
+<% @include.each do |obj| -%>
+Include "<%= obj %>"
+<% end -%>
