@@ -1,0 +1,13 @@
+<Plugin sensors>
+<% if @sensorconfigfile -%>
+  SensorConfigFile "<%= @sensorconfigfile %>"
+<% end -%>
+<% if @sensors -%>
+<% @sensors.each do |sensor| -%>
+  Sensor "<%= @sensor %>"
+<% end -%>
+<% end -%>
+<% if @ignoreselected -%>
+  IgnoreSelected "<%= @ignoreselected %>"
+<% end -%>
+</Plugin>
