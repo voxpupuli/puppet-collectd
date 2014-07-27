@@ -88,6 +88,7 @@ documentation for each plugin for configurable attributes.
 * `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
+* `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
@@ -476,6 +477,14 @@ class { 'collectd::plugin::rrdtool':
   cacheflush        => 900,
   cachetimeout      => 120,
   writespersecond   => 50
+}
+```
+
+####Class: `collectd::plugin::sensors`
+
+```puppet
+class {'collectd::plugin::sensors':
+  ignoreselected => false,
 }
 ```
 
