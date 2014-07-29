@@ -1,0 +1,17 @@
+<Plugin network>
+<% if @collectd_version and (scope.function_versioncmp([collectd_version, '4.7']) >= 0) -%>
+  <Listen "<%= @name %>" "<%= @port %>">
+<% if @securitylevel -%>
+    SecurityLevel "<%= @securitylevel %>"
+<% end -%>
+<% if @authfile -%>
+    AuthFile "<%= @authfile %>"
+<% end -%>
+<% if @interface -%>
+    Interface "<%= @interface %>"
+<% end %>
+  </Listen>
+<% else -%>
+  Listen "<%= @name %>" "<%= @port %>"
+<% end -%>
+</Plugin>
