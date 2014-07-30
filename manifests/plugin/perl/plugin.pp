@@ -46,14 +46,14 @@ define collectd::plugin::perl::plugin (
     'package': {
       validate_string($source)
       package { $source:
-        require => File[$base_filename],
+        require => Collectd::Plugin['perl'],
       }
     }
     'cpan': {
       validate_string($source)
       include cpan
       cpan { $source:
-        require => File[$base_filename],
+        require => Collectd::Plugin['perl'],
       }
     }
     'file': {
@@ -63,7 +63,7 @@ define collectd::plugin::perl::plugin (
         path   => "${destination}/${module}.pm",
         mode   => '0644',
         source => $source,
-        require => File[$base_filename],
+        require => Collectd::Plugin['perl'],
       }
     }
     false: {

@@ -414,7 +414,7 @@ This define will load a new perl plugin.
 ######Using a preinstalled plugin:
 ```puppet
 collectd::plugin::perl::plugin { 'foo':
-    module        => 'Collectd::Plugins::Foo',
+    module          => 'Collectd::Plugins::Foo',
     enable_debugger => "",
     include_dir     => '/usr/lib/collectd/perl5/lib',
 }
@@ -423,9 +423,9 @@ collectd::plugin::perl::plugin { 'foo':
 ######Using a plugin from a file from *source*:
 ```puppet
 collectd::plugin::perl::plugin { 'baz':
-    module   => 'Collectd::Plugins::Baz',
-    provider => 'file',
-    source   => 'puppet:///modules/myorg/baz_collectd.pm',
+    module      => 'Collectd::Plugins::Baz',
+    provider    => 'file',
+    source      => 'puppet:///modules/myorg/baz_collectd.pm',
     destination => '/path/to/my/perl5/modules'
 }
 ```

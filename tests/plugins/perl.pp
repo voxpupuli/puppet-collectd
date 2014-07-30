@@ -4,7 +4,9 @@ class { collectd:
   recurse      => true,
 }
 
-include collectd::plugin::perl
+class { collectd::plugin::perl:
+  order => 42
+}
 
 collectd::plugin::perl::plugin { 'foo':
   include_dir     => '/tmp',
@@ -21,7 +23,7 @@ collectd::plugin::perl::plugin { 'foo':
 
 collectd::plugin::perl::plugin { 'bar':
   module          => 'B',
-  enable_debugger => "DProf",
+  enable_debugger => 'DProf',
   include_dir     => ['/tmp', '/tmp/lib' ]
 }
 
@@ -42,10 +44,10 @@ collectd::plugin::perl::plugin {
       'foo'       => 'bar',
       'more'      => {
         'complex' => 'structure',
-        'no'      => [ "a", "b" ],
+        'no'      => [ 'a', 'b' ],
         'yes'     => {
           'last'  => 'level',
-          'and'   => [ "array" , "thing" ]
+          'and'   => [ 'array' , 'thing' ]
         },
       },
     },
