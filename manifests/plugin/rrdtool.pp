@@ -42,6 +42,12 @@ class collectd::plugin::rrdtool (
     fail('writespersecond must be an integer!')
   }
 
+  if $::osfamily == 'RedHat' {
+    package { 'collectd-rrdtool':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'rrdtool':
     ensure  => $ensure,
     content => template('collectd/plugin/rrdtool.conf.erb'),
