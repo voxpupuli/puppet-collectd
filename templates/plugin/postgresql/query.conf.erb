@@ -1,0 +1,24 @@
+  <Query <%= @name %>>
+    Statement "<%= @statement %>"
+<% @params.each do |param| -%>
+    Param "<%= @param %>"
+<% end -%>
+<% if @minversion -%>
+    MinVersion <%= @minversion %>
+<% end -%>
+<% if @maxversion -%>
+    MaxVersion <%= @maxversion %>
+<% end -%>
+<% @results.each do |result| -%>
+      <Result>
+        Type "<%= result['type'] %>"
+<% if result['instanceprefix'] -%>
+        InstancePrefix "<%= result['instanceprefix'] %>"
+<% end -%>
+<% if result['instancesfrom'] -%>
+        InstancesFrom "<%= result['instancesfrom'] %>"
+<% end -%>
+        ValuesFrom "<%= result['valuesfrom'] %>"
+      </Result>
+<% end -%>
+  </Query>
