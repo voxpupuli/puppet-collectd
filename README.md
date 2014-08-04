@@ -81,6 +81,7 @@ documentation for each plugin for configurable attributes.
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `perl` (see [collectd::plugin::perl](#class-collectdpluginperl) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
 * `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql) below)
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
@@ -381,6 +382,74 @@ class { 'collectd::plugin::ntpd':
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
+}
+```
+
+####Class: `collectd::plugin::perl`
+
+This class has no parameters and will load the actual perl plugin.
+It will be automatically included if any `perl::plugin` is defined.
+
+#####Example:
+```puppet
+include collectd::plugin::perl
+```
+
+####Define: `collectd::plugin::perl::plugin`
+
+This define will load a new perl plugin.
+
+#####Parameters:
+
+* `module` (String): name of perl module to load (mandatory)
+* `enable_debugger` (False or String): whether to load the perl debugger. See *collectd-perl* manpage for more details. 
+* `include_dir` (String or Array): directories to add to *@INC*
+* `provider` (`"package"`,`"cpan"`,`"file"` or `false`): method to get the plugin code
+* `source` (String): this parameter is consumed by the provider to infer the source of the plugin code
+* `destination (String or false): path to plugin code if `provider` is `file`. Ignored otherwise.
+* `order` (String containing numbers): order in which the plugin should be loaded. Defaults to `"00"`
+* `config` (Hash): plugin configuration in form of a hash. This will be converted to a suitable structure understood by *liboconfig* which is the *collectd* configuration parser. Defaults to `{}`
+
+#####Examples:
+
+######Using a preinstalled plugin:
+```puppet
+collectd::plugin::perl::plugin { 'foo':
+    module          => 'Collectd::Plugins::Foo',
+    enable_debugger => "",
+    include_dir     => '/usr/lib/collectd/perl5/lib',
+}
+```
+
+######Using a plugin from a file from *source*:
+```puppet
+collectd::plugin::perl::plugin { 'baz':
+    module      => 'Collectd::Plugins::Baz',
+    provider    => 'file',
+    source      => 'puppet:///modules/myorg/baz_collectd.pm',
+    destination => '/path/to/my/perl5/modules'
+}
+```
+
+######Using a plugin from cpan (requires the [puppet cpan module](https://forge.puppetlabs.com/meltwater/cpan)):
+```puppet
+collectd::plugin::perl::plugin {
+  'openafs_vos':
+    module        => 'Collectd::Plugins::OpenAFS::VOS',
+    provider      => 'cpan',
+    source        => 'Collectd::Plugins::OpenAFS',
+    config        => {'VosBin' => '/usr/afsws/etc/vos'},
+}
+```
+
+######Using a plugin from package source:
+```puppet
+collectd::plugin::perl::plugin {
+  'bar':
+    module        => 'Collectd::Plugins::Bar',
+    provider      => 'package',
+    source        => 'perl-Collectd-Plugins-Bar',
+    config        => {'foo' => 'bar'},
 }
 ```
 
