@@ -1,15 +1,15 @@
-class { collectd:
+class { 'collectd':
   purge_config => true,
   purge        => true,
   recurse      => true,
 }
 
-class { collectd::plugin::perl:
+class { 'collectd::plugin::perl':
   order => 42
 }
 
 collectd::plugin::perl::plugin { 'foo':
-  include_dir     => '/tmp',
+  include_dir => '/tmp',
   module      => 'Collectd::Plugins::Foo',
   provider    => 'file',
   source      => 'puppet:///modules/collectd/tests/Foo.pm',

@@ -60,9 +60,9 @@ define collectd::plugin::perl::plugin (
       validate_string($source)
       validate_string($destination)
       file { "collectd_plugin_perl_${name}.pm":
-        path   => "${destination}/${module}.pm",
-        mode   => '0644',
-        source => $source,
+        path    => "${destination}/${module}.pm",
+        mode    => '0644',
+        source  => $source,
         require => Collectd::Plugin['perl'],
       }
     }
@@ -71,7 +71,8 @@ define collectd::plugin::perl::plugin (
       exec { "perl -M${module} -e 1": path => $::path }
     }
     default: {
-      fail("Unsupported provider: ${provider}. Use 'package', 'cpan', 'file' or false.")
+      fail("Unsupported provider: ${provider}. Use 'package', 'cpan',
+        'file' or false.")
     }
   }
 }
