@@ -32,6 +32,7 @@ class collectd(
     group   => $collectd::params::root_group,
     purge   => $purge,
     recurse => $recurse,
+    notify  => Service['collectd'],
   }
 
   $conf_content = $purge_config ? {
