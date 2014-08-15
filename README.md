@@ -344,7 +344,36 @@ collectd::plugin::mysql::database { 'betadase':
 ####Class: `collectd::plugin::network`
 
 ```puppet
+collectd::plugin::network::server{'hostname':
+  port => 25826,
+}
+
+collectd::plugin::network::listener{'hostname':
+  port => 25826,
+}
+```
+
+You can as well configure this plugin with a parameterized class : 
+
+```puppet
 class { 'collectd::plugin::network':
+  timetolive    => '70',
+  maxpacketsize => '42',
+  forward       => false,
+  reportstats   => true,
+  servers       => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'username'      => 'foo',
+    'password'      => 'bar',},
+  },
+  listeners     => { 'hostname' => {
+    'port'          => '25826',
+    'interface'     => 'eth0',
+    'securitylevel' => '',
+    'authfile'      => '/etc/collectd/passwd',},
+  },
 }
 ```
 

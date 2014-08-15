@@ -1,0 +1,20 @@
+<Plugin network>
+<% if @collectd_version and (scope.function_versioncmp([collectd_version, '4.7']) >= 0) -%>
+  <Server "<%= @name %>" "<%= @port %>">
+<% if @securitylevel -%>
+    SecurityLevel "<%= @securitylevel %>"
+<% end -%>
+<% if @username -%>
+    Username "<%= @username %>"
+<% end -%>
+<% if @password -%>
+    Password "<%= @password %>"
+<% end -%>
+<% if @interface -%>
+    Interface "<%= @interface %>"
+<% end %>
+  </Server>
+<% else -%>
+  Server "<%= @name %>" "<%= @port %>"
+<% end -%>
+</Plugin>

@@ -1,51 +1,15 @@
 <Plugin network>
-<% if @server -%>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
-  <Server "<%= @server %>" "<%= @serverport %>">
-<% if @server_securitylevel -%>
-    SecurityLevel "<%= @server_securitylevel %>"
-<% end -%>
-<% if @server_username -%>
-    Username "<%= @server_username %>"
-<% end -%>
-<% if @server_password -%>
-    Password "<%= @server_password %>"
-<% end -%>
-<% if @server_interface -%>
-    Interface "<%= @server_interface %>"
-<% end -%>
-  </Server>
-<% else -%>
-  Server "<%= @server %>" "<%= @serverport %>"
-<% end -%>
-<% end -%>
-<% if @listen -%>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
-  <Listen "<%= @listen %>" "<%= @listenport %>">
-<% if @listen_securitylevel -%>
-    SecurityLevel "<%= @listen_securitylevel %>"
-<% end -%>
-<% if @listen_authfile -%>
-    AuthFile "<%= @listen_authfile %>"
-<% end -%>
-<% if @listen_interface -%>
-    Interface "<%= @listen_interface %>"
-<% end -%>
-  </Listen>
-<% else -%>
-  Listen "<%= @listen %>" "<%= @listenport %>"
-<% end -%>
-<% end -%>
 <% if @timetolive -%>
-  TimeToLive <%= @timetolive %>
+    TimeToLive <%= @timetolive %>
 <% end -%>
 <% if @maxpacketsize -%>
-  MaxPacketSize <%= @maxpacketsize %>
+    MaxPacketSize <%= @maxpacketsize %>
 <% end -%>
 <% if @forward -%>
-  Forward "<%= @forward %>"
+    Forward "<%= @forward %>"
 <% end -%>
 <% if @reportstats -%>
-  ReportStats "<%= @reportstats %>"
+    ReportStats "<%= @reportstats %>"
 <% end -%>
+  
 </Plugin>
