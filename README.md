@@ -465,6 +465,33 @@ collectd::plugin::ping {
 ####Class: `collectd::plugin::postgresql`
 
 ```puppet
+collectd::plugin::postgresql::database{'monitoring_node1':
+  name     => 'monitoring',
+  port     => '5433',
+  instance => 'node1',
+  host     => 'localhost',
+  user     => 'collectd',
+  password => 'collectd',
+  query    => 'log_delay',
+}
+collectd::plugin::postgresql::query{'log_delay':
+  statement => 'SELECT * FROM log_delay_repli;',
+  results   => [{
+    type           => 'gauge',
+    instanceprefix => 'log_delay',
+    instancesfrom  => 'inet_server_port',
+    valuesfrom     => 'log_delay',
+  }],
+}
+collectd::plugin::postgresql::writer{'sqlstore':
+  statement  => 'SELECT collectd_insert($1, $2, $3, $4, $5, $6, $7, $8, $9);',
+  storerates => 'true',
+}
+```
+
+You can as well configure this plugin as a parameterized class :
+
+```puppet
 class { 'collectd::plugin::postgresql':
   databases => {
     'postgres' => {

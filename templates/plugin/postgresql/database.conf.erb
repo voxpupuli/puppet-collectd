@@ -1,0 +1,35 @@
+  <Database "<%= @databasename %>">
+<% if @host -%>
+    Host "<%= @host %>"
+<% end -%>
+<% if @port -%>
+    Port "<%= @port %>"
+<% end -%>
+<% if @user -%>
+    User "<%= @user %>"
+<% end -%>
+<% if @password -%>
+    Password "<%= @password %>"
+<% end -%>
+<% if @interval -%>
+    Interval "<%= @interval %>"
+<% end -%>
+<% if @instance -%>
+    Instance "<%= @instance %>"
+<% end -%>
+<% if @service -%>
+    Service "<%= @service %>"
+<% end -%>
+<% if @krbsrvname -%>
+    KRBSrvName "<%= @krbsrvname %>"
+<% end -%>
+<% if @sslmode -%>
+    SSLMode "<%= @sslmode %>"
+<% end -%>
+<% if @writer -%>
+    Writer "<%= @writer %>"
+<% end -%>
+<% @query.each do |query| -%>
+    Query "<%= query %>"
+<% end -%>
+  </Database>
