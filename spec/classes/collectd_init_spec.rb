@@ -44,4 +44,14 @@ describe 'collectd' do
    it { should_not contain_file_line('include_conf_d') }
  end
 
+ context 'when custom package_name is set' do
+   let :params do
+     { :package_name => 'collectd-core' }
+   end
+
+   it { should contain_package('collectd-core').with(
+     :ensure => 'installed'
+   )}
+ end
+
 end

@@ -9,17 +9,17 @@ class collectd(
   $threads      = 5,
   $timeout      = 2,
   $typesdb      = [],
+  $package_name = $collectd::params::package,
   $version      = installed,
-) {
-  include collectd::params
+) inherits collectd::params {
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
 
-  package { 'collectd':
+  package { $package_name:
     ensure   => $version,
-    name     => $collectd::params::package,
+    name     => $package_name,
     provider => $collectd::params::provider,
     before   => File['collectd.conf', 'collectd.d'],
   }
@@ -67,6 +67,6 @@ class collectd(
     ensure    => running,
     name      => $collectd::params::service_name,
     enable    => true,
-    require   => Package['collectd'],
+    require   => Package[$package_name],
   }
 }
