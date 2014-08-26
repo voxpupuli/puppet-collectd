@@ -1,3 +1,33 @@
+## 2014-08-25 Release 3.0.0
+
+### Backwards-incompatible changes:
+
+* Make sure plugin_conf_dir is not world readable
+* Full rewrite of the network plugin
+* Rewrite of postgresql module to allow invocation by defined types
+
+### Summary:
+
+### Features:
+
+* Varnish plugin improvments
+* Add the ability to customize package name.
+* Add write_http plugin
+* Add statsd plugin
+* Add plugin logfile
+* Add curl plugin
+* Add support for sensors plugin
+* Add support for perl plugins
+* Allow custom Include directives
+* Add valuesabsolute and valuespercentage to df plugin
+
+### Bugs:
+
+* Issue 164: syslog plugin needs to be loaded as first plugin
+* notify the collectd service when purging plugins
+* add collectd-rrdtool package needed for RedHat
+* sort python.conf options hash
+
 ## 2014-04-14 Release 2.1.0
 
 ### Summary:
