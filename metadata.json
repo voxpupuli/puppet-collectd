@@ -49,6 +49,15 @@
     },
     {
       "operatingsystem": "Gentoo"
+    },
+    {
+      "operatingsystem": "FreeBSD"
+    },
+    {
+      "operatingsystem": "Solaris"
+    },
+    {
+      "operatingsystem": "Archlinux"
     }
   ],
   "requirements": [
@@ -62,7 +71,7 @@
     }
   ],
   "name": "pdxcat-collectd",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "source": "https://github.com/pdxcat/puppet-module-collectd",
   "author": "Computer Action Team",
   "license": "Apache Version 2.0",
