@@ -1,16 +1,17 @@
 #
 class collectd(
-  $fqdnlookup   = true,
-  $interval     = 10,
-  $include      = [],
-  $purge        = undef,
-  $purge_config = false,
-  $recurse      = undef,
-  $threads      = 5,
-  $timeout      = 2,
-  $typesdb      = [],
-  $package_name = $collectd::params::package,
-  $version      = installed,
+  $fqdnlookup         = true,
+  $collectd_hostname  = $::hostname,
+  $interval           = 10,
+  $include            = [],
+  $purge              = undef,
+  $purge_config       = false,
+  $recurse            = undef,
+  $threads            = 5,
+  $timeout            = 2,
+  $typesdb            = [],
+  $package_name       = $collectd::params::package,
+  $version            = installed,
 ) inherits collectd::params {
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
