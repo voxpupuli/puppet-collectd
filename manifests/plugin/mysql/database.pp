@@ -26,12 +26,12 @@ define collectd::plugin::mysql::database (
   }
 
   file { "${name}.conf":
-    ensure    => $ensure,
-    path      => "${conf_dir}/mysql-${name}.conf",
-    mode      => '0644',
-    owner     => 'root',
-    group     => $collectd::params::root_group,
-    content   => template('collectd/mysql-database.conf.erb'),
-    notify    => Service['collectd'],
+    ensure  => $ensure,
+    path    => "${conf_dir}/mysql-${name}.conf",
+    mode    => '0644',
+    owner   => 'root',
+    group   => $collectd::params::root_group,
+    content => template('collectd/mysql-database.conf.erb'),
+    notify  => Service['collectd'],
   }
 }

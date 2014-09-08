@@ -10,9 +10,9 @@ define collectd::plugin::postgresql::writer (
   validate_string($statement)
 
   concat::fragment{"collectd_plugin_postgresql_conf_writer_${title}":
+    ensure  => $ensure,
     order   => '40',
     target  => "${collectd::params::plugin_conf_dir}/postgresql-config.conf",
     content => template('collectd/plugin/postgresql/writer.conf.erb'),
-    ensure  => $ensure,
   }
 }
