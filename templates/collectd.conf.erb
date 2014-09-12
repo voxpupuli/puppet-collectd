@@ -13,6 +13,12 @@ TypesDB<% @typesdb.each do |path| -%> "<%= path %>"<% end %>
 <% else -%>
 #TypesDB "/usr/share/collectd/types.db" "/etc/collectd/my_types.db"
 <% end -%>
+<% if @write_queue_limit_high -%>
+WriteQueueLimitHigh <%= @write_queue_limit_high %>
+<% end -%>
+<% if @write_queue_limit_low -%>
+WriteQueueLimitLow <%= @write_queue_limit_low %>
+<% end -%>
 Interval <%= @interval %>
 Timeout <%= @timeout %>
 ReadThreads <%= @threads %>
