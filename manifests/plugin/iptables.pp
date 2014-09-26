@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:IPTables
 class collectd::plugin::iptables (
   $ensure = present,
-  $chains = [],
+  $chains = {},
 ) {
   validate_hash($chains)
 
