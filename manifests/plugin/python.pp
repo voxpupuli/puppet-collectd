@@ -29,5 +29,6 @@ define collectd::plugin::python (
       mode    => '0644',
       source  => $script_source,
       require => File["${name}.load"],
+      notify  => Service['collectd'],
   }
 }
