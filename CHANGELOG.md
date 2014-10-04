@@ -1,3 +1,23 @@
+## 2014-10-04 Release 3.0.1
+
+### Backwards-incompatible changes:
+
+none
+
+### Summary:
+
+Bug fix release
+
+### Features:
+
+* Add support for manually specifying the hostname
+
+### Bugs:
+
+* Add dependency for python plugins
+* Set default value of chains to be hash
+* Sort snmp data and hosts hash
+
 ## 2014-08-25 Release 3.0.0
 
 ### Backwards-incompatible changes:
@@ -7,6 +27,8 @@
 * Rewrite of postgresql module to allow invocation by defined types
 
 ### Summary:
+
+This release adds multiple new plugins and improvements
 
 ### Features:
 
