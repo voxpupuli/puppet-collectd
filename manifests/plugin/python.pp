@@ -4,6 +4,7 @@ define collectd::plugin::python (
   $module,
   $script_source,
   $config = {},
+  $order = '10',
 ) {
   include collectd::params
 
@@ -13,10 +14,10 @@ define collectd::plugin::python (
 
   file {
     "${name}.load":
-      path    => "${conf_dir}/${name}.conf",
+      path    => "${conf_dir}/${order}-${name}.conf",
       owner   => 'root',
       group   => $collectd::params::root_group,
-      mode    => '0644',
+      mode    => '0640',
       content => template('collectd/python.conf.erb'),
       notify  => Service['collectd'],
   }
@@ -26,7 +27,7 @@ define collectd::plugin::python (
       path    => "${modulepath}/${module}.py",
       owner   => 'root',
       group   => $collectd::params::root_group,
-      mode    => '0644',
+      mode    => '0640',
       source  => $script_source,
       require => File["${name}.load"],
       notify  => Service['collectd'],
