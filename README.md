@@ -756,7 +756,7 @@ class { 'collectd::plugin::vmem':
 
 ```puppet
 class { 'collectd::plugin::write_graphite':
-  graphitehost => 'graphite.examle.org',
+  graphitehost => 'graphite.example.org',
 }
 ```
 
