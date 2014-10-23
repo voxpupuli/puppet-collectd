@@ -20,6 +20,12 @@ class collectd::plugin::libvirt (
   if $hostname_format != undef  { validate_string($hostname_format) }
   if $interface_format != undef { validate_string($interface_format) }
 
+  if $::osfamily == 'RedHat' {
+    package { 'collectd-virt':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin { 'libvirt':
     ensure  => $ensure,
     content => template('collectd/plugin/libvirt.conf.erb'),
