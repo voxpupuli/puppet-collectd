@@ -12,6 +12,13 @@ define collectd::plugin::python (
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
+  # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
+  file { "${name}.load-deprecated":
+    path => "${conf_dir}/${name}.conf",
+    ensure => absent,
+  }
+  # End deprecation
+
   file {
     "${name}.load":
       path    => "${conf_dir}/${order}-${name}.conf",
