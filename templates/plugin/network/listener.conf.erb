@@ -1,5 +1,5 @@
 <Plugin network>
-<% if @collectd_version and (scope.function_versioncmp([collectd_version, '4.7']) >= 0) -%>
+<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.7']) >= 0) -%>
   <Listen "<%= @name %>" "<%= @port %>">
 <% if @securitylevel -%>
     SecurityLevel "<%= @securitylevel %>"
