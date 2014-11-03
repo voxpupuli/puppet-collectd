@@ -6,6 +6,12 @@ class collectd::plugin::apache (
 
   validate_hash($instances)
 
+  if $::osfamily == 'RedHat' {
+    package { 'collectd-apache':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'apache':
     ensure  => $ensure,
     content => template('collectd/plugin/apache.conf.erb'),
