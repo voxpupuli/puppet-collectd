@@ -2,7 +2,11 @@
 LoadPlugin "curl_json"
 
 <Plugin "curl_json">
+<%- if @url.start_with? '/' -%>
+  <Sock "<%= @url %>">
+<%- else -%>
   <URL "<%= @url %>">
+<%- end -%>
     Instance "<%= @instance %>"
 
 <% if @user %>
@@ -16,5 +20,9 @@ LoadPlugin "curl_json"
     </Key>
 <% end -%>
 
+<%- if @url.start_with? '/' -%>
+  </Sock>
+<%- else -%>
   </URL>
+<%- end -%>
 </Plugin>
