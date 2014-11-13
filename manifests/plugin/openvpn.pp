@@ -6,6 +6,7 @@ class collectd::plugin::openvpn (
   $collectcompression     = true,
   $collectindividualusers = true,
   $collectusercount       = false,
+  $interval               = undef,
 ) {
   validate_absolute_path($statusfile)
   validate_bool(
@@ -16,7 +17,8 @@ class collectd::plugin::openvpn (
   )
 
   collectd::plugin {'openvpn':
-    ensure  => $ensure,
-    content => template('collectd/plugin/openvpn.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/openvpn.conf.erb'),
+    interval => $interval,
   }
 }

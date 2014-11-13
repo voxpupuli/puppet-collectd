@@ -8,7 +8,8 @@ class collectd::plugin::libvirt (
   $interface_device = undef,
   $ignore_selected  = undef,
   $hostname_format  = undef,
-  $interface_format = undef
+  $interface_format = undef,
+  $interval         = undef,
 ) {
   validate_string($connection)
 
@@ -27,7 +28,8 @@ class collectd::plugin::libvirt (
   }
 
   collectd::plugin { 'libvirt':
-    ensure  => $ensure,
-    content => template('collectd/plugin/libvirt.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/libvirt.conf.erb'),
+    interval => $interval,
   }
 }

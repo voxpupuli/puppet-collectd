@@ -3,6 +3,7 @@ class collectd::plugin::tcpconns (
   $localports  = undef,
   $remoteports = undef,
   $listening   = undef,
+  $interval    = undef,
   $ensure      = present
 ) {
 
@@ -15,7 +16,8 @@ class collectd::plugin::tcpconns (
   }
 
   collectd::plugin {'tcpconns':
-    ensure  => $ensure,
-    content => template('collectd/plugin/tcpconns.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/tcpconns.conf.erb'),
+    interval => $interval,
   }
 }

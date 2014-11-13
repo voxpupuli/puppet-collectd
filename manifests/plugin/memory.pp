@@ -1,8 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Memory
 class collectd::plugin::memory (
-  $ensure = present,
+  $ensure   = present,
+  $interval = undef,
 ) {
   collectd::plugin {'memory':
-    ensure => $ensure
+    ensure   => $ensure,
+    interval => $interval,
   }
 }

@@ -4,12 +4,14 @@ class collectd::plugin::unixsock (
   $socketgroup  = 'collectd',
   $socketperms  = '0770',
   $deletesocket = false,
-  $ensure       = present
+  $ensure       = present,
+  $interval     = undef,
 ) {
   validate_absolute_path($socketfile)
 
   collectd::plugin {'unixsock':
-    ensure  => $ensure,
-    content => template('collectd/plugin/unixsock.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/unixsock.conf.erb'),
+    interval => $interval,
   }
 }

@@ -5,9 +5,11 @@ class collectd::plugin::ntpd (
   $port             = 123,
   $reverselookups   = false,
   $includeunitid    = false,
+  $interval         = undef,
 ) {
   collectd::plugin {'ntpd':
-    ensure  => $ensure,
-    content => template('collectd/plugin/ntpd.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/ntpd.conf.erb'),
+    interval => $interval,
   }
 }
