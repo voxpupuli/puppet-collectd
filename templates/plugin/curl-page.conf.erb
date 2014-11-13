@@ -1,5 +1,5 @@
 <Plugin curl>
-  <Page "<%= plugininstance %>">
+  <Page "<%= @plugininstance %>">
     URL "<%= @url %>"
 <% if @user -%>
     User "<%= @user %>"
@@ -23,7 +23,7 @@
     Post "<%= @post %>"
 <% end -%>
 <% if @measureresponsetime -%>
-    MeasureResponseTime "<%= @measureresponsetime %>"
+    MeasureResponseTime <%= @measureresponsetime %>
 <% end -%>
 <%= scope.function_template(["collectd/plugin/match.tpl.erb"]) %>
   </Page>
