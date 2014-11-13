@@ -1,8 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Load
 class collectd::plugin::load (
-  $ensure = present,
+  $ensure   = present,
+  $interval = undef,
 ) {
   collectd::plugin {'load':
-    ensure => $ensure
+    ensure   => $ensure,
+    interval => $interval,
   }
 }

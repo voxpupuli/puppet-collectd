@@ -4,6 +4,7 @@ class collectd::plugin::network (
   $timetolive    = undef,
   $maxpacketsize = undef,
   $forward       = undef,
+  $interval      = undef,
   $reportstats   = undef,
   $listeners     = { },
   $servers       = { },
@@ -16,8 +17,9 @@ class collectd::plugin::network (
   }
 
   collectd::plugin {'network':
-    ensure  => $ensure,
-    content => template('collectd/plugin/network.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/network.conf.erb'),
+    interval => $interval,
   }
   $defaults = {
     'ensure' => $ensure

@@ -3,6 +3,7 @@ class collectd::plugin::df (
   $ensure           = present,
   $fstypes          = [],
   $ignoreselected   = false,
+  $interval         = undef,
   $mountpoints      = [],
   $reportbydevice   = false,
   $reportinodes     = true,
@@ -25,7 +26,8 @@ class collectd::plugin::df (
   )
 
   collectd::plugin {'df':
-    ensure  => $ensure,
-    content => template('collectd/plugin/df.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/df.conf.erb'),
+    interval => $interval,
   }
 }

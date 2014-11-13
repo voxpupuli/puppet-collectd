@@ -2,11 +2,13 @@
 class collectd::plugin::csv (
   $ensure     = present,
   $datadir    = '/etc/collectd/var/lib/collectd/csv',
+  $interval   = undef,
   $storerates = false
 ) {
 
   collectd::plugin {'csv':
-    ensure  => $ensure,
-    content => template('collectd/plugin/csv.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/csv.conf.erb'),
+    interval => $interval,
   }
 }

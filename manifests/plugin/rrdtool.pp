@@ -3,6 +3,7 @@ class collectd::plugin::rrdtool (
   $ensure           = present,
   $datadir          = '/var/lib/collectd/rrd',
   $createfilesasync = false,
+  $interval         = undef,
   $rrarows          = 1200,
   $rratimespan      = [3600, 86400, 604800, 2678400, 31622400],
   $xff              = 0.1,
@@ -49,7 +50,8 @@ class collectd::plugin::rrdtool (
   }
 
   collectd::plugin {'rrdtool':
-    ensure  => $ensure,
-    content => template('collectd/plugin/rrdtool.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/rrdtool.conf.erb'),
+    interval => $interval,
   }
 }
