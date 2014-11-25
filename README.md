@@ -231,7 +231,7 @@ class { 'collectd::plugin::disk':
 ####Class: `collectd::plugin::entropy`
 
 ```puppet
-collectd::plugin::entropy {
+class { 'collectd::plugin::entropy':
 }
 ```
 
