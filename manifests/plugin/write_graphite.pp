@@ -10,9 +10,11 @@ class collectd::plugin::write_graphite (
   $alwaysappendds    = false,
   $protocol          = 'tcp',
   $separateinstances = false,
+  $logsenderrors     = true,
 ) {
   validate_bool($storerates)
   validate_bool($separateinstances)
+  validate_bool($logsenderrors)
 
   collectd::plugin {'write_graphite':
     ensure  => $ensure,
