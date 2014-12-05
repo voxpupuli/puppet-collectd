@@ -7,11 +7,13 @@ class collectd::plugin::statsd (
   $deletetimers    = undef,
   $deletegauges    = undef,
   $deletesets      = undef,
+  $interval        = undef,
   $timerpercentile = undef,
 ) {
 
   collectd::plugin {'statsd':
-    ensure  => $ensure,
-    content => template('collectd/plugin/statsd.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/statsd.conf.erb'),
+    interval => $interval,
   }
 }

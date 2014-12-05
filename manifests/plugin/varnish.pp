@@ -4,7 +4,8 @@ class collectd::plugin::varnish (
   $instances = {
       'localhost' => {
       }
-    }
+    },
+  $interval = undef,
 ) {
   include collectd::params
 
@@ -17,7 +18,8 @@ class collectd::plugin::varnish (
   }
 
   collectd::plugin {'varnish':
-    ensure  => $ensure,
-    content => template('collectd/plugin/varnish.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/varnish.conf.erb'),
+    interval => $interval,
   }
 }
