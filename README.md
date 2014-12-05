@@ -105,6 +105,7 @@ documentation for each plugin for configurable attributes.
 * `write_http` (see [collectd::plugin::write_http](#class-collectdpluginwrite_http) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
+* `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
 
 ####Class: `collectd::plugin::amqp`
 
@@ -790,6 +791,14 @@ class { 'collectd::plugin::write_network':
 class { 'collectd::plugin::write_riemann':
   riemann_host => 'riemann.example.org',
   riemann_port => 5555,
+}
+```
+
+
+####Class: `collectd::plugin::zfs_arc`
+
+```puppet
+class { 'collectd::plugin::zfs_arc':
 }
 ```
 
