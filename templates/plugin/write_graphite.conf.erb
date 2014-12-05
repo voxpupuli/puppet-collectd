@@ -10,6 +10,7 @@
     StoreRates <%=  @storerates %>
     AlwaysAppendDS <%= @alwaysappendds %>
     SeparateInstances <%= @separateinstances %>
+    LogSendErrors <%= @logsenderrors %>
 <% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.4']) >= 0) -%>
     Protocol "<%= @protocol %>"
 <% end -%>
