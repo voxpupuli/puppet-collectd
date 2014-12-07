@@ -1,0 +1,20 @@
+<Plugin "filecount">
+  <Directory "<%= @path -%>">
+    Instance "<%= @instance %>"
+<% if @pattern -%>
+    Name "<%= @pattern %>"
+<% end -%>
+<% if @mtime -%>
+    MTime "<%= @mtime %>"
+<% end -%>
+<% if @size -%>
+    Size "<%= @size %>"
+<% end -%>
+<% unless @recursive.nil? -%>
+    Recursive <%= @recursive %>
+<% end -%>
+<% unless @includehidden.nil? -%>
+    IncludeHidden <%= @includehidden %>
+<% end -%>
+  </Directory>
+</Plugin>

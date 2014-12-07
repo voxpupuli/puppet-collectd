@@ -18,6 +18,28 @@ describe 'collectd::plugin::filecount', :type => :class do
     end
   end
 
+  context 'new :directories format' do
+    let :params do
+      {:directories => { 'foodir' => {
+          'path'          => '/path/to/dir',
+          'pattern'       => '*.conf',
+          'mtime'         => '-5m',
+          'recursive'     => true,
+          'includehidden' => false,
+      }}}
+    end
+    it 'Will create foodir collectd::plugin::filecount::directory resource' do
+      should contain_collectd__plugin__filecount__directory('foodir').with({
+        :ensure        => 'present',
+        :path          => '/path/to/dir',
+        :pattern       => '*.conf',
+        :mtime         => '-5m',
+        :recursive     => true,
+        :includehidden => false,
+      })
+    end
+  end
+
   context ':ensure => absent' do
     let :params do
       {:directories => { 'active' => '/var/spool/postfix/active' }, :ensure => 'absent'}

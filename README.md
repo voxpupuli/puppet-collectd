@@ -269,6 +269,31 @@ collectd::plugin::exec {
 ####Class: `collectd::plugin::filecount`
 
 ```puppet
+collectd::plugin::filecount::directory {'foodir':
+  path          => '/path/to/dir',
+  pattern       => '*.conf',
+  mtime         => '-5m',
+  recursive     => true,
+  includehidden => false
+}
+
+```
+You can also configure this plugin with a parameterized class:
+```puppet
+class { 'collectd::plugin::filecount':
+  directories => {
+    'foodir' => {
+      'path'          => '/path/to/dir',
+      'pattern'       => '*.conf',
+      'mtime'         => '-5m',
+      'recursive'     => true,
+      'includehidden' => false
+      },
+  },
+}
+```
+For backwards compatibility:
+```puppet
 class { 'collectd::plugin::filecount':
   directories => {
     'active'   => '/var/spool/postfix/active',
