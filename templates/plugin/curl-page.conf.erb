@@ -7,11 +7,11 @@
 <% if @password -%>
     Password "<%= @password %>"
 <% end -%>
-<% if @verifypeer -%>
-    VerifyPeer "<%= @verifypeer %>"
+<% unless @verifypeer.nil? -%>
+    VerifyPeer <%= @verifypeer %>
 <% end -%>
-<% if @verifyhost %>
-    VerifyHost "<%= @verifyhost %>"
+<% unless @verifyhost.nil? -%>
+    VerifyHost <%= @verifyhost %>
 <% end -%>
 <% if @cacert -%>
     CACert "<%= @cacert %>"
@@ -22,9 +22,11 @@
 <% if @post and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.3']) >= 0) -%>
     Post "<%= @post %>"
 <% end -%>
-<% if @measureresponsetime -%>
+<% unless @measureresponsetime.nil? -%>
     MeasureResponseTime <%= @measureresponsetime %>
 <% end -%>
+<% if @matches -%>
 <%= scope.function_template(["collectd/plugin/match.tpl.erb"]) %>
+<% end -%>
   </Page>
 </Plugin>
