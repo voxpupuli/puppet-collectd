@@ -10,7 +10,7 @@ define collectd::plugin::curl::page (
   $header              = undef,
   $post                = undef,
   $measureresponsetime = undef,
-  $matches             = [{ }],
+  $matches             = undef,
   $plugininstance      = $name, # You can have multiple <Page> with the same name.
 ) {
   include collectd::params
@@ -19,6 +19,10 @@ define collectd::plugin::curl::page (
   $conf_dir = $collectd::params::plugin_conf_dir
 
   validate_string($url)
+
+  if $matches != undef {
+    validate_array($matches)
+  }
 
   file { "${conf_dir}/curl-${name}.conf":
     ensure  => $ensure,
