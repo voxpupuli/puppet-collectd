@@ -59,6 +59,7 @@ documentation for each plugin for configurable attributes.
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
+* `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
 * `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
@@ -145,6 +146,14 @@ class { 'collectd::plugin::bind':
 
 ```puppet
 class { 'collectd::plugin::cpu':
+}
+
+
+```
+####Class: `collectd::plugin::cpufreq`
+
+```puppet
+class { 'collectd::plugin::cpufreq':
 }
 ```
 
