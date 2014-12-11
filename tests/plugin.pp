@@ -16,4 +16,4 @@ collectd::plugin { 'memory': }
 collectd::plugin { 'processes': }
 collectd::plugin { 'swap': }
 collectd::plugin { 'users': }
-
+collects::plugin { 'cpufreq': }
