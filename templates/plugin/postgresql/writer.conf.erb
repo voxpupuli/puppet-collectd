@@ -1,6 +1,6 @@
   <Writer <%= @name %>>
     Statement "<%= @statement %>"
-<% if @storerates -%>
+<% unless @storerates.nil? -%>
     StoreRates <%= @storerates %>
 <% end -%>
   </Writer>

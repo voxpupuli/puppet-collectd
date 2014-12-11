@@ -6,10 +6,10 @@
 <% if @password -%>
   Password "<%= @password %>"
 <% end -%>
-<% if @verifypeer -%>
+<% unless @verifypeer.nil? -%>
   VerifyPeer <%= @verifypeer %>
 <% end -%>
-<% if @verifyhost -%>
+<% unless @verifyhost.nil? -%>
   VerifyHost <%= @verifyhost %>
 <% end -%>
 <% if @cacert -%>

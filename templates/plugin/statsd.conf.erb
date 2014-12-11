@@ -5,16 +5,16 @@
 <% if @port -%>
   Port <%= @port %>
 <% end -%>
-<% if @deletecounters -%>
+<% unless @deletecounters.nil? -%>
   DeleteCounters <%= @deletecounters %>
 <% end -%>
-<% if @deletetimers -%>
+<% unless @deletetimers.nil? -%>
   DeleteTimers <%= @deletetimers %>
 <% end -%>
-<% if @deletegauges -%>
+<% unless @deletegauges.nil? -%>
   DeleteGauges <%= @deletegauges %>
 <% end -%>
-<% if @deletesets -%>
+<% unless @deletesets.nil? -%>
   Deletesets <%= @deletesets %>
 <% end -%>
 <% if @timerpercentile -%>
