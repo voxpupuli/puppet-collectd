@@ -9,6 +9,7 @@ class collectd::plugin::perl (
 
   collectd::plugin { 'perl':
     ensure  => $ensure,
+    globals => true,
     order   => $order,
     content => template('collectd/plugin/perl.conf.erb')
   }
