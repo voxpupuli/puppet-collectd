@@ -49,6 +49,33 @@ describe 'collectd::plugin::curl', :type => :class do
     end
   end
 
+  context ':ensure => present, verifypeer => false, verifyhost => \'false\', measureresponsetime => true, matches empty' do
+    let :facts do
+      {:osfamily => 'Debian'}
+    end
+    let :params do
+      {
+        :ensure => 'present',
+        :pages => {
+          'selfsigned_ssl' => {
+            'url'                 => 'https://some.selfsigned.ssl.site/',
+            'verifypeer'          => false,
+            'verifyhost'          => 'false',
+            'measureresponsetime' => true,
+          },
+        }
+      }
+    end
+
+    it 'Will create /etc/collectd.d/conf.d/curl-selfsigned_ssl.conf' do
+      should contain_file('/etc/collectd/conf.d/curl-selfsigned_ssl.conf').with({
+        :ensure  => 'present',
+        :path    => '/etc/collectd/conf.d/curl-selfsigned_ssl.conf',
+        :content => "<Plugin curl>\n  <Page \"selfsigned_ssl\">\n    URL \"https://some.selfsigned.ssl.site/\"\n    VerifyPeer false\n    VerifyHost false\n    MeasureResponseTime true\n  </Page>\n</Plugin>\n",
+      })
+    end
+  end
+
   context ':ensure => absent' do
     let :facts do
       {:osfamily => 'RedHat'}
