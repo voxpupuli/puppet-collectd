@@ -9,13 +9,13 @@
   MemoryStats <%= @memorystats %>
 <% @views.each do |view| -%>
   <View "<%= view['name'] %>">
-<% if view['qtypes'] -%>
+<% unless view['qtypes'].nil? -%>
     QTypes <%= view['qtypes'] %>
 <% end -%>
-<% if view['resolverstats'] -%>
+<% unless view['resolverstats'].nil? -%>
     ResolverStats <%= view['resolverstats'] %>
 <% end -%>
-<% if view['cacherrsets'] -%>
+<% unless view['cacherrsets'].nil? -%>
     CacheRRSets <%= view['cacherrsets'] %>
 <% end -%>
 <% if view['zones'] -%>

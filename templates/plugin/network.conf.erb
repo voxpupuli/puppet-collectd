@@ -5,10 +5,10 @@
 <% if @maxpacketsize -%>
     MaxPacketSize <%= @maxpacketsize %>
 <% end -%>
-<% if @forward -%>
+<% unless @forward.nil? -%>
     Forward "<%= @forward %>"
 <% end -%>
-<% if @reportstats -%>
+<% unless @reportstats.nil? -%>
     ReportStats "<%= @reportstats %>"
 <% end -%>
   

@@ -1,10 +1,10 @@
 <Plugin rrdcached>
   DaemonAddress "<%= @daemonaddress %>"
   DataDir "<%= @datadir %>"
-<% unless @createfiles -%>
+<% unless @createfiles.nil? -%>
   CreateFiles "<%= @createfiles %>"
 <% end -%>
-<% if @createfilesasync -%>
+<% unless @createfilesasync.nil? -%>
   CreateFilesAsync "<%= @createfilesasync %>"
 <% end -%>
 <% if @stepsize -%>

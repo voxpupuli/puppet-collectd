@@ -7,7 +7,7 @@
   Sensor "<%= @sensor %>"
 <% end -%>
 <% end -%>
-<% if @ignoreselected -%>
+<% unless @ignoreselected.nil? -%>
   IgnoreSelected "<%= @ignoreselected %>"
 <% end -%>
 </Plugin>
