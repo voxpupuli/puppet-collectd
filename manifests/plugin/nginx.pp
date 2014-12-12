@@ -7,10 +7,12 @@ class collectd::plugin::nginx (
   $verifypeer = undef,
   $verifyhost = undef,
   $cacert     = undef,
+  $interval   = undef,
 ) {
 
   collectd::plugin {'nginx':
-    ensure  => $ensure,
-    content => template('collectd/plugin/nginx.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/nginx.conf.erb'),
+    interval => $interval,
   }
 }

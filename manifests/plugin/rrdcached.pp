@@ -7,6 +7,7 @@ class collectd::plugin::rrdcached (
   $createfilesasync = false,
   $stepsize         = undef,
   $heartbeat        = undef,
+  $interval         = undef,
   $rrarows          = undef,
   $rratimespan      = [],
   $xff              = undef,
@@ -15,7 +16,8 @@ class collectd::plugin::rrdcached (
   validate_bool($createfiles, $createfilesasync)
 
   collectd::plugin {'rrdcached':
-    ensure  => $ensure,
-    content => template('collectd/plugin/rrdcached.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/rrdcached.conf.erb'),
+    interval => $interval,
   }
 }

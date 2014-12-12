@@ -1,10 +1,12 @@
 #
 class collectd::plugin::curl (
-  $ensure = present,
-  $pages  = { },
+  $ensure   = present,
+  $interval = undef,
+  $pages    = { },
 ) {
   collectd::plugin {'curl':
-    ensure => $ensure,
+    ensure   => $ensure,
+    interval => $interval,
   }
   $defaults = {
     'ensure' => $ensure

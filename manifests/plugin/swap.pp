@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Swap
 class collectd::plugin::swap (
   $ensure         = present,
+  $interval       = undef,
   $reportbydevice = false,
   $reportbytes    = true,
 ) {
@@ -10,7 +11,8 @@ class collectd::plugin::swap (
   )
 
   collectd::plugin {'swap':
-    ensure  => $ensure,
-    content => template('collectd/plugin/swap.conf.erb'),
+    ensure   => $ensure,
+    content  => template('collectd/plugin/swap.conf.erb'),
+    interval => $interval,
   }
 }

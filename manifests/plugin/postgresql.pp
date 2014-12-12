@@ -2,13 +2,15 @@
 class collectd::plugin::postgresql (
   $ensure    = present,
   $databases = { },
+  $interval  = undef,
   $queries   = { },
   $writers   = { },
 ) {
   include collectd::params
 
   collectd::plugin {'postgresql':
-    ensure => $ensure,
+    ensure   => $ensure,
+    interval => $interval,
   }
 
   concat{"${collectd::params::plugin_conf_dir}/postgresql-config.conf":
