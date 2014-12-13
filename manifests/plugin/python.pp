@@ -3,6 +3,7 @@ define collectd::plugin::python (
   $modulepath,
   $module,
   $script_source,
+  $ensure = present,
   $config = {},
   $order = '10',
 ) {
@@ -14,13 +15,14 @@ define collectd::plugin::python (
 
   # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
   file { "${name}.load-deprecated":
-    path => "${conf_dir}/${name}.conf",
     ensure => absent,
+    path   => "${conf_dir}/${name}.conf",
   }
   # End deprecation
 
   file {
     "${name}.load":
+      ensure  => $ensure,
       path    => "${conf_dir}/${order}-${name}.conf",
       owner   => 'root',
       group   => $collectd::params::root_group,
@@ -31,6 +33,7 @@ define collectd::plugin::python (
 
   file {
     "${name}.script":
+      ensure  => $ensure,
       path    => "${modulepath}/${module}.py",
       owner   => 'root',
       group   => $collectd::params::root_group,
