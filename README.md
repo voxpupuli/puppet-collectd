@@ -58,6 +58,7 @@ documentation for each plugin for configurable attributes.
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
+* `conntrack`  (see [collectd::plugin::conntrack](#class-conntrack) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
@@ -140,6 +141,15 @@ class { 'collectd::plugin::apache':
 class { 'collectd::plugin::bind':
   url    => 'http://localhost:8053/',
 }
+```
+
+####Class: `collectd::plugin::conntrack`
+
+```puppet
+class { 'collectd::plugin::conntrack':
+}
+
+
 ```
 
 ####Class: `collectd::plugin::cpu`
