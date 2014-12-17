@@ -15,8 +15,8 @@ define collectd::plugin::curl_json (
 
   # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
   file { "${name}.load-deprecated":
-    path => "${conf_dir}/${name}.conf",
     ensure => absent,
+    path   => "${conf_dir}/${name}.conf",
   }
   # End deprecation
 
