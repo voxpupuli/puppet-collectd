@@ -4,6 +4,8 @@ define collectd::plugin::exec (
   $group,
   $exec              = [],
   $notification_exec = [],
+  $ensure = present,
+  $order = '10',
 ) {
   include collectd::params
 
@@ -12,13 +14,22 @@ define collectd::plugin::exec (
 
   $conf_dir = $collectd::params::plugin_conf_dir
 
+  # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
+  file { "${name}.load-deprecated":
+    path => "${conf_dir}/${name}.conf",
+    ensure => absent,
+  }
+  # End deprecation
+
   file {
     "${name}.load":
-      path    => "${conf_dir}/${name}.conf",
+      ensure  => $ensure,
+      path    => "${conf_dir}/${order}-${name}.conf",
       owner   => 'root',
       group   => $collectd::params::root_group,
       mode    => '0644',
       content => template('collectd/exec.conf.erb'),
       notify  => Service['collectd'],
   }
+
 }
