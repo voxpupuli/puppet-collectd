@@ -1,9 +1,10 @@
+# https://collectd.org/wiki/index.php/Plugin:Sensors
 class collectd::plugin::sensors (
+  $ensure           = present,
   $sensorconfigfile = undef,
   $sensor           = undef,
   $ignoreselected   = undef,
   $interval         = undef,
-  $ensure           = present
 ) {
 
   collectd::plugin {'sensors':
