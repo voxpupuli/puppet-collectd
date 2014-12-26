@@ -1,3 +1,57 @@
+## 2014-12-26 Release 3.1.0
+
+### Backwards-incompatible changes:
+
+There are no known backwards compat changes, please add them to the
+CHANGELOG if you find one.
+
+### Summary:
+
+This release introduces support for 3 new plugins, new parameters for existing
+plugins, bugfixes, doc improvments and basic acceptance tests with beaker.
+
+### New Plugins:
+
+* Add conntrack module
+* Add cpufreq plugin
+* Add collectd::plugin::zfs_arc
+
+### Features:
+
+* filecount: support all options
+* plugin::python introduce ensure parameter
+* Make plugins passing the $interval parameter
+* Support LogSendErrors on the write_graphite plugin
+* curl: fix handling of some parameters
+* curl_json: Support reading from a unix socket
+* Adding support for WriteQueueLimitLow & WriteQueueLimitHigh, which were added in collectd 5.4
+
+### Bugs/Maint:
+
+* Lintian fixes
+* Ensure variable using 'false' will be interpreted.
+* Cleaning the now redundant LoadPlugin declaration
+* Uses the LoadPlugin syntax with bracket when supported
+* Fix Puppet deprecation warning
+* Add "" to Hostname
+* Double quote the csv plugin DataDir.
+* write_http: StoreRates is a bool, not a string
+* curl : 'MeasureResponseTime' needs exactly one boolean argument
+* Add collectd-apache package needed on RedHat
+* Variables in templates should use @-notation
+
+### Tests:
+
+* Basic acceptance test with beaker
+* Add rspec test to ensure the bracket syntax is using when available
+* Fix travis by using plabs gemfile
+
+### Docs:
+
+* Add conntrack to README.md
+* Add cpufreq plugin doc
+* README.md: Fixed example entropy snippet.
+
 ## 2014-10-04 Release 3.0.1
 
 ### Backwards-incompatible changes:
