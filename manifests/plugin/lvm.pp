@@ -6,7 +6,7 @@ class collectd::plugin::lvm (
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-lvm':
-      ensure => installed
+      ensure => $ensure,
     }
   }
 
