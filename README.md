@@ -75,6 +75,7 @@ documentation for each plugin for configurable attributes.
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `libvirt` (see [collectd::plugin::libvirt](#class-collectdpluginlibvirt) below)
+* `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
@@ -356,6 +357,12 @@ class { 'collectd::plugin::libvirt':
   connection       => 'qemu:///system',
   interface_format => 'address'
 }
+```
+
+####Class: `collectd::plugin::lvm`
+
+```puppet
+class { 'collectd::plugin::lvm': }
 ```
 
 ####Class: `collectd::plugin::memcached`
