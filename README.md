@@ -1,7 +1,7 @@
 Collectd module for Puppet
 ==========================
 
-[![Build Status](https://travis-ci.org/pdxcat/puppet-module-collectd.png?branch=master)](https://travis-ci.org/pdxcat/puppet-module-collectd)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/pdxcat/collectd.svg)](https://forge.puppetlabs.com/pdxcat/collectd) [![Build Status](https://travis-ci.org/pdxcat/puppet-module-collectd.png?branch=master)](https://travis-ci.org/pdxcat/puppet-module-collectd)
 
 Description
 -----------
