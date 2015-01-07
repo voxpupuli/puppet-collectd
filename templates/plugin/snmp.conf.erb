@@ -5,7 +5,7 @@
     Type "<%= val['Type'] %>"
     Table <%= val['Table'] %>
     Instance "<%= val['Instance'] %>"
-    Values <% val['Values'].sort.each do |x| -%>"<%= x %>" <% end %>
+    Values <% Array(val['Values']).sort.each do |x| -%>"<%= x %>" <% end %>
   </Data>
 <% end -%>
 <% @hosts.sort_by {|k,v| k}.each do |key,val| -%>
@@ -13,7 +13,7 @@
     Address "<%= val['Address'] %>"
     Version <%= val['Version'] %>
     Community "<%= val['Community'] %>"
-    Collect <% val['Collect'].sort.each do |x| -%>"<%= x -%>" <% end %>
+    Collect <% Array(val['Collect']).sort.each do |x| -%>"<%= x -%>" <% end %>
     Interval <%= val['Interval'] %>
   </Host>
 <% end -%>
