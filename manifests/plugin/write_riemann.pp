@@ -11,6 +11,12 @@ class collectd::plugin::write_riemann (
   validate_bool($store_rates)
   validate_bool($always_append_ds)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-write_riemann':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'write_riemann':
     ensure   => $ensure,
     content  => template('collectd/plugin/write_riemann.conf.erb'),
