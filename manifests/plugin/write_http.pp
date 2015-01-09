@@ -7,6 +7,12 @@ class collectd::plugin::write_http (
 
   validate_hash($urls)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-write_http':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'write_http':
     ensure   => $ensure,
     content  => template('collectd/plugin/write_http.conf.erb'),
