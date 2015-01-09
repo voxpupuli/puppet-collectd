@@ -12,6 +12,12 @@ define collectd::plugin::ping (
 
   validate_array($hosts)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-ping':
+      ensure => $ensure,
+    }
+  }
+
   $conf_dir = $collectd::params::plugin_conf_dir
 
   file {
