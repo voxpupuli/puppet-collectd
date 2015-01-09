@@ -7,6 +7,12 @@ class collectd::plugin::sensors (
   $interval         = undef,
 ) {
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-sensors':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'sensors':
     ensure   => $ensure,
     content  => template('collectd/plugin/sensors.conf.erb'),
