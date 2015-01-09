@@ -6,6 +6,12 @@ class collectd::plugin::iptables (
 ) {
   validate_hash($chains)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-iptables':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'iptables':
     ensure   => $ensure,
     content  => template('collectd/plugin/iptables.conf.erb'),
