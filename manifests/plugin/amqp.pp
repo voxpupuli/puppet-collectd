@@ -16,6 +16,12 @@ class collectd::plugin::amqp (
 
   validate_bool($amqppersistent)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-amqp':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'amqp':
     ensure   => $ensure,
     content  => template('collectd/plugin/amqp.conf.erb'),
