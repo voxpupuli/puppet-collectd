@@ -13,7 +13,7 @@ class collectd::plugin::varnish (
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-varnish':
-      ensure => installed
+      ensure => $ensure,
     }
   }
 

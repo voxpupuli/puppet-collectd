@@ -8,6 +8,12 @@ class collectd::plugin::postgresql (
 ) {
   include collectd::params
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-postgresql':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'postgresql':
     ensure   => $ensure,
     interval => $interval,

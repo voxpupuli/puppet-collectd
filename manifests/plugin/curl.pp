@@ -4,6 +4,13 @@ class collectd::plugin::curl (
   $interval = undef,
   $pages    = { },
 ) {
+
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-curl':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'curl':
     ensure   => $ensure,
     interval => $interval,

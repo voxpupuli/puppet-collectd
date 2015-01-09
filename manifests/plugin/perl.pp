@@ -8,6 +8,12 @@ class collectd::plugin::perl (
   include collectd::params
   $conf_dir = $collectd::params::plugin_conf_dir
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-perl':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin { 'perl':
     ensure   => $ensure,
     globals  => true,

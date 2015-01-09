@@ -7,6 +7,12 @@ class collectd::plugin::snmp (
 ) {
   validate_hash($data, $hosts)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-snmp':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'snmp':
     ensure   => $ensure,
     content  => template('collectd/plugin/snmp.conf.erb'),

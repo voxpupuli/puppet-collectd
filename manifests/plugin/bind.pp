@@ -24,6 +24,12 @@ class collectd::plugin::bind (
   )
   validate_array($views)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-bind':
+      ensure => $ensure,
+    }
+  }
+
   collectd::plugin {'bind':
     ensure   => $ensure,
     content  => template('collectd/plugin/bind.conf.erb'),
