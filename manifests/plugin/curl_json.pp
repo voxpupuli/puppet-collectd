@@ -11,6 +11,12 @@ define collectd::plugin::curl_json (
   include collectd::params
   validate_hash($keys)
 
+  if $::osfamily == 'Redhat' {
+    package { 'collectd-curl_json':
+      ensure => $ensure,
+    }
+  }
+
   $conf_dir = $collectd::params::plugin_conf_dir
 
   # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
