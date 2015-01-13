@@ -67,13 +67,5 @@ describe 'collectd::plugin::snmp', :type => :class do
     end
   end
 
-  context ':data is not a hash' do
-    let :params do
-      {:data => []}
-    end
-    it 'Will raise an error about :data being a Array' do
-      expect {should}.to raise_error(Puppet::Error,/Array/)
-    end
-  end
 end
 

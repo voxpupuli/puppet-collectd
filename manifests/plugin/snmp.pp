@@ -5,8 +5,6 @@ class collectd::plugin::snmp (
   $hosts    = undef,
   $interval = undef,
 ) {
-  validate_hash($data, $hosts)
-
   if $::osfamily == 'Redhat' {
     package { 'collectd-snmp':
       ensure => $ensure,
