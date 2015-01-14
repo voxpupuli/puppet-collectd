@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 class collectd::plugin::snmp (
   $ensure   = present,
-  $data     = undef,
-  $hosts    = undef,
+  $data     = {},
+  $hosts    = {},
   $interval = undef,
 ) {
   if $::osfamily == 'Redhat' {
