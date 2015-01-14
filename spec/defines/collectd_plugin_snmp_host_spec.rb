@@ -48,13 +48,13 @@ describe 'collectd::plugin::snmp::host', :type => :define do
     let (:params) {{
       :collect => %w{ foo bar baz }
     }}
-    it { should contain_file(filename).with_content(/Collect foo bar baz/) }
+    it { should contain_file(filename).with_content(/Collect "foo" "bar" "baz"/) }
   end
 
   context 'collect is just a string' do
     let (:params) {{
       :collect => 'bat'
     }}
-    it { should contain_file(filename).with_content(/Collect bat/) }
+    it { should contain_file(filename).with_content(/Collect "bat"/) }
   end
 end

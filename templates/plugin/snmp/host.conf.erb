@@ -3,7 +3,7 @@
     Address "<%= @address %>"
     Version <%= @version %>
     Community "<%= @community %>"
-    Collect <%= Array(@collect).join(" ") %>
+    Collect <%= Array(@collect).map { |x| %Q{"#{x}"} }.join(' ') %>
     <%- if !@interval.nil? -%>
     Interval <%= @interval %>
     <%- end -%>

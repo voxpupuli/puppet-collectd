@@ -35,7 +35,7 @@ describe 'collectd::plugin::snmp::data', :type => :define do
         :values => %w{ foo bar baz }
       })
     }
-    it { should contain_file('snmp-data-foo.conf').with_content(/Values foo bar baz/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(/Values "foo" "bar" "baz"/) }
   end
 
   context 'values is just a string' do
@@ -44,7 +44,7 @@ describe 'collectd::plugin::snmp::data', :type => :define do
         :values => 'bat'
       })
     }
-    it { should contain_file('snmp-data-foo.conf').with_content(/Values bat/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(/Values "bat"/) }
   end
 
   context 'table is true' do
