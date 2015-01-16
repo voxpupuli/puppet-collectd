@@ -1,7 +1,7 @@
+<% if !Array(@jvmarg).empty? -%>
 <Plugin java>
-  <% if @jvmarg -%>
-    <% Array(@jvmarg).each do |arg| -%>
+  <% Array(@jvmarg).each do |arg| -%>
   JVMArg "<%= arg %>"
-    <% end -%>
   <% end -%>
 </Plugin>
+<% end -%>

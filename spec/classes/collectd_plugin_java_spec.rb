@@ -12,7 +12,6 @@ describe 'collectd::plugin::java', :type => :class do
         :path => '/etc/collectd.d/10-java.conf',
       })
 
-      should contain_file('java.load').with_content(/<Plugin java>/)
       should contain_file('java.load').without_content(/JVMArg/)
     end
   end
@@ -51,6 +50,16 @@ describe 'collectd::plugin::java', :type => :class do
 
     it 'will only have one JVMArg bit' do
       should contain_file('java.load').without_content(/(.*JVMArg.*){2,}/)
+    end
+  end
+
+  context 'jvmarg parameter empty' do
+    let (:params) {{
+      :jvmarg => [],
+    }}
+
+    it 'will not have a <Plugin java> stanza' do
+      should contain_file('java.load').without_content(/<Plugin java>/)
     end
   end
 end
