@@ -7,12 +7,11 @@ describe 'collectd::plugin::java', :type => :class do
 
   context ':ensure => present, defaults' do
     it 'Will load the plugin' do
-      should contain_file('java.load').with({
+      should contain_collectd__plugin('java').with({
         :ensure => 'present',
-        :path => '/etc/collectd.d/10-java.conf',
       })
 
-      should contain_file('java.load').without_content(/JVMArg/)
+      should contain_collectd__plugin('java').without_content(/JVMArg/)
     end
   end
 
@@ -22,9 +21,8 @@ describe 'collectd::plugin::java', :type => :class do
     }}
 
     it 'will not load the plugin' do
-      should contain_file('java.load').with({
-        :ensure => 'absent',
-        :path => '/etc/collectd.d/10-java.conf',
+      should contain_collectd__plugin('java').with({
+        :ensure => 'absent'
       })
     end
   end
@@ -35,7 +33,7 @@ describe 'collectd::plugin::java', :type => :class do
     }}
 
     it 'will have multiple JVMArg bits' do
-      should contain_file('java.load').with_content(/JVMArg "foo"[\s\n]+JVMArg "bar"[\s\n]+JVMArg "baz"/)
+      should contain_collectd__plugin('java').with_content(/JVMArg "foo"[\s\n]+JVMArg "bar"[\s\n]+JVMArg "baz"/)
     end
   end
 
@@ -45,11 +43,11 @@ describe 'collectd::plugin::java', :type => :class do
     }}
 
     it 'will have a JVMArg bit' do
-      should contain_file('java.load').with_content(/JVMArg "bat"/)
+      should contain_collectd__plugin('java').with_content(/JVMArg "bat"/)
     end
 
     it 'will only have one JVMArg bit' do
-      should contain_file('java.load').without_content(/(.*JVMArg.*){2,}/)
+      should contain_collectd__plugin('java').without_content(/(.*JVMArg.*){2,}/)
     end
   end
 
@@ -59,8 +57,7 @@ describe 'collectd::plugin::java', :type => :class do
     }}
 
     it 'will not have a <Plugin java> stanza' do
-      should contain_file('java.load').without_content(/<Plugin java>/)
+      should contain_collectd__plugin('java').without_content(/<Plugin java>/)
     end
   end
 end
-
