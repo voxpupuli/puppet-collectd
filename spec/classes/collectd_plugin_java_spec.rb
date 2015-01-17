@@ -10,8 +10,6 @@ describe 'collectd::plugin::java', :type => :class do
       should contain_collectd__plugin('java').with({
         :ensure => 'present',
       })
-
-      should contain_collectd__plugin('java').without_content(/JVMArg/)
     end
   end
 
@@ -32,7 +30,7 @@ describe 'collectd::plugin::java', :type => :class do
       :jvmarg => %w{ foo bar baz }
     }}
 
-    it 'will have multiple JVMArg bits' do
+    it 'will have multiple jvmarg parameters' do
       should contain_collectd__plugin('java').with_content(/JVMArg "foo"[\s\n]+JVMArg "bar"[\s\n]+JVMArg "baz"/)
     end
   end
@@ -42,11 +40,11 @@ describe 'collectd::plugin::java', :type => :class do
       :jvmarg => 'bat'
     }}
 
-    it 'will have a JVMArg bit' do
+    it 'will have a JVMArg parameter' do
       should contain_collectd__plugin('java').with_content(/JVMArg "bat"/)
     end
 
-    it 'will only have one JVMArg bit' do
+    it 'will only have one JVMArg parameter' do
       should contain_collectd__plugin('java').without_content(/(.*JVMArg.*){2,}/)
     end
   end
@@ -58,6 +56,9 @@ describe 'collectd::plugin::java', :type => :class do
 
     it 'will not have a <Plugin java> stanza' do
       should contain_collectd__plugin('java').without_content(/<Plugin java>/)
+    end
+    it 'will not have any jvmarg parameters' do
+      should contain_collectd__plugin('java').without_content(/JVMArg/)
     end
   end
 end
