@@ -1,0 +1,7 @@
+<Plugin "java">
+<% Array(@jvmarg).each do |jvmarg| -%>
+  JVMArg "<%= jvmarg %>"
+<% end -%>
+
+  LoadPlugin "org.collectd.java.GenericJMX"
+  <Plugin "GenericJMX">
