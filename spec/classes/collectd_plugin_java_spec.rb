@@ -31,7 +31,7 @@ describe 'collectd::plugin::java', :type => :class do
     }}
 
     it 'will have multiple jvmarg parameters' do
-      should contain_collectd__plugin('java').with_content(/JVMArg "foo"[\s\n]+JVMArg "bar"[\s\n]+JVMArg "baz"/)
+      should contain_collectd__plugin('java').with_content(/JVMArg "foo".+JVMArg "bar".+JVMArg "baz"/m)
     end
   end
 
@@ -45,7 +45,7 @@ describe 'collectd::plugin::java', :type => :class do
     end
 
     it 'will only have one JVMArg parameter' do
-      should contain_collectd__plugin('java').without_content(/(.*JVMArg.*){2,}/)
+      should contain_collectd__plugin('java').without_content(/(.*JVMArg.*){2,}/m)
     end
   end
 
