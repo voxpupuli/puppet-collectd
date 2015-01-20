@@ -2,5 +2,7 @@
   Host "<%= @host %>"
   Port "<%= @port %>"
   ReverseLookups <%= @reverselookups %>
+<% if @collectd_version and scope.function_versioncmp([@collectd_version, '5.2']) > 0 -%>
   IncludeUnitID <%= @includeunitid %>
+<% end -%>
 </Plugin>
