@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx', :type => :class do
   let (:facts) {{
-    :osfamily       => 'RedHat',
+    :osfamily       => 'Debian',
     :concat_basedir => tmpfilename('collectd-genericjmx'),
   }}
 
-  let (:config_filename) { '/etc/collectd.d/15-genericjmx.conf' }
+  let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
 
   context ':ensure => present, defaults' do
     it 'will include the java plugin' do
@@ -64,15 +64,15 @@ describe 'collectd::plugin::genericjmx', :type => :class do
     it 'should have one jvmarg parameter' do
       should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').with_content(/JVMArg "bat"/)
     end
-    it 'should have ONLY one jvmarg parameter' do
-      should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(/(.*JVMArg.*){2,}/m)
+    it 'should have ONLY one jvmarg parameter other than classpath' do
+      should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(/(.*JVMArg.*){3,}/m)
     end
   end
 
   context 'jvmarg parameter empty' do
     let (:params) {{ :jvmarg => [] }}
-    it 'should not have any jvmarg parameters' do
-      should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(/JVMArg/)
+    it 'should wnot have any jvmarg parameters other than classpath' do
+      should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(/(.*JVMArg.*){2,}/m)
     end
   end
 end

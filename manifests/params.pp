@@ -10,6 +10,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
+      $java_dir          = '/usr/share/collectd/java'
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -19,6 +20,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
+      # FIXME: $java_dir
     }
     'Redhat': {
       $package           = 'collectd'
@@ -28,6 +30,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
+      $java_dir          = '/usr/share/collectd/java'
     }
     'Suse': {
       $package           = 'collectd'
@@ -37,6 +40,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
+      # FIXME: $java_dir
     }
     'FreeBSD': {
       $package           = 'collectd5'
@@ -46,6 +50,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
+      # FIXME: $java_dir
     }
     'Archlinux': {
       $package           = 'collectd'
@@ -55,6 +60,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
+      # FIXME: $java_dir
     }
     'Gentoo': {
       $package           = 'app-admin/collectd'
@@ -64,6 +70,7 @@ class collectd::params {
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'collectd'
+      # FIXME: $java_dir
     }
 
     default: {
