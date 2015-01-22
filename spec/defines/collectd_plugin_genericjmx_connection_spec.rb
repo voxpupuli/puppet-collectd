@@ -3,7 +3,9 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   let (:facts) {{
     :osfamily  => 'Debian',
+    :id => 'root',
     :concat_basedir => tmpfilename('collectd-genericjmx-connection'),
+    :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   }}
 
   let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
