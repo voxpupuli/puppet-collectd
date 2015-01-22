@@ -10,7 +10,7 @@ describe 'collectd::plugin::genericjmx', :type => :class do
 
   let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
 
-  context ':ensure => present, defaults' do
+  context 'defaults' do
     it 'will include the java plugin' do
       should contain_class('collectd::plugin::java')
     end
@@ -45,15 +45,6 @@ describe 'collectd::plugin::genericjmx', :type => :class do
 
   end
 
-  context ':ensure => absent' do
-    let (:params) {{ :ensure => 'absent' }}
-    it 'should not load the plugin' do
-      should contain_concat(config_filename).with({
-        :ensure => 'absent',
-      })
-    end
-  end
-
   context 'jvmarg parameter array' do
     let (:params) {{ :jvmarg => %w{ foo bar baz } }}
     it 'should have multiple jvmarg parameters' do
@@ -73,7 +64,7 @@ describe 'collectd::plugin::genericjmx', :type => :class do
 
   context 'jvmarg parameter empty' do
     let (:params) {{ :jvmarg => [] }}
-    it 'should wnot have any jvmarg parameters other than classpath' do
+    it 'should not have any jvmarg parameters other than classpath' do
       should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(/(.*JVMArg.*){2,}/m)
     end
   end

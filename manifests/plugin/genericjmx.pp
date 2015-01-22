@@ -1,6 +1,5 @@
 # https://collectd.org/wiki/index.php/Plugin:GenericJMX
 class collectd::plugin::genericjmx (
-  $ensure = present,
   $jvmarg = [],
 ) {
   include collectd
@@ -10,7 +9,6 @@ class collectd::plugin::genericjmx (
   $config_file = "${collectd::params::plugin_conf_dir}/15-genericjmx.conf"
 
   concat { $config_file:
-    ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::params::root_group,
