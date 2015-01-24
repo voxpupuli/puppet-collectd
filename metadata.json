@@ -63,7 +63,7 @@
   "requirements": [
     {
       "name": "pe",
-      "version_requirement": "3.2.x"
+      "version_requirement": ">= 3.2.0"
     },
     {
       "name": "puppet",
@@ -76,7 +76,6 @@
   "author": "Computer Action Team",
   "license": "Apache Version 2.0",
   "summary": "Puppet module for Collectd",
-  "description": "Manages collectd configuration and service",
   "project_page": "https://github.com/pdxcat/puppet-module-collectd",
   "dependencies": [
     {
