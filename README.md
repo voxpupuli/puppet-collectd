@@ -69,9 +69,11 @@ documentation for each plugin for configurable attributes.
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
+* `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
+* `java` (see [collectd::plugin::java](#class-collectdpluginjava) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `libvirt` (see [collectd::plugin::libvirt](#class-collectdpluginlibvirt) below)
@@ -302,6 +304,41 @@ class { 'collectd::plugin::filecount':
   },
 }
 ```
+
+####Class: `collectd::plugin::genericjmx`
+
+```puppet
+include collectd::plugin::genericjmx
+
+collectd::plugin::genericjmx::mbean {
+  'garbage_collector':
+    object_name     => 'java.lang:type=GarbageCollector,*',
+    instance_prefix => 'gc-',
+    instance_from   => 'name',
+    values          => [
+      {
+        type      => 'invocations',
+        table     => false,
+        attribute => 'CollectionCount',
+      },
+      {
+        type            => 'total_time_in_ms',
+        instance_prefix => 'collection_time',
+        table           => false,
+        attribute       => 'CollectionTime',
+      },
+    ];
+}
+
+collectd::plugin::genericjmx::connection {
+  'java_app':
+    host            => $fqdn,
+    service_url     => 'service:jmx:rmi:///jndi/rmi://localhost:3637/jmxrmi',
+    collect         => [ 'memory-heap', 'memory-nonheap','garbage_collector' ],
+}
+
+```
+
 ####Class: `collectd::plugin::interface`
 
 ```puppet
@@ -329,6 +366,12 @@ class { 'collectd::plugin::iptables':
     'filter' => 'HTTP'
   },
 }
+```
+
+####Class: `collectd::plugin::java`
+
+```puppet
+class { 'collectd::plugin::java': }
 ```
 
 ####Class: `collectd::plugin::load`
