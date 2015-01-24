@@ -22,4 +22,7 @@
 <% if @xff -%>
   XFF "<%= @xff %>"
 <% end -%>
+<% unless @collectstatistics.nil? -%>
+  CollectStatistics "<%= @collectstatistics %>"
+<% end -%>
 </Plugin>
