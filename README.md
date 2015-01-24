@@ -98,6 +98,7 @@ documentation for each plugin for configurable attributes.
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
+* `target_v5upgrade` (see [collectd::plugin::target_v5upgrade](#class-collectdplugintarget_v5upgrade) below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
@@ -717,6 +718,13 @@ class { 'collectd::plugin::swap':
 ```puppet
 class { 'collectd::plugin::syslog':
   log_level => 'warning'
+}
+```
+
+####Class: `collectd::plugin::target_v5upgrade`
+
+```puppet
+class { 'collectd::plugin::target_v5upgrade':
 }
 ```
 
