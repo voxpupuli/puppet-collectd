@@ -1,0 +1,11 @@
+<Plugin snmp>
+  <Host "<%= @name %>">
+    Address "<%= @address %>"
+    Version <%= @version %>
+    Community "<%= @community %>"
+    Collect <%= Array(@collect).map { |x| %Q{"#{x}"} }.join(' ') %>
+    <%- if !@interval.nil? -%>
+    Interval <%= @interval %>
+    <%- end -%>
+  </Host>
+</Plugin>

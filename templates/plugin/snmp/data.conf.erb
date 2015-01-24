@@ -1,0 +1,8 @@
+<Plugin snmp>
+  <Data "<%= @name %>">
+    Type "<%= @type %>"
+    Table <%= @table_bool ? 'true' : 'false' %>
+    Instance "<%= @instance %>"
+    Values <%= Array(@values).map { |x| %Q{"#{x}"} }.join(' ') %>
+  </Data>
+</Plugin>
