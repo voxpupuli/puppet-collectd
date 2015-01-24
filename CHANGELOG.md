@@ -1,3 +1,48 @@
+## 2015-01-24 Release 3.2.0
+
+### Backwards-incompatible changes:
+
+There are no known backwards compat changes, please add them to the
+CHANGELOG if you find one.
+
+### Summary:
+
+The release adds support for 4 new plugins and adds redhat package
+support to a large number of plugins.
+
+### New Plugins:
+
+* collectd::plugin::genericjmx
+* collectd::plugin::java
+* collectd::plugin::target_v5upgrade
+* collectd::plugin::lvm
+
+### Features:
+
+* plugin/rrdcached: Add CollectStatistics option
+* plugin/ntpd: Add IncludeUnitID option
+
+### Bugs/Maint:
+
+* Update metadata for more PE versions
+* plugin/perl: changed exec in provider 'false' case
+* plugin/varnish: package resouce ensure param passed
+* plugin/postgresql: add package for redhat systems
+* plugin/write_riemann: add package for redhat systems
+* plugin/write_http: add package for redhat systems
+* plugin/snmp: add package for redhat systems
+* plugin/sensors: add package for redhat systems
+* plugin/python: add package for redhat systems
+* plugin/ping: add package for redhat systems
+* plugin/perl: add package for redhat systems
+* plugin/nginx: add package for redhat systems
+* plugin/mysql: add package for redhat systems
+* plugin/iptables: add package for redhat systems
+* plugin/curl_json: add package for redhat systems
+* plugin/curl: add package for redhat systems
+* plugin/amqp: add package for redhat systems
+* plugin/bind: add package for redhat systems
+
 ## 2014-12-26 Release 3.1.0
 
 ### Backwards-incompatible changes:
