@@ -6,6 +6,7 @@ define collectd::plugin::network::server (
   $port          = undef,
   $securitylevel = undef,
   $interface     = undef,
+  $forward       = undef,
 ) {
   include collectd::params
   include collectd::plugin::network
