@@ -11,12 +11,6 @@ define collectd::plugin::python (
 
   validate_hash($config)
 
-  if $::osfamily == 'Redhat' {
-    package { 'collectd-python':
-      ensure => $ensure,
-    }
-  }
-
   $conf_dir = $collectd::params::plugin_conf_dir
 
   # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
