@@ -17,7 +17,7 @@ define collectd::plugin (
     path    => "${conf_dir}/${order}-${plugin}.conf",
     owner   => root,
     group   => $root_group,
-    mode    => '0640',
+    mode    => '0644',
     content => template('collectd/loadplugin.conf.erb'),
     notify  => Service['collectd'],
   }
