@@ -30,7 +30,7 @@ class collectd(
   file { 'collectd.d':
     ensure  => directory,
     path    => $collectd::params::plugin_conf_dir,
-    mode    => '0750',
+    mode    => '0755',
     owner   => 'root',
     group   => $collectd::params::root_group,
     purge   => $purge,
