@@ -1,9 +1,9 @@
 # https://collectd.org/wiki/index.php/Plugin:GenericJMX
 define collectd::plugin::genericjmx::mbean (
   $object_name,
+  $values,
   $instance_prefix = undef,
   $instance_from = undef,
-  $values,
 ) {
   include collectd::plugin::genericjmx
   validate_array($values)

@@ -1,7 +1,7 @@
 class { 'collectd':
-  purge         => true,
-  recurse       => true,
-  purge_config  => true,
+  purge        => true,
+  recurse      => true,
+  purge_config => true,
 }
 
 

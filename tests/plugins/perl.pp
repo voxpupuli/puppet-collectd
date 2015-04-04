@@ -16,8 +16,8 @@ collectd::plugin::perl::plugin { 'foo':
   destination => '/tmp',
   order       => 99,
   config      => {
-    'foo'     => 'bar',
-    'key'     => [ 'val1', 'val2' ],
+    'foo' => 'bar',
+    'key' => [ 'val1', 'val2' ],
   }
 }
 
@@ -37,17 +37,17 @@ collectd::plugin::perl::plugin { 'bar':
 
 collectd::plugin::perl::plugin {
   'baar':
-    module        => 'Collectd::Plugins::Bar',
-    provider      => 'package',
-    source        => 'perl-Collectd-Plugins-Bar',
-    config        => {
-      'foo'       => 'bar',
-      'more'      => {
+    module   => 'Collectd::Plugins::Bar',
+    provider => 'package',
+    source   => 'perl-Collectd-Plugins-Bar',
+    config   => {
+      'foo'  => 'bar',
+      'more' => {
         'complex' => 'structure',
         'no'      => [ 'a', 'b' ],
         'yes'     => {
-          'last'  => 'level',
-          'and'   => [ 'array' , 'thing' ]
+          'last' => 'level',
+          'and'  => [ 'array' , 'thing' ]
         },
       },
     },

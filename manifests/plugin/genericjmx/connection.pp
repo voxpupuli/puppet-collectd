@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:GenericJMX
 define collectd::plugin::genericjmx::connection (
-  $host = $name,
+  $collect,
   $service_url,
+  $host = $name,
   $user = undef,
   $password = undef,
   $instance_prefix = undef,
-  $collect,
 ) {
   include collectd::plugin::genericjmx
   concat::fragment { "collectd_plugin_genericjmx_conf_${name}":

@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 define collectd::plugin::snmp::host (
+  $collect,
   $ensure = present,
   $address = $name,
   $version = 1,
   $community = 'public',
-  $collect,
   $interval = undef,
 ) {
   include collectd

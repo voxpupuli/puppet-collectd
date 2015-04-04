@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 define collectd::plugin::snmp::data (
-  $ensure = present,
-  $type,
-  $table = false,
   $instance,
+  $type,
   $values,
+  $ensure = present,
+  $table = false,
 ) {
   include collectd
   include collectd::plugin::snmp

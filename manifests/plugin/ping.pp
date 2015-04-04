@@ -1,6 +1,7 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 define collectd::plugin::ping (
   $hosts,
+  $ensure         = present,
   $interval       = undef,
   $timeout        = undef,
   $ttl            = undef,
