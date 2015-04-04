@@ -17,4 +17,7 @@
 <% else -%>
   Server "<%= @name %>" "<%= @port %>"
 <% end -%>
+<% if ! @forward.nil? -%>
+  Forward <%= @forward %>
+<% end -%>
 </Plugin>
