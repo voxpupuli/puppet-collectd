@@ -3,6 +3,7 @@ define collectd::plugin::curl_json (
   $url,
   $instance,
   $keys,
+  $ensure   = present,
   $user     = undef,
   $password = undef,
   $order = '10',

@@ -1,7 +1,7 @@
 include collectd
 
 class { 'collectd::plugin::iptables':
-  chains  => {
+  chains => {
     'nat'    => 'In_SSH',
     'filter' => 'HTTP'
   },
