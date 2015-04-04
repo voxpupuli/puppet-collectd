@@ -908,6 +908,10 @@ class { 'collectd::plugin::zfs_arc':
 
 See metadata.json for supported platforms
 
+##Known issues
+
+Some plugins will need two runs of Puppet to fully generate the configuration for collectd. See [this issue](https://github.com/pdxcat/puppet-module-collectd/issues/162).
+
 ##Development
 
 ### Running tests
@@ -923,3 +927,13 @@ bundle exec rake lint
 bundle exec rake validate
 bundle exec rake spec SPEC_OPTS='--format documentation'
 ```
+
+### Version scoping
+
+Some plugins or some options in plugins are only available for recent versions of collectd.
+
+This module shall not use unsupported configuration directives. Look at [templates/loadplugin.conf.erb](https://github.com/pdxcat/puppet-module-collectd/blob/master/templates/loadplugin.conf.erb) for a hands-on example.
+
+Please make use of the search by branch/tags on the collectd github to see when a function has been first released.
+
+Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master/src/collectd.conf.pod) file is good, validating the presence of the code in the .c files is even better.
