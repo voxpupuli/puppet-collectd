@@ -17,6 +17,7 @@ describe 'collectd::plugin::python', :type => :define do
         :content => "<LoadPlugin \"python\">\n    Globals true\n</LoadPlugin>\n\n\n",
       })
     end
+  end
 
   context ':ensure => absent' do
     let :facts do
