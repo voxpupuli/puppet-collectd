@@ -7,7 +7,7 @@ class collectd::plugin::python (
 
   if (
       $::osfamily == 'Redhat' and
-      operatingsystemmajrelease < 7
+      $::operatingsystemmajrelease < 7
   ) {
       ensure_packages('collectd-python')
   }
@@ -29,9 +29,9 @@ class collectd::plugin::python (
 
   file { $modulepath :
       ensure  => $ensure_modulepath,
-      mode    => '0755',
+      mode    => '0750',
       owner   => root,
-      group   => root,
+      group   => $collectd::params::root_group,
       require => Package[$collectd::params::package]
   }
 
