@@ -5,13 +5,6 @@ class collectd::plugin::python (
 ) {
   require collectd::params
 
-  if (
-      $::osfamily == 'Redhat' and
-      $::operatingsystemmajrelease < 7
-  ) {
-      ensure_packages('collectd-python')
-  }
-
   $conf_dir = $collectd::params::plugin_conf_dir
   $modulepath = $collectd::params::python_dir
 
