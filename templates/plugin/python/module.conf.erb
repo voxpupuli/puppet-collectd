@@ -1,0 +1,7 @@
+  Import "<%= @module %>"
+
+  <Module "<%= @module %>">
+  <% @config.sort.each do |key,value| -%>
+    <%= key -%> <%= value %>
+  <% end -%>
+  </Module>
