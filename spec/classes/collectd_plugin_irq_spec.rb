@@ -35,7 +35,7 @@ describe 'collectd::plugin::irq', :type => :class do
       {:irqs => '90,91,92'}
     end
     it 'Will raise an error about :irqs being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 end

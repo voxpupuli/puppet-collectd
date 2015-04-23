@@ -48,7 +48,7 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       {:localports => '22'}
     end
     it 'Will raise an error about :localports being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 
@@ -57,7 +57,7 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       {:remoteports => '22'}
     end
     it 'Will raise an error about :remoteports being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 end
