@@ -35,7 +35,7 @@ describe 'collectd::plugin::disk', :type => :class do
       {:disks => 'sda'}
     end
     it 'Will raise an error about :disks being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 end

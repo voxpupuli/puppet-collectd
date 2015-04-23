@@ -32,7 +32,7 @@ describe 'collectd::plugin::unixsock', :type => :class do
       {:socketfile => 'var/run/socket'}
     end
     it 'Will raise an error about :socketfile' do
-      expect {should}.to raise_error(Puppet::Error,/absolute path/)
+      should compile.and_raise_error(/absolute path/)
     end
   end
 end

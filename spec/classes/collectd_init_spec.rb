@@ -30,7 +30,7 @@ describe 'collectd' do
    end
 
    it 'should fail' do
-     expect { subject }.to  raise_error(/foo is not supported/)
+     should compile.and_raise_error(/foo is not supported/)
    end
  end
 

@@ -1,3 +1,20 @@
+## 2015-04-22 Release 3.3.0
+
+### Backwards-incompatible changes:
+
+* Drop Ruby 1.8.7 support
+* Package collectd-python is no longer available in EPEL
+
+### Features:
+
+* Allow disable forwarding in network::server
+
+### Bugs/Maint:
+
+* Fix permission on MySQL plugin file
+* Only set LogSendErrors option if collectd version >= 5.4.
+* CreateFiles/CreateFilesAsync expect boolean values
+
 ## 2015-01-24 Release 3.2.0
 
 ### Backwards-incompatible changes:

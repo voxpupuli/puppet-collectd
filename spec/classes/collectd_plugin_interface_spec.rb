@@ -35,7 +35,7 @@ describe 'collectd::plugin::interface', :type => :class do
       {:interfaces => 'eth0'}
     end
     it 'Will raise an error about :interfaces being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 end

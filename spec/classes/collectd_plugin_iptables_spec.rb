@@ -35,7 +35,7 @@ describe 'collectd::plugin::iptables', :type => :class do
       {:chains => ['nat','In_SSH']}
     end
     it 'Will raise an error about :chains being an Array' do
-      expect {should}.to raise_error(Puppet::Error,/Array/)
+      should compile.and_raise_error(/Array/)
     end
   end
 end
