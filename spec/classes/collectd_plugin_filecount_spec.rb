@@ -57,7 +57,7 @@ describe 'collectd::plugin::filecount', :type => :class do
       {:directories => '/var/spool/postfix/active'}
     end
     it 'Will raise an error about :directories being a String' do
-      expect {should}.to raise_error(Puppet::Error,/String/)
+      should compile.and_raise_error(/String/)
     end
   end
 end

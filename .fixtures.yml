@@ -4,6 +4,6 @@ fixtures:
       repo: 'git://github.com/puppetlabs/puppetlabs-stdlib'
     concat:
       repo: 'git://github.com/puppetlabs/puppetlabs-concat'
-      ref: '1.2.0'
+      ref: '1.2.1'
   symlinks:
     'collectd': "#{source_dir}"
