@@ -11,6 +11,7 @@ class collectd::params {
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
       $java_dir          = '/usr/share/collectd/java'
+      $python_dir        = '/usr/share/collectd/python'
     }
     'Solaris': {
       $package           = 'CSWcollectd'
@@ -21,6 +22,7 @@ class collectd::params {
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
       $java_dir          = undef
+      $python_dir        = '/opt/csw/share/collectd/python'
     }
     'Redhat': {
       $package           = 'collectd'
@@ -31,6 +33,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
       $java_dir          = '/usr/share/collectd/java'
+      $python_dir        = '/usr/share/collectd/python'
     }
     'Suse': {
       $package           = 'collectd'
@@ -41,6 +44,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
       $java_dir          = undef
+      $python_dir        = '/usr/share/collectd/python'
     }
     'FreeBSD': {
       $package           = 'collectd5'
@@ -51,6 +55,7 @@ class collectd::params {
       $config_file       = '/usr/local/etc/collectd.conf'
       $root_group        = 'wheel'
       $java_dir          = undef
+      $python_dir        = '/usr/local/share/collectd/python'
     }
     'Archlinux': {
       $package           = 'collectd'
@@ -61,6 +66,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'wheel'
       $java_dir          = undef
+      $python_dir        = '/usr/share/collectd/python'
     }
     'Gentoo': {
       $package           = 'app-admin/collectd'
@@ -71,6 +77,7 @@ class collectd::params {
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'collectd'
       $java_dir          = undef
+      $python_dir        = '/usr/share/collectd/python'
     }
 
     default: {
