@@ -74,7 +74,7 @@
   "version": "3.3.0",
   "source": "https://github.com/pdxcat/puppet-module-collectd",
   "author": "Computer Action Team",
-  "license": "Apache Version 2.0",
+  "license": "Apache-2.0",
   "summary": "Puppet module for Collectd",
   "project_page": "https://github.com/pdxcat/puppet-module-collectd",
   "dependencies": [

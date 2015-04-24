@@ -177,6 +177,9 @@ GEM
       multi_json (>= 1.8.4)
     memoist (0.12.0)
     metaclass (0.0.4)
+    metadata-json-lint (0.0.6)
+      json
+      spdx-licenses (~> 1.0)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.6.0)
@@ -244,6 +247,8 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    spdx-licenses (1.0.0)
+      json
     specinfra (2.30.0)
       net-scp
       net-ssh
@@ -262,6 +267,7 @@ DEPENDENCIES
   beaker-rspec
   facter
   json
+  metadata-json-lint
   puppet
   puppet-lint
   puppet_facts
