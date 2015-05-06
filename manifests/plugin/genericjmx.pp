@@ -10,8 +10,8 @@ class collectd::plugin::genericjmx (
 
   concat { $config_file:
     mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::params::root_group,
+    owner          => $collectd::root_user,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
   }

@@ -24,8 +24,8 @@ define collectd::plugin::python (
     "${name}.load":
       ensure  => $ensure,
       path    => "${conf_dir}/${order}-${name}.conf",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
+      owner   => $collectd::root_user,
+      group   => $collectd::root_group,
       mode    => '0640',
       content => template('collectd/python.conf.erb'),
       notify  => Service['collectd'],
@@ -35,8 +35,8 @@ define collectd::plugin::python (
     "${name}.script":
       ensure  => $ensure,
       path    => "${modulepath}/${module}.py",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
+      owner   => $collectd::root_user,
+      group   => $collectd::root_group,
       mode    => '0640',
       source  => $script_source,
       require => File["${name}.load"],

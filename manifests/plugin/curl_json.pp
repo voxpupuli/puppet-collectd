@@ -30,8 +30,8 @@ define collectd::plugin::curl_json (
   file {
     "${name}.load":
       path    => "${conf_dir}/${order}-${name}.conf",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
+      owner   => $collectd::root_user,
+      group   => $collectd::root_group,
       mode    => '0640',
       content => template('collectd/curl_json.conf.erb'),
       notify  => Service['collectd'],

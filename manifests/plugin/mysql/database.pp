@@ -29,8 +29,8 @@ define collectd::plugin::mysql::database (
     ensure  => $ensure,
     path    => "${conf_dir}/mysql-${name}.conf",
     mode    => '0640',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     content => template('collectd/mysql-database.conf.erb'),
     notify  => Service['collectd'],
   }
