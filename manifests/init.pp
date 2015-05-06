@@ -12,6 +12,7 @@ class collectd(
   $typesdb                = [],
   $write_queue_limit_high = undef,
   $write_queue_limit_low  = undef,
+  $root_group             = $collectd::params::root_group,
   $package_name           = $collectd::params::package,
   $version                = installed,
 ) inherits collectd::params {
