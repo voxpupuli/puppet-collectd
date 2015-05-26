@@ -25,8 +25,8 @@ class collectd::plugin::perl (
   file { "${conf_dir}/perl":
     ensure => directory,
     mode   => '0755',
-    owner  => $collectd::params::root_user,
-    group  => $collectd::params::root_group,
+    owner  => $collectd::root_user,
+    group  => $collectd::root_group,
   }
 }
 

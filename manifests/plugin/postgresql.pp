@@ -22,8 +22,8 @@ class collectd::plugin::postgresql (
   concat{"${collectd::params::plugin_conf_dir}/postgresql-config.conf":
     ensure         => $ensure,
     mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::params::root_group,
+    owner          => $collectd::root_user,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
   }
