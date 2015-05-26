@@ -198,7 +198,7 @@ collectd::plugin::curl::page {
 }
 ```
 
-You can as well configure this plugin with a parameterized class : 
+You can as well configure this plugin with a parameterized class :
 
 ```puppet
 class { 'collectd::plugin::curl':
@@ -449,7 +449,7 @@ collectd::plugin::network::listener{'hostname':
 }
 ```
 
-You can as well configure this plugin with a parameterized class : 
+You can as well configure this plugin with a parameterized class :
 
 ```puppet
 class { 'collectd::plugin::network':
@@ -527,7 +527,7 @@ This define will load a new perl plugin.
 #####Parameters:
 
 * `module` (String): name of perl module to load (mandatory)
-* `enable_debugger` (False or String): whether to load the perl debugger. See *collectd-perl* manpage for more details. 
+* `enable_debugger` (False or String): whether to load the perl debugger. See *collectd-perl* manpage for more details.
 * `include_dir` (String or Array): directories to add to *@INC*
 * `provider` (`"package"`,`"cpan"`,`"file"` or `false`): method to get the plugin code
 * `source` (String): this parameter is consumed by the provider to infer the source of the plugin code
@@ -650,13 +650,54 @@ class { 'collectd::plugin::processes':
 
 ####Class: `collectd::plugin::python`
 
+ * `modulepaths` is an array of paths where will be Collectd looking for Python modules, Puppet will ensure that each of specified directories exists and it is owned by `root` (and `chmod 0750`). If you don't specify any `modulepaths` a default value for given distribution will be used.
+ * `modules` a Hash containing configuration of Python modules, where the key is the module name
+ * `globals` Unlike most other plugins, this one should set `Globals true`. This will cause collectd to export the name of all objects in the Python interpreter for all plugins to see. If you don't do this or your platform does not support it, the embedded interpreter will start anyway but you won't be able to load certain Python modules, e.g. "time".
+ * `interactive` when `true` it will launch an interactive Python interpreter that reads from and writes to the terminal (default: `false`)
+ * `logtraces` if a Python script throws an exception it will be logged by collectd with the name of the exception and the message (default: `false`)
+
+ See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml) for more details.
+
+NOTE: Since `v3.4.0` the syntax of this plugin has changed. Make sure to update your existing configuration. Now you can specify multiple Python modules at once:
+
 ```puppet
-collectd::plugin::python {
-  'elasticsearch':
-    modulepath    => '/usr/lib/collectd',
-    module        => 'elasticsearch',
-    script_source => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-    config        => {'Cluster' => 'elasticsearch'},
+class { 'collectd::plugin::python':
+  modulepaths => ['/usr/share/collectd/python'],
+  modules     => {
+    'elasticsearch': {
+      'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
+      'config'        => {'Cluster' => 'elasticsearch'},
+    },
+    'another-module': {
+      'config'        => {'Verbose' => 'true'},
+    }
+  }
+  logtraces   => true,
+  interactive => false
+}
+```
+When `script_source` provided, a file called `{module}.py` will be created in `$modulepath/$module.py`.
+
+Or define single module:
+
+```puppet
+collectd::plugin::python::module {'zk-collectd':
+  script_source => 'puppet:///modules/myorg/zk-collectd.py',
+  config        => {
+    'Hosts' => "localhost:2181"
+  }
+}
+```
+
+Each plugin might use different `modulepath`, however make sure that all paths are included in `collectd::plugin::python` variable `modulepaths`. If no `modulepath` is specified, OS default will be used.
+
+```puppet
+collectd::plugin::python::module {'my-module':
+  modulepath    => '/var/share/collectd',
+  script_source => 'puppet:///modules/myorg/my-module.py',
+  config        => {
+    'Key' => "value"
+  }
 }
 ```
 
