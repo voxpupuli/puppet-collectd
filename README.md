@@ -157,7 +157,9 @@ class { 'collectd::plugin::conntrack':
 ```
 
 ####Class: `collectd::plugin::cpu`
-
+  reportbystate => true,
+  reportbycpu => true,
+  valuespercentage => true,
 ```puppet
 class { 'collectd::plugin::cpu':
 }
