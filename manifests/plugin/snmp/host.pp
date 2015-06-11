@@ -3,7 +3,7 @@ define collectd::plugin::snmp::host (
   $collect,
   $ensure = present,
   $address = $name,
-  $version = 1,
+  $version = '1',
   $community = 'public',
   $interval = undef,
 ) {
