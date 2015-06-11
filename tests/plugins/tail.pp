@@ -5,16 +5,16 @@ collectd::plugin::tail::file { 'exim-log':
   instance => 'exim',
   matches  => [
     {
-      regex    => 'S=([1-9][0-9]*)',
-      dstype   => 'CounterAdd',
-      type     => 'ipt_bytes',
-      instance => 'total',
+      'regex'    => 'S=([1-9][0-9]*)',
+      'dstype'   => 'CounterAdd',
+      'type'     => 'ipt_bytes',
+      'instance' => 'total',
     },
     {
-      regex    => '\\<R=local_user\\>',
-      dstype   => 'CounterInc',
-      type     => 'counter',
-      instance => 'local_user',
+      'regex'    => '\\<R=local_user\\>',
+      'dstype'   => 'CounterInc',
+      'type'     => 'counter',
+      'instance' => 'local_user',
     }
   ]
 }
@@ -24,10 +24,10 @@ collectd::plugin::tail::file { 'auth-log':
   instance => 'auth',
   matches  => [
     {
-      regex    => '\\<sshd[^:]*: Accepted publickey for [^ ]+ from\\>',
-      dstype   => 'CounterInc',
-      type     => 'counter',
-      instance => 'auth-publickey',
+      'regex'    => '\\<sshd[^:]*: Accepted publickey for [^ ]+ from\\>',
+      'dstype'   => 'CounterInc',
+      'type'     => 'counter',
+      'instance' => 'auth-publickey',
     }
   ]
 }
