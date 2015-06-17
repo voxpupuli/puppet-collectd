@@ -276,3 +276,6 @@ DEPENDENCIES
   rspec-puppet
   serverspec
   simplecov
+
+BUNDLED WITH
+   1.10.3
