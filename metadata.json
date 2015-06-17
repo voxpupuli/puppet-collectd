@@ -71,7 +71,7 @@
     }
   ],
   "name": "pdxcat-collectd",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "source": "https://github.com/pdxcat/puppet-module-collectd",
   "author": "Computer Action Team",
   "license": "Apache-2.0",
