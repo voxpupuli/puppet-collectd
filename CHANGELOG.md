@@ -1,3 +1,25 @@
+## 2015-06-16 Release 3.4.0
+
+### Backwards-incompatible changes:
+
+* Implement support for mupltiple Python modules
+
+### Bug fixes
+
+* snmp/host.pp validate_re validate on string
+* quote reserved word type in tail.pp
+
+### New features
+
+* add new cpu plugin options introduced in collectd 5.5
+* Added absent timers for statsd module.
+
+### Testing enhancements
+
+* Add ruby 2.2.0 to TravisCI
+* Add puppet4 to .travis and update ruby to 2.1.6
+* Add metadata-json-lint gem
+
 ## 2015-04-22 Release 3.3.0
 
 ### Backwards-incompatible changes:
