@@ -158,8 +158,17 @@ class { 'collectd::plugin::conntrack':
 
 ####Class: `collectd::plugin::cpu`
 
+ * `reportbystate` available from collectd version >= 5.5
+ * `reportbycpu` available from collectd version >= 5.5
+ * `valuespercentage` available from collectd version >= 5.5
+
+ See [collectd plugin_cpu documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cpu) for more details.
+
 ```puppet
 class { 'collectd::plugin::cpu':
+  reportbystate => true,
+  reportbycpu => true,
+  valuespercentage => true,
 }
 
 
