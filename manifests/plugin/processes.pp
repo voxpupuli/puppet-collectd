@@ -1,6 +1,7 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
   $ensure          = present,
+  $order           = 10,
   $interval        = undef,
   $processes       = undef,
   $process_matches = undef,
@@ -10,6 +11,8 @@ class collectd::plugin::processes (
 
   collectd::plugin {'processes':
     ensure   => $ensure,
+    order    => $order,
+    interval => $interval,
   }
 
   concat{"${collectd::params::plugin_conf_dir}/processes-config.conf":

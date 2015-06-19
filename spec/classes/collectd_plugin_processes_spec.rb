@@ -4,47 +4,34 @@ describe 'collectd::plugin::processes', :type => :class do
   let :facts do
     {:osfamily => 'RedHat'}
   end
+  context ':ensure => present' do
+    context ':ensure => present and default parameters' do
 
-  context ':ensure => present, default params' do
-    it 'Will create /etc/collectd.d/10-processes.conf' do
-      should contain_file('processes.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/10-processes.conf',
-        :content => //,
-      })
-    end
-  end
+      it 'Will create /etc/collectd/conf.d/10-processes.conf to load the plugin' do
+        should contain_file('processes.load').with({
+          :ensure  => 'present',
+          :path    => '/etc/collectd/conf.d/10-processes.conf',
+          :content => /LoadPlugin processes/,
+        })
+      end
 
-  context ':ensure => present, specific params' do
-    let :params do
-      { :processes => [ 'process1'],
-        :process_matches => [ 
-          { 'name' => 'process-all',
-            'regex' => 'process[0-9]' }
-        ],
-      }
-    end
+      it 'Will create /etc/collectd.d/conf.d/processes-config.conf' do
+        should contain_concat__fragment('collectd_plugin_processes_conf_header').with({
+          :content => /<Plugin "processes">/,
+          :target  => '/etc/collectd/conf.d/processes-config.conf',
+          :order   => '00'
+        })
+      end
 
-    it 'Will create /etc/collectd.d/10-processes.conf' do
-      should contain_file('processes.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/10-processes.conf',
-        :content => /<Plugin "processes">\n\s*Process "process1"\n\s*ProcessMatch "process-all" "process\[0-9\]"\n<\/Plugin>/,
-      })
-    end
-  end
-
-  context ':ensure => absent' do
-    let :params do
-      {:ensure => 'absent'}
+      it 'Will create /etc/collectd.d/conf.d/processes-config.conf' do
+        should contain_concat__fragment('collectd_plugin_processes_conf_footer').with({
+          :content => /<\/Plugin>/,
+          :target  => '/etc/collectd/conf.d/processes-config.conf',
+          :order   => '99'
+        })
+      end
     end
 
-    it 'Will not create /etc/collectd.d/10-processes.conf' do
-      should contain_file('processes.load').with({
-        :ensure => 'absent',
-        :path   => '/etc/collectd.d/10-processes.conf',
-      })
-    end
   end
 end
 
