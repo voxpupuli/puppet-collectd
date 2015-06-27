@@ -9,6 +9,8 @@ class collectd::plugin::processes (
   if $processes { validate_array($processes) }
   if $process_matches { validate_array($process_matches) }
 
+  include collectd::params
+
   collectd::plugin {'processes':
     ensure   => $ensure,
     order    => $order,
