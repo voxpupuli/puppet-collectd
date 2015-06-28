@@ -648,12 +648,25 @@ class { 'collectd::plugin::postgresql':
 
 ####Class: `collectd::plugin::processes`
 
+You can either specify processes / process matches at once:
+
 ```puppet
 class { 'collectd::plugin::processes':
   processes => ['process1', 'process2'],
   process_matches => [
     { name => 'process-all', regex => 'process.*' }
   ],
+}
+```
+
+Or define single processes / process matches:
+```puppet
+collectd::plugin::processes::process { 'collectd' : }
+```
+
+```puppet
+collectd::plugin::processes::processmatch { 'elasticsearch' :
+  regex => '.*java.*org.elasticsearch.bootstrap.Elasticsearch'
 }
 ```
 
