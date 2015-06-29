@@ -649,6 +649,8 @@ class { 'collectd::plugin::postgresql':
 
 ####Class: `collectd::plugin::processes`
 
+You can either specify processes / process matches at once:
+
 ```puppet
 class { 'collectd::plugin::processes':
   processes => ['process1', 'process2'],
@@ -668,6 +670,17 @@ class { 'collectd::plugin::processes':
 class { 'collectd::plugin::protocols':
   values => ['/^Tcp:*/', '/^Udp:*/', 'Icmp:InErrors' ],
   ignoreselected => false,
+}
+```
+
+Or define single processes / process matches:
+```puppet
+collectd::plugin::processes::process { 'collectd' : }
+```
+
+```puppet
+collectd::plugin::processes::processmatch { 'elasticsearch' :
+  regex => '.*java.*org.elasticsearch.bootstrap.Elasticsearch'
 }
 ```
 
