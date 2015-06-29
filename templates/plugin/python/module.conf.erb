@@ -1,7 +1,11 @@
   Import "<%= @module %>"
 
   <Module "<%= @module %>">
-  <% @config.sort.each do |key,value| -%>
-    <%= key -%> <%= value -%>
-  <% end %>
+  <%- @config.sort.each do |key,value| -%>
+  <%- if value.is_a?(String) -%>
+    <%= key %> "<%= value %>"
+  <%- else -%>
+    <%= key %> <%= value %>
+  <%- end -%>
+  <%- end -%>
   </Module>
