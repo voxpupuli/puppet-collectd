@@ -5,6 +5,7 @@ define collectd::plugin::curl_json (
   $keys,
   $user     = undef,
   $password = undef,
+  $typesdb = undef,
 ) {
 
   include collectd::params

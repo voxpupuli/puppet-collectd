@@ -27,6 +27,7 @@ class collectd::params {
       $provider          = 'yum'
       $collectd_dir      = '/etc/collectd.d'
       $plugin_conf_dir   = $collectd_dir
+      $types_dir         = '/usr/share/collectd'
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
       $root_group        = 'root'
