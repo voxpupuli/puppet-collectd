@@ -43,19 +43,27 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
         :protocol => 'udp',
       }
     end
+
     it 'Should include protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
       should contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_wg_udp_2003'
       ).with_content(/.*Protocol \"udp\".*/)
     end
+
+    it 'uses Node definition' do
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with({
+        :content => /<Node "wg">/,
+        :target  => '/etc/collectd.d/write_graphite-config.conf',
+      })
+    end
   end
 
-  context 'default configuration' do
+  context 'default configuration (undefined collectd version)' do
     let(:title) { 'graphite_default' }
 
     it 'includes carbon configuration' do
       should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with({
-        :content => /<Carbon>/,
+        :content => /<Node "graphite_default">/,
         :target  => '/etc/collectd/conf.d/write_graphite-config.conf',
       })
 
@@ -67,7 +75,6 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
         :content => /Port "2003"/,
       })
     end
-
   end
 
 end
