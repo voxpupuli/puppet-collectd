@@ -15,7 +15,7 @@ class collectd::plugin::write_graphite (
     interval => $interval,
   }
 
-   # should be loaded after global plugin configuration
+  # should be loaded after global plugin configuration
   $graphite_conf = "${collectd::params::plugin_conf_dir}/write_graphite-config.conf"
 
   concat{ $graphite_conf:
