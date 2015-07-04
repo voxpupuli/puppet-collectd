@@ -1,35 +1,44 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
-define collectd::plugin::exec (
-  $user,
-  $group,
-  $exec              = [],
-  $notification_exec = [],
-  $ensure = present,
-  $order = '10',
+class collectd::plugin::exec (
+  $commands          = {},
+  $interval          = undef,
+  $ensure            = present,
+  $globals           = false,
 ) {
   include collectd::params
 
-  validate_array($exec)
-  validate_array($notification_exec)
+  validate_hash($commands)
+  validate_bool($globals)
 
-  $conf_dir = $collectd::params::plugin_conf_dir
-
-  # This is deprecated file naming ensuring old style file removed, and should be removed in next major relese
-  file { "${name}.load-deprecated":
-    ensure => absent,
-    path   => "${conf_dir}/${name}.conf",
-  }
-  # End deprecation
-
-  file {
-    "${name}.load":
-      ensure  => $ensure,
-      path    => "${conf_dir}/${order}-${name}.conf",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
-      mode    => '0644',
-      content => template('collectd/exec.conf.erb'),
-      notify  => Service['collectd'],
+  collectd::plugin {'exec':
+    ensure   => $ensure,
+    globals  => $globals,
+    interval => $interval,
   }
 
+  # should be loaded after global plugin configuration
+  $exec_conf = "${collectd::params::plugin_conf_dir}/exec-config.conf"
+
+  concat{ $exec_conf:
+    ensure         => $ensure,
+    mode           => '0640',
+    owner          => 'root',
+    group          => $collectd::params::root_group,
+    notify         => Service['collectd'],
+    ensure_newline => true,
+  }
+
+  concat::fragment{'collectd_plugin_exec_conf_header':
+    order   => '00',
+    content => '<Plugin exec>',
+    target  => $exec_conf,
+  }
+
+  concat::fragment{'collectd_plugin_exec_conf_footer':
+    order   => '99',
+    content => '</Plugin>',
+    target  => $exec_conf,
+  }
+
+  create_resources(collectd::plugin::exec::cmd, $commands)
 }
