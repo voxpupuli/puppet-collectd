@@ -15,6 +15,7 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
     let :facts do
       { :osfamily => 'RedHat',
         :collectd_version => '5.3',
+        :concat_basedir => tmpfilename('collectd-graphite'),
       }
     end
     let :params do
@@ -30,37 +31,39 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
   end
 
   context 'protocol should be include with version >= 5.4' do
-    let(:title) { 'graphite_udp' }
+    let(:title) { 'wg' }
     let :facts do
       { :osfamily => 'RedHat',
         :collectd_version => '5.4',
+        :concat_basedir => tmpfilename('collectd-graphite'),
       }
     end
     let :params do
-      { :protocol => 'udp',
+      {
+        :protocol => 'udp',
       }
     end
-
     it 'Should include protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
       should contain_concat__fragment(
-        'collectd_plugin_write_graphite_conf_localhost_2003'
+        'collectd_plugin_write_graphite_conf_wg_udp_2003'
       ).with_content(/.*Protocol \"udp\".*/)
     end
   end
 
   context 'default configuration' do
+    let(:title) { 'graphite_default' }
 
     it 'includes carbon configuration' do
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with({
         :content => /<Carbon>/,
         :target  => '/etc/collectd/conf.d/write_graphite-config.conf',
       })
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with({
         :content => /Host "localhost"/,
       })
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with({
         :content => /Port "2003"/,
       })
     end

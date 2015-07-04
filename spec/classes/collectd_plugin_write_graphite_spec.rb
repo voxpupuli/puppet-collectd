@@ -13,12 +13,10 @@ describe 'collectd::plugin::write_graphite', :type => :class do
     }
   end
 
-
   context 'single carbon writer' do
-
     let :params do
       {
-        :carbons => { 'graphite_tcp' => {} },
+        :carbons => { 'graphite' => {} },
       }
     end
 
@@ -39,16 +37,16 @@ describe 'collectd::plugin::write_graphite', :type => :class do
     end
 
      it 'includes carbon configuration' do
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp_2003').with({
         :content => /<Carbon>/,
         :target  => '/etc/collectd/conf.d/write_graphite-config.conf',
       })
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp_2003').with({
         :content => /Host "localhost"/,
       })
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp').with({
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_tcp_2003').with({
         :content => /Port "2003"/,
       })
     end
