@@ -1,8 +1,8 @@
 #
 class collectd::plugin::chain (
-  $chainname     = "Main",
+  $chainname     = 'Main',
   $ensure        = 'present',
-  $defaulttarget = "write",
+  $defaulttarget = 'write',
   $rules         = []
 ) {
   include collectd::params
