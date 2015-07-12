@@ -1,0 +1,55 @@
+<Plugin "aggregation">
+  <Aggregation>
+<% unless @host.nil? -%>
+    Host "<%= @host %>"
+<% end -%>
+<% unless @plugin.nil? -%>
+    Plugin "<%= @plugin %>"
+<% end -%>
+<% unless @plugininstance.nil? -%>
+    PluginInstance "<%= @plugininstance %>"
+<% end -%>
+<% unless @type.nil? -%>
+    Type "<%= @type %>"
+<% end -%>
+<% unless @typeinstance.nil? -%>
+    TypeInstance "<%= @typeinstance %>"
+<% end -%>
+
+<% unless @sethost.nil? -%>
+    SetHost "<%= @sethost %>"
+<% end -%>
+<% unless @setplugin.nil? -%>
+    SetPlugin "<%= @setplugin %>"
+<% end -%>
+<% unless @setplugininstance.nil? -%>
+    SetPluginInstance "<%= @setplugininstance %>"
+<% end -%>
+<% unless @settypeinstance.nil? -%>
+    SetTypeInstance "<%= @settypeinstance %>"
+<% end -%>
+
+<% @groupby.each do |groupby| -%>
+    GroupBy "<%= groupby %>"
+<% end -%>
+
+<% unless @calculatesum.nil? -%>
+    CalculateSum <%= @calculatesum %>
+<% end -%>
+<% unless @calculatenum.nil? -%>
+    CalculateNum <%= @calculatenum %>
+<% end -%>
+<% unless @calculateaverage.nil? -%>
+    CalculateAverage <%= @calculateaverage %>
+<% end -%>
+<% unless @calculateminimum.nil? -%>
+    CalculateMinimum <%= @calculateminimum %>
+<% end -%>
+<% unless @calculatemaximum.nil? -%>
+    CalculateMaximum <%= @calculatemaximum %>
+<% end -%>
+<% unless @calculatestddev.nil? -%>
+    CalculateStddev <%= @calculatestddev %>
+<% end -%>
+  </Aggregation>
+</Plugin>

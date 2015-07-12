@@ -55,9 +55,11 @@ Configurable Plugins
 Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
+* `aggregation`  (see [collectd::plugin::aggregation](#class-collectdpluginaggregation) below)
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
+* `chain`  (see [collectd::plugin::chain](#class-chain) below)
 * `conntrack`  (see [collectd::plugin::conntrack](#class-conntrack) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
@@ -114,6 +116,33 @@ documentation for each plugin for configurable attributes.
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
 
+####Class: `collectd::plugin::aggregation`
+
+```puppet
+collectd::plugin::aggregation::aggregator {
+  cpu':
+    plugin           => 'cpu',
+    type             => 'cpu',
+    groupby          => ["Host", "TypeInstance",],
+    calculateaverage => true,
+}
+```
+
+You can as well configure this plugin with a parameterized class :
+
+```puppet
+class { 'collectd::plugin::aggregation':
+  aggregators => {
+    cpu' => {
+      plugin           => 'cpu',
+      type             => 'cpu',
+      groupby          => ["Host", "TypeInstance",],
+      calculateaverage => true,
+    },
+  },
+}
+```
+
 ####Class: `collectd::plugin::amqp`
 
 ```puppet
@@ -146,6 +175,37 @@ class { 'collectd::plugin::apache':
 class { 'collectd::plugin::bind':
   url    => 'http://localhost:8053/',
 }
+```
+
+####Class: `collectd::plugin::chain`
+
+```puppet
+class { 'collectd::plugin::chain':
+    chainname     => "PostCache",
+    defaulttarget => "write",
+    rules         => [
+      {
+        'match'   => {
+          'type'    => 'regex',
+          'matches' => {
+            'Plugin'         => "^cpu$",
+            'PluginInstance' => "^[0-9]+$",
+          },
+        },
+        'targets' => [
+          {
+            'type'       => "write",
+            'attributes' => {
+              "Plugin" => "aggregation",
+            },
+          },
+          {
+            'type' => "stop",
+          },
+        ],
+      },
+    ],
+  }
 ```
 
 ####Class: `collectd::plugin::conntrack`
