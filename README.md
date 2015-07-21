@@ -513,12 +513,31 @@ class { 'collectd::plugin::ntpd':
 
 ####Class: `collectd::plugin::openvpn`
 
+ * `statusfile` (String or Array) Status file(s) to collect data from. (Default `/etc/openvpn/openvpn-status.log`)
+ * `improvednamingschema` (Bool) When enabled, the filename of the status file will be used as plugin instance and the client's "common name" will be used as type instance. This is required when reading multiple status files. (Default: `false`)
+ * `collectcompression` Sets whether or not statistics about the compression used by OpenVPN should be collected. This information is only available in single mode. (Default `true`)
+ * `collectindividualusers` Sets whether or not traffic information is collected for each connected client individually. If set to false, currently no traffic data is collected at all because aggregating this data in a save manner is tricky. (Default `true`)
+ * `collectusercount` When enabled, the number of currently connected clients or users is collected.  This is especially interesting when CollectIndividualUsers is disabled, but can be configured independently from that option. (Default `false`)
+
+Watch multiple `statusfile`s:
+
+```puppet
+class { 'collectd::plugin::openvpn':
+  statusfile             => [ '/etc/openvpn/openvpn-status-tcp.log', '/etc/openvpn/openvpn-status-udp.log' ],
+  collectindividualusers => false,
+  collectusercount       => true,
+}
+```
+
+Watch the single default `statusfile`:
+
 ```puppet
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
 }
 ```
+
 
 ####Class: `collectd::plugin::perl`
 

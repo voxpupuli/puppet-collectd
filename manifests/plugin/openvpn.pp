@@ -8,7 +8,15 @@ class collectd::plugin::openvpn (
   $collectusercount       = false,
   $interval               = undef,
 ) {
-  validate_absolute_path($statusfile)
+  if is_string($statusfile) {
+    validate_absolute_path($statusfile)
+    $statusfiles = [ $statusfile ]
+  } elsif is_array($statusfile) {
+    $statusfiles = $statusfile
+  } else {
+    fail("statusfile must be either array or string: ${statusfile}")
+  }
+
   validate_bool(
     $improvednamingschema,
     $collectcompression,
