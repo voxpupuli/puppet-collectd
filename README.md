@@ -1013,9 +1013,29 @@ class { 'collectd::plugin::vmem':
 
 ####Class: `collectd::plugin::write_graphite`
 
+The `write_graphite` plugin writes data to Graphite, an open-source metrics storage and graphing project.
 ```puppet
-class { 'collectd::plugin::write_graphite':
-  graphitehost => 'graphite.example.org',
+collectd::plugin::write_graphite::carbon {'my_graphite':
+  graphitehost   => 'graphite.example.org',
+  graphiteport   => 2003,
+  graphiteprefix => '',
+  protocol       => 'tcp'
+}
+```
+
+You can define multiple Graphite backends where will be metrics send. Each backend should have unique title:
+
+```puppet
+collectd::plugin::write_graphite::carbon {'secondary_graphite':
+  graphitehost      => 'graphite.example.org',
+  graphiteport      => 2004,
+  graphiteprefix    => '',
+  protocol          => 'udp',
+  escapecharacter   => '_',
+  alwaysappendds    => true,
+  storerates        => true,
+  separateinstances => false,
+  logsenderrors     => true
 }
 ```
 
