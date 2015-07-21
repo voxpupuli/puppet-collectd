@@ -1,0 +1,23 @@
+<Chain "<%= @chainname %>">
+<% @rules.each do |rule| -%>
+  <Rule>
+    <Match "<%= rule['match']['type'] %>">
+<% rule['match']["matches"].each do |key, value| -%>
+      <%= key %> "<%= value %>"
+<% end -%>
+    </Match>
+<% rule['targets'].each do |target| -%>
+<% if target['attributes'].nil? -%>
+    Target "<%= target['type'] %>"
+<% else -%>
+    <Target "<%= target['type'] %>">
+<% target['attributes'].each do |key, value| -%>
+      <%= key %> "<%= value %>"
+<% end -%>
+    </Target>
+<% end -%>
+<% end -%>
+  </Rule>
+<% end -%>
+   Target "<%= @defaulttarget %>"
+</Chain>
