@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'collectd::plugin::openvpn', :type => :class do
 
   ######################################################################
-  # Default param validation
+  # Default param validation, compilation succeeds
 
   context ':ensure => present, default params' do
     let :facts do
@@ -20,9 +20,6 @@ describe 'collectd::plugin::openvpn', :type => :class do
       })
     end
   end
-
-  ######################################################################
-  # Remaining parameter validation
 
   context ':statusfile param is an array' do
     let :facts do
@@ -43,6 +40,26 @@ describe 'collectd::plugin::openvpn', :type => :class do
       })
     end
   end
+
+  ######################################################################
+  # Remaining parameter validation, compilation fails
+
+  context ':statusfile is a string but not an absolute path' do
+    let :facts do
+      { :osfamily => 'RedHat',
+        :collectd_version => '5.4',
+      }
+    end
+
+    let :params do
+      {:statusfile => 'megafrobber'}
+    end
+
+    it 'Will raise an error about :statusfile not being an absolute path' do
+      should compile.and_raise_error(/"megafrobber" is not an absolute path./)
+    end
+  end
+
 
   context ':statusfile param is not a string or array' do
     let :facts do
@@ -70,7 +87,7 @@ describe 'collectd::plugin::openvpn', :type => :class do
     end
 
     it 'Will raise an error about :improvednamingschema not being a boolean' do
-      should compile.and_raise_error(/Error while evaluating a Function Call, "true" is not a boolean./)
+      should compile.and_raise_error(/"true" is not a boolean.  It looks to be a String/)
     end
   end
 
@@ -84,7 +101,7 @@ describe 'collectd::plugin::openvpn', :type => :class do
     end
 
     it 'Will raise an error about :collectcompression not being a boolean' do
-      should compile.and_raise_error(/Error while evaluating a Function Call, "true" is not a boolean./)
+      should compile.and_raise_error(/"true" is not a boolean.  It looks to be a String/)
     end
   end
 
@@ -98,7 +115,7 @@ describe 'collectd::plugin::openvpn', :type => :class do
     end
 
     it 'Will raise an error about :collectindividualusers not being a boolean' do
-      should compile.and_raise_error(/Error while evaluating a Function Call, "true" is not a boolean./)
+      should compile.and_raise_error(/"true" is not a boolean.  It looks to be a String/)
     end
   end
 
@@ -112,7 +129,7 @@ describe 'collectd::plugin::openvpn', :type => :class do
     end
 
     it 'Will raise an error about :collectusercount not being a boolean' do
-      should compile.and_raise_error(/Error while evaluating a Function Call, "true" is not a boolean./)
+      should compile.and_raise_error(/"true" is not a boolean.  It looks to be a String/)
     end
   end
 
