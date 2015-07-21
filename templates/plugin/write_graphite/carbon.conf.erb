@@ -1,7 +1,7 @@
-<%- if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.2']) <= 0) -%>
-<Carbon>
-<%- else -%>
+<%- if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.3']) >= 0) -%>
 <Node "<%= @title %>">
+<%- else -%>
+<Carbon>
 <%- end -%>
   Host "<%= @graphitehost %>"
   Port "<%= @graphiteport %>"
@@ -17,8 +17,8 @@
   LogSendErrors <%= @logsenderrors %>
   Protocol "<%= @protocol %>"
 <%- end -%>
-<%- if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.2']) <= 0) -%>
-</Carbon>
-<%- else -%>
+<%- if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.3']) >= 0) -%>
 </Node>
+<%- else -%>
+</Carbon>
 <%- end -%>

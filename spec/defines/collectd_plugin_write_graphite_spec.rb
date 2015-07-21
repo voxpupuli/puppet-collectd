@@ -63,7 +63,7 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
 
     it 'includes carbon configuration' do
       should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with({
-        :content => /<Node "graphite_default">/,
+        :content => /<Carbon>/,
         :target  => '/etc/collectd/conf.d/write_graphite-config.conf',
       })
 
