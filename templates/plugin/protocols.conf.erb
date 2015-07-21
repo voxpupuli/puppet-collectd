@@ -1,0 +1,16 @@
+<% if @values -%>
+<Plugin "protocols">
+<% 
+if @values
+  @values.each do |value| 
+-%>
+  Value "<%= value %>"
+<%
+  end
+end
+-%>
+<% if @ignore_selected != nil -%>
+  IgnoreSelected <%= @ignore_selected %>
+<% end -%>
+</Plugin>
+<% end -%>

@@ -1,0 +1,7 @@
+<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0) -%>
+<Plugin cpu>
+  ReportByState = <%= @reportbystate %>
+  ReportByCpu = <%= @reportbycpu %>
+  ValuesPercentage = <%= @valuespercentage %>
+</Plugin>
+<% end -%>
