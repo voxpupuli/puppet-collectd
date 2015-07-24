@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Graphite
 class collectd::plugin::write_graphite (
   $carbons           = {},
+  $carbon_defaults   = {},
   $interval          = undef,
   $ensure            = present,
   $globals           = false,
@@ -39,5 +40,5 @@ class collectd::plugin::write_graphite (
     target  => $graphite_conf,
   }
 
-  create_resources(collectd::plugin::write_graphite::carbon, $carbons)
+  create_resources(collectd::plugin::write_graphite::carbon, $carbons, $carbon_defaults)
 }
