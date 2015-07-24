@@ -25,8 +25,8 @@ define collectd::plugin::exec (
     "${name}.load":
       ensure  => $ensure,
       path    => "${conf_dir}/${order}-${name}.conf",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
+      owner   => $collectd::root_user,
+      group   => $collectd::root_group,
       mode    => '0644',
       content => template('collectd/exec.conf.erb'),
       notify  => Service['collectd'],

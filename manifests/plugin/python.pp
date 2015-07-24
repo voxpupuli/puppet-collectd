@@ -43,7 +43,7 @@ class collectd::plugin::python (
     {
       'ensure'  => $ensure_modulepath,
       'mode'    => '0750',
-      'owner'   => 'root',
+      'owner'   => $collectd::params::root_user,
       'group'   => $collectd::params::root_group,
       'require' => Package[$collectd::params::package]
     }
