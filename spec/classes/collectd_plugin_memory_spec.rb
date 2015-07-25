@@ -15,22 +15,6 @@ describe 'collectd::plugin::memory', :type => :class do
     end
   end
 
-  context ':ensure => present' do
-    context ':ensure => present and collectd version < 5.5' do
-
-      it 'Will create /etc/collectd.d/10-memory.conf to load the plugin' do
-        should contain_file('cpu.load').with({
-          :ensure  => 'present',
-          :path    => '/etc/collectd.d/10-memory.conf',
-          :content => /LoadPlugin memory/,
-        })
-      end
-
-      it 'Will not include ValuesPercentage in /etc/collectd.d/10-memory.conf' do
-        should_not contain_file('cpu.load').with_content(/ValuesPercentage/)
-      end
-  end
-
   context ':ensure => present, specific params, collectd version 5.5.0' do
     let :facts do
       { :osfamily         => 'Redhat',
