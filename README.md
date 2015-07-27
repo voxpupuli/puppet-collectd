@@ -318,7 +318,8 @@ class { 'collectd::plugin::df':
 ```puppet
 class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
-  ignoreselected => true
+  ignoreselected => true,
+  udevnameattr   => 'DM_NAME',
 }
 ```
 
