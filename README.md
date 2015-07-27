@@ -332,7 +332,7 @@ class { 'collectd::plugin::entropy':
 ####Class: `collectd::plugin::exec`
 
 ```puppet
-collectd::plugin::exec {
+collectd::plugin::exec::cmd {
   'dummy':
     user => nobody,
     group => nogroup,
