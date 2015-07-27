@@ -1,0 +1,6 @@
+<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0) -%>
+<Plugin memory>
+  ValuesAbsolute = <%= @valuesabsolute %>
+  ValuesPercentage = <%= @valuespercentage %>
+</Plugin>
+<% end -%>
