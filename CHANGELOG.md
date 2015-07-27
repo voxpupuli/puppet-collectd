@@ -1,3 +1,21 @@
+## 2015-07-26 Release 4.0.0
+
+### Backwards-incompatible changes:
+
+* Exec plugin was renamed from collectd::plugin::exec to collectd::plugin::exec::cmd to support multiple execs
+* Write_graphite was renamed from collectd::plugin::write_graphite to collectd::plugin::write_graphite::carbon to supports multiple carbon backends
+
+### New features
+
+* Support for the aggregation, chain, and protocols plugins
+* Swap and Memory plugins now support ValuesAbsolute and ValuesPercentage
+* OpenVPN plugin now supports multiple statusfiles
+
+### Bug fixes
+
+* Fixed bug preventing multiple instances of curl_json
+* Fixed write_http plugin on RedHat
+
 ## 2015-06-16 Release 3.4.0
 
 ### Backwards-incompatible changes:
