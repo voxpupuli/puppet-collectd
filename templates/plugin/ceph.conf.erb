@@ -2,7 +2,7 @@
   LongRunAvgLatency <% @longrunavglatency %>
   ConvertSpecialMetricTypes <% @convertspecialmetrictypes %>
 
-<% @collectd_discoverd_osds.split(',').each do |osd| -%>
+<% @osds.each do |osd| -%>
   <Daemon "<%= osd %>">
     SocketPath "/var/run/ceph/ceph-<%= osd %>.asok"
   </Daemon>
