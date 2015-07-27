@@ -4,6 +4,7 @@ class collectd::plugin::disk (
   $disks          = [],
   $ignoreselected = false,
   $interval       = undef,
+  $udevnameattr   = undef,
 ) {
 
   validate_array($disks)
