@@ -1,0 +1,6 @@
+<%- unless @exec.empty? -%>
+  Exec "<%= @user %>:<%= @group %>" "<%= @exec.join('" "') %>"
+<%- end -%>
+<%- unless @notification_exec.empty? -%>
+  NotificationExec "<%= @user %>:<%= @group %>" "<%= @notification_exec.join('" "') %>"
+<%- end -%>

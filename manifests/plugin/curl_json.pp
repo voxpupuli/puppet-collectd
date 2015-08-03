@@ -13,9 +13,7 @@ define collectd::plugin::curl_json (
   validate_hash($keys)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-curl_json':
-      ensure => $ensure,
-    }
+    ensure_packages('collectd-curl_json')
   }
 
   $conf_dir = $collectd::params::plugin_conf_dir

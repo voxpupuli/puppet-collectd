@@ -1,5 +1,7 @@
 <Plugin openvpn>
-  StatusFile "<%= @statusfile %>"
+<% @statusfiles.each do |sf| -%>
+  StatusFile "<%= sf %>"
+<% end -%>
   ImprovedNamingSchema <%= @improvednamingschema %>
   CollectCompression <%= @collectcompression %>
   CollectIndividualUsers <%= @collectindividualusers %>
