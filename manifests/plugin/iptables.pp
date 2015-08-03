@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:IPTables
 class collectd::plugin::iptables (
   $ensure   = present,
+  $ensure_package = present,
   $chains   = {},
   $interval = undef,
 ) {
@@ -8,7 +9,7 @@ class collectd::plugin::iptables (
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-iptables':
-      ensure => $ensure,
+      ensure => $ensure_package,
     }
   }
 
