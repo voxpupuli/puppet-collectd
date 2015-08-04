@@ -15,11 +15,21 @@ class collectd(
   $write_queue_limit_low  = undef,
   $package_name           = $collectd::params::package,
   $version                = installed,
+  $minimum_version        = undef,
 ) inherits collectd::params {
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
+
+  # Version for templates
+  $collectd_version = pick(
+    $::collectd_real_version,                                                      # Fact takes precedence
+    regsubst(
+      regsubst($version,'^(absent|held|installed|latest|present|purged)$', ''), # standard package resource ensure value? - strip and return undef
+      '^\d+(?:\.\d+){1.2}', '\0'),                                                 # specific package version? return only semantic version parts
+    $minimum_version,
+    '1.0')
 
   package { $package_name:
     ensure   => $version,
