@@ -13,4 +13,7 @@
   RemotePort "<%= remoteport %>"
 <%   end -%>
 <% end -%>
+<% if @summary and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0)-%>
+  AllPortsSummary <%= @summary %>
+<% end -%>
 </Plugin>

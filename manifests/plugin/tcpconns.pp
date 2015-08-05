@@ -4,6 +4,7 @@ class collectd::plugin::tcpconns (
   $remoteports = undef,
   $listening   = undef,
   $interval    = undef,
+  $summary     = undef,
   $ensure      = present
 ) {
 
