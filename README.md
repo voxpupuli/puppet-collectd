@@ -339,6 +339,24 @@ collectd::plugin::exec::cmd {
     group => nogroup,
     exec => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat N:1"],
 }
+
+```
+You can also configure this plugin with a parameterized class:
+```puppet
+class { 'collectd::plugin::exec':
+  commands => {
+    'dummy1' => {
+      user  => nobody,
+      group => nogroup,
+      exec  => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat1 N:1"],
+    },
+    'dummy2' => {
+      user  => nobody,
+      group => nogroup,
+      exec  => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat2 N:1"],
+    },
+  }
+}
 ```
 
 ####Class: `collectd::plugin::filecount`
