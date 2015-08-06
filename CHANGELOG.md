@@ -1,3 +1,7 @@
+## 2015-08-05 Release 4.1.2
+
+Fix .travis.yml so that deploys work, better
+
 ## 2015-08-05 Release 4.1.1
 
 Fix .travis.yml so that deploys work
