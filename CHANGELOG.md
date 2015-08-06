@@ -1,3 +1,13 @@
+## 2015-07-26 Release 4.1.0
+
+This module now lives on the puppet community github organization.
+
+### New features
+
+* Add option to not install collectd-iptables on centos 6
+* Allow iptables chains parameter to be an array
+* Support UdevNameAttr attribute on disk plugin (fixes #300)
+
 ## 2015-07-26 Release 4.0.0
 
 ### Backwards-incompatible changes:
