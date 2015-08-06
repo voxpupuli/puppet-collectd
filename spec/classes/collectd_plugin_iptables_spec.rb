@@ -18,6 +18,26 @@ describe 'collectd::plugin::iptables', :type => :class do
     end
   end
 
+  context ':ensure => present and :chains has two chains from the same table' do
+    let :params do
+      { :chains => {
+        'filter' => ['INPUT','OUTPUT'],
+      } }
+    end
+    it 'Will create /etc/collectd.d/10-iptables.conf' do
+      should contain_file('iptables.load').with({
+        :ensure  => 'present',
+        :path    => '/etc/collectd.d/10-iptables.conf',
+        :content => /Chain filter INPUT/,
+      })
+      should contain_file('iptables.load').with({
+        :ensure  => 'present',
+        :path    => '/etc/collectd.d/10-iptables.conf',
+        :content => /Chain filter OUTPUT/,
+      })
+    end
+  end
+
   context ':ensure => absent' do
     let :params do
       {:chains => { 'nat' => 'In_SSH' }, :ensure => 'absent'}

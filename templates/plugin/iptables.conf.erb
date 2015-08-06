@@ -1,7 +1,9 @@
 <% if @chains -%>
 <Plugin iptables>
-<%   @chains.each_pair do |table,chain| -%>
+<%   @chains.each_pair do |table,chains|
+       Array(chains).each do |chain| -%>
   Chain <%= table %> <%= chain %>
+<%     end -%>
 <%   end -%>
 </Plugin>
 <% end -%>
