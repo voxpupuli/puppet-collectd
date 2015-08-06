@@ -780,11 +780,11 @@ NOTE: Since `v3.4.0` the syntax of this plugin has changed. Make sure to update 
 class { 'collectd::plugin::python':
   modulepaths => ['/usr/share/collectd/python'],
   modules     => {
-    'elasticsearch': {
+    'elasticsearch' => {
       'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
       'config'        => {'Cluster' => 'elasticsearch'},
     },
-    'another-module': {
+    'another-module' => {
       'config'        => {'Verbose' => 'true'},
     }
   }
