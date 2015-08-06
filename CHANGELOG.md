@@ -1,4 +1,8 @@
-## 2015-07-26 Release 4.1.0
+## 2015-08-05 Release 4.1.1
+
+Fix .travis.yml so that deploys work
+
+## 2015-08-05 Release 4.1.0
 
 This module now lives on the puppet community github organization.
 
