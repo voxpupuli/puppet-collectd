@@ -10,13 +10,12 @@ define collectd::plugin (
 
   include collectd::params
   $conf_dir = $collectd::params::plugin_conf_dir
-  $root_group = $collectd::params::root_group
 
   file { "${plugin}.load":
     ensure  => $ensure,
     path    => "${conf_dir}/${order}-${plugin}.conf",
-    owner   => root,
-    group   => $root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     mode    => '0640',
     content => template('collectd/loadplugin.conf.erb'),
     notify  => Service['collectd'],
