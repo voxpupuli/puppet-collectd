@@ -60,5 +60,17 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       expect {should}.to raise_error(Puppet::Error,/String/)
     end
   end
+  
+  context ':collectd_version >= 5.5.0, :summary is not a boolean' do
+    let :facts do
+      { :collectd_version => '5.5.0' }
+    end
+    let :params do
+      { :summary => 'aString' }
+    end
+    it 'Will raise an error about :summary being a String' do
+      expect {should}.to raise_error(Puppet::Error, /String/)
+    end
+  end 
 end
 
