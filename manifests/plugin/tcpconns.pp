@@ -16,6 +16,10 @@ class collectd::plugin::tcpconns (
     validate_array($remoteports)
   }
 
+  if $summary {
+    validate_bool($summary)
+  }
+
   collectd::plugin {'tcpconns':
     ensure   => $ensure,
     content  => template('collectd/plugin/tcpconns.conf.erb'),
