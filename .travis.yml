@@ -2,9 +2,9 @@
 sudo: false
 language: ruby
 bundler_args: --without system_tests
-before_install: rm Gemfile.lock || true
 script:
   - 'bundle exec rake test'
+  - 'rubocop -D'
 matrix:
   fast_finish: true
   include:

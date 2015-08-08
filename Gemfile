@@ -23,6 +23,7 @@ group :test do
   gem "rspec-puppet-facts"
   gem "rspec"
   gem "puppet-blacksmith", "> 3.3.0", :platforms => [:ruby_19, :ruby_20, :ruby_21]
+  gem "rubocop"
 end
 
 group :development do

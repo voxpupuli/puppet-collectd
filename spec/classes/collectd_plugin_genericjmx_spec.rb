@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx', :type => :class do
-  let (:facts) {{
+  let (:facts) do{
     :osfamily       => 'Debian',
     :id             => 'root',
     :concat_basedir => tmpfilename('collectd-genericjmx'),
     :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  }}
+  }
+  end
 
   let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
 
