@@ -14,9 +14,10 @@ describe 'collectd::plugin::rrdtool', :type => :class do
       })
     end
 
-   it { should contain_package('collectd-rrdtool').with(
+   it do should contain_package('collectd-rrdtool').with(
      :ensure => 'present'
-   )}
+   )
+   end
 
   end
 

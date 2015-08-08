@@ -3,3 +3,4 @@ pkg/
 *.swp
 .bundle/
 spec/fixtures/
+Gemfile.lock

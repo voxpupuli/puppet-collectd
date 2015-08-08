@@ -14,9 +14,10 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context ':ensure => absent' do
-    let (:params) {{
+    let (:params) do{
       :ensure => 'absent',
-    }}
+    }
+    end
 
     it 'will not load the plugin' do
       should contain_collectd__plugin('java').with({
@@ -26,9 +27,10 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter array' do
-    let (:params) {{
+    let (:params) do{
       :jvmarg => %w{ foo bar baz }
-    }}
+    }
+    end
 
     it 'will have multiple jvmarg parameters' do
       should contain_collectd__plugin('java').with_content(/JVMArg "foo".+JVMArg "bar".+JVMArg "baz"/m)
@@ -36,9 +38,10 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter string' do
-    let (:params) {{
+    let (:params) do{
       :jvmarg => 'bat'
-    }}
+    }
+    end
 
     it 'will have a JVMArg parameter' do
       should contain_collectd__plugin('java').with_content(/JVMArg "bat"/)
@@ -50,9 +53,10 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter empty' do
-    let (:params) {{
+    let (:params) do{
       :jvmarg => [],
-    }}
+    }
+    end
 
     it 'will not have a <Plugin java> stanza' do
       should contain_collectd__plugin('java').without_content(/<Plugin java>/)
