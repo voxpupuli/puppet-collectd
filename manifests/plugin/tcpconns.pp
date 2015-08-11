@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:TCPConns
 class collectd::plugin::tcpconns (
-  $localports  = undef,
-  $remoteports = undef,
-  $listening   = undef,
-  $interval    = undef,
-  $summary     = undef,
-  $ensure      = present
+  $localports      = undef,
+  $remoteports     = undef,
+  $listening       = undef,
+  $interval        = undef,
+  $allportssummary = undef,
+  $ensure          = present
 ) {
 
   if $localports {
@@ -16,8 +16,8 @@ class collectd::plugin::tcpconns (
     validate_array($remoteports)
   }
 
-  if $summary {
-    validate_bool($summary)
+  if $allportssummary {
+    validate_bool($allportssummary)
   }
 
   collectd::plugin {'tcpconns':
