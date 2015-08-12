@@ -1,0 +1,36 @@
+  <Query <%= @name %>>
+    Statement "<%= @statement %>"
+<% if @minversion -%>
+    MinVersion <%= @minversion %>
+<% end -%>
+<% if @maxversion -%>
+    MaxVersion <%= @maxversion %>
+<% end -%>
+<% @results.each do |result| -%>
+      <Result>
+        Type "<%= result['type'] %>"
+<% if result['instanceprefix'] -%>
+        InstancePrefix "<%= result['instanceprefix'] %>"
+<% end -%>
+<% if result['instancesfrom'] -%>
+<%    if result['instancesfrom'].kind_of?(Array) -%>
+        InstancesFrom <%= result['instancesfrom'].flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+<%    else -%>
+        InstancesFrom "<%= result['instancesfrom'] %>"
+<%    end -%>
+<% end -%>
+<% if result['metadatafrom'] -%>
+<%    if result['metadatafrom'].kind_of?(Array) -%>
+        InstancesFrom <%= result['metadatafrom'].flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+<%    else -%>
+        MetadataFrom "<%= result['metadatafrom'] %>"
+<%    end -%>
+<% end -%>
+<% if result['valuesfrom'].kind_of?(Array) -%>
+        ValuesFrom <%= result['valuesfrom'].flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+<% else -%>
+        ValuesFrom "<%= result['valuesfrom'] %>"
+<% end -%>
+      </Result>
+<% end -%>
+  </Query>
