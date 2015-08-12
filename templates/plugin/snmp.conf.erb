@@ -5,7 +5,16 @@
     Type "<%= val['Type'] %>"
     Table <%= val['Table'] %>
     Instance "<%= val['Instance'] %>"
+<% if val['InstancePrefix'] -%>
+    InstancePrefix "<%= val['InstancePrefix'] %>"
+<% end -%>
     Values <% Array(val['Values']).sort.each do |x| -%>"<%= x %>" <% end %>
+<% if val['Scale'] -%>
+    Scale <%= val['Scale'] %>
+<% end -%>
+<% if val['Shitf'] -%>
+    Shitf <%= val['Shitf'] %>
+<% end -%>
   </Data>
 <% end -%>
 <% @hosts.sort_by {|k,v| k}.each do |key,val| -%>
