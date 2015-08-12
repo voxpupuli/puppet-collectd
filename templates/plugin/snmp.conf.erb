@@ -8,7 +8,7 @@
 <% if val['InstancePrefix'] -%>
     InstancePrefix "<%= val['InstancePrefix'] %>"
 <% end -%>
-    Values <% Array(val['Values']).sort.each do |x| -%>"<%= x %>" <% end %>
+    Values <% Array(val['Values']).each do |x| -%>"<%= x %>" <% end %>
 <% if val['Scale'] -%>
     Scale <%= val['Scale'] %>
 <% end -%>
