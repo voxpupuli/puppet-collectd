@@ -70,7 +70,7 @@ describe 'collectd::plugin::tcpconns', :type => :class do
     end
   end
 
-  context ':allportssummary should not be included with version < 5.5.0' do
+  context ':allportssummary => true with collectd_version < 5.5.0' do
     let :facts do
       { :osfamily => 'RedHat', :collectd_version => '5.4.1' }
     end
@@ -78,12 +78,12 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       { :ensure  => 'present', :allportssummary => true }
     end
 
-    it 'Should not include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf for collectd < 5.5.0' do
-      should contain_file('10-tcpconns.load').without_content(/.*AllPortsSummary.*/)
+    it 'Should not include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
+      should contain_file('tcpconns.load').without_content(/AllPortsSummary/)
     end
   end
-
-  context ':allportssummary should be included with version >= 5.5.0' do
+  
+  context ':allportssummary => true with collectd_version = 5.5.0' do
     let :facts do
       { :osfamily => 'RedHat', :collectd_version => '5.5.0' }
     end
@@ -91,8 +91,10 @@ describe 'collectd::plugin::tcpconns', :type => :class do
       { :ensure  => 'present', :allportssummary => true }
     end
 
-    it 'Should be included in /etc/collectd.d/10-tcpconns.conf for collectd >= 5.5.0' do
-      should contain_file('10-tcpconns.load').with_content(/.*AllPortsSummary true.*/)
+    it 'Should include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
+      should contain_file('tcpconns.load').with_content(/AllPortsSummary true/)
     end
   end
+
+
 end
