@@ -3,7 +3,9 @@
 <% @data.sort_by {|k,v| k}.each do |key,val| -%>
   <Data "<%=key %>">
     Type "<%= val['Type'] %>"
+<% if val['Table'] -%>
     Table <%= val['Table'] %>
+<% end -%>
     Instance "<%= val['Instance'] %>"
 <% if val['InstancePrefix'] -%>
     InstancePrefix "<%= val['InstancePrefix'] %>"
