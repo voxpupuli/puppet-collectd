@@ -1,14 +1,16 @@
 #
 define collectd::plugin::mysql::database (
-  $ensure      = 'present',
-  $database    = $name,
-  $host        = 'UNSET',
-  $username    = 'UNSET',
-  $password    = 'UNSET',
-  $port        = '3306',
-  $masterstats = false,
-  $slavestats  = false,
-  $socket      = undef,
+  $ensure             = 'present',
+  $database           = $name,
+  $host               = 'UNSET',
+  $username           = 'UNSET',
+  $password           = 'UNSET',
+  $port               = '3306',
+  $masterstats        = false,
+  $slavestats         = false,
+  $socket             = undef,
+  $innodbstats        = false,
+  $slavenotifications = false,
 ) {
   include collectd::params
   include collectd::plugin::mysql
@@ -16,7 +18,7 @@ define collectd::plugin::mysql::database (
   $conf_dir = $collectd::params::plugin_conf_dir
 
   validate_string($database, $host, $username, $password, $port)
-  validate_bool($masterstats, $slavestats)
+  validate_bool($masterstats, $slavestats, $innodbstats, $slavenotifications)
   if $socket {
     validate_string($socket)
   }
