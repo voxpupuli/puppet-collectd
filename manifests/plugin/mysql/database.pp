@@ -9,8 +9,8 @@ define collectd::plugin::mysql::database (
   $masterstats        = false,
   $slavestats         = false,
   $socket             = undef,
-  $innodbstats        = false,
-  $slavenotifications = false,
+  $innodbstats        = undef,
+  $slavenotifications = undef,
 ) {
   include collectd::params
   include collectd::plugin::mysql
@@ -18,9 +18,17 @@ define collectd::plugin::mysql::database (
   $conf_dir = $collectd::params::plugin_conf_dir
 
   validate_string($database, $host, $username, $password, $port)
-  validate_bool($masterstats, $slavestats, $innodbstats, $slavenotifications)
+  validate_bool($masterstats, $slavestats)
   if $socket {
     validate_string($socket)
+  }
+
+  if $innodbstats != undef {
+    validate_bool($innodbstats)
+  }
+
+  if $slavenotifications != undef {
+    validate_bool($slavenotifications)
   }
 
   if ($masterstats == true and $slavestats == true) {
