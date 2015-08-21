@@ -12,8 +12,8 @@ class collectd::plugin::chain (
   file { "${conf_dir}/99-chain-${chainname}.conf":
     ensure  => $ensure,
     mode    => '0640',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     content => template('collectd/plugin/chain.conf.erb'),
     notify  => Service['collectd'],
   }

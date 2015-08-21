@@ -9,7 +9,8 @@ class collectd::params {
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
-      $root_group        = 'root'
+      $root_user         = 'collectd'
+      $root_group        = 'collectd'
       $java_dir          = '/usr/share/collectd/java'
       $python_dir        = '/usr/share/collectd/python'
     }
@@ -20,7 +21,8 @@ class collectd::params {
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
       $service_name      = 'collectd'
       $config_file       = "${collectd_dir}/collectd.conf"
-      $root_group        = 'root'
+      $root_user         = 'collectd'
+      $root_group        = 'collectd'
       $java_dir          = undef
       $python_dir        = '/opt/csw/share/collectd/python'
     }
@@ -31,7 +33,8 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
-      $root_group        = 'root'
+      $root_user         = 'collectd'
+      $root_group        = 'collectd'
       $java_dir          = '/usr/share/collectd/java'
       $python_dir        = '/usr/share/collectd/python'
     }
@@ -42,7 +45,8 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
-      $root_group        = 'root'
+      $root_user         = 'collectd'
+      $root_group        = 'collectd'
       $java_dir          = undef
       $python_dir        = '/usr/share/collectd/python'
     }
@@ -53,6 +57,7 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/usr/local/etc/collectd.conf'
+      $root_user         = 'collectd'
       $root_group        = 'wheel'
       $java_dir          = undef
       $python_dir        = '/usr/local/share/collectd/python'
@@ -64,6 +69,7 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
+      $root_user         = 'collectd'
       $root_group        = 'wheel'
       $java_dir          = undef
       $python_dir        = '/usr/share/collectd/python'
@@ -75,6 +81,7 @@ class collectd::params {
       $plugin_conf_dir   = $collectd_dir
       $service_name      = 'collectd'
       $config_file       = '/etc/collectd.conf'
+      $root_user         = 'collectd'
       $root_group        = 'collectd'
       $java_dir          = undef
       $python_dir        = '/usr/share/collectd/python'

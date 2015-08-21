@@ -5,7 +5,7 @@ describe 'collectd::plugin::processes', :type => :class do
     {
       :osfamily         => 'Debian',
       :concat_basedir   => tmpfilename('collectd-processes'),
-      :id               => 'root',
+      :id               => 'collectd',
       :kernel           => 'Linux',
       :path             => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       :collectd_version => '5.0'
