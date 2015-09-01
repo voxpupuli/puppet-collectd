@@ -1,0 +1,18 @@
+<Plugin netlink>
+<% @interfaces.each do |interface| -%>
+  Interface "<%= interface %>"
+<% end -%>
+<% @verboseinterfaces.each do |verboseinterface| -%>
+  VerboseInterface "<%= verboseinterface %>"
+<% end -%>
+<% @qdiscs.each do |qdisc| -%>
+  QDisc <%= qdisc %>
+<% end -%>
+<% @classes.each do |c| -%>
+  Class <%= c %>
+<% end -%>
+<% @filters.each do |filter| -%>
+  Filter <%= filter %>
+<% end -%>
+  IgnoreSelected <%= @ignoreselected %>
+</Plugin>
