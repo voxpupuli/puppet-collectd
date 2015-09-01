@@ -83,6 +83,7 @@ documentation for each plugin for configurable attributes.
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
+* `netlink` (see [collectd::plugin::netlink](#class-collectdpluginnetlink) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
 * `nfs`  (see [collectd::plugin::nfs](#class-collectdpluginnfs) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
@@ -523,6 +524,19 @@ collectd::plugin::mysql::database { 'betadase':
   password    => 'secret',
   port        => '3306',
   masterstats => true,
+}
+```
+
+####Class: `collectd::plugin::netlink`
+
+```puppet
+class { 'collectd::plugin::netlink':
+  interfaces        => ['eth0', 'eth1'],
+  verboseinterfaces => ['ppp0'],
+  qdiscs            => ['"eth0" "pfifo_fast-1:0"', '"ppp0"'],
+  classes           => ['"ppp0" "htb-1:10"'],
+  filters           => ['"ppp0" "u32-1:0"'],
+  ignoreselected    => false,
 }
 ```
 
