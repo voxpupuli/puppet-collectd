@@ -757,6 +757,18 @@ class { 'collectd::plugin::processes':
   ],
 }
 ```
+
+Or define single processes / process matches:
+```puppet
+collectd::plugin::processes::process { 'collectd' : }
+```
+
+```puppet
+collectd::plugin::processes::processmatch { 'elasticsearch' :
+  regex => '.*java.*org.elasticsearch.bootstrap.Elasticsearch'
+}
+```
+
 ####Class: `collectd::plugin::protocols`
 
  * `values` is an array of `Protocol` names, `Protocol:ValueName` pairs, or a regex
@@ -768,17 +780,6 @@ class { 'collectd::plugin::processes':
 class { 'collectd::plugin::protocols':
   values => ['/^Tcp:*/', '/^Udp:*/', 'Icmp:InErrors' ],
   ignoreselected => false,
-}
-```
-
-Or define single processes / process matches:
-```puppet
-collectd::plugin::processes::process { 'collectd' : }
-```
-
-```puppet
-collectd::plugin::processes::processmatch { 'elasticsearch' :
-  regex => '.*java.*org.elasticsearch.bootstrap.Elasticsearch'
 }
 ```
 
