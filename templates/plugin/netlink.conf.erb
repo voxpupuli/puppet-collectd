@@ -1,9 +1,9 @@
 <Plugin netlink>
 <% @interfaces.each do |interface| -%>
-  Interface  "<%= interface %>"
+  Interface "<%= interface %>"
 <% end -%>
 <% @verboseinterfaces.each do |verboseinterface| -%>
-  VerboseInterface  "<%= verboseinterface %>"
+  VerboseInterface "<%= verboseinterface %>"
 <% end -%>
 <% @qdiscs.each do |qdisc| -%>
   QDisc <%= qdisc %>
