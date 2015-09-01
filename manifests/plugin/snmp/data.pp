@@ -4,6 +4,9 @@ define collectd::plugin::snmp::data (
   $type,
   $values,
   $ensure = present,
+  $instanceprefix = undef,
+  $scale = undef,
+  $shift = undef,
   $table = false,
 ) {
   include collectd

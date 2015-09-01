@@ -3,6 +3,15 @@
     Type "<%= @type %>"
     Table <%= @table_bool ? 'true' : 'false' %>
     Instance "<%= @instance %>"
+<% if @instanceprefix -%>
+    InstancePrefix "<%= @instanceprefix %>"
+<% end -%>
     Values <%= Array(@values).map { |x| %Q{"#{x}"} }.join(' ') %>
+<% if @scale -%>
+    Scale <%= @scale %>
+<% end -%>
+<% if @shift -%>
+    Shift <%= @shift %>
+<% end -%>
   </Data>
 </Plugin>
