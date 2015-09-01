@@ -1,10 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:LogFile
 class collectd::plugin::logfile (
-  $ensure        = present,
-  $interval      = undef,
-  $log_level     = 'info',
-  $log_file      = '/var/log/collectd.log',
-  $log_timestamp = true
+  $ensure         = present,
+  $interval       = undef,
+  $log_level      = 'info',
+  $log_file       = '/var/log/collectd.log',
+  $log_timestamp  = true,
+  $print_severity = false
 ) {
   collectd::plugin { 'logfile':
     ensure   => $ensure,
