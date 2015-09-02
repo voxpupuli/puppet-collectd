@@ -1,0 +1,11 @@
+<Plugin ceph>
+  LongRunAvgLatency <% @longrunavglatency %>
+  ConvertSpecialMetricTypes <% @convertspecialmetrictypes %>
+
+<% @osds.each do |osd| -%>
+  <Daemon "<%= osd %>">
+    SocketPath "/var/run/ceph/ceph-<%= osd %>.asok"
+  </Daemon>
+<% end -%>
+
+</Plugin>

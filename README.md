@@ -59,6 +59,7 @@ documentation for each plugin for configurable attributes.
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
+* `ceph`  (see [collectd::plugin::ceph](#class-ceph) below)
 * `chain`  (see [collectd::plugin::chain](#class-chain) below)
 * `conntrack`  (see [collectd::plugin::conntrack](#class-conntrack) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
@@ -175,6 +176,14 @@ class { 'collectd::plugin::apache':
 ```puppet
 class { 'collectd::plugin::bind':
   url    => 'http://localhost:8053/',
+}
+```
+
+####Class: `collectd::plugin::ceph`
+
+```puppet
+class { 'collectd::plugin::ceph':
+  osds          => [ 'osd.0', 'osd.1', 'osd.2'],
 }
 ```
 
