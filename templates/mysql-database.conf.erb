@@ -15,5 +15,11 @@
 <%- if @socket -%>
     Socket "<%= @socket %>"
 <%- end -%>
+<%- if not @innodbstats.nil? -%>
+    InnodbStats <%= @innodbstats %>
+<%- end -%>
+<%- if not @slavenotifications.nil? -%>
+    SlaveNotifications <%= @slavenotifications %>
+<%- end -%>
   </Database>
 </Plugin>
