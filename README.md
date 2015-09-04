@@ -1123,6 +1123,36 @@ class { 'collectd::plugin::zfs_arc':
 }
 ```
 
+types.db
+--------
+
+Collectd needs to know how to handle each collected datapoint.
+For this it uses a database file called [`types.db`](https://collectd.org/documentation/manpages/types.db.5.shtml)
+
+Those files can be created using the `collectd::typesdb` and `collectd::type`
+define resources.
+
+```puppet
+$db = '/etc/collectd/types.db'
+collectd::typesdb { $db: }
+
+collectd::type { "response_size:${db}":
+  target  => $db,
+  ds_type => 'ABSOLUTE',
+  min     => 0,
+  max     => 10000000,
+  ds_name => 'value',
+}
+
+class { 'collectd':
+  typesdb      => [
+    '/usr/share/collectd/types.db',
+    $typesdb,
+  ],
+}
+```
+
+
 ##Limitations
 
 See metadata.json for supported platforms
