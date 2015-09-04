@@ -1,3 +1,21 @@
+## 2015-09-03 Release 4.2.0
+
+### New features
+
+* Add support for types.db
+* Add plugin::netlink
+* Add collectd::plugin::ceph
+* Add support for the new AllPortsSummary option
+* plugin/mysql: Add innodbstats and slavenotifications
+* plugin/snmp: Remove sorting of Values option in data block
+* plugin/snmp: Support InstancePrefix, Scale and Shift options
+* plugin/logfile:  Add support for PrintSeverity option (fix #317)
+* plugin/exec: Exec plugin can also be used with a parameterized class.
+
+### Bug fixes
+
+* plugin/snmp: Check if Table option is defined
+
 ## 2015-08-05 Release 4.1.2
 
 Fix .travis.yml so that deploys work, better
