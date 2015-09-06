@@ -2,8 +2,9 @@
 class collectd(
   $fqdnlookup             = true,
   $collectd_hostname      = $::hostname,
-  $interval               = 10,
   $include                = [],
+  $interval               = 10,
+  $internal_stats         = false,
   $purge                  = undef,
   $purge_config           = false,
   $recurse                = undef,
