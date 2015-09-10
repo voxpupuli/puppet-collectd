@@ -1,0 +1,26 @@
+LoadPlugin "write_sensu"
+<Plugin write_sensu>
+  Attribute "production" "true"
+  Tag "appserver"
+  <Node "default">
+    Host "<%= @sensu_host  %>"
+    Port "<%= @sensu_port  %>"
+    EventServicePrefix "collectd/"
+    Separator "/"
+    StoreRates <%= @store_rates %>
+    AlwaysAppendDS <%= @always_append_ds %>
+    # Optionally specify Sensu handlers
+    Metrics <%= @metrics %>
+    <%- if @metrics -%>
+    MetricHandler "<%= @metrics_handler  %>"
+    <%- else -%>
+    #MetricHandler "<%= @metrics_handler  %>"
+    <%- end -%>
+    Notifications <%= @notifications %>
+    <%- if @notifications -%>
+    NotificationHandler "<%= @notifs_handler  %>"
+    <%- else -%>
+    #NotificationHandler "<%= @notifs_handler  %>"
+    <%- end -%>
+  </Node>
+</Plugin>
