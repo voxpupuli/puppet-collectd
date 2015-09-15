@@ -5,7 +5,7 @@ describe 'collectd::plugin::postgresql', :type => :class do
     {
         :osfamily => 'RedHat',
         :concat_basedir => tmpfilename('collectd-postgresql'),
-        :id => 'root',
+        :id => 'collectd',
         :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     }
   end

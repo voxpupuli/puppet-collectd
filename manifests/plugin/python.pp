@@ -43,8 +43,8 @@ class collectd::plugin::python (
     {
       'ensure'  => $ensure_modulepath,
       'mode'    => '0750',
-      'owner'   => 'root',
-      'group'   => $collectd::params::root_group,
+      'owner'   => $collectd::root_user,
+      'group'   => $collectd::root_group,
       'require' => Package[$collectd::params::package]
     }
   )
@@ -55,8 +55,8 @@ class collectd::plugin::python (
   concat{ $python_conf:
     ensure         => $ensure,
     mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::params::root_group,
+    owner          => $collectd::root_user,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
   }

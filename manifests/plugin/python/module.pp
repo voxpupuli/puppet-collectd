@@ -21,8 +21,8 @@ define collectd::plugin::python::module (
     file { "${module}.script":
       ensure  => $ensure,
       path    => "${module_dir}/${module}.py",
-      owner   => 'root',
-      group   => $collectd::params::root_group,
+      owner   => $collectd::root_user,
+      group   => $collectd::root_group,
       mode    => '0640',
       source  => $script_source,
       require => File[$module_dir],

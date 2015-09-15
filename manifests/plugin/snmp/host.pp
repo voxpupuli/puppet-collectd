@@ -18,8 +18,8 @@ define collectd::plugin::snmp::host (
   file { "snmp-host-${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/25-snmp-host-${name}.conf",
-    owner   => 'root',
-    group   => $root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     mode    => '0640',
     content => template('collectd/plugin/snmp/host.conf.erb'),
     notify  => Service['collectd'];

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'collectd::plugin::genericjmx', :type => :class do
   let (:facts) {{
     :osfamily       => 'Debian',
-    :id             => 'root',
+    :id             => 'collectd',
     :concat_basedir => tmpfilename('collectd-genericjmx'),
     :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   }}
@@ -19,8 +19,8 @@ describe 'collectd::plugin::genericjmx', :type => :class do
       should contain_concat(config_filename).with({
         :ensure         => 'present',
         :mode           => '0640',
-        :owner          => 'root',
-        :group          => 'root',
+        :owner          => 'collectd',
+        :group          => 'collectd',
         :ensure_newline => true
       })
     end

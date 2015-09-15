@@ -22,8 +22,8 @@ class collectd::plugin::exec (
   concat{ $exec_conf:
     ensure         => $ensure,
     mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::params::root_group,
+    owner          => $collectd::root_user,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
   }

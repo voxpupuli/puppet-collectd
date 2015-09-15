@@ -4,7 +4,7 @@ describe 'collectd::plugin::python::module', :type => :define do
   let :facts do
     {
       :osfamily       => 'Debian',
-      :id             => 'root',
+      :id             => 'collectd',
       :concat_basedir => tmpfilename('collectd-python'),
       :path           => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     }

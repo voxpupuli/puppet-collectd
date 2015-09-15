@@ -20,8 +20,8 @@ define collectd::plugin::snmp::data (
   file { "snmp-data-${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/15-snmp-data-${name}.conf",
-    owner   => 'root',
-    group   => $root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     mode    => '0640',
     content => template('collectd/plugin/snmp/data.conf.erb'),
     notify  => Service['collectd'];
