@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_riemann (
   $ensure           = present,
+  $manage_package   = $true,
   $riemann_host     = 'localhost',
   $riemann_port     = 5555,
   $protocol         = 'UDP',
@@ -12,8 +13,10 @@ class collectd::plugin::write_riemann (
   validate_bool($always_append_ds)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-write_riemann':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-write_riemann':
+        ensure => $ensure,
+      }
     }
   }
 

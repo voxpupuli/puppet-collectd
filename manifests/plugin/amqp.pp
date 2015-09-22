@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:AMQP
 class collectd::plugin::amqp (
   $ensure          = present,
+  $manage_package  = $true,
   $amqphost        = 'localhost',
   $amqpport        = 5672,
   $amqpvhost       = 'graphite',
@@ -17,8 +18,10 @@ class collectd::plugin::amqp (
   validate_bool($amqppersistent)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-amqp':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-amqp':
+        ensure => $ensure,
+      }
     }
   }
 

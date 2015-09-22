@@ -2,6 +2,7 @@
 define collectd::plugin::ping (
   $hosts,
   $ensure         = present,
+  $manage_package = $true,
   $interval       = undef,
   $timeout        = undef,
   $ttl            = undef,
@@ -14,8 +15,10 @@ define collectd::plugin::ping (
   validate_array($hosts)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-ping':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-ping':
+        ensure => $ensure,
+      }
     }
   }
 

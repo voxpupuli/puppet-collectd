@@ -1,12 +1,15 @@
 # https://collectd.org/wiki/index.php/Plugin:LVM
 class collectd::plugin::lvm (
-  $ensure   = present,
-  $interval = undef,
+  $ensure           = present,
+  $manage_package   = $true,
+  $interval         = undef,
 ) {
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-lvm':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-lvm':
+        ensure => $ensure,
+      }
     }
   }
 

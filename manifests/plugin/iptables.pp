@@ -1,15 +1,18 @@
 # https://collectd.org/wiki/index.php/Plugin:IPTables
 class collectd::plugin::iptables (
-  $ensure   = present,
+  $ensure         = present,
   $ensure_package = present,
-  $chains   = {},
-  $interval = undef,
+  $manage_package = $true,
+  $chains         = {},
+  $interval       = undef,
 ) {
   validate_hash($chains)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-iptables':
-      ensure => $ensure_package,
+    if $manage_package {
+      package { 'collectd-iptables':
+        ensure => $ensure_package,
+      }
     }
   }
 

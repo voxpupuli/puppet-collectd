@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Sensors
 class collectd::plugin::sensors (
   $ensure           = present,
+  $manage_package   = $true,
   $sensorconfigfile = undef,
   $sensor           = undef,
   $ignoreselected   = undef,
@@ -8,8 +9,10 @@ class collectd::plugin::sensors (
 ) {
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-sensors':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-sensors':
+        ensure => $ensure,
+      }
     }
   }
 

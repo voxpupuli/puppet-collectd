@@ -2,6 +2,7 @@
 class collectd::plugin::libvirt (
   $connection,
   $ensure           = present,
+  $manage_package   = $true,
   $refresh_interval = undef,
   $domain           = undef,
   $block_device     = undef,
@@ -22,8 +23,10 @@ class collectd::plugin::libvirt (
   if $interface_format != undef { validate_string($interface_format) }
 
   if $::osfamily == 'RedHat' {
-    package { 'collectd-virt':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-virt':
+        ensure => $ensure,
+      }
     }
   }
 

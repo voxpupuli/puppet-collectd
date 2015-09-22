@@ -1,6 +1,7 @@
 #
 define collectd::plugin::perl::plugin (
   $module,
+  $manage_package = true,
   $enable_debugger = false,
   $include_dir = false,
   $provider = false,
@@ -45,8 +46,10 @@ define collectd::plugin::perl::plugin (
   case $provider {
     'package': {
       validate_string($source)
-      package { $source:
-        require => Collectd::Plugin['perl'],
+      if $manage_package {
+        package { $source:
+          require => Collectd::Plugin['perl'],
+        }
       }
     }
     'cpan': {
@@ -76,7 +79,7 @@ define collectd::plugin::perl::plugin (
     }
     default: {
       fail("Unsupported provider: ${provider}. Use 'package', 'cpan',
-        'file' or false.")
+      'file' or false.")
     }
   }
 }
