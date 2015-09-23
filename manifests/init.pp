@@ -1,76 +1,34 @@
 #
-class collectd(
-  $fqdnlookup             = true,
-  $collectd_hostname      = $::hostname,
-  $include                = [],
-  $interval               = 10,
-  $internal_stats         = false,
-  $purge                  = undef,
-  $purge_config           = false,
-  $recurse                = undef,
-  $threads                = 5,
-  $timeout                = 2,
-  $typesdb                = [],
-  $write_queue_limit_high = undef,
-  $write_queue_limit_low  = undef,
+class collectd (
+  $fqdnlookup             = $collectd::params::fqdnlookup,
+  $collectd_hostname      = $collectd::params::collectd_hostname,
+  $interval               = $collectd::params::interval,
+  $include                = $collectd::params::include,
+  $internal_stats         = $collectd::params::internal_stats,
+  $purge                  = $collectd::params::purge,
+  $purge_config           = $collectd::params::purge_config,
+  $recurse                = $collectd::params::recurse,
+  $threads                = $collectd::params::threads,
+  $timeout                = $collectd::params::timeout,
+  $typesdb                = $collectd::params::typesdb,
+  $write_queue_limit_high = $collectd::params::write_queue_limit_high,
+  $write_queue_limit_low  = $collectd::params::write_queue_limit_low,
+  $config_file            = $collectd::params::config_file,
+  $package_provider       = $collectd::params::provider,
   $package_name           = $collectd::params::package,
-  $version                = installed,
+  $plugin_conf_dir        = $collectd::params::plugin_conf_dir,
+  $root_group             = $collectd::params::root_group,
+  $version                = $collectd::params::version,
+  $service_name           = $collectd::params::service_name,
+  $service_ensure         = $collectd::params::service_ensure,
+  $service_enable         = $collectd::params::service_enable,
 ) inherits collectd::params {
 
-  $plugin_conf_dir = $collectd::params::plugin_conf_dir
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
 
-  package { $package_name:
-    ensure   => $version,
-    name     => $package_name,
-    provider => $collectd::params::provider,
-    before   => File['collectd.conf', 'collectd.d'],
-  }
+  class { 'collectd::install': } ->
+  class { 'collectd::config': } ~>
+  class { 'collectd::service': }
 
-  file { 'collectd.d':
-    ensure  => directory,
-    path    => $collectd::params::plugin_conf_dir,
-    mode    => '0750',
-    owner   => 'root',
-    group   => $collectd::params::root_group,
-    purge   => $purge,
-    recurse => $recurse,
-    notify  => Service['collectd'],
-  }
-
-  $conf_content = $purge_config ? {
-    true    => template('collectd/collectd.conf.erb'),
-    default => undef,
-  }
-
-  file { 'collectd.conf':
-    path    => $collectd::params::config_file,
-    content => $conf_content,
-    notify  => Service['collectd'],
-  }
-
-  if $purge_config != true {
-    # former include of conf_d directory
-    file_line { 'include_conf_d':
-      ensure => absent,
-      line   => "Include \"${collectd::params::plugin_conf_dir}/\"",
-      path   => $collectd::params::config_file,
-      notify => Service['collectd'],
-    }
-    # include (conf_d directory)/*.conf
-    file_line { 'include_conf_d_dot_conf':
-      ensure => present,
-      line   => "Include \"${collectd::params::plugin_conf_dir}/*.conf\"",
-      path   => $collectd::params::config_file,
-      notify => Service['collectd'],
-    }
-  }
-
-  service { 'collectd':
-    ensure  => running,
-    name    => $collectd::params::service_name,
-    enable  => true,
-    require => Package[$package_name],
-  }
 }
