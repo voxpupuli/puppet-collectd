@@ -4,6 +4,7 @@ class collectd (
   $collectd_hostname      = $collectd::params::collectd_hostname,
   $interval               = $collectd::params::interval,
   $include                = $collectd::params::include,
+  $internal_stats         = $collectd::params::internal_stats,
   $purge                  = $collectd::params::purge,
   $purge_config           = $collectd::params::purge_config,
   $recurse                = $collectd::params::recurse,

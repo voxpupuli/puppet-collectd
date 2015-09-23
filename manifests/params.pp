@@ -5,6 +5,7 @@ class collectd::params {
   $collectd_hostname      = $::hostname
   $interval               = 10
   $include                = []
+  $internal_stats         = false
   $purge                  = undef
   $purge_config           = false
   $recurse                = undef

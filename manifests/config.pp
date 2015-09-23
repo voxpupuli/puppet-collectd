@@ -14,6 +14,7 @@ class collectd::config (
   $typesdb                = $collectd::typesdb,
   $write_queue_limit_high = $collectd::write_queue_limit_high,
   $write_queue_limit_low  = $collectd::write_queue_limit_low,
+  $internal_stats         = $collectd::internal_stats,
 ) {
 
   $conf_content = $purge_config ? {
