@@ -1,0 +1,15 @@
+  <Database "<%= @databasename %>">
+    Driver "<%= @driver %>"
+<% @driveroption.each do |key, value| -%>
+    DriverOption "<%= key %>" "<%= value %>"
+<% end -%>
+<% if @selectdb -%>
+    SelectDB "<%= @selectdb %>"
+<% end -%>
+<% if @host -%>
+    Host "<%= @host %>"
+<% end -%>
+<% @query.each do |query| -%>
+    Query "<%= query %>"
+<% end -%>
+  </Database>

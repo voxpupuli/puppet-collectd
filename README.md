@@ -67,6 +67,7 @@ documentation for each plugin for configurable attributes.
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
 * `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
+* `dbi`  (see [collectd::plugin::dbi](#class-collectdplugindbi) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
@@ -311,6 +312,50 @@ collectd::plugin::curl_json {
     keys => {
       'message_stats/publish' => {'type' => 'gauge'},
     }
+}
+```
+
+####Class: `collectd::plugin::dbi`
+
+```puppet
+collectd::plugin::dbi::database{'monitoring_node1':
+  driver       => 'mysql',
+  driveroption => {
+    'host' => 'hostname',
+    'username' => 'user',
+    'password' => 'password',
+    'dbname'   => 'monitoring'
+  },
+  query    => ['log_delay'],
+}
+collectd::plugin::dbi::query{'log_delay':
+  statement => 'SELECT * FROM log_delay_repli;',
+  results   => [{
+    type           => 'gauge',
+    instanceprefix => 'log_delay',
+    instancesfrom  => 'inet_server_port',
+    valuesfrom     => 'log_delay',
+  }],
+}
+```
+
+You can as well configure this plugin as a parameterized class :
+
+```puppet
+class { 'collectd::plugin::dbi':
+  package   => 'libdbd-mysql',
+  databases => {
+    'monitoring_node1' => {
+      driver       => 'mysql',
+      driveroption => {
+        'host' => 'hostname',
+        'username' => 'user',
+        'password' => 'password',
+        'dbname'   => 'monitoring'
+      },
+      query    => ['log_delay'],
+    }
+  },
 }
 ```
 
