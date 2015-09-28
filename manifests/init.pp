@@ -22,10 +22,21 @@ class collectd (
   $service_name           = $collectd::params::service_name,
   $service_ensure         = $collectd::params::service_ensure,
   $service_enable         = $collectd::params::service_enable,
+  $version                = installed,
+  $minimum_version        = undef,
 ) inherits collectd::params {
 
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
+
+  # Version for templates
+  $collectd_version = pick(
+    $::collectd_real_version,                                                      # Fact takes precedence
+    regsubst(
+      regsubst($version,'^(absent|held|installed|latest|present|purged)$', ''), # standard package resource ensure value? - strip and return undef
+      '^\d+(?:\.\d+){1.2}', '\0'),                                                 # specific package version? return only semantic version parts
+    $minimum_version,
+    '1.0')
 
   class { 'collectd::install': } ->
   class { 'collectd::config': } ~>

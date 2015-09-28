@@ -27,9 +27,10 @@ declaration:
 
 ```puppet
 class { '::collectd':
-  purge        => true,
-  recurse      => true,
-  purge_config => true,
+  purge           => true,
+  recurse         => true,
+  purge_config    => true,
+  minimum_version => '5.4',
 }
 ```
 
@@ -37,6 +38,10 @@ Set purge, recurse, and purge_config to true in order to override
 the default configurations shipped in collectd.conf and use
 custom configurations stored in conf.d. From here you can set up
 additional plugins as shown below.
+
+Specifying the version or minimum_version of collectd as shown above reduces the need for
+two puppet runs to coverge. See [Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf,-why?) below.
+
 
 Simple Plugins
 --------------
@@ -1345,7 +1350,12 @@ See metadata.json for supported platforms
 
 ##Known issues
 
-Some plugins will need two runs of Puppet to fully generate the configuration for collectd. See [this issue](https://github.com/puppet-community/puppet-collectd/issues/162).
+###Puppet needs two runs to correctly write my conf, why?
+
+Some plugins will need two runs of Puppet to fully generate the configuration for collectd. See [this issue](https://github.com/pdxcat/puppet-module-collectd/issues/162).
+This can be avoided by specifying an explicit version (`$version`) or a minimum version (`$minimum_version`) for the collectd class. e.g. Setting either of these to 1.2.3 will
+make this module assume on the first run (when the fact responsible to provide the collectd version is not yet available) that your systems are running collectd 1.2.3
+and generate the configuration accordingly.
 
 ##Development
 
