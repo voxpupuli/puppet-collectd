@@ -64,14 +64,14 @@ describe 'collectd' do
     end
 
     context 'with internal_stats => true' do
-      context 'with collectd_version = 5.5' do
-        let(:facts) {{:osfamily => 'RedHat', :collectd_version => '5.5'}}
+      context 'with collectd_real_version = 5.5' do
+        let(:facts) {{:osfamily => 'RedHat', :collectd_real_version => '5.5'}}
         let(:params) {{:purge_config => true, :internal_stats => true}}
         it { is_expected.to contain_file('collectd.conf').without_content /^CollectInternalStats/ }
       end
 
-      context 'with collectd_version = 5.6' do
-        let(:facts) {{:osfamily => 'RedHat', :collectd_version => '5.6'}}
+      context 'with collectd_real_version = 5.6' do
+        let(:facts) {{:osfamily => 'RedHat', :collectd_real_version => '5.6'}}
         let(:params) {{:purge_config => true, :internal_stats => true}}
         it { is_expected.to contain_file('collectd.conf').with_content /^CollectInternalStats true/ }
       end
