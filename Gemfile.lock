@@ -369,6 +369,3 @@ DEPENDENCIES
   rspec-puppet-facts
   travis
   travis-lint
-
-BUNDLED WITH
-   1.10.6
