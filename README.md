@@ -1327,7 +1327,7 @@ define resources.
 $db = '/etc/collectd/types.db'
 collectd::typesdb { $db: }
 
-collectd::type { "response_size:${db}":
+collectd::type { "response_size-${db}":
   target  => $db,
   ds_type => 'ABSOLUTE',
   min     => 0,
