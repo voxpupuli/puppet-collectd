@@ -26,6 +26,6 @@ Include "<%= @plugin_conf_dir %>/*.conf"
 <% @include.each do |obj| -%>
 Include "<%= obj %>"
 <% end -%>
-<% if @internal_stats && @collectd_real_version && scope.function_versioncmp([@collectd_real_version, '5.5']) > 0 -%>
+<% if @internal_stats && @collectd_version && scope.function_versioncmp([@collectd_version, '5.5']) > 0 -%>
 CollectInternalStats true
 <% end -%>
