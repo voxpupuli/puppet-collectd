@@ -38,7 +38,9 @@ class collectd (
     '1.0')
 
   class { 'collectd::install': } ->
-  class { 'collectd::config': } ~>
+  class { 'collectd::config':
+    collectd_version => $collectd_version,
+  } ~>
   class { 'collectd::service': }
 
 }
