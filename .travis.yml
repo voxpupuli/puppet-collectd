@@ -1,4 +1,6 @@
 ---
+notifications:
+  email: false
 sudo: false
 language: ruby
 bundler_args: --without system_tests
@@ -16,13 +18,11 @@ matrix:
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
   - rvm: 2.2.0
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
-notifications:
-  email: false
 deploy:
   provider: puppetforge
   user: puppet
   password:
-    secure: "FAK3Izs5bSZyblGvcFnGWm0exZV5+v9pbwfRDD2oihWxX3U3pArGW+3XcwcJfLQgrUYBsOTmHC8yPjlgTBYeIt/5pvg9X+3jwNgeto6kozpI/nvAq4NtcHhzxRejuPELhFYeXZ3hEw0w+v/ZRo2cNLwI0LLpiWEDvCMZN1CJ2RY="
+    secure: ""
   on:
     tags: true
     # all_branches is required to use tags

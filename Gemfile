@@ -1,4 +1,4 @@
-#  Copyright 2014 Puppet Community
+#  Copyright 2015 Puppet Community
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
-  gem "rspec"
-  gem "puppet-blacksmith", "> 3.3.0", :platforms => [:ruby_19, :ruby_20, :ruby_21]
+  gem "rspec", "< 3.2.0", { "platforms" => ["ruby_18"] }
+  gem "puppet-blacksmith", "> 3.3.0", { "platforms" => ["ruby_19", "ruby_20", "ruby_21"] }
 end
 
 group :development do
