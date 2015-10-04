@@ -1,6 +1,9 @@
 ---
+notifications:
+  email: false
 sudo: false
 language: ruby
+cache: bundler
 bundler_args: --without system_tests
 before_install: rm Gemfile.lock || true
 script:
@@ -16,8 +19,6 @@ matrix:
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
   - rvm: 2.2.0
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes"
-notifications:
-  email: false
 deploy:
   provider: puppetforge
   user: puppet
