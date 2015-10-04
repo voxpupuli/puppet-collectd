@@ -1,3 +1,4 @@
+# private
 class collectd::config (
   $config_file            = $collectd::config_file,
   $plugin_conf_dir        = $collectd::plugin_conf_dir,
@@ -15,6 +16,7 @@ class collectd::config (
   $write_queue_limit_high = $collectd::write_queue_limit_high,
   $write_queue_limit_low  = $collectd::write_queue_limit_low,
   $internal_stats         = $collectd::internal_stats,
+  $collectd_version       = $collectd::collectd_version,
 ) {
 
   $conf_content = $purge_config ? {
