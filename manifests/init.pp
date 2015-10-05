@@ -23,6 +23,7 @@ class collectd (
   $service_ensure         = $collectd::params::service_ensure,
   $service_enable         = $collectd::params::service_enable,
   $minimum_version        = $collectd::params::minimum_version,
+  $manage_package         = $collectd::params::manage_package,
 ) inherits collectd::params {
 
   validate_bool($purge_config, $fqdnlookup)

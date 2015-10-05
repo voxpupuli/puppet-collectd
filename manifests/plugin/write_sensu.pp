@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_sensu (
   $ensure           = present,
+  $manage_package   = $true,
   $sensu_host       = 'localhost',
   $sensu_port       = 3030,
   $store_rates      = false,
@@ -15,8 +16,10 @@ class collectd::plugin::write_sensu (
   validate_bool($always_append_ds)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-write_sensu':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-write_sensu':
+        ensure => $ensure,
+      }
     }
   }
 

@@ -1,19 +1,22 @@
 # https://collectd.org/wiki/index.php/Plugin:Varnish
 class collectd::plugin::varnish (
-  $ensure    = present,
-  $instances = {
-      'localhost' => {
-      }
-    },
-  $interval = undef,
+  $ensure         = present,
+  $manage_package = $true,
+  $instances      = {
+    'localhost' => {
+    }
+  },
+  $interval       = undef,
 ) {
   include collectd::params
 
   validate_hash($instances)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-varnish':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-varnish':
+        ensure => $ensure,
+      }
     }
   }
 

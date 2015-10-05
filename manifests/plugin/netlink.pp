@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Netlink
 class collectd::plugin::netlink (
   $ensure            = present,
+  $manage_package    = true,
   $interfaces        = [],
   $verboseinterfaces = [],
   $qdiscs            = [],
@@ -14,8 +15,10 @@ class collectd::plugin::netlink (
   validate_bool($ignoreselected)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-netlink':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-netlink':
+        ensure => $ensure,
+      }
     }
   }
 

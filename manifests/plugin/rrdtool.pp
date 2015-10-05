@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:RRDtool
 class collectd::plugin::rrdtool (
   $ensure           = present,
+  $manage_package   = true,
   $datadir          = '/var/lib/collectd/rrd',
   $createfilesasync = false,
   $interval         = undef,
@@ -44,8 +45,10 @@ class collectd::plugin::rrdtool (
   }
 
   if $::osfamily == 'RedHat' {
-    package { 'collectd-rrdtool':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-rrdtool':
+        ensure => $ensure,
+      }
     }
   }
 

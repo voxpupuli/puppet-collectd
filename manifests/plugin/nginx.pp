@@ -1,18 +1,21 @@
 # https://collectd.org/wiki/index.php/Plugin:nginx
 class collectd::plugin::nginx (
   $url,
-  $ensure     = present,
-  $user       = undef,
-  $password   = undef,
-  $verifypeer = undef,
-  $verifyhost = undef,
-  $cacert     = undef,
-  $interval   = undef,
+  $manage_package   = $true,
+  $ensure           = present,
+  $user             = undef,
+  $password         = undef,
+  $verifypeer       = undef,
+  $verifyhost       = undef,
+  $cacert           = undef,
+  $interval         = undef,
 ) {
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-nginx':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-nginx':
+        ensure => $ensure,
+      }
     }
   }
 

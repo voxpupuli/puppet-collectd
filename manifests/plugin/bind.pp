@@ -2,6 +2,7 @@
 class collectd::plugin::bind (
   $url,
   $ensure         = present,
+  $manage_package = $true,
   $memorystats    = true,
   $opcodes        = true,
   $parsetime      = false,
@@ -25,8 +26,10 @@ class collectd::plugin::bind (
   validate_array($views)
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-bind':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-bind':
+        ensure => $ensure,
+      }
     }
   }
 

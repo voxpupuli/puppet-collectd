@@ -82,4 +82,14 @@ describe 'collectd' do
     let(:params) {{:package_name => 'collectd-core'}}
     it { should contain_package('collectd-core').with_ensure('installed') }
   end
+
+ context 'when manage_package is false' do
+   let(:params) {{ :manage_package => false }}
+   it { should_not contain_package('collectd')}
+ end
+
+ context 'when manage_package is true' do
+   let(:params) {{ :manage_package => true }}
+   it { should contain_package('collectd').with_ensure('installed')}
+ end
 end

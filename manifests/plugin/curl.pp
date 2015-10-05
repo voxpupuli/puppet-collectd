@@ -1,13 +1,16 @@
 #
 class collectd::plugin::curl (
-  $ensure   = present,
-  $interval = undef,
-  $pages    = { },
+  $ensure         = present,
+  $manage_package = $true,
+  $interval       = undef,
+  $pages          = { },
 ) {
 
   if $::osfamily == 'Redhat' {
-    package { 'collectd-curl':
-      ensure => $ensure,
+    if $manage_package {
+      package { 'collectd-curl':
+        ensure => $ensure,
+      }
     }
   }
 
