@@ -17,6 +17,9 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'metadata-json-lint/rake_task'
 require 'puppet_blacksmith/rake_tasks'
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new
 
 PuppetLint.configuration.relative = true
 PuppetLint.configuration.send('disable_80chars')
@@ -47,7 +50,7 @@ task test: [
   :metadata_lint,
   :lint,
   :syntax,
-  :spec
+  :spec,
 ]
 
 Blacksmith::RakeTask.new do |t|
@@ -64,7 +67,7 @@ task travis_release: [
 desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
-  if File.readlines('CHANGELOG.md').grep("Releasing #{v}").size == 0
+  if File.readlines('CHANGELOG.md').grep(/Releasing #{v}/).size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
 end
