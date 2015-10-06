@@ -2,23 +2,27 @@ require 'spec_helper'
 
 describe 'collectd::plugin::snmp::host', :type => :define do
   let :facts do
-    {:osfamily => 'Debian'}
+    { :osfamily => 'Debian' }
   end
 
-  let (:title) { 'foo.example.com' }
-  let (:required_params) {{
-    :collect => 'foo'
-  }}
+  let(:title) { 'foo.example.com' }
+  let(:required_params) do
+    {
+      :collect => 'foo'
+    }
+  end
 
-  let (:filename) { 'snmp-host-foo.example.com.conf' }
+  let(:filename) { 'snmp-host-foo.example.com.conf' }
 
   context 'default params' do
-    let (:params) { required_params }
+    let(:params) { required_params }
 
-    it { should contain_file(filename).with(
-      :ensure => 'present',
-      :path   => '/etc/collectd/conf.d/25-snmp-host-foo.example.com.conf'
-    ) }
+    it do
+      should contain_file(filename).with(
+        :ensure => 'present',
+        :path   => '/etc/collectd/conf.d/25-snmp-host-foo.example.com.conf'
+      )
+    end
 
     it { should contain_file(filename).that_notifies('Service[collectd]') }
     it { should contain_file(filename).with_content(/<Plugin snmp>/) }
@@ -30,14 +34,12 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   end
 
   context 'all params set' do
-    let (:params) {
-      required_params.merge({
-        :address   => 'bar.example.com',
-        :version   => '2',
-        :community => 'opensesame',
-        :interval  => '30',
-      })
-    }
+    let(:params) do
+      required_params.merge(:address   => 'bar.example.com',
+                            :version   => '2',
+                            :community => 'opensesame',
+                            :interval  => '30',)
+    end
     it { should contain_file(filename).with_content(/Address "bar\.example\.com"/) }
     it { should contain_file(filename).with_content(/Version 2/) }
     it { should contain_file(filename).with_content(/Community "opensesame"/) }
@@ -45,16 +47,20 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   end
 
   context 'collect is an array' do
-    let (:params) {{
-      :collect => %w{ foo bar baz }
-    }}
+    let(:params) do
+      {
+        :collect => %w( foo bar baz )
+      }
+    end
     it { should contain_file(filename).with_content(/Collect "foo" "bar" "baz"/) }
   end
 
   context 'collect is just a string' do
-    let (:params) {{
-      :collect => 'bat'
-    }}
+    let(:params) do
+      {
+        :collect => 'bat'
+      }
+    end
     it { should contain_file(filename).with_content(/Collect "bat"/) }
   end
 end

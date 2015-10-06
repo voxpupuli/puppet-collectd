@@ -2,33 +2,33 @@ require 'spec_helper'
 
 describe 'collectd::plugin::java', :type => :class do
   let :facts do
-    {:osfamily => 'RedHat'}
+    { :osfamily => 'RedHat' }
   end
 
   context ':ensure => present, defaults' do
     it 'Will load the plugin' do
-      should contain_collectd__plugin('java').with({
-        :ensure => 'present',
-      })
+      should contain_collectd__plugin('java').with(:ensure => 'present',)
     end
   end
 
   context ':ensure => absent' do
-    let (:params) {{
-      :ensure => 'absent',
-    }}
+    let(:params) do
+      {
+        :ensure => 'absent',
+      }
+    end
 
     it 'will not load the plugin' do
-      should contain_collectd__plugin('java').with({
-        :ensure => 'absent'
-      })
+      should contain_collectd__plugin('java').with(:ensure => 'absent')
     end
   end
 
   context 'jvmarg parameter array' do
-    let (:params) {{
-      :jvmarg => %w{ foo bar baz }
-    }}
+    let(:params) do
+      {
+        :jvmarg => %w( foo bar baz )
+      }
+    end
 
     it 'will have multiple jvmarg parameters' do
       should contain_collectd__plugin('java').with_content(/JVMArg "foo".+JVMArg "bar".+JVMArg "baz"/m)
@@ -36,9 +36,11 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter string' do
-    let (:params) {{
-      :jvmarg => 'bat'
-    }}
+    let(:params) do
+      {
+        :jvmarg => 'bat'
+      }
+    end
 
     it 'will have a JVMArg parameter' do
       should contain_collectd__plugin('java').with_content(/JVMArg "bat"/)
@@ -50,9 +52,11 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter empty' do
-    let (:params) {{
-      :jvmarg => [],
-    }}
+    let(:params) do
+      {
+        :jvmarg => [],
+      }
+    end
 
     it 'will not have a <Plugin java> stanza' do
       should contain_collectd__plugin('java').without_content(/<Plugin java>/)

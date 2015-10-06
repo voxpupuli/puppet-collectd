@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::libvirt', :type => :class do
-
   context 'interface_format in libvirt.conf' do
     let :params do
       { :connection       => 'qemu:///system',
@@ -17,8 +16,8 @@ describe 'collectd::plugin::libvirt', :type => :class do
       end
 
       it 'should be ignored' do
-        should contain_file('libvirt.load').
-          without_content(/.*InterfaceFormat \"address\".*/)
+        should contain_file('libvirt.load')
+          .without_content(/.*InterfaceFormat \"address\".*/)
       end
     end
 
@@ -30,10 +29,9 @@ describe 'collectd::plugin::libvirt', :type => :class do
       end
 
       it 'should be included' do
-        should contain_file('libvirt.load').
-          with_content(/.*InterfaceFormat \"address\".*/)
+        should contain_file('libvirt.load')
+          .with_content(/.*InterfaceFormat \"address\".*/)
       end
     end
   end
-
 end

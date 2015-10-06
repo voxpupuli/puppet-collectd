@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'collectd::plugin::filecount::directory', :type => :define do
   let :facts do
-    {:osfamily => 'Debian'}
+    { :osfamily => 'Debian' }
   end
 
   context 'simple case' do
@@ -56,10 +56,8 @@ describe 'collectd::plugin::filecount::directory', :type => :define do
       }
     end
     it 'Will create /etc/collectd/conf.d/15-filecount-test.conf' do
-      should contain_file('/etc/collectd/conf.d/15-filecount-test.conf').with({
-          :ensure => 'absent',
-          :path   => '/etc/collectd/conf.d/15-filecount-test.conf',
-      })
+      should contain_file('/etc/collectd/conf.d/15-filecount-test.conf').with(:ensure => 'absent',
+                                                                              :path   => '/etc/collectd/conf.d/15-filecount-test.conf',)
     end
   end
 end

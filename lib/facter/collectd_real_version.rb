@@ -9,10 +9,8 @@
 Facter.add(:collectd_real_version) do
   setcode do
     if Facter::Util::Resolution.which('collectd')
-      collectd_help = Facter::Util::Resolution.exec('collectd -h') and collectd_help =~ /^collectd ([\w.]+), http:\/\/collectd.org\//
-      $1
-    else
-      nil
+      collectd_help = Facter::Util::Resolution.exec('collectd -h')
+      %r{^collectd (?<version>[\w.]+), http://collectd.org/}.match(collectd_help)[:version]
     end
   end
 end

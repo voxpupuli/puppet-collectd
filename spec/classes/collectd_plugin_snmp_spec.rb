@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'collectd::plugin::snmp', :type => :class do
   let :facts do
-    {:osfamily => 'RedHat'}
+    { :osfamily => 'RedHat' }
   end
 
   context ':ensure => present and dataset for AMAVIS-MIB::inMsgs.0' do
@@ -28,11 +28,9 @@ describe 'collectd::plugin::snmp', :type => :class do
       }
     end
     it 'Will create /etc/collectd.d/10-snmp.conf' do
-      should contain_file('snmp.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/10-snmp.conf',
-        :content => /Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"/m,
-      })
+      should contain_file('snmp.load').with(:ensure  => 'present',
+                                            :path    => '/etc/collectd.d/10-snmp.conf',
+                                            :content => /Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"/m,)
     end
   end
 
@@ -60,12 +58,8 @@ describe 'collectd::plugin::snmp', :type => :class do
       }
     end
     it 'Will not create /etc/collectd.d/10-snmp.conf' do
-      should contain_file('snmp.load').with({
-        :ensure => 'absent',
-        :path   => '/etc/collectd.d/10-snmp.conf',
-      })
+      should contain_file('snmp.load').with(:ensure => 'absent',
+                                            :path   => '/etc/collectd.d/10-snmp.conf',)
     end
   end
-
 end
-

@@ -14,32 +14,26 @@ describe 'collectd::plugin::processes', :type => :class do
 
   context ':ensure => present' do
     context ':ensure => present and default parameters' do
-
       it 'Will create /etc/collectd/conf.d/10-processes.conf to load the plugin' do
-        should contain_file('processes.load').with({
-          :ensure  => 'present',
-          :path    => '/etc/collectd/conf.d/10-processes.conf',
-          :content => /LoadPlugin processes/,
-        })
+        should contain_file('processes.load')
+          .with(:ensure  => 'present',
+                :path    => '/etc/collectd/conf.d/10-processes.conf',
+                :content => /LoadPlugin processes/,)
       end
 
       it 'Will create /etc/collectd.d/conf.d/processes-config.conf' do
-        should contain_concat__fragment('collectd_plugin_processes_conf_header').with({
-          :content => /<Plugin processes>/,
-          :target  => '/etc/collectd/conf.d/processes-config.conf',
-          :order   => '00'
-        })
+        should contain_concat__fragment('collectd_plugin_processes_conf_header')
+          .with(:content => /<Plugin processes>/,
+                :target  => '/etc/collectd/conf.d/processes-config.conf',
+                :order   => '00')
       end
 
       it 'Will create /etc/collectd.d/conf.d/processes-config.conf' do
-        should contain_concat__fragment('collectd_plugin_processes_conf_footer').with({
-          :content => /<\/Plugin>/,
-          :target  => '/etc/collectd/conf.d/processes-config.conf',
-          :order   => '99'
-        })
+        should contain_concat__fragment('collectd_plugin_processes_conf_footer')
+          .with(:content => %r{</Plugin>},
+                :target  => '/etc/collectd/conf.d/processes-config.conf',
+                :order   => '99')
       end
     end
-
   end
 end
-

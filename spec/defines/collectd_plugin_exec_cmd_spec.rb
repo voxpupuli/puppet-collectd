@@ -21,10 +21,8 @@ describe 'collectd::plugin::exec::cmd', :type => :define do
     end
 
     it 'executes whoami command' do
-      should contain_concat__fragment('collectd_plugin_exec_conf_whoami').with({
-        :content => /Exec "www-data:users" "whoami" "--help"/,
-        :target  => '/etc/collectd/conf.d/exec-config.conf',
-      })
+      should contain_concat__fragment('collectd_plugin_exec_conf_whoami').with(:content => /Exec "www-data:users" "whoami" "--help"/,
+                                                                               :target  => '/etc/collectd/conf.d/exec-config.conf',)
     end
   end
 
@@ -34,16 +32,13 @@ describe 'collectd::plugin::exec::cmd', :type => :define do
       {
         :user  => 'www-data',
         :group => 'users',
-        :notification_exec  => ['whoami', '--help']
+        :notification_exec => ['whoami', '--help']
       }
     end
 
     it 'executes whoami command' do
-      should contain_concat__fragment('collectd_plugin_exec_conf_whoami').with({
-        :content => /NotificationExec "www-data:users" "whoami" "--help"/,
-        :target  => '/etc/collectd/conf.d/exec-config.conf',
-      })
+      should contain_concat__fragment('collectd_plugin_exec_conf_whoami').with(:content => /NotificationExec "www-data:users" "whoami" "--help"/,
+                                                                               :target  => '/etc/collectd/conf.d/exec-config.conf',)
     end
   end
-
 end
