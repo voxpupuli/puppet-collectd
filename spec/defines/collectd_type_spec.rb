@@ -23,10 +23,8 @@ describe 'collectd::type', :type => :define do
     end
 
     it 'creates an entry' do
-      should contain_concat__fragment('/etc/collectd/types.db/index').with({
-        :target => '/etc/collectd/types.db',
-        :content => "index\tsome_name:ABSOLUTE:4:5",
-      })
+      should contain_concat__fragment('/etc/collectd/types.db/index').with(:target => '/etc/collectd/types.db',
+                                                                           :content => "index\tsome_name:ABSOLUTE:4:5",)
     end
   end
 end

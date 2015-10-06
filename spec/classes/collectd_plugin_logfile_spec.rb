@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::logfile', :type => :class do
-
   context ':ensure => present, default params' do
     let :facts do
-      {:osfamily => 'RedHat'}
+      { :osfamily => 'RedHat' }
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf' do
-      should contain_file('logfile.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/05-logfile.conf',
-      }).without_content(/PrintSeverity/)
+      should contain_file('logfile.load').with(:ensure  => 'present',
+                                               :path    => '/etc/collectd.d/05-logfile.conf',).without_content(/PrintSeverity/)
     end
   end
 
@@ -22,14 +19,12 @@ describe 'collectd::plugin::logfile', :type => :class do
       }
     end
     let :params do
-        { :print_severity => true }
+      { :print_severity => true }
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd < 4.10' do
-      should contain_file('logfile.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/05-logfile.conf',
-      }).without_content(/PrintSeverity/)
+      should contain_file('logfile.load').with(:ensure  => 'present',
+                                               :path    => '/etc/collectd.d/05-logfile.conf',).without_content(/PrintSeverity/)
     end
   end
 
@@ -41,11 +36,9 @@ describe 'collectd::plugin::logfile', :type => :class do
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd >= 4.10' do
-      should contain_file('logfile.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/05-logfile.conf',
-        :content => /PrintSeverity false/
-      })
+      should contain_file('logfile.load').with(:ensure  => 'present',
+                                               :path    => '/etc/collectd.d/05-logfile.conf',
+                                               :content => /PrintSeverity false/)
     end
   end
 
@@ -56,32 +49,27 @@ describe 'collectd::plugin::logfile', :type => :class do
       }
     end
     let :params do
-        { :print_severity => true }
+      { :print_severity => true }
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd >= 4.10' do
-      should contain_file('logfile.load').with({
-        :ensure  => 'present',
-        :path    => '/etc/collectd.d/05-logfile.conf',
-        :content => /PrintSeverity true/
-      })
+      should contain_file('logfile.load').with(:ensure  => 'present',
+                                               :path    => '/etc/collectd.d/05-logfile.conf',
+                                               :content => /PrintSeverity true/)
     end
   end
 
   context ':ensure => absent' do
     let :facts do
-      {:osfamily => 'RedHat'}
+      { :osfamily => 'RedHat' }
     end
     let :params do
-      {:ensure => 'absent'}
+      { :ensure => 'absent' }
     end
 
     it 'Will not create /etc/collectd.d/05-logfile.conf' do
-      should contain_file('logfile.load').with({
-        :ensure => 'absent',
-        :path   => '/etc/collectd.d/05-logfile.conf',
-      })
+      should contain_file('logfile.load').with(:ensure => 'absent',
+                                               :path   => '/etc/collectd.d/05-logfile.conf',)
     end
   end
 end
-
