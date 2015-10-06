@@ -10,9 +10,10 @@ describe 'collectd::plugin::filecount', :type => :class do
       { :directories => { 'active' => '/var/spool/postfix/active' } }
     end
     it 'Will create /etc/collectd.d/10-filecount.conf' do
-      should contain_file('filecount.load').with(:ensure  => 'present',
-                                                 :path    => '/etc/collectd.d/10-filecount.conf',
-                                                 :content => /Directory "\/var\/spool\/postfix\/active"/,)
+      should contain_file('filecount.load')
+        .with(:ensure  => 'present',
+              :path    => '/etc/collectd.d/10-filecount.conf',
+              :content => %r{Directory "/var/spool/postfix/active"},)
     end
   end
 
@@ -27,12 +28,13 @@ describe 'collectd::plugin::filecount', :type => :class do
       } } }
     end
     it 'Will create foodir collectd::plugin::filecount::directory resource' do
-      should contain_collectd__plugin__filecount__directory('foodir').with(:ensure        => 'present',
-                                                                           :path          => '/path/to/dir',
-                                                                           :pattern       => '*.conf',
-                                                                           :mtime         => '-5m',
-                                                                           :recursive     => true,
-                                                                           :includehidden => false,)
+      should contain_collectd__plugin__filecount__directory('foodir')
+        .with(:ensure        => 'present',
+              :path          => '/path/to/dir',
+              :pattern       => '*.conf',
+              :mtime         => '-5m',
+              :recursive     => true,
+              :includehidden => false,)
     end
   end
 
@@ -41,8 +43,9 @@ describe 'collectd::plugin::filecount', :type => :class do
       { :directories => { 'active' => '/var/spool/postfix/active' }, :ensure => 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-filecount.conf' do
-      should contain_file('filecount.load').with(:ensure => 'absent',
-                                                 :path   => '/etc/collectd.d/10-filecount.conf',)
+      should contain_file('filecount.load')
+        .with(:ensure => 'absent',
+              :path   => '/etc/collectd.d/10-filecount.conf',)
     end
   end
 

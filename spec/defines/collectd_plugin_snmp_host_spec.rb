@@ -5,17 +5,17 @@ describe 'collectd::plugin::snmp::host', :type => :define do
     { :osfamily => 'Debian' }
   end
 
-  let (:title) { 'foo.example.com' }
-  let (:required_params) do
+  let(:title) { 'foo.example.com' }
+  let(:required_params) do
     {
       :collect => 'foo'
     }
   end
 
-  let (:filename) { 'snmp-host-foo.example.com.conf' }
+  let(:filename) { 'snmp-host-foo.example.com.conf' }
 
   context 'default params' do
-    let (:params) { required_params }
+    let(:params) { required_params }
 
     it do
       should contain_file(filename).with(
@@ -34,7 +34,7 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   end
 
   context 'all params set' do
-    let (:params) do
+    let(:params) do
       required_params.merge(:address   => 'bar.example.com',
                             :version   => '2',
                             :community => 'opensesame',
@@ -47,7 +47,7 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   end
 
   context 'collect is an array' do
-    let (:params) do
+    let(:params) do
       {
         :collect => %w( foo bar baz )
       }
@@ -56,7 +56,7 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   end
 
   context 'collect is just a string' do
-    let (:params) do
+    let(:params) do
       {
         :collect => 'bat'
       }

@@ -5,8 +5,8 @@ describe 'collectd::plugin::snmp::data', :type => :define do
     { :osfamily => 'Debian' }
   end
 
-  let (:title) { 'foo' }
-  let (:required_params) do
+  let(:title) { 'foo' }
+  let(:required_params) do
     {
       :type     => 'bar',
       :instance => 'baz',
@@ -14,10 +14,10 @@ describe 'collectd::plugin::snmp::data', :type => :define do
     }
   end
 
-  let (:filename) { 'snmp-data-foo.conf' }
+  let(:filename) { 'snmp-data-foo.conf' }
 
   context 'required params' do
-    let (:params) { required_params }
+    let(:params) { required_params }
 
     it do
       should contain_file(filename).with(
@@ -34,21 +34,21 @@ describe 'collectd::plugin::snmp::data', :type => :define do
   end
 
   context 'values is an array' do
-    let (:params) do
+    let(:params) do
       required_params.merge(:values => %w( foo bar baz ))
     end
     it { should contain_file('snmp-data-foo.conf').with_content(/Values "foo" "bar" "baz"/) }
   end
 
   context 'values is just a string' do
-    let (:params) do
+    let(:params) do
       required_params.merge(:values => 'bat')
     end
     it { should contain_file('snmp-data-foo.conf').with_content(/Values "bat"/) }
   end
 
   context 'table is true' do
-    let (:params) do
+    let(:params) do
       {
         :table => true
       }.merge(required_params)
@@ -58,7 +58,7 @@ describe 'collectd::plugin::snmp::data', :type => :define do
   end
 
   context 'table is false' do
-    let (:params) do
+    let(:params) do
       {
         :table => false
       }.merge(required_params)

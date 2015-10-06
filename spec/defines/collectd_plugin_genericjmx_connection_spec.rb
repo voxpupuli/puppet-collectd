@@ -1,6 +1,7 @@
 require 'spec_helper'
+
 describe 'collectd::plugin::genericjmx::connection', :type => :define do
-  let (:facts) do
+  let(:facts) do
     {
       :osfamily => 'Debian',
       :id => 'root',
@@ -9,19 +10,19 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
     }
   end
 
-  let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
+  let(:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
 
-  let (:default_params) do
+  let(:default_params) do
     {
       :service_url => 'foo:bar:baz',
     }
   end
 
-  let (:title) { 'foo.example.com' }
-  let (:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo.example.com' }
+  let(:title) { 'foo.example.com' }
+  let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo.example.com' }
 
   context 'required params' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:collect => [],)
     end
 
@@ -39,7 +40,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
   end
 
   context 'hostname override' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:host => 'bar.example.com',
                            :collect => [],)
     end
@@ -53,7 +54,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
   end
 
   context 'collect array' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:collect => %w( foo bar baz ))
     end
 
@@ -61,7 +62,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
   end
 
   context 'collect string' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:collect => 'bat')
     end
 
@@ -70,7 +71,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
   end
 
   context 'username and password' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:user     => 'alice',
                            :password => 'aoeuhtns',
                            :collect  => [],)
@@ -81,7 +82,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
   end
 
   context 'instance_prefix 'do
-    let (:params) do
+    let(:params) do
       default_params.merge(:instance_prefix => 'bat',
                            :collect  => [],)
     end

@@ -7,9 +7,10 @@ describe 'collectd::plugin::protocols', :type => :class do
 
   context ':ensure => present, default params' do
     it 'Will create /etc/collectd.d/10-protocols.conf' do
-      should contain_file('protocols.load').with(:ensure  => 'present',
-                                                 :path    => '/etc/collectd.d/10-protocols.conf',
-                                                 :content => //,)
+      should contain_file('protocols.load')
+        .with(:ensure  => 'present',
+              :path    => '/etc/collectd.d/10-protocols.conf',
+              :content => //,)
     end
   end
 
@@ -20,9 +21,10 @@ describe 'collectd::plugin::protocols', :type => :class do
     end
 
     it 'Will create /etc/collectd.d/10-protocols.conf' do
-      should contain_file('protocols.load').with(:ensure  => 'present',
-                                                 :path    => '/etc/collectd.d/10-protocols.conf',
-                                                 :content => /<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n<\/Plugin>/,)
+      should contain_file('protocols.load')
+        .with(:ensure  => 'present',
+              :path    => '/etc/collectd.d/10-protocols.conf',
+              :content => %r{<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n</Plugin>},)
     end
   end
 
@@ -32,8 +34,9 @@ describe 'collectd::plugin::protocols', :type => :class do
     end
 
     it 'Will not create /etc/collectd.d/10-protocols.conf' do
-      should contain_file('protocols.load').with(:ensure => 'absent',
-                                                 :path   => '/etc/collectd.d/10-protocols.conf',)
+      should contain_file('protocols.load')
+        .with(:ensure => 'absent',
+              :path   => '/etc/collectd.d/10-protocols.conf',)
     end
   end
 end

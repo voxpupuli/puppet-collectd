@@ -12,7 +12,7 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context ':ensure => absent' do
-    let (:params) do
+    let(:params) do
       {
         :ensure => 'absent',
       }
@@ -24,7 +24,7 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter array' do
-    let (:params) do
+    let(:params) do
       {
         :jvmarg => %w( foo bar baz )
       }
@@ -36,7 +36,7 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter string' do
-    let (:params) do
+    let(:params) do
       {
         :jvmarg => 'bat'
       }
@@ -52,7 +52,7 @@ describe 'collectd::plugin::java', :type => :class do
   end
 
   context 'jvmarg parameter empty' do
-    let (:params) do
+    let(:params) do
       {
         :jvmarg => [],
       }

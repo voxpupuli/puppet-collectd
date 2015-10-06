@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx::mbean', :type => :define do
-  let (:facts) do
+  let(:facts) do
     {
       :osfamily => 'Debian',
       :id => 'root',
@@ -10,21 +10,21 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
     }
   end
 
-  let (:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
+  let(:config_filename) { '/etc/collectd/conf.d/15-genericjmx.conf' }
 
-  let (:default_params) do
+  let(:default_params) do
     {
       :object_name => 'bar',
       :values      => [],
     }
   end
 
-  let (:title) { 'foo' }
-  let (:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo' }
+  let(:title) { 'foo' }
+  let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo' }
 
   # empty values array is technically not valid, but we'll test those cases later
   context 'defaults' do
-    let (:params) { default_params }
+    let(:params) { default_params }
     it 'provides an MBean stanza concat fragment' do
       should contain_concat__fragment(concat_fragment_name).with(:target => config_filename,
                                                                  :order  => '10',)
@@ -36,7 +36,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'instance_prefix set' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:instance_prefix => 'baz')
     end
 
@@ -44,7 +44,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'instance_from array' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:instance_from => %w( foo bar baz ))
     end
 
@@ -52,7 +52,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'instance_from string' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:instance_from => 'bat')
     end
 
@@ -60,7 +60,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
     it { should contain_concat__fragment(concat_fragment_name).without_content(/(.*InstanceFrom.*){2,}/) }
   end
 
-  let (:default_values_args) do
+  let(:default_values_args) do
     {
       'type'       => 'foo',
       'attribute'  => 'bar'
@@ -69,7 +69,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
 
   # testing the Value template section is going to be messy
   context 'value section defaults' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:values => [default_values_args])
     end
 
@@ -89,7 +89,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'value section instance_prefix set' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:values => [default_values_args.merge('instance_prefix' => 'baz',)])
     end
 
@@ -98,7 +98,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'value section instance_from array' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:values => [default_values_args.merge('instance_from' => %w( alice bob carol ))])
     end
 
@@ -109,7 +109,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'value section instance_from string' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:values => [default_values_args.merge('instance_from' => 'dave',)])
     end
 
@@ -120,7 +120,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
 
   context 'value section table true-like' do
     ['true', true].each do |truthy|
-      let (:params) do
+      let(:params) do
         default_params.merge(:values => [default_values_args.merge('table' => truthy)])
       end
 
@@ -130,7 +130,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
 
   context 'value section table false-like' do
     ['false', false].each do |truthy|
-      let (:params) do
+      let(:params) do
         default_params.merge(:values => [default_values_args.merge('table' => truthy)])
       end
 
@@ -139,7 +139,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
   end
 
   context 'multiple values' do
-    let (:params) do
+    let(:params) do
       default_params.merge(:values => [default_values_args, default_values_args])
     end
 

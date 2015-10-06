@@ -11,7 +11,7 @@ describe 'collectd::plugin::mysql::database', :type => :define do
       { :socket => '/var/run/mysqld/mysqld.sock' }
     end
     it 'Will create /etc/collectd/conf.d/mysql-test.conf' do
-      should contain_file('test.conf').with_content(/Socket "\/var\/run\/mysqld\/mysqld\.sock"$/)
+      should contain_file('test.conf').with_content(%r{Socket "/var/run/mysqld/mysqld\.sock"$})
     end
   end
 
