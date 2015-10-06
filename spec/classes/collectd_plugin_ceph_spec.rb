@@ -11,8 +11,8 @@ describe 'collectd::plugin::ceph', :type => :class do
     end
     content = <<EOS
 <Plugin ceph>
-  LongRunAvgLatency
-  ConvertSpecialMetricTypes
+  LongRunAvgLatency false
+  ConvertSpecialMetricTypes true
 
   <Daemon "osd.0">
     SocketPath "/var/run/ceph/ceph-osd.0.asok"
