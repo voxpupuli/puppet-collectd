@@ -75,6 +75,7 @@ documentation for each plugin for configurable attributes.
 * `dbi`  (see [collectd::plugin::dbi](#class-collectdplugindbi) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
+* `dns` (see [collectd::plugin::dns](#class-collectdplugindns) below)
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
@@ -384,6 +385,63 @@ class { 'collectd::plugin::disk':
   udevnameattr   => 'DM_NAME',
 }
 ```
+
+####Class: `collectd::plugin::dns`
+
+```puppet
+class { 'collectd::plugin::dns':
+}
+```
+
+##### Parameters:
+
+See collectd [documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_dns).
+
+ensure
+------
+Optional. String that must be 'present' or 'absent'.
+
+- *Default*: 'present'
+
+ignoresource
+------------
+Optional. String of IP address to ignore.
+
+- *Default*: undef
+
+interface
+---------
+String of interface to use. May be interface identifier such as 'eth0' or 'any'.
+
+- *Default*: 'any'
+
+interval
+--------
+Numeric for interval in seconds. Changing this can be a disaster. Consult the documentation.
+
+- *Default*: undef
+
+manage_package
+--------------
+Boolean to determine if system package for collectd's dns plugin should be
+managed. If set to true, you must specify the package name for any unsupported
+OS.
+
+- *Default*: false
+
+package_name
+------------
+String for name of package. A value of 'USE_DEFAULTS' will set the value based
+on the platform. This is necessary when setting manage_package on an
+unsupported platform.
+
+- *Default*: 'USE_DEFAULTS'
+
+selectnumericquerytypes
+-----------------------
+Boolean for SelectNumericQueryTypes configuration option.
+
+- *Default*: true
 
 ####Class: `collectd::plugin::entropy`
 

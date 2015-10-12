@@ -1,0 +1,7 @@
+<Plugin dns>
+  Interface "<%= @interface %>"
+<% if @ignoresource -%>
+  IgnoreSource <%= @ignoresource %>
+<%- end -%>
+  SelectNumericQueryTypes <%= @selectnumericquerytypes_real %>
+</Plugin>
