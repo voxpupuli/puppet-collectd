@@ -6,6 +6,7 @@ describe 'collectd' do
   end
 
   it { should contain_package('collectd').with_ensure('installed') }
+  it { should contain_package('collectd').with_install_options(nil) }
   it { should contain_service('collectd').with_ensure('running') }
   it { should contain_file('collectd.conf').without_content }
   it { should contain_file('collectd.d').with_ensure('directory') }
@@ -13,6 +14,28 @@ describe 'collectd' do
   it { is_expected.to contain_class('collectd::install').that_comes_before('Class[collectd::config]') }
   it { is_expected.to contain_class('collectd::config').that_notifies('Class[collectd::service]') }
   it { is_expected.to contain_class('collectd::service') }
+
+  context 'with collectd::install::package_install_options' do
+    context 'set to a valid array' do
+      let :params do
+        { :package_install_options => ['--nogpgcheck'] }
+      end
+
+      it { should contain_package('collectd').with_install_options(['--nogpgcheck']) }
+    end
+
+    context 'set to an invalid value (non-array)' do
+      let :params do
+        { :package_install_options => 'not_an_array' }
+      end
+
+      it 'should fail' do
+        expect do
+          should contain_class('collectd')
+        end.to raise_error(Puppet::Error, /is not an Array/)
+      end
+    end
+  end
 
   context 'on non supported operating systems' do
     let(:facts) { { :osfamily => 'foo' } }

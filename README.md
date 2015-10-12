@@ -42,6 +42,14 @@ additional plugins as shown below.
 Specifying the version or minimum_version of collectd as shown above reduces the need for
 two puppet runs to coverge. See [Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf,-why?) below.
 
+Hiera example in YAML of passing install_options to the package resouce for managing the
+collectd package. This parameter must be an array.
+
+```
+collectd::package_install_options:
+  - '--nogpgcheck'
+```
+
 
 Simple Plugins
 --------------

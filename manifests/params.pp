@@ -1,24 +1,25 @@
 #
 class collectd::params {
 
-  $fqdnlookup             = true
-  $collectd_hostname      = $::hostname
-  $interval               = 10
-  $include                = []
-  $internal_stats         = false
-  $purge                  = undef
-  $purge_config           = false
-  $recurse                = undef
-  $threads                = 5
-  $timeout                = 2
-  $typesdb                = []
-  $write_queue_limit_high = undef
-  $write_queue_limit_low  = undef
-  $version                = installed
-  $service_ensure         = running
-  $service_enable         = true
-  $minimum_version        = undef
-  $manage_package         = true
+  $fqdnlookup              = true
+  $collectd_hostname       = $::hostname
+  $interval                = 10
+  $include                 = []
+  $internal_stats          = false
+  $purge                   = undef
+  $purge_config            = false
+  $recurse                 = undef
+  $threads                 = 5
+  $timeout                 = 2
+  $typesdb                 = []
+  $write_queue_limit_high  = undef
+  $write_queue_limit_low   = undef
+  $version                 = installed
+  $service_ensure          = running
+  $service_enable          = true
+  $minimum_version         = undef
+  $manage_package          = true
+  $package_install_options = undef
 
   case $::osfamily {
     'Debian': {
