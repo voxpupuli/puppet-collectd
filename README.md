@@ -790,8 +790,10 @@ collectd::plugin::mysql::database { 'betadase':
 
 ```puppet
 class { 'collectd::plugin::mongodb':
+  db_host        => '127.0.0.1',
   db_user        => 'foo',
   db_pass        => 'bar',
+  db_port        => '27017',
   configured_dbs => ['database', 'names'],
   collectd_dir   => '/collectd/module/path',
 }

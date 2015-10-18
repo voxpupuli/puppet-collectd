@@ -3,8 +3,10 @@
 # install and configure mongodb plugin
 #
 class collectd::plugin::mongodb (
+  $db_host        = '127.0.0.1',
   $db_user        = undef,
   $db_pass        = undef,
+  $db_port        = undef,
   $configured_dbs = undef,
   $collectd_dir   = '/usr/lib/collectd',
 ) {
