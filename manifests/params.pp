@@ -38,7 +38,7 @@ class collectd::params {
       $provider          = 'pkgutil'
       $collectd_dir      = '/etc/opt/csw'
       $plugin_conf_dir   = "${collectd_dir}/conf.d"
-      $service_name      = 'collectd'
+      $service_name      = 'cswcollectd'
       $config_file       = "${collectd_dir}/collectd.conf"
       $root_group        = 'root'
       $java_dir          = undef
