@@ -36,10 +36,10 @@ class collectd::params {
     'Solaris': {
       $package           = 'CSWcollectd'
       $provider          = 'pkgutil'
-      $collectd_dir      = '/etc/opt/csw'
-      $plugin_conf_dir   = "${collectd_dir}/conf.d"
-      $service_name      = 'collectd'
-      $config_file       = "${collectd_dir}/collectd.conf"
+      $collectd_dir      = '/etc/opt/csw/collectd.d'
+      $plugin_conf_dir   = $collectd_dir
+      $service_name      = 'cswcollectd'
+      $config_file       = '/etc/opt/csw/collectd.conf'
       $root_group        = 'root'
       $java_dir          = undef
       $python_dir        = '/opt/csw/share/collectd/python'
