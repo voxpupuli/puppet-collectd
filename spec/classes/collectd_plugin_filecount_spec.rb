@@ -57,4 +57,11 @@ describe 'collectd::plugin::filecount', :type => :class do
       should compile.and_raise_error(/String/)
     end
   end
+
+  context ':directories is empty' do
+    it 'Will not create an empty <Plugin "filecount"> block' do
+      should contain_file('filecount.load')
+        .without_content(/<Plugin "filecount">/)
+    end
+  end
 end
