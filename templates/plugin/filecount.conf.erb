@@ -1,3 +1,4 @@
+<%- unless @directories.empty? -%>
 <Plugin "filecount">
 <% @directories.each_pair do |key,val| -%>
 <%   if val.is_a? Array -%>
@@ -11,3 +12,4 @@
 <%   end -%>
 <% end -%>
 </Plugin>
+<%- end -%>
