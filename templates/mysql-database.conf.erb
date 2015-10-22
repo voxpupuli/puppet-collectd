@@ -15,8 +15,10 @@
 <%- if @socket -%>
     Socket "<%= @socket %>"
 <%- end -%>
+<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0) -%>
 <%- if not @innodbstats.nil? -%>
     InnodbStats <%= @innodbstats %>
+<%- end -%>
 <%- end -%>
 <%- if not @slavenotifications.nil? -%>
     SlaveNotifications <%= @slavenotifications %>
