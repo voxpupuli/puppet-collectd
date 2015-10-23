@@ -31,10 +31,6 @@ define collectd::plugin::mysql::database (
     validate_bool($slavenotifications)
   }
 
-  if ($masterstats == true and $slavestats == true) {
-    fail('master and slave statistics are mutually exclusive.')
-  }
-
   file { "${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/mysql-${name}.conf",
