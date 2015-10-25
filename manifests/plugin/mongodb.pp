@@ -39,28 +39,6 @@ class collectd::plugin::mongodb (
     }
   }
 
-  if $ensure == 'present' {
-    file { 'collectd_modulepath':
-      ensure  => 'directory',
-      path    => $collectd_dir,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0755',
-      require => Package['collectd-python'],
-    }
-  }
-
-  file { 'mongodb.py':
-    ensure  => $ensure,
-    path    => "${collectd_dir}/mongodb.py",
-    source  => 'puppet:///modules/collectd/mongodb.py',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => File['collectd_modulepath'],
-    notify  => Service['collectd'],
-  }
-
   collectd::plugin { 'mongodb':
     ensure   => $ensure,
     content  => template('collectd/plugin/mongodb.conf.erb'),
