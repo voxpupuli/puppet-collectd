@@ -3,7 +3,6 @@
 class collectd::plugin::mongodb (
   $ensure         = 'present',
   $interval       = undef,
-  $manage_package = true,
   $db_host        = '127.0.0.1',
   $db_user        = undef,
   $db_pass        = undef,
@@ -30,19 +29,9 @@ class collectd::plugin::mongodb (
     fail("collectd::plugin::mongodb::db_pass is <undef>, please specify the password for db user: ${db_user}")
   }
 
-  if $::osfamily == 'Redhat' {
-    if $manage_package == true {
-      package { 'collectd-python':
-        ensure          => $ensure,
-        install_options => ['--nogpgcheck'],
-      }
-    }
-  }
-
   collectd::plugin { 'mongodb':
     ensure   => $ensure,
     content  => template('collectd/plugin/mongodb.conf.erb'),
     interval => $interval,
-    require  => File['mongodb.py'],
   }
 }
