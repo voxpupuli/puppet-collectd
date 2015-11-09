@@ -12,10 +12,16 @@ class collectd::plugin::mongodb (
 ) {
 
   validate_re($ensure,'^(present)|(absent)$',
-  "collectd::plugin::mongodb::ensure is <${ensure}> and must be either 'present' or 'absent'.")
+    "collectd::plugin::mongodb::ensure is <${ensure}> and must be either 'present' or 'absent'.")
 
   if $interval != undef {
     validate_numeric($interval)
+  }
+
+  if $configured_dbs != undef {
+    validate_array($configured_dbs)
+    if ( $db_port == undef ) { fail('db_port is undefined, but must be set if configured_dbs is set.') }
+    validate_string($db_port)
   }
 
   if ( $db_host != undef ) and ( is_ip_address($db_host) == false ) {
@@ -23,7 +29,7 @@ class collectd::plugin::mongodb (
   }
 
   if $db_user == undef {
-    fail('collectd::plugin::mongodb::db_user is <undef> and must be a monodb username')
+    fail('collectd::plugin::mongodb::db_user is <undef> and must be a mongodb username')
   }
   elsif $db_pass == undef {
     fail("collectd::plugin::mongodb::db_pass is <undef>, please specify the password for db user: ${db_user}")
