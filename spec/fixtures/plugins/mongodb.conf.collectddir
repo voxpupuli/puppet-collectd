@@ -4,7 +4,7 @@
 </LoadPlugin>
 
 <Plugin python>
-    ModulePath /usr/lib/collectd
+    ModulePath /tmp/collectd_test_dir
     Import 'mongodb'
     <Module mongodb>
         Host "127.0.0.1"

@@ -790,6 +790,50 @@ collectd::plugin::mysql::database { 'betadase':
 
 ```puppet
 class { 'collectd::plugin::mongodb':
+  db_user => 'admin',
+  db_pass => 'adminpass',
+}
+```
+
+##### Parameters:
+
+ensure
+------
+Optional. String that must be 'present' or 'absent'.
+
+- *Default*: 'present'
+
+interval
+--------
+Optional. Number of seconds that collectd pauses between data collection.
+
+- *Default*: undef
+
+db_host
+-------
+Optional. String that holds the IP of the MongoDB server.
+
+- *Default*: '127.0.0.1'
+
+db_user
+-------
+Required. String that specifies the user name of an account that can log into MongoDB
+
+
+db_pass
+-------
+Required. String that specifies the password of an account that can log into MongoDB
+
+configured_dbs
+--------------
+Optional. Array of Strings that lists the databases that should be monitored in addition to the "admin" database.
+
+db_port
+-------
+Required if the configured_dbs parameter is set. Unused otherwise.  Integer that specifies with port MongoDB listens on.
+
+```puppet
+class { 'collectd::plugin::mongodb':
   db_host        => '127.0.0.1',
   db_user        => 'foo',
   db_pass        => 'bar',

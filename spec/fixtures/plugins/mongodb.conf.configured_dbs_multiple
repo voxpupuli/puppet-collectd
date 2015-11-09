@@ -10,6 +10,8 @@
         Host "127.0.0.1"
         User "test_user"
         Password "password"
+        Port "8080"
+        Database "admin" "25" "26"
     </Module>
 </Plugin>
 

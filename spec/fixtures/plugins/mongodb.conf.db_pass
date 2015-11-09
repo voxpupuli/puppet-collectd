@@ -9,7 +9,7 @@
     <Module mongodb>
         Host "127.0.0.1"
         User "test_user"
-        Password "password"
+        Password "foo"
     </Module>
 </Plugin>
 
