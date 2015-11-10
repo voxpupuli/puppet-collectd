@@ -1,0 +1,15 @@
+<Plugin python>
+    ModulePath <%= @collectd_dir %>
+    Import 'mongodb'
+    <Module mongodb>
+        Host "<%= @db_host %>"
+        User "<%= @db_user %>"
+        Password "<%= @db_pass %>"
+<% if @configured_dbs -%>
+        Port "<%= @db_port %>"
+<% end -%>
+<% if @configured_dbs -%>
+        Database "admin" <%= @configured_dbs.map {|d| "\"#{d}\"" }.join(' ') %>
+<% end -%>
+    </Module>
+</Plugin>
