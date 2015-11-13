@@ -99,6 +99,7 @@ documentation for each plugin for configurable attributes.
 * `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
+* `mongodb`(see [collectd::plugin::mongodb](#class-collectdpluginmongodb) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `netlink` (see [collectd::plugin::netlink](#class-collectdpluginnetlink) below)
 * `network` (see [collectd::plugin::network](#class-collectdpluginnetwork) below)
@@ -782,6 +783,63 @@ collectd::plugin::mysql::database { 'betadase':
   password    => 'secret',
   port        => '3306',
   masterstats => true,
+}
+```
+
+####Class: `collectd::plugin::mongodb`
+
+```puppet
+class { 'collectd::plugin::mongodb':
+  db_user => 'admin',
+  db_pass => 'adminpass',
+}
+```
+
+##### Parameters:
+
+ensure
+------
+Optional. String that must be 'present' or 'absent'.
+
+- *Default*: 'present'
+
+interval
+--------
+Optional. Number of seconds that collectd pauses between data collection.
+
+- *Default*: undef
+
+db_host
+-------
+Optional. String that holds the IP of the MongoDB server.
+
+- *Default*: '127.0.0.1'
+
+db_user
+-------
+Required. String that specifies the user name of an account that can log into MongoDB
+
+
+db_pass
+-------
+Required. String that specifies the password of an account that can log into MongoDB
+
+configured_dbs
+--------------
+Optional. Array of Strings that lists the databases that should be monitored in addition to the "admin" database.
+
+db_port
+-------
+Required if the configured_dbs parameter is set. Unused otherwise.  Integer that specifies with port MongoDB listens on.
+
+```puppet
+class { 'collectd::plugin::mongodb':
+  db_host        => '127.0.0.1',
+  db_user        => 'foo',
+  db_pass        => 'bar',
+  db_port        => '27017',
+  configured_dbs => ['database', 'names'],
+  collectd_dir   => '/collectd/module/path',
 }
 ```
 
