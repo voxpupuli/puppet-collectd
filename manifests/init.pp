@@ -41,10 +41,19 @@ class collectd (
 
   class { 'collectd::install':
     package_install_options => $package_install_options,
-  } ->
+  }
+
   class { 'collectd::config':
     collectd_version => $collectd_version,
-  } ~>
+  }
+
   class { 'collectd::service': }
 
+  anchor {'collectd::begin': }
+  anchor {'collectd::end': }
+
+  Anchor['collectd::begin'] ->
+  Class['collectd::install'] ->
+  Class['collectd::config'] ~>
+  Class['collectd::service']
 }
