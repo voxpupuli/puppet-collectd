@@ -9,7 +9,7 @@
   ReportByDevice <%= @reportbydevice %>
   ReportInodes <%= @reportinodes %>
   ReportReserved <%= @reportreserved %>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.4']) >= 0) -%>
+<% if scope['::collectd::collectd_version'] and (scope.function_versioncmp([scope['::collectd::collectd_version'], '5.4']) >= 0) -%>
   ValuesAbsolute <%= @valuesabsolute %>
   ValuesPercentage <%= @valuespercentage %>
 <% end -%>
