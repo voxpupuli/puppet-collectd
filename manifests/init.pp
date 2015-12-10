@@ -35,7 +35,7 @@ class collectd (
     $::collectd_real_version,                                                      # Fact takes precedence
     regsubst(
       regsubst($version,'^(absent|held|installed|latest|present|purged)$', ''),    # standard package resource ensure value? - strip and return undef
-      '^\d+(?:\.\d+){1.2}', '\0'),                                                 # specific package version? return only semantic version parts
+      '^\d+(?:\.\d+){1,2}', '\0'),                                                 # specific package version? return only semantic version parts
     $minimum_version,
     '1.0')
 
