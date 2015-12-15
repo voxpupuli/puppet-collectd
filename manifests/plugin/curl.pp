@@ -1,7 +1,7 @@
 #
 class collectd::plugin::curl (
   $ensure         = present,
-  $manage_package = $true,
+  $manage_package = $collectd::manage_package,
   $interval       = undef,
   $pages          = { },
 ) {

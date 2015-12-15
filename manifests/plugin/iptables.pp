@@ -2,7 +2,7 @@
 class collectd::plugin::iptables (
   $ensure         = present,
   $ensure_package = present,
-  $manage_package = $true,
+  $manage_package = $collectd::manage_package,
   $chains         = {},
   $interval       = undef,
 ) {

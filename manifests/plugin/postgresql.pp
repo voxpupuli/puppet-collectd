@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:PostgreSQL
 class collectd::plugin::postgresql (
   $ensure         = present,
-  $manage_package = $true,
+  $manage_package = $collectd::manage_package,
   $databases      = { },
   $interval       = undef,
   $queries        = { },

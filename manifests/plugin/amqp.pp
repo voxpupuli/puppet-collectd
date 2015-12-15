@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:AMQP
 class collectd::plugin::amqp (
   $ensure          = present,
-  $manage_package  = $true,
+  $manage_package  = $collectd::manage_package,
   $amqphost        = 'localhost',
   $amqpport        = 5672,
   $amqpvhost       = 'graphite',

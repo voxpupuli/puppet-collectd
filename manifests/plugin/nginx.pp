@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:nginx
 class collectd::plugin::nginx (
   $url,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $ensure           = present,
   $user             = undef,
   $password         = undef,

@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Varnish
 class collectd::plugin::varnish (
   $ensure         = present,
-  $manage_package = $true,
+  $manage_package = $collectd::manage_package,
   $instances      = {
     'localhost' => {
     }

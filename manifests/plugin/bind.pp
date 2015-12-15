@@ -2,7 +2,7 @@
 class collectd::plugin::bind (
   $url,
   $ensure         = present,
-  $manage_package = $true,
+  $manage_package = $collectd::manage_package,
   $memorystats    = true,
   $opcodes        = true,
   $parsetime      = false,

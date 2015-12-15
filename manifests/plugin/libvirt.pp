@@ -2,7 +2,7 @@
 class collectd::plugin::libvirt (
   $connection,
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $refresh_interval = undef,
   $domain           = undef,
   $block_device     = undef,

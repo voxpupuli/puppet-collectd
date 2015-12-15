@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_sensu (
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $sensu_host       = 'localhost',
   $sensu_port       = 3030,
   $store_rates      = false,
