@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Sensors
 class collectd::plugin::sensors (
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $sensorconfigfile = undef,
   $sensor           = undef,
   $ignoreselected   = undef,

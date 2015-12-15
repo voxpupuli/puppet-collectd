@@ -1,7 +1,7 @@
 # See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
 class collectd::plugin::perl (
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $interval         = undef,
   $order            = 20
 )

@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Apache
 class collectd::plugin::apache (
   $ensure                  = present,
-  $manage_package          = $true,
+  $manage_package          = $collectd::manage_package,
   $instances               = { 'localhost' => { 'url' => 'http://localhost/mod_status?auto' } },
   $interval                = undef,
   $package_install_options = $collectd::package_install_options,

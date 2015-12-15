@@ -2,7 +2,7 @@
 # https://collectd.org/wiki/index.php/Plugin:MySQL
 class collectd::plugin::mysql (
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $interval         = undef,
 ){
 

@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_riemann (
   $ensure           = present,
-  $manage_package   = $true,
+  $manage_package   = $collectd::manage_package,
   $riemann_host     = 'localhost',
   $riemann_port     = 5555,
   $protocol         = 'UDP',
