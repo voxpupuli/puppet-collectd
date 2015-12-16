@@ -106,6 +106,7 @@ documentation for each plugin for configurable attributes.
 * `nfs`  (see [collectd::plugin::nfs](#class-collectdpluginnfs) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
+* `openldap` (see [collectd::plugin::openldap](#class-collectdpluginopenldap) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `perl` (see [collectd::plugin::perl](#class-collectdpluginperl) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
@@ -917,6 +918,21 @@ class { 'collectd::plugin::ntpd':
   port           => 123,
   reverselookups => false,
   includeunitid  => false,
+}
+```
+
+####Class: `collectd::plugin::openldap`
+
+```puppet
+class { 'collectd::plugin::openldap':
+  instances => {
+    'foo' => {
+      'url' => 'ldap://localhost/'
+    },
+    'bar' => {
+      'url' => 'ldaps://localhost/'
+    }
+  },
 }
 ```
 
