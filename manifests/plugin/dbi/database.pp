@@ -4,6 +4,7 @@ define collectd::plugin::dbi::database (
   $driver,
   $ensure       = 'present',
   $host         = undef,
+  $databasename = $name,
   $driveroption = {},
   $selectdb     = undef,
   $query        = [],
