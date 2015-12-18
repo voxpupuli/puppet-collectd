@@ -115,4 +115,9 @@ describe 'collectd' do
     let(:params) { { :manage_package => true } }
     it { should contain_package('collectd').with_ensure('installed') }
   end
+
+  context 'when plugin_conf_dir_mode is set' do
+    let(:params) { { :plugin_conf_dir_mode => '0755' } }
+    it { should contain_file('collectd.d').with_mode('0755') }
+  end
 end

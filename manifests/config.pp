@@ -2,6 +2,7 @@
 class collectd::config (
   $config_file            = $collectd::config_file,
   $plugin_conf_dir        = $collectd::plugin_conf_dir,
+  $plugin_conf_dir_mode   = $collectd::plugin_conf_dir_mode,
   $root_group             = $collectd::root_group,
   $recurse                = $collectd::recurse,
   $fqdnlookup             = $collectd::fqdnlookup,
@@ -47,11 +48,10 @@ class collectd::config (
   file { 'collectd.d':
     ensure  => directory,
     path    => $plugin_conf_dir,
-    mode    => '0750',
+    mode    => $plugin_conf_dir_mode,
     owner   => 'root',
     group   => $root_group,
     purge   => $purge,
     recurse => $recurse,
   }
-
 }

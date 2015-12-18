@@ -15,7 +15,16 @@ describe 'collectd::typesdb', :type => :define do
 
     it 'should contain empty types.db' do
       should contain_concat('/etc/collectd/types.db')
-      should contain_file('/etc/collectd/types.db')
+      should contain_file('/etc/collectd/types.db').with_mode('0640')
+    end
+  end
+
+  context 'with a different file mode' do
+    let(:title) { '/etc/collectd/types.db' }
+    let(:params) { { 'mode' => '0644' } }
+
+    it 'should contain file with different mode' do
+      should contain_file('/etc/collectd/types.db').with_mode('0644')
     end
   end
 end
