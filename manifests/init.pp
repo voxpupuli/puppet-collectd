@@ -18,6 +18,7 @@ class collectd (
   $package_install_options = $collectd::params::package_install_options,
   $package_name            = $collectd::params::package,
   $plugin_conf_dir         = $collectd::params::plugin_conf_dir,
+  $plugin_conf_dir_mode    = $collectd::params::plugin_conf_dir_mode,
   $root_group              = $collectd::params::root_group,
   $version                 = $collectd::params::version,
   $service_name            = $collectd::params::service_name,

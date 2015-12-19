@@ -1467,6 +1467,15 @@ class { 'collectd':
 }
 ```
 
+Other software may need to read the Collectd types database files. To allow non-root users to read from a `collectd::typesdb`
+file like so:
+
+```puppet
+$db = '/etc/collectd/types.db'
+collectd::typesdb { $db:
+  mode => '0644',
+}
+```
 
 ##Limitations
 
