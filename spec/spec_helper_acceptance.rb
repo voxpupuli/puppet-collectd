@@ -2,10 +2,7 @@ require 'beaker-rspec/spec_helper'
 require 'beaker-rspec/helpers/serverspec'
 require 'beaker/puppet_install_helper'
 
-hosts.each do |_host|
-  # Install Puppet
-  run_puppet_install_helper
-end
+run_puppet_install_helper
 
 RSpec.configure do |c|
   # Project root
