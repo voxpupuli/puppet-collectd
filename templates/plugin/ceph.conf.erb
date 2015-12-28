@@ -1,6 +1,14 @@
 <Plugin ceph>
-  LongRunAvgLatency <%= @longrunavglatency %>
-  ConvertSpecialMetricTypes <%= @convertspecialmetrictypes %>
+  <%- if @longrunavglatency -%>
+  LongRunAvgLatency true
+  <%- else -%>
+  LongRunAvgLatency false
+  <%- end -%>
+  <%- if @convertspecialmetrictypes -%>
+  ConvertSpecialMetricTypes true
+  <%- else -%>
+  ConvertSpecialMetricTypes false
+  <%- end -%>
 
 <% @osds.each do |osd| -%>
   <Daemon "<%= osd %>">
