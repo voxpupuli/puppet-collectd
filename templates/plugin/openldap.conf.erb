@@ -1,0 +1,22 @@
+<Plugin "openldap">
+<% @instances.each do |name,values| -%>
+  <Instance "<%= name %>">
+    URL "<%= values['url'] %>"
+<% unless values['starttls'].nil? -%>
+    StartTLS "<%= values['starttls'] %>"
+<% end -%>
+<% unless values['verifyhost'].nil? -%>
+    VerifyHost "<%= values['verifyhost'] %>"
+<% end -%>
+<% if values['cacert'] -%>
+    CACert "<%= values['cacert'] %>"
+<% end -%>
+<% if values['timeout'] -%>
+    Timeout "<%= values['timeout'] %>"
+<% end -%>
+<% if values['version'] -%>
+    Version "<%= values['version'] %>"
+<% end -%>
+  </Instance>
+<%- end -%>
+</Plugin>
