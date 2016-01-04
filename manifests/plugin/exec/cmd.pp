@@ -3,7 +3,10 @@ define collectd::plugin::exec::cmd (
   $group,
   $exec              = [],
   $notification_exec = [],
-  $ensure = present,
+  $script_source     = undef,
+  $extra_param       = undef,
+  $module            = $title,
+  $ensure            = present,
 ) {
   include collectd::params
   include collectd::plugin::exec
@@ -19,6 +22,19 @@ define collectd::plugin::exec::cmd (
     path   => "${conf_dir}/${name}.conf",
   }
   # End deprecation
+
+  if $script_source {
+    file { "${module}.script":
+      ensure  => $ensure,
+      path    => "${conf_dir}/${module}.sh",
+      owner   => 'root',
+      group   => $collectd::params::root_group,
+      mode    => '0755',
+      source  => $script_source,
+      require => File[$conf_dir],
+      notify  => Service['collectd'],
+    }
+  }
 
   concat::fragment{"collectd_plugin_exec_conf_${title}":
     ensure  => $ensure,

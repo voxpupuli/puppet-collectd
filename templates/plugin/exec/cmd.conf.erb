@@ -1,5 +1,5 @@
 <%- unless @exec.empty? -%>
-  Exec "<%= @user %>:<%= @group %>" "<%= @exec.join('" "') %>"
+  Exec "<%= @user %>:<%= @group %>" "<%= @exec.join('" "') %>" <% if @extra_param %><% @extra_param.each do |extra| -%>"<%= extra %>" <% end -%><% end -%>
 <%- end -%>
 <%- unless @notification_exec.empty? -%>
   NotificationExec "<%= @user %>:<%= @group %>" "<%= @notification_exec.join('" "') %>"
