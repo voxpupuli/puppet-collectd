@@ -17,7 +17,11 @@
 <% unless @deletesets.nil? -%>
   Deletesets <%= @deletesets %>
 <% end -%>
-<% if @timerpercentile -%>
+<% if @timerpercentile.kind_of?(Array) -%>
+<% @timerpercentile.each do |p| -%>
+  TimerPercentile <%= p %>
+<% end -%>
+<% elsif @timerpercentile -%>
   TimerPercentile <%= @timerpercentile %>
 <% end -%>
 <% if @timerupper -%>
