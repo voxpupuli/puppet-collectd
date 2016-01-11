@@ -787,6 +787,17 @@ collectd::plugin::mysql::database { 'betadase':
 }
 ```
 
+Hiera example in YAML:
+
+```
+collectd::plugin::mysql::databases:
+  'localhost':
+    'host': 'localhost'
+    'username': 'collectd'
+    'password': 'somePassword'
+    'masterstats': true
+```
+
 ####Class: `collectd::plugin::mongodb`
 
 ```puppet
