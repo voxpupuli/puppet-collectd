@@ -47,17 +47,27 @@ The test suite will run [Puppet Lint](http://puppet-lint.com/) and
 [Puppet Syntax](https://github.com/gds-operations/puppet-syntax) to
 check various syntax and style things. You can run these locally with:
 
-    bundle exec rake test
+    bundle exec rake lint
+    bundle exec rake validate
 
 ## Running the unit tests
 
 The unit test suite covers most of the code, as mentioned above please
 add tests if you're adding new functionality. If you've not used
 [rspec-puppet](http://rspec-puppet.com/) before then feel free to ask
-about how best to test your new feature. To run your specific spec test
-you can pass it to `SPEC`:
+about how best to test your new feature.
+
+To run all the unit tests:
+
+    bundle exec rake spec SPEC_OPTS='--format documentation'
+
+To run a specific spec test set the `SPEC` variable:
 
     bundle exec rake spec SPEC=spec/foo_spec.rb
+
+To run the linter, the syntax checker and the unit tests:
+
+    bundle exec rake test
 
 ## Integration tests
 
@@ -81,3 +91,12 @@ can use `BEAKER_DESTROY=no` and `BEAKER_PROVISION=no`. On the first run you will
 at least need `BEAKER_PROVISION` set to yes (the default). The Vagrantfile
 for the created virtual machines will be in `.vagrant/beaker_vagrant_fies`.
 
+## Version scoping
+
+Some plugins or some options in plugins are only available for recent versions of collectd.
+
+This module shall not use unsupported configuration directives. Look at [templates/loadplugin.conf.erb](https://github.com/puppet-community/puppet-collectd/blob/master/templates/loadplugin.conf.erb) for a hands-on example.
+
+Please make use of the search by branch/tags on the collectd github to see when a function has been first released.
+
+Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master/src/collectd.conf.pod) file is good, validating the presence of the code in the .c files is even better.
