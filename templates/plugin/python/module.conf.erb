@@ -2,6 +2,16 @@
 
   <Module "<%= @module %>">
   <%- @config.sort.each do |key,value| -%>
+  <%- if value.is_a?(Array) -%>
+  <%- value.sort.each do |v| -%>
+    <%= key %> <%= v %>
+  <%- end -%>
+  <%- elsif value.is_a?(Hash) -%>
+  <%- value.sort.each do |k,v| -%>
+    <%= key %> <%= k %> <%= v %>
+  <%- end -%>
+  <%- else -%>
     <%= key %> <%= value %>
+  <%- end -%>
   <%- end -%>
   </Module>
