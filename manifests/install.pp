@@ -1,5 +1,5 @@
 class collectd::install (
-  $version                 = $collectd::version,
+  $package_ensure          = $collectd::package_ensure,
   $package_name            = $collectd::package_name,
   $package_provider        = $collectd::package_provider,
   $package_install_options = $collectd::params::package_install_options,
@@ -12,7 +12,7 @@ class collectd::install (
 
   if $manage_package {
     package { $package_name:
-      ensure          => $version,
+      ensure          => $package_ensure,
       name            => $package_name,
       provider        => $package_provider,
       install_options => $package_install_options,

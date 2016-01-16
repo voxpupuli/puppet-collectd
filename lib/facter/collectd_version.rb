@@ -1,4 +1,4 @@
-# Fact: collectd_real_version
+# Fact: collectd_version
 #
 # Purpose: Retrieve collectd version if installed
 #
@@ -6,7 +6,7 @@
 #
 # Caveats:  not well tested
 #
-Facter.add(:collectd_real_version) do
+Facter.add(:collectd_version) do
   setcode do
     if Facter::Util::Resolution.which('collectd')
       collectd_help = Facter::Util::Resolution.exec('collectd -h')

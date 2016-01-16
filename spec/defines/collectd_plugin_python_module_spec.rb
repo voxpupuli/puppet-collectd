@@ -86,7 +86,7 @@ describe 'collectd::plugin::python::module', :type => :define do
     let(:title) { 'foo' }
     let :params do
       {
-        :config => {'k1' => 'v1', 'k2' => ['v21', 'v22'], 'k3' => {'k31' => 'v31', 'k32' => 'v32'}},
+        :config => { 'k1' => 'v1', 'k2' => %w(v21 v22), 'k3' => { 'k31' => 'v31', 'k32' => 'v32' } },
       }
     end
 
