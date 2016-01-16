@@ -23,7 +23,7 @@ group :test do
   gem 'rspec-puppet-facts'
   gem 'rspec'
   gem 'puppet-blacksmith'
-  gem 'rubocop'
+  gem 'rubocop', '0.35.0'
 end
 
 group :development do
