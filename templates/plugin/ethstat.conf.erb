@@ -1,0 +1,9 @@
+<Plugin ethstat>
+<% @interfaces.each do |interface| -%>
+  Interface "<%= interface %>"
+<% end -%>
+<% @maps.each do |map| -%>
+  Map <%= map %>
+<% end -%>
+  MappedOnly <%= @mappedonly %>
+</Plugin>

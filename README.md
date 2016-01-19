@@ -86,6 +86,7 @@ documentation for each plugin for configurable attributes.
 * `dns` (see [collectd::plugin::dns](#class-collectdplugindns) below)
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
+* `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
@@ -486,6 +487,16 @@ class { 'collectd::plugin::exec':
       exec  => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat2 N:1"],
     },
   }
+}
+```
+
+####Class: `collectd::plugin::ethstat`
+
+```puppet
+class { 'collectd::plugin::ethstat':
+  interfaces => [ 'eth0', 'eth1'],
+  maps       => [ '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"' ],
+  mappedonly => false,
 }
 ```
 
