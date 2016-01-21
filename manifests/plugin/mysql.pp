@@ -4,6 +4,7 @@ class collectd::plugin::mysql (
   $ensure           = present,
   $manage_package   = $collectd::manage_package,
   $interval         = undef,
+  $databases        = { },
 ){
 
   if $::osfamily == 'Redhat' {
@@ -17,4 +18,6 @@ class collectd::plugin::mysql (
   collectd::plugin { 'mysql':
     interval => $interval,
   }
+
+  create_resources(collectd::plugin::mysql::database, $databases)
 }
