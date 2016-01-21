@@ -45,7 +45,7 @@ class collectd::plugin::python (
       'mode'    => '0750',
       'owner'   => 'root',
       'group'   => $collectd::params::root_group,
-      'require' => Package[$collectd::params::package]
+      'require' => Package[$collectd::params::package_name]
     }
   )
 
