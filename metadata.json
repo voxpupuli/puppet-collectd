@@ -71,13 +71,13 @@
   ],
   "name": "puppet-collectd",
   "version": "4.2.0",
-  "source": "https://github.com/puppet-community/puppet-collectd",
-  "author": "puppetcommunity",
+  "source": "https://github.com/voxpupuli/puppet-collectd",
+  "author": "puppet",
   "license": "Apache-2.0",
   "summary": "Puppet module for Collectd",
-  "project_page": "https://github.com/puppet-community/puppet-collectd",
-  "issues_url": "https://github.com/puppet-community/puppet-collectd/issues",
-  "tags": ["collectd", "puppet-community"],
+  "project_page": "https://github.com/voxpupuli/puppet-collectd",
+  "issues_url": "https://github.com/voxpupuli/puppet-collectd/issues",
+  "tags": ["collectd", "statistics"],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

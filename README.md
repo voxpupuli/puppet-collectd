@@ -1,7 +1,7 @@
 Collectd module for Puppet
 ==========================
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd) [![Build Status](https://travis-ci.org/puppet-community/puppet-collectd.png?branch=master)](https://travis-ci.org/puppet-community/puppet-collectd)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd) [![Build Status](https://travis-ci.org/voxpupuli/puppet-collectd.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-collectd)
 
 Description
 -----------
@@ -1510,7 +1510,7 @@ bundle exec rake spec SPEC_OPTS='--format documentation'
 
 Some plugins or some options in plugins are only available for recent versions of collectd.
 
-This module shall not use unsupported configuration directives. Look at [templates/loadplugin.conf.erb](https://github.com/puppet-community/puppet-collectd/blob/master/templates/loadplugin.conf.erb) for a hands-on example.
+This module shall not use unsupported configuration directives. Look at [templates/loadplugin.conf.erb](https://github.com/voxpupuli/puppet-collectd/blob/master/templates/loadplugin.conf.erb) for a hands-on example.
 
 Please make use of the search by branch/tags on the collectd github to see when a function has been first released.
 
