@@ -3,6 +3,6 @@ class collectd::plugin::conntrack (
   $ensure = present,
 ) {
   collectd::plugin {'conntrack':
-    ensure => $ensure
+    ensure => $ensure,
   }
 }

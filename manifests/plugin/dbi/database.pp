@@ -9,8 +9,8 @@ define collectd::plugin::dbi::database (
   $selectdb     = undef,
   $query        = [],
 ){
-  include collectd::params
-  include collectd::plugin::dbi
+  include ::collectd::params
+  include ::collectd::plugin::dbi
 
   validate_string($driver)
   validate_hash($driveroption)

@@ -8,8 +8,8 @@ define collectd::plugin::network::server (
   $interface     = undef,
   $forward       = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::network
+  include ::collectd::params
+  include ::collectd::plugin::network
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

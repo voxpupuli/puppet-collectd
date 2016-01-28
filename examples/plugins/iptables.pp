@@ -1,8 +1,8 @@
-include collectd
+include ::collectd
 
-class { 'collectd::plugin::iptables':
+class { '::collectd::plugin::iptables':
   chains => {
     'nat'    => 'In_SSH',
-    'filter' => 'HTTP'
+    'filter' => 'HTTP',
   },
 }

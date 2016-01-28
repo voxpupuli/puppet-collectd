@@ -4,11 +4,11 @@ class collectd::plugin::varnish (
   $manage_package = $collectd::manage_package,
   $instances      = {
     'localhost' => {
-    }
+    },
   },
   $interval       = undef,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   validate_hash($instances)
 

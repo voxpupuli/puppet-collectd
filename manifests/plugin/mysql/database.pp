@@ -12,8 +12,8 @@ define collectd::plugin::mysql::database (
   $innodbstats        = undef,
   $slavenotifications = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::mysql
+  include ::collectd::params
+  include ::collectd::plugin::mysql
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

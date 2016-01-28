@@ -6,7 +6,7 @@ class collectd::plugin::write_graphite (
   $ensure            = present,
   $globals           = false,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   validate_hash($carbons)
 

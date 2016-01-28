@@ -7,7 +7,7 @@ class collectd::plugin::postgresql (
   $queries        = { },
   $writers        = { },
 ) {
-  include collectd::params
+  include ::collectd::params
 
   if $::osfamily == 'Redhat' {
     if $manage_package {
@@ -42,7 +42,7 @@ class collectd::plugin::postgresql (
   }
 
   $defaults = {
-    'ensure' => $ensure
+    'ensure' => $ensure,
   }
   create_resources(collectd::plugin::postgresql::database, $databases, $defaults)
   create_resources(collectd::plugin::postgresql::query, $queries, $defaults)

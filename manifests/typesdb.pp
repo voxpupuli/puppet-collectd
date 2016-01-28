@@ -2,7 +2,7 @@ define collectd::typesdb (
   $path = $title,
   $mode = '0640',
 ) {
-  include collectd::params
+  include ::collectd::params
 
 
   concat { $path:

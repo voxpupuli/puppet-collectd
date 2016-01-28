@@ -18,8 +18,8 @@ define collectd::plugin::aggregation::aggregator (
   $calculatemaximum  = undef,
   $calculatestddev   = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::aggregation
+  include ::collectd::params
+  include ::collectd::plugin::aggregation
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

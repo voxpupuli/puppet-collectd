@@ -6,8 +6,8 @@ define collectd::plugin::dbi::query (
   $minversion = undef,
   $maxversion = undef,
 ){
-  include collectd::params
-  include collectd::plugin::dbi
+  include ::collectd::params
+  include ::collectd::plugin::dbi
 
   validate_string($statement)
   validate_array($results)

@@ -3,6 +3,6 @@ class collectd::plugin::cpufreq (
   $ensure = present,
 ) {
   collectd::plugin {'cpufreq':
-    ensure => $ensure
+    ensure => $ensure,
   }
 }

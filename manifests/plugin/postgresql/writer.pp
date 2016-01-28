@@ -4,8 +4,8 @@ define collectd::plugin::postgresql::writer (
   $statement  = undef,
   $storerates = undef,
 ){
-  include collectd::params
-  include collectd::plugin::postgresql
+  include ::collectd::params
+  include ::collectd::plugin::postgresql
 
   validate_string($statement)
 

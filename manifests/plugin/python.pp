@@ -13,7 +13,7 @@ class collectd::plugin::python (
   $interactive = false,
   $logtraces   = false,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   validate_hash($modules)
   validate_bool($interactive)

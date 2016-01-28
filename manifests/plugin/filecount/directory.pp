@@ -9,8 +9,8 @@ define collectd::plugin::filecount::directory (
   $recursive     = undef,
   $includehidden = undef
 ) {
-  include collectd::params
-  include collectd::plugin::filecount
+  include ::collectd::params
+  include ::collectd::plugin::filecount
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

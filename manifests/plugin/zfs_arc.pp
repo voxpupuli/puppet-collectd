@@ -3,6 +3,6 @@ class collectd::plugin::zfs_arc (
   $ensure = present,
 ) {
   collectd::plugin {'zfs_arc':
-    ensure => $ensure
+    ensure => $ensure,
   }
 }

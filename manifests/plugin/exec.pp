@@ -5,7 +5,7 @@ class collectd::plugin::exec (
   $ensure            = present,
   $globals           = false,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   validate_hash($commands)
   validate_bool($globals)

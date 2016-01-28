@@ -9,8 +9,8 @@ define collectd::plugin::snmp::data (
   $shift = undef,
   $table = false,
 ) {
-  include collectd
-  include collectd::plugin::snmp
+  include ::collectd
+  include ::collectd::plugin::snmp
 
   $table_bool = str2bool($table)
 

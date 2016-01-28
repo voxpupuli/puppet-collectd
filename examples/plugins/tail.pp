@@ -1,4 +1,4 @@
-include collectd
+include ::collectd
 
 collectd::plugin::tail::file { 'exim-log':
   filename => '/var/log/exim4/mainlog',
@@ -15,8 +15,8 @@ collectd::plugin::tail::file { 'exim-log':
       'dstype'   => 'CounterInc',
       'type'     => 'counter',
       'instance' => 'local_user',
-    }
-  ]
+    },
+  ],
 }
 
 collectd::plugin::tail::file { 'auth-log':
@@ -28,6 +28,6 @@ collectd::plugin::tail::file { 'auth-log':
       'dstype'   => 'CounterInc',
       'type'     => 'counter',
       'instance' => 'auth-publickey',
-    }
-  ]
+    },
+  ],
 }

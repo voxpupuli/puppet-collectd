@@ -5,8 +5,8 @@ define collectd::plugin::filter::match (
   $plugin,
   $options = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::filter
+  include ::collectd::params
+  include ::collectd::plugin::filter
 
   unless $plugin in $collectd::plugin::filter::plugin_matches {
     fail("Unknown match plugin '${plugin}' provided")

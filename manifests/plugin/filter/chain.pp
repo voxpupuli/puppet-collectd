@@ -4,8 +4,8 @@ define collectd::plugin::filter::chain (
   $target = undef,
   $target_options = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::filter
+  include ::collectd::params
+  include ::collectd::plugin::filter
 
   $conf_file = "${collectd::params::plugin_conf_dir}/filter-chain-${title}.conf"
 
@@ -37,7 +37,7 @@ define collectd::plugin::filter::chain (
           chain   => $title,
           plugin  => $target,
           rule    => undef,
-          options => $target_options
+          options => $target_options,
         }
       }
   }

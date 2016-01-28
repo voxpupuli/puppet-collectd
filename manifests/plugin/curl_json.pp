@@ -9,7 +9,7 @@ define collectd::plugin::curl_json (
   $order = '10',
 ) {
 
-  include collectd::params
+  include ::collectd::params
   validate_hash($keys)
 
   if $::osfamily == 'Redhat' {

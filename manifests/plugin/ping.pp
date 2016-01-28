@@ -10,7 +10,7 @@ class collectd::plugin::ping (
   $device         = undef,
   $max_missed     = undef,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   validate_array($hosts)
 

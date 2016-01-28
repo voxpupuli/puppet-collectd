@@ -1,11 +1,11 @@
-class { 'collectd':
+class { '::collectd':
   purge_config => true,
   purge        => true,
   recurse      => true,
 }
 
-class { 'collectd::plugin::perl':
-  order => 42
+class { '::collectd::plugin::perl':
+  order => 42,
 }
 
 collectd::plugin::perl::plugin { 'foo':
@@ -18,13 +18,13 @@ collectd::plugin::perl::plugin { 'foo':
   config      => {
     'foo' => 'bar',
     'key' => [ 'val1', 'val2' ],
-  }
+  },
 }
 
 collectd::plugin::perl::plugin { 'bar':
   module          => 'B',
   enable_debugger => 'DProf',
-  include_dir     => ['/tmp', '/tmp/lib' ]
+  include_dir     => ['/tmp', '/tmp/lib' ],
 }
 
 #collectd::plugin::perl {
@@ -47,7 +47,7 @@ collectd::plugin::perl::plugin {
         'no'      => [ 'a', 'b' ],
         'yes'     => {
           'last' => 'level',
-          'and'  => [ 'array' , 'thing' ]
+          'and'  => [ 'array' , 'thing' ],
         },
       },
     },

@@ -5,8 +5,8 @@ define collectd::plugin::exec::cmd (
   $notification_exec = [],
   $ensure = present,
 ) {
-  include collectd::params
-  include collectd::plugin::exec
+  include ::collectd::params
+  include ::collectd::plugin::exec
 
   validate_array($exec)
   validate_array($notification_exec)

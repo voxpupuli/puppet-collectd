@@ -19,7 +19,7 @@ class collectd::plugin::curl (
     interval => $interval,
   }
   $defaults = {
-    'ensure' => $ensure
+    'ensure' => $ensure,
   }
   create_resources(collectd::plugin::curl::page, $pages, $defaults)
 }
