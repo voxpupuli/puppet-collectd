@@ -13,8 +13,8 @@ define collectd::plugin::curl::page (
   $matches             = undef,
   $plugininstance      = $name, # You can have multiple <Page> with the same name.
 ) {
-  include collectd::params
-  include collectd::plugin::curl
+  include ::collectd::params
+  include ::collectd::plugin::curl
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

@@ -1,13 +1,13 @@
-include collectd
+include ::collectd
 
-class {'collectd::plugin::snmp':
+class {'::collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
       'Type'     => 'counter',
       'Table'    => false,
       'Instance' => 'amavis.inMsgs',
-      'Values'   => ['AMAVIS-MIB::inMsgs.0']
-    }
+      'Values'   => ['AMAVIS-MIB::inMsgs.0'],
+    },
   },
   hosts => {
     scan04 => {
@@ -15,8 +15,8 @@ class {'collectd::plugin::snmp':
       'Version'   => 2,
       'Community' => 'public',
       'Collect'   => ['amavis_incoming_messages'],
-      'Interval'  => 10
-    }
+      'Interval'  => 10,
+    },
   },
 }
 

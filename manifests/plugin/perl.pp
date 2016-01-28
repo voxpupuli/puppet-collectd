@@ -6,7 +6,7 @@ class collectd::plugin::perl (
   $order            = 20
 )
 {
-  include collectd::params
+  include ::collectd::params
   $conf_dir = $collectd::params::plugin_conf_dir
 
   if $::osfamily == 'Redhat' {

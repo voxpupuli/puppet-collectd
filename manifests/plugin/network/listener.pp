@@ -6,8 +6,8 @@ define collectd::plugin::network::listener (
   $securitylevel = undef,
   $interface     = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::network
+  include ::collectd::params
+  include ::collectd::plugin::network
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

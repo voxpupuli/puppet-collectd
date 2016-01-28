@@ -5,7 +5,7 @@ class collectd::plugin::chain (
   $defaulttarget = 'write',
   $rules         = []
 ) {
-  include collectd::params
+  include ::collectd::params
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

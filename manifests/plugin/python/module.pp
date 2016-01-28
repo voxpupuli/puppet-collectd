@@ -6,8 +6,8 @@ define collectd::plugin::python::module (
   $module        = $title,
   $ensure        = 'present',
 ){
-  include collectd::params
-  include collectd::plugin::python
+  include ::collectd::params
+  include ::collectd::plugin::python
 
   validate_hash($config)
 

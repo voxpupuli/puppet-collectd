@@ -2,8 +2,8 @@
 define collectd::plugin::filter::rule (
   $chain,
 ) {
-  include collectd::params
-  include collectd::plugin::filter
+  include ::collectd::params
+  include ::collectd::plugin::filter
 
   $fragment_order = "10_${title}"
   $conf_file = "${collectd::params::plugin_conf_dir}/filter-chain-${chain}.conf"

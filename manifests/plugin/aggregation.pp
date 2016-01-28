@@ -10,7 +10,7 @@ class collectd::plugin::aggregation (
     interval => $interval,
   }
   $defaults = {
-    'ensure' => $ensure
+    'ensure' => $ensure,
   }
   create_resources(collectd::plugin::aggregation::aggregator, $aggregators, $defaults)
 }

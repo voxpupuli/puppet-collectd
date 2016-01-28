@@ -15,8 +15,8 @@ define collectd::plugin::postgresql::database (
   $writer       = undef,
   $service      = undef,
 ){
-  include collectd::params
-  include collectd::plugin::postgresql
+  include ::collectd::params
+  include ::collectd::plugin::postgresql
 
   concat::fragment{"collectd_plugin_postgresql_conf_db_${title}":
     ensure  => $ensure,

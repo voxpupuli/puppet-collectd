@@ -7,8 +7,8 @@ define collectd::plugin::postgresql::query (
   $minversion = undef,
   $maxversion = undef,
 ){
-  include collectd::params
-  include collectd::plugin::postgresql
+  include ::collectd::params
+  include ::collectd::plugin::postgresql
 
   validate_string($statement)
   validate_array($params, $results)

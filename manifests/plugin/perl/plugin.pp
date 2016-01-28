@@ -10,9 +10,9 @@ define collectd::plugin::perl::plugin (
   $order = '01',
   $config = {},
 ) {
-  include collectd::params
+  include ::collectd::params
   if ! defined(Class['Collectd::Plugin::Perl']) {
-    include collectd::plugin::perl
+    include ::collectd::plugin::perl
   }
 
   validate_hash($config)
@@ -54,7 +54,7 @@ define collectd::plugin::perl::plugin (
     }
     'cpan': {
       validate_string($source)
-      include cpan
+      include ::cpan
       cpan { $source:
         require => Collectd::Plugin['perl'],
       }
@@ -74,7 +74,7 @@ define collectd::plugin::perl::plugin (
       $include_dirs_prefixed = prefix($include_dirs, '-I')
       $include_dirs_prefixed_joined = join($include_dirs_prefixed,' ')
       exec { "perl ${include_dirs_prefixed_joined} -e 'my\$m=shift;eval\"use \$m\";exit!exists\$INC{\$m=~s!::!/!gr.\".pm\"}' ${module}":
-        path => $::path
+        path => $::path,
       }
     }
     default: {

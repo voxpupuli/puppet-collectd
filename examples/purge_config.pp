@@ -1,4 +1,4 @@
-class { 'collectd':
+class { '::collectd':
   purge        => true,
   recurse      => true,
   purge_config => true,

@@ -5,8 +5,8 @@ define collectd::plugin::tail::file (
   $matches,
   $ensure = 'present',
 ) {
-  include collectd::params
-  include collectd::plugin::tail
+  include ::collectd::params
+  include ::collectd::plugin::tail
 
   $conf_dir = $collectd::params::plugin_conf_dir
 

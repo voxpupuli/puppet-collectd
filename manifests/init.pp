@@ -31,13 +31,13 @@ class collectd (
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
 
-  class { 'collectd::install':
+  class { '::collectd::install':
     package_install_options => $package_install_options,
   }
 
-  class { 'collectd::config': }
+  class { '::collectd::config': }
 
-  class { 'collectd::service': }
+  class { '::collectd::service': }
 
   anchor {'collectd::begin': }
   anchor {'collectd::end': }

@@ -13,8 +13,8 @@ define collectd::plugin::write_graphite::carbon (
   $separateinstances = false,
   $logsenderrors     = true,
 ){
-  include collectd::params
-  include collectd::plugin::write_graphite
+  include ::collectd::params
+  include ::collectd::plugin::write_graphite
 
   validate_bool($storerates)
   validate_bool($alwaysappendds)

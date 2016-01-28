@@ -40,7 +40,7 @@ describe 'collectd::plugin::curl', :type => :class do
     it 'Will create /etc/collectd.d/conf.d/curl-stocks_ILD.conf and /etc/collectd/conf.d/curl-stocks_GM.conf' do
       should contain_file('/etc/collectd/conf.d/curl-stocks_ILD.conf').with(:ensure  => 'present',
                                                                             :path    => '/etc/collectd/conf.d/curl-stocks_ILD.conf',
-                                                                            :content => "<Plugin curl>\n  <Page \"stocks_ILD\">\n    URL \"http://finance.google.com/finance?q=EPA%3AILD\"\n    User \"foo\"\n    Password \"bar\"\n  <Match>\n    Regex \"]*> *([0-9]*\\.[0-9]+) *\"\n    DSType \"GaugeAverage\"\n    Type \"stock_value\"\n    Instance \"ILD\"\n  </Match>\n\n  </Page>\n</Plugin>\n",)
+                                                                            :content => "<Plugin curl>\n  <Page \"stocks_ILD\">\n    URL \"http://finance.google.com/finance?q=EPA%3AILD\"\n    User \"foo\"\n    Password \"bar\"\n  <Match>\n    Regex \"]*> *([0-9]*\\.[0-9]+) *\"\n    DSType \"GaugeAverage\"\n    Type \"stock_value\"\n    Instance \"ILD\"\n  </Match>\n\n  </Page>\n</Plugin>\n",) # rubocop:disable Metrics/LineLength
     end
   end
 

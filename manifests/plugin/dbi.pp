@@ -6,7 +6,7 @@ class collectd::plugin::dbi (
   $packages  = undef,
   $interval  = undef,
 ) {
-  include collectd::params
+  include ::collectd::params
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-dbi':
@@ -46,7 +46,7 @@ class collectd::plugin::dbi (
   }
 
   $defaults = {
-    'ensure' => $ensure
+    'ensure' => $ensure,
   }
   create_resources(collectd::plugin::dbi::database, $databases, $defaults)
   create_resources(collectd::plugin::dbi::query, $queries, $defaults)

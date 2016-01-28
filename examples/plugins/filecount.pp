@@ -1,14 +1,14 @@
-include collectd
+include ::collectd
 
-class { 'collectd::plugin::filecount':
+class { '::collectd::plugin::filecount':
   directories => {
     'active'   => '/var/spool/postfix/active',
-    'incoming' => '/var/spool/postfix/incoming'
+    'incoming' => '/var/spool/postfix/incoming',
   },
 }
 
 collectd::plugin::filecount::directory {'foodir':
-  path => '/path/to/dir'
+  path => '/path/to/dir',
 }
 
 collectd::plugin::filecount::directory {'aborted-uploads':
@@ -16,5 +16,5 @@ collectd::plugin::filecount::directory {'aborted-uploads':
   pattern       => '.part.*',
   mtime         => '5m',
   recursive     => true,
-  includehidden => true
+  includehidden => true,
 }

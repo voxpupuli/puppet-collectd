@@ -22,7 +22,7 @@ class collectd::plugin::network (
     interval => $interval,
   }
   $defaults = {
-    'ensure' => $ensure
+    'ensure' => $ensure,
   }
   create_resources(collectd::plugin::network::listener, $listeners, $defaults)
   create_resources(collectd::plugin::network::server, $servers, $defaults)

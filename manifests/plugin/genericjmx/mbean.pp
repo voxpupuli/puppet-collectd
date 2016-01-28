@@ -5,7 +5,7 @@ define collectd::plugin::genericjmx::mbean (
   $instance_prefix = undef,
   $instance_from = undef,
 ) {
-  include collectd::plugin::genericjmx
+  include ::collectd::plugin::genericjmx
   validate_array($values)
 
   concat::fragment {

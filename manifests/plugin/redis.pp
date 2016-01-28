@@ -6,7 +6,7 @@ class collectd::plugin::redis (
       'host'    => 'localhost',
       'port'    => '6379',
       'timeout' => 2000,
-    }
+    },
   },
 ) {
 

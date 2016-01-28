@@ -5,8 +5,8 @@ define collectd::plugin::filter::target (
   $options = undef,
   $rule    = undef,
 ) {
-  include collectd::params
-  include collectd::plugin::filter
+  include ::collectd::params
+  include ::collectd::plugin::filter
 
   unless $plugin in ['return','stop','write', 'jump'] or $plugin in $collectd::plugin::filter::plugin_targets {
     fail("Unknown rule plugin '${plugin}' provided")

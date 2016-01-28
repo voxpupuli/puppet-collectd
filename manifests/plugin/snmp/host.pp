@@ -7,8 +7,8 @@ define collectd::plugin::snmp::host (
   $community = 'public',
   $interval = undef,
 ) {
-  include collectd
-  include collectd::plugin::snmp
+  include ::collectd
+  include ::collectd::plugin::snmp
 
   validate_re($version, '^[12]$', 'only snmp versions 1 and 2 are supported')
 
