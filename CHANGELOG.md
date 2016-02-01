@@ -1,3 +1,34 @@
+## 2016-02-01 Release 4.3.0
+
+### New features
+
+* Add plugin::dbi (fix #319)
+* Add plugin::filter (fix #322)
+* Add support for CollectInternalStats (fix #332)
+* Add plugin::write_sensu (fix #335)
+* Make management of package optional (fix #341)
+* Add plugin::dns (fix #356)
+* Add install options (fix #357)
+* Add plugin::mongodb (fix #372)
+* Add plugin::openldap (fix #381)
+* Allow changing file mode of collectd.d (fix #384)
+* Add support for complex module configs (fix #391)
+* Add plugin::ethstat (fix #395)
+
+### Bug fixes
+
+* plugin/snmp: Fix typo (fix #338)
+* Sort keys of curl_json.conf.erb (fix #342)
+* Remove duplicate parameters (fix #345)
+* Use correct collectd_version (fix #347)
+* plugin/mysql: Remove Master/Slave if statement (fix #355)
+* Fix variables for Solaris (fix #360)
+* plugin/filecount: Do not emit empty Plugin block (fix #361)
+* plugin/mysql: Pin InnodbStats to MySQL >= 5.5 (fix #362)
+* plugin/process: Fix startup for Debian/Wheezy (fix #364)
+* plugin/ping: Transition from defined type to class (fix #370)
+* plugin/dbi: Fix empty database name (fix #382)
+
 ## 2015-09-03 Release 4.2.0
 
 ### New features
