@@ -13,7 +13,6 @@ define collectd::plugin::dbi::query (
   validate_array($results)
 
   concat::fragment{"collectd_plugin_dbi_conf_query_${title}":
-    ensure  => $ensure,
     order   => '30',
     target  => "${collectd::params::plugin_conf_dir}/dbi-config.conf",
     content => template('collectd/plugin/dbi/query.conf.erb'),

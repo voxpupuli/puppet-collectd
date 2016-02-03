@@ -32,13 +32,11 @@ class collectd::plugin::processes (
     ensure_newline => true,
   }
   concat::fragment{'collectd_plugin_processes_conf_header':
-    ensure  => $process_config_ensure,
     order   => '00',
     content => '<Plugin processes>',
     target  => "${collectd::params::plugin_conf_dir}/processes-config.conf",
   }
   concat::fragment{'collectd_plugin_processes_conf_footer':
-    ensure  => $process_config_ensure,
     order   => '99',
     content => '</Plugin>',
     target  => "${collectd::params::plugin_conf_dir}/processes-config.conf",

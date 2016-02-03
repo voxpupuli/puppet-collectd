@@ -22,7 +22,6 @@ define collectd::plugin::write_graphite::carbon (
   validate_bool($logsenderrors)
 
   concat::fragment{"collectd_plugin_write_graphite_conf_${title}_${protocol}_${graphiteport}":
-    ensure  => $ensure,
     order   => '50', # somewhere between header and footer
     target  => $collectd::plugin::write_graphite::graphite_conf,
     content => template('collectd/plugin/write_graphite/carbon.conf.erb'),

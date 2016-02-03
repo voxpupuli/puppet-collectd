@@ -17,7 +17,6 @@ define collectd::plugin::dbi::database (
   validate_array($query)
 
   concat::fragment{"collectd_plugin_dbi_conf_db_${title}":
-    ensure  => $ensure,
     order   => '50',
     target  => "${collectd::params::plugin_conf_dir}/dbi-config.conf",
     content => template('collectd/plugin/dbi/database.conf.erb'),
