@@ -19,7 +19,6 @@ define collectd::plugin::postgresql::database (
   include ::collectd::plugin::postgresql
 
   concat::fragment{"collectd_plugin_postgresql_conf_db_${title}":
-    ensure  => $ensure,
     order   => '50',
     target  => "${collectd::params::plugin_conf_dir}/postgresql-config.conf",
     content => template('collectd/plugin/postgresql/database.conf.erb'),

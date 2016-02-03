@@ -21,7 +21,6 @@ define collectd::plugin::exec::cmd (
   # End deprecation
 
   concat::fragment{"collectd_plugin_exec_conf_${title}":
-    ensure  => $ensure,
     order   => '50', # somewhere between header and footer
     target  => $collectd::plugin::exec::exec_conf,
     content => template('collectd/plugin/exec/cmd.conf.erb'),

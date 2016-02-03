@@ -31,7 +31,6 @@ define collectd::plugin::python::module (
   }
 
   concat::fragment{"collectd_plugin_python_conf_${module}":
-    ensure  => $ensure,
     order   => '50', # somewhere between header and footer
     target  => $collectd::plugin::python::python_conf,
     content => template('collectd/plugin/python/module.conf.erb'),
