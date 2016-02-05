@@ -1426,8 +1426,8 @@ class { 'collectd::plugin::write_riemann':
 
 ```puppet
 class { 'collectd::plugin::write_sensu':
-  riemann_host => 'sensu.example.org',
-  riemann_port => 3030,
+  sensu_host => 'sensu.example.org',
+  sensu_port => 3030,
 }
 ```
 
