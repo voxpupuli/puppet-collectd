@@ -60,7 +60,7 @@ Example of how to load plugins with no additional configuration:
 collectd::plugin { 'battery': }
 ```
 
-where 'battery' is the name of the plugin.
+where 'battery' is the name of the plugin. Note, this should only be done in the case of a class for the plugin not existing in this module.
 
 Configurable Plugins
 ------------------
