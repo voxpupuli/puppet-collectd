@@ -8,6 +8,7 @@ class collectd::plugin::amqp (
   $amqpuser        = 'graphite',
   $amqppass        = 'graphite',
   $amqpformat      = 'Graphite',
+  $amqpstorerates  = false,
   $amqpexchange    = 'metrics',
   $amqppersistent  = true,
   $graphiteprefix  = 'collectd.',
