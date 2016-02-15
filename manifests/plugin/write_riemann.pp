@@ -5,6 +5,7 @@ class collectd::plugin::write_riemann (
   $riemann_host     = 'localhost',
   $riemann_port     = 5555,
   $protocol         = 'UDP',
+  $batch            = true,
   $store_rates      = false,
   $always_append_ds = false,
   $interval         = undef,
