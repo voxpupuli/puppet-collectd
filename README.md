@@ -327,8 +327,12 @@ collectd::plugin::curl_json {
   'rabbitmq_overview':
     url => 'http://localhost:55672/api/overview',
     instance => 'rabbitmq_overview',
+    interval => '300',
     keys => {
-      'message_stats/publish' => {'type' => 'gauge'},
+      'message_stats/publish' => {
+        'type'     => 'gauge',
+        'instance' => 'overview',
+      },
     }
 }
 ```
