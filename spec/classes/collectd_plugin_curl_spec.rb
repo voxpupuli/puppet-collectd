@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::curl', :type => :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   context ':ensure => present, default params' do
     let :facts do
       { :osfamily => 'RedHat' }
