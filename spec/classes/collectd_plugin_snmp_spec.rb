@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::snmp', :type => :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   let :facts do
     { :osfamily => 'RedHat' }
   end
