@@ -4,10 +4,19 @@ describe 'collectd::plugin::curl', :type => :class do
   let :pre_condition do
     'include ::collectd'
   end
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
 
   context ':ensure => present, default params' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
     it 'Will create /etc/collectd.d/10-curl.conf' do
       should contain_file('curl.load').with(:ensure  => 'present',
@@ -18,7 +27,10 @@ describe 'collectd::plugin::curl', :type => :class do
 
   context ':ensure => present, creating two pages' do
     let :facts do
-      { :osfamily => 'Debian' }
+      {
+        :osfamily => 'Debian',
+        :collectd_version => '4.8.0',
+      }
     end
     let :params do
       {
@@ -50,7 +62,10 @@ describe 'collectd::plugin::curl', :type => :class do
 
   context ':ensure => present, verifypeer => false, verifyhost => \'false\', measureresponsetime => true, matches empty' do
     let :facts do
-      { :osfamily => 'Debian' }
+      {
+        :osfamily => 'Debian',
+        :collectd_version => '4.8.0',
+      }
     end
     let :params do
       {
@@ -75,7 +90,10 @@ describe 'collectd::plugin::curl', :type => :class do
 
   context ':ensure => absent' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
     let :params do
       { :ensure => 'absent' }

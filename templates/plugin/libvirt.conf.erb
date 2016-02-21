@@ -19,10 +19,10 @@
   HostnameFormat "<%= @hostname_format %>"
 <% end -%>
 <% if @interface_format != nil
-     if @collectd_version and (scope.function_versioncmp([@collectd_version, '5']) >= 0) -%>
+     if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5']) >= 0) -%>
   InterfaceFormat "<%= @interface_format %>"
 <%   else
-       scope.function_warning(['ignoring interface_format parameter because collectd_version is < 5 or undefined'])
+       scope.function_warning(['ignoring interface_format parameter because collectd_version_real is < 5 or undefined'])
      end
    end -%>
 </Plugin>

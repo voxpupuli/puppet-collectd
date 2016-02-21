@@ -30,13 +30,14 @@ describe 'collectd::plugin::network::server', :type => :define do
   context ':ensure => absent' do
     let :facts do
       {
-        :osfamily => 'RedHat'
+        :osfamily => 'RedHat',
+        :collectd_version => '5.1.0',
       }
     end
     let(:title) { 'node1' }
     let :params do
       {
-        :ensure => 'absent'
+        :ensure => 'absent',
       }
     end
 

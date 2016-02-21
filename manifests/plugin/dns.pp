@@ -10,6 +10,8 @@ class collectd::plugin::dns (
   $selectnumericquerytypes = true,
 ) {
 
+  include ::collectd
+
   validate_re($ensure,'^(present)|(absent)$',
     "collectd::plugin::dns::ensure is <${ensure}> and must be either 'present' or 'absent'.")
 

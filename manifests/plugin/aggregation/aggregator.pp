@@ -18,16 +18,17 @@ define collectd::plugin::aggregation::aggregator (
   $calculatemaximum  = undef,
   $calculatestddev   = undef,
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::aggregation
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
 
   file { "${conf_dir}/aggregator-${name}.conf":
     ensure  => $ensure,
     mode    => '0640',
     owner   => 'root',
-    group   => $collectd::params::root_group,
+    group   => $collectd::root_group,
     content => template('collectd/plugin/aggregation-aggregator.conf.erb'),
     notify  => Service['collectd'],
   }

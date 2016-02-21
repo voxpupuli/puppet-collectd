@@ -6,7 +6,10 @@ describe 'collectd::plugin::mysql::database', :type => :define do
   end
 
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':socket => /var/run/mysqld/mysqld.sock, custom socket' do

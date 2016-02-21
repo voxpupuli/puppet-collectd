@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::zfs_arc', :type => :class do
+  let :facts do
+    {
+      :collectd_version => '4.8.0',
+    }
+  end
   context ':ensure => present' do
     let :facts do
-      { :osfamily => 'FreeBSD' }
+      {
+        :osfamily => 'FreeBSD',
+        :collectd_version => '4.8.0',
+      }
     end
     it 'Will create 10-zfs_arc.conf' do
       should contain_file('zfs_arc.load').with(:ensure  => 'present',
@@ -14,7 +22,10 @@ describe 'collectd::plugin::zfs_arc', :type => :class do
 
   context ':ensure => absent' do
     let :facts do
-      { :osfamily => 'FreeBSD' }
+      {
+        :osfamily => 'FreeBSD',
+        :collectd_version => '4.8.0',
+      }
     end
     let :params do
       { :ensure => 'absent' }

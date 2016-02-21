@@ -8,17 +8,18 @@ define collectd::plugin::dbi::database (
   $driveroption = {},
   $selectdb     = undef,
   $query        = [],
-){
-  include ::collectd::params
+) {
+
+  include ::collectd
   include ::collectd::plugin::dbi
 
   validate_string($driver)
   validate_hash($driveroption)
   validate_array($query)
 
-  concat::fragment{"collectd_plugin_dbi_conf_db_${title}":
+  concat::fragment{ "collectd_plugin_dbi_conf_db_${title}":
     order   => '50',
-    target  => "${collectd::params::plugin_conf_dir}/dbi-config.conf",
+    target  => "${collectd::plugin_conf_dir}/dbi-config.conf",
     content => template('collectd/plugin/dbi/database.conf.erb'),
   }
 }

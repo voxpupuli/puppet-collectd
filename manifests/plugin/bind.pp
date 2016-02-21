@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:BIND
 class collectd::plugin::bind (
   $url,
-  $ensure         = present,
-  $manage_package = $collectd::manage_package,
+  $ensure         = 'present',
+  $manage_package = undef,
   $memorystats    = true,
   $opcodes        = true,
   $parsetime      = false,
@@ -13,6 +13,10 @@ class collectd::plugin::bind (
   $views          = [],
   $interval       = undef,
 ) {
+
+  include ::collectd
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
 
   validate_bool(
     $memorystats,
@@ -26,14 +30,14 @@ class collectd::plugin::bind (
   validate_array($views)
 
   if $::osfamily == 'Redhat' {
-    if $manage_package {
+    if $_manage_package {
       package { 'collectd-bind':
         ensure => $ensure,
       }
     }
   }
 
-  collectd::plugin {'bind':
+  collectd::plugin { 'bind':
     ensure   => $ensure,
     content  => template('collectd/plugin/bind.conf.erb'),
     interval => $interval,

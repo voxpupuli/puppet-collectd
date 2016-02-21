@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:StatsD
 class collectd::plugin::statsd (
-  $ensure          = present,
+  $ensure          = 'present',
   $host            = undef,
   $port            = undef,
   $deletecounters  = undef,
@@ -15,7 +15,9 @@ class collectd::plugin::statsd (
   $timercount      = undef,
 ) {
 
-  collectd::plugin {'statsd':
+  include ::collectd
+
+  collectd::plugin { 'statsd':
     ensure   => $ensure,
     content  => template('collectd/plugin/statsd.conf.erb'),
     interval => $interval,

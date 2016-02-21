@@ -1,6 +1,6 @@
 # a single graphite backend
 define collectd::plugin::write_graphite::carbon (
-  $ensure            = present,
+  $ensure            = 'present',
   $graphitehost      = 'localhost',
   $graphiteport      = 2003,
   $storerates        = true,
@@ -12,8 +12,9 @@ define collectd::plugin::write_graphite::carbon (
   $protocol          = 'tcp',
   $separateinstances = false,
   $logsenderrors     = true,
-){
-  include ::collectd::params
+) {
+
+  include ::collectd
   include ::collectd::plugin::write_graphite
 
   validate_bool($storerates)
@@ -21,7 +22,7 @@ define collectd::plugin::write_graphite::carbon (
   validate_bool($separateinstances)
   validate_bool($logsenderrors)
 
-  concat::fragment{"collectd_plugin_write_graphite_conf_${title}_${protocol}_${graphiteport}":
+  concat::fragment { "collectd_plugin_write_graphite_conf_${title}_${protocol}_${graphiteport}":
     order   => '50', # somewhere between header and footer
     target  => $collectd::plugin::write_graphite::graphite_conf,
     content => template('collectd/plugin/write_graphite/carbon.conf.erb'),

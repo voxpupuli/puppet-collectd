@@ -6,9 +6,11 @@ describe 'collectd::plugin::iptables', :type => :class do
   end
 
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
-
   context ':ensure => present and :chains => { \'nat\' => \'In_SSH\' }' do
     let :params do
       { :chains => { 'nat' => 'In_SSH' } }

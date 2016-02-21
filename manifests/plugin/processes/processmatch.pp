@@ -2,15 +2,14 @@ define collectd::plugin::processes::processmatch (
   $regex,
   $ensure    = 'present',
   $matchname = $name
-){
+) {
 
   include ::collectd::plugin::processes
-  include ::collectd::params
+  include ::collectd
 
-  concat::fragment{"collectd_plugin_processes_conf_processmatch_${matchname}":
+  concat::fragment{ "collectd_plugin_processes_conf_processmatch_${matchname}":
     order   => '51',
     content => "ProcessMatch \"${matchname}\" \"${regex}\"\n",
-    target  => "${collectd::params::plugin_conf_dir}/processes-config.conf",
+    target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
-
 }

@@ -7,6 +7,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
       :id => 'root',
       :concat_basedir => tmpfilename('collectd-genericjmx-mbean'),
       :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :collectd_version => '4.8.0',
     }
   end
 

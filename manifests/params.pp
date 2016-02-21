@@ -18,7 +18,7 @@ class collectd::params {
   $package_ensure          = 'installed'
   $service_ensure          = 'running'
   $service_enable          = true
-  $minimum_version         = undef
+  $minimum_version         = '4.8'
   $manage_package          = true
   $package_install_options = undef
   $plugin_conf_dir_mode    = '0750'

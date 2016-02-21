@@ -11,6 +11,8 @@ class collectd::plugin::mongodb (
   $collectd_dir   = '/usr/lib/collectd',
 ) {
 
+  include ::collectd
+
   validate_re($ensure,'^(present)|(absent)$',
     "collectd::plugin::mongodb::ensure is <${ensure}> and must be either 'present' or 'absent'.")
 
@@ -20,11 +22,14 @@ class collectd::plugin::mongodb (
 
   if $configured_dbs != undef {
     validate_array($configured_dbs)
-    if ( $db_port == undef ) { fail('db_port is undefined, but must be set if configured_dbs is set.') }
+    if ( $db_port == undef ) {
+
+  fail('db_port is undefined, but must be set if configured_dbs is set.') }
     validate_string($db_port)
   }
 
   if ( $db_host != undef ) and ( is_ip_address($db_host) == false ) {
+
     fail("collectd::plugin::mongodb::db_host is <${db_host}> and must be a valid IP address.")
   }
 
