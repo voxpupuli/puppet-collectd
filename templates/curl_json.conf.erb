@@ -8,6 +8,9 @@ LoadPlugin "curl_json"
   <URL "<%= @url %>">
 <%- end -%>
     Instance "<%= @instance %>"
+<% if @interval -%>
+    Interval <%= @interval %>
+<% end -%>
 
 <% if @user %>
     User "<%= @user %>"
@@ -17,6 +20,9 @@ LoadPlugin "curl_json"
 <% @keys.sort.each do |key,keydata| %>
     <Key "<%= key %>">
       Type "<%= keydata['type'] %>"
+<% if keydata['instance'] -%>
+      Instance "<%= keydata['instance'] %>"
+<% end -%>
     </Key>
 <% end -%>
 

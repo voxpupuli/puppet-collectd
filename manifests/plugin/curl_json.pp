@@ -4,6 +4,7 @@ define collectd::plugin::curl_json (
   $instance,
   $keys,
   $ensure   = present,
+  $interval = undef,
   $user     = undef,
   $password = undef,
   $order = '10',
@@ -11,6 +12,10 @@ define collectd::plugin::curl_json (
 
   include ::collectd::params
   validate_hash($keys)
+
+  if $::osfamily == 'Debian' {
+    ensure_packages('libyajl2')
+  }
 
   if $::osfamily == 'Redhat' {
     ensure_packages('collectd-curl_json')
