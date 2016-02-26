@@ -2,11 +2,12 @@
 define collectd::plugin::filter::rule (
   $chain,
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::filter
 
   $fragment_order = "10_${title}"
-  $conf_file = "${collectd::params::plugin_conf_dir}/filter-chain-${chain}.conf"
+  $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${chain}.conf"
 
   concat::fragment{ "${conf_file}_${fragment_order}_0":
     order   => "${fragment_order}_0",
@@ -19,5 +20,4 @@ define collectd::plugin::filter::rule (
     content => '  </Rule>',
     target  => $conf_file,
   }
-
 }

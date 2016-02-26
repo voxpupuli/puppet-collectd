@@ -5,7 +5,8 @@ define collectd::plugin::filter::target (
   $options = undef,
   $rule    = undef,
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::filter
 
   unless $plugin in ['return','stop','write', 'jump'] or $plugin in $collectd::plugin::filter::plugin_targets {
@@ -15,7 +16,7 @@ define collectd::plugin::filter::target (
   # Load plugins
   if $plugin in $collectd::plugin::filter::plugin_targets {
     $order = 30
-    ensure_resource('collectd::plugin', "target_${plugin}", {'order' => '02'} )
+    ensure_resource('collectd::plugin', "target_${plugin}", { 'order' => '02'} )
   } else {
     # Built in plugins
     $order = 50
@@ -29,12 +30,11 @@ define collectd::plugin::filter::target (
     $fragment_order = "20_${order}_${title}"
   }
 
-  $conf_file = "${collectd::params::plugin_conf_dir}/filter-chain-${chain}.conf"
+  $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${chain}.conf"
 
   concat::fragment{ "${conf_file}_${fragment_order}":
     order   => $fragment_order,
     content => template('collectd/plugin/filter/target.erb'),
     target  => $conf_file,
   }
-
 }

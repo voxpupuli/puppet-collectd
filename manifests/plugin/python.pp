@@ -1,7 +1,7 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
 class collectd::plugin::python (
   $modulepaths = [],
-  $ensure      = present,
+  $ensure      = 'present',
   $modules     = {},
   # Unlike most other plugins, this one should set "Globals true". This will cause collectd
   # to export the name of all objects in the Python interpreter for all plugins to see.
@@ -13,7 +13,8 @@ class collectd::plugin::python (
   $interactive = false,
   $logtraces   = false,
 ) {
-  include ::collectd::params
+
+  include ::collectd
 
   validate_hash($modules)
   validate_bool($interactive)
@@ -22,12 +23,12 @@ class collectd::plugin::python (
   validate_array($modulepaths)
 
   $module_dirs = empty($modulepaths) ? {
-    true  => [$collectd::params::python_dir],
+    true  => [$collectd::python_dir],
     # use paths provided by the user
     false => $modulepaths
   }
 
-  collectd::plugin {'python':
+  collectd::plugin { 'python':
     ensure   => $ensure,
     interval => $interval,
     order    => $order,
@@ -44,31 +45,31 @@ class collectd::plugin::python (
       'ensure'  => $ensure_modulepath,
       'mode'    => '0750',
       'owner'   => 'root',
-      'group'   => $collectd::params::root_group,
-      'require' => Package[$collectd::params::package_name]
+      'group'   => $collectd::root_group,
+      'require' => Package[$collectd::package_name]
     }
   )
 
   # should be loaded after global plugin configuration
-  $python_conf = "${collectd::params::plugin_conf_dir}/python-config.conf"
+  $python_conf = "${collectd::plugin_conf_dir}/python-config.conf"
 
   concat{ $python_conf:
     ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
-    group          => $collectd::params::root_group,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
     require        => File['collectd.d'],
   }
 
-  concat::fragment{'collectd_plugin_python_conf_header':
+  concat::fragment{ 'collectd_plugin_python_conf_header':
     order   => '00',
     content => template('collectd/plugin/python/header.conf.erb'),
     target  => $python_conf,
   }
 
-  concat::fragment{'collectd_plugin_python_conf_footer':
+  concat::fragment{ 'collectd_plugin_python_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => $python_conf,

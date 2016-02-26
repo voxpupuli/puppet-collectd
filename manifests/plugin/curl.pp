@@ -1,20 +1,24 @@
 #
 class collectd::plugin::curl (
-  $ensure         = present,
-  $manage_package = $collectd::manage_package,
+  $ensure         = 'present',
+  $manage_package = undef,
   $interval       = undef,
   $pages          = { },
 ) {
 
+  include ::collectd
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
   if $::osfamily == 'Redhat' {
-    if $manage_package {
+    if $_manage_package {
       package { 'collectd-curl':
         ensure => $ensure,
       }
     }
   }
 
-  collectd::plugin {'curl':
+  collectd::plugin { 'curl':
     ensure   => $ensure,
     interval => $interval,
   }

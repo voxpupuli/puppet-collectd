@@ -1,9 +1,9 @@
 <Plugin swap>
   ReportByDevice <%= @reportbydevice %>
-<% if @collectd_version and scope.function_versioncmp([@collectd_version, '5.2']) > 0 -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.2']) > 0 -%>
   ReportBytes <%= @reportbytes %>
 <% end -%>
-<% if @collectd_version and scope.function_versioncmp([@collectd_version, '5.5']) > 0 -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) > 0 -%>
   ValuesAbsolute = <%= @valuesabsolute %>
   ValuesPercentage = <%= @valuespercentage %>
 <% end -%>

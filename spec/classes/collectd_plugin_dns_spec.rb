@@ -170,7 +170,10 @@ describe 'collectd::plugin::dns' do
 
       context 'on an unsupported platform and package_name is not specified' do
         let :facts do
-          { :osfamily => 'Solaris' }
+          {
+            :osfamily => 'Solaris',
+            :collectd_version => '4.8.0',
+          }
         end
 
         let :params do

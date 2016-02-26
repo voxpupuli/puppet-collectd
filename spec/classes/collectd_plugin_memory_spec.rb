@@ -1,10 +1,20 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::memory', :type => :class do
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
   context ':ensure => present, default params' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
+
     it 'Will create /etc/collectd.d/10-memory.conf' do
       should contain_file('memory.load').with(:ensure  => 'present',
                                               :path    => '/etc/collectd.d/10-memory.conf',
@@ -46,8 +56,12 @@ describe 'collectd::plugin::memory', :type => :class do
 
   context ':ensure => absent' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
+
     let :params do
       { :ensure => 'absent' }
     end

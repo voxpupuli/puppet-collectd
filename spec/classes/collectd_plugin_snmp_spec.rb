@@ -6,7 +6,10 @@ describe 'collectd::plugin::snmp', :type => :class do
   end
 
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':ensure => present and dataset for AMAVIS-MIB::inMsgs.0' do

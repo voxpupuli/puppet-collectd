@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::filecount', :type => :class do
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':ensure => present and :directories => { \'active\' => \'/var/spool/postfix/active\' }' do

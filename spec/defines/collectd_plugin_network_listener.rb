@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::network::listener', :type => :define do
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context 'simple case' do

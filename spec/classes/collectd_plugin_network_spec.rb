@@ -1,10 +1,20 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::network', :type => :class do
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
   context ':ensure => present, default params' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
+
     it 'Will create /etc/collectd.d/10-network.conf' do
       should contain_file('network.load')
         .with(:ensure  => 'present',

@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::rrdtool', :type => :class do
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':ensure => present, default args' do

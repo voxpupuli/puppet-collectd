@@ -3,6 +3,12 @@ require 'spec_helper'
 describe 'collectd::plugin::openvpn', :type => :class do
   ######################################################################
   # Default param validation, compilation succeeds
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
 
   context ':ensure => present, default params' do
     let :facts do

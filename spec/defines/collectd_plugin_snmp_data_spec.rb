@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::snmp::data', :type => :define do
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '4.8.0',
+    }
   end
 
   let(:title) { 'foo' }

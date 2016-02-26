@@ -5,8 +5,10 @@ class collectd::plugin::tcpconns (
   $listening       = undef,
   $interval        = undef,
   $allportssummary = undef,
-  $ensure          = present
+  $ensure          = 'present'
 ) {
+
+  include ::collectd
 
   if $localports {
     validate_array($localports)
@@ -20,7 +22,7 @@ class collectd::plugin::tcpconns (
     validate_bool($allportssummary)
   }
 
-  collectd::plugin {'tcpconns':
+  collectd::plugin { 'tcpconns':
     ensure   => $ensure,
     content  => template('collectd/plugin/tcpconns.conf.erb'),
     interval => $interval,

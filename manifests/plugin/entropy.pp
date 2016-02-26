@@ -1,10 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:Entropy
 class collectd::plugin::entropy (
-  $ensure   = present,
+  $ensure   = 'present',
   $interval = undef,
 ) {
 
-  collectd::plugin {'entropy':
+  include ::collectd
+
+  collectd::plugin { 'entropy':
     ensure   => $ensure,
     interval => $interval,
   }

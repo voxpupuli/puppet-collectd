@@ -1,9 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:NFS
 class collectd::plugin::nfs (
-  $ensure   = present,
+  $ensure   = 'present',
   $interval = undef,
 ) {
-  collectd::plugin {'nfs':
+
+  include ::collectd
+
+  collectd::plugin { 'nfs':
     ensure   => $ensure,
     interval => $interval,
   }

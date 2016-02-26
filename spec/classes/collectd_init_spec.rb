@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd' do
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   it { should contain_package('collectd').with_ensure('installed') }

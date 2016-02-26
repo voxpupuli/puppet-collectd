@@ -13,10 +13,11 @@ define collectd::plugin::curl::page (
   $matches             = undef,
   $plugininstance      = $name, # You can have multiple <Page> with the same name.
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::curl
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
 
   validate_string($url)
 
@@ -28,7 +29,7 @@ define collectd::plugin::curl::page (
     ensure  => $ensure,
     mode    => '0640',
     owner   => 'root',
-    group   => $collectd::params::root_group,
+    group   => $collectd::root_group,
     content => template('collectd/plugin/curl-page.conf.erb'),
     notify  => Service['collectd'],
   }

@@ -6,7 +6,10 @@ describe 'collectd::plugin::ping' do
   end
 
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':hosts => [\'google.com\']' do

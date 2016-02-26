@@ -29,6 +29,8 @@ class collectd (
   $manage_package          = $collectd::params::manage_package,
 ) inherits collectd::params {
 
+  $collectd_version_real = pick($::collectd_version, $minimum_version)
+
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
 
@@ -40,8 +42,8 @@ class collectd (
 
   class { '::collectd::service': }
 
-  anchor {'collectd::begin': }
-  anchor {'collectd::end': }
+  anchor { 'collectd::begin': }
+  anchor { 'collectd::end': }
 
   Anchor['collectd::begin'] ->
   Class['collectd::install'] ->

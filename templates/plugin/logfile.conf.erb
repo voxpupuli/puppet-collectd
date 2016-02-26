@@ -2,7 +2,7 @@
   LogLevel <%= @log_level %>
   File "<%= @log_file %>"
   Timestamp <%= @log_timestamp %>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '4.10']) >= 0) -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '4.10']) >= 0) -%>
   PrintSeverity <%= @print_severity %>
 <% end -%>
 </Plugin>

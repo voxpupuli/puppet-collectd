@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::interface', :type => :class do
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':ensure => present and :interfaces => [\'eth0\']' do

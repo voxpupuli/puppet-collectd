@@ -14,13 +14,14 @@ define collectd::plugin::postgresql::database (
   $krbsrvname   = undef,
   $writer       = undef,
   $service      = undef,
-){
-  include ::collectd::params
+) {
+
+  include ::collectd
   include ::collectd::plugin::postgresql
 
-  concat::fragment{"collectd_plugin_postgresql_conf_db_${title}":
+  concat::fragment{ "collectd_plugin_postgresql_conf_db_${title}":
     order   => '50',
-    target  => "${collectd::params::plugin_conf_dir}/postgresql-config.conf",
+    target  => "${collectd::plugin_conf_dir}/postgresql-config.conf",
     content => template('collectd/plugin/postgresql/database.conf.erb'),
   }
 }

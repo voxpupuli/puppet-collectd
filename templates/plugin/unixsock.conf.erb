@@ -2,7 +2,7 @@
   SocketFile  "<%= @socketfile %>"
   SocketGroup "<%= @socketgroup %>"
   SocketPerms "<%= @socketperms %>"
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5']) >= 0) -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5']) >= 0) -%>
   DeleteSocket "<%= @deletesocket %>"
 <% end -%>
 </Plugin>

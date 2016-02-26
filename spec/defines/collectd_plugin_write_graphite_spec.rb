@@ -7,6 +7,7 @@ describe 'collectd::plugin::write_graphite::carbon', :type => :define do
       :id             => 'root',
       :concat_basedir => tmpfilename('collectd-graphite'),
       :path           => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :collectd_version => '4.8.0',
     }
   end
 

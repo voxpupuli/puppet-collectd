@@ -6,7 +6,10 @@ describe 'collectd::plugin::curl::page', :type => :define do
   end
 
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context 'simple case' do

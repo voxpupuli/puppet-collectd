@@ -1,13 +1,17 @@
 # MySQL plugin
 # https://collectd.org/wiki/index.php/Plugin:MySQL
 class collectd::plugin::mysql (
-  $ensure           = present,
-  $manage_package   = $collectd::manage_package,
+  $ensure           = 'present',
+  $manage_package   = undef,
   $interval         = undef,
-){
+) {
+
+  include ::collectd
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
 
   if $::osfamily == 'Redhat' {
-    if $manage_package {
+    if $_manage_package {
       package { 'collectd-mysql':
         ensure => $ensure,
       }

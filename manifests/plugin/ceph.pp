@@ -26,15 +26,17 @@
 #   schema.
 # 
 class collectd::plugin::ceph (
-  $ensure                    = present,
+  $ensure                    = 'present',
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
   $osds,
 ) {
 
+  include ::collectd
+
   validate_array($osds)
 
-  collectd::plugin {'ceph':
+  collectd::plugin { 'ceph':
     ensure  => $ensure,
     content => template('collectd/plugin/ceph.conf.erb'),
   }

@@ -12,10 +12,11 @@ define collectd::plugin::mysql::database (
   $innodbstats        = undef,
   $slavenotifications = undef,
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::mysql
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
 
   validate_string($database, $host, $username, $password, $port)
   validate_bool($masterstats, $slavestats)
@@ -36,7 +37,7 @@ define collectd::plugin::mysql::database (
     path    => "${conf_dir}/mysql-${name}.conf",
     mode    => '0640',
     owner   => 'root',
-    group   => $collectd::params::root_group,
+    group   => $collectd::root_group,
     content => template('collectd/mysql-database.conf.erb'),
     notify  => Service['collectd'],
   }
