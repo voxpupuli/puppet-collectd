@@ -120,4 +120,9 @@ describe 'collectd' do
     let(:params) { { :plugin_conf_dir_mode => '0755' } }
     it { should contain_file('collectd.d').with_mode('0755') }
   end
+
+  context 'when conf_content is set' do
+    let(:params) { { :conf_content => 'Hello World' } }
+    it { should contain_file('collectd.conf').with_content(/Hello World/) }
+  end
 end

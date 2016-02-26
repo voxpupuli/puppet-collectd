@@ -2,6 +2,7 @@
 class collectd (
   $fqdnlookup              = $collectd::params::fqdnlookup,
   $collectd_hostname       = $collectd::params::collectd_hostname,
+  $conf_content            = $collectd::params::conf_content,
   $interval                = $collectd::params::interval,
   $include                 = $collectd::params::include,
   $internal_stats          = $collectd::params::internal_stats,
