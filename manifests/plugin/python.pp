@@ -59,6 +59,7 @@ class collectd::plugin::python (
     group          => $collectd::params::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
 
   concat::fragment{'collectd_plugin_python_conf_header':
