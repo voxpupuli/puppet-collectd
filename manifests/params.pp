@@ -25,7 +25,7 @@ class collectd::params {
 
   case $::osfamily {
     'Debian': {
-      $package_name     = 'collectd'
+      $package_name     = [ 'collectd', 'collectd-core' ]
       $package_provider = 'apt'
       $collectd_dir     = '/etc/collectd'
       $plugin_conf_dir  = "${collectd_dir}/conf.d"
