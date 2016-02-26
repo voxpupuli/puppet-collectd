@@ -2,6 +2,7 @@
 class collectd::plugin::load (
   $ensure   = present,
   $interval = undef,
+  $report_relative = undef,
 ) {
   collectd::plugin {'load':
     ensure   => $ensure,

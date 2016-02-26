@@ -5,6 +5,9 @@
 <% if @interval and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.2']) >= 0) -%>
   Interval <%= @interval %>
 <% end -%>
+<% if @report_relative -%>
+  ReportRelative <%= @report_relative %>
+<% end -%>
 </LoadPlugin>
 <% else -%>
 LoadPlugin <%= @plugin %>
