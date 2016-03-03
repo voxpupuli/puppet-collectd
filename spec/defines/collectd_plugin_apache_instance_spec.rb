@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::apache::instance', :type => :define do
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '5.5.'
+    }
   end
 
   let(:title) { 'foo.example.com' }

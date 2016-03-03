@@ -20,8 +20,7 @@ class collectd::plugin::write_graphite (
   # should be loaded after global plugin configuration
   $graphite_conf = "${collectd::plugin_conf_dir}/write_graphite-config.conf"
 
-  concat{ $graphite_conf:
-    ensure         => $ensure,
+  concat { $graphite_conf:
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
