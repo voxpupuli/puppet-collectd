@@ -1,0 +1,20 @@
+<Plugin "apache">
+  <Instance "<%= @name %>">
+    URL "<%= @url %>"
+<% if @user -%>
+    User "<%= @user %>"
+<% end -%>
+<% if @password -%>
+    Password "<%= @password %>"
+<% end -%>
+<% if @verifypeer -%>
+    VerifyPeer "<%= @verifypeer %>"
+<% end -%>
+<% if @verifyhost -%>
+    VerifyHost "<%= @verifyhost %>"
+<% end -%>
+<% if @cacert -%>
+    CACert "<%= @cacert %>"
+<% end -%>
+  </Instance>
+</Plugin>
