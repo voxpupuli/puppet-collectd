@@ -23,6 +23,11 @@ class collectd::params {
   $package_install_options = undef
   $plugin_conf_dir_mode    = '0750'
 
+  case $::kernel {
+    'OpenBSD': { $has_wordexp = false }
+    default: { $has_wordexp = true }
+  }
+
   case $::osfamily {
     'Debian': {
       $package_name     = [ 'collectd', 'collectd-core' ]

@@ -22,7 +22,11 @@ WriteQueueLimitLow <%= @write_queue_limit_low %>
 Interval <%= @interval %>
 Timeout <%= @timeout %>
 ReadThreads <%= @threads %>
+<% if @has_wordexp  == true -%>
 Include "<%= @plugin_conf_dir %>/*.conf"
+<% else -%>
+Include "<%= @plugin_conf_dir %>/"
+<% end -%>
 <% @include.each do |obj| -%>
 Include "<%= obj %>"
 <% end -%>
