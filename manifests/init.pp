@@ -27,6 +27,7 @@ class collectd (
   $service_enable          = $collectd::params::service_enable,
   $minimum_version         = $collectd::params::minimum_version,
   $manage_package          = $collectd::params::manage_package,
+  $has_wordexp             = $collectd::params::has_wordexp,
 ) inherits collectd::params {
 
   $collectd_version_real = pick($::collectd_version, $minimum_version)
