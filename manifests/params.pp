@@ -79,6 +79,17 @@ class collectd::params {
       $java_dir         = undef
       $python_dir       = '/usr/local/share/collectd/python'
     }
+    'OpenBSD': {
+      $package_name     = 'collectd'
+      $package_provider = undef
+      $collectd_dir     = '/etc/collectd'
+      $plugin_conf_dir  = $collectd_dir
+      $service_name     = 'collectd'
+      $config_file      = '/etc/collectd.conf'
+      $root_group       = '_collectd'
+      $java_dir         = undef
+      $python_dir       = '/usr/local/share/collectd/python'
+    }
     'Archlinux': {
       $package_name     = 'collectd'
       $package_provider = undef
