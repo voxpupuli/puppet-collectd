@@ -56,7 +56,7 @@ class collectd::plugin::dns (
     validate_string($package_name_real)
 
     if $package_name_real == 'USE_DEFAULTS' {
-      fail("collectd::plugin::dns::package_name must be specified when using an unsupported OS. Supported osfamily is RedHat. Detected is <${::osfamily}>.")
+      fail("collectd::plugin::dns::package_name must be specified when using an unsupported OS like <${::osfamily}>.")
     }
 
     package { 'collectd-dns':

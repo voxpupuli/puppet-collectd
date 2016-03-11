@@ -23,7 +23,7 @@ class collectd::params {
   $package_install_options = undef
   $plugin_conf_dir_mode    = '0750'
 
-  case $::kernel {
+  case getvar('::kernel') {
     'OpenBSD': { $has_wordexp = false }
     default: { $has_wordexp = true }
   }
