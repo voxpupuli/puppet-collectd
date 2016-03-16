@@ -1,10 +1,10 @@
 # Single module definition
 define collectd::plugin::python::module (
-  $config,
+  $config        = {},
+  $ensure        = 'present',
+  $module        = $title,
   $modulepath    = undef,
   $script_source = undef,
-  $module        = $title,
-  $ensure        = 'present',
 ) {
 
   include ::collectd
