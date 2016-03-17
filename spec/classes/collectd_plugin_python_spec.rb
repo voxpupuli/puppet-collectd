@@ -94,7 +94,7 @@ describe 'collectd::plugin::python', :type => :class do
 
       it 'includes elasticsearch Cluster name' do
         should contain_concat__fragment('collectd_plugin_python_conf_elasticsearch')
-          .with(:content => /Cluster ES-clust/,
+          .with(:content => /Cluster "ES-clust"/,
                 :target  => '/etc/collectd/conf.d/python-config.conf',)
       end
 
