@@ -5,9 +5,6 @@
 <% if @interval and scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.2']) >= 0) -%>
   Interval <%= @interval %>
 <% end -%>
-<% if @report_relative -%>
-  ReportRelative <%= @report_relative %>
-<% end -%>
 </LoadPlugin>
 <% else -%>
 LoadPlugin <%= @plugin %>
