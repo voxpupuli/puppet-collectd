@@ -87,6 +87,7 @@ documentation for each plugin for configurable attributes.
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
+* `fhcount` (see [collectd::plugin::fhcount](#class-collectdpluginfhcount) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
@@ -504,6 +505,15 @@ class { 'collectd::plugin::ethstat':
 }
 ```
 
+####Class: `collectd::plugin::fhcount`
+
+```puppet
+class { 'collectd::plugin::fhcount':
+  valueabsolute   => true,
+  valuepercentage => false,
+}
+```
+
 ####Class: `collectd::plugin::filecount`
 
 ```puppet
@@ -736,8 +746,14 @@ class { 'collectd::plugin::iptables':
 
 ####Class: `collectd::plugin::java`
 
+jvmarg options must be declared if declaring loadplugin, as the JVM must be 
+initialized prior to loading collectd java plugins.
+
 ```puppet
-class { 'collectd::plugin::java': }
+class { 'collectd::plugin::java': 
+  jvmarg      => ['arg1', 'arg2'],
+  loadplugin  => {"plugin.name" => ["option line 1", "option line 2"]}
+}
 ```
 
 ####Class: `collectd::plugin::load`

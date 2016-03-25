@@ -54,6 +54,36 @@ describe 'collectd::plugin::java', :type => :class do
     end
   end
 
+  context 'jvmarg parameter string & loadplugin java hash with no options' do
+    let(:params) do
+      {
+        :jvmarg => 'dog',
+        :loadplugin => { 'name.java' => [] }
+      }
+    end
+
+    it 'will have a JVMArg parameter' do
+      should contain_collectd__plugin('java').with_content(/JVMArg "dog"/)
+    end
+
+    it 'will have a java plugin' do
+      should contain_collectd__plugin('java').with_content(/LoadPlugin "name.java"/)
+    end
+  end
+
+  context 'jvmarg parameter string & loadplugin java hash with options' do
+    let(:params) do
+      {
+        :jvmarg     => 'dog',
+        :loadplugin => { 'name.java' => ['key = value'] }
+      }
+    end
+
+    it 'will have a java plugin option' do
+      should contain_collectd__plugin('java').with_content(/key = value/)
+    end
+  end
+
   context 'jvmarg parameter empty' do
     let(:params) do
       {
@@ -66,6 +96,23 @@ describe 'collectd::plugin::java', :type => :class do
     end
     it 'will not have any jvmarg parameters' do
       should contain_collectd__plugin('java').without_content(/JVMArg/)
+    end
+  end
+
+  context 'jvmarg parameter empty & java plugin option provided' do
+    let(:params) do
+      {
+        :jvmarg     => [],
+        :loadplugin => { 'name.java' => ['key = value'] }
+      }
+    end
+
+    it 'will not have a java plugin load stanza' do
+      should contain_collectd__plugin('java').without_content(/name.java/)
+    end
+
+    it 'will not have java plugin options stanza' do
+      should contain_collectd__plugin('java').without_content(/key = value/)
     end
   end
 end
