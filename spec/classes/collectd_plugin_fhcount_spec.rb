@@ -22,11 +22,11 @@ describe 'collectd::plugin::fhcount', :type => :class do
       end
 
       it 'Will include ValuesAbsolute in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(/ValuesAbsolute = false/)
+        should contain_file('fhcount.load').with_content(/ValuesAbsolute false/)
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(/ValuesPercentage = true/)
+        should contain_file('fhcount.load').with_content(/ValuesPercentage true/)
       end
     end
   end
