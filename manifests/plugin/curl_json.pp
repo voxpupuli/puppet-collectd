@@ -7,6 +7,7 @@ define collectd::plugin::curl_json (
   $interval = undef,
   $user     = undef,
   $password = undef,
+  $header   = undef,
   $order = '10',
 ) {
 
