@@ -10,9 +10,11 @@ class collectd::plugin::redis (
   },
 ) {
 
+  include ::collectd
+
   validate_hash($nodes)
 
-  collectd::plugin {'redis':
+  collectd::plugin { 'redis':
     ensure   => $ensure,
     content  => template('collectd/plugin/redis.conf.erb'),
     interval => $interval,

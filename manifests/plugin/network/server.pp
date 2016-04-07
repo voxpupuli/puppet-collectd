@@ -8,10 +8,11 @@ define collectd::plugin::network::server (
   $interface     = undef,
   $forward       = undef,
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::network
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $::collectd::plugin_conf_dir
 
   validate_string($name)
 
@@ -19,7 +20,7 @@ define collectd::plugin::network::server (
     ensure  => $ensure,
     mode    => '0640',
     owner   => 'root',
-    group   => $collectd::params::root_group,
+    group   => $::collectd::root_group,
     content => template('collectd/plugin/network/server.conf.erb'),
     notify  => Service['collectd'],
   }

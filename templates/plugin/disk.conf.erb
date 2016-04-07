@@ -3,7 +3,7 @@
   Disk  "<%=disk %>"
 <% end -%>
   IgnoreSelected <%= @ignoreselected %>
-<% if @udevnameattr and @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0) -%>
+<% if @udevnameattr and scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
   UdevNameAttr <%= @udevnameattr %>
 <% end -%>
 </Plugin>

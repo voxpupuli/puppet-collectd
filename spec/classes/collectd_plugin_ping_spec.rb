@@ -1,8 +1,15 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::ping' do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':hosts => [\'google.com\']' do

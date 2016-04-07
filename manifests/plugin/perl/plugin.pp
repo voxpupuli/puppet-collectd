@@ -1,16 +1,18 @@
 #
 define collectd::plugin::perl::plugin (
   $module,
-  $manage_package = true,
+  $manage_package  = true,
   $enable_debugger = false,
-  $include_dir = false,
-  $provider = false,
-  $source = false,
-  $destination = false,
-  $order = '01',
-  $config = {},
+  $include_dir     = false,
+  $provider        = false,
+  $source          = false,
+  $destination     = false,
+  $order           = '01',
+  $config          = {},
 ) {
-  include ::collectd::params
+
+  include ::collectd
+
   if ! defined(Class['Collectd::Plugin::Perl']) {
     include ::collectd::plugin::perl
   }
@@ -32,13 +34,13 @@ define collectd::plugin::perl::plugin (
     $include_dirs = []
   }
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
   $base_filename = $collectd::plugin::perl::filename
   $filename = "${conf_dir}/perl/plugin-${order}_${name}.conf"
 
   file { $filename:
-    owner   => $collectd::params::root_user,
-    group   => $collectd::params::root_group,
+    owner   => $collectd::root_user,
+    group   => $collectd::root_group,
     mode    => '0644',
     content => template('collectd/plugin/perl/plugin.erb'),
   }
@@ -46,7 +48,8 @@ define collectd::plugin::perl::plugin (
   case $provider {
     'package': {
       validate_string($source)
-      if $manage_package {
+      $_manage_package = pick($manage_package, $::collectd::manage_package)
+      if $_manage_package {
         package { $source:
           require => Collectd::Plugin['perl'],
         }

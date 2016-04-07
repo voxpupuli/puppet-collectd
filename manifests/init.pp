@@ -2,6 +2,7 @@
 class collectd (
   $fqdnlookup              = $collectd::params::fqdnlookup,
   $collectd_hostname       = $collectd::params::collectd_hostname,
+  $conf_content            = $collectd::params::conf_content,
   $interval                = $collectd::params::interval,
   $include                 = $collectd::params::include,
   $internal_stats          = $collectd::params::internal_stats,
@@ -26,7 +27,10 @@ class collectd (
   $service_enable          = $collectd::params::service_enable,
   $minimum_version         = $collectd::params::minimum_version,
   $manage_package          = $collectd::params::manage_package,
+  $has_wordexp             = $collectd::params::has_wordexp,
 ) inherits collectd::params {
+
+  $collectd_version_real = pick($::collectd_version, $minimum_version)
 
   validate_bool($purge_config, $fqdnlookup)
   validate_array($include, $typesdb)
@@ -39,8 +43,8 @@ class collectd (
 
   class { '::collectd::service': }
 
-  anchor {'collectd::begin': }
-  anchor {'collectd::end': }
+  anchor { 'collectd::begin': }
+  anchor { 'collectd::end': }
 
   Anchor['collectd::begin'] ->
   Class['collectd::install'] ->

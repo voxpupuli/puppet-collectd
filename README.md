@@ -60,7 +60,7 @@ Example of how to load plugins with no additional configuration:
 collectd::plugin { 'battery': }
 ```
 
-where 'battery' is the name of the plugin.
+where 'battery' is the name of the plugin. Note, this should only be done in the case of a class for the plugin not existing in this module.
 
 Configurable Plugins
 ------------------
@@ -87,6 +87,7 @@ documentation for each plugin for configurable attributes.
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
+* `fhcount` (see [collectd::plugin::fhcount](#class-collectdpluginfhcount) below)
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
@@ -327,8 +328,12 @@ collectd::plugin::curl_json {
   'rabbitmq_overview':
     url => 'http://localhost:55672/api/overview',
     instance => 'rabbitmq_overview',
+    interval => '300',
     keys => {
-      'message_stats/publish' => {'type' => 'gauge'},
+      'message_stats/publish' => {
+        'type'     => 'gauge',
+        'instance' => 'overview',
+      },
     }
 }
 ```
@@ -497,6 +502,15 @@ class { 'collectd::plugin::ethstat':
   interfaces => [ 'eth0', 'eth1'],
   maps       => [ '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"' ],
   mappedonly => false,
+}
+```
+
+####Class: `collectd::plugin::fhcount`
+
+```puppet
+class { 'collectd::plugin::fhcount':
+  valueabsolute   => true,
+  valuepercentage => false,
 }
 ```
 
@@ -732,8 +746,14 @@ class { 'collectd::plugin::iptables':
 
 ####Class: `collectd::plugin::java`
 
+jvmarg options must be declared if declaring loadplugin, as the JVM must be 
+initialized prior to loading collectd java plugins.
+
 ```puppet
-class { 'collectd::plugin::java': }
+class { 'collectd::plugin::java': 
+  jvmarg      => ['arg1', 'arg2'],
+  loadplugin  => {"plugin.name" => ["option line 1", "option line 2"]}
+}
 ```
 
 ####Class: `collectd::plugin::load`
@@ -1426,8 +1446,8 @@ class { 'collectd::plugin::write_riemann':
 
 ```puppet
 class { 'collectd::plugin::write_sensu':
-  riemann_host => 'sensu.example.org',
-  riemann_port => 3030,
+  sensu_host => 'sensu.example.org',
+  sensu_port => 3030,
 }
 ```
 
@@ -1486,7 +1506,7 @@ See metadata.json for supported platforms
 ###Puppet needs two runs to correctly write my conf, why?
 
 Some plugins will need two runs of Puppet to fully generate the configuration for collectd. See [this issue](https://github.com/pdxcat/puppet-module-collectd/issues/162).
-This can be avoided by specifying an explicit version (`$package_ensure`) or a minimum version (`$minimum_version`) for the collectd class. e.g. Setting either of these to 1.2.3 will
+This can be avoided by specifying a minimum version (`$minimum_version`) for the collectd class. e.g. Setting this to 1.2.3 will
 make this module assume on the first run (when the fact responsible to provide the collectd version is not yet available) that your systems are running collectd 1.2.3
 and generate the configuration accordingly.
 

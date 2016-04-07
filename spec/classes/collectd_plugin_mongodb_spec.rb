@@ -34,7 +34,7 @@ describe 'collectd::plugin::mongodb' do
     %w(present absent).each do |value|
       context "set to a valid value of #{value}" do
         let :params do
-          default_params.merge(:ensure => "#{value}",)
+          default_params.merge(:ensure => value.to_s,)
         end
 
         it do
@@ -62,7 +62,7 @@ describe 'collectd::plugin::mongodb' do
     ['10.0', '3600'].each do |value|
       context "set to a valid numeric of #{value}" do
         let(:params) do
-          default_params.merge(:interval => "#{value}",)
+          default_params.merge(:interval => value.to_s,)
         end
 
         it { should contain_file('mongodb.load').with_content(/\s*Interval\s+#{Regexp.escape(value)}/) }
@@ -95,7 +95,7 @@ describe 'collectd::plugin::mongodb' do
     %w('127001', nil).each do |value|
       context 'set to and invalid IP' do
         let :params do
-          default_params.merge(:db_host => "#{value}",)
+          default_params.merge(:db_host => value.to_s,)
         end
 
         it 'should fail' do

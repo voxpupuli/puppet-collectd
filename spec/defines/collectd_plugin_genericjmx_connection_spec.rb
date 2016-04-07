@@ -7,6 +7,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
       :id => 'root',
       :concat_basedir => tmpfilename('collectd-genericjmx-connection'),
       :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :collectd_version => '4.8.0',
     }
   end
 
@@ -81,7 +82,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
     it { should contain_concat__fragment(concat_fragment_name).with_content(/Password "aoeuhtns"/) }
   end
 
-  context 'instance_prefix 'do
+  context 'instance_prefix ' do
     let(:params) do
       default_params.merge(:instance_prefix => 'bat',
                            :collect  => [],)

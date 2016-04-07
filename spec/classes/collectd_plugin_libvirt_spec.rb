@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::libvirt', :type => :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   context 'interface_format in libvirt.conf' do
     let :params do
       { :connection       => 'qemu:///system',

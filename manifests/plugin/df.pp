@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:DF
 class collectd::plugin::df (
-  $ensure           = present,
+  $ensure           = 'present',
   $fstypes          = [],
   $ignoreselected   = false,
   $interval         = undef,
@@ -11,6 +11,8 @@ class collectd::plugin::df (
   $valuesabsolute   = true,
   $valuespercentage = false,
 ) {
+
+  include ::collectd
 
   validate_array(
     $fstypes,
@@ -25,7 +27,7 @@ class collectd::plugin::df (
     $valuespercentage,
   )
 
-  collectd::plugin {'df':
+  collectd::plugin { 'df':
     ensure   => $ensure,
     content  => template('collectd/plugin/df.conf.erb'),
     interval => $interval,

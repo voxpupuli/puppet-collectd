@@ -1,9 +1,18 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::logfile', :type => :class do
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
   context ':ensure => present, default params' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf' do
@@ -61,7 +70,10 @@ describe 'collectd::plugin::logfile', :type => :class do
 
   context ':ensure => absent' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '4.8.0',
+      }
     end
     let :params do
       { :ensure => 'absent' }

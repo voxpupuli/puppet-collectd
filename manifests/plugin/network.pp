@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Network
 class collectd::plugin::network (
-  $ensure        = present,
+  $ensure        = 'present',
   $timetolive    = undef,
   $maxpacketsize = undef,
   $forward       = undef,
@@ -9,6 +9,9 @@ class collectd::plugin::network (
   $listeners     = { },
   $servers       = { },
 ) {
+
+  include ::collectd
+
   if $timetolive {
     validate_re($timetolive, '[0-9]+')
   }
@@ -16,7 +19,7 @@ class collectd::plugin::network (
     validate_re($maxpacketsize, '[0-9]+')
   }
 
-  collectd::plugin {'network':
+  collectd::plugin { 'network':
     ensure   => $ensure,
     content  => template('collectd/plugin/network.conf.erb'),
     interval => $interval,

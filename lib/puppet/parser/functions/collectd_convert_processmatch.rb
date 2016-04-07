@@ -10,12 +10,12 @@ Puppet::Parser::Functions.newfunction(:collectd_convert_processmatch, :type => :
     ENDDOC
                                      ) do |args|
   if args.size != 1
-    fail(Puppet::ParseError, 'convert_process_match_array(): Needs exactly one argument')
+    raise(Puppet::ParseError, 'convert_process_match_array(): Needs exactly one argument')
   end
 
   parray = args[0]
   unless parray.is_a?(Array)
-    fail(Puppet::ParseError, 'convert_process_match_array(): Needs an array as argument')
+    raise(Puppet::ParseError, 'convert_process_match_array(): Needs an array as argument')
   end
 
   phash = {}

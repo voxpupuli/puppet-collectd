@@ -6,6 +6,11 @@
     User "<%= @amqpuser %>"
     Password "<%= @amqppass %>"
     Format "<%= @amqpformat %>"
+<% if @amqpstorerates and @amqformat == 'JSON' -%>
+    StoreRates true
+<% else -%>
+    StoreRates false
+<% end -%>
     Exchange "<%= @amqpexchange %>"
     Persistent <%= @amqppersistent %>
     GraphitePrefix "<%= @graphiteprefix %>"

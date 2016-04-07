@@ -5,10 +5,11 @@ define collectd::plugin::tail::file (
   $matches,
   $ensure = 'present',
 ) {
-  include ::collectd::params
+
+  include ::collectd
   include ::collectd::plugin::tail
 
-  $conf_dir = $collectd::params::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
 
   validate_absolute_path($filename)
   validate_string($instance)
@@ -20,7 +21,7 @@ define collectd::plugin::tail::file (
     path    => "${conf_dir}/tail-${name}.conf",
     mode    => '0644',
     owner   => 'root',
-    group   => $collectd::params::root_group,
+    group   => $collectd::root_group,
     content => template('collectd/tail-file.conf.erb'),
     notify  => Service['collectd'],
   }

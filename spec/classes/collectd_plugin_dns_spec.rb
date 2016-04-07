@@ -170,7 +170,10 @@ describe 'collectd::plugin::dns' do
 
       context 'on an unsupported platform and package_name is not specified' do
         let :facts do
-          { :osfamily => 'Solaris' }
+          {
+            :osfamily => 'Solaris',
+            :collectd_version => '4.8.0',
+          }
         end
 
         let :params do
@@ -182,7 +185,7 @@ describe 'collectd::plugin::dns' do
         it 'should fail' do
           expect do
             should contain_class('collectd::plugin::dns')
-          end.to raise_error(Puppet::Error, /collectd::plugin::dns::package_name must be specified when using an unsupported OS. Supported osfamily is RedHat\. Detected is <Solaris>\./)
+          end.to raise_error(Puppet::Error, /collectd::plugin::dns::package_name must be specified when using an unsupported OS like <Solaris>\./)
         end
       end
 

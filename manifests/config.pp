@@ -1,6 +1,7 @@
 # private
 class collectd::config (
   $config_file            = $collectd::config_file,
+  $conf_content           = $collectd::conf_content,
   $plugin_conf_dir        = $collectd::plugin_conf_dir,
   $plugin_conf_dir_mode   = $collectd::plugin_conf_dir_mode,
   $root_group             = $collectd::root_group,
@@ -19,17 +20,17 @@ class collectd::config (
   $internal_stats         = $collectd::internal_stats,
 ) {
 
-  $conf_content = $purge_config ? {
+  $_conf_content = $purge_config ? {
     true    => template('collectd/collectd.conf.erb'),
-    default => undef,
+    default => $conf_content,
   }
 
   file { 'collectd.conf':
     path    => $config_file,
-    content => $conf_content,
+    content => $_conf_content,
   }
 
-  if $purge_config != true {
+  if $purge_config != true and !$_conf_content {
     # former include of conf_d directory
     file_line { 'include_conf_d':
       ensure => absent,

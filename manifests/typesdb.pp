@@ -2,13 +2,13 @@ define collectd::typesdb (
   $path = $title,
   $mode = '0640',
 ) {
-  include ::collectd::params
 
+  include ::collectd
 
   concat { $path:
     ensure         => present,
     owner          => 'root',
-    group          => $collectd::params::root_group,
+    group          => $::collectd::root_group,
     mode           => $mode,
     ensure_newline => true,
     force          => true,

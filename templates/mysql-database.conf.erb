@@ -5,7 +5,7 @@
     Host "<%= @host %>"
     User "<%= @username %>"
     Password "<%= @password %>"
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.0']) >= 0) -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0) -%>
     Port "<%= @port %>"
 <% else -%>
     Port <%= @port %>
@@ -15,7 +15,7 @@
 <%- if @socket -%>
     Socket "<%= @socket %>"
 <%- end -%>
-<% if @collectd_version and (scope.function_versioncmp([@collectd_version, '5.5']) >= 0) -%>
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
 <%- if not @innodbstats.nil? -%>
     InnodbStats <%= @innodbstats %>
 <%- end -%>

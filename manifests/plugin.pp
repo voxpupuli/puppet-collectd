@@ -8,9 +8,10 @@ define collectd::plugin (
   $plugin   = $name
 ) {
 
-  include ::collectd::params
-  $conf_dir = $collectd::params::plugin_conf_dir
-  $root_group = $collectd::params::root_group
+  include ::collectd
+
+  $conf_dir = $::collectd::plugin_conf_dir
+  $root_group = $::collectd::root_group
 
   file { "${plugin}.load":
     ensure  => $ensure,

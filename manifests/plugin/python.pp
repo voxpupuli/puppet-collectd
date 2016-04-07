@@ -1,19 +1,21 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
 class collectd::plugin::python (
-  $modulepaths = [],
-  $ensure      = present,
-  $modules     = {},
+  # Python 2 defaults to 'ascii' and Python 3 to 'utf-8'
+  $encoding       = undef,
+  $ensure         = 'present',
   # Unlike most other plugins, this one should set "Globals true". This will cause collectd
   # to export the name of all objects in the Python interpreter for all plugins to see.
-  $globals     = true,
-  $order       = '10',
-  $interval    = undef,
-  # Python 2 defaults to 'ascii' and Python 3 to 'utf-8'
-  $encoding    = undef,
-  $interactive = false,
-  $logtraces   = false,
+  $globals        = true,
+  $interactive    = false,
+  $interval       = undef,
+  $logtraces      = false,
+  $manage_package = undef,
+  $modulepaths    = [],
+  $modules        = {},
+  $order          = '10',
 ) {
-  include ::collectd::params
+
+  include ::collectd
 
   validate_hash($modules)
   validate_bool($interactive)
@@ -22,12 +24,22 @@ class collectd::plugin::python (
   validate_array($modulepaths)
 
   $module_dirs = empty($modulepaths) ? {
-    true  => [$collectd::params::python_dir],
+    true  => [$collectd::python_dir],
     # use paths provided by the user
     false => $modulepaths
   }
 
-  collectd::plugin {'python':
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
+  if $::osfamily == 'Redhat' {
+    if $_manage_package {
+      package { 'collectd-python':
+        ensure => $ensure,
+      }
+    }
+  }
+
+  collectd::plugin { 'python':
     ensure   => $ensure,
     interval => $interval,
     order    => $order,
@@ -44,30 +56,31 @@ class collectd::plugin::python (
       'ensure'  => $ensure_modulepath,
       'mode'    => '0750',
       'owner'   => 'root',
-      'group'   => $collectd::params::root_group,
-      'require' => Package[$collectd::params::package_name]
+      'group'   => $collectd::root_group,
+      'require' => Package[$collectd::package_name]
     }
   )
 
   # should be loaded after global plugin configuration
-  $python_conf = "${collectd::params::plugin_conf_dir}/python-config.conf"
+  $python_conf = "${collectd::plugin_conf_dir}/python-config.conf"
 
-  concat{ $python_conf:
+  concat { $python_conf:
     ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
-    group          => $collectd::params::root_group,
+    group          => $collectd::root_group,
     notify         => Service['collectd'],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
 
-  concat::fragment{'collectd_plugin_python_conf_header':
+  concat::fragment { 'collectd_plugin_python_conf_header':
     order   => '00',
     content => template('collectd/plugin/python/header.conf.erb'),
     target  => $python_conf,
   }
 
-  concat::fragment{'collectd_plugin_python_conf_footer':
+  concat::fragment { 'collectd_plugin_python_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => $python_conf,

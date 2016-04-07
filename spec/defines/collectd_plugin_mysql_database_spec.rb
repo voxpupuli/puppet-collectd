@@ -1,8 +1,15 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::mysql::database', :type => :define do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   let :facts do
-    { :osfamily => 'Debian' }
+    {
+      :osfamily => 'Debian',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':socket => /var/run/mysqld/mysqld.sock, custom socket' do

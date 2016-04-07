@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::varnish', :type => :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   context 'When the version is not 5.4' do
     let :facts do
       { :osfamily => 'RedHat',

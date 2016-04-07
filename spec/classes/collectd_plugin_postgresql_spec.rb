@@ -1,12 +1,17 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::postgresql', :type => :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   let :facts do
     {
       :osfamily => 'RedHat',
       :concat_basedir => tmpfilename('collectd-postgresql'),
       :id => 'root',
       :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :collectd_version => '4.8.0',
     }
   end
 

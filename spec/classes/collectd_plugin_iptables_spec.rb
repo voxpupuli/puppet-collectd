@@ -1,10 +1,16 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::iptables', :type => :class do
-  let :facts do
-    { :osfamily => 'RedHat' }
+  let :pre_condition do
+    'include ::collectd'
   end
 
+  let :facts do
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
+  end
   context ':ensure => present and :chains => { \'nat\' => \'In_SSH\' }' do
     let :params do
       { :chains => { 'nat' => 'In_SSH' } }

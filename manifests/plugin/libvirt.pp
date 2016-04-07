@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:libvirt
 class collectd::plugin::libvirt (
   $connection,
-  $ensure           = present,
-  $manage_package   = $collectd::manage_package,
+  $ensure           = 'present',
+  $manage_package   = undef,
   $refresh_interval = undef,
   $domain           = undef,
   $block_device     = undef,
@@ -12,6 +12,11 @@ class collectd::plugin::libvirt (
   $interface_format = undef,
   $interval         = undef,
 ) {
+
+  include ::collectd
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
   validate_string($connection)
 
   if $refresh_interval != undef { validate_re($refresh_interval, '^\d+$') }
@@ -23,7 +28,7 @@ class collectd::plugin::libvirt (
   if $interface_format != undef { validate_string($interface_format) }
 
   if $::osfamily == 'RedHat' {
-    if $manage_package {
+    if $_manage_package {
       package { 'collectd-virt':
         ensure => $ensure,
       }

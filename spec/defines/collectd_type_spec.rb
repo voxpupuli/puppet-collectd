@@ -7,6 +7,7 @@ describe 'collectd::type', :type => :define do
       :id             => 'root',
       :concat_basedir => tmpfilename('collectd-type'),
       :path           => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :collectd_version => '4.8.0',
     }
   end
 

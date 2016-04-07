@@ -3,5 +3,13 @@
   <% Array(@jvmarg).each do |arg| -%>
   JVMArg "<%= arg %>"
   <% end -%>
+  <% @loadplugin.each do |arg, opts| -%>
+  LoadPlugin "<%= arg %>"
+  <Plugin "<%= arg %>">
+  <% Array(opts).each do |opt| -%>
+    <%= opt %>
+  <% end -%>
+  </Plugin>
+  <% end -%>
 </Plugin>
 <% end -%>

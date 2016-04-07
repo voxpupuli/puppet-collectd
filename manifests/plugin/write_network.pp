@@ -4,7 +4,7 @@ class collectd::plugin::write_network (
   $servers = { 'localhost'  =>  { 'serverport' => '25826' } },
 ) {
 
-  warning('Deprecated. This class may be removed in the future. Use collectd::plugin::network instead.')
+  include ::collectd
 
   validate_hash($servers)
 
@@ -12,6 +12,7 @@ class collectd::plugin::write_network (
   if empty($servernames) {
     fail('servers cannot be empty')
   }
+
   $servername = $servernames[0]
   $serverport = $servers[$servername]['serverport']
 

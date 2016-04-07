@@ -3,6 +3,7 @@ class collectd::params {
 
   $fqdnlookup              = true
   $collectd_hostname       = $::hostname
+  $conf_content            = undef
   $interval                = 10
   $include                 = []
   $internal_stats          = false
@@ -17,14 +18,19 @@ class collectd::params {
   $package_ensure          = 'installed'
   $service_ensure          = 'running'
   $service_enable          = true
-  $minimum_version         = undef
+  $minimum_version         = '4.8'
   $manage_package          = true
   $package_install_options = undef
   $plugin_conf_dir_mode    = '0750'
 
+  case getvar('::kernel') {
+    'OpenBSD': { $has_wordexp = false }
+    default: { $has_wordexp = true }
+  }
+
   case $::osfamily {
     'Debian': {
-      $package_name     = 'collectd'
+      $package_name     = [ 'collectd', 'collectd-core' ]
       $package_provider = 'apt'
       $collectd_dir     = '/etc/collectd'
       $plugin_conf_dir  = "${collectd_dir}/conf.d"
@@ -75,6 +81,17 @@ class collectd::params {
       $service_name     = 'collectd'
       $config_file      = '/usr/local/etc/collectd.conf'
       $root_group       = 'wheel'
+      $java_dir         = undef
+      $python_dir       = '/usr/local/share/collectd/python'
+    }
+    'OpenBSD': {
+      $package_name     = 'collectd'
+      $package_provider = undef
+      $collectd_dir     = '/etc/collectd'
+      $plugin_conf_dir  = $collectd_dir
+      $service_name     = 'collectd'
+      $config_file      = '/etc/collectd.conf'
+      $root_group       = '_collectd'
       $java_dir         = undef
       $python_dir       = '/usr/local/share/collectd/python'
     }

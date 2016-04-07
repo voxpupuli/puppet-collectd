@@ -1,11 +1,13 @@
 #
 class collectd::plugin::aggregation (
-  $ensure      = present,
+  $ensure      = 'present',
   $interval    = undef,
   $aggregators = { },
 ) {
 
-  collectd::plugin {'aggregation':
+  include ::collectd
+
+  collectd::plugin { 'aggregation':
     ensure   => $ensure,
     interval => $interval,
   }

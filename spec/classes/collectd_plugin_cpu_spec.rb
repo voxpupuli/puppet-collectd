@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'collectd::plugin::cpu', :type => :class do
   let :facts do
-    { :osfamily => 'RedHat' }
+    {
+      :osfamily => 'RedHat',
+      :collectd_version => '4.8.0',
+    }
   end
 
   context ':ensure => present' do
@@ -40,15 +43,15 @@ describe 'collectd::plugin::cpu', :type => :class do
       end
 
       it 'Will include ReportByState in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ReportByState = false/)
+        should contain_file('cpu.load').with_content(/ReportByState false/)
       end
 
       it 'Will include ReportByCpu in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ReportByCpu = false/)
+        should contain_file('cpu.load').with_content(/ReportByCpu false/)
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ValuesPercentage = true/)
+        should contain_file('cpu.load').with_content(/ValuesPercentage true/)
       end
     end
   end

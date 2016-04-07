@@ -1,17 +1,19 @@
 # https://collectd.org/wiki/index.php/Plugin:Memory
 class collectd::plugin::memory (
-  $ensure           = present,
+  $ensure           = 'present',
   $valuesabsolute   = true,
   $valuespercentage = false,
   $interval         = undef,
 ) {
+
+  include ::collectd
 
   validate_bool(
     $valuesabsolute,
     $valuespercentage,
   )
 
-  collectd::plugin {'memory':
+  collectd::plugin { 'memory':
     ensure   => $ensure,
     content  => template('collectd/plugin/memory.conf.erb'),
     interval => $interval,
