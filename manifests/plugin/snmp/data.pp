@@ -3,7 +3,7 @@ define collectd::plugin::snmp::data (
   $instance,
   $type,
   $values,
-  $ensure         = 'present',
+  $ensure = undef
   $instanceprefix = undef,
   $scale          = undef,
   $shift          = undef,
@@ -18,7 +18,7 @@ define collectd::plugin::snmp::data (
   $root_group = $collectd::root_group
 
   file { "snmp-data-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     path    => "${conf_dir}/15-snmp-data-${name}.conf",
     owner   => 'root',
     group   => $root_group,

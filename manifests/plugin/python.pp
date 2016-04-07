@@ -2,7 +2,7 @@
 class collectd::plugin::python (
   # Python 2 defaults to 'ascii' and Python 3 to 'utf-8'
   $encoding       = undef,
-  $ensure         = 'present',
+  $ensure = undef
   # Unlike most other plugins, this one should set "Globals true". This will cause collectd
   # to export the name of all objects in the Python interpreter for all plugins to see.
   $globals        = true,
@@ -34,20 +34,20 @@ class collectd::plugin::python (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-python':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'python':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
     order    => $order,
     globals  => $globals,
   }
 
   $ensure_modulepath = $ensure ? {
-    'absent' => $ensure,
+    'absent' => $ensure_real,
     default  => 'directory',
   }
 
@@ -65,7 +65,7 @@ class collectd::plugin::python (
   $python_conf = "${collectd::plugin_conf_dir}/python-config.conf"
 
   concat { $python_conf:
-    ensure         => $ensure,
+    ensure         => $ensure_real,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
@@ -87,7 +87,7 @@ class collectd::plugin::python (
   }
 
   $defaults = {
-    'ensure'     => $ensure,
+    'ensure'     => $ensure_real,
     'modulepath' => $module_dirs[0],
   }
   create_resources(collectd::plugin::python::module, $modules, $defaults)

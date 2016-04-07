@@ -5,7 +5,7 @@ class collectd::plugin::tcpconns (
   $listening       = undef,
   $interval        = undef,
   $allportssummary = undef,
-  $ensure          = 'present'
+  $ensure = undef
 ) {
 
   include ::collectd
@@ -23,7 +23,7 @@ class collectd::plugin::tcpconns (
   }
 
   collectd::plugin { 'tcpconns':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/tcpconns.conf.erb'),
     interval => $interval,
   }

@@ -3,7 +3,7 @@ define collectd::plugin::tail::file (
   $filename,
   $instance,
   $matches,
-  $ensure = 'present',
+  $ensure = undef
 ) {
 
   include ::collectd
@@ -17,7 +17,7 @@ define collectd::plugin::tail::file (
   validate_hash($matches[0])
 
   file { "${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     path    => "${conf_dir}/tail-${name}.conf",
     mode    => '0644',
     owner   => 'root',

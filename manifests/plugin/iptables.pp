@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:IPTables
 class collectd::plugin::iptables (
-  $ensure         = 'present',
+  $ensure = undef
   $ensure_package = 'present',
   $manage_package = undef,
   $chains         = {},
@@ -22,7 +22,7 @@ class collectd::plugin::iptables (
   }
 
   collectd::plugin { 'iptables':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/iptables.conf.erb'),
     interval => $interval,
   }

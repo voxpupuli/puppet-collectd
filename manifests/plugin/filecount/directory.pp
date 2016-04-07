@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:FileCount
 define collectd::plugin::filecount::directory (
-  $ensure        = 'present',
+  $ensure = undef
   $instance      = $name,
   $path          = undef,
   $pattern       = undef,
@@ -18,7 +18,7 @@ define collectd::plugin::filecount::directory (
   validate_string($path)
 
   file { "${conf_dir}/15-filecount-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,

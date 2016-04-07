@@ -1,6 +1,6 @@
 # a single graphite backend
 define collectd::plugin::write_graphite::carbon (
-  $ensure            = 'present',
+  $ensure = undef
   $graphitehost      = 'localhost',
   $graphiteport      = 2003,
   $storerates        = true,

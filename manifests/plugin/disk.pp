@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Disk
 class collectd::plugin::disk (
-  $ensure         = 'present',
+  $ensure = undef
   $disks          = [],
   $ignoreselected = false,
   $interval       = undef,
@@ -13,7 +13,7 @@ class collectd::plugin::disk (
   validate_bool($ignoreselected)
 
   collectd::plugin { 'disk':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/disk.conf.erb'),
     interval => $interval,
   }

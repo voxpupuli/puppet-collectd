@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:CSV
 class collectd::plugin::csv (
-  $ensure     = 'present',
+  $ensure = undef
   $datadir    = '/etc/collectd/var/lib/collectd/csv',
   $interval   = undef,
   $storerates = false
@@ -9,7 +9,7 @@ class collectd::plugin::csv (
   include ::collectd
 
   collectd::plugin { 'csv':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/csv.conf.erb'),
     interval => $interval,
   }

@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 define collectd::plugin::snmp::host (
   $collect,
-  $ensure    = 'present',
+  $ensure = undef
   $address   = $name,
   $version   = '1',
   $community = 'public',
@@ -17,7 +17,7 @@ define collectd::plugin::snmp::host (
   $root_group = $collectd::root_group
 
   file { "snmp-host-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     path    => "${conf_dir}/25-snmp-host-${name}.conf",
     owner   => 'root',
     group   => $root_group,

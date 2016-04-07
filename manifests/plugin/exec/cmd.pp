@@ -3,7 +3,7 @@ define collectd::plugin::exec::cmd (
   $group,
   $exec              = [],
   $notification_exec = [],
-  $ensure = 'present',
+  $ensure = undef
 ) {
 
   include ::collectd

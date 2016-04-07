@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:OpenVPN
 class collectd::plugin::openvpn (
-  $ensure                 = 'present',
+  $ensure = undef
   $statusfile             = '/etc/openvpn/openvpn-status.log',
   $improvednamingschema   = false,
   $collectcompression     = true,
@@ -28,7 +28,7 @@ class collectd::plugin::openvpn (
   )
 
   collectd::plugin { 'openvpn':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/openvpn.conf.erb'),
     interval => $interval,
   }

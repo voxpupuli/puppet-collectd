@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Ethstat
 class collectd::plugin::ethstat (
-  $ensure     = 'present',
+  $ensure = undef
   $interfaces = [],
   $maps       = [],
   $mappedonly = false,
@@ -13,7 +13,7 @@ class collectd::plugin::ethstat (
   validate_bool($mappedonly)
 
   collectd::plugin { 'ethstat':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/ethstat.conf.erb'),
     interval => $interval,
   }

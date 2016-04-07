@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Chains
 class collectd::plugin::filter (
-  $ensure          = 'present',
+  $ensure = undef
   $precachechain   = 'PreChain',
   $postcachechain  = 'PostChain',
 ) {
@@ -14,7 +14,7 @@ class collectd::plugin::filter (
   $conf_file = "${collectd::plugin_conf_dir}/01-filter.conf"
 
   file { $conf_file:
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     owner   => 'root',
     group   => $collectd::root_group,
     mode    => '0644',

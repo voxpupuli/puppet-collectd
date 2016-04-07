@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Load
 class collectd::plugin::load (
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
   $report_relative = false,
 ) {
@@ -8,7 +8,7 @@ class collectd::plugin::load (
   include ::collectd
 
   collectd::plugin { 'load':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/load.conf.erb'),
     interval => $interval,
   }

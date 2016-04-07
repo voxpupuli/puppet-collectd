@@ -1,7 +1,7 @@
 # Class: collectd::plugin::dns
 #
 class collectd::plugin::dns (
-  $ensure                  = 'present',
+  $ensure = undef
   $ignoresource            = undef,
   $interface               = 'any',
   $interval                = undef,
@@ -12,7 +12,7 @@ class collectd::plugin::dns (
 
   include ::collectd
 
-  validate_re($ensure,'^(present)|(absent)$',
+  validate_re($ensure_real,'^(present)|(absent)$',
     "collectd::plugin::dns::ensure is <${ensure}> and must be either 'present' or 'absent'.")
 
   if ( $ignoresource != undef ) and ( is_ip_address($ignoresource) == false ) {
@@ -60,13 +60,13 @@ class collectd::plugin::dns (
     }
 
     package { 'collectd-dns':
-      ensure => $ensure,
+      ensure => $ensure_real,
       name   => $package_name_real,
     }
   }
 
   collectd::plugin { 'dns':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/dns.conf.erb'),
     interval => $interval,
   }

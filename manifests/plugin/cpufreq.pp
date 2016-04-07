@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:CPUFreq
 class collectd::plugin::cpufreq (
-  $ensure = 'present',
+  $ensure = undef
 ) {
 
   include ::collectd
 
   collectd::plugin { 'cpufreq':
-    ensure => $ensure,
+    ensure => $ensure_real,
   }
 }

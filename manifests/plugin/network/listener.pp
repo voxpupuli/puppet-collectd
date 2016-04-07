@@ -1,6 +1,6 @@
 #
 define collectd::plugin::network::listener (
-  $ensure        = 'present',
+  $ensure = undef
   $authfile      = undef,
   $port          = undef,
   $securitylevel = undef,
@@ -15,7 +15,7 @@ define collectd::plugin::network::listener (
   validate_string($name)
 
   file { "${conf_dir}/network-listener-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,

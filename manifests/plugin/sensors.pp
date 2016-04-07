@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Sensors
 class collectd::plugin::sensors (
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $sensorconfigfile = undef,
   $sensor           = undef,
@@ -15,13 +15,13 @@ class collectd::plugin::sensors (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-sensors':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'sensors':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/sensors.conf.erb'),
     interval => $interval,
   }

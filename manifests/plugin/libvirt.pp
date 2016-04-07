@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:libvirt
 class collectd::plugin::libvirt (
   $connection,
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $refresh_interval = undef,
   $domain           = undef,
@@ -30,13 +30,13 @@ class collectd::plugin::libvirt (
   if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-virt':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'libvirt':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/libvirt.conf.erb'),
     interval => $interval,
   }

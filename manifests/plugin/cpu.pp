@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:CPU
 class collectd::plugin::cpu (
-  $ensure           = 'present',
+  $ensure = undef
   $reportbystate    = true,
   $reportbycpu      = true,
   $valuespercentage = false,
@@ -16,7 +16,7 @@ class collectd::plugin::cpu (
   )
 
   collectd::plugin { 'cpu':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/cpu.conf.erb'),
     interval => $interval,
   }

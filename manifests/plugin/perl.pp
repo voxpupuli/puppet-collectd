@@ -1,6 +1,6 @@
 # See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
 class collectd::plugin::perl (
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $interval         = undef,
   $order            = 20
@@ -15,13 +15,13 @@ class collectd::plugin::perl (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-perl':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'perl':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     globals  => true,
     interval => $interval,
     order    => $order,

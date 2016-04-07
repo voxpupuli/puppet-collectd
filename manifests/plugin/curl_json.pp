@@ -3,7 +3,7 @@ define collectd::plugin::curl_json (
   $url,
   $instance,
   $keys,
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
   $user     = undef,
   $password = undef,

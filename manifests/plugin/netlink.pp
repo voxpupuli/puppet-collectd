@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Netlink
 class collectd::plugin::netlink (
-  $ensure            = 'present',
+  $ensure = undef
   $manage_package    = true,
   $interfaces        = [],
   $verboseinterfaces = [],
@@ -21,13 +21,13 @@ class collectd::plugin::netlink (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-netlink':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'netlink':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/netlink.conf.erb'),
     interval => $interval,
   }

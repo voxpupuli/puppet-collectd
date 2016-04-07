@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_HTTP
 class collectd::plugin::write_http (
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
   $urls     = {},
 ) {
@@ -10,7 +10,7 @@ class collectd::plugin::write_http (
   validate_hash($urls)
 
   collectd::plugin { 'write_http':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/write_http.conf.erb'),
     interval => $interval,
   }

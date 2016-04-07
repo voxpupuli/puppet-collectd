@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:FileCount
 class collectd::plugin::filecount (
-  $ensure      = 'present',
+  $ensure = undef
   $directories = {},
   $interval    = undef,
 ) {
@@ -21,7 +21,7 @@ class collectd::plugin::filecount (
   }
 
   collectd::plugin { 'filecount':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => $content,
     interval => $interval,
   }

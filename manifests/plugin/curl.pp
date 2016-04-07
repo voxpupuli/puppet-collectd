@@ -1,6 +1,6 @@
 #
 class collectd::plugin::curl (
-  $ensure         = 'present',
+  $ensure = undef
   $manage_package = undef,
   $interval       = undef,
   $pages          = { },
@@ -13,17 +13,17 @@ class collectd::plugin::curl (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-curl':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'curl':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
   $defaults = {
-    'ensure' => $ensure,
+    'ensure' => $ensure_real,
   }
   create_resources(collectd::plugin::curl::page, $pages, $defaults)
 }

@@ -1,7 +1,7 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 class collectd::plugin::ping (
   $hosts,
-  $ensure         = 'present',
+  $ensure = undef
   $manage_package = undef,
   $interval       = undef,
   $timeout        = undef,
@@ -20,13 +20,13 @@ class collectd::plugin::ping (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-ping':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'ping':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
     content  => template('collectd/plugin/ping.conf.erb'),
   }

@@ -1,6 +1,6 @@
 #
 define collectd::plugin::mysql::database (
-  $ensure             = 'present',
+  $ensure = undef
   $database           = $name,
   $host               = 'UNSET',
   $username           = 'UNSET',
@@ -33,7 +33,7 @@ define collectd::plugin::mysql::database (
   }
 
   file { "${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     path    => "${conf_dir}/mysql-${name}.conf",
     mode    => '0640',
     owner   => 'root',

@@ -1,6 +1,6 @@
 #
 define collectd::plugin::network::server (
-  $ensure        = 'present',
+  $ensure = undef
   $username      = undef,
   $password      = undef,
   $port          = undef,
@@ -17,7 +17,7 @@ define collectd::plugin::network::server (
   validate_string($name)
 
   file { "${conf_dir}/network-server-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $::collectd::root_group,

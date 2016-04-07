@@ -1,7 +1,7 @@
 # Class: collectd::plugin::mongodb
 #
 class collectd::plugin::mongodb (
-  $ensure         = 'present',
+  $ensure = undef
   $interval       = undef,
   $db_host        = '127.0.0.1',
   $db_user        = undef,
@@ -13,7 +13,7 @@ class collectd::plugin::mongodb (
 
   include ::collectd
 
-  validate_re($ensure,'^(present)|(absent)$',
+  validate_re($ensure_real,'^(present)|(absent)$',
     "collectd::plugin::mongodb::ensure is <${ensure}> and must be either 'present' or 'absent'.")
 
   if $interval != undef {
@@ -41,7 +41,7 @@ class collectd::plugin::mongodb (
   }
 
   collectd::plugin { 'mongodb':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/mongodb.conf.erb'),
     interval => $interval,
   }
