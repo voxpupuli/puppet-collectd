@@ -2,7 +2,7 @@
 class collectd::plugin::exec (
   $commands          = {},
   $interval          = undef,
-  $ensure            = 'present',
+  $ensure = undef
   $globals           = false,
 ) {
 
@@ -12,7 +12,7 @@ class collectd::plugin::exec (
   validate_bool($globals)
 
   collectd::plugin { 'exec':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     globals  => $globals,
     interval => $interval,
   }
@@ -21,7 +21,7 @@ class collectd::plugin::exec (
   $exec_conf = "${collectd::plugin_conf_dir}/exec-config.conf"
 
   concat{ $exec_conf:
-    ensure         => $ensure,
+    ensure         => $ensure_real,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,

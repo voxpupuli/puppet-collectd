@@ -1,7 +1,7 @@
 #
 class collectd::plugin::chain (
   $chainname     = 'Main',
-  $ensure        = 'present',
+  $ensure = undef
   $defaulttarget = 'write',
   $rules         = []
 ) {
@@ -11,7 +11,7 @@ class collectd::plugin::chain (
   $conf_dir = $collectd::plugin_conf_dir
 
   file { "${conf_dir}/99-chain-${chainname}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,

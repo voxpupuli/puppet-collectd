@@ -1,13 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:Users
 class collectd::plugin::users (
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
 ) {
 
   include ::collectd
 
   collectd::plugin { 'users':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
 }

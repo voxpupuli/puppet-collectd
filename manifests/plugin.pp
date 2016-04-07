@@ -1,6 +1,6 @@
 #
 define collectd::plugin (
-  $ensure   = 'present',
+  $ensure   = 'file',
   $content  = undef,
   $order    = '10',
   $globals  = false,

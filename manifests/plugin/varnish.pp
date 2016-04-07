@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Varnish
 class collectd::plugin::varnish (
-  $ensure         = 'present',
+  $ensure = undef
   $manage_package = undef,
   $instances      = {
     'localhost' => {
@@ -18,13 +18,13 @@ class collectd::plugin::varnish (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-varnish':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'varnish':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/varnish.conf.erb'),
     interval => $interval,
   }

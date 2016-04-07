@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:IRQ
 class collectd::plugin::irq (
-  $ensure         = 'present',
+  $ensure = undef
   $irqs           = [],
   $ignoreselected = false,
   $interval       = undef,
@@ -12,7 +12,7 @@ class collectd::plugin::irq (
   validate_bool($ignoreselected)
 
   collectd::plugin { 'irq':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/irq.conf.erb'),
     interval => $interval,
   }

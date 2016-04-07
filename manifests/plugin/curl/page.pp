@@ -1,6 +1,6 @@
 #
 define collectd::plugin::curl::page (
-  $ensure              = 'present',
+  $ensure = undef
   $url                 = undef,
   $user                = undef,
   $password            = undef,
@@ -26,7 +26,7 @@ define collectd::plugin::curl::page (
   }
 
   file { "${conf_dir}/curl-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,

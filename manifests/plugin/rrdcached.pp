@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Rrdcached
 class collectd::plugin::rrdcached (
-  $ensure            = 'present',
+  $ensure = undef
   $daemonaddress     = 'unix:/tmp/rrdcached.sock',
   $datadir           = '/var/lib/rrdcached/db/collectd',
   $createfiles       = true,
@@ -20,7 +20,7 @@ class collectd::plugin::rrdcached (
   validate_bool($createfiles, $createfilesasync)
 
   collectd::plugin { 'rrdcached':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/rrdcached.conf.erb'),
     interval => $interval,
   }

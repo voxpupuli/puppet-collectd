@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:PostgreSQL
 class collectd::plugin::postgresql (
-  $ensure         = 'present',
+  $ensure = undef
   $manage_package = undef,
   $databases      = { },
   $interval       = undef,
@@ -15,18 +15,18 @@ class collectd::plugin::postgresql (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-postgresql':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'postgresql':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
 
   concat{ "${collectd::plugin_conf_dir}/postgresql-config.conf":
-    ensure         => $ensure,
+    ensure         => $ensure_real,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
@@ -45,7 +45,7 @@ class collectd::plugin::postgresql (
   }
 
   $defaults = {
-    'ensure' => $ensure,
+    'ensure' => $ensure_real,
   }
   create_resources(collectd::plugin::postgresql::database, $databases, $defaults)
   create_resources(collectd::plugin::postgresql::query, $queries, $defaults)

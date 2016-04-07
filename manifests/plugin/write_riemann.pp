@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_riemann (
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $riemann_host     = 'localhost',
   $riemann_port     = 5555,
@@ -20,13 +20,13 @@ class collectd::plugin::write_riemann (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-write_riemann':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'write_riemann':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/write_riemann.conf.erb'),
     interval => $interval,
   }

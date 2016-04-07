@@ -1,6 +1,6 @@
 define collectd::plugin::processes::process (
   $process = $name,
-  $ensure  = 'present'
+  $ensure = undef
 ) {
 
   include ::collectd::plugin::processes

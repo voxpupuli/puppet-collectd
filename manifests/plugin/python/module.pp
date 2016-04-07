@@ -1,7 +1,7 @@
 # Single module definition
 define collectd::plugin::python::module (
   $config        = {},
-  $ensure        = 'present',
+  $ensure = undef
   $module        = $title,
   $modulepath    = undef,
   $script_source = undef,
@@ -20,7 +20,7 @@ define collectd::plugin::python::module (
 
   if $script_source {
     file { "${module}.script":
-      ensure  => $ensure,
+      ensure  => $ensure_real,
       path    => "${module_dir}/${module}.py",
       owner   => 'root',
       group   => $collectd::root_group,

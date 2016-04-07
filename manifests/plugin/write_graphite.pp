@@ -3,7 +3,7 @@ class collectd::plugin::write_graphite (
   $carbons           = {},
   $carbon_defaults   = {},
   $interval          = undef,
-  $ensure            = 'present',
+  $ensure = undef
   $globals           = false,
 ) {
 
@@ -12,7 +12,7 @@ class collectd::plugin::write_graphite (
   validate_hash($carbons)
 
   collectd::plugin { 'write_graphite':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     globals  => $globals,
     interval => $interval,
   }

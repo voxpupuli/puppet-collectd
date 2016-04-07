@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:LVM
 class collectd::plugin::lvm (
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $interval         = undef,
 ) {
@@ -12,13 +12,13 @@ class collectd::plugin::lvm (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-lvm':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'lvm':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
 }

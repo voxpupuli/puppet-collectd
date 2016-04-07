@@ -1,6 +1,6 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols
 class collectd::plugin::protocols (
-  $ensure         = 'present',
+  $ensure = undef
   $ignoreselected = false,
   $values         = []
 ) {
@@ -11,7 +11,7 @@ class collectd::plugin::protocols (
   validate_bool($ignoreselected)
 
   collectd::plugin { 'protocols':
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     content => template('collectd/plugin/protocols.conf.erb'),
   }
 }

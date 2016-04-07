@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:LogFile
 class collectd::plugin::logfile (
-  $ensure         = 'present',
+  $ensure = undef
   $interval       = undef,
   $log_level      = 'info',
   $log_file       = '/var/log/collectd.log',
@@ -11,7 +11,7 @@ class collectd::plugin::logfile (
   include ::collectd
 
   collectd::plugin { 'logfile':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/logfile.conf.erb'),
     interval => $interval,
     # Load logging plugin first

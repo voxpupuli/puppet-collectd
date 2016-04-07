@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:vmem
 class collectd::plugin::vmem (
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
   $verbose  = false,
 ) {
@@ -8,7 +8,7 @@ class collectd::plugin::vmem (
   include ::collectd
 
   collectd::plugin { 'vmem':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/vmem.conf.erb'),
     interval => $interval,
   }

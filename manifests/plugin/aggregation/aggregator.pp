@@ -1,6 +1,6 @@
 #
 define collectd::plugin::aggregation::aggregator (
-  $ensure            = 'present',
+  $ensure            = undef
   $host              = undef,
   $plugin            = undef,
   $plugininstance    = undef,
@@ -24,8 +24,10 @@ define collectd::plugin::aggregation::aggregator (
 
   $conf_dir = $collectd::plugin_conf_dir
 
+  $ensure_real = pick($ensure, 'file')
+  
   file { "${conf_dir}/aggregator-${name}.conf":
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,

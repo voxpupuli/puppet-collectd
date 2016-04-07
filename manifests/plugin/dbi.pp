@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:DBI
 class collectd::plugin::dbi (
-  $ensure    = 'present',
+  $ensure = undef
   $databases = { },
   $queries   = { },
   $packages  = undef,
@@ -11,24 +11,24 @@ class collectd::plugin::dbi (
 
   if $::osfamily == 'Redhat' {
     package { 'collectd-dbi':
-      ensure => $ensure,
+      ensure => $ensure_real,
     }
   }
 
   #manage additional packages such like db driver: libdbi-mysql
   if $packages {
     package { $packages:
-      ensure => $ensure,
+      ensure => $ensure_real,
     }
   }
 
   collectd::plugin { 'dbi':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
 
   concat{ "${collectd::plugin_conf_dir}/dbi-config.conf":
-    ensure         => $ensure,
+    ensure         => $ensure_real,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
@@ -47,7 +47,7 @@ class collectd::plugin::dbi (
   }
 
   $defaults = {
-    'ensure' => $ensure,
+    'ensure' => $ensure_real,
   }
   create_resources(collectd::plugin::dbi::database, $databases, $defaults)
   create_resources(collectd::plugin::dbi::query, $queries, $defaults)

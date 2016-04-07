@@ -1,6 +1,6 @@
 define collectd::plugin::processes::processmatch (
   $regex,
-  $ensure    = 'present',
+  $ensure = undef
   $matchname = $name
 ) {
 

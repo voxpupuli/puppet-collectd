@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Interface
 class collectd::plugin::interface (
-  $ensure         = 'present',
+  $ensure = undef
   $interfaces     = [],
   $ignoreselected = false,
   $interval       = undef,
@@ -12,7 +12,7 @@ class collectd::plugin::interface (
   validate_bool($ignoreselected)
 
   collectd::plugin { 'interface':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/interface.conf.erb'),
     interval => $interval,
   }

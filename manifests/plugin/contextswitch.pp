@@ -1,13 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:ContextSwitch
 class collectd::plugin::contextswitch (
-  $ensure   = 'present',
+  $ensure = undef
   $interval = undef,
 ) {
 
   include ::collectd
 
   collectd::plugin { 'contextswitch':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     interval => $interval,
   }
 }

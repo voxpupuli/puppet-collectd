@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:SysLog
 class collectd::plugin::syslog (
-  $ensure    = 'present',
+  $ensure = undef
   $interval  = undef,
   $log_level = 'info'
 ) {
@@ -8,7 +8,7 @@ class collectd::plugin::syslog (
   include ::collectd
 
   collectd::plugin { 'syslog':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/syslog.conf.erb'),
     interval => $interval,
     # Load logging plugin first

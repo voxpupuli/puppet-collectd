@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Java
 class collectd::plugin::java (
-  $ensure     = 'present',
+  $ensure = undef
   $jvmarg     = [],
   $loadplugin = {},
   $interval   = undef,
@@ -9,7 +9,7 @@ class collectd::plugin::java (
   include ::collectd
 
   collectd::plugin { 'java':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/java.conf.erb'),
     interval => $interval,
   }

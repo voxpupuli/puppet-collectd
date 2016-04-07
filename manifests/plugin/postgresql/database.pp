@@ -1,7 +1,7 @@
 # databasename allows you to create <Database> blocks with the same name of database,
 # useful if you have multiple instances of different version of pg
 define collectd::plugin::postgresql::database (
-  $ensure       = 'present',
+  $ensure = undef
   $host         = undef,
   $databasename = $name,
   $port         = undef,

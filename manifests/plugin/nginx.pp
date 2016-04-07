@@ -2,7 +2,7 @@
 class collectd::plugin::nginx (
   $url,
   $manage_package   = undef,
-  $ensure           = 'present',
+  $ensure = undef
   $user             = undef,
   $password         = undef,
   $verifypeer       = undef,
@@ -18,13 +18,13 @@ class collectd::plugin::nginx (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-nginx':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'nginx':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/nginx.conf.erb'),
     interval => $interval,
   }

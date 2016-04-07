@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Redis
 class collectd::plugin::redis (
-  $ensure      = 'present',
+  $ensure = undef
   $interval    = undef,
   $nodes       = { 'redis' => {
       'host'    => 'localhost',
@@ -15,7 +15,7 @@ class collectd::plugin::redis (
   validate_hash($nodes)
 
   collectd::plugin { 'redis':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/redis.conf.erb'),
     interval => $interval,
   }

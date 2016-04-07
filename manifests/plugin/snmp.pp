@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 class collectd::plugin::snmp (
-  $ensure         = 'present',
+  $ensure = undef
   $manage_package = undef,
   $data           = {},
   $hosts          = {},
@@ -14,13 +14,13 @@ class collectd::plugin::snmp (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-snmp':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'snmp':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/snmp.conf.erb'),
     interval => $interval,
   }

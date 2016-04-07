@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Network
 class collectd::plugin::network (
-  $ensure        = 'present',
+  $ensure = undef
   $timetolive    = undef,
   $maxpacketsize = undef,
   $forward       = undef,
@@ -20,12 +20,12 @@ class collectd::plugin::network (
   }
 
   collectd::plugin { 'network':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/network.conf.erb'),
     interval => $interval,
   }
   $defaults = {
-    'ensure' => $ensure,
+    'ensure' => $ensure_real,
   }
   create_resources(collectd::plugin::network::listener, $listeners, $defaults)
   create_resources(collectd::plugin::network::server, $servers, $defaults)

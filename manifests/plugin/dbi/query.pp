@@ -1,7 +1,7 @@
 #
 define collectd::plugin::dbi::query (
   $statement,
-  $ensure     = 'present',
+  $ensure = undef
   $results    = [{}],
   $minversion = undef,
   $maxversion = undef,

@@ -26,7 +26,7 @@
 #   schema.
 # 
 class collectd::plugin::ceph (
-  $ensure                    = 'present',
+  $ensure = undef
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
   $osds,
@@ -37,7 +37,7 @@ class collectd::plugin::ceph (
   validate_array($osds)
 
   collectd::plugin { 'ceph':
-    ensure  => $ensure,
+    ensure  => $ensure_real,
     content => template('collectd/plugin/ceph.conf.erb'),
   }
 }

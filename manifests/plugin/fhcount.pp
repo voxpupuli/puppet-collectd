@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Fhcount
 class collectd::plugin::fhcount (
-  $ensure           = 'present',
+  $ensure = undef
   $valuesabsolute   = true,
   $valuespercentage = false,
   $interval         = undef,
@@ -14,7 +14,7 @@ class collectd::plugin::fhcount (
   )
 
   collectd::plugin { 'fhcount':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/fhcount.conf.erb'),
     interval => $interval,
   }

@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Sensu
 class collectd::plugin::write_sensu (
-  $ensure           = 'present',
+  $ensure = undef
   $manage_package   = undef,
   $sensu_host       = 'localhost',
   $sensu_port       = 3030,
@@ -23,13 +23,13 @@ class collectd::plugin::write_sensu (
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-write_sensu':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
 
   collectd::plugin { 'write_sensu':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/write_sensu.conf.erb'),
     interval => $interval,
   }

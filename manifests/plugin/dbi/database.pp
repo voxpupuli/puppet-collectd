@@ -2,7 +2,7 @@
 #
 define collectd::plugin::dbi::database (
   $driver,
-  $ensure       = 'present',
+  $ensure = undef
   $host         = undef,
   $databasename = $name,
   $driveroption = {},

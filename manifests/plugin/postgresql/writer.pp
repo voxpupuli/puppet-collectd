@@ -1,6 +1,6 @@
 #
 define collectd::plugin::postgresql::writer (
-  $ensure     = 'present',
+  $ensure = undef
   $statement  = undef,
   $storerates = undef,
 ) {

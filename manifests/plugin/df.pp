@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:DF
 class collectd::plugin::df (
-  $ensure           = 'present',
+  $ensure = undef
   $fstypes          = [],
   $ignoreselected   = false,
   $interval         = undef,
@@ -28,7 +28,7 @@ class collectd::plugin::df (
   )
 
   collectd::plugin { 'df':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/df.conf.erb'),
     interval => $interval,
   }

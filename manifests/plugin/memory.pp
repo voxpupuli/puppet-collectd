@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:Memory
 class collectd::plugin::memory (
-  $ensure           = 'present',
+  $ensure = undef
   $valuesabsolute   = true,
   $valuespercentage = false,
   $interval         = undef,
@@ -14,7 +14,7 @@ class collectd::plugin::memory (
   )
 
   collectd::plugin { 'memory':
-    ensure   => $ensure,
+    ensure   => $ensure_real,
     content  => template('collectd/plugin/memory.conf.erb'),
     interval => $interval,
   }

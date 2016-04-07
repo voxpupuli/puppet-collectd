@@ -1,6 +1,6 @@
 #
 define collectd::plugin::postgresql::query (
-  $ensure     = 'present',
+  $ensure = undef
   $statement  = undef,
   $params     = [],
   $results    = [{}],

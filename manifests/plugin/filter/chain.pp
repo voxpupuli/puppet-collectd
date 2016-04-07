@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::chain (
-  $ensure         = 'present',
+  $ensure = undef
   $target         = undef,
   $target_options = undef,
 ) {
@@ -11,7 +11,7 @@ define collectd::plugin::filter::chain (
   $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${title}.conf"
 
   concat{ $conf_file:
-    ensure         => $ensure,
+    ensure         => $ensure_real,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
