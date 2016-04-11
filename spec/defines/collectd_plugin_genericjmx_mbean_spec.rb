@@ -63,7 +63,7 @@ describe 'collectd::plugin::genericjmx::mbean', :type => :define do
 
   let(:default_values_args) do
     {
-      'type'       => 'foo',
+      'mbean_type' => 'foo',
       'attribute'  => 'bar'
     }
   end

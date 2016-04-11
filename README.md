@@ -16,7 +16,7 @@ the default collectd.conf file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
-include collectd
+include ::collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
@@ -45,7 +45,7 @@ two puppet runs to coverge. See [Puppet needs two runs to correctly write my con
 Hiera example in YAML of passing install_options to the package resouce for managing the
 collectd package. This parameter must be an array.
 
-```
+```yaml
 collectd::package_install_options:
   - '--nogpgcheck'
 ```
@@ -693,12 +693,12 @@ collectd::plugin::genericjmx::mbean {
     instance_from   => 'name',
     values          => [
       {
-        type      => 'invocations',
-        table     => false,
-        attribute => 'CollectionCount',
+        mbean_type => 'invocations',
+        table      => false,
+        attribute  => 'CollectionCount',
       },
       {
-        type            => 'total_time_in_ms',
+        mbean_type      => 'total_time_in_ms',
         instance_prefix => 'collection_time',
         table           => false,
         attribute       => 'CollectionTime',
