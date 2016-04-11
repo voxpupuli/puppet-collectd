@@ -3,7 +3,7 @@
   <Instance "<%= name %>">
     URL "<%= values['url'] %>"
 <% unless values['starttls'].nil? -%>
-    StartTLS "<%= values['starttls'] %>"
+    StartTLS <%= values['starttls'] %>
 <% end -%>
 <% unless values['verifyhost'].nil? -%>
     VerifyHost "<%= values['verifyhost'] %>"
