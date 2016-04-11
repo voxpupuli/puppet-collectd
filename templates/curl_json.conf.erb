@@ -17,6 +17,10 @@ LoadPlugin "curl_json"
     Password "<%= @password %>"
 <% end %>
 
+<% if @header %>
+    Header "<%= @header %>"
+<% end %>
+
 <% @keys.sort.each do |key,keydata| %>
     <Key "<%= key %>">
       Type "<%= keydata['type'] %>"
