@@ -19,7 +19,7 @@ describe 'collectd::plugin::dns' do
     default_fixture = File.read(fixtures('plugins/dns.conf.default'))
     it { should contain_file('dns.load').with_content(default_fixture) }
 
-    it { should_not contain_package('collectd-dns') }
+    it { should contain_package('collectd-dns') }
   end
 
   describe 'with ensure parameter' do
@@ -166,80 +166,6 @@ describe 'collectd::plugin::dns' do
             end
           end
         end
-      end
-
-      context 'on an unsupported platform and package_name is not specified' do
-        let :facts do
-          {
-            :osfamily => 'Solaris',
-            :collectd_version => '4.8.0',
-          }
-        end
-
-        let :params do
-          { :manage_package => true,
-            :package_name   => 'USE_DEFAULTS',
-          }
-        end
-
-        it 'should fail' do
-          expect do
-            should contain_class('collectd::plugin::dns')
-          end.to raise_error(Puppet::Error, /collectd::plugin::dns::package_name must be specified when using an unsupported OS like <Solaris>\./)
-        end
-      end
-
-      context 'on a supported platform and package_name is specified' do
-        context 'as a valid string' do
-          let :params do
-            { :manage_package => true,
-              :package_name   => 'custom-collectd-dns',
-            }
-          end
-
-          it do
-            should contain_package('collectd-dns').with(
-              'ensure' => 'present',
-              'name'   => 'custom-collectd-dns',
-            )
-          end
-        end
-
-        context 'as a non-valid entry (non-string)' do
-          let :params do
-            { :manage_package => true,
-              :package_name   => true,
-            }
-          end
-
-          it 'should fail' do
-            expect do
-              should contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, /is not a string/)
-          end
-        end
-      end
-    end
-
-    ['false', false].each do |value|
-      context "seto to #{value}" do
-        let :params do
-          { :manage_package => value }
-        end
-
-        it { should_not contain_package('collectd-dns') }
-      end
-    end
-
-    context 'set to an invalid value (non-boolean and non-stringified boolean)' do
-      let :params do
-        { :manage_package => 'invalid' }
-      end
-
-      it 'should fail' do
-        expect do
-          should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /Unknown type of boolean/)
       end
     end
   end

@@ -3,24 +3,31 @@ define collectd::plugin::curl_json (
   $url,
   $instance,
   $keys,
-  $ensure   = 'present',
-  $interval = undef,
-  $user     = undef,
-  $password = undef,
-  $header   = undef,
-  $order = '10',
+  $ensure         = 'present',
+  $interval       = undef,
+  $user           = undef,
+  $password       = undef,
+  $header         = undef,
+  $order          = '10',
+  $manage_package = undef,
 ) {
 
   include ::collectd
 
   validate_hash($keys)
 
-  if $::osfamily == 'Debian' {
-    ensure_packages('libyajl2')
-  }
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'Redhat' {
-    ensure_packages('collectd-curl_json')
+  if $_manage_package {
+    if $::osfamily == 'Debian' {
+      ensure_packages('libyajl2')
+    }
+
+    if $::osfamily == 'Redhat' {
+      package { 'collectd-curl_json':
+        ensure => $ensure,
+      }
+    }
   }
 
   $conf_dir = $collectd::plugin_conf_dir

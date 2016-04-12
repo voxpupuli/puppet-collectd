@@ -12,9 +12,20 @@ class collectd::plugin::rrdcached (
   $rratimespan       = [],
   $xff               = undef,
   $collectstatistics = undef,
+  $manage_package    = undef,
 ) {
 
   include ::collectd
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
+  if $::osfamily == 'Redhat' {
+    if $_manage_package {
+      package { 'collectd-rrdcached':
+        ensure => $ensure,
+      }
+    }
+  }
 
   validate_array($rratimespan)
   validate_bool($createfiles, $createfilesasync)
