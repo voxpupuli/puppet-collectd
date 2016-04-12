@@ -17,7 +17,7 @@ class collectd::plugin::dns (
   if $_manage_package {
     package { 'collectd-dns':
       ensure => $ensure,
-      name   => $name,
+      name   => $package_name,
     }
   }
 
