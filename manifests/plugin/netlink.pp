@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Netlink
 class collectd::plugin::netlink (
   $ensure            = 'present',
-  $manage_package    = true,
+  $manage_package    = undef,
   $interfaces        = [],
   $verboseinterfaces = [],
   $qdiscs            = [],

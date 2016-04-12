@@ -25,7 +25,7 @@ class collectd::plugin::postgresql (
     interval => $interval,
   }
 
-  concat{ "${collectd::plugin_conf_dir}/postgresql-config.conf":
+  concat { "${collectd::plugin_conf_dir}/postgresql-config.conf":
     ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
@@ -33,12 +33,13 @@ class collectd::plugin::postgresql (
     notify         => Service['collectd'],
     ensure_newline => true,
   }
-  concat::fragment{ 'collectd_plugin_postgresql_conf_header':
+
+  concat::fragment { 'collectd_plugin_postgresql_conf_header':
     order   => '00',
     content => '<Plugin postgresql>',
     target  => "${collectd::plugin_conf_dir}/postgresql-config.conf",
   }
-  concat::fragment{ 'collectd_plugin_postgresql_conf_footer':
+  concat::fragment { 'collectd_plugin_postgresql_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => "${collectd::plugin_conf_dir}/postgresql-config.conf",
@@ -47,6 +48,7 @@ class collectd::plugin::postgresql (
   $defaults = {
     'ensure' => $ensure,
   }
+
   create_resources(collectd::plugin::postgresql::database, $databases, $defaults)
   create_resources(collectd::plugin::postgresql::query, $queries, $defaults)
   create_resources(collectd::plugin::postgresql::writer, $writers, $defaults)

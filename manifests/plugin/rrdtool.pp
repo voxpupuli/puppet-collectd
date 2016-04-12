@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:RRDtool
 class collectd::plugin::rrdtool (
   $ensure           = 'present',
-  $manage_package   = true,
+  $manage_package   = undef,
   $datadir          = '/var/lib/collectd/rrd',
   $createfilesasync = false,
   $interval         = undef,

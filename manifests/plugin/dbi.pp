@@ -1,17 +1,22 @@
 # https://collectd.org/wiki/index.php/Plugin:DBI
 class collectd::plugin::dbi (
-  $ensure    = 'present',
-  $databases = { },
-  $queries   = { },
-  $packages  = undef,
-  $interval  = undef,
+  $ensure         = 'present',
+  $databases      = { },
+  $queries        = { },
+  $packages       = undef,
+  $interval       = undef,
+  $manage_package = undef,
 ) {
 
   include ::collectd
 
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
   if $::osfamily == 'Redhat' {
-    package { 'collectd-dbi':
-      ensure => $ensure,
+    if $_manage_package {
+      package { 'collectd-dbi':
+        ensure => $ensure,
+      }
     }
   }
 
@@ -27,7 +32,7 @@ class collectd::plugin::dbi (
     interval => $interval,
   }
 
-  concat{ "${collectd::plugin_conf_dir}/dbi-config.conf":
+  concat { "${collectd::plugin_conf_dir}/dbi-config.conf":
     ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
@@ -35,12 +40,14 @@ class collectd::plugin::dbi (
     notify         => Service['collectd'],
     ensure_newline => true,
   }
-  concat::fragment{ 'collectd_plugin_dbi_conf_header':
+
+  concat::fragment { 'collectd_plugin_dbi_conf_header':
     order   => '00',
     content => '<Plugin dbi>',
     target  => "${collectd::plugin_conf_dir}/dbi-config.conf",
   }
-  concat::fragment{ 'collectd_plugin_dbi_conf_footer':
+
+  concat::fragment { 'collectd_plugin_dbi_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => "${collectd::plugin_conf_dir}/dbi-config.conf",
@@ -49,6 +56,7 @@ class collectd::plugin::dbi (
   $defaults = {
     'ensure' => $ensure,
   }
+
   create_resources(collectd::plugin::dbi::database, $databases, $defaults)
   create_resources(collectd::plugin::dbi::query, $queries, $defaults)
 }
