@@ -55,6 +55,7 @@ describe 'collectd' do
     it { is_expected.to contain_file('collectd.conf').with_content(/Interval/) }
     it { is_expected.to contain_file('collectd.conf').with_content(/Timeout/) }
     it { is_expected.to contain_file('collectd.conf').with_content(/ReadThreads/) }
+    it { is_expected.to contain_file('collectd.conf').with_content(/WriteThreads/) }
     it { is_expected.to contain_file('collectd.conf').without_content(/^TypesDB/) }
     it { is_expected.to contain_file('collectd.conf').without_content(/^WriteQueueLimitLow/) }
     it { is_expected.to contain_file('collectd.conf').without_content(/^WriteQueueLimitHigh/) }

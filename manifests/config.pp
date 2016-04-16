@@ -1,23 +1,24 @@
 # private
 class collectd::config (
+  $collectd_hostname      = $collectd::collectd_hostname,
   $config_file            = $collectd::config_file,
   $conf_content           = $collectd::conf_content,
+  $fqdnlookup             = $collectd::fqdnlookup,
+  $include                = $collectd::include,
+  $internal_stats         = $collectd::internal_stats,
+  $interval               = $collectd::interval,
   $plugin_conf_dir        = $collectd::plugin_conf_dir,
   $plugin_conf_dir_mode   = $collectd::plugin_conf_dir_mode,
-  $root_group             = $collectd::root_group,
   $recurse                = $collectd::recurse,
-  $fqdnlookup             = $collectd::fqdnlookup,
-  $collectd_hostname      = $collectd::collectd_hostname,
-  $interval               = $collectd::interval,
-  $include                = $collectd::include,
+  $root_group             = $collectd::root_group,
   $purge                  = $collectd::purge,
   $purge_config           = $collectd::purge_config,
-  $threads                = $collectd::threads,
+  $read_threads           = $collectd::read_threads,
   $timeout                = $collectd::timeout,
   $typesdb                = $collectd::typesdb,
   $write_queue_limit_high = $collectd::write_queue_limit_high,
   $write_queue_limit_low  = $collectd::write_queue_limit_low,
-  $internal_stats         = $collectd::internal_stats,
+  $write_threads          = $collectd::write_threads,
 ) {
 
   $_conf_content = $purge_config ? {
