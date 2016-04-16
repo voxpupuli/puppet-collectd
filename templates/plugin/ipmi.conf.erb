@@ -1,0 +1,9 @@
+<Plugin "ipmi">
+<% @sensors_real.each do |sensor| -%>
+  Sensor "<%= sensor %>"
+<% end -%>
+  IgnoreSelected <%= @ignore_selected %>
+  NotifySensorAdd <%= @notify_sensor_add %>
+  NotifySensorRemove <%= @notify_sensor_remove %>
+  NotifySensorNotPresent <%= @notify_sensor_not_present %>
+</Plugin>
