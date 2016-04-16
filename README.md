@@ -733,6 +733,18 @@ class { 'collectd::plugin::irq':
 }
 ```
 
+####Class: `collectd::plugin::ipmi`
+
+```puppet
+class { 'collectd::plugin::ipmi':
+  ignore_selected           => true,
+  sensors                   => ['temperature'],
+  notify_sensor_add         => true,
+  notify_sensor_remove      => true,
+  notify_sensor_not_present => true,
+}
+```
+
 ####Class: `collectd::plugin::iptables`
 
 ```puppet
