@@ -92,6 +92,7 @@ documentation for each plugin for configurable attributes.
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
+* `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `java` (see [collectd::plugin::java](#class-collectdpluginjava) below)

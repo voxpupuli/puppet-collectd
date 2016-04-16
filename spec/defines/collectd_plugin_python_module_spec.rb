@@ -74,7 +74,7 @@ describe 'collectd::plugin::python::module', :type => :define do
       should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /<Module "foo">/,
                                                                               :target  => '/etc/collectd/conf.d/python-config.conf',)
 
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /bar baz/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /bar "baz"/,)
     end
 
     it 'created collectd plugin file on Debian default path' do
@@ -92,11 +92,11 @@ describe 'collectd::plugin::python::module', :type => :define do
     end
 
     it 'includes foo module configuration' do
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k1 v1/,)
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k2 v21/,)
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k2 v22/,)
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k3 k31 v31/,)
-      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k3 k32 v32/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k1 "v1"/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k2 "v21"/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k2 "v22"/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k3 k31 "v31"/,)
+      should contain_concat__fragment('collectd_plugin_python_conf_foo').with(:content => /k3 k32 "v32"/,)
     end
   end
 end
