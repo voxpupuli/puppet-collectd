@@ -10,7 +10,8 @@ class collectd::params {
   $purge                   = undef
   $purge_config            = false
   $recurse                 = undef
-  $threads                 = 5
+  $read_threads            = 5
+  $write_threads           = 5
   $timeout                 = 2
   $typesdb                 = []
   $write_queue_limit_high  = undef
