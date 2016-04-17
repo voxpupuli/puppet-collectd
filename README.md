@@ -73,6 +73,7 @@ documentation for each plugin for configurable attributes.
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `ceph`  (see [collectd::plugin::ceph](#class-ceph) below)
+* `cgroups` (see [collectd::plugin::cgroups](#class-collectdplugincgroups) below)
 * `chain`  (see [collectd::plugin::chain](#class-chain) below)
 * `conntrack`  (see [collectd::plugin::conntrack](#class-conntrack) below)
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
@@ -208,6 +209,18 @@ class { 'collectd::plugin::ceph':
   osds          => [ 'osd.0', 'osd.1', 'osd.2'],
 }
 ```
+
+####Class: `collectd::plugin::cgroups`
+
+ See [collectd plugin_cgroups documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cgroups) for more details.
+
+```puppet
+class { 'collectd::plugin::cgroups':
+  ignore_selected => true,
+  cgroups         => ['array', 'of', 'paths']
+}
+```
+
 
 ####Class: `collectd::plugin::chain`
 

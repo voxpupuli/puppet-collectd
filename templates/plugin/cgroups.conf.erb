@@ -1,0 +1,6 @@
+<Plugin cgroups>
+<% @cgroups_real.each do |cgroup| -%>
+  CGroup "<%= cgroup %>"
+<% end -%>
+  IgnoreSelected <%= @ignore_selected %>
+</Plugin>
