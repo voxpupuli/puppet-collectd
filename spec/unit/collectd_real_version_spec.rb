@@ -17,4 +17,9 @@ describe 'collectd_version', :type => :fact do
     Facter::Util::Resolution.stubs(:exec).with('collectd -h').returns(sample_collectd_help_git)
     expect(Facter.fact(:collectd_version).value).to eq('5.1.0.git')
   end
+
+  it 'should be empty string if collectd not installed' do
+    Facter::Util::Resolution.stubs(:which).with('collectd').returns(nil)
+    expect(Facter.fact(:collectd_version).value).to eq('')
+  end
 end
