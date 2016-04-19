@@ -29,6 +29,53 @@ describe 'collectd::plugin::disk', :type => :class do
     end
   end
 
+  context ':manage_package => true on osfamily => RedHat' do
+    let :facts do
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '5.5',
+      }
+    end
+
+    let :params do
+      {
+        :manage_package => true,
+      }
+    end
+    it 'Will manage collectd-disk' do
+      should contain_package('collectd-disk').with(:ensure => 'present',
+                                                   :name   => 'collectd-disk',)
+    end
+  end
+
+  context ':manage_package => undef on osfamily => RedHat with collectd 5.5 and up' do
+    let :facts do
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '5.5',
+      }
+    end
+
+    it 'Will manage collectd-disk' do
+      should contain_package('collectd-disk').with(:ensure => 'present',
+                                                   :name   => 'collectd-disk',)
+    end
+  end
+
+  context ':manage_package => undef on osfamily => RedHat with collectd 5.5 and below' do
+    let :facts do
+      {
+        :osfamily => 'RedHat',
+        :collectd_version => '5.4',
+      }
+    end
+
+    it 'Will not manage collectd-disk' do
+      should_not contain_package('collectd-disk').with(:ensure => 'present',
+                                                       :name   => 'collectd-disk',)
+    end
+  end
+
   context ':disks is not an array' do
     let :params do
       { :disks => 'sda' }

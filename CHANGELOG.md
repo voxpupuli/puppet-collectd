@@ -1,3 +1,14 @@
+## Unreleased
+
+### New features
+
+* Add plugin::ipmi
+* Add plugin::cgroups
+
+### Bug fixes
+
+* Manage collectd-disk package on collectd >= 5.5 (fix #457)
+
 ## 2016-02-01 Release 4.3.0
 
 ### New features
