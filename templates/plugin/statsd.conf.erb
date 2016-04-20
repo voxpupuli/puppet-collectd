@@ -17,8 +17,10 @@
 <% unless @deletesets.nil? -%>
   Deletesets <%= @deletesets %>
 <% end -%>
-<% if @timerpercentile -%>
-  TimerPercentile <%= @timerpercentile %>
+<% if @timerpercentile != [] -%>
+<% @timerpercentile.flatten.each do |percentile| -%>
+  TimerPercentile <%= percentile %>
+<% end -%>
 <% end -%>
 <% if @timerupper -%>
   TimerUpper <%= @timerupper %>

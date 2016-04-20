@@ -8,7 +8,7 @@ class collectd::plugin::statsd (
   $deletegauges    = undef,
   $deletesets      = undef,
   $interval        = undef,
-  $timerpercentile = undef,
+  $timerpercentile = [],
   $timerlower      = undef,
   $timerupper      = undef,
   $timersum        = undef,
