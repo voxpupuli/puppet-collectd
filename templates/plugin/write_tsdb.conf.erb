@@ -6,7 +6,7 @@
    <Node>
      Host "<%= @host  %>"
      Port "<%= @port  %>"
-     HostTags "<%= host_tags %>"
+     HostTags "<%= host_tags.join(' ') %>"
      StoreRates <%= store_rates %>
      AlwaysAppendDS <%= always_append_ds %>
    </Node>
