@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'collectd_version', :type => :fact do
+describe 'collectd_version', type: :fact do
   before { Facter.clear }
   after { Facter.clear }
 

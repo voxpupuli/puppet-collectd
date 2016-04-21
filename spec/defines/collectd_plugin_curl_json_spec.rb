@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::curl_json', :type => :define do
+describe 'collectd::plugin::curl_json', type: :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      collectd_version: '4.8.0',
     }
   end
 
   let(:title) { 'rabbitmq_overview' }
   let(:my_params) do
     {
-      :url => 'http://localhost:55672/api/overview',
-      :instance => 'rabbitmq_overview',
-      :header   => 'Accept: application/json',
-      :keys     => {
+      url: 'http://localhost:55672/api/overview',
+      instance: 'rabbitmq_overview',
+      header: 'Accept: application/json',
+      keys: {
         'message_stats/publish' => {
           'type'     => 'gauge',
           'instance' => 'overview'
@@ -30,7 +30,7 @@ describe 'collectd::plugin::curl_json', :type => :define do
 
     it do
       should contain_file(filename).with(
-        :path => '/etc/collectd/conf.d/10-rabbitmq_overview.conf'
+        path: '/etc/collectd/conf.d/10-rabbitmq_overview.conf'
       )
     end
 

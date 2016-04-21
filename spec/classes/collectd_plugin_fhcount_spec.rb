@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::fhcount', :type => :class do
+describe 'collectd::plugin::fhcount', type: :class do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '5.5.0',
+      osfamily: 'RedHat',
+      collectd_version: '5.5.0',
     }
   end
 
   context ':ensure => present' do
     context 'fhcount options should be set with collectd 5.5' do
       let :facts do
-        { :osfamily            => 'RedHat',
-          :collectd_version    => '5.5',
+        { osfamily: 'RedHat',
+          collectd_version: '5.5',
         }
       end
       let :params do
-        { :valuesabsolute      => false,
-          :valuespercentage    => true,
+        { valuesabsolute: false,
+          valuespercentage: true,
         }
       end
 
@@ -33,8 +33,8 @@ describe 'collectd::plugin::fhcount', :type => :class do
 
   context 'default parameters are not booleans' do
     let :params do
-      { :valuesabsolute   => 'string_b',
-        :valuespercentage => 'string_c',
+      { valuesabsolute: 'string_b',
+        valuespercentage: 'string_c',
       }
     end
 
@@ -45,12 +45,12 @@ describe 'collectd::plugin::fhcount', :type => :class do
 
   context ':ensure => absent' do
     let :params do
-      { :ensure => 'absent' }
+      { ensure: 'absent' }
     end
     it 'Will remove /etc/collectd.d/10-fhcount.conf' do
-      should contain_file('fhcount.load').with(:ensure  => 'absent',
-                                               :path    => '/etc/collectd.d/10-fhcount.conf',
-                                               :content => /LoadPlugin fhcount/,)
+      should contain_file('fhcount.load').with(ensure: 'absent',
+                                               path: '/etc/collectd.d/10-fhcount.conf',
+                                               content: /LoadPlugin fhcount/,)
     end
   end
 end

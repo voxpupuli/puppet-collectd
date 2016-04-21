@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::mysql::database', :type => :define do
+describe 'collectd::plugin::mysql::database', type: :define do
   let :pre_condition do
     'include ::collectd'
   end
 
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':socket => /var/run/mysqld/mysqld.sock, custom socket' do
     let(:title) { 'test' }
     let :params do
-      { :socket => '/var/run/mysqld/mysqld.sock' }
+      { socket: '/var/run/mysqld/mysqld.sock' }
     end
     it 'Will create /etc/collectd/conf.d/mysql-test.conf' do
       should contain_file('test.conf').with_content(%r{Socket "/var/run/mysqld/mysqld\.sock"$})

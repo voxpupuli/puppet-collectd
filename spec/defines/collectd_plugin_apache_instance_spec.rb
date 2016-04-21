@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::apache::instance', :type => :define do
+describe 'collectd::plugin::apache::instance', type: :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '5.5.'
+      osfamily: 'Debian',
+      collectd_version: '5.5.'
     }
   end
 
   let(:title) { 'foo.example.com' }
   let(:required_params) do
     {
-      :url => 'http://localhost/mod_status?auto'
+      url: 'http://localhost/mod_status?auto'
     }
   end
 
@@ -22,8 +22,8 @@ describe 'collectd::plugin::apache::instance', :type => :define do
 
     it do
       should contain_file(filename).with(
-        :ensure => 'present',
-        :path   => '/etc/collectd/conf.d/25-apache-instance-foo.example.com.conf'
+        ensure: 'present',
+        path: '/etc/collectd/conf.d/25-apache-instance-foo.example.com.conf'
       )
     end
 
@@ -40,12 +40,12 @@ describe 'collectd::plugin::apache::instance', :type => :define do
 
   context 'all params set' do
     let(:params) do
-      required_params.merge(:url        => 'http://bar.example.com/server-status?auto',
-                            :user       => 'admin',
-                            :password   => 'admin123',
-                            :verifypeer => 'false',
-                            :verifyhost => 'false',
-                            :cacert     => '/etc/ssl/certs/ssl-cert-snakeoil.pem',)
+      required_params.merge(url: 'http://bar.example.com/server-status?auto',
+                            user: 'admin',
+                            password: 'admin123',
+                            verifypeer: 'false',
+                            verifyhost: 'false',
+                            cacert: '/etc/ssl/certs/ssl-cert-snakeoil.pem',)
     end
     it { should contain_file(filename).with_content(%r{URL "http://bar\.example\.com/server-status\?auto"}) }
     it { should contain_file(filename).with_content(/User "admin"/) }

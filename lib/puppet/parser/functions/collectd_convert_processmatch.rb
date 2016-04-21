@@ -1,4 +1,4 @@
-Puppet::Parser::Functions.newfunction(:collectd_convert_processmatch, :type => :rvalue, :arity => 1, :doc => <<-ENDDOC
+Puppet::Parser::Functions.newfunction(:collectd_convert_processmatch, type: :rvalue, arity: 1, doc: <<-ENDDOC
     Converts the array from the old style to define process matches in the
     processes plugin into a create_resources compatible hash which
     can be used with the new style define.

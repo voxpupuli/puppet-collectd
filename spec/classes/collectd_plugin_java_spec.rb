@@ -1,35 +1,35 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::java', :type => :class do
+describe 'collectd::plugin::java', type: :class do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':ensure => present, defaults' do
     it 'Will load the plugin' do
-      should contain_collectd__plugin('java').with(:ensure => 'present',)
+      should contain_collectd__plugin('java').with(ensure: 'present',)
     end
   end
 
   context ':ensure => absent' do
     let(:params) do
       {
-        :ensure => 'absent',
+        ensure: 'absent',
       }
     end
 
     it 'will not load the plugin' do
-      should contain_collectd__plugin('java').with(:ensure => 'absent')
+      should contain_collectd__plugin('java').with(ensure: 'absent')
     end
   end
 
   context 'jvmarg parameter array' do
     let(:params) do
       {
-        :jvmarg => %w( foo bar baz )
+        jvmarg: %w( foo bar baz )
       }
     end
 
@@ -41,7 +41,7 @@ describe 'collectd::plugin::java', :type => :class do
   context 'jvmarg parameter string' do
     let(:params) do
       {
-        :jvmarg => 'bat'
+        jvmarg: 'bat'
       }
     end
 
@@ -57,8 +57,8 @@ describe 'collectd::plugin::java', :type => :class do
   context 'jvmarg parameter string & loadplugin java hash with no options' do
     let(:params) do
       {
-        :jvmarg => 'dog',
-        :loadplugin => { 'name.java' => [] }
+        jvmarg: 'dog',
+        loadplugin: { 'name.java' => [] }
       }
     end
 
@@ -74,8 +74,8 @@ describe 'collectd::plugin::java', :type => :class do
   context 'jvmarg parameter string & loadplugin java hash with options' do
     let(:params) do
       {
-        :jvmarg     => 'dog',
-        :loadplugin => { 'name.java' => ['key = value'] }
+        jvmarg: 'dog',
+        loadplugin: { 'name.java' => ['key = value'] }
       }
     end
 
@@ -87,7 +87,7 @@ describe 'collectd::plugin::java', :type => :class do
   context 'jvmarg parameter empty' do
     let(:params) do
       {
-        :jvmarg => [],
+        jvmarg: [],
       }
     end
 
@@ -102,8 +102,8 @@ describe 'collectd::plugin::java', :type => :class do
   context 'jvmarg parameter empty & java plugin option provided' do
     let(:params) do
       {
-        :jvmarg     => [],
-        :loadplugin => { 'name.java' => ['key = value'] }
+        jvmarg: [],
+        loadplugin: { 'name.java' => ['key = value'] }
       }
     end
 
