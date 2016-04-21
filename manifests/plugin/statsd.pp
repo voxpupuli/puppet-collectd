@@ -8,7 +8,7 @@ class collectd::plugin::statsd (
   $deletegauges    = undef,
   $deletesets      = undef,
   $interval        = undef,
-  $timerpercentile = [],
+  $timerpercentile = undef,
   $timerlower      = undef,
   $timerupper      = undef,
   $timersum        = undef,
@@ -16,6 +16,10 @@ class collectd::plugin::statsd (
 ) {
 
   include ::collectd
+
+  $timerpercentile_real = pick($timerpercentile, [])
+
+  validate_array($timerpercentile_real)
 
   collectd::plugin { 'statsd':
     ensure   => $ensure,
