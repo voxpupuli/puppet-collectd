@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::ceph', :type => :class do
+describe 'collectd::plugin::ceph', type: :class do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':ensure => present and :osds => [ \'osd.0\, \osd.1\, \osd.2\]' do
     let :params do
-      { :osds => ['osd.0', 'osd.1', 'osd.2'] }
+      { osds: ['osd.0', 'osd.1', 'osd.2'] }
     end
     content = <<EOS
 <Plugin ceph>
@@ -36,17 +36,17 @@ EOS
 
   context ':ensure => absent' do
     let :params do
-      { :osds => ['osd.0', 'osd.1', 'osd.2'], :ensure => 'absent' }
+      { osds: ['osd.0', 'osd.1', 'osd.2'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ceph.conf' do
-      should contain_file('ceph.load').with(:ensure => 'absent',
-                                            :path   => '/etc/collectd.d/10-ceph.conf',)
+      should contain_file('ceph.load').with(ensure: 'absent',
+                                            path: '/etc/collectd.d/10-ceph.conf',)
     end
   end
 
   context ':ceph is not an array' do
     let :params do
-      { :osds => 'osd.0' }
+      { osds: 'osd.0' }
     end
     it 'Will raise an error about :osds being a String' do
       should compile.and_raise_error(/String/)

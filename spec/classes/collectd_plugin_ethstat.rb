@@ -1,24 +1,24 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::ethstat', :type => :class do
+describe 'collectd::plugin::ethstat', type: :class do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':ensure => present, specific params' do
     let :params do
       {
-        :interfaces => %w(eth0 eth1),
-        :maps       => ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
-        :mappedonly => false,
+        interfaces: %w(eth0 eth1),
+        maps: ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
+        mappedonly: false,
       }
     end
     it 'Will create /etc/collectd.d/10-ethstat.conf' do
-      should contain_file('ethstat.load').with(:ensure  => 'present',
-                                               :path    => '/etc/collectd.d/10-ethstat.conf',)
+      should contain_file('ethstat.load').with(ensure: 'present',
+                                               path: '/etc/collectd.d/10-ethstat.conf',)
     end
     it { should contain_file('ethstat.load').with_content(/^<Plugin ethstat>$/) }
     it { should contain_file('ethstat.load').with_content(/^  Interface "eth0"$/) }
@@ -30,17 +30,17 @@ describe 'collectd::plugin::ethstat', :type => :class do
 
   context ':ensure => absent' do
     let :params do
-      { :maps => ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'], :ensure => 'absent' }
+      { maps: ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ethstat.conf' do
-      should contain_file('ethstat.load').with(:ensure => 'absent',
-                                               :path   => '/etc/collectd.d/10-ethstat.conf',)
+      should contain_file('ethstat.load').with(ensure: 'absent',
+                                               path: '/etc/collectd.d/10-ethstat.conf',)
     end
   end
 
   context ':interfaces is not an array' do
     let :params do
-      { :interfaces => 'eth0,eth1' }
+      { interfaces: 'eth0,eth1' }
     end
     it 'Will raise an error about :interfaces being a String' do
       should compile.and_raise_error(/String/)
@@ -49,7 +49,7 @@ describe 'collectd::plugin::ethstat', :type => :class do
 
   context ':maps is not an array' do
     let :params do
-      { :maps => '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"' }
+      { maps: '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"' }
     end
     it 'Will raise an error about :maps being a String' do
       should compile.and_raise_error(/String/)

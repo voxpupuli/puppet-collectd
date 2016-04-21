@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'collectd' do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
@@ -21,7 +21,7 @@ describe 'collectd' do
   context 'with collectd::install::package_install_options' do
     context 'set to a valid array' do
       let :params do
-        { :package_install_options => ['--nogpgcheck'] }
+        { package_install_options: ['--nogpgcheck'] }
       end
 
       it { should contain_package('collectd').with_install_options(['--nogpgcheck']) }
@@ -29,7 +29,7 @@ describe 'collectd' do
 
     context 'set to an invalid value (non-array)' do
       let :params do
-        { :package_install_options => 'not_an_array' }
+        { package_install_options: 'not_an_array' }
       end
 
       it 'should fail' do
@@ -41,7 +41,7 @@ describe 'collectd' do
   end
 
   context 'on non supported operating systems' do
-    let(:facts) { { :osfamily => 'foo' } }
+    let(:facts) { { osfamily: 'foo' } }
 
     it 'should fail' do
       should compile.and_raise_error(/foo is not supported/)
@@ -49,7 +49,7 @@ describe 'collectd' do
   end
 
   context 'when purge_config is enabled' do
-    let(:params) { { :purge_config => true } }
+    let(:params) { { purge_config: true } }
 
     it { is_expected.to contain_file('collectd.conf').with_content(/FQDNLookup true/) }
     it { is_expected.to contain_file('collectd.conf').with_content(/Interval/) }
@@ -66,48 +66,48 @@ describe 'collectd' do
     end
 
     context 'with fqdnlookup => false' do
-      let(:params) { { :purge_config => true, :fqdnlookup => false } }
+      let(:params) { { purge_config: true, fqdnlookup: false } }
       it { is_expected.to contain_file('collectd.conf').with_content(/^FQDNLookup false/) }
     end
 
     context 'with typesdb => ["/path/to/types.db"]' do
-      let(:params) { { :purge_config => true, :typesdb => ['/path/to/types.db'] } }
+      let(:params) { { purge_config: true, typesdb: ['/path/to/types.db'] } }
       it { is_expected.to contain_file('collectd.conf').with_content(%r{^TypesDB "/path/to/types.db"}) }
     end
 
     context 'with write_queue_limit_low => 100' do
-      let(:params) { { :purge_config => true, :write_queue_limit_low => '100' } }
+      let(:params) { { purge_config: true, write_queue_limit_low: '100' } }
       it { is_expected.to contain_file('collectd.conf').with_content(/^WriteQueueLimitLow 100/) }
     end
 
     context 'with write_queue_limit_high => 100' do
-      let(:params) { { :purge_config => true, :write_queue_limit_high => '100' } }
+      let(:params) { { purge_config: true, write_queue_limit_high: '100' } }
       it { is_expected.to contain_file('collectd.conf').with_content(/^WriteQueueLimitHigh 100/) }
     end
 
     context 'with include => ["/some/include/path"]' do
-      let(:params) { { :purge_config => true, :include => ['/some/include/path'] } }
+      let(:params) { { purge_config: true, include: ['/some/include/path'] } }
       it { is_expected.to contain_file('collectd.conf').with_content(%r{^Include "/some/include/path"}) }
     end
 
     context 'with internal_stats => true' do
       context 'with collectd_version = 5.5' do
-        let(:facts) { { :osfamily => 'RedHat', :collectd_version => '5.5' } }
-        let(:params) { { :purge_config => true, :internal_stats => true } }
+        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.5' } }
+        let(:params) { { purge_config: true, internal_stats: true } }
         it { is_expected.to contain_file('collectd.conf').without_content(/^CollectInternalStats/) }
       end
 
       context 'with collectd_version = 5.6' do
-        let(:facts) { { :osfamily => 'RedHat', :collectd_version => '5.6' } }
-        let(:params) { { :purge_config => true, :internal_stats => true } }
+        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.6' } }
+        let(:params) { { purge_config: true, internal_stats: true } }
         it { is_expected.to contain_file('collectd.conf').with_content(/^CollectInternalStats true/) }
       end
     end
   end
 
   context 'on OpenBSD' do
-    let(:facts) { { :kernel => 'OpenBSD', :osfamily => 'OpenBSD', :collectd_version => '5.5' } }
-    let(:params) { { :purge_config => true } }
+    let(:facts) { { kernel: 'OpenBSD', osfamily: 'OpenBSD', collectd_version: '5.5' } }
+    let(:params) { { purge_config: true } }
     it { is_expected.to contain_file('collectd.conf').with_content(%r{^Include "/etc/collectd/"$}) }
     it { should contain_package('collectd').with_ensure('installed') }
     it { should contain_service('collectd').with_ensure('running') }
@@ -117,27 +117,27 @@ describe 'collectd' do
   end
 
   context 'when custom package_name is set' do
-    let(:params) { { :package_name => 'collectd-core' } }
+    let(:params) { { package_name: 'collectd-core' } }
     it { should contain_package('collectd-core').with_ensure('installed') }
   end
 
   context 'when manage_package is false' do
-    let(:params) { { :manage_package => false } }
+    let(:params) { { manage_package: false } }
     it { should_not contain_package('collectd') }
   end
 
   context 'when manage_package is true' do
-    let(:params) { { :manage_package => true } }
+    let(:params) { { manage_package: true } }
     it { should contain_package('collectd').with_ensure('installed') }
   end
 
   context 'when plugin_conf_dir_mode is set' do
-    let(:params) { { :plugin_conf_dir_mode => '0755' } }
+    let(:params) { { plugin_conf_dir_mode: '0755' } }
     it { should contain_file('collectd.d').with_mode('0755') }
   end
 
   context 'when conf_content is set' do
-    let(:params) { { :conf_content => 'Hello World' } }
+    let(:params) { { conf_content: 'Hello World' } }
     it { should contain_file('collectd.conf').with_content(/Hello World/) }
   end
 end

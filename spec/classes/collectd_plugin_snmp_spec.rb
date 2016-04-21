@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::snmp', :type => :class do
+describe 'collectd::plugin::snmp', type: :class do
   let :pre_condition do
     'include ::collectd'
   end
 
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':ensure => present and dataset for AMAVIS-MIB::inMsgs.0' do
     let :params do
       {
-        :data => {
+        data: {
           'amavis_incoming_messages' => {
             'Type'     => 'counter',
             'Table'    => false,
@@ -23,7 +23,7 @@ describe 'collectd::plugin::snmp', :type => :class do
             'Values'   => ['AMAVIS-MIB::inMsgs.0']
           }
         },
-        :hosts => {
+        hosts: {
           'scan04' => {
             'Address'   => '127.0.0.1',
             'Version'   => 2,
@@ -35,17 +35,17 @@ describe 'collectd::plugin::snmp', :type => :class do
       }
     end
     it 'Will create /etc/collectd.d/10-snmp.conf' do
-      should contain_file('snmp.load').with(:ensure  => 'present',
-                                            :path    => '/etc/collectd.d/10-snmp.conf',
-                                            :content => /Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"/m,)
+      should contain_file('snmp.load').with(ensure: 'present',
+                                            path: '/etc/collectd.d/10-snmp.conf',
+                                            content: /Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"/m,)
     end
   end
 
   context ':ensure => absent' do
     let :params do
       {
-        :ensure => 'absent',
-        :data => {
+        ensure: 'absent',
+        data: {
           'amavis_incoming_messages' => {
             'Type'     => 'counter',
             'Table'    => false,
@@ -53,7 +53,7 @@ describe 'collectd::plugin::snmp', :type => :class do
             'Values'   => ['AMAVIS-MIB::inMsgs.0']
           }
         },
-        :hosts => {
+        hosts: {
           'scan04' => {
             'Address'   => '127.0.0.1',
             'Version'   => 2,
@@ -65,8 +65,8 @@ describe 'collectd::plugin::snmp', :type => :class do
       }
     end
     it 'Will not create /etc/collectd.d/10-snmp.conf' do
-      should contain_file('snmp.load').with(:ensure => 'absent',
-                                            :path   => '/etc/collectd.d/10-snmp.conf',)
+      should contain_file('snmp.load').with(ensure: 'absent',
+                                            path: '/etc/collectd.d/10-snmp.conf',)
     end
   end
 end

@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::snmp::host', :type => :define do
+describe 'collectd::plugin::snmp::host', type: :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      collectd_version: '4.8.0',
     }
   end
 
   let(:title) { 'foo.example.com' }
   let(:required_params) do
     {
-      :collect => 'foo'
+      collect: 'foo'
     }
   end
 
@@ -22,8 +22,8 @@ describe 'collectd::plugin::snmp::host', :type => :define do
 
     it do
       should contain_file(filename).with(
-        :ensure => 'present',
-        :path   => '/etc/collectd/conf.d/25-snmp-host-foo.example.com.conf'
+        ensure: 'present',
+        path: '/etc/collectd/conf.d/25-snmp-host-foo.example.com.conf'
       )
     end
 
@@ -38,10 +38,10 @@ describe 'collectd::plugin::snmp::host', :type => :define do
 
   context 'all params set' do
     let(:params) do
-      required_params.merge(:address   => 'bar.example.com',
-                            :version   => '2',
-                            :community => 'opensesame',
-                            :interval  => '30',)
+      required_params.merge(address: 'bar.example.com',
+                            version: '2',
+                            community: 'opensesame',
+                            interval: '30',)
     end
     it { should contain_file(filename).with_content(/Address "bar\.example\.com"/) }
     it { should contain_file(filename).with_content(/Version 2/) }
@@ -52,7 +52,7 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   context 'collect is an array' do
     let(:params) do
       {
-        :collect => %w( foo bar baz )
+        collect: %w( foo bar baz )
       }
     end
     it { should contain_file(filename).with_content(/Collect "foo" "bar" "baz"/) }
@@ -61,7 +61,7 @@ describe 'collectd::plugin::snmp::host', :type => :define do
   context 'collect is just a string' do
     let(:params) do
       {
-        :collect => 'bat'
+        collect: 'bat'
       }
     end
     it { should contain_file(filename).with_content(/Collect "bat"/) }

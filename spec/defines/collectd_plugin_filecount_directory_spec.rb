@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::filecount::directory', :type => :define do
+describe 'collectd::plugin::filecount::directory', type: :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      collectd_version: '4.8.0',
     }
   end
 
@@ -12,7 +12,7 @@ describe 'collectd::plugin::filecount::directory', :type => :define do
     let(:title) { 'test' }
     let :params do
       {
-        :path => '/var/tmp/test',
+        path: '/var/tmp/test',
       }
     end
     it 'Will create /etc/collectd/conf.d/15-filecount-test.conf' do
@@ -24,11 +24,11 @@ describe 'collectd::plugin::filecount::directory', :type => :define do
     let(:title) { 'test' }
     let :params do
       {
-        :path          => '/path/to/dir',
-        :pattern       => '*.conf',
-        :mtime         => '-5m',
-        :recursive     => true,
-        :includehidden => false,
+        path: '/path/to/dir',
+        pattern: '*.conf',
+        mtime: '-5m',
+        recursive: true,
+        includehidden: false,
       }
     end
     it 'Will create /etc/collectd/conf.d/15-filecount-test.conf' do
@@ -40,9 +40,9 @@ describe 'collectd::plugin::filecount::directory', :type => :define do
     let(:title) { 'test' }
     let :params do
       {
-        :path          => '/var/tmp/test',
-        :recursive     => false,
-        :includehidden => false,
+        path: '/var/tmp/test',
+        recursive: false,
+        includehidden: false,
       }
     end
     it 'Will create /etc/collectd/conf.d/15-filecount-test.conf' do
@@ -54,13 +54,13 @@ describe 'collectd::plugin::filecount::directory', :type => :define do
     let(:title) { 'test' }
     let :params do
       {
-        :ensure => 'absent',
-        :path   => '/var/tmp/test',
+        ensure: 'absent',
+        path: '/var/tmp/test',
       }
     end
     it 'Will create /etc/collectd/conf.d/15-filecount-test.conf' do
-      should contain_file('/etc/collectd/conf.d/15-filecount-test.conf').with(:ensure => 'absent',
-                                                                              :path   => '/etc/collectd/conf.d/15-filecount-test.conf',)
+      should contain_file('/etc/collectd/conf.d/15-filecount-test.conf').with(ensure: 'absent',
+                                                                              path: '/etc/collectd/conf.d/15-filecount-test.conf',)
     end
   end
 end

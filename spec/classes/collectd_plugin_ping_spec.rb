@@ -7,29 +7,29 @@ describe 'collectd::plugin::ping' do
 
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':hosts => [\'google.com\']' do
     let :params do
-      { :hosts => ['google.com'] }
+      { hosts: ['google.com'] }
     end
     it 'Will create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(:ensure  => 'present',
-                                            :path    => '/etc/collectd.d/10-ping.conf',
-                                            :content => /Host "google.com"/,)
+      should contain_file('ping.load').with(ensure: 'present',
+                                            path: '/etc/collectd.d/10-ping.conf',
+                                            content: /Host "google.com"/,)
     end
   end
 
   context ':hosts => [\'google.com\', \'puppetlabs.com\']' do
     let :params do
-      { :hosts => ['google.com', 'puppetlabs.com'] }
+      { hosts: ['google.com', 'puppetlabs.com'] }
     end
     it 'Will create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(:ensure  => 'present',
-                                            :path    => '/etc/collectd.d/10-ping.conf'
+      should contain_file('ping.load').with(ensure: 'present',
+                                            path: '/etc/collectd.d/10-ping.conf'
                                            ).with_content(
                                              /Host "google.com"/
                                            ).with_content(
@@ -40,17 +40,17 @@ describe 'collectd::plugin::ping' do
 
   context ':ensure => absent' do
     let :params do
-      { :hosts => ['google.com'], :ensure => 'absent' }
+      { hosts: ['google.com'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(:ensure => 'absent',
-                                            :path   => '/etc/collectd.d/10-ping.conf',)
+      should contain_file('ping.load').with(ensure: 'absent',
+                                            path: '/etc/collectd.d/10-ping.conf',)
     end
   end
 
   context ':hosts is not an array' do
     let :params do
-      { :hosts => 'google.com' }
+      { hosts: 'google.com' }
     end
     it 'Will raise an error about :interfaces being a String' do
       should compile.and_raise_error(/String/)

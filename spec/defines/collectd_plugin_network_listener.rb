@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::network::listener', :type => :define do
+describe 'collectd::plugin::network::listener', type: :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      collectd_version: '4.8.0',
     }
   end
 
@@ -12,8 +12,8 @@ describe 'collectd::plugin::network::listener', :type => :define do
     let(:title) { 'test' }
     let :params do
       {
-        :url     => 'http://www.example.com/query',
-        :matches => [{ 'regex' => 'SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)', 'dstype' => 'CounterAdd', 'type' => 'counter' }],
+        url: 'http://www.example.com/query',
+        matches: [{ 'regex' => 'SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)', 'dstype' => 'CounterAdd', 'type' => 'counter' }],
       }
     end
     it 'Will create /etc/collectd/conf.d/curl-test.conf' do

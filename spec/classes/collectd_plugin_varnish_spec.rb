@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::varnish', :type => :class do
+describe 'collectd::plugin::varnish', type: :class do
   let :pre_condition do
     'include ::collectd'
   end
 
   context 'When the version is not 5.4' do
     let :facts do
-      { :osfamily => 'RedHat',
-        :collectd_version => '5.3',
+      { osfamily: 'RedHat',
+        collectd_version: '5.3',
       }
     end
     let :params do
@@ -26,8 +26,8 @@ EOS
   end
   context 'When the version is nil' do
     let :facts do
-      { :osfamily => 'RedHat',
-        :collectd_version => nil,
+      { osfamily: 'RedHat',
+        collectd_version: nil,
       }
     end
     let :params do
@@ -46,8 +46,8 @@ EOS
 
   context 'When the version is 5.4' do
     let :facts do
-      { :osfamily => 'RedHat',
-        :collectd_version => '5.4',
+      { osfamily: 'RedHat',
+        collectd_version: '5.4',
       }
     end
     context 'when there are no params given' do

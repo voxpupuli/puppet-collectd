@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'collectd::plugin::dns' do
   let :facts do
-    { :collectd_version => '5.2',
-      :osfamily         => 'RedHat',
+    { collectd_version: '5.2',
+      osfamily: 'RedHat',
     }
   end
 
@@ -26,7 +26,7 @@ describe 'collectd::plugin::dns' do
     %w(present absent).each do |value|
       context "set to a valid value of #{value}" do
         let :params do
-          { :ensure => value }
+          { ensure: value }
         end
 
         it do
@@ -39,7 +39,7 @@ describe 'collectd::plugin::dns' do
 
     context 'set to an invalid value' do
       let :params do
-        { :ensure => 'invalid' }
+        { ensure: 'invalid' }
       end
 
       it 'should fail' do
@@ -53,7 +53,7 @@ describe 'collectd::plugin::dns' do
   describe 'with ignoresource parameter' do
     context 'set to a valid IP address' do
       let :params do
-        { :ignoresource => '10.10.10.10' }
+        { ignoresource: '10.10.10.10' }
       end
 
       ignoresource_fixture = File.read(fixtures('plugins/dns.conf.ignoresource'))
@@ -66,7 +66,7 @@ describe 'collectd::plugin::dns' do
 
     context 'set to an invalid value' do
       let :params do
-        { :ignoresource => 'not_an_ip' }
+        { ignoresource: 'not_an_ip' }
       end
 
       it 'should fail' do
@@ -80,7 +80,7 @@ describe 'collectd::plugin::dns' do
   describe 'with interface parameter' do
     context 'set to a valid value' do
       let :params do
-        { :interface => 'eth0' }
+        { interface: 'eth0' }
       end
 
       interface_fixture = File.read(fixtures('plugins/dns.conf.interface'))
@@ -89,7 +89,7 @@ describe 'collectd::plugin::dns' do
 
     context 'set to an invalid value (non-string)' do
       let :params do
-        { :interface => %w(not a string) }
+        { interface: %w(not a string) }
       end
 
       it 'should fail' do
@@ -104,7 +104,7 @@ describe 'collectd::plugin::dns' do
     ['10.0', '3600'].each do |value|
       context "set to a valid numeric of #{value}" do
         let :params do
-          { :interval => value }
+          { interval: value }
         end
 
         it { should contain_file('dns.load').with_content(/\s*Interval\s+#{Regexp.escape(value)}/) }
@@ -113,7 +113,7 @@ describe 'collectd::plugin::dns' do
 
     context 'set to an invalid value' do
       let :params do
-        { :interval => 'invalid' }
+        { interval: 'invalid' }
       end
 
       it 'should fail' do
@@ -128,7 +128,7 @@ describe 'collectd::plugin::dns' do
     ['true', true, 'false', false].each do |value|
       context "set to valid value of #{value}" do
         let :params do
-          { :selectnumericquerytypes => value }
+          { selectnumericquerytypes: value }
         end
 
         it { should contain_file('dns.load').with_content(/\s*SelectNumericQueryTypes\s+#{Regexp.escape(value.to_s)}/) }
@@ -137,7 +137,7 @@ describe 'collectd::plugin::dns' do
 
     context 'set to an invalid value (non-boolean and non-stringified boolean)' do
       let :params do
-        { :selectnumericquerytypes => 'invalid' }
+        { selectnumericquerytypes: 'invalid' }
       end
 
       it 'should fail' do
@@ -154,8 +154,8 @@ describe 'collectd::plugin::dns' do
         %w(present absent).each do |ensure_value|
           context "and ensure set to #{ensure_value}" do
             let :params do
-              { :ensure         => ensure_value,
-                :manage_package => value,
+              { ensure: ensure_value,
+                manage_package: value,
               }
             end
 

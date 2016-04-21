@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::genericjmx::connection', :type => :define do
+describe 'collectd::plugin::genericjmx::connection', type: :define do
   let(:facts) do
     {
-      :osfamily => 'Debian',
-      :id => 'root',
-      :concat_basedir => tmpfilename('collectd-genericjmx-connection'),
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      :collectd_version => '4.8.0',
+      osfamily: 'Debian',
+      id: 'root',
+      concat_basedir: tmpfilename('collectd-genericjmx-connection'),
+      path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      collectd_version: '4.8.0',
     }
   end
 
@@ -15,7 +15,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   let(:default_params) do
     {
-      :service_url => 'foo:bar:baz',
+      service_url: 'foo:bar:baz',
     }
   end
 
@@ -24,12 +24,12 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'required params' do
     let(:params) do
-      default_params.merge(:collect => [],)
+      default_params.merge(collect: [],)
     end
 
     it 'provides a Connection concat fragment' do
-      should contain_concat__fragment(concat_fragment_name).with(:target => config_filename,
-                                                                 :order => '20',)
+      should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
+                                                                 order: '20',)
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(%r{<Connection>.*</Connection>}m) }
@@ -42,13 +42,13 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'hostname override' do
     let(:params) do
-      default_params.merge(:host => 'bar.example.com',
-                           :collect => [],)
+      default_params.merge(host: 'bar.example.com',
+                           collect: [],)
     end
 
     it 'provides a Connection concat fragment' do
-      should contain_concat__fragment(concat_fragment_name).with(:target => config_filename,
-                                                                 :order => '20',)
+      should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
+                                                                 order: '20',)
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(/Host "bar\.example\.com"/) }
@@ -56,7 +56,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'collect array' do
     let(:params) do
-      default_params.merge(:collect => %w( foo bar baz ))
+      default_params.merge(collect: %w( foo bar baz ))
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(/Collect "foo".*Collect "bar".*Collect "baz"/m) }
@@ -64,7 +64,7 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'collect string' do
     let(:params) do
-      default_params.merge(:collect => 'bat')
+      default_params.merge(collect: 'bat')
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(/Collect "bat"/) }
@@ -73,9 +73,9 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'username and password' do
     let(:params) do
-      default_params.merge(:user     => 'alice',
-                           :password => 'aoeuhtns',
-                           :collect  => [],)
+      default_params.merge(user: 'alice',
+                           password: 'aoeuhtns',
+                           collect: [],)
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(/User "alice"/) }
@@ -84,8 +84,8 @@ describe 'collectd::plugin::genericjmx::connection', :type => :define do
 
   context 'instance_prefix ' do
     let(:params) do
-      default_params.merge(:instance_prefix => 'bat',
-                           :collect  => [],)
+      default_params.merge(instance_prefix: 'bat',
+                           collect: [],)
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(/InstancePrefix "bat"/) }

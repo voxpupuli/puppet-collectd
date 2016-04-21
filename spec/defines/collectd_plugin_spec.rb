@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'collectd::plugin', :type => :define do
+describe 'collectd::plugin', type: :define do
   context 'loading a plugin on collectd <= 4.9.4' do
     let(:title) { 'test' }
     let :facts do
       {
-        :collectd_version => '5.3',
-        :osfamily         => 'Debian',
+        collectd_version: '5.3',
+        osfamily: 'Debian',
       }
     end
 
@@ -19,8 +19,8 @@ describe 'collectd::plugin', :type => :define do
     let(:title) { 'test' }
     let :facts do
       {
-        :collectd_version => '4.9.3',
-        :osfamily         => 'Debian',
+        collectd_version: '4.9.3',
+        osfamily: 'Debian',
       }
     end
 

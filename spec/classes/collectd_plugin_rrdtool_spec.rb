@@ -1,36 +1,36 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::rrdtool', :type => :class do
+describe 'collectd::plugin::rrdtool', type: :class do
   let :facts do
     {
-      :osfamily => 'RedHat',
-      :collectd_version => '4.8.0',
+      osfamily: 'RedHat',
+      collectd_version: '4.8.0',
     }
   end
 
   context ':ensure => present, default args' do
     it 'Will create /etc/collectd.d/10-rrdtool.conf' do
       should contain_file('rrdtool.load')
-        .with(:ensure  => 'present',
-              :path    => '/etc/collectd.d/10-rrdtool.conf',
-              :content => %r{DataDir "/var/lib/collectd/rrd},)
+        .with(ensure: 'present',
+              path: '/etc/collectd.d/10-rrdtool.conf',
+              content: %r{DataDir "/var/lib/collectd/rrd},)
     end
 
     it do
       should contain_package('collectd-rrdtool').with(
-        :ensure => 'present'
+        ensure: 'present'
       )
     end
   end
 
   context ':ensure => absent' do
     let :params do
-      { :ensure => 'absent' }
+      { ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-rrdtool.conf' do
       should contain_file('rrdtool.load')
-        .with(:ensure => 'absent',
-              :path   => '/etc/collectd.d/10-rrdtool.conf',)
+        .with(ensure: 'absent',
+              path: '/etc/collectd.d/10-rrdtool.conf',)
     end
   end
 end
