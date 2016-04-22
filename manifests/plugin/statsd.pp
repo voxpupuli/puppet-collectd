@@ -17,6 +17,10 @@ class collectd::plugin::statsd (
 
   include ::collectd
 
+  $timerpercentile_real = pick($timerpercentile, [])
+
+  validate_array($timerpercentile_real)
+
   collectd::plugin { 'statsd':
     ensure   => $ensure,
     content  => template('collectd/plugin/statsd.conf.erb'),
