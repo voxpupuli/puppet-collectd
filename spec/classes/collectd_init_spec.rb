@@ -131,6 +131,21 @@ describe 'collectd' do
     it { should contain_package('collectd').with_ensure('installed') }
   end
 
+  context 'when manage_service is true' do
+    let(:params) { { manage_service: true } }
+    it { should contain_service('collectd').with_ensure('running') }
+  end
+
+  context 'when manage_service is false' do
+    let(:params) { { manage_service: false } }
+    it { should_not contain_service('collectd') }
+  end
+
+  context 'when manage_service is undefined' do
+    let(:params) { { manage_service: nil } }
+    it { should contain_service('collectd').with_ensure('running') }
+  end
+
   context 'when plugin_conf_dir_mode is set' do
     let(:params) { { plugin_conf_dir_mode: '0755' } }
     it { should contain_file('collectd.d').with_mode('0755') }
