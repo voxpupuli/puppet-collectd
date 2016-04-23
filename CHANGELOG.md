@@ -4,6 +4,9 @@
 
 * Add plugin::ipmi
 * Add plugin::cgroups
+* Add plugin::rabbitmq
+* Add plugin::write_tsdb
+* Add manage_service param
 
 ### Bug fixes
 
