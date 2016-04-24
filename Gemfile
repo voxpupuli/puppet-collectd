@@ -30,7 +30,7 @@ group :test do
   gem 'puppet-lint-classes_and_types_beginning_with_digits-check',  :require => false
   gem 'puppet-lint-unquoted_string-check',                          :require => false
   gem 'puppet-lint-variable_contains_upcase',                       :require => false
-  gem 'listen', '3.0.6',                                            :require => false, :platforms => ["ruby_21", "jruby"]
+  gem 'listen', '3.0.6',                                            :require => false, :platforms => [":ruby_21", ":jruby"]
 end
 
 group :development do
