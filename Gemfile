@@ -62,5 +62,5 @@ end
 ENV['PUPPET_VERSION'].nil? ? puppetversion = '~> 4.0' : puppetversion = ENV['PUPPET_VERSION'].to_s
 gem 'puppet', puppetversion, :require => false, :groups => [:test]
 
-gem 'listen', '3.0.6', :require => false, :platforms => [:ruby_21, :jruby]
+gem 'listen', '3.0.6', :require => false if RUBY_VERSION < '2.2.0'
 # vim:ft=ruby
