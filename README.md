@@ -119,6 +119,7 @@ documentation for each plugin for configurable attributes.
 * `protocols` (see [collectd::plugin:protocols](#class-collectdpluginprotocols) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
+* `rabbitmq` (see [collectd-rabbitmq](https://pypi.python.org/pypi/collectd-rabbitmq) and [below](#class-collectdpluginrabbitmq) for implementation notes
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
@@ -139,6 +140,7 @@ documentation for each plugin for configurable attributes.
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 * `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu) below)
+* `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb) below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
 
 ####Class: `collectd::plugin::aggregation`
@@ -1229,6 +1231,23 @@ class { 'collectd::plugin::redis':
 }
 ```
 
+####Class: `collectd::plugin::rabbitmq`
+
+Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom). You will need to add this to [collectd::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/init.pp#L28) via hiera or in a manifest. Failure to set the types.db.custom content will result in *no* metrics from the rabbitmq plugin.
+
+```puppet
+class { '::collectd::plugin::rabbitmq':
+  config           => {
+    'Username' => '"admin"',
+    'Password' => "${admin_pass}",
+    'Scheme'   => '"https"',
+    'Port'     => '"15671"',
+    'Host'     => "${::fqdn}",
+    'Realm'    => '"RabbitMQ Management"',
+  },
+}
+```
+
 ####Class: `collectd::plugin::rrdcached`
 
 ```puppet
@@ -1474,6 +1493,19 @@ class { 'collectd::plugin::write_riemann':
 class { 'collectd::plugin::write_sensu':
   sensu_host => 'sensu.example.org',
   sensu_port => 3030,
+}
+```
+
+
+####Class: `collectd::plugin::write_tsdb`
+
+```puppet
+class { 'collectd::plugin::write_tsdb':
+  host             => 'tsdb.example.org',
+  port             => 4242,
+  host_tags        => ['environment=production', 'colocation=AWS'],
+  store_rates      => false,
+  always_append_ds => false,
 }
 ```
 
