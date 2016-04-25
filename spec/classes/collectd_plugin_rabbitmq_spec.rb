@@ -11,6 +11,18 @@ describe 'collectd::plugin::rabbitmq', type: :class do
   context 'package ensure' do
     context ':ensure => present' do
       let(:node) { 'testhost.example.com' }
+      let :params do
+        {
+          config: {
+            'Username' => 'guest',
+            'Password' => 'guest',
+            'Port' => '15672',
+            'Scheme' => 'http',
+            'Host' => 'testhost.example.com',
+            'Realm' => 'RabbitMQ Management'
+          }
+        }
+      end
 
       it 'Load collectd_rabbitmq in python-config' do
         should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Module "collectd_rabbitmq.collectd_plugin"/)
@@ -38,6 +50,10 @@ describe 'collectd::plugin::rabbitmq', type: :class do
 
       it 'Host should be set to $::fqdn python-config' do
         should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Host "testhost.example.com"/)
+      end
+
+      it 'Realm set to "RabbitMQ Management"' do
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Realm "RabbitMQ Management"/)
       end
     end
 

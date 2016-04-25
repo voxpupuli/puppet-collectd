@@ -31,22 +31,22 @@
 #   Hash
 #   Contains key/value passed to the python module to configure the plugin
 #   Default: {
-#    'Username' => '"guest"',
-#    'Password' => '"guest_pass"',
-#    'Scheme'   => '"http"',
-#    'Port'     => '"15672"',
-#    'Host'     => "\"${::fqdn}\"",
-#    'Realm'    => '"RabbitMQ Management"',
+#    'Username' => 'guest',
+#    'Password' => 'guest_pass',
+#    'Scheme'   => 'http',
+#    'Port'     => '15672',
+#    'Host'     => $::fqdn,
+#    'Realm'    => 'RabbitMQ Management',
 #   }
 #
 class collectd::plugin::rabbitmq (
   $config           = {
-    'Username' => '"guest"',
-    'Password' => '"guest"',
-    'Scheme'   => '"http"',
-    'Port'     => '"15672"',
-    'Host'     => "\"${::fqdn}\"",
-    'Realm'    => '"RabbitMQ Management"',
+    'Username' => 'guest',
+    'Password' => 'guest',
+    'Scheme'   => 'http',
+    'Port'     => '15672',
+    'Host'     => $::fqdn,
+    'Realm'    => 'RabbitMQ Management',
   },
   $ensure           = 'present',
   $interval         = undef,
@@ -67,7 +67,6 @@ class collectd::plugin::rabbitmq (
       provider => $package_provider,
     }
   }
-  collectd::typesdb { '/usr/share/collect-rabbitmq/types.db.custom': }
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
     config => $config,
