@@ -119,6 +119,7 @@ documentation for each plugin for configurable attributes.
 * `protocols` (see [collectd::plugin:protocols](#class-collectdpluginprotocols) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
+* `rabbitmq` (see [collectd-rabbitmq](https://pypi.python.org/pypi/collectd-rabbitmq) and [below](#class-collectdpluginrabbitmq) for implementation notes
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
@@ -1226,6 +1227,23 @@ class { 'collectd::plugin::redis':
       'timeout'  => 3000,
     }
   }
+}
+```
+
+####Class: `collectd::plugin::rabbitmq`
+
+Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom). You will need to add this to [collectd::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/init.pp#L28) via hiera or in a manifest. Failure to set the types.db.custom content will result in *no* metrics from the rabbitmq plugin.
+
+```puppet
+class { '::collectd::plugin::rabbitmq':
+  config           => {
+    'Username' => '"admin"',
+    'Password' => "${admin_pass}",
+    'Scheme'   => '"https"',
+    'Port'     => '"15671"',
+    'Host'     => "${::fqdn}",
+    'Realm'    => '"RabbitMQ Management"',
+  },
 }
 ```
 
