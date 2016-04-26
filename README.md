@@ -1225,7 +1225,16 @@ class { 'collectd::plugin::redis':
       'host'     => 'node2.example.com',
       'port'     => '6380',
       'timeout'  => 3000,
-    }
+    },
+    'node3' => {
+      'host'    => 'node3.example.com',
+      'queries' => {
+          'dbsize' => {
+              'type'  => 'count',
+              'query' => 'DBSIZE',
+          },
+      },
+    },
   }
 }
 ```
