@@ -9,6 +9,7 @@ class collectd::plugin::write_riemann (
   $store_rates      = false,
   $always_append_ds = false,
   $interval         = undef,
+  $ttl_factor       = '2.0',
 ) {
 
   include ::collectd
@@ -17,6 +18,7 @@ class collectd::plugin::write_riemann (
 
   validate_bool($store_rates)
   validate_bool($always_append_ds)
+  validate_numeric($ttl_factor)
 
   if $::osfamily == 'Redhat' {
     if $_manage_package {
