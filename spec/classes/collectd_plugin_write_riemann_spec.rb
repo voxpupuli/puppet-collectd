@@ -31,4 +31,13 @@ describe 'collectd::plugin::write_riemann', type: :class do
                                                      path: '/etc/collectd.d/10-write_riemann.conf',)
     end
   end
+
+  context ':ttl_factor is a number' do
+    let :params do
+      { ttl_factor: 'four' }
+    end
+    it 'Will raise an error about :ttl_factor not being a Number' do
+      should compile.and_raise_error(/Expected first argument to be a Numeric or Array/)
+    end
+  end
 end
