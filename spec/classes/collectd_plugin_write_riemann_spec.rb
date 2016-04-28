@@ -10,7 +10,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
 
   context ':ensure => present and :riemann_host => \'myhost\'' do
     let :params do
-      { riemann_host: 'myhost', riemann_port: '5555', protocol: 'TCP', batch: 'false' }
+      { riemann_host: 'myhost', riemann_port: '5555', protocol: 'TCP', batch: 'false', ttl_factor: '3' }
     end
     it 'Will create /etc/collectd.d/10-write_riemann.conf' do
       should contain_file('write_riemann.load').with(ensure: 'present',)
@@ -19,6 +19,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       should contain_file('write_riemann.load').with(content: /Port "5555"/,)
       should contain_file('write_riemann.load').with(content: /Protocol TCP/,)
       should contain_file('write_riemann.load').with(content: /Batch false/,)
+      should contain_file('write_riemann.load').with(content: /TTLFactor 3/,)
     end
   end
 
