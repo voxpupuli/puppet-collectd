@@ -10,7 +10,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
 
   context ':ensure => present and :riemann_host => \'myhost\'' do
     let :params do
-      { riemann_host: 'myhost', riemann_port: '5555', protocol: 'TCP', batch: 'false', ttl_factor: '3' }
+      { riemann_host: 'myhost', riemann_port: '5555', protocol: 'TCP', batch: false, ttl_factor: '3' }
     end
     it 'Will create /etc/collectd.d/10-write_riemann.conf' do
       should contain_file('write_riemann.load').with(ensure: 'present',)
@@ -39,6 +39,15 @@ describe 'collectd::plugin::write_riemann', type: :class do
     end
     it 'Will raise an error about :ttl_factor not being a Number' do
       should compile.and_raise_error(/Expected first argument to be a Numeric or Array/)
+    end
+  end
+
+  context ':batch is a boolean' do
+    let :params do
+      { batch: 'false' }
+    end
+    it 'Will raise an error about :ttl_factor not being a Boolean' do
+      should compile.and_raise_error(/"false" is not a boolean/)
     end
   end
 end

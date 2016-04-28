@@ -18,6 +18,7 @@ class collectd::plugin::write_riemann (
 
   validate_bool($store_rates)
   validate_bool($always_append_ds)
+  validate_bool($batch)
   validate_numeric($ttl_factor)
 
   if $::osfamily == 'Redhat' {
