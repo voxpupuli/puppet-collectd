@@ -1,3 +1,4 @@
+require: rubocop-rspec
 AllCops:
   Include:
     - ./**/*.rb

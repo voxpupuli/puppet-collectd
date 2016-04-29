@@ -20,6 +20,7 @@ group :test do
   gem 'rspec',                                                      :require => false
   gem 'puppet-blacksmith',                                          :require => false, :git => 'https://github.com/voxpupuli/puppet-blacksmith.git'
   gem 'voxpupuli-release',                                          :require => false, :git => 'https://github.com/voxpupuli/voxpupuli-release-gem.git'
+  gem 'rubocop-rspec',                                              :require => false
   gem 'rubocop', '~> 0.39',                                         :require => false
   gem 'rspec-puppet-utils',                                         :require => false
   gem 'puppetlabs_spec_helper',                                     :require => false
