@@ -137,6 +137,7 @@ documentation for each plugin for configurable attributes.
 * `vmem` (see [collectd::plugin::vmem](#class-collectdpluginvmem) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_http` (see [collectd::plugin::write_http](#class-collectdpluginwrite_http) below)
+* `write_kafka` (see [collectd::plugin::write_kafka](#class-collectdpluginwrite_kafka) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 * `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu) below)
@@ -1469,6 +1470,18 @@ class { 'collectd::plugin::write_http':
   urls => {
     'collect1.example.org' => { 'format' => 'JSON' },
     'collect2.example.org' => {},
+  }
+}
+```
+
+####Class: `collectd::plugin::write_kafka`
+
+```puppet
+class { 'collectd::plugin::write_kafka':
+  kafka_host => 'localhost',
+  kafka_port => 9092,
+  topics     => {
+    'mytopic'      => { 'format' => 'JSON' },
   }
 }
 ```
