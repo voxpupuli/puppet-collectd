@@ -1,0 +1,11 @@
+LoadPlugin "write_kafka"
+<Plugin write_kafka>
+  Property "metadata.broker.list" "<%= @kafka_broker %>"
+  <% @topics.each do |name,values| -%>
+  <Topic "<%= name %>">
+    <% if values['format'] -%>
+    Format "<%= values['format'] %>"
+    <% end -%>
+  </Topic>
+  <% end -%>
+</Plugin>
