@@ -40,4 +40,3 @@ describe 'collectd::plugin::write_tsdb', :type => :class do
     end
   end
 end
-
