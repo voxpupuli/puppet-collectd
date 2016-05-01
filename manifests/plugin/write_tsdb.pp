@@ -13,6 +13,8 @@ class collectd::plugin::write_tsdb (
   validate_bool($always_append_ds)
   validate_array($host_tags)
 
+  include ::collectd
+
   collectd::plugin {'write_tsdb':
     ensure  => $collectd::plugin::write_tsdb::ensure,
     content => template('collectd/plugin/write_tsdb.conf.erb'),
