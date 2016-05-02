@@ -42,7 +42,7 @@ describe 'collectd::plugin::dns' do
         { ensure: 'invalid' }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
         end.to raise_error(Puppet::Error, /collectd::plugin::dns::ensure is <invalid> and must be either 'present' or 'absent'\./)
@@ -69,7 +69,7 @@ describe 'collectd::plugin::dns' do
         { ignoresource: 'not_an_ip' }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
         end.to raise_error(Puppet::Error, /collectd::plugin::dns::ignoresource is <not_an_ip> and must be a valid IP address\./)
@@ -92,7 +92,7 @@ describe 'collectd::plugin::dns' do
         { interface: %w(not a string) }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
         end.to raise_error(Puppet::Error, /is not a string/)
@@ -116,7 +116,7 @@ describe 'collectd::plugin::dns' do
         { interval: 'invalid' }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
         end.to raise_error(Puppet::Error, /Expected first argument to be a Numeric or Array, got String/)
@@ -140,7 +140,7 @@ describe 'collectd::plugin::dns' do
         { selectnumericquerytypes: 'invalid' }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
         end.to raise_error(Puppet::Error, /Unknown type of boolean/)

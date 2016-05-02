@@ -75,7 +75,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
       { ensure: 'present', allportssummary: true }
     end
 
-    it 'Should not include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
+    it 'does not include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
       should contain_file('tcpconns.load').without_content(/AllPortsSummary/)
     end
   end
@@ -88,7 +88,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
       { ensure: 'present', allportssummary: true }
     end
 
-    it 'Should include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
+    it 'includes AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
       should contain_file('tcpconns.load').with_content(/AllPortsSummary true/)
     end
   end

@@ -24,7 +24,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       }
     end
 
-    it 'Should not include protocol in /etc/collectd.d/write_graphite.conf for collectd < 5.4' do
+    it 'does not include protocol in /etc/collectd.d/write_graphite.conf for collectd < 5.4' do
       should_not contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_localhost_2003'
       ).with_content(/.*Protocol \"udp\".*/)
@@ -45,7 +45,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       }
     end
 
-    it 'Should include protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
+    it 'includes protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
       should contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_wg_udp_2003'
       ).with_content(/.*Protocol \"udp\".*/)

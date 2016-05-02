@@ -32,7 +32,7 @@ describe 'collectd' do
         { package_install_options: 'not_an_array' }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd')
         end.to raise_error(Puppet::Error, /is not an Array/)
@@ -43,7 +43,7 @@ describe 'collectd' do
   context 'on non supported operating systems' do
     let(:facts) { { osfamily: 'foo' } }
 
-    it 'should fail' do
+    it 'fails' do
       should compile.and_raise_error(/foo is not supported/)
     end
   end
