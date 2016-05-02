@@ -12,7 +12,11 @@
     <%= key %> <%= k %> <% if !!v == v %><%= v %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
   <%- end -%>
   <%- else -%>
-    <%= key %> <% if !!value == value %><%= value %><% else %>"<%= Shellwords.split(value).join('" "') %>"<% end %>
+  <%- if not !!value == value and value.include?('"') -%>
+    <%= key %> "<%= Shellwords.split(value).join('" "') %>"
+  <%- else -%>
+    <%= key %> <% if !!value == value %><%= value %><% else %>"<%= value %>"<% end %>
+  <%- end -%>
   <%- end -%>
   <%- end -%>
   </Module>

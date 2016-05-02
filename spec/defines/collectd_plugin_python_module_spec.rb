@@ -11,6 +11,49 @@ describe 'collectd::plugin::python::module', type: :define do
     }
   end
 
+  context 'true|false to boolean' do
+    context 'true to boolean' do
+      let(:title) { 'dummy' }
+      let :params do
+        {
+          config: { 'someFunkyBoolean' => true },
+          modulepath: '/var/lib/collectd/python',
+        }
+      end
+      it 'ensure someFunkyBoolean is boolean true' do
+        should contain_concat__fragment('collectd_plugin_python_conf_dummy')
+          .with(content: /someFunkyBoolean true/,
+                target: '/etc/collectd/conf.d/python-config.conf',)
+      end
+
+      it 'ensure someFunkyBoolean is not string "true"' do
+        should_not contain_concat__fragment('collectd_plugin_python_conf_dummy')
+          .with(content: /someFunkyBoolean "true"/,
+                target: '/etc/collectd/conf.d/python-config.conf',)
+      end
+    end
+    context 'false to boolean' do
+      let(:title) { 'dummy' }
+      let :params do
+        {
+          config: { 'someFunkyBoolean' => false },
+          modulepath: '/var/lib/collectd/python',
+        }
+      end
+      it 'ensure someFunkyBoolean is boolean true' do
+        should contain_concat__fragment('collectd_plugin_python_conf_dummy')
+          .with(content: /someFunkyBoolean false/,
+                target: '/etc/collectd/conf.d/python-config.conf',)
+      end
+
+      it 'ensure someFunkyBoolean is not string "false"' do
+        should_not contain_concat__fragment('collectd_plugin_python_conf_dummy')
+          .with(content: /someFunkyBoolean "false"/,
+                target: '/etc/collectd/conf.d/python-config.conf',)
+      end
+    end
+  end
+
   context 'spam module' do
     let(:title) { 'spam' }
     let :params do
