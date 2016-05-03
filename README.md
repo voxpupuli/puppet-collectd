@@ -141,6 +141,7 @@ documentation for each plugin for configurable attributes.
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 * `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu) below)
+* `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb) below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
 
 ####Class: `collectd::plugin::aggregation`
@@ -1517,6 +1518,19 @@ class { 'collectd::plugin::write_riemann':
 class { 'collectd::plugin::write_sensu':
   sensu_host => 'sensu.example.org',
   sensu_port => 3030,
+}
+```
+
+
+####Class: `collectd::plugin::write_tsdb`
+
+```puppet
+class { 'collectd::plugin::write_tsdb':
+  host             => 'tsdb.example.org',
+  port             => 4242,
+  host_tags        => ['environment=production', 'colocation=AWS'],
+  store_rates      => false,
+  always_append_ds => false,
 }
 ```
 
