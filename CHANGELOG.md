@@ -1,9 +1,15 @@
 ## Unreleased
 
+### Backwards-incompatible changes:
+
+* The libvirt plugin has been renamed to simply virt, per collectd upstream
+
 ### New features
 
-* Add plugin::ipmi
 * Add plugin::cgroups
+* Add plugin::fhcount
+* Add plugin::ipmi
+* Add plugin::rabbitmq
 
 ### Bug fixes
 

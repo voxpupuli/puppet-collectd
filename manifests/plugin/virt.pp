@@ -1,5 +1,5 @@
-# https://collectd.org/wiki/index.php/Plugin:libvirt
-class collectd::plugin::libvirt (
+# https://collectd.org/wiki/index.php/Plugin:virt
+class collectd::plugin::virt (
   $connection,
   $ensure           = 'present',
   $manage_package   = undef,
@@ -35,9 +35,16 @@ class collectd::plugin::libvirt (
     }
   }
 
-  collectd::plugin { 'libvirt':
+  if versioncmp("${::collectd::collectd_version_real}", '5.5') >= 0 { # lint:ignore:only_variable_string
+    $plugin_name = 'virt'
+  } else {
+    $plugin_name = 'libvirt'
+  }
+
+  collectd::plugin { 'virt':
     ensure   => $ensure,
-    content  => template('collectd/plugin/libvirt.conf.erb'),
+    name     => $plugin_name,
+    content  => template('collectd/plugin/virt.conf.erb'),
     interval => $interval,
   }
 }
