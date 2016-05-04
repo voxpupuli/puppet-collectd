@@ -19,7 +19,7 @@ describe 'collectd::plugin::libvirt', type: :class do
         }
       end
 
-      it 'should be ignored' do
+      it 'is ignored' do
         should contain_file('libvirt.load')
           .without_content(/.*InterfaceFormat \"address\".*/)
       end
@@ -32,7 +32,7 @@ describe 'collectd::plugin::libvirt', type: :class do
         }
       end
 
-      it 'should be included' do
+      it 'is included' do
         should contain_file('libvirt.load')
           .with_content(/.*InterfaceFormat \"address\".*/)
       end

@@ -14,7 +14,7 @@ describe 'collectd::plugin::varnish', type: :class do
     let :params do
       {}
     end
-    it 'should render the template with the default values' do
+    it 'renders the template with the default values' do
       content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
@@ -33,7 +33,7 @@ EOS
     let :params do
       {}
     end
-    it 'should render the template with the default values' do
+    it 'renders the template with the default values' do
       content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
@@ -54,7 +54,7 @@ EOS
       let :params do
         {}
       end
-      it 'should render the template with the default values' do
+      it 'renders the template with the default values' do
         content = <<EOS
 <Plugin varnish>
   <Instance "localhost">
@@ -75,7 +75,7 @@ EOS
           }
         }
       end
-      it 'should render the template with the values passed in the params' do
+      it 'renders the template with the values passed in the params' do
         content = <<EOS
 <Plugin varnish>
   <Instance "warble">

@@ -50,7 +50,7 @@ describe 'collectd::plugin::mongodb' do
         default_params.merge(ensure: 'invalid',)
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, /collectd::plugin::mongodb::ensure is <invalid> and must be either 'present' or 'absent'\./)
@@ -74,7 +74,7 @@ describe 'collectd::plugin::mongodb' do
         default_params.merge(interval: 'invalid',)
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, /Expected first argument to be a Numeric or Array, got String/)
@@ -98,7 +98,7 @@ describe 'collectd::plugin::mongodb' do
           default_params.merge(db_host: value.to_s,)
         end
 
-        it 'should fail' do
+        it 'fails' do
           expect do
             should contain_class('collectd::plugin::mongodb')
           end.to raise_error(Puppet::Error, /must be a valid IP address/)
@@ -123,7 +123,7 @@ describe 'collectd::plugin::mongodb' do
         }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, /is <undef> and must be a mongodb username/)
@@ -147,7 +147,7 @@ describe 'collectd::plugin::mongodb' do
         }
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, /collectd::plugin::mongodb::db_pass is <undef>/)
@@ -181,7 +181,7 @@ describe 'collectd::plugin::mongodb' do
         default_params.merge(configured_dbs: [25],)
       end
 
-      it 'should fail' do
+      it 'fails' do
         expect do
           should contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, /db_port is undefined/)
