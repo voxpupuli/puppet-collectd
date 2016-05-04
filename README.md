@@ -99,7 +99,7 @@ documentation for each plugin for configurable attributes.
 * `java` (see [collectd::plugin::java](#class-collectdpluginjava) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
-* `libvirt` (see [collectd::plugin::libvirt](#class-collectdpluginlibvirt) below)
+* `virt` (see [collectd::plugin::virt](#class-collectdpluginvirt) below)
 * `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
@@ -800,13 +800,13 @@ class { 'collectd::plugin::logfile':
 }
 ```
 
-####Class: `collectd::plugin::libvirt`
+####Class: `collectd::plugin::virt`
 
 The interface_format parameter was introduced in collectd 5.0 and will
 therefore be ignored (with a warning) when specified with older versions.
 
 ```puppet
-class { 'collectd::plugin::libvirt':
+class { 'collectd::plugin::virt':
   connection       => 'qemu:///system',
   interface_format => 'address'
 }

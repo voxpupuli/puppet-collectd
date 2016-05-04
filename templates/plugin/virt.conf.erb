@@ -1,4 +1,8 @@
+<%- if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
+<Plugin virt>
+<%- else -%>
 <Plugin libvirt>
+<%- end -%>
   Connection "<%= @connection %>"
 <% if @refresh_interval != nil -%>
   RefreshInterval <%= @refresh_interval %>
