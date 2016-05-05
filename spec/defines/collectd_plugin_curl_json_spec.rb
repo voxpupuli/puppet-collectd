@@ -13,6 +13,9 @@ describe 'collectd::plugin::curl_json', type: :define do
     {
       url: 'http://localhost:55672/api/overview',
       instance: 'rabbitmq_overview',
+      verifypeer: 'false',
+      verifyhost: 'false',
+      cacert: '/path/to/ca.crt',
       header: 'Accept: application/json',
       keys: {
         'message_stats/publish' => {
@@ -38,6 +41,9 @@ describe 'collectd::plugin::curl_json', type: :define do
     it { should contain_file(filename).with_content(/LoadPlugin "curl_json"/) }
     it { should contain_file(filename).with_content(%r{URL "http://localhost:55672/api/overview">}) }
     it { should contain_file(filename).with_content(%r{Header "Accept: application/json"}) }
+    it { should contain_file(filename).with_content(/VerifyPeer false/) }
+    it { should contain_file(filename).with_content(/VerifyHost false/) }
+    it { should contain_file(filename).with_content(%r{CACert "/path/to/ca.crt"}) }
     it { should contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
     it { should contain_file(filename).with_content(/Type "gauge"/) }
     it { should contain_file(filename).with_content(/Instance "overview"/) }

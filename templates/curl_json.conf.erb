@@ -17,6 +17,16 @@ LoadPlugin "curl_json"
     Password "<%= @password %>"
 <% end %>
 
+<% unless @verifypeer.nil? -%>
+    VerifyPeer <%= @verifypeer %>
+<% end -%>
+<% unless @verifyhost.nil? -%>
+    VerifyHost <%= @verifyhost %>
+<% end -%>
+<% if @cacert -%>
+    CACert "<%= @cacert %>"
+<% end -%>
+
 <% if @header %>
     Header "<%= @header %>"
 <% end %>
