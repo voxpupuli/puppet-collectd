@@ -1617,3 +1617,8 @@ This module shall not use unsupported configuration directives. Look at [templat
 Please make use of the search by branch/tags on the collectd github to see when a function has been first released.
 
 Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master/src/collectd.conf.pod) file is good, validating the presence of the code in the .c files is even better.
+
+
+### Authors
+
+Puppet-collectd is maintained by VoxPupuli. Before moving to VoxPupuli it was written and maintained by [TheCAT](https://www.cat.pdx.edu/).
