@@ -6,6 +6,7 @@
 <% @matches.each do |match| -%>
   <Match>
    Regex "<%= match['regex'] %>"
+   ExcludeRegex "<%= match['excluderegex'] %>"
    DSType "<%= match['dstype'] %>"
    Type "<%= match['type'] %>"
    Instance "<%= match['instance'] %>"
