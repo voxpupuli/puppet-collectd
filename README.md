@@ -1621,4 +1621,4 @@ Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master
 
 ### Authors
 
-Puppet-collectd is maintained by VoxPupuli. Before moving to VoxPupuli it was written and maintained by [TheCAT](https://www.cat.pdx.edu/).
+Puppet-collectd is maintained by VoxPupuli. Before moving to VoxPupuli it was written and maintained by [TheCAT](https://www.cat.pdx.edu/) in the [pdxcat](https://github.com/pdxcat/) github org.
