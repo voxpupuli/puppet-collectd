@@ -1243,16 +1243,24 @@ class { 'collectd::plugin::redis':
 
 ####Class: `collectd::plugin::rabbitmq`
 
-Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom). You will need to add this to [collectd::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/init.pp#L28) via hiera or in a manifest. Failure to set the types.db.custom content will result in *no* metrics from the rabbitmq plugin.
+Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom). You will need to add this to [collectd::config::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/config.pp#L18) via hiera or in a manifest. Failure to set the types.db.custom content will result in *no* metrics from the rabbitmq plugin.
+
+set typesdb to include the collectd-rabbitmq types.db.custom
+
+```yaml
+collectd::config::typesdb:
+  - /usr/share/collectd/types.db
+  - /usr/share/collect-rabbitmq/types.db.custom
+```
 
 ```puppet
 class { '::collectd::plugin::rabbitmq':
   config           => {
-    'Username' => '"admin"',
-    'Password' => "${admin_pass}",
-    'Scheme'   => '"https"',
-    'Port'     => '"15671"',
-    'Host'     => "${::fqdn}",
+    'Username' => 'admin',
+    'Password' => $admin_pass,
+    'Scheme'   => 'https',
+    'Port'     => '15671',
+    'Host'     => $::fqdn,
     'Realm'    => '"RabbitMQ Management"',
   },
 }
