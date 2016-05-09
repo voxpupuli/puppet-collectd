@@ -11,7 +11,6 @@ define collectd::typesdb (
     group          => $::collectd::root_group,
     mode           => $mode,
     ensure_newline => true,
-    force          => true,
     notify         => Service['collectd'],
   }
 }
