@@ -4,7 +4,7 @@ describe 'collectd::plugin::exec', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      concat_basedir: tmpfilename('collectd-exec'),
+      concat_basedir: '/dne',
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',

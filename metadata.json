@@ -36,14 +36,16 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "12.04",
-        "14.04"
+        "14.04",
+        "16.04"
       ]
     },
     {
@@ -80,7 +82,7 @@
   "summary": "Puppet module for Collectd",
   "project_page": "https://github.com/voxpupuli/puppet-collectd",
   "issues_url": "https://github.com/voxpupuli/puppet-collectd/issues",
-  "tags": ["collectd", "statistics"],
+  "tags": ["collectd", "statistics", "graphite"],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

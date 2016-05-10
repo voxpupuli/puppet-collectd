@@ -4,7 +4,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      concat_basedir: tmpfilename('collectd-filter'),
+      concat_basedir: '/dne',
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',

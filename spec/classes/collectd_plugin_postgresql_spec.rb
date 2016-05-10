@@ -8,7 +8,7 @@ describe 'collectd::plugin::postgresql', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      concat_basedir: tmpfilename('collectd-postgresql'),
+      concat_basedir: '/dne',
       id: 'root',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',

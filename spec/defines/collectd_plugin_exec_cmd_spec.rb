@@ -5,7 +5,7 @@ describe 'collectd::plugin::exec::cmd', type: :define do
     {
       osfamily: 'Debian',
       id: 'root',
-      concat_basedir: tmpfilename('collectd-exec'),
+      concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
     }

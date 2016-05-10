@@ -5,7 +5,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
     {
       osfamily: 'Debian',
       id: 'root',
-      concat_basedir: tmpfilename('collectd-genericjmx-mbean'),
+      concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
     }
@@ -74,11 +74,11 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(values: [default_values_args])
     end
 
-    it 'should have a value stanza' do
+    it 'has a value stanza' do
       should contain_concat__fragment(concat_fragment_name).with_content(%r{<Value>.*</Value>}m)
     end
 
-    it 'should have only one value stanza' do
+    it 'has only one value stanza' do
       should contain_concat__fragment(concat_fragment_name).without_content(/(.*<Value>.*){2,}/)
     end
 
