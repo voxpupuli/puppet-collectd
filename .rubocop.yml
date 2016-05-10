@@ -1,4 +1,6 @@
+require: rubocop-rspec
 AllCops:
+  TargetRubyVersion: 1.9
   Include:
     - ./**/*.rb
   Exclude:
@@ -64,4 +66,8 @@ Style/BlockDelimiters:
   Enabled: False
 
 Style/MultilineBlockLayout:
+  Enabled: False
+
+# Rspec
+RSpec/DescribeClass:
   Enabled: False

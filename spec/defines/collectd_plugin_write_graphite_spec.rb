@@ -5,7 +5,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
     {
       osfamily: 'Debian',
       id: 'root',
-      concat_basedir: tmpfilename('collectd-graphite'),
+      concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
     }
@@ -16,7 +16,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
     let :facts do
       { osfamily: 'RedHat',
         collectd_version: '5.3',
-        concat_basedir: tmpfilename('collectd-graphite'),
+        concat_basedir: '/dne',
       }
     end
     let :params do
@@ -24,7 +24,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       }
     end
 
-    it 'Should not include protocol in /etc/collectd.d/write_graphite.conf for collectd < 5.4' do
+    it 'does not include protocol in /etc/collectd.d/write_graphite.conf for collectd < 5.4' do
       should_not contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_localhost_2003'
       ).with_content(/.*Protocol \"udp\".*/)
@@ -36,7 +36,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
     let :facts do
       { osfamily: 'RedHat',
         collectd_version: '5.4',
-        concat_basedir: tmpfilename('collectd-graphite'),
+        concat_basedir: '/dne',
       }
     end
     let :params do
@@ -45,7 +45,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       }
     end
 
-    it 'Should include protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
+    it 'includes protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
       should contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_wg_udp_2003'
       ).with_content(/.*Protocol \"udp\".*/)

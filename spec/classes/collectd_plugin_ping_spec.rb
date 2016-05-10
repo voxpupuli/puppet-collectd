@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'collectd::plugin::ping' do
+describe 'collectd::plugin::ping', type: :class do
   let :pre_condition do
     'include ::collectd'
   end
