@@ -10,6 +10,8 @@ class collectd::plugin::write_riemann (
   $always_append_ds = false,
   $interval         = undef,
   $ttl_factor       = '2.0',
+  $tags             = [],
+  $attributes       = {},
 ) {
 
   include ::collectd
@@ -20,6 +22,8 @@ class collectd::plugin::write_riemann (
   validate_bool($always_append_ds)
   validate_bool($batch)
   validate_numeric($ttl_factor)
+  validate_array($tags)
+  validate_hash($attributes)
 
   if $::osfamily == 'Redhat' {
     if $_manage_package {
