@@ -8,4 +8,10 @@
     AlwaysAppendDS <%= @always_append_ds %>
     TTLFactor <%= @ttl_factor %>
   </Node>
+<% @tags.each do |t| -%>
+  Tag "<%= t %>"
+<% end -%>
+<% @attributes.each do |k, v| -%>
+  Attribute "<%= k %>" "<%= v %>"
+<% end -%>
 </Plugin>

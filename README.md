@@ -1517,6 +1517,8 @@ class { 'collectd::plugin::write_network':
 class { 'collectd::plugin::write_riemann':
   riemann_host => 'riemann.example.org',
   riemann_port => 5555,
+  tags         => ['foo'],
+  attributes   => {'bar' => 'baz'},
 }
 ```
 
