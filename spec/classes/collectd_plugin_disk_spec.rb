@@ -90,7 +90,8 @@ describe 'collectd::plugin::disk', type: :class do
       { udevnameattr: 'DM_NAME' }
     end
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -105,7 +106,8 @@ describe 'collectd::plugin::disk', type: :class do
       { udevnameattr: 'DM_NAME' }
     end
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.5',
       }
     end

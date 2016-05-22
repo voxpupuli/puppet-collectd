@@ -7,14 +7,16 @@ describe 'collectd::plugin::virt', type: :class do
 
   context 'interface_format in virt.conf' do
     let :params do
-      { connection: 'qemu:///system',
+      {
+        connection: 'qemu:///system',
         interface_format: 'address',
       }
     end
 
     context 'with collectd_version < 5.0' do
       let :facts do
-        { osfamily: 'Debian',
+        {
+          osfamily: 'Debian',
           collectd_version: '4.10.1',
         }
       end
@@ -27,7 +29,8 @@ describe 'collectd::plugin::virt', type: :class do
 
     context 'with collectd_version >= 5.0' do
       let :facts do
-        { osfamily: 'Debian',
+        {
+          osfamily: 'Debian',
           collectd_version: '5.0.0',
         }
       end
@@ -40,7 +43,8 @@ describe 'collectd::plugin::virt', type: :class do
 
     context 'with collectd_version >= 5.5' do
       let :facts do
-        { osfamily: 'Debian',
+        {
+          osfamily: 'Debian',
           collectd_version: '5.5.0',
         }
       end

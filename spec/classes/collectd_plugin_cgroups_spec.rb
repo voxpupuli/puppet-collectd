@@ -24,8 +24,9 @@ describe 'collectd::plugin::cgroups', type: :class do
 
   context ':ensure => present, specific params, collectd version 5.4.0' do
     let :facts do
-      { osfamily: 'Redhat',
-        collectd_version: '5.4.0'
+      {
+        osfamily: 'Redhat',
+        collectd_version: '5.4.0',
       }
     end
     let :params do

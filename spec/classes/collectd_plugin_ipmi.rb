@@ -15,7 +15,8 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':ensure => present, default params' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -32,7 +33,8 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':sensors param is not an array' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -48,8 +50,10 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':notify_sensor_not_present is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { notify_sensor_not_present: 'true' }
@@ -62,8 +66,10 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':notify_sensor_remove is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { notify_sensor_remove: 'true' }
@@ -76,8 +82,10 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':notify_sensor_add is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { notify_sensor_add: 'true' }
@@ -90,8 +98,10 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':ignore_selected is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { ignore_selected: 'true' }
@@ -104,8 +114,10 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':interval is not default and is an integer' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { interval: 15 }
@@ -120,7 +132,8 @@ describe 'collectd::plugin::ipmi', type: :class do
 
   context ':ensure => absent' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end

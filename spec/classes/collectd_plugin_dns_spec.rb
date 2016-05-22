@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe 'collectd::plugin::dns', type: :class do
   let :facts do
-    { collectd_version: '5.2',
+    {
+      collectd_version: '5.2',
       osfamily: 'RedHat',
     }
   end
@@ -154,7 +155,8 @@ describe 'collectd::plugin::dns', type: :class do
         %w(present absent).each do |ensure_value|
           context "and ensure set to #{ensure_value}" do
             let :params do
-              { ensure: ensure_value,
+              {
+                ensure: ensure_value,
                 manage_package: value,
               }
             end

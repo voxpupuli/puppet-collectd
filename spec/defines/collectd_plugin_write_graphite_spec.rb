@@ -14,13 +14,15 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
   context 'protocol should not be include with version < 5.4' do
     let(:title) { 'graphite_udp' }
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.3',
         concat_basedir: '/dne',
       }
     end
     let :params do
-      { protocol: 'udp',
+      {
+        protocol: 'udp',
       }
     end
 
@@ -34,7 +36,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
   context 'protocol should be include with version >= 5.4' do
     let(:title) { 'wg' }
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
         concat_basedir: '/dne',
       }

@@ -7,7 +7,8 @@ describe 'collectd::plugin::varnish', type: :class do
 
   context 'When the version is not 5.4' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.3',
       }
     end
@@ -26,7 +27,8 @@ EOS
   end
   context 'When the version is nil' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: nil,
       }
     end
@@ -46,7 +48,8 @@ EOS
 
   context 'When the version is 5.4' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end

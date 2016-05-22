@@ -59,7 +59,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
 
     context 'override Username to foo' do
       let :facts do
-        { osfamily: 'RedHat',
+        {
+          osfamily: 'RedHat',
           collectd_version: '5.5'
         }
       end
@@ -74,7 +75,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
 
     context 'override Password to foo' do
       let :facts do
-        { osfamily: 'RedHat',
+        {
+          osfamily: 'RedHat',
           collectd_version: '5.5'
         }
       end
@@ -89,7 +91,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
 
     context 'override Scheme to https' do
       let :facts do
-        { osfamily: 'RedHat',
+        {
+          osfamily: 'RedHat',
           collectd_version: '5.5'
         }
       end
@@ -122,7 +125,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             %w(collectd-rabbitmq collectd_rabbitmq).each do |packagename|
               context "and ensure set to #{ensure_value} for package #{packagename} with package_provider #{provider}" do
                 let :params do
-                  { ensure: ensure_value,
+                  {
+                    ensure: ensure_value,
                     manage_package: value,
                     package_name: packagename,
                     package_provider: provider
