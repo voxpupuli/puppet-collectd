@@ -2,13 +2,15 @@ require 'spec_helper'
 
 describe 'collectd::plugin::mongodb', type: :class do
   let :facts do
-    { collectd_version: '5.2',
+    {
+      collectd_version: '5.2',
       osfamily: 'RedHat',
     }
   end
 
   let :default_params do
-    { db_user: 'test_user',
+    {
+      db_user: 'test_user',
       db_pass: 'password',
     }
   end
@@ -119,7 +121,8 @@ describe 'collectd::plugin::mongodb', type: :class do
 
     context 'undefined' do
       let :params do
-        { db_pass: 'password',
+        {
+          db_pass: 'password',
         }
       end
 
@@ -143,7 +146,8 @@ describe 'collectd::plugin::mongodb', type: :class do
 
     context 'undefined' do
       let :params do
-        { db_user: 'test_user',
+        {
+          db_user: 'test_user',
         }
       end
 

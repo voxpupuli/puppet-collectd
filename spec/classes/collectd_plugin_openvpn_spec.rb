@@ -12,7 +12,8 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':ensure => present, default params' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -26,7 +27,8 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':statusfile param is an array' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -47,7 +49,8 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':statusfile is a string but not an absolute path' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -63,7 +66,8 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':statusfile param is not a string or array' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -79,8 +83,10 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':improvednamingschema is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { improvednamingschema: 'true' }
@@ -93,8 +99,10 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':collectcompression is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { collectcompression: 'true' }
@@ -107,8 +115,10 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':collectindividualusers is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { collectindividualusers: 'true' }
@@ -121,8 +131,10 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':collectusercount is not a bool' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { collectusercount: 'true' }
@@ -135,8 +147,10 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':interval is not default and is an integer' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { interval: 15 }
@@ -151,7 +165,8 @@ describe 'collectd::plugin::openvpn', type: :class do
 
   context ':ensure => absent' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end

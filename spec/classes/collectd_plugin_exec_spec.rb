@@ -16,8 +16,7 @@ describe 'collectd::plugin::exec', type: :class do
     let :params do
       {
         commands: { 'hello' =>
-          { 'user' => 'nobody', 'group' => 'users', 'exec' => ['/bin/echo', 'hello world'] }
-        },
+          { 'user' => 'nobody', 'group' => 'users', 'exec' => ['/bin/echo', 'hello world'] } },
       }
     end
 
@@ -47,11 +46,9 @@ describe 'collectd::plugin::exec', type: :class do
       {
         commands: {
           'hello' => { 'user' => 'nobody', 'group' => 'users',
-                       'exec' => ['/bin/echo', 'hello world']
-          },
+                       'exec' => ['/bin/echo', 'hello world'] },
           'my_date' => { 'user' => 'nobody', 'group' => 'users',
-                         'exec' => ['/bin/date']
-          }
+                         'exec' => ['/bin/date'] }
         },
       }
     end

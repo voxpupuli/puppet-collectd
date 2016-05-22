@@ -24,8 +24,9 @@ describe 'collectd::plugin::memory', type: :class do
 
   context ':ensure => present, specific params, collectd version 5.4.2' do
     let :facts do
-      { osfamily: 'Redhat',
-        collectd_version: '5.4.2'
+      {
+        osfamily: 'Redhat',
+        collectd_version: '5.4.2',
       }
     end
 
@@ -42,8 +43,9 @@ describe 'collectd::plugin::memory', type: :class do
 
   context ':ensure => present, specific params, collectd version 5.5.0' do
     let :facts do
-      { osfamily: 'Redhat',
-        collectd_version: '5.5.0'
+      {
+        osfamily: 'Redhat',
+        collectd_version: '5.5.0',
       }
     end
 

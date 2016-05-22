@@ -58,10 +58,12 @@ describe 'collectd::plugin::python', type: :class do
       it 'will set two modulepath in the module conf' do
         should contain_concat__fragment('collectd_plugin_python_conf_header').with(
           content: %r{ModulePath "/tmp/"},
-          target: '/etc/collectd/conf.d/python-config.conf',)
+          target: '/etc/collectd/conf.d/python-config.conf',
+)
         should contain_concat__fragment('collectd_plugin_python_conf_header').with(
           content: %r{ModulePath "/data/"},
-          target: '/etc/collectd/conf.d/python-config.conf',)
+          target: '/etc/collectd/conf.d/python-config.conf',
+)
       end
     end
 

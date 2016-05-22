@@ -11,12 +11,14 @@ describe 'collectd::plugin::fhcount', type: :class do
   context ':ensure => present' do
     context 'fhcount options should be set with collectd 5.5' do
       let :facts do
-        { osfamily: 'RedHat',
+        {
+          osfamily: 'RedHat',
           collectd_version: '5.5',
         }
       end
       let :params do
-        { valuesabsolute: false,
+        {
+          valuesabsolute: false,
           valuespercentage: true,
         }
       end
@@ -33,7 +35,8 @@ describe 'collectd::plugin::fhcount', type: :class do
 
   context 'default parameters are not booleans' do
     let :params do
-      { valuesabsolute: 'string_b',
+      {
+        valuesabsolute: 'string_b',
         valuespercentage: 'string_c',
       }
     end

@@ -31,12 +31,14 @@ describe 'collectd::plugin::cpu', type: :class do
 
     context 'cpu options should be set with collectd 5.5' do
       let :facts do
-        { osfamily: 'RedHat',
+        {
+          osfamily: 'RedHat',
           collectd_version: '5.5',
         }
       end
       let :params do
-        { reportbystate: false,
+        {
+          reportbystate: false,
           reportbycpu: false,
           valuespercentage: true,
         }
@@ -58,7 +60,8 @@ describe 'collectd::plugin::cpu', type: :class do
 
   context 'default parameters are not booleans' do
     let :params do
-      { reportbystate: 'string_a',
+      {
+        reportbystate: 'string_a',
         reportbycpu: 'string_b',
         valuespercentage: 'string_c',
       }

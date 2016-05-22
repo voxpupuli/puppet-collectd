@@ -29,9 +29,8 @@ describe 'collectd::plugin::ping', type: :class do
     end
     it 'Will create /etc/collectd.d/10-ping.conf' do
       should contain_file('ping.load').with(ensure: 'present',
-                                            path: '/etc/collectd.d/10-ping.conf'
-                                           ).with_content(
-                                             /Host "google.com"/
+                                            path: '/etc/collectd.d/10-ping.conf').with_content(
+                                              /Host "google.com"/
                                            ).with_content(
                                              /Host "puppetlabs.com"/
                                            )

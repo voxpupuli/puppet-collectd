@@ -12,7 +12,8 @@ describe 'collectd::plugin::openldap', type: :class do
 
   context ':ensure => present, default params' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -26,7 +27,8 @@ describe 'collectd::plugin::openldap', type: :class do
 
   context ':instances param is a hash' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
@@ -47,8 +49,10 @@ describe 'collectd::plugin::openldap', type: :class do
 
   context ':interval is not default and is an integer' do
     let :facts do
-      { osfamily: 'RedHat',
-        collectd_version: '5.4' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4',
+      }
     end
     let :params do
       { interval: 15 }
@@ -63,7 +67,8 @@ describe 'collectd::plugin::openldap', type: :class do
 
   context ':ensure => absent' do
     let :facts do
-      { osfamily: 'RedHat',
+      {
+        osfamily: 'RedHat',
         collectd_version: '5.4',
       }
     end
