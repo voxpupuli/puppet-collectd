@@ -27,9 +27,7 @@ define collectd::plugin::curl_json (
     }
 
     if $::osfamily == 'Redhat' {
-      package { 'collectd-curl_json':
-        ensure => $ensure,
-      }
+      ensure_packages('collectd-curl_json')
     }
   }
 
