@@ -526,8 +526,8 @@ class { 'collectd::plugin::ethstat':
 
 ```puppet
 class { 'collectd::plugin::fhcount':
-  valueabsolute   => true,
-  valuepercentage => false,
+  valuesabsolute   => true,
+  valuespercentage => false,
 }
 ```
 
