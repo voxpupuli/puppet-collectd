@@ -1332,7 +1332,7 @@ class { 'collectd::plugin::statsd':
   deletetimers    => false,
   deletegauges    => false,
   deletesets      => false,
-  timerpercentile => 50,
+  timerpercentile => ['50','90'],
 }
 ```
 
