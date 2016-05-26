@@ -75,14 +75,18 @@
     }
   ],
   "name": "puppet-collectd",
-  "version": "5.0.0",
+  "version": "5.0.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "puppet",
   "license": "Apache-2.0",
   "summary": "Puppet module for Collectd",
   "project_page": "https://github.com/voxpupuli/puppet-collectd",
   "issues_url": "https://github.com/voxpupuli/puppet-collectd/issues",
-  "tags": ["collectd", "statistics", "graphite"],
+  "tags": [
+    "collectd",
+    "statistics",
+    "graphite"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
