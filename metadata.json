@@ -75,7 +75,7 @@
     }
   ],
   "name": "puppet-collectd",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "puppet",
   "license": "Apache-2.0",
