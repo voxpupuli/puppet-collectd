@@ -1,4 +1,4 @@
-## Unreleased
+## 2016-05-26 Release 5.0.0
 
 ### Backwards-incompatible changes:
 
@@ -10,10 +10,23 @@
 * Add plugin::fhcount
 * Add plugin::ipmi
 * Add plugin::rabbitmq
+* Add parameter StoreRates to amqp plugin
+* Support for STRICT_VARIABLES=yes
+* Add initial OpenBSD support
 
 ### Bug fixes
 
 * Manage collectd-disk package on collectd >= 5.5 (fix #457)
+* fix typo in write_sensu class example
+
+
+### Maintenance
+
+* Add support for puppetlabs-concat 2.x
+* Enhance the curl_json plugin
+* Improve FreeBSD support
+* A lot of new spec tests
+* modulesync to latest voxpupuli defaults (0.6.4)
 
 ## 2016-02-01 Release 4.3.0
 
