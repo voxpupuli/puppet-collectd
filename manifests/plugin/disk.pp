@@ -15,7 +15,7 @@ class collectd::plugin::disk (
   validate_bool($ignoreselected)
 
   if $::osfamily == 'RedHat' {
-    if $manage_package {
+    if $manage_package != undef {
       $_manage_package = $manage_package
     } else {
       if versioncmp($::collectd::collectd_version_real, '5.5') >= 0 {
