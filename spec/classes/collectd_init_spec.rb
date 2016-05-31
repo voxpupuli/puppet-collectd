@@ -90,6 +90,16 @@ describe 'collectd', type: :class do
       it { is_expected.to contain_file('collectd.conf').with_content(%r{^Include "/some/include/path"}) }
     end
 
+    context 'with has_wordexp => false' do
+      let(:params) { { purge_config: true, has_wordexp: false } }
+      it { is_expected.to contain_file('collectd.conf').without_content(%r{^Include "/etc/collectd\.d/\*\.conf"}) }
+    end
+
+    context 'with has_wordexp => true' do
+      let(:params) { { purge_config: true, has_wordexp: true } }
+      it { is_expected.to contain_file('collectd.conf').with_content(%r{^Include "/etc/collectd\.d/\*\.conf"}) }
+    end
+
     context 'with internal_stats => true' do
       context 'with collectd_version = 5.5' do
         let(:facts) { { osfamily: 'RedHat', collectd_version: '5.5' } }

@@ -22,6 +22,19 @@ class collectd::config (
   $write_threads          = $collectd::write_threads,
 ) {
 
+  validate_absolute_path($config_file)
+  validate_bool($fqdnlookup)
+  validate_bool($has_wordexp)
+  validate_array($include)
+  validate_bool($internal_stats)
+  validate_integer($interval)
+  validate_absolute_path($plugin_conf_dir)
+  validate_bool($purge_config)
+  validate_integer($read_threads)
+  validate_integer($timeout)
+  validate_array($typesdb)
+  validate_integer($write_threads)
+
   $_conf_content = $purge_config ? {
     true    => template('collectd/collectd.conf.erb'),
     default => $conf_content,
