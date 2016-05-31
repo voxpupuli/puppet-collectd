@@ -4,6 +4,7 @@ class collectd::config (
   $config_file            = $collectd::config_file,
   $conf_content           = $collectd::conf_content,
   $fqdnlookup             = $collectd::fqdnlookup,
+  $has_wordexp            = $collectd::has_wordexp,
   $include                = $collectd::include,
   $internal_stats         = $collectd::internal_stats,
   $interval               = $collectd::interval,
