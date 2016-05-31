@@ -34,9 +34,6 @@ class collectd (
 
   $collectd_version_real = pick($::collectd_version, $minimum_version)
 
-  validate_bool($purge_config, $fqdnlookup)
-  validate_array($include, $typesdb)
-
   class { '::collectd::install':
     package_install_options => $package_install_options,
   }
