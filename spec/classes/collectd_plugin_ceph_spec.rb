@@ -8,23 +8,29 @@ describe 'collectd::plugin::ceph', type: :class do
     }
   end
 
-  context ':ensure => present and :osds => [ \'osd.0\, \osd.1\, \osd.2\]' do
+  context ':ensure => present and :daemons => [ \'ceph-osd.0\, \ceph-osd.1\, \ceph-osd.2\, \test-osd.0\, \ceph-mon.mon01\ ]' do
     let :params do
-      { osds: ['osd.0', 'osd.1', 'osd.2'] }
+      { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2', 'test-osd.0', 'ceph-mon.mon01'] }
     end
     content = <<EOS
 <Plugin ceph>
   LongRunAvgLatency false
   ConvertSpecialMetricTypes true
 
-  <Daemon "osd.0">
+  <Daemon "ceph-osd.0">
     SocketPath "/var/run/ceph/ceph-osd.0.asok"
   </Daemon>
-  <Daemon "osd.1">
+  <Daemon "ceph-osd.1">
     SocketPath "/var/run/ceph/ceph-osd.1.asok"
   </Daemon>
-  <Daemon "osd.2">
+  <Daemon "ceph-osd.2">
     SocketPath "/var/run/ceph/ceph-osd.2.asok"
+  </Daemon>
+  <Daemon "test-osd.0">
+    SocketPath "/var/run/ceph/test-osd.0.asok"
+  </Daemon>
+  <Daemon "ceph-mon.mon01">
+    SocketPath "/var/run/ceph/ceph-mon.mon01.asok"
   </Daemon>
 
 </Plugin>
@@ -36,7 +42,7 @@ EOS
 
   context ':ensure => absent' do
     let :params do
-      { osds: ['osd.0', 'osd.1', 'osd.2'], ensure: 'absent' }
+      { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ceph.conf' do
       should contain_file('ceph.load').with(ensure: 'absent',
@@ -46,7 +52,7 @@ EOS
 
   context ':ceph is not an array' do
     let :params do
-      { osds: 'osd.0' }
+      { daemons: 'ceph-osd.0' }
     end
     it 'Will raise an error about :osds being a String' do
       should compile.and_raise_error(%r{String})
