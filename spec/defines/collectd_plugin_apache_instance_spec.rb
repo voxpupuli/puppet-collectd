@@ -43,15 +43,15 @@ describe 'collectd::plugin::apache::instance', type: :define do
       required_params.merge(url: 'http://bar.example.com/server-status?auto',
                             user: 'admin',
                             password: 'admin123',
-                            verifypeer: 'false',
-                            verifyhost: 'false',
+                            verifypeer: false,
+                            verifyhost: false,
                             cacert: '/etc/ssl/certs/ssl-cert-snakeoil.pem',)
     end
     it { should contain_file(filename).with_content(%r{URL "http://bar\.example\.com/server-status\?auto"}) }
     it { should contain_file(filename).with_content(/User "admin"/) }
     it { should contain_file(filename).with_content(/Password "admin123"/) }
-    it { should contain_file(filename).with_content(/VerifyPeer "false"/) }
-    it { should contain_file(filename).with_content(/VerifyHost "false"/) }
+    it { should contain_file(filename).with_content(/VerifyPeer false/) }
+    it { should contain_file(filename).with_content(/VerifyHost false/) }
     it { should contain_file(filename).with_content(%r{CACert "/etc/ssl/certs/ssl-cert-snakeoil\.pem"}) }
   end
 end

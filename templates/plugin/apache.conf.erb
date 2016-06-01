@@ -9,10 +9,10 @@
     Password "<%= values['password'] %>"
 <% end -%>
 <% unless values['verifypeer'].nil? -%>
-    VerifyPeer "<%= values['verifypeer'] %>"
+    VerifyPeer <%= values['verifypeer'] %>
 <% end -%>
 <% unless values['verifyhost'].nil? -%>
-    VerifyHost "<%= values['verifyhost'] %>"
+    VerifyHost <%= values['verifyhost'] %>
 <% end -%>
 <% if values['cacert'] -%>
     CACert "<%= values['cacert'] %>"
