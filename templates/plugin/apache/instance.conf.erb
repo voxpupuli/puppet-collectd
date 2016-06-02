@@ -7,11 +7,11 @@
 <% if @password -%>
     Password "<%= @password %>"
 <% end -%>
-<% if @verifypeer -%>
-    VerifyPeer "<%= @verifypeer %>"
+<% if defined? @verifypeer -%>
+    VerifyPeer <%= @verifypeer %>
 <% end -%>
-<% if @verifyhost -%>
-    VerifyHost "<%= @verifyhost %>"
+<% if defined? @verifyhost -%>
+    VerifyHost <%= @verifyhost %>
 <% end -%>
 <% if @cacert -%>
     CACert "<%= @cacert %>"
