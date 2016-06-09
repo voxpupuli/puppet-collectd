@@ -11,6 +11,9 @@
 <%     if params['timeout'] -%>
     Timeout <%= params['timeout'] %>
 <%     end -%>
+<%     if params['password'] -%>
+    Password "<%= params['password'] %>"
+<%     end -%>
 <% if params['queries'] -%>
 <%   params['queries'].each do |instance,qparams| -%>
     <Query "<%= qparams['query'] -%>">
