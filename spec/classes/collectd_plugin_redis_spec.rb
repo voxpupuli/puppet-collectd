@@ -33,11 +33,12 @@ describe 'collectd::plugin::redis', type: :class do
 
     let :params do
       {
-        :nodes => { 'redis' => {
+        nodes: {
+          'redis' => {
             'host' => 'localhost',
             'port' => '6379',
             'password' => 'testpassword',
-            'timeout' => 2000 
+            'timeout' => 2000
           }
         }
       }
