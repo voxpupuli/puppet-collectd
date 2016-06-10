@@ -52,7 +52,6 @@ describe 'collectd::plugin::redis', type: :class do
     end
   end
 
-
   context ':ensure => absent' do
     let :facts do
       {
