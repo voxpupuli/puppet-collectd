@@ -10,7 +10,7 @@ class collectd::plugin::filter (
   include ::collectd
 
   $plugin_matches = ['regex','timediff','value','empty_counter','hashed']
-  $plugin_targets = ['notification','replace','set']
+  $plugin_targets = ['notification','replace','set','scale']
   $conf_file = "${collectd::plugin_conf_dir}/01-filter.conf"
 
   file { $conf_file:
