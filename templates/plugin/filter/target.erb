@@ -5,7 +5,7 @@
 <%  @options.each do |key, value| -%>
 <%    if value.kind_of?(String) -%>
       <%= key %> "<%= value %>"
-<%    elsif value.kind_of?(Integer) or value.kind_of?(TrueClass) or value.kind_of?(FalseClass) -%>
+<%    elsif value.kind_of?(Integer) or value.kind_of?(Float) or value.kind_of?(TrueClass) or value.kind_of?(FalseClass) -%>
       <%= key %> <%= value %>
 <%    elsif value.kind_of?(Array) -%>
       <%= key %> <%= value.flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
