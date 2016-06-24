@@ -8,7 +8,7 @@ describe 'collectd::plugin::curl::page', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -17,7 +17,7 @@ describe 'collectd::plugin::curl::page', type: :define do
     let :params do
       {
         url: 'http://www.example.com/query',
-        matches: [{ 'regex' => 'SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)', 'dstype' => 'CounterAdd', 'type' => 'counter' }],
+        matches: [{ 'regex' => 'SPAM \\(Score: (-?[0-9]+\\.[0-9]+)\\)', 'dstype' => 'CounterAdd', 'type' => 'counter' }]
       }
     end
     it 'Will create /etc/collectd/conf.d/curl-test.conf' do

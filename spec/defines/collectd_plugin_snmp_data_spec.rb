@@ -4,7 +4,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -13,7 +13,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
     {
       type: 'bar',
       instance: 'baz',
-      values: 'bat',
+      values: 'bat'
     }
   end
 
@@ -30,24 +30,24 @@ describe 'collectd::plugin::snmp::data', type: :define do
     end
 
     it { should contain_file('snmp-data-foo.conf').that_notifies('Service[collectd]') }
-    it { should contain_file('snmp-data-foo.conf').with_content(/<Plugin snmp>/) }
-    it { should contain_file('snmp-data-foo.conf').with_content(/<Data "foo">/) }
-    it { should contain_file('snmp-data-foo.conf').with_content(/Type "bar"/) }
-    it { should contain_file('snmp-data-foo.conf').with_content(/Instance "baz"/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{<Plugin snmp>}) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{<Data "foo">}) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Type "bar"}) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Instance "baz"}) }
   end
 
   context 'values is an array' do
     let(:params) do
       required_params.merge(values: %w( foo bar baz ))
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(/Values "foo" "bar" "baz"/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
   end
 
   context 'values is just a string' do
     let(:params) do
       required_params.merge(values: 'bat')
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(/Values "bat"/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"}) }
   end
 
   context 'table is true' do
@@ -57,7 +57,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(/Table true/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Table true}) }
   end
 
   context 'table is false' do
@@ -67,6 +67,6 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(/Table false/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Table false}) }
   end
 end

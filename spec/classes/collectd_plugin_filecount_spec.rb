@@ -4,7 +4,7 @@ describe 'collectd::plugin::filecount', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -13,10 +13,10 @@ describe 'collectd::plugin::filecount', type: :class do
       { directories: { 'active' => '/var/spool/postfix/active' } }
     end
     it 'Will create /etc/collectd.d/10-filecount.conf' do
-      should contain_file('filecount.load')
-        .with(ensure: 'present',
-              path: '/etc/collectd.d/10-filecount.conf',
-              content: %r{Directory "/var/spool/postfix/active"},)
+      should contain_file('filecount.load').
+        with(ensure: 'present',
+             path: '/etc/collectd.d/10-filecount.conf',
+             content: %r{Directory "/var/spool/postfix/active"})
     end
   end
 
@@ -27,17 +27,17 @@ describe 'collectd::plugin::filecount', type: :class do
         'pattern'       => '*.conf',
         'mtime'         => '-5m',
         'recursive'     => true,
-        'includehidden' => false,
+        'includehidden' => false
       } } }
     end
     it 'Will create foodir collectd::plugin::filecount::directory resource' do
-      should contain_collectd__plugin__filecount__directory('foodir')
-        .with(ensure: 'present',
-              path: '/path/to/dir',
-              pattern: '*.conf',
-              mtime: '-5m',
-              recursive: true,
-              includehidden: false,)
+      should contain_collectd__plugin__filecount__directory('foodir').
+        with(ensure: 'present',
+             path: '/path/to/dir',
+             pattern: '*.conf',
+             mtime: '-5m',
+             recursive: true,
+             includehidden: false)
     end
   end
 
@@ -46,9 +46,9 @@ describe 'collectd::plugin::filecount', type: :class do
       { directories: { 'active' => '/var/spool/postfix/active' }, ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-filecount.conf' do
-      should contain_file('filecount.load')
-        .with(ensure: 'absent',
-              path: '/etc/collectd.d/10-filecount.conf',)
+      should contain_file('filecount.load').
+        with(ensure: 'absent',
+             path: '/etc/collectd.d/10-filecount.conf')
     end
   end
 
@@ -57,14 +57,14 @@ describe 'collectd::plugin::filecount', type: :class do
       { directories: '/var/spool/postfix/active' }
     end
     it 'Will raise an error about :directories being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 
   context ':directories is empty' do
     it 'Will not create an empty <Plugin "filecount"> block' do
-      should contain_file('filecount.load')
-        .without_content(/<Plugin "filecount">/)
+      should contain_file('filecount.load').
+        without_content(%r{<Plugin "filecount">})
     end
   end
 end

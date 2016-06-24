@@ -7,7 +7,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -15,7 +15,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
 
   let(:default_params) do
     {
-      service_url: 'foo:bar:baz',
+      service_url: 'foo:bar:baz'
     }
   end
 
@@ -24,34 +24,34 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
 
   context 'required params' do
     let(:params) do
-      default_params.merge(collect: [],)
+      default_params.merge(collect: [])
     end
 
     it 'provides a Connection concat fragment' do
       should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                 order: '20',)
+                                                                 order: '20')
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(%r{<Connection>.*</Connection>}m) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/Host "foo\.example\.com"/) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/ServiceURL "foo:bar:baz"/) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(/User/) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(/Password/) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(/InstancePrefix/) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Host "foo\.example\.com"}) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{ServiceURL "foo:bar:baz"}) }
+    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{User}) }
+    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{Password}) }
+    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
   end
 
   context 'hostname override' do
     let(:params) do
       default_params.merge(host: 'bar.example.com',
-                           collect: [],)
+                           collect: [])
     end
 
     it 'provides a Connection concat fragment' do
       should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                 order: '20',)
+                                                                 order: '20')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/Host "bar\.example\.com"/) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Host "bar\.example\.com"}) }
   end
 
   context 'collect array' do
@@ -59,7 +59,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       default_params.merge(collect: %w( foo bar baz ))
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/Collect "foo".*Collect "bar".*Collect "baz"/m) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "foo".*Collect "bar".*Collect "baz"}m) }
   end
 
   context 'collect string' do
@@ -67,27 +67,27 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       default_params.merge(collect: 'bat')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/Collect "bat"/) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(/(.*Collect.*){2,}/m) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "bat"}) }
+    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{(.*Collect.*){2,}}m) }
   end
 
   context 'username and password' do
     let(:params) do
       default_params.merge(user: 'alice',
                            password: 'aoeuhtns',
-                           collect: [],)
+                           collect: [])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/User "alice"/) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/Password "aoeuhtns"/) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{User "alice"}) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Password "aoeuhtns"}) }
   end
 
   context 'instance_prefix ' do
     let(:params) do
       default_params.merge(instance_prefix: 'bat',
-                           collect: [],)
+                           collect: [])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(/InstancePrefix "bat"/) }
+    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "bat"}) }
   end
 end

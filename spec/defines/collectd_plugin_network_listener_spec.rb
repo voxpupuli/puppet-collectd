@@ -11,15 +11,15 @@ describe 'collectd::plugin::network::listener', type: :define do
     let(:title) { 'mylistener' }
     let :params do
       {
-        port: '1234',
+        port: '1234'
       }
     end
 
     it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd < 4.7' do
-      should contain_file('/etc/collectd.d/network-listener-mylistener.conf')
-        .with(ensure: 'present',
-              path: '/etc/collectd.d/network-listener-mylistener.conf',
-              content: "<Plugin network>\n  Listen \"mylistener\" \"1234\"\n</Plugin>\n",)
+      should contain_file('/etc/collectd.d/network-listener-mylistener.conf').
+        with(ensure: 'present',
+             path: '/etc/collectd.d/network-listener-mylistener.conf',
+             content: "<Plugin network>\n  Listen \"mylistener\" \"1234\"\n</Plugin>\n")
     end
   end
 
@@ -33,15 +33,15 @@ describe 'collectd::plugin::network::listener', type: :define do
     let(:title) { 'mylistener' }
     let :params do
       {
-        port: '1234',
+        port: '1234'
       }
     end
 
     it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
-      should contain_file('/etc/collectd.d/network-listener-mylistener.conf')
-        .with(ensure: 'present',
-              path: '/etc/collectd.d/network-listener-mylistener.conf',
-              content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n",)
+      should contain_file('/etc/collectd.d/network-listener-mylistener.conf').
+        with(ensure: 'present',
+             path: '/etc/collectd.d/network-listener-mylistener.conf',
+             content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n")
     end
   end
 end

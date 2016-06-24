@@ -8,7 +8,7 @@ describe 'collectd::plugin::load', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.10.1',
+      collectd_version: '4.10.1'
     }
   end
 
@@ -20,8 +20,8 @@ describe 'collectd::plugin::load', type: :class do
     end
 
     it 'is present' do
-      should contain_file('load.load')
-        .without_content(/\s{2}ReportRelative true\s{2}/)
+      should contain_file('load.load').
+        without_content(%r{\s{2}ReportRelative true\s{2}})
     end
   end
 end

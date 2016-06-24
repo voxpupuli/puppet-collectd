@@ -9,7 +9,7 @@ describe 'collectd::plugin::virt', type: :class do
     let :params do
       {
         connection: 'qemu:///system',
-        interface_format: 'address',
+        interface_format: 'address'
       }
     end
 
@@ -17,13 +17,13 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '4.10.1',
+          collectd_version: '4.10.1'
         }
       end
 
       it 'is ignored' do
-        should contain_file('libvirt.load')
-          .without_content(/.*InterfaceFormat \"address\".*/)
+        should contain_file('libvirt.load').
+          without_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
 
@@ -31,13 +31,13 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.0.0',
+          collectd_version: '5.0.0'
         }
       end
 
       it 'is included' do
-        should contain_file('libvirt.load')
-          .with_content(/.*InterfaceFormat \"address\".*/)
+        should contain_file('libvirt.load').
+          with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
 
@@ -45,13 +45,13 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.5.0',
+          collectd_version: '5.5.0'
         }
       end
 
       it 'is included' do
-        should contain_file('virt.load')
-          .with_content(/.*InterfaceFormat \"address\".*/)
+        should contain_file('virt.load').
+          with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
   end

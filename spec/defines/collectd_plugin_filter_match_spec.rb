@@ -34,9 +34,9 @@ describe 'collectd::plugin::filter::match', type: :define do
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: /<Match "regex">/)
-      should contain_concat__fragment(concat_fragment_name).with(content: /Host "customer\[0-9\]\+"/)
-      should contain_concat__fragment(concat_fragment_name).with(content: /Plugin "\^foobar\$"/)
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{<Match "regex">})
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{Host "customer\[0-9\]\+"})
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{Plugin "\^foobar\$"})
     end
   end
 
@@ -52,7 +52,7 @@ describe 'collectd::plugin::filter::match', type: :define do
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: /Match "empty_counter"/)
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{Match "empty_counter"})
     end
   end
 end

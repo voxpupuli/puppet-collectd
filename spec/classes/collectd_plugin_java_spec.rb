@@ -4,20 +4,20 @@ describe 'collectd::plugin::java', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
   context ':ensure => present, defaults' do
     it 'Will load the plugin' do
-      should contain_collectd__plugin('java').with(ensure: 'present',)
+      should contain_collectd__plugin('java').with(ensure: 'present')
     end
   end
 
   context ':ensure => absent' do
     let(:params) do
       {
-        ensure: 'absent',
+        ensure: 'absent'
       }
     end
 
@@ -34,7 +34,7 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have multiple jvmarg parameters' do
-      should contain_collectd__plugin('java').with_content(/JVMArg "foo".+JVMArg "bar".+JVMArg "baz"/m)
+      should contain_collectd__plugin('java').with_content(%r{JVMArg "foo".+JVMArg "bar".+JVMArg "baz"}m)
     end
   end
 
@@ -46,11 +46,11 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a JVMArg parameter' do
-      should contain_collectd__plugin('java').with_content(/JVMArg "bat"/)
+      should contain_collectd__plugin('java').with_content(%r{JVMArg "bat"})
     end
 
     it 'will only have one JVMArg parameter' do
-      should contain_collectd__plugin('java').without_content(/(.*JVMArg.*){2,}/m)
+      should contain_collectd__plugin('java').without_content(%r{(.*JVMArg.*){2,}}m)
     end
   end
 
@@ -63,11 +63,11 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a JVMArg parameter' do
-      should contain_collectd__plugin('java').with_content(/JVMArg "dog"/)
+      should contain_collectd__plugin('java').with_content(%r{JVMArg "dog"})
     end
 
     it 'will have a java plugin' do
-      should contain_collectd__plugin('java').with_content(/LoadPlugin "name.java"/)
+      should contain_collectd__plugin('java').with_content(%r{LoadPlugin "name.java"})
     end
   end
 
@@ -80,22 +80,22 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a java plugin option' do
-      should contain_collectd__plugin('java').with_content(/key = value/)
+      should contain_collectd__plugin('java').with_content(%r{key = value})
     end
   end
 
   context 'jvmarg parameter empty' do
     let(:params) do
       {
-        jvmarg: [],
+        jvmarg: []
       }
     end
 
     it 'will not have a <Plugin java> stanza' do
-      should contain_collectd__plugin('java').without_content(/<Plugin java>/)
+      should contain_collectd__plugin('java').without_content(%r{<Plugin java>})
     end
     it 'will not have any jvmarg parameters' do
-      should contain_collectd__plugin('java').without_content(/JVMArg/)
+      should contain_collectd__plugin('java').without_content(%r{JVMArg})
     end
   end
 
@@ -108,11 +108,11 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will not have a java plugin load stanza' do
-      should contain_collectd__plugin('java').without_content(/name.java/)
+      should contain_collectd__plugin('java').without_content(%r{name.java})
     end
 
     it 'will not have java plugin options stanza' do
-      should contain_collectd__plugin('java').without_content(/key = value/)
+      should contain_collectd__plugin('java').without_content(%r{key = value})
     end
   end
 end
