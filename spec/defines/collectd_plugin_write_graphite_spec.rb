@@ -7,7 +7,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -17,19 +17,19 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       {
         osfamily: 'RedHat',
         collectd_version: '5.3',
-        concat_basedir: '/dne',
+        concat_basedir: '/dne'
       }
     end
     let :params do
       {
-        protocol: 'udp',
+        protocol: 'udp'
       }
     end
 
     it 'does not include protocol in /etc/collectd.d/write_graphite.conf for collectd < 5.4' do
       should_not contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_localhost_2003'
-      ).with_content(/.*Protocol \"udp\".*/)
+      ).with_content(%r{.*Protocol \"udp\".*})
     end
   end
 
@@ -39,24 +39,24 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       {
         osfamily: 'RedHat',
         collectd_version: '5.4',
-        concat_basedir: '/dne',
+        concat_basedir: '/dne'
       }
     end
     let :params do
       {
-        protocol: 'udp',
+        protocol: 'udp'
       }
     end
 
     it 'includes protocol in /etc/collectd.d/write_graphite.conf for collectd >= 5.4' do
       should contain_concat__fragment(
         'collectd_plugin_write_graphite_conf_wg_udp_2003'
-      ).with_content(/.*Protocol \"udp\".*/)
+      ).with_content(%r{.*Protocol \"udp\".*})
     end
 
     it 'uses Node definition' do
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with(content: /<Node "wg">/,
-                                                                                              target: '/etc/collectd.d/write_graphite-config.conf',)
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with(content: %r{<Node "wg">},
+                                                                                              target: '/etc/collectd.d/write_graphite-config.conf')
     end
   end
 
@@ -64,12 +64,12 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
     let(:title) { 'graphite_default' }
 
     it 'includes carbon configuration' do
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: /<Carbon>/,
-                                                                                                            target: '/etc/collectd/conf.d/write_graphite-config.conf',)
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{<Carbon>},
+                                                                                                            target: '/etc/collectd/conf.d/write_graphite-config.conf')
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: /Host "localhost"/,)
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{Host "localhost"})
 
-      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: /Port "2003"/,)
+      should contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{Port "2003"})
     end
   end
 end

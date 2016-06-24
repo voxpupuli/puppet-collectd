@@ -35,9 +35,9 @@ describe 'collectd::plugin::filter::target', type: :define do
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: /<Target "set">/)
-      should contain_concat__fragment(concat_fragment_name).with(content: /PluginInstance "coretemp"/)
-      should contain_concat__fragment(concat_fragment_name).with(content: /TypeInstance "core3"/)
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{<Target "set">})
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{PluginInstance "coretemp"})
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{TypeInstance "core3"})
     end
   end
 
@@ -55,7 +55,7 @@ describe 'collectd::plugin::filter::target', type: :define do
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: /Target "return"/)
+      should contain_concat__fragment(concat_fragment_name).with(content: %r{Target "return"})
     end
   end
 end

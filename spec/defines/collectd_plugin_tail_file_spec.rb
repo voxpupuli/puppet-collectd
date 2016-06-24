@@ -8,7 +8,7 @@ describe 'collectd::plugin::tail::file', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -29,7 +29,7 @@ describe 'collectd::plugin::tail::file', type: :define do
             'regex'    => '\\<R=local_user\\>',
             'dstype'   => 'CounterInc',
             'type'     => 'counter',
-            'instance' => 'local_user',
+            'instance' => 'local_user'
           }
         ]
       }

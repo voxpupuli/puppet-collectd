@@ -4,7 +4,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '5.5.0',
+      collectd_version: '5.5.0'
     }
   end
 
@@ -15,15 +15,15 @@ describe 'collectd::plugin::write_riemann', type: :class do
         tags: ['foo'], attributes: { 'bar' => 'baz' } }
     end
     it 'Will create /etc/collectd.d/10-write_riemann.conf' do
-      should contain_file('write_riemann.load').with(ensure: 'present',)
-      should contain_file('write_riemann.load').with(path: '/etc/collectd.d/10-write_riemann.conf',)
-      should contain_file('write_riemann.load').with(content: /Host "myhost"/,)
-      should contain_file('write_riemann.load').with(content: /Port "5555"/,)
-      should contain_file('write_riemann.load').with(content: /Protocol TCP/,)
-      should contain_file('write_riemann.load').with(content: /Batch false/,)
-      should contain_file('write_riemann.load').with(content: /TTLFactor 3/,)
-      should contain_file('write_riemann.load').with(content: /Tag "foo"/,)
-      should contain_file('write_riemann.load').with(content: /Attribute "bar" "baz"/,)
+      should contain_file('write_riemann.load').with(ensure: 'present')
+      should contain_file('write_riemann.load').with(path: '/etc/collectd.d/10-write_riemann.conf')
+      should contain_file('write_riemann.load').with(content: %r{Host "myhost"})
+      should contain_file('write_riemann.load').with(content: %r{Port "5555"})
+      should contain_file('write_riemann.load').with(content: %r{Protocol TCP})
+      should contain_file('write_riemann.load').with(content: %r{Batch false})
+      should contain_file('write_riemann.load').with(content: %r{TTLFactor 3})
+      should contain_file('write_riemann.load').with(content: %r{Tag "foo"})
+      should contain_file('write_riemann.load').with(content: %r{Attribute "bar" "baz"})
     end
   end
 
@@ -33,7 +33,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     end
     it 'Will not create ' do
       should contain_file('write_riemann.load').with(ensure: 'absent',
-                                                     path: '/etc/collectd.d/10-write_riemann.conf',)
+                                                     path: '/etc/collectd.d/10-write_riemann.conf')
     end
   end
 
@@ -42,7 +42,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       { ttl_factor: 'four' }
     end
     it 'Will raise an error about :ttl_factor not being a Number' do
-      should compile.and_raise_error(/Expected first argument to be a Numeric or Array/)
+      should compile.and_raise_error(%r{Expected first argument to be a Numeric or Array})
     end
   end
 
@@ -51,7 +51,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       { batch: 'false' }
     end
     it 'Will raise an error about :ttl_factor not being a Boolean' do
-      should compile.and_raise_error(/"false" is not a boolean/)
+      should compile.and_raise_error(%r{"false" is not a boolean})
     end
   end
 
@@ -60,7 +60,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       { tags: 'test' }
     end
     it 'Will raise an error about :tags not being an array' do
-      should compile.and_raise_error(/"test" is not an Array/)
+      should compile.and_raise_error(%r{"test" is not an Array})
     end
   end
 
@@ -69,7 +69,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       { attributes: 'test' }
     end
     it 'Will raise an error about :attributes not being a hash' do
-      should compile.and_raise_error(/"test" is not a Hash/)
+      should compile.and_raise_error(%r{"test" is not a Hash})
     end
   end
 end

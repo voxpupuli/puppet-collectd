@@ -15,7 +15,7 @@ describe 'collectd::plugin::filter', type: :class do
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
       should contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
                                                                       path: '/etc/collectd/conf.d/01-filter.conf',
-                                                                      content: /PreCacheChain \"PreChain\"\nPostCacheChain \"PostChain\"/)
+                                                                      content: %r{PreCacheChain \"PreChain\"\nPostCacheChain \"PostChain\"})
     end
   end
 
@@ -30,7 +30,7 @@ describe 'collectd::plugin::filter', type: :class do
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
       should contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
                                                                       path: '/etc/collectd/conf.d/01-filter.conf',
-                                                                      content: /PreCacheChain \"MyPreChain\"\nPostCacheChain \"MyPostChain\"/)
+                                                                      content: %r{PreCacheChain \"MyPreChain\"\nPostCacheChain \"MyPostChain\"})
     end
   end
 

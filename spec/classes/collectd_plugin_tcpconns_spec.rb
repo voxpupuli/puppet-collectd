@@ -4,7 +4,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -15,7 +15,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
     it 'Will create /etc/collectd.d/10-tcpconns.conf' do
       should contain_file('tcpconns.load').with(ensure: 'present',
                                                 path: '/etc/collectd.d/10-tcpconns.conf',
-                                                content: /LocalPort "22".+LocalPort "25"/m,)
+                                                content: %r{LocalPort "22".+LocalPort "25"}m)
     end
   end
 
@@ -26,7 +26,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
     it 'Will create /etc/collectd.d/10-tcpconns.conf' do
       should contain_file('tcpconns.load').with(ensure: 'present',
                                                 path: '/etc/collectd.d/10-tcpconns.conf',
-                                                content: /LocalPort "22".+LocalPort "25".+RemotePort "3306"/m,)
+                                                content: %r{LocalPort "22".+LocalPort "25".+RemotePort "3306"}m)
     end
   end
 
@@ -36,7 +36,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
     end
     it 'Will not create /etc/collectd.d/10-tcpconns.conf' do
       should contain_file('tcpconns.load').with(ensure: 'absent',
-                                                path: '/etc/collectd.d/10-tcpconns.conf',)
+                                                path: '/etc/collectd.d/10-tcpconns.conf')
     end
   end
 
@@ -45,7 +45,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
       { localports: '22' }
     end
     it 'Will raise an error about :localports being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 
@@ -54,7 +54,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
       { remoteports: '22' }
     end
     it 'Will raise an error about :remoteports being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 
@@ -63,7 +63,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
       { allportssummary: 'aString' }
     end
     it 'Will raise an error about :allportssummary being a String' do
-      expect { should.to raise_error(Puppet::Error, /String/) }
+      expect { should.to raise_error(Puppet::Error, %r{String}) }
     end
   end
 
@@ -76,7 +76,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
     end
 
     it 'does not include AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
-      should contain_file('tcpconns.load').without_content(/AllPortsSummary/)
+      should contain_file('tcpconns.load').without_content(%r{AllPortsSummary})
     end
   end
 
@@ -89,7 +89,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
     end
 
     it 'includes AllPortsSummary in /etc/collectd.d/10-tcpconns.conf' do
-      should contain_file('tcpconns.load').with_content(/AllPortsSummary true/)
+      should contain_file('tcpconns.load').with_content(%r{AllPortsSummary true})
     end
   end
 end

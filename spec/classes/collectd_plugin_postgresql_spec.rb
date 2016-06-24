@@ -11,7 +11,7 @@ describe 'collectd::plugin::postgresql', type: :class do
       concat_basedir: '/dne',
       id: 'root',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -19,10 +19,10 @@ describe 'collectd::plugin::postgresql', type: :class do
     it 'Will create /etc/collectd.d/01-postgresql.conf to load the plugin' do
       should contain_file('postgresql.load').with(ensure: 'present',
                                                   path: '/etc/collectd.d/10-postgresql.conf',
-                                                  content: /LoadPlugin postgresql/,)
+                                                  content: %r{LoadPlugin postgresql})
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: /<Plugin postgresql>/,)
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
     end
   end
   context ':ensure => present and create a db with a custom query' do
@@ -34,8 +34,8 @@ describe 'collectd::plugin::postgresql', type: :class do
             'user'     => 'postgres',
             'password' => 'postgres',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay),
-          },
+            'query'    => %w(disk_io log_delay)
+          }
         },
         queries: {
           'log_delay' => {
@@ -44,24 +44,24 @@ describe 'collectd::plugin::postgresql', type: :class do
               'type'           => 'gauge',
               'instanceprefix' => 'log_delay',
               'instancesfrom'  => 'inet_server_port',
-              'valuesfrom'     => 'log_delay',
-            }],
+              'valuesfrom'     => 'log_delay'
+            }]
           }
         },
         writers: {
           'sqlstore' => {
             'statement'  => 'SELECT collectd_insert($1, $2, $3, $4, $5, $6, $7, $8, $9);',
-            'storerates' => true,
+            'storerates' => true
           }
         }
       }
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: /Host \"localhost\"/,)
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: /Query \"disk_io\"/,)
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: /Statement \"SELECT \* FROM log_delay_repli;\"\n/,)
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: /<Result>\n/,)
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: /<Writer sqlstore>\n/,)
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
+      should contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
     end
   end
 
@@ -76,7 +76,7 @@ describe 'collectd::plugin::postgresql', type: :class do
             'password' => 'postgres',
             'port'     => '5432',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay),
+            'query'    => %w(disk_io log_delay)
           },
           'postgres_port_5433' => {
             'instance' => 'postgres',
@@ -85,18 +85,18 @@ describe 'collectd::plugin::postgresql', type: :class do
             'password' => 'postgres',
             'port'     => '5433',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay),
+            'query'    => %w(disk_io log_delay)
 
-          },
-        },
+          }
+        }
       }
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf dsfd ' do
       should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5432').with(
-        content: /Instance \"postgres\"/,
+        content: %r{Instance \"postgres\"}
       )
       should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5433').with(
-        content: /Instance \"postgres\"/,
+        content: %r{Instance \"postgres\"}
       )
     end
   end

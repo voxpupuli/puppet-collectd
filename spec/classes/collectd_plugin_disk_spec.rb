@@ -4,7 +4,7 @@ describe 'collectd::plugin::disk', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -15,7 +15,7 @@ describe 'collectd::plugin::disk', type: :class do
     it 'Will create /etc/collectd.d/10-disk.conf' do
       should contain_file('disk.load').with(ensure: 'present',
                                             path: '/etc/collectd.d/10-disk.conf',
-                                            content: /Disk  "sda"/,)
+                                            content: %r{Disk  "sda"})
     end
   end
 
@@ -25,7 +25,7 @@ describe 'collectd::plugin::disk', type: :class do
     end
     it 'Will not create /etc/collectd.d/10-disk.conf' do
       should contain_file('disk.load').with(ensure: 'absent',
-                                            path: '/etc/collectd.d/10-disk.conf',)
+                                            path: '/etc/collectd.d/10-disk.conf')
     end
   end
 
@@ -33,18 +33,18 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.5',
+        collectd_version: '5.5'
       }
     end
 
     let :params do
       {
-        manage_package: true,
+        manage_package: true
       }
     end
     it 'Will manage collectd-disk' do
       should contain_package('collectd-disk').with(ensure: 'present',
-                                                   name: 'collectd-disk',)
+                                                   name: 'collectd-disk')
     end
   end
 
@@ -52,13 +52,13 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.5',
+        collectd_version: '5.5'
       }
     end
 
     it 'Will manage collectd-disk' do
       should contain_package('collectd-disk').with(ensure: 'present',
-                                                   name: 'collectd-disk',)
+                                                   name: 'collectd-disk')
     end
   end
 
@@ -66,13 +66,13 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.4',
+        collectd_version: '5.4'
       }
     end
 
     it 'Will not manage collectd-disk' do
       should_not contain_package('collectd-disk').with(ensure: 'present',
-                                                       name: 'collectd-disk',)
+                                                       name: 'collectd-disk')
     end
   end
 
@@ -81,7 +81,7 @@ describe 'collectd::plugin::disk', type: :class do
       { disks: 'sda' }
     end
     it 'Will raise an error about :disks being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 
@@ -92,12 +92,12 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.4',
+        collectd_version: '5.4'
       }
     end
     it 'Will not include the setting' do
       should contain_file('disk.load').with(ensure: 'present',
-                                            path: '/etc/collectd.d/10-disk.conf',).without_content(/UdevNameAttr DM_NAME/)
+                                            path: '/etc/collectd.d/10-disk.conf').without_content(%r{UdevNameAttr DM_NAME})
     end
   end
 
@@ -108,13 +108,13 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.5',
+        collectd_version: '5.5'
       }
     end
     it 'Will include the setting' do
       should contain_file('disk.load').with(ensure: 'present',
                                             path: '/etc/collectd.d/10-disk.conf',
-                                            content: /UdevNameAttr DM_NAME/,)
+                                            content: %r{UdevNameAttr DM_NAME})
     end
   end
 end

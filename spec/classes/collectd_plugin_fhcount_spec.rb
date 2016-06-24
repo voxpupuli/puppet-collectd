@@ -4,7 +4,7 @@ describe 'collectd::plugin::fhcount', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '5.5.0',
+      collectd_version: '5.5.0'
     }
   end
 
@@ -13,22 +13,22 @@ describe 'collectd::plugin::fhcount', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5',
+          collectd_version: '5.5'
         }
       end
       let :params do
         {
           valuesabsolute: false,
-          valuespercentage: true,
+          valuespercentage: true
         }
       end
 
       it 'Will include ValuesAbsolute in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(/ValuesAbsolute false/)
+        should contain_file('fhcount.load').with_content(%r{ValuesAbsolute false})
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(/ValuesPercentage true/)
+        should contain_file('fhcount.load').with_content(%r{ValuesPercentage true})
       end
     end
   end
@@ -37,12 +37,12 @@ describe 'collectd::plugin::fhcount', type: :class do
     let :params do
       {
         valuesabsolute: 'string_b',
-        valuespercentage: 'string_c',
+        valuespercentage: 'string_c'
       }
     end
 
     it 'Will raise an error about parameters not being boolean' do
-      should compile.and_raise_error(/bool/)
+      should compile.and_raise_error(%r{bool})
     end
   end
 
@@ -53,7 +53,7 @@ describe 'collectd::plugin::fhcount', type: :class do
     it 'Will remove /etc/collectd.d/10-fhcount.conf' do
       should contain_file('fhcount.load').with(ensure: 'absent',
                                                path: '/etc/collectd.d/10-fhcount.conf',
-                                               content: /LoadPlugin fhcount/,)
+                                               content: %r{LoadPlugin fhcount})
     end
   end
 end

@@ -16,10 +16,10 @@ describe 'collectd::plugin::dbi', type: :class do
     it 'Will create /etc/collectd/conf.d/10-dbi.conf to load the plugin' do
       should contain_file('dbi.load').with(ensure: 'present',
                                            path: '/etc/collectd/conf.d/10-dbi.conf',
-                                           content: /LoadPlugin dbi/,)
+                                           content: %r{LoadPlugin dbi})
     end
     it 'Will create /etc/collectd.d/dbi-config.conf' do
-      should contain_concat__fragment('collectd_plugin_dbi_conf_header').with(content: /<Plugin dbi>/,)
+      should contain_concat__fragment('collectd_plugin_dbi_conf_header').with(content: %r{<Plugin dbi>})
     end
   end
 
@@ -36,8 +36,8 @@ describe 'collectd::plugin::dbi', type: :class do
               'password' => 'dbpasswd'
             },
             'selectdb' => 'db',
-            'query'    => %w(disk_io log_delay),
-          },
+            'query'    => %w(disk_io log_delay)
+          }
         },
         queries: {
           'log_delay' => {
@@ -46,25 +46,25 @@ describe 'collectd::plugin::dbi', type: :class do
               'type'           => 'gauge',
               'instanceprefix' => 'log_delay',
               'instancesfrom'  => %w(inet_server_port inet_server_host),
-              'valuesfrom'     => 'log_delay',
-            }],
+              'valuesfrom'     => 'log_delay'
+            }]
           }
         }
       }
     end
 
     it 'Will create /etc/collectd.d/dbi-config.conf' do
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /Driver \"mysql\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /Host \"localhost\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /Query \"disk_io\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /DriverOption \"host\" \"db\.example\.com\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /DriverOption \"username\" \"dbuser\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: /DriverOption \"password\" \"dbpasswd\"\n/,)
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{Driver \"mysql\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{Host \"localhost\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{Query \"disk_io\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{DriverOption \"host\" \"db\.example\.com\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{DriverOption \"username\" \"dbuser\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_db_mydatabase').with(content: %r{DriverOption \"password\" \"dbpasswd\"\n})
 
-      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: /Statement \"SELECT \* FROM log_delay_repli;\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: /<Result>\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: /InstancesFrom \"inet_server_port\" \"inet_server_host\"\n/,)
-      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: /ValuesFrom \"log_delay\"\n/,)
+      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: %r{<Result>\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: %r{InstancesFrom \"inet_server_port\" \"inet_server_host\"\n})
+      should contain_concat__fragment('collectd_plugin_dbi_conf_query_log_delay').with(content: %r{ValuesFrom \"log_delay\"\n})
     end
   end
 end

@@ -15,15 +15,15 @@ describe 'collectd::plugin::network::server', type: :define do
         interface: 'eth0',
         securitylevel: 'Encrypt',
         username: 'foo',
-        password: 'bar',
+        password: 'bar'
       }
     end
 
     it 'Will create /etc/collectd.d/network-server-node1.conf for collectd >= 4.7' do
-      should contain_file('/etc/collectd.d/network-server-node1.conf')
-        .with(ensure: 'present',
-              path: '/etc/collectd.d/network-server-node1.conf',
-              content: "<Plugin network>\n  <Server \"node1\" \"1234\">\n    SecurityLevel \"Encrypt\"\n    Username \"foo\"\n    Password \"bar\"\n    Interface \"eth0\"\n\n  </Server>\n</Plugin>\n",)
+      should contain_file('/etc/collectd.d/network-server-node1.conf').
+        with(ensure: 'present',
+             path: '/etc/collectd.d/network-server-node1.conf',
+             content: "<Plugin network>\n  <Server \"node1\" \"1234\">\n    SecurityLevel \"Encrypt\"\n    Username \"foo\"\n    Password \"bar\"\n    Interface \"eth0\"\n\n  </Server>\n</Plugin>\n")
     end
   end
 
@@ -31,18 +31,18 @@ describe 'collectd::plugin::network::server', type: :define do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.1.0',
+        collectd_version: '5.1.0'
       }
     end
     let(:title) { 'node1' }
     let :params do
       {
-        ensure: 'absent',
+        ensure: 'absent'
       }
     end
 
     it 'Will not create /etc/collectd.d/network-server-node1.conf' do
-      should contain_file('/etc/collectd.d/network-server-node1.conf').with(ensure: 'absent',)
+      should contain_file('/etc/collectd.d/network-server-node1.conf').with(ensure: 'absent')
     end
   end
 end

@@ -4,7 +4,7 @@ describe 'collectd::plugin::dns', type: :class do
   let :facts do
     {
       collectd_version: '5.2',
-      osfamily: 'RedHat',
+      osfamily: 'RedHat'
     }
   end
 
@@ -13,7 +13,7 @@ describe 'collectd::plugin::dns', type: :class do
 
     it do
       should contain_file('dns.load').with(
-        'ensure' => 'present',
+        'ensure' => 'present'
       )
     end
 
@@ -32,7 +32,7 @@ describe 'collectd::plugin::dns', type: :class do
 
         it do
           should contain_file('dns.load').with(
-            'ensure' => value,
+            'ensure' => value
           )
         end
       end
@@ -46,7 +46,7 @@ describe 'collectd::plugin::dns', type: :class do
       it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /collectd::plugin::dns::ensure is <invalid> and must be either 'present' or 'absent'\./)
+        end.to raise_error(Puppet::Error, %r{collectd::plugin::dns::ensure is <invalid> and must be either 'present' or 'absent'\.})
       end
     end
   end
@@ -62,7 +62,7 @@ describe 'collectd::plugin::dns', type: :class do
     end
 
     context 'set to undef' do
-      it { should contain_file('dns.load').without_content(/IgnoreSource\s+10\.10\.10\.10/) }
+      it { should contain_file('dns.load').without_content(%r{IgnoreSource\s+10\.10\.10\.10}) }
     end
 
     context 'set to an invalid value' do
@@ -73,7 +73,7 @@ describe 'collectd::plugin::dns', type: :class do
       it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /collectd::plugin::dns::ignoresource is <not_an_ip> and must be a valid IP address\./)
+        end.to raise_error(Puppet::Error, %r{collectd::plugin::dns::ignoresource is <not_an_ip> and must be a valid IP address\.})
       end
     end
   end
@@ -96,7 +96,7 @@ describe 'collectd::plugin::dns', type: :class do
       it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /is not a string/)
+        end.to raise_error(Puppet::Error, %r{is not a string})
       end
     end
   end
@@ -108,7 +108,7 @@ describe 'collectd::plugin::dns', type: :class do
           { interval: value }
         end
 
-        it { should contain_file('dns.load').with_content(/\s*Interval\s+#{Regexp.escape(value)}/) }
+        it { should contain_file('dns.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
       end
     end
 
@@ -120,7 +120,7 @@ describe 'collectd::plugin::dns', type: :class do
       it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /Expected first argument to be a Numeric or Array, got String/)
+        end.to raise_error(Puppet::Error, %r{Expected first argument to be a Numeric or Array, got String})
       end
     end
   end
@@ -132,7 +132,7 @@ describe 'collectd::plugin::dns', type: :class do
           { selectnumericquerytypes: value }
         end
 
-        it { should contain_file('dns.load').with_content(/\s*SelectNumericQueryTypes\s+#{Regexp.escape(value.to_s)}/) }
+        it { should contain_file('dns.load').with_content(%r{\s*SelectNumericQueryTypes\s+#{Regexp.escape(value.to_s)}}) }
       end
     end
 
@@ -144,7 +144,7 @@ describe 'collectd::plugin::dns', type: :class do
       it 'fails' do
         expect do
           should contain_class('collectd::plugin::dns')
-        end.to raise_error(Puppet::Error, /Unknown type of boolean/)
+        end.to raise_error(Puppet::Error, %r{Unknown type of boolean})
       end
     end
   end
@@ -157,13 +157,13 @@ describe 'collectd::plugin::dns', type: :class do
             let :params do
               {
                 ensure: ensure_value,
-                manage_package: value,
+                manage_package: value
               }
             end
 
             it do
               should contain_package('collectd-dns').with(
-                'ensure' => ensure_value,
+                'ensure' => ensure_value
               )
             end
           end

@@ -8,7 +8,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -25,7 +25,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
   context 'no custom socket' do
     let(:title) { 'test' }
     it 'Will create /etc/collectd/conf.d/mysql-test.conf' do
-      should contain_file('test.conf').without_content(/Socket/)
+      should contain_file('test.conf').without_content(%r{Socket})
     end
   end
 end

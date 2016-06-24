@@ -4,7 +4,7 @@ describe 'collectd::plugin::cpu', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -13,19 +13,19 @@ describe 'collectd::plugin::cpu', type: :class do
       it 'Will create /etc/collectd.d/10-cpu.conf to load the plugin' do
         should contain_file('cpu.load').with(ensure: 'present',
                                              path: '/etc/collectd.d/10-cpu.conf',
-                                             content: /LoadPlugin cpu/,)
+                                             content: %r{LoadPlugin cpu})
       end
 
       it 'Will not include ReportByState in /etc/collectd.d/10-cpu.conf' do
-        should_not contain_file('cpu.load').with_content(/ReportByState/)
+        should_not contain_file('cpu.load').with_content(%r{ReportByState})
       end
 
       it 'Will not include ReportByCpu in /etc/collectd.d/10-cpu.conf' do
-        should_not contain_file('cpu.load').with_content(/ReportByCpu/)
+        should_not contain_file('cpu.load').with_content(%r{ReportByCpu})
       end
 
       it 'Will not include ValuesPercentage in /etc/collectd.d/10-cpu.conf' do
-        should_not contain_file('cpu.load').with_content(/ValuesPercentage/)
+        should_not contain_file('cpu.load').with_content(%r{ValuesPercentage})
       end
     end
 
@@ -33,27 +33,27 @@ describe 'collectd::plugin::cpu', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5',
+          collectd_version: '5.5'
         }
       end
       let :params do
         {
           reportbystate: false,
           reportbycpu: false,
-          valuespercentage: true,
+          valuespercentage: true
         }
       end
 
       it 'Will include ReportByState in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ReportByState false/)
+        should contain_file('cpu.load').with_content(%r{ReportByState false})
       end
 
       it 'Will include ReportByCpu in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ReportByCpu false/)
+        should contain_file('cpu.load').with_content(%r{ReportByCpu false})
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(/ValuesPercentage true/)
+        should contain_file('cpu.load').with_content(%r{ValuesPercentage true})
       end
     end
   end
@@ -63,12 +63,12 @@ describe 'collectd::plugin::cpu', type: :class do
       {
         reportbystate: 'string_a',
         reportbycpu: 'string_b',
-        valuespercentage: 'string_c',
+        valuespercentage: 'string_c'
       }
     end
 
     it 'Will raise an error about parameters not being boolean' do
-      should compile.and_raise_error(/bool/)
+      should compile.and_raise_error(%r{bool})
     end
   end
 
@@ -79,7 +79,7 @@ describe 'collectd::plugin::cpu', type: :class do
     it 'Will remove /etc/collectd.d/10-cpu.conf' do
       should contain_file('cpu.load').with(ensure: 'absent',
                                            path: '/etc/collectd.d/10-cpu.conf',
-                                           content: /LoadPlugin cpu/,)
+                                           content: %r{LoadPlugin cpu})
     end
   end
 end

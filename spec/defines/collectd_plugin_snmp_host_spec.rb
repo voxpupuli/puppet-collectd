@@ -4,7 +4,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -28,12 +28,12 @@ describe 'collectd::plugin::snmp::host', type: :define do
     end
 
     it { should contain_file(filename).that_notifies('Service[collectd]') }
-    it { should contain_file(filename).with_content(/<Plugin snmp>/) }
-    it { should contain_file(filename).with_content(/<Host "foo\.example\.com">/) }
-    it { should contain_file(filename).with_content(/Address "foo\.example\.com"/) }
-    it { should contain_file(filename).with_content(/Version 1/) }
-    it { should contain_file(filename).with_content(/Community "public"/) }
-    it { should contain_file(filename).without_content(/Interval \d+/) }
+    it { should contain_file(filename).with_content(%r{<Plugin snmp>}) }
+    it { should contain_file(filename).with_content(%r{<Host "foo\.example\.com">}) }
+    it { should contain_file(filename).with_content(%r{Address "foo\.example\.com"}) }
+    it { should contain_file(filename).with_content(%r{Version 1}) }
+    it { should contain_file(filename).with_content(%r{Community "public"}) }
+    it { should contain_file(filename).without_content(%r{Interval \d+}) }
   end
 
   context 'all params set' do
@@ -41,12 +41,12 @@ describe 'collectd::plugin::snmp::host', type: :define do
       required_params.merge(address: 'bar.example.com',
                             version: '2',
                             community: 'opensesame',
-                            interval: '30',)
+                            interval: '30')
     end
-    it { should contain_file(filename).with_content(/Address "bar\.example\.com"/) }
-    it { should contain_file(filename).with_content(/Version 2/) }
-    it { should contain_file(filename).with_content(/Community "opensesame"/) }
-    it { should contain_file(filename).with_content(/Interval 30/) }
+    it { should contain_file(filename).with_content(%r{Address "bar\.example\.com"}) }
+    it { should contain_file(filename).with_content(%r{Version 2}) }
+    it { should contain_file(filename).with_content(%r{Community "opensesame"}) }
+    it { should contain_file(filename).with_content(%r{Interval 30}) }
   end
 
   context 'collect is an array' do
@@ -55,7 +55,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
         collect: %w( foo bar baz )
       }
     end
-    it { should contain_file(filename).with_content(/Collect "foo" "bar" "baz"/) }
+    it { should contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }
   end
 
   context 'collect is just a string' do
@@ -64,6 +64,6 @@ describe 'collectd::plugin::snmp::host', type: :define do
         collect: 'bat'
       }
     end
-    it { should contain_file(filename).with_content(/Collect "bat"/) }
+    it { should contain_file(filename).with_content(%r{Collect "bat"}) }
   end
 end

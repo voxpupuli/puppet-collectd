@@ -4,7 +4,7 @@ describe 'collectd::plugin::ethstat', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0',
+      collectd_version: '4.8.0'
     }
   end
 
@@ -13,19 +13,19 @@ describe 'collectd::plugin::ethstat', type: :class do
       {
         interfaces: %w(eth0 eth1),
         maps: ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
-        mappedonly: false,
+        mappedonly: false
       }
     end
     it 'Will create /etc/collectd.d/10-ethstat.conf' do
       should contain_file('ethstat.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/10-ethstat.conf',)
+                                               path: '/etc/collectd.d/10-ethstat.conf')
     end
-    it { should contain_file('ethstat.load').with_content(/^<Plugin ethstat>$/) }
-    it { should contain_file('ethstat.load').with_content(/^  Interface "eth0"$/) }
-    it { should contain_file('ethstat.load').with_content(/^  Interface "eth1"$/) }
-    it { should contain_file('ethstat.load').with_content(/^  Map "rx_csum_offload_errors" "if_rx_errors" checksum_offload"$/) }
-    it { should contain_file('ethstat.load').with_content(/^  Map "multicast" "if_multicast"$/) }
-    it { should contain_file('ethstat.load').with_content(/^  MappedOnly false$/) }
+    it { should contain_file('ethstat.load').with_content(%r{^<Plugin ethstat>$}) }
+    it { should contain_file('ethstat.load').with_content(%r{^  Interface "eth0"$}) }
+    it { should contain_file('ethstat.load').with_content(%r{^  Interface "eth1"$}) }
+    it { should contain_file('ethstat.load').with_content(%r{^  Map "rx_csum_offload_errors" "if_rx_errors" checksum_offload"$}) }
+    it { should contain_file('ethstat.load').with_content(%r{^  Map "multicast" "if_multicast"$}) }
+    it { should contain_file('ethstat.load').with_content(%r{^  MappedOnly false$}) }
   end
 
   context ':ensure => absent' do
@@ -34,7 +34,7 @@ describe 'collectd::plugin::ethstat', type: :class do
     end
     it 'Will not create /etc/collectd.d/10-ethstat.conf' do
       should contain_file('ethstat.load').with(ensure: 'absent',
-                                               path: '/etc/collectd.d/10-ethstat.conf',)
+                                               path: '/etc/collectd.d/10-ethstat.conf')
     end
   end
 
@@ -43,7 +43,7 @@ describe 'collectd::plugin::ethstat', type: :class do
       { interfaces: 'eth0,eth1' }
     end
     it 'Will raise an error about :interfaces being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 
@@ -52,7 +52,7 @@ describe 'collectd::plugin::ethstat', type: :class do
       { maps: '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"' }
     end
     it 'Will raise an error about :maps being a String' do
-      should compile.and_raise_error(/String/)
+      should compile.and_raise_error(%r{String})
     end
   end
 end

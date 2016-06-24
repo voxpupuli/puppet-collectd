@@ -25,35 +25,35 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'Load collectd_rabbitmq in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Module "collectd_rabbitmq.collectd_plugin"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
       end
 
       it 'import collectd_rabbitmq.collectd_plugin in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Import "collectd_rabbitmq.collectd_plugin"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
       end
 
       it 'default to Username guest in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Username "guest"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "guest"})
       end
 
       it 'default to Password guest in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Password "guest"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "guest"})
       end
 
       it 'default to Port 15672 in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Port "15672"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Port "15672"})
       end
 
       it 'default to Scheme http in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Scheme "http"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "http"})
       end
 
       it 'Host should be set to $::fqdn python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Host "testhost.example.com"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Host "testhost.example.com"})
       end
 
       it 'Realm set to "RabbitMQ Management"' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Realm "RabbitMQ Management"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Realm "RabbitMQ Management"})
       end
     end
 
@@ -69,7 +69,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Username "foo"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "foo"})
       end
     end
 
@@ -85,7 +85,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Password "foo"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "foo"})
       end
     end
 
@@ -101,7 +101,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(/Scheme "https"/)
+        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "https"})
       end
     end
   end
