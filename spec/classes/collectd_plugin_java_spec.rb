@@ -29,7 +29,7 @@ describe 'collectd::plugin::java', type: :class do
   context 'jvmarg parameter array' do
     let(:params) do
       {
-        jvmarg: %w( foo bar baz )
+        jvmarg: %w(foo bar baz)
       }
     end
 
@@ -113,6 +113,26 @@ describe 'collectd::plugin::java', type: :class do
 
     it 'will not have java plugin options stanza' do
       should contain_collectd__plugin('java').without_content(%r{key = value})
+    end
+  end
+
+  context 'java_home option is empty' do
+    it 'will not contain libjvm' do
+      should_not contain_file('/usr/lib64/libjvm.so')
+      should_not contain_exec('/sbin/ldconfig')
+    end
+  end
+
+  context 'java_home option provided' do
+    let(:params) do
+      {
+        java_home: '/'
+      }
+    end
+
+    it 'will not contain libjvm' do
+      should contain_file('/usr/lib64/libjvm.so')
+      should contain_exec('/sbin/ldconfig')
     end
   end
 end

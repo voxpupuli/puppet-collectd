@@ -5,6 +5,7 @@ class collectd::plugin::java (
   $loadplugin     = {},
   $interval       = undef,
   $manage_package = undef,
+  $java_home      = undef,
 ) {
 
   include ::collectd
@@ -15,6 +16,17 @@ class collectd::plugin::java (
     if $_manage_package {
       package { 'collectd-java':
         ensure => $ensure,
+      }
+    }
+    if $java_home {
+      validate_string($java_home)
+      file { '/usr/lib64/libjvm.so':
+        ensure => 'link',
+        target => "${java_home}/jre/lib/amd64/server/libjvm.so",
+      } ->
+      # Reload SO files so libjvm.so can be found
+      exec { '/sbin/ldconfig':
+        unless => '/sbin/ldconfig -p |grep libjvm.so >/dev/null 2>&1',
       }
     }
   }

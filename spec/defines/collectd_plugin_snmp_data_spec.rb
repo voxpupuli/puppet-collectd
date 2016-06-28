@@ -38,7 +38,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
 
   context 'values is an array' do
     let(:params) do
-      required_params.merge(values: %w( foo bar baz ))
+      required_params.merge(values: %w(foo bar baz))
     end
     it { should contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
   end

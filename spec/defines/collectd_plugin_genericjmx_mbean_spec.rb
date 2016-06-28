@@ -46,7 +46,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
 
   context 'instance_from array' do
     let(:params) do
-      default_params.merge(instance_from: %w( foo bar baz ))
+      default_params.merge(instance_from: %w(foo bar baz))
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "foo"\s+InstanceFrom "bar"\s+InstanceFrom "baz"}) }
@@ -100,7 +100,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
 
   context 'value section instance_from array' do
     let(:params) do
-      default_params.merge(values: [default_values_args.merge('instance_from' => %w( alice bob carol ))])
+      default_params.merge(values: [default_values_args.merge('instance_from' => %w(alice bob carol))])
     end
 
     it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "alice"}) }
