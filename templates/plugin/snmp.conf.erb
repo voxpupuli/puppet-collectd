@@ -19,7 +19,14 @@
 <% if val['Shift'] -%>
     Shift <%= val['Shift'] %>
 <% end -%>
+<% if val['Ignore'] -%>
+    Ignore <% Array(val['Ignore']).each do |x| -%>"<%= x %>" <% end %>
+<% end -%>
+<% if val['InvertMatch'] -%>
+    InvertMatch <%= val['InvertMatch'] %>
+<% end -%>
   </Data>
+
 <% end -%>
 <% @hosts.sort_by {|k,v| k}.each do |key,val| -%>
   <Host "<%=key %>">
