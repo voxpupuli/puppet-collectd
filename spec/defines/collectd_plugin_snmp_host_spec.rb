@@ -52,7 +52,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
   context 'collect is an array' do
     let(:params) do
       {
-        collect: %w( foo bar baz )
+        collect: %w(foo bar baz)
       }
     end
     it { should contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }

@@ -45,7 +45,7 @@ describe 'collectd::plugin::genericjmx', type: :class do
   end
 
   context 'jvmarg parameter array' do
-    let(:params) { { jvmarg: %w( foo bar baz ) } }
+    let(:params) { { jvmarg: %w(foo bar baz) } }
     it 'has multiple jvmarg parameters' do
       should contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
         with_content(%r{JVMArg "foo".*JVMArg "bar".*JVMArg "baz"}m)
