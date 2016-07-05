@@ -72,19 +72,19 @@ class collectd::config (
     recurse => $recurse,
   }
   
-  if $collectd_selinux {
+  if $collectd_selinux and $::selinux == 'true' {
     selboolean { 'collectd_tcp_network_connect':
       persistent => true,
       provider   => getsetsebool,
       name       => collectd_tcp_network_connect,
-      value => 'on'
+      value      => 'on',
     }
-  } else {
+  } elsif !$collectd_selinux and $::selinux == 'true' {
     selboolean { 'collectd_tcp_network_connect':
       persistent => true,
       provider   => getsetsebool,
       name       => collectd_tcp_network_connect,
-      value => 'off'
+      value      => 'off',
     }
   }
 }
