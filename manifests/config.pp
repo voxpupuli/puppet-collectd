@@ -1,6 +1,7 @@
 # private
 class collectd::config (
   $collectd_hostname      = $collectd::collectd_hostname,
+  $collectd_selinux       = $collectd::collectd_selinux,
   $config_file            = $collectd::config_file,
   $conf_content           = $collectd::conf_content,
   $fqdnlookup             = $collectd::fqdnlookup,
@@ -22,6 +23,7 @@ class collectd::config (
   $write_threads          = $collectd::write_threads,
 ) {
 
+  validate_bool($collectd_selinux)
   validate_absolute_path($config_file)
   validate_bool($fqdnlookup)
   validate_bool($has_wordexp)
@@ -68,5 +70,21 @@ class collectd::config (
     group   => $root_group,
     purge   => $purge,
     recurse => $recurse,
+  }
+  
+  if $collectd_selinux {
+    selboolean { 'collectd_tcp_network_connect':
+      persistent => true,
+      provider   => getsetsebool,
+      name       => collectd_tcp_network_connect,
+      value => 'on'
+    }
+  } else {
+    selboolean { 'collectd_tcp_network_connect':
+      persistent => true,
+      provider   => getsetsebool,
+      name       => collectd_tcp_network_connect,
+      value => 'off'
+    }
   }
 }

@@ -1,6 +1,7 @@
 #
 class collectd (
   $collectd_hostname       = $collectd::params::collectd_hostname,
+  $collectd_selinux        = $collectd::params::collectd_selinux,
   $conf_content            = $collectd::params::conf_content,
   $config_file             = $collectd::params::config_file,
   $fqdnlookup              = $collectd::params::fqdnlookup,

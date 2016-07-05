@@ -3,6 +3,7 @@ class collectd::params {
 
   $fqdnlookup              = true
   $collectd_hostname       = $::hostname
+  $collectd_selinux        = false
   $conf_content            = undef
   $interval                = 10
   $include                 = []
