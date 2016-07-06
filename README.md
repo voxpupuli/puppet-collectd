@@ -214,6 +214,7 @@ class { 'collectd::plugin::bind':
 ```puppet
 class { 'collectd::plugin::ceph':
   daemons          => [ '[clustername]-osd.0', '[clustername]-osd.1', '[clustername]-osd.2', '[clustername]-mon.[hostname].asok'],
+  manage_package => true
 }
 ```
 
