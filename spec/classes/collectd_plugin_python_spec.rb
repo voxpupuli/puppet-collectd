@@ -25,6 +25,8 @@ describe 'collectd::plugin::python', type: :class do
       end
 
       it 'Will create /etc/collectd.d/conf.d/python-config.conf' do
+        should contain_concat('/etc/collectd/conf.d/python-config.conf').
+          that_requires('File[collectd.d]')
         should contain_concat__fragment('collectd_plugin_python_conf_header').
           with(content: %r{<Plugin "python">},
                target: '/etc/collectd/conf.d/python-config.conf',

@@ -22,6 +22,7 @@ describe 'collectd::plugin::processes', type: :class do
       end
 
       it 'Will create /etc/collectd.d/conf.d/processes-config.conf' do
+        should contain_concat('/etc/collectd/conf.d/processes-config.conf').that_requires('File[collectd.d]')
         should contain_concat__fragment('collectd_plugin_processes_conf_header').
           with(content: %r{<Plugin processes>},
                target: '/etc/collectd/conf.d/processes-config.conf',
