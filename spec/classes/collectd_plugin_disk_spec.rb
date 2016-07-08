@@ -52,18 +52,18 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.5',
+        collectd_version: '5.5'
       }
     end
 
     let :params do
       {
-        manage_package: false,
+        manage_package: false
       }
     end
     it 'Will not manage collectd-disk' do
       should_not contain_package('collectd-disk').with(ensure: 'present',
-                                                       name: 'collectd-disk',)
+                                                       name: 'collectd-disk')
     end
   end
 
