@@ -102,4 +102,26 @@ describe 'collectd::plugin::write_graphite', type: :class do
              target: '/etc/collectd/conf.d/write_graphite-config.conf')
     end
   end
+
+  context 'ensure is absent' do
+    let :params do
+      {
+        ensure: 'absent'
+      }
+    end
+
+    it 'Will not create /etc/collectd.d/conf.d/write_graphite-config.conf' do
+      should_not contain_concat__fragment('collectd_plugin_write_graphite_conf_header').
+        with(content: %r{<Plugin write_graphite>},
+             target: '/etc/collectd/conf.d/write_graphite-config.conf',
+             order: '00')
+    end
+
+    it 'Will not create /etc/collectd.d/conf.d/write_graphite-config' do
+      should_not contain_concat__fragment('collectd_plugin_write_graphite_conf_footer').
+        with(content: %r{</Plugin>},
+             target: '/etc/collectd/conf.d/write_graphite-config.conf',
+             order: '99')
+    end
+  end
 end
