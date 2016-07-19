@@ -31,6 +31,7 @@ class collectd (
   $write_queue_limit_high  = $collectd::params::write_queue_limit_high,
   $write_queue_limit_low   = $collectd::params::write_queue_limit_low,
   $write_threads           = $collectd::params::write_threads,
+  $selmodule_dir	   = $collectd::params::selmodule_dir,
 ) inherits collectd::params {
 
   $collectd_version_real = pick($::collectd_version, $minimum_version)

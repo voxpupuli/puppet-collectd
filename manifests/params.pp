@@ -1,7 +1,7 @@
 #
 class collectd::params {
 
-  $fqdnlookup              = true
+  $fqdnlookup              = false
   $collectd_hostname       = $::hostname
   $collectd_selinux        = false
   $conf_content            = undef
@@ -42,6 +42,7 @@ class collectd::params {
       $root_group       = 'root'
       $java_dir         = '/usr/share/collectd/java'
       $python_dir       = '/usr/share/collectd/python'
+      $selmodule_dir     = '/usr/share/selinux/default'
     }
     'Solaris': {
       $package_name     = 'CSWcollectd'
@@ -64,6 +65,7 @@ class collectd::params {
       $root_group       = 'root'
       $java_dir         = '/usr/share/collectd/java'
       $python_dir       = '/usr/share/collectd/python'
+      $selmodule_dir	= '/etc/selinux/targeted/modules/active/modules'
     }
     'Suse': {
       $package_name     = 'collectd'
@@ -119,6 +121,7 @@ class collectd::params {
       $root_group       = 'collectd'
       $java_dir         = undef
       $python_dir       = '/usr/share/collectd/python'
+      $selmodule_dir	= '/usr/share/selinux/targeted'
     }
 
     default: {
