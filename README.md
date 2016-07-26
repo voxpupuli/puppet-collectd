@@ -775,11 +775,11 @@ class { 'collectd::plugin::iptables':
 
 ####Class: `collectd::plugin::java`
 
-jvmarg options must be declared if declaring loadplugin, as the JVM must be 
+jvmarg options must be declared if declaring loadplugin, as the JVM must be
 initialized prior to loading collectd java plugins.
 
 ```puppet
-class { 'collectd::plugin::java': 
+class { 'collectd::plugin::java':
   jvmarg      => ['arg1', 'arg2'],
   loadplugin  => {"plugin.name" => ["option line 1", "option line 2"]}
 }
@@ -858,7 +858,7 @@ class { 'collectd::plugin::mongodb':
 
 ##### Parameters:
 
-* `ensure` (String): String that must be 'present' or 'absent'. *Default*: 'present' 
+* `ensure` (String): String that must be 'present' or 'absent'. *Default*: 'present'
 * `interval` (String): Number of seconds that collectd pauses between data collection. *Default*: undef
 * `db_host` (String): String that holds the IP of the MongoDB server. *Default*: '127.0.0.1'
 * `db_user` (String): Required. String that specifies the user name of an account that can log into MongoDB
