@@ -52,13 +52,13 @@ describe 'collectd::plugin::disk', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.5',
+        collectd_version: '5.5'
       }
     end
 
     let :params do
       {
-        manage_package: false,
+        manage_package: false
       }
     end
     it 'Will not manage collectd-disk' do
