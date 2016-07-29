@@ -63,7 +63,7 @@ describe 'collectd::plugin::disk', type: :class do
     end
     it 'Will not manage collectd-disk' do
       should_not contain_package('collectd-disk').with(ensure: 'present',
-                                                       name: 'collectd-disk',)
+                                                       name: 'collectd-disk')
     end
   end
 
