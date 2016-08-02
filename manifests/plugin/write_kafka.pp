@@ -12,11 +12,10 @@ class collectd::plugin::write_kafka (
   validate_hash($topics)
   validate_array($kafka_hosts)
 
-  if ($kafka_host or $kafka_hosts) {
-    if($kafka_host) {
-      $real_kafka_host = [ "${kafka_host}:${kafka_port}" ]
-    }
-    $real_kafka_hosts = concat($kafka_hosts, $real_kafka_host)
+  if($kafka_host) {
+    $real_kafka_hosts = [ "${kafka_host}:${kafka_port}" ]
+  } else {
+    $real_kafka_hosts = $kafka_hosts
   }
   $kafka_broker = join($real_kafka_hosts, ',')
 
