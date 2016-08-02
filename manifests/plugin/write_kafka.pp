@@ -12,7 +12,7 @@ class collectd::plugin::write_kafka (
   validate_hash($topics)
   validate_array($kafka_hosts)
 
-  if($kafka_host && $kafka_port) {
+  if($kafka_host and $kafka_port) {
     $real_kafka_hosts = [ "${kafka_host}:${kafka_port}" ]
   } else {
     $real_kafka_hosts = $kafka_hosts
