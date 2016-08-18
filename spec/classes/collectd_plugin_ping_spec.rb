@@ -31,9 +31,9 @@ describe 'collectd::plugin::ping', type: :class do
       should contain_file('ping.load').with(ensure: 'present',
                                             path: '/etc/collectd.d/10-ping.conf').with_content(
                                               %r{Host "google.com"}
-                                           ).with_content(
-                                             %r{Host "puppetlabs.com"}
-                                           )
+                                            ).with_content(
+                                              %r{Host "puppetlabs.com"}
+                                            )
     end
   end
 
