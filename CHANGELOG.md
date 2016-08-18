@@ -1,3 +1,15 @@
+## 2016-08-18 Release 5.1.0
+
+* Modulesync with latest Vox Pupuli defaults
+* Fix: Target replace filter fix to allow identical keys with different values
+* Fix: Check $manage_package if not undef
+* Fix: Adding has_wordexp variable for template
+* Fix: Remove quotes from VerifyPeer and VerifyHost (don't treat bools as strings)
+* Feature: Add password parameter to redis plugin
+* Feature: Add scale plugin
+* Feature: Add a java_home option to javaplugin
+
+
 ## 2016-05-26 Release 5.0.0
 
 ### Backwards-incompatible changes:
