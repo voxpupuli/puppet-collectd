@@ -19,6 +19,8 @@ describe 'collectd::plugin::dbi', type: :class do
                                            content: %r{LoadPlugin dbi})
     end
     it 'Will create /etc/collectd.d/dbi-config.conf' do
+      should contain_concat('/etc/collectd/conf.d/dbi-config.conf').
+        that_requires('File[collectd.d]')
       should contain_concat__fragment('collectd_plugin_dbi_conf_header').with(content: %r{<Plugin dbi>})
     end
   end

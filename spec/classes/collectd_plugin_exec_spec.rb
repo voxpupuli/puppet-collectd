@@ -28,6 +28,8 @@ describe 'collectd::plugin::exec', type: :class do
     end
 
     it 'Will create /etc/collectd.d/conf.d/exec-config' do
+      should contain_concat('/etc/collectd/conf.d/exec-config.conf').
+        that_requires('File[collectd.d]')
       should contain_concat__fragment('collectd_plugin_exec_conf_footer').
         with(content: %r{</Plugin>},
              target: '/etc/collectd/conf.d/exec-config.conf',

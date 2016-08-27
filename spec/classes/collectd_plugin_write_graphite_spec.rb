@@ -20,6 +20,8 @@ describe 'collectd::plugin::write_graphite', type: :class do
     end
 
     it 'Will create /etc/collectd.d/conf.d/write_graphite-config.conf' do
+      should contain_concat('/etc/collectd/conf.d/write_graphite-config.conf').
+        that_requires('File[collectd.d]')
       should contain_concat__fragment('collectd_plugin_write_graphite_conf_header').
         with(content: %r{<Plugin write_graphite>},
              target: '/etc/collectd/conf.d/write_graphite-config.conf',

@@ -22,6 +22,7 @@ describe 'collectd::plugin::postgresql', type: :class do
                                                   content: %r{LoadPlugin postgresql})
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
+      should contain_concat('/etc/collectd.d/postgresql-config.conf').that_requires('File[collectd.d]')
       should contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
     end
   end

@@ -15,7 +15,8 @@ describe 'collectd::plugin::filter::chain', type: :define do
   context ':ensure => present and default parameters' do
     let(:title) { 'MyChain' }
     it 'Will create /etc/collectd/conf.d/filter-chain-MyChain.conf' do
-      should contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'present')
+      should contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'present').
+        that_requires('File[collectd.d]')
       should contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_MyChain_head').with(
         order: '00',
         content: '<Chain "MyChain">',

@@ -69,4 +69,7 @@ class collectd::config (
     purge   => $purge,
     recurse => $recurse,
   }
+
+  File['collectd.d'] -> Concat <| |>
+
 }
