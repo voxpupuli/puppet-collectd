@@ -30,11 +30,24 @@ class collectd::plugin::ceph (
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
   $osds,
+  $manage_package            = undef,
 ) {
 
   include ::collectd
 
   validate_array($osds)
+
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
+  if $_manage_package {
+    if $::osfamily == 'Debian' {
+      ensure_packages('libyajl2')
+    }
+
+    if $::osfamily == 'Redhat' {
+      ensure_packages('collectd-curl_json')
+    }
+  }
 
   collectd::plugin { 'ceph':
     ensure  => $ensure,
