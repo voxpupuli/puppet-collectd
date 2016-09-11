@@ -5,9 +5,10 @@
 # [*ensure*]
 #   ensure param for collectd::plugin type
 # 
-# [*osds*]
-#   array of osds to create config for 
-#   example: ['osd.1', 'osd.2', 'osd.3']
+# [*daemons*]
+#   array of ceph daemons to create config for (replace clustername, hostname as appropriate)
+#   example: [ '[clustername]-osd.1', '[clustername]-osd.2', '[clustername]-osd.3', '[clustername]-mon.[hostname].asok' ]
+#  
 #
 # [*longrunavglatency*] If enabled, latency values(sum,count pairs) are
 #   calculated as the long run average - average since the ceph daemon was
@@ -29,12 +30,12 @@ class collectd::plugin::ceph (
   $ensure                    = 'present',
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
-  $osds,
+  $daemons,
 ) {
 
   include ::collectd
 
-  validate_array($osds)
+  validate_array($daemons)
 
   collectd::plugin { 'ceph':
     ensure  => $ensure,

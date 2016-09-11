@@ -209,7 +209,7 @@ class { 'collectd::plugin::bind':
 
 ```puppet
 class { 'collectd::plugin::ceph':
-  osds          => [ 'osd.0', 'osd.1', 'osd.2'],
+  daemons          => [ '[clustername]-osd.0', '[clustername]-osd.1', '[clustername]-osd.2', '[clustername]-mon.[hostname].asok'],
 }
 ```
 
