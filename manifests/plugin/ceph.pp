@@ -27,10 +27,10 @@
 #   schema.
 # 
 class collectd::plugin::ceph (
+  $daemons,
   $ensure                    = 'present',
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
-  $daemons,
 ) {
 
   include ::collectd
