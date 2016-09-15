@@ -6,11 +6,11 @@ class collectd::plugin::tail (
 ) {
 
   if $files { validate_hash($files) }
-  
+
   collectd::plugin { 'tail':
     interval => $interval,
   }
-  
+
   if $files {
     create_resources(collectd::plugin::tail::file, $files)
   }
