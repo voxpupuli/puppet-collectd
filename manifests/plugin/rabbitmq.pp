@@ -41,6 +41,7 @@
 #   }
 #
 class collectd::plugin::rabbitmq (
+  # lint:ignore:parameter_order
   $config           = {
     'Username' => 'guest',
     'Password' => 'guest',
@@ -49,6 +50,7 @@ class collectd::plugin::rabbitmq (
     'Host'     => $::fqdn,
     'Realm'    => '"RabbitMQ Management"',
   },
+  # lint:endignore
   $ensure           = 'present',
   $interval         = undef,
   $manage_package   = undef,
