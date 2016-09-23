@@ -36,7 +36,7 @@ class collectd::plugin::python (
   } elsif $ensure == 'absent' {
     $ensure_real = 'absent'
   }
-  
+
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-python':
