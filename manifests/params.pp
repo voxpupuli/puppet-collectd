@@ -16,7 +16,7 @@ class collectd::params {
   $typesdb                 = []
   $write_queue_limit_high  = undef
   $write_queue_limit_low   = undef
-  $package_ensure          = 'installed'
+  $package_ensure          = 'present'
   $service_ensure          = 'running'
   $service_enable          = true
   $minimum_version         = '4.8'
