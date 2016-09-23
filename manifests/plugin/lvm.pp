@@ -8,11 +8,17 @@ class collectd::plugin::lvm (
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
+  
+  if $ensure == 'present' {
+    $ensure_real = $::collectd::package_ensure
+  } elsif $ensure == 'absent' {
+    $ensure_real = 'absent'
+  }
 
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-lvm':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
