@@ -30,7 +30,7 @@ class collectd::plugin::disk (
     } elsif $ensure == 'absent' {
       $ensure_real = 'absent'
     }
-  
+
     if $_manage_package {
       package { 'collectd-disk':
         ensure => $ensure_real,
