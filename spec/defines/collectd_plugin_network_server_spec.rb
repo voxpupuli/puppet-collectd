@@ -5,7 +5,8 @@ describe 'collectd::plugin::network::server', type: :define do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.1.0'
+        collectd_version: '5.1.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let(:title) { 'node1' }
@@ -31,7 +32,8 @@ describe 'collectd::plugin::network::server', type: :define do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.1.0'
+        collectd_version: '5.1.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let(:title) { 'node1' }

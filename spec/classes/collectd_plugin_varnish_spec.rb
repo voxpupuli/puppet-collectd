@@ -9,7 +9,8 @@ describe 'collectd::plugin::varnish', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.3'
+        collectd_version: '5.3',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -29,7 +30,8 @@ EOS
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: nil
+        collectd_version: nil,
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -50,7 +52,8 @@ EOS
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.4'
+        collectd_version: '5.4',
+        operatingsystemmajrelease: '7'
       }
     end
     context 'when there are no params given' do

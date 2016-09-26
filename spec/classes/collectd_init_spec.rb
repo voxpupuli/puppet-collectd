@@ -4,7 +4,8 @@ describe 'collectd', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -102,13 +103,13 @@ describe 'collectd', type: :class do
 
     context 'with internal_stats => true' do
       context 'with collectd_version = 5.5' do
-        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.5' } }
+        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.5', operatingsystemmajrelease: '7' } }
         let(:params) { { purge_config: true, internal_stats: true } }
         it { is_expected.to contain_file('collectd.conf').without_content(%r{^CollectInternalStats}) }
       end
 
       context 'with collectd_version = 5.6' do
-        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.6' } }
+        let(:facts) { { osfamily: 'RedHat', collectd_version: '5.6', operatingsystemmajrelease: '7' } }
         let(:params) { { purge_config: true, internal_stats: true } }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{^CollectInternalStats true}) }
       end

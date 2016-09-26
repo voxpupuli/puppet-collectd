@@ -8,7 +8,8 @@ describe 'collectd::plugin::load', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.10.1'
+      collectd_version: '4.10.1',
+      operatingsystemmajrelease: '7'
     }
   end
 

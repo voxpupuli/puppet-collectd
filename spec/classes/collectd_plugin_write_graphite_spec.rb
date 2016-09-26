@@ -8,7 +8,8 @@ describe 'collectd::plugin::write_graphite', type: :class do
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '5.0'
+      collectd_version: '5.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -89,7 +90,8 @@ describe 'collectd::plugin::write_graphite', type: :class do
         id: 'root',
         kernel: 'Linux',
         path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        collectd_version: '5.3'
+        collectd_version: '5.3',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do

@@ -5,5 +5,7 @@ fixtures:
     concat:
       repo: 'git://github.com/puppetlabs/puppetlabs-concat'
       ref: '2.1.0'
+    yum:
+      repo: 'https://github.com/voxpupuli/puppet-yum.git'
   symlinks:
     'collectd': "#{source_dir}"

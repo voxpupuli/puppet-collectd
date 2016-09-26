@@ -4,7 +4,8 @@ describe 'collectd::plugin::dns', type: :class do
   let :facts do
     {
       collectd_version: '5.2',
-      osfamily: 'RedHat'
+      osfamily: 'RedHat',
+      operatingsystemmajrelease: '7'
     }
   end
 

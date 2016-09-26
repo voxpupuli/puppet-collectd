@@ -4,14 +4,16 @@ describe 'collectd::plugin::swap', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context ':ensure => present, default params' do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     it 'Will create /etc/collectd.d/10-swap.conf' do
@@ -26,7 +28,8 @@ describe 'collectd::plugin::swap', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.0'
+        collectd_version: '5.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -42,7 +45,8 @@ describe 'collectd::plugin::swap', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.2.0'
+        collectd_version: '5.2.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -58,7 +62,8 @@ describe 'collectd::plugin::swap', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.5.0'
+        collectd_version: '5.5.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -74,7 +79,8 @@ describe 'collectd::plugin::swap', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 

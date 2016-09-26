@@ -4,14 +4,16 @@ describe 'collectd::plugin::redis', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context ':ensure => present, default params' do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -27,7 +29,8 @@ describe 'collectd::plugin::redis', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -56,7 +59,8 @@ describe 'collectd::plugin::redis', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do

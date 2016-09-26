@@ -3,14 +3,16 @@ require 'spec_helper'
 describe 'collectd::plugin::zfs_arc', type: :class do
   let :facts do
     {
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context ':ensure => present' do
     let :facts do
       {
         osfamily: 'FreeBSD',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     it 'Will create 10-zfs_arc.conf' do
@@ -24,7 +26,8 @@ describe 'collectd::plugin::zfs_arc', type: :class do
     let :facts do
       {
         osfamily: 'FreeBSD',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
