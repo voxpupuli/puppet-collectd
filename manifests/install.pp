@@ -13,10 +13,10 @@ class collectd::install (
   if $manage_package {
     if !defined(Yum::Install['epel-release']) {
       if $::osfamily == 'RedHat' {
-	      yum::install { 'epel-release':
-	        ensure => 'present',
-	        source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
-	      }
+        yum::install { 'epel-release':
+          ensure => 'present',
+          source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
+        }
       }
     }
 
