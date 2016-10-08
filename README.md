@@ -821,10 +821,26 @@ class { 'collectd::plugin::lvm': }
 
 ####Class: `collectd::plugin::memcached`
 
+The plugin supports multiple instances specified via host+port and socket:
+
 ```puppet
 class { 'collectd::plugin::memcached':
-  host => '192.168.122.1',
-  port => 11211,
+  instances => {
+    'sessions1' => {
+      'host' => '192.168.122.1',
+      'port' => '11211',
+    },
+    'storage1' => {
+      'host' => '192.168.122.1',
+      'port' => '11212',
+    },
+    'sessions2' => {
+      'socket'  => '/var/run/memcached.sessions.sock',
+    },
+    'storage2' => {
+      'socket'  => '/var/run/memcached.storage.sock',
+    },
+  }
 }
 ```
 

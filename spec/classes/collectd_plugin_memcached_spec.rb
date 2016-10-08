@@ -16,6 +16,66 @@ describe 'collectd::plugin::memcached', type: :class do
     end
   end
 
+  context ':ensure => present, multiple ports' do
+    let :params do
+      {
+        'instances' => {
+          'sessions1' => {
+            'host' => '127.0.0.1',
+            'port' => '11211'
+          },
+          'cache1' => {
+            'host' => '127.0.0.1',
+            'port' => '11212'
+          }
+        }
+      }
+    end
+    it 'Will create /etc/collectd.d/memcached.conf' do
+      content = <<EOS
+  <Instance "sessions1">
+    Host "127.0.0.1"
+    Port 11211
+  </Instance>
+  <Instance "cache1">
+    Host "127.0.0.1"
+    Port 11212
+  </Instance>
+EOS
+      should contain_file('memcached.load').with(ensure: 'present',
+                                                 path: '/etc/collectd.d/10-memcached.conf',
+                                                 content: %r{#{content}})
+    end
+  end
+
+  context ':ensure => present, multiple sockets' do
+    let :params do
+      {
+        'instances' => {
+          'sessions2' => {
+            'socket' => '/var/run/memcached.sessions.sock'
+          },
+          'cache2' => {
+            'socket' => '/var/run/memcached.cache.sock'
+          }
+        }
+      }
+    end
+    it 'Will create /etc/collectd.d/memcached.conf' do
+      content = <<EOS
+  <Instance "sessions2">
+    Socket "/var/run/memcached.sessions.sock"
+  </Instance>
+  <Instance "cache2">
+    Socket "/var/run/memcached.cache.sock"
+  </Instance>
+EOS
+      should contain_file('memcached.load').with(ensure: 'present',
+                                                 path: '/etc/collectd.d/10-memcached.conf',
+                                                 content: %r{#{content}})
+    end
+  end
+
   context ':ensure => absent' do
     let :params do
       { ensure: 'absent' }

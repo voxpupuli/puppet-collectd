@@ -1,4 +1,12 @@
 <Plugin memcached>
-  Host "<%= @host %>"
-  Port <%= @port %>
+<% @instances.each do |name,values| -%>
+  <Instance "<%= name %>">
+<% if values['host'] and values['port'] -%>
+    Host "<%= values['host'] %>"
+    Port <%= values['port'] %>
+<% elsif values['socket'] -%>
+    Socket "<%= values['socket'] %>"
+<% end -%>
+  </Instance>
+<% end -%>
 </Plugin>
