@@ -28,6 +28,7 @@ group :test do
   gem 'puppet-strings', '0.4.0',                                    :require => false
   gem 'rubocop-rspec', '~> 1.6',                                    :require => false if RUBY_VERSION >= '2.3.0'
   gem 'json_pure', '<= 2.0.1',                                      :require => false if RUBY_VERSION < '2.0.0'
+  gem 'mocha', '1.1.0',                                             :require => false
 end
 
 group :development do
