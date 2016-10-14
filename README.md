@@ -1320,10 +1320,12 @@ class {'collectd::plugin::sensors':
 class {'collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
-      'Type'     => 'counter',
-      'Table'    => false,
-      'Instance' => 'amavis.inMsgs',
-      'Values'   => ['AMAVIS-MIB::inMsgs.0']
+      'Type'        => 'counter',
+      'Table'       => false,
+      'Instance'    => 'amavis.inMsgs',
+      'Values'      => ['AMAVIS-MIB::inMsgs.0'],
+      'Ignore'      => [ '00:00', '*IgnoreString' ],
+      'InvertMatch' => false,
     }
   },
   hosts => {
