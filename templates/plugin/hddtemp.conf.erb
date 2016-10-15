@@ -1,0 +1,6 @@
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '3.1']) >= 0) -%>
+<Plugin "hddtemp">
+  Host "<%= @host %>"
+  Port <%= @port %>
+</Plugin>
+<% end -%>
