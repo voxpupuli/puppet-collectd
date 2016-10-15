@@ -135,6 +135,7 @@ documentation for each plugin for configurable attributes.
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
+* `uuid` (see [collectd::plugin::uuid](#class-collectdpluginuuid) below)
 * `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `vmem` (see [collectd::plugin::vmem](#class-collectdpluginvmem) below)
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
@@ -1451,6 +1452,13 @@ class {'collectd::plugin::uptime':
 ####Class: `collectd::plugin::users`
 ```puppet
 class {'collectd::plugin::users':
+}
+```
+
+####Class: `collectd::plugin::uuid`
+```puppet
+class {'collectd::plugin::uuid':
+  uuid_file => '/etc/uuid',
 }
 ```
 
