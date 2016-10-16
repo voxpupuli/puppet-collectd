@@ -67,15 +67,15 @@ class collectd::plugin::rabbitmq (
 
   if ($_manage_package) and ($provider_proxy) {
     $install_options = [{'--proxy' => $provider_proxy}]
-    else {
-    $install_options = undef
-    }
-    package { $package_name:
-      ensure          => $ensure,
-      provider        => $package_provider,
-      install_options => $install_options,
-    }
   }
+  else {
+    $install_options = undef
+  }
+  package { $package_name:
+    ensure          => $ensure,
+    provider        => $package_provider,
+    install_options => $install_options,
+    }
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
     config => $config,
