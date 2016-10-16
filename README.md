@@ -141,6 +141,7 @@ documentation for each plugin for configurable attributes.
 * `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
 * `write_http` (see [collectd::plugin::write_http](#class-collectdpluginwrite_http) below)
 * `write_kafka` (see [collectd::plugin::write_kafka](#class-collectdpluginwrite_kafka) below)
+* `write_log` (see [collectd::plugin::write_log](#class-collectdpluginwrite_log) below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
 * `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu) below)
@@ -1541,6 +1542,14 @@ class { 'collectd::plugin::write_kafka':
   topics     => {
     'mytopic'      => { 'format' => 'JSON' },
   }
+}
+```
+
+####Class: `collectd::plugin::write_log`
+
+```puppet
+class { 'collectd::plugin::write_log':
+  format => 'JSON',
 }
 ```
 
