@@ -17,7 +17,8 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '4.10.1'
+          collectd_version: '4.10.1',
+          operatingsystemmajrelease: '7'
         }
       end
 
@@ -31,7 +32,8 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.0.0'
+          collectd_version: '5.0.0',
+          operatingsystemmajrelease: '7'
         }
       end
 
@@ -45,7 +47,8 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.5.0'
+          collectd_version: '5.5.0',
+          operatingsystemmajrelease: '7'
         }
       end
 

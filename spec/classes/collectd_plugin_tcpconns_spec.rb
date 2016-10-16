@@ -4,7 +4,8 @@ describe 'collectd::plugin::tcpconns', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -69,7 +70,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
 
   context ':allportssummary => true with collectd_version < 5.5.0' do
     let :facts do
-      { osfamily: 'RedHat', collectd_version: '5.4.1' }
+      { osfamily: 'RedHat', collectd_version: '5.4.1', operatingsystemmajrelease: '7' }
     end
     let :params do
       { ensure: 'present', allportssummary: true }
@@ -82,7 +83,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
 
   context ':allportssummary => true with collectd_version = 5.5.0' do
     let :facts do
-      { osfamily: 'RedHat', collectd_version: '5.5.0' }
+      { osfamily: 'RedHat', collectd_version: '5.5.0', operatingsystemmajrelease: '7' }
     end
     let :params do
       { ensure: 'present', allportssummary: true }

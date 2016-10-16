@@ -18,6 +18,7 @@ RSpec.configure do |c|
     hosts.each do |host|
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppetlabs-concat'), acceptable_exit_codes: [0]
+      on host, puppet('module', 'install', 'puppet-yum'), acceptable_exit_codes: [0]
     end
   end
 end

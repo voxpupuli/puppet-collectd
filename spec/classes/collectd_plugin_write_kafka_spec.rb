@@ -4,7 +4,8 @@ describe 'collectd::plugin::write_kafka', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '5.5.0'
+      collectd_version: '5.5.0',
+      operatingsystemmajrelease: '7'
     }
   end
 

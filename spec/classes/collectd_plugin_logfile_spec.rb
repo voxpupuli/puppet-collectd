@@ -4,14 +4,16 @@ describe 'collectd::plugin::logfile', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context ':ensure => present, default params' do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -25,7 +27,8 @@ describe 'collectd::plugin::logfile', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '4.9.0'
+        collectd_version: '4.9.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -42,7 +45,8 @@ describe 'collectd::plugin::logfile', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '4.10.0'
+        collectd_version: '4.10.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -57,7 +61,8 @@ describe 'collectd::plugin::logfile', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '4.10.0'
+        collectd_version: '4.10.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -75,7 +80,8 @@ describe 'collectd::plugin::logfile', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do

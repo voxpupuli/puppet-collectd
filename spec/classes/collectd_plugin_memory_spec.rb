@@ -4,14 +4,16 @@ describe 'collectd::plugin::memory', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context ':ensure => present, default params' do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -26,7 +28,8 @@ describe 'collectd::plugin::memory', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.4.2'
+        collectd_version: '5.4.2',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -45,7 +48,8 @@ describe 'collectd::plugin::memory', type: :class do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.5.0'
+        collectd_version: '5.5.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -60,7 +64,8 @@ describe 'collectd::plugin::memory', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
 

@@ -4,7 +4,8 @@ describe 'collectd::plugin::cpu', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -33,7 +34,8 @@ describe 'collectd::plugin::cpu', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5'
+          collectd_version: '5.5',
+          operatingsystemmajrelease: '7'
         }
       end
       let :params do

@@ -4,14 +4,16 @@ describe 'collectd::plugin::write_tsdb', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '5.5.0'
+      collectd_version: '5.5.0',
+      operatingsystemmajrelease: '7'
     }
   end
   context 'ensure: present, default params' do
     let :facts do
       {
         osfamily: 'Debian',
-        collectd_version: '5.5.0'
+        collectd_version: '5.5.0',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -26,7 +28,8 @@ describe 'collectd::plugin::write_tsdb', type: :class do
     let :facts do
       {
         osfamily: 'Debian',
-        collectd_version: '5.5.0'
+        collectd_version: '5.5.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do

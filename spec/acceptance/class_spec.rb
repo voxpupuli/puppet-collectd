@@ -21,4 +21,18 @@ describe 'collectd class' do
       it { should be_running }
     end
   end
+
+  context 'install memory plugin' do
+    it 'works idemptontently' do
+      pp = <<-EOS
+      class { '::collectd': }
+
+      class { '::collectd::plugin::memory': }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
+    end
+  end
 end

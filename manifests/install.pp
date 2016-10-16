@@ -11,6 +11,18 @@ class collectd::install (
   }
 
   if $manage_package {
+    if $::osfamily == 'RedHat' {
+      if !defined(Yum::Install['epel-release']) {
+        yum::install { 'epel-release':
+          ensure => 'present',
+          source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
+        }
+      }
+      Package[$package_name] {
+        require => Yum::Install['epel-release']
+      }
+    }
+
     package { $package_name:
       ensure          => $package_ensure,
       provider        => $package_provider,

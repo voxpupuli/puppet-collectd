@@ -7,7 +7,8 @@ describe 'collectd::plugin::curl', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -15,7 +16,8 @@ describe 'collectd::plugin::curl', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     it 'Will create /etc/collectd.d/10-curl.conf' do
@@ -29,7 +31,8 @@ describe 'collectd::plugin::curl', type: :class do
     let :facts do
       {
         osfamily: 'Debian',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -64,7 +67,8 @@ describe 'collectd::plugin::curl', type: :class do
     let :facts do
       {
         osfamily: 'Debian',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -92,7 +96,8 @@ describe 'collectd::plugin::curl', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '4.8.0'
+        collectd_version: '4.8.0',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do

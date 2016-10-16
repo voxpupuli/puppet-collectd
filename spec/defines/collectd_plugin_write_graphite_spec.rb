@@ -7,7 +7,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
@@ -17,7 +18,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       {
         osfamily: 'RedHat',
         collectd_version: '5.3',
-        concat_basedir: '/dne'
+        concat_basedir: '/dne',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
@@ -39,7 +41,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       {
         osfamily: 'RedHat',
         collectd_version: '5.4',
-        concat_basedir: '/dne'
+        concat_basedir: '/dne',
+        operatingsystemmajrelease: '7'
       }
     end
     let :params do
