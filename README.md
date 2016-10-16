@@ -92,6 +92,7 @@ documentation for each plugin for configurable attributes.
 * `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
+* `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
@@ -123,6 +124,7 @@ documentation for each plugin for configurable attributes.
 * `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
+* `smart` (see [collectd::plugin::smart](#class-collectdpluginsmart) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
@@ -732,6 +734,15 @@ collectd::plugin::genericjmx::connection {
 
 ```
 
+####Class: `collectd::plugin::hddtemp`
+
+```puppet
+class { 'collectd::plugin::hddtemp':
+  host => '127.0.0.1',
+  port => 7634,
+}
+```
+
 ####Class: `collectd::plugin::interface`
 
 ```puppet
@@ -1311,6 +1322,15 @@ class { 'collectd::plugin::rrdtool':
 ```puppet
 class {'collectd::plugin::sensors':
   ignoreselected => false,
+}
+```
+
+####Class: `collectd::plugin::smart`
+
+```puppet
+class { '::collectd::plugin::smart':
+  disks          => ['/^dm/'],
+  ignoreselected => true,
 }
 ```
 

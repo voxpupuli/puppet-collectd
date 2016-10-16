@@ -52,16 +52,16 @@ describe 'collectd::plugin::snmp::data', type: :define do
 
   context 'Ignore is an array' do
     let(:params) do
-      required_params.merge(ignore: %w( hamilton burr jefferson ))
+      required_params.merge(ignore: %w(hamilton burr jefferson))
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(/Ignore "hamilton" "burr" "jefferson"/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Ignore "hamilton" "burr" "jefferson"}) }
   end
 
   context 'Ignore is just a string' do
     let(:params) do
       required_params.merge(ignore: 'washington')
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(/Ignore "washington"/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{Ignore "washington"}) }
   end
 
   context 'table is true' do
@@ -91,7 +91,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(/InvertMatch true/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{InvertMatch true}) }
   end
 
   context 'InvertMatch is false' do
@@ -101,6 +101,6 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(/InvertMatch false/) }
+    it { should contain_file('snmp-data-foo.conf').with_content(%r{InvertMatch false}) }
   end
 end
