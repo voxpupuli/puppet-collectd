@@ -4,7 +4,7 @@ define collectd::plugin::aggregation::aggregator (
   $host              = undef,
   $plugin            = undef,
   $plugininstance    = undef,
-  $type              = undef,
+  $agg_type          = undef,
   $typeinstance      = undef,
   $sethost           = undef,
   $setplugin         = undef,
