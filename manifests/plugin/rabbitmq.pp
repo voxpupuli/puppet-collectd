@@ -69,7 +69,7 @@ class collectd::plugin::rabbitmq (
     $install_options = [{'--proxy' => $provider_proxy}]
     else {
     $install_options = undef
-    }    
+    }
     package { $package_name:
       ensure          => $ensure,
       provider        => $package_provider,
