@@ -1,0 +1,8 @@
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '4.5']) >= 0) -%>
+<Plugin "thermal">
+<% @devices.each do |device| -%>
+  Device "<%= device %>"
+<% end -%>
+  IgnoreSelected <%= @ignoreselected %>
+</Plugin>
+<% end -%>
