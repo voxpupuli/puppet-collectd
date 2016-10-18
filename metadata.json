@@ -49,6 +49,12 @@
       ]
     },
     {
+      "operatingsystem": "Solaris",
+      "operatingsystemrelease": [
+        "11"
+      ]
+    },
+    {
       "operatingsystem": "Gentoo"
     },
     {
@@ -56,9 +62,6 @@
     },
     {
       "operatingsystem": "OpenBSD"
-    },
-    {
-      "operatingsystem": "Solaris"
     },
     {
       "operatingsystem": "Archlinux"
