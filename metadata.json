@@ -55,10 +55,15 @@
       ]
     },
     {
-      "operatingsystem": "Gentoo"
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "9",
+        "10"
+      ]
     },
+
     {
-      "operatingsystem": "FreeBSD"
+      "operatingsystem": "Gentoo"
     },
     {
       "operatingsystem": "OpenBSD"
