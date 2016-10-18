@@ -61,12 +61,16 @@
         "10"
       ]
     },
-
     {
-      "operatingsystem": "Gentoo"
+      "operatingsystem": "OpenBSD",
+      "operatingsystemrelease": [
+        "5.7",
+        "5.8",
+        "5.9"
+      ]
     },
     {
-      "operatingsystem": "OpenBSD"
+      "operatingsystem": "Gentoo"
     },
     {
       "operatingsystem": "Archlinux"
