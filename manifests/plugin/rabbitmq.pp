@@ -56,6 +56,7 @@ class collectd::plugin::rabbitmq (
   $manage_package   = undef,
   $package_name     = 'collectd-rabbitmq',
   $package_provider = 'pip',
+  $provider_proxy   = undef,
 ) {
   include ::collectd
 
@@ -64,12 +65,17 @@ class collectd::plugin::rabbitmq (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $_manage_package {
-    package { $package_name:
-      ensure   => $ensure,
-      provider => $package_provider,
-    }
+  if ($_manage_package) and ($provider_proxy) {
+    $install_options = [{'--proxy' => $provider_proxy}]
   }
+  else {
+    $install_options = undef
+  }
+  package { $package_name:
+    ensure          => $ensure,
+    provider        => $package_provider,
+    install_options => $install_options,
+    }
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
     config => $config,
