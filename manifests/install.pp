@@ -5,12 +5,11 @@ class collectd::install (
   $package_install_options = $collectd::package_install_options,
   $manage_package          = $collectd::manage_package,
 ) {
-
   if $package_install_options != undef {
     validate_array($package_install_options)
   }
 
-  if $manage_package {
+  if $::collectd::manage_repo {
     if $::osfamily == 'RedHat' {
       if !defined(Yum::Install['epel-release']) {
         yum::install { 'epel-release':
@@ -19,8 +18,10 @@ class collectd::install (
         }
       }
 
-      Package[$package_name] {
-        require => Yum::Install['epel-release']
+      if defined(Package[$package_name]) {
+        Package[$package_name] {
+          require => Yum::Install['epel-release']
+        }
       }
     }
 
@@ -38,7 +39,9 @@ class collectd::install (
       default                   : {
       }
     }
+  }
 
+  if $manage_package {
     package { $package_name:
       ensure          => $package_ensure,
       provider        => $package_provider,

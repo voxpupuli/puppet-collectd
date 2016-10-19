@@ -21,6 +21,7 @@ class collectd::params {
   $service_enable          = true
   $minimum_version         = '4.8'
   $manage_package          = true
+  $manage_repo             = true
   $manage_service          = true
   $package_install_options = undef
   $plugin_conf_dir_mode    = '0750'

@@ -9,6 +9,7 @@ class collectd (
   $interval                = $collectd::params::interval,
   $internal_stats          = $collectd::params::internal_stats,
   $manage_package          = $collectd::params::manage_package,
+  $manage_repo             = $collectd::params::manage_repo,
   $manage_service          = $collectd::params::manage_service,
   $minimum_version         = $collectd::params::minimum_version,
   $package_ensure          = $collectd::params::package_ensure,
