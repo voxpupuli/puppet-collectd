@@ -1,5 +1,7 @@
 fixtures:
   repositories:
+    apt:
+      repo: 'git://github.com/puppetlabs/puppetlabs-apt'
     stdlib:
       repo: 'git://github.com/puppetlabs/puppetlabs-stdlib'
     concat:

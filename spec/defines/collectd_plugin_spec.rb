@@ -6,7 +6,8 @@ describe 'collectd::plugin', type: :define do
     let :facts do
       {
         collectd_version: '5.3',
-        osfamily: 'Debian'
+        osfamily: 'Debian',
+        operatingsystemmajrelease: '7'
       }
     end
 
@@ -20,7 +21,8 @@ describe 'collectd::plugin', type: :define do
     let :facts do
       {
         collectd_version: '4.9.3',
-        osfamily: 'Debian'
+        osfamily: 'Debian',
+        operatingsystemmajrelease: '7'
       }
     end
 

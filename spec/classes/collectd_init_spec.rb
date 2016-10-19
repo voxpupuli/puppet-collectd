@@ -185,6 +185,18 @@ describe 'collectd', type: :class do
           it { should contain_package(options[:package]).with_ensure('present') }
         end
 
+        context 'when manage_repo is false' do
+          let(:params) { { manage_repo: false } }
+          it { should_not contain_apt__source('ppa_collectd') }
+        end
+
+        context 'when manage_repo is true' do
+          let(:params) { { manage_repo: true } }
+          if facts[:osfamily] == 'RedHat'
+            it { is_expected.to contain_yum__install('epel-release') }
+          end
+        end
+
         context 'when manage_service is true' do
           let(:params) { { manage_service: true } }
           it { should contain_service('collectd').with_ensure('running') }

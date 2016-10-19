@@ -4,7 +4,8 @@ describe 'collectd::plugin::snmp::data', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 
