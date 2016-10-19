@@ -111,6 +111,10 @@
     {
       "name": "puppet-yum",
       "version_requirement": ">= 0.9.15"
+    },
+    {
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 2.2.0"
     }
   ]
 }

@@ -18,8 +18,24 @@ class collectd::install (
           source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
         }
       }
+
       Package[$package_name] {
         require => Yum::Install['epel-release']
+      }
+    }
+
+    case $::operatingsystemmajrelease {
+      '12.04', '14.04', '16.04' : {
+        apt::source { 'ppa_collectd':
+          location => 'http://ppa.launchpad.net/collectd/collectd-5.5/ubuntu',
+          repos    => 'main',
+          key      => {
+            'id'     => '7543C08D555DC473B9270ACDAF7ECBB3476ACEB3',
+            'server' => 'keyserver.ubuntu.com',
+          },
+        }
+      }
+      default                   : {
       }
     }
 
