@@ -25,17 +25,33 @@
 #   is used as the counter value and is treated as a derive type. When
 #   disabled, all metrics are treated as the types received from the ceph
 #   schema.
+#
+# [*manage_package*]
+#   If enabled, manages separate package for plugin
+#
+# [*package_name*]
+#   to be used with manage_package; if manage_package is true, this gives the name
+#   of the package to manage. Defaults to 'collectd-ceph'
 # 
 class collectd::plugin::ceph (
   $daemons,
   $ensure                    = 'present',
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
+  $manage_package            = undef,
+  $package_name              = 'collectd-ceph'
 ) {
 
   include ::collectd
 
   validate_array($daemons)
+
+  if $manage_package {
+    package { 'collectd-ceph':
+      ensure => $ensure,
+      name   => $package_name,
+    }
+  }
 
   collectd::plugin { 'ceph':
     ensure  => $ensure,
