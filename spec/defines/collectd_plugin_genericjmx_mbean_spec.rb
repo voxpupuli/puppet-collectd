@@ -7,7 +7,8 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7'
     }
   end
 

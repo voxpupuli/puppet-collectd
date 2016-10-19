@@ -4,7 +4,8 @@ describe 'collectd::plugin::apache::instance', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '5.5.'
+      collectd_version: '5.5.',
+      operatingsystemmajrelease: '7'
     }
   end
 
