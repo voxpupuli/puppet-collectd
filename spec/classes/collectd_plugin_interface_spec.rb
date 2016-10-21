@@ -38,4 +38,22 @@ describe 'collectd::plugin::interface', type: :class do
       should compile.and_raise_error(%r{String})
     end
   end
+
+  context 'interface options should be set with collectd 5.6' do
+    let :facts do
+      {
+        collectd_version: '5.6',
+      }
+    end
+    let :params do
+      {
+        reportinactive: true,
+      }
+    end
+
+    it 'Will include ValuesPercentage in /etc/collectd.d/10-interface.conf' do
+      should contain_file('interface.load').with_content(%r{ReportInactive true})
+    end
+  end
+
 end
