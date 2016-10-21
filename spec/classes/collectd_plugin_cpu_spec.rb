@@ -58,6 +58,25 @@ describe 'collectd::plugin::cpu', type: :class do
         is_expected.to contain_file('cpu.load').with_content(%r{ValuesPercentage true})
       end
     end
+
+    context 'cpu options should be set with collectd 5.6' do
+      let :facts do
+        {
+          osfamily: 'RedHat',
+          collectd_version: '5.6',
+          operatingsystemmajrelease: '7'
+        }
+      end
+      let :params do
+        {
+          reportnumcpu: true
+        }
+      end
+
+      it 'Will include ValuesPercentage in /etc/collectd.d/10-cpu.conf' do
+        should contain_file('cpu.load').with_content(%r{ReportNumCpu true})
+      end
+    end
   end
 
   context 'default parameters are not booleans' do
@@ -65,7 +84,8 @@ describe 'collectd::plugin::cpu', type: :class do
       {
         reportbystate: 'string_a',
         reportbycpu: 'string_b',
-        valuespercentage: 'string_c'
+        valuespercentage: 'string_c',
+        reportnumcpu: 'string_d'
       }
     end
 
