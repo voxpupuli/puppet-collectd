@@ -42,7 +42,9 @@ describe 'collectd::plugin::interface', type: :class do
   context 'interface options should be set with collectd 5.6' do
     let :facts do
       {
-        collectd_version: '5.6',
+      osfamily: 'RedHat',
+      collectd_version: '5.6.0',
+      operatingsystemmajrelease: '7'
       }
     end
     let :params do
