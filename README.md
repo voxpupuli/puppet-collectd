@@ -1,7 +1,11 @@
 # Collectd module for Puppet
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
 [![Build Status](https://travis-ci.org/voxpupuli/puppet-collectd.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-collectd)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-collectd/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-collectd)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
 
 ## Description
 
