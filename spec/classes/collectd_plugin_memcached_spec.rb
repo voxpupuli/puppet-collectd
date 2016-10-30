@@ -11,9 +11,9 @@ describe 'collectd::plugin::memcached', type: :class do
 
   context ':ensure => present, default host and port' do
     it 'Will create /etc/collectd.d/memcached.conf' do
-      should contain_file('memcached.load').with(ensure: 'present',
-                                                 path: '/etc/collectd.d/10-memcached.conf',
-                                                 content: %r{Host "127.0.0.1"\n.+Port 11211})
+      is_expected.to contain_file('memcached.load').with(ensure: 'present',
+                                                         path: '/etc/collectd.d/10-memcached.conf',
+                                                         content: %r{Host "127.0.0.1"\n.+Port 11211})
     end
   end
 
@@ -43,9 +43,9 @@ describe 'collectd::plugin::memcached', type: :class do
     Port 11212
   </Instance>
 EOS
-      should contain_file('memcached.load').with(ensure: 'present',
-                                                 path: '/etc/collectd.d/10-memcached.conf',
-                                                 content: %r{#{content}})
+      is_expected.to contain_file('memcached.load').with(ensure: 'present',
+                                                         path: '/etc/collectd.d/10-memcached.conf',
+                                                         content: %r{#{content}})
     end
   end
 
@@ -71,9 +71,9 @@ EOS
     Socket "/var/run/memcached.cache.sock"
   </Instance>
 EOS
-      should contain_file('memcached.load').with(ensure: 'present',
-                                                 path: '/etc/collectd.d/10-memcached.conf',
-                                                 content: %r{#{content}})
+      is_expected.to contain_file('memcached.load').with(ensure: 'present',
+                                                         path: '/etc/collectd.d/10-memcached.conf',
+                                                         content: %r{#{content}})
     end
   end
 
@@ -82,8 +82,8 @@ EOS
       { ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/memcached.conf' do
-      should contain_file('memcached.load').with(ensure: 'absent',
-                                                 path: '/etc/collectd.d/10-memcached.conf')
+      is_expected.to contain_file('memcached.load').with(ensure: 'absent',
+                                                         path: '/etc/collectd.d/10-memcached.conf')
     end
   end
 end

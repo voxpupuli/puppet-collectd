@@ -14,11 +14,11 @@ describe 'collectd class' do
     end
 
     describe package('collectd') do
-      it { should be_installed }
+      it { is_expected.to be_installed }
     end
 
     describe service('collectd') do
-      it { should be_running }
+      it { is_expected.to be_running }
     end
   end
 

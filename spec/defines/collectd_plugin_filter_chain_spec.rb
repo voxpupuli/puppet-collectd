@@ -16,20 +16,20 @@ describe 'collectd::plugin::filter::chain', type: :define do
   context ':ensure => present and default parameters' do
     let(:title) { 'MyChain' }
     it 'Will create /etc/collectd/conf.d/filter-chain-MyChain.conf' do
-      should contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'present').
+      is_expected.to contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'present').
         that_requires('File[collectd.d]')
-      should contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_MyChain_head').with(
+      is_expected.to contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_MyChain_head').with(
         order: '00',
         content: '<Chain "MyChain">',
         target: '/etc/collectd/conf.d/filter-chain-MyChain.conf'
       )
-      should contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_MyChain_footer').with(
+      is_expected.to contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_MyChain_footer').with(
         order: '99',
         content: '</Chain>',
         target: '/etc/collectd/conf.d/filter-chain-MyChain.conf'
       )
     end
-    it { should_not contain_collectd__plugin__filter__target('z_chain-MyChain-target') }
+    it { is_expected.not_to contain_collectd__plugin__filter__target('z_chain-MyChain-target') }
   end
 
   context ':ensure => present and set a default target' do
@@ -44,7 +44,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
       }
     end
     it 'Will add a default target with plugin set and options' do
-      should contain_collectd__plugin__filter__target('z_chain-MyChain-target').with(
+      is_expected.to contain_collectd__plugin__filter__target('z_chain-MyChain-target').with(
         chain: 'MyChain',
         plugin: 'set',
         options: {
@@ -63,7 +63,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
       }
     end
     it 'Will remove file /etc/collectd/conf.d/filter-chain-MyChain.conf' do
-      should contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'absent')
+      is_expected.to contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'absent')
     end
   end
 end

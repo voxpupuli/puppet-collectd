@@ -16,32 +16,32 @@ describe 'collectd::plugin::python', type: :class do
   context ':ensure => present' do
     context ':ensure => present and default parameters' do
       it 'ensures that $modulepaths exits' do
-        should contain_file('/usr/share/collectd/python').with(ensure: 'directory')
+        is_expected.to contain_file('/usr/share/collectd/python').with(ensure: 'directory')
       end
 
       it 'Will create /etc/collectd/conf.d/10-python.conf to load the plugin' do
-        should contain_file('python.load').with(ensure: 'present',
-                                                path: '/etc/collectd/conf.d/10-python.conf',
-                                                content: %r{LoadPlugin python})
+        is_expected.to contain_file('python.load').with(ensure: 'present',
+                                                        path: '/etc/collectd/conf.d/10-python.conf',
+                                                        content: %r{LoadPlugin python})
       end
 
       it 'Will create /etc/collectd.d/conf.d/python-config.conf' do
-        should contain_concat('/etc/collectd/conf.d/python-config.conf').
+        is_expected.to contain_concat('/etc/collectd/conf.d/python-config.conf').
           that_requires('File[collectd.d]')
-        should contain_concat__fragment('collectd_plugin_python_conf_header').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
           with(content: %r{<Plugin "python">},
                target: '/etc/collectd/conf.d/python-config.conf',
                order: '00')
       end
 
       it 'set default Python module path' do
-        should contain_concat__fragment('collectd_plugin_python_conf_header').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
           with(content: %r{ModulePath "/usr/share/collectd/python"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
       it 'Will create /etc/collectd.d/conf.d/python-config.conf' do
-        should contain_concat__fragment('collectd_plugin_python_conf_footer').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_footer').
           with(content: %r{</Plugin>},
                target: '/etc/collectd/conf.d/python-config.conf',
                order: '99')
@@ -55,15 +55,15 @@ describe 'collectd::plugin::python', type: :class do
         }
       end
       it 'will ensure the two directories are here' do
-        should contain_file('/tmp/')
-        should contain_file('/data/')
+        is_expected.to contain_file('/tmp/')
+        is_expected.to contain_file('/data/')
       end
       it 'will set two modulepath in the module conf' do
-        should contain_concat__fragment('collectd_plugin_python_conf_header').with(
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
           content: %r{ModulePath "/tmp/"},
           target: '/etc/collectd/conf.d/python-config.conf'
         )
-        should contain_concat__fragment('collectd_plugin_python_conf_header').with(
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
           content: %r{ModulePath "/data/"},
           target: '/etc/collectd/conf.d/python-config.conf'
         )
@@ -86,42 +86,42 @@ describe 'collectd::plugin::python', type: :class do
       end
 
       it 'imports elasticsearch module' do
-        should contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
           with(content: %r{Import "elasticsearch"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
       it 'includes elasticsearch module configuration' do
-        should contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
           with(content: %r{<Module "elasticsearch">},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
       it 'includes elasticsearch Cluster name' do
-        should contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
           with(content: %r{Cluster "ES-clust"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
       it 'created collectd plugin file' do
-        should contain_file('elasticsearch.script').
+        is_expected.to contain_file('elasticsearch.script').
           with(ensure: 'present',
                path: '/usr/share/collectd/python/elasticsearch.py')
       end
 
       # test foo module
       it 'imports foo module' do
-        should contain_concat__fragment('collectd_plugin_python_conf_foo').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').
           with(content: %r{Import "foo"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
       it 'includes foo module configuration' do
-        should contain_concat__fragment('collectd_plugin_python_conf_foo').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').
           with(content: %r{<Module "foo">},
                target: '/etc/collectd/conf.d/python-config.conf')
-        should contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Verbose true})
-        should contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Bar "bar"})
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Verbose true})
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Bar "bar"})
       end
     end
 
@@ -140,23 +140,23 @@ describe 'collectd::plugin::python', type: :class do
       end
 
       it 'ensures that each directory on $modulepaths exits' do
-        should contain_file('/var/lib/collectd/python').with(ensure: 'directory')
+        is_expected.to contain_file('/var/lib/collectd/python').with(ensure: 'directory')
 
-        should contain_file('/usr/collectd').with(ensure: 'directory')
+        is_expected.to contain_file('/usr/collectd').with(ensure: 'directory')
       end
 
       it 'set default Python module paths' do
-        should contain_concat__fragment('collectd_plugin_python_conf_header').
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
           with(content: %r{ModulePath "/var/lib/collectd/python"},
                target: '/etc/collectd/conf.d/python-config.conf')
 
-        should contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{ModulePath "/usr/collectd"})
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{ModulePath "/usr/collectd"})
 
-        should contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{ModulePath "/var/lib/collectd/python"})
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{ModulePath "/var/lib/collectd/python"})
       end
 
       it 'created collectd plugin file' do
-        should contain_file('elasticsearch.script').
+        is_expected.to contain_file('elasticsearch.script').
           with(ensure: 'present',
                path: '/var/lib/collectd/python/elasticsearch.py')
       end
@@ -171,7 +171,7 @@ describe 'collectd::plugin::python', type: :class do
     end
 
     it 'will change $globals settings' do
-      should contain_file('python.load').
+      is_expected.to contain_file('python.load').
         with(ensure: 'present',
              path: '/etc/collectd/conf.d/10-python.conf',
              content: %r{Globals false})
@@ -188,11 +188,11 @@ describe 'collectd::plugin::python', type: :class do
     end
 
     it 'sets options' do
-      should contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{LogTraces true})
+      is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{LogTraces true})
 
-      should contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{Interactive true})
+      is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{Interactive true})
 
-      should contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{Encoding utf-8})
+      is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{Encoding utf-8})
     end
   end
 
@@ -211,14 +211,14 @@ describe 'collectd::plugin::python', type: :class do
     end
 
     it 'will remove /etc/collectd/conf.d/10-python.conf' do
-      should contain_file('python.load').
+      is_expected.to contain_file('python.load').
         with(ensure: 'absent',
              path: '/etc/collectd/conf.d/10-python.conf',
              content: %r{LoadPlugin python})
     end
 
     it 'won\'t create /etc/collectd.d/conf.d/python-config.conf (no modules defined)' do
-      should_not contain_concat__fragment('collectd_plugin_python_conf_header').
+      is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_header').
         with(ensure: 'absent',
              target: '/etc/collectd/conf.d/python-config.conf',
              order: '00')

@@ -22,20 +22,20 @@ describe 'collectd::plugin::netlink', type: :class do
       }
     end
     it 'Will create /etc/collectd.d/10-netlink.conf' do
-      should contain_file('netlink.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/10-netlink.conf')
+      is_expected.to contain_file('netlink.load').with(ensure: 'present',
+                                                       path: '/etc/collectd.d/10-netlink.conf')
     end
-    it { should contain_file('netlink.load').with_content(%r{^<Plugin netlink>$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  Interface "eth0"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  Interface "eth1"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  VerboseInterface "ppp0"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  QDisc "eth0" "pfifo_fast-1:0"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  QDisc "ppp0"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  Class "ppp0" "htb-1:10"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  Filter "ppp0" "u32-1:0"$}) }
-    it { should contain_file('netlink.load').with_content(%r{^  IgnoreSelected false$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^<Plugin netlink>$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  Interface "eth0"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  Interface "eth1"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  VerboseInterface "ppp0"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  QDisc "eth0" "pfifo_fast-1:0"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  QDisc "ppp0"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  Class "ppp0" "htb-1:10"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  Filter "ppp0" "u32-1:0"$}) }
+    it { is_expected.to contain_file('netlink.load').with_content(%r{^  IgnoreSelected false$}) }
     it do
-      should contain_package('collectd-netlink').with(
+      is_expected.to contain_package('collectd-netlink').with(
         ensure: 'present'
       )
     end
@@ -46,11 +46,11 @@ describe 'collectd::plugin::netlink', type: :class do
       { interfaces: ['eth0'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-netlink.conf' do
-      should contain_file('netlink.load').with(ensure: 'absent',
-                                               path: '/etc/collectd.d/10-netlink.conf')
+      is_expected.to contain_file('netlink.load').with(ensure: 'absent',
+                                                       path: '/etc/collectd.d/10-netlink.conf')
     end
     it do
-      should contain_package('collectd-netlink').with(
+      is_expected.to contain_package('collectd-netlink').with(
         ensure: 'absent'
       )
     end
@@ -61,7 +61,7 @@ describe 'collectd::plugin::netlink', type: :class do
       { interfaces: 'eth0' }
     end
     it 'Will raise an error about :interfaces being a String' do
-      should compile.and_raise_error(%r{String})
+      is_expected.to compile.and_raise_error(%r{String})
     end
   end
 end

@@ -18,13 +18,13 @@ describe 'collectd::plugin::postgresql', type: :class do
 
   context ':ensure => present and default parameters' do
     it 'Will create /etc/collectd.d/01-postgresql.conf to load the plugin' do
-      should contain_file('postgresql.load').with(ensure: 'present',
-                                                  path: '/etc/collectd.d/10-postgresql.conf',
-                                                  content: %r{LoadPlugin postgresql})
+      is_expected.to contain_file('postgresql.load').with(ensure: 'present',
+                                                          path: '/etc/collectd.d/10-postgresql.conf',
+                                                          content: %r{LoadPlugin postgresql})
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
-      should contain_concat('/etc/collectd.d/postgresql-config.conf').that_requires('File[collectd.d]')
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
+      is_expected.to contain_concat('/etc/collectd.d/postgresql-config.conf').that_requires('File[collectd.d]')
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
     end
   end
   context ':ensure => present and create a db with a custom query' do
@@ -59,11 +59,11 @@ describe 'collectd::plugin::postgresql', type: :class do
       }
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
     end
   end
 
@@ -94,10 +94,10 @@ describe 'collectd::plugin::postgresql', type: :class do
       }
     end
     it 'Will create /etc/collectd.d/postgresql-config.conf dsfd ' do
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5432').with(
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5432').with(
         content: %r{Instance \"postgres\"}
       )
-      should contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5433').with(
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5433').with(
         content: %r{Instance \"postgres\"}
       )
     end
