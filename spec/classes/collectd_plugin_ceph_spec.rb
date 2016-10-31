@@ -37,7 +37,7 @@ describe 'collectd::plugin::ceph', type: :class do
 </Plugin>
 EOS
     it 'Will create /etc/collectd.d/10-ceph.conf' do
-      should contain_collectd__plugin('ceph').with_content(content)
+      is_expected.to contain_collectd__plugin('ceph').with_content(content)
     end
   end
 
@@ -46,8 +46,8 @@ EOS
       { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ceph.conf' do
-      should contain_file('ceph.load').with(ensure: 'absent',
-                                            path: '/etc/collectd.d/10-ceph.conf')
+      is_expected.to contain_file('ceph.load').with(ensure: 'absent',
+                                                    path: '/etc/collectd.d/10-ceph.conf')
     end
   end
 
@@ -67,8 +67,8 @@ EOS
       }
     end
     it 'Will manage collectd-ceph' do
-      should contain_package('collectd-ceph').with(ensure: 'present',
-                                                   name: 'collectd-ceph')
+      is_expected.to contain_package('collectd-ceph').with(ensure: 'present',
+                                                           name: 'collectd-ceph')
     end
   end
 
@@ -87,8 +87,8 @@ EOS
       }
     end
     it 'Will not manage collectd-ceph' do
-      should_not contain_package('collectd-ceph').with(ensure: 'present',
-                                                       name: 'collectd-ceph')
+      is_expected.not_to contain_package('collectd-ceph').with(ensure: 'present',
+                                                               name: 'collectd-ceph')
     end
   end
 
@@ -107,8 +107,8 @@ EOS
       }
     end
     it 'Will not manage collectd-ceph' do
-      should_not contain_package('collectd-ceph').with(ensure: 'present',
-                                                       name: 'collectd-ceph')
+      is_expected.not_to contain_package('collectd-ceph').with(ensure: 'present',
+                                                               name: 'collectd-ceph')
     end
   end
 
@@ -117,7 +117,7 @@ EOS
       { daemons: 'ceph-osd.0' }
     end
     it 'Will raise an error about :daemons being a String' do
-      should compile.and_raise_error(%r{String})
+      is_expected.to compile.and_raise_error(%r{String})
     end
   end
 end

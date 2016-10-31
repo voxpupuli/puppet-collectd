@@ -22,19 +22,19 @@ describe 'collectd::plugin::snmp::host', type: :define do
     let(:params) { required_params }
 
     it do
-      should contain_file(filename).with(
+      is_expected.to contain_file(filename).with(
         ensure: 'present',
         path: '/etc/collectd/conf.d/25-snmp-host-foo.example.com.conf'
       )
     end
 
-    it { should contain_file(filename).that_notifies('Service[collectd]') }
-    it { should contain_file(filename).with_content(%r{<Plugin snmp>}) }
-    it { should contain_file(filename).with_content(%r{<Host "foo\.example\.com">}) }
-    it { should contain_file(filename).with_content(%r{Address "foo\.example\.com"}) }
-    it { should contain_file(filename).with_content(%r{Version 1}) }
-    it { should contain_file(filename).with_content(%r{Community "public"}) }
-    it { should contain_file(filename).without_content(%r{Interval \d+}) }
+    it { is_expected.to contain_file(filename).that_notifies('Service[collectd]') }
+    it { is_expected.to contain_file(filename).with_content(%r{<Plugin snmp>}) }
+    it { is_expected.to contain_file(filename).with_content(%r{<Host "foo\.example\.com">}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Address "foo\.example\.com"}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Version 1}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Community "public"}) }
+    it { is_expected.to contain_file(filename).without_content(%r{Interval \d+}) }
   end
 
   context 'all params set' do
@@ -44,10 +44,10 @@ describe 'collectd::plugin::snmp::host', type: :define do
                             community: 'opensesame',
                             interval: '30')
     end
-    it { should contain_file(filename).with_content(%r{Address "bar\.example\.com"}) }
-    it { should contain_file(filename).with_content(%r{Version 2}) }
-    it { should contain_file(filename).with_content(%r{Community "opensesame"}) }
-    it { should contain_file(filename).with_content(%r{Interval 30}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Address "bar\.example\.com"}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Version 2}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Community "opensesame"}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Interval 30}) }
   end
 
   context 'collect is an array' do
@@ -56,7 +56,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
         collect: %w(foo bar baz)
       }
     end
-    it { should contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }
   end
 
   context 'collect is just a string' do
@@ -65,6 +65,6 @@ describe 'collectd::plugin::snmp::host', type: :define do
         collect: 'bat'
       }
     end
-    it { should contain_file(filename).with_content(%r{Collect "bat"}) }
+    it { is_expected.to contain_file(filename).with_content(%r{Collect "bat"}) }
   end
 end

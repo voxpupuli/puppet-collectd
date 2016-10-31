@@ -23,7 +23,7 @@ describe 'collectd::plugin::varnish', type: :class do
   </Instance>
 </Plugin>
 EOS
-      should contain_collectd__plugin('varnish').with_content(content)
+      is_expected.to contain_collectd__plugin('varnish').with_content(content)
     end
   end
   context 'When the version is nil' do
@@ -44,7 +44,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-      should contain_collectd__plugin('varnish').with_content(content)
+      is_expected.to contain_collectd__plugin('varnish').with_content(content)
     end
   end
 
@@ -67,7 +67,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-        should contain_collectd__plugin('varnish').with_content(content)
+        is_expected.to contain_collectd__plugin('varnish').with_content(content)
       end
     end
     context 'when there are params given' do
@@ -90,7 +90,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-        should contain_collectd__plugin('varnish').with_content(content)
+        is_expected.to contain_collectd__plugin('varnish').with_content(content)
       end
     end
   end

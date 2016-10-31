@@ -29,16 +29,16 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
     end
 
     it 'provides a Connection concat fragment' do
-      should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                 order: '20')
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
+                                                                         order: '20')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{<Connection>.*</Connection>}m) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Host "foo\.example\.com"}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{ServiceURL "foo:bar:baz"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{User}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{Password}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{<Connection>.*</Connection>}m) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Host "foo\.example\.com"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{ServiceURL "foo:bar:baz"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{User}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{Password}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
   end
 
   context 'hostname override' do
@@ -48,11 +48,11 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
     end
 
     it 'provides a Connection concat fragment' do
-      should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                 order: '20')
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
+                                                                         order: '20')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Host "bar\.example\.com"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Host "bar\.example\.com"}) }
   end
 
   context 'collect array' do
@@ -60,7 +60,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       default_params.merge(collect: %w(foo bar baz))
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "foo".*Collect "bar".*Collect "baz"}m) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "foo".*Collect "bar".*Collect "baz"}m) }
   end
 
   context 'collect string' do
@@ -68,8 +68,8 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       default_params.merge(collect: 'bat')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "bat"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{(.*Collect.*){2,}}m) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "bat"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*Collect.*){2,}}m) }
   end
 
   context 'username and password' do
@@ -79,8 +79,8 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
                            collect: [])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{User "alice"}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Password "aoeuhtns"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{User "alice"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Password "aoeuhtns"}) }
   end
 
   context 'instance_prefix ' do
@@ -89,6 +89,6 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
                            collect: [])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "bat"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "bat"}) }
   end
 end

@@ -21,7 +21,7 @@ describe 'collectd::plugin::load', type: :class do
     end
 
     it 'is present' do
-      should contain_file('load.load').
+      is_expected.to contain_file('load.load').
         without_content(%r{\s{2}ReportRelative true\s{2}})
     end
   end

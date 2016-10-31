@@ -18,8 +18,8 @@ describe 'collectd::plugin::logfile', type: :class do
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf' do
-      should contain_file('logfile.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/05-logfile.conf').without_content(%r{PrintSeverity})
+      is_expected.to contain_file('logfile.load').with(ensure: 'present',
+                                                       path: '/etc/collectd.d/05-logfile.conf').without_content(%r{PrintSeverity})
     end
   end
 
@@ -36,8 +36,8 @@ describe 'collectd::plugin::logfile', type: :class do
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd < 4.10' do
-      should contain_file('logfile.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/05-logfile.conf').without_content(%r{PrintSeverity})
+      is_expected.to contain_file('logfile.load').with(ensure: 'present',
+                                                       path: '/etc/collectd.d/05-logfile.conf').without_content(%r{PrintSeverity})
     end
   end
 
@@ -51,9 +51,9 @@ describe 'collectd::plugin::logfile', type: :class do
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd >= 4.10' do
-      should contain_file('logfile.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/05-logfile.conf',
-                                               content: %r{PrintSeverity false})
+      is_expected.to contain_file('logfile.load').with(ensure: 'present',
+                                                       path: '/etc/collectd.d/05-logfile.conf',
+                                                       content: %r{PrintSeverity false})
     end
   end
 
@@ -70,9 +70,9 @@ describe 'collectd::plugin::logfile', type: :class do
     end
 
     it 'Will create /etc/collectd.d/05-logfile.conf for collectd >= 4.10' do
-      should contain_file('logfile.load').with(ensure: 'present',
-                                               path: '/etc/collectd.d/05-logfile.conf',
-                                               content: %r{PrintSeverity true})
+      is_expected.to contain_file('logfile.load').with(ensure: 'present',
+                                                       path: '/etc/collectd.d/05-logfile.conf',
+                                                       content: %r{PrintSeverity true})
     end
   end
 
@@ -89,8 +89,8 @@ describe 'collectd::plugin::logfile', type: :class do
     end
 
     it 'Will not create /etc/collectd.d/05-logfile.conf' do
-      should contain_file('logfile.load').with(ensure: 'absent',
-                                               path: '/etc/collectd.d/05-logfile.conf')
+      is_expected.to contain_file('logfile.load').with(ensure: 'absent',
+                                                       path: '/etc/collectd.d/05-logfile.conf')
     end
   end
 end

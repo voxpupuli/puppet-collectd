@@ -26,11 +26,11 @@ describe 'collectd::plugin::fhcount', type: :class do
       end
 
       it 'Will include ValuesAbsolute in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(%r{ValuesAbsolute false})
+        is_expected.to contain_file('fhcount.load').with_content(%r{ValuesAbsolute false})
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-fhcount.conf' do
-        should contain_file('fhcount.load').with_content(%r{ValuesPercentage true})
+        is_expected.to contain_file('fhcount.load').with_content(%r{ValuesPercentage true})
       end
     end
   end
@@ -44,7 +44,7 @@ describe 'collectd::plugin::fhcount', type: :class do
     end
 
     it 'Will raise an error about parameters not being boolean' do
-      should compile.and_raise_error(%r{bool})
+      is_expected.to compile.and_raise_error(%r{bool})
     end
   end
 
@@ -53,9 +53,9 @@ describe 'collectd::plugin::fhcount', type: :class do
       { ensure: 'absent' }
     end
     it 'Will remove /etc/collectd.d/10-fhcount.conf' do
-      should contain_file('fhcount.load').with(ensure: 'absent',
-                                               path: '/etc/collectd.d/10-fhcount.conf',
-                                               content: %r{LoadPlugin fhcount})
+      is_expected.to contain_file('fhcount.load').with(ensure: 'absent',
+                                                       path: '/etc/collectd.d/10-fhcount.conf',
+                                                       content: %r{LoadPlugin fhcount})
     end
   end
 end

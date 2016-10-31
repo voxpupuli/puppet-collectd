@@ -23,7 +23,7 @@ describe 'collectd::plugin::virt', type: :class do
       end
 
       it 'is ignored' do
-        should contain_file('libvirt.load').
+        is_expected.to contain_file('libvirt.load').
           without_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
@@ -38,7 +38,7 @@ describe 'collectd::plugin::virt', type: :class do
       end
 
       it 'is included' do
-        should contain_file('libvirt.load').
+        is_expected.to contain_file('libvirt.load').
           with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
@@ -53,7 +53,7 @@ describe 'collectd::plugin::virt', type: :class do
       end
 
       it 'is included' do
-        should contain_file('virt.load').
+        is_expected.to contain_file('virt.load').
           with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end

@@ -18,9 +18,9 @@ describe 'collectd::plugin::ping', type: :class do
       { hosts: ['google.com'] }
     end
     it 'Will create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(ensure: 'present',
-                                            path: '/etc/collectd.d/10-ping.conf',
-                                            content: %r{Host "google.com"})
+      is_expected.to contain_file('ping.load').with(ensure: 'present',
+                                                    path: '/etc/collectd.d/10-ping.conf',
+                                                    content: %r{Host "google.com"})
     end
   end
 
@@ -29,12 +29,12 @@ describe 'collectd::plugin::ping', type: :class do
       { hosts: ['google.com', 'puppetlabs.com'] }
     end
     it 'Will create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(ensure: 'present',
-                                            path: '/etc/collectd.d/10-ping.conf').with_content(
-                                              %r{Host "google.com"}
-                                            ).with_content(
-                                              %r{Host "puppetlabs.com"}
-                                            )
+      is_expected.to contain_file('ping.load').with(ensure: 'present',
+                                                    path: '/etc/collectd.d/10-ping.conf').with_content(
+                                                      %r{Host "google.com"}
+                                                    ).with_content(
+                                                      %r{Host "puppetlabs.com"}
+                                                    )
     end
   end
 
@@ -43,8 +43,8 @@ describe 'collectd::plugin::ping', type: :class do
       { hosts: ['google.com'], ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-ping.conf' do
-      should contain_file('ping.load').with(ensure: 'absent',
-                                            path: '/etc/collectd.d/10-ping.conf')
+      is_expected.to contain_file('ping.load').with(ensure: 'absent',
+                                                    path: '/etc/collectd.d/10-ping.conf')
     end
   end
 
@@ -53,7 +53,7 @@ describe 'collectd::plugin::ping', type: :class do
       { hosts: 'google.com' }
     end
     it 'Will raise an error about :interfaces being a String' do
-      should compile.and_raise_error(%r{String})
+      is_expected.to compile.and_raise_error(%r{String})
     end
   end
 end

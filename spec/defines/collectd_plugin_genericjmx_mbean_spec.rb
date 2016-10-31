@@ -28,13 +28,13 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
   context 'defaults' do
     let(:params) { default_params }
     it 'provides an MBean stanza concat fragment' do
-      should contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                 order: '10')
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
+                                                                         order: '10')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{<MBean "foo">\s+ObjectName "bar".+</MBean>}m) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{<MBean "foo">\s+ObjectName "bar".+</MBean>}m) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
   end
 
   context 'instance_prefix set' do
@@ -42,7 +42,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(instance_prefix: 'baz')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "baz"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "baz"}) }
   end
 
   context 'instance_from array' do
@@ -50,7 +50,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(instance_from: %w(foo bar baz))
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "foo"\s+InstanceFrom "bar"\s+InstanceFrom "baz"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "foo"\s+InstanceFrom "bar"\s+InstanceFrom "baz"}) }
   end
 
   context 'instance_from string' do
@@ -58,8 +58,8 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(instance_from: 'bat')
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "bat"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{(.*InstanceFrom.*){2,}}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "bat"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*InstanceFrom.*){2,}}) }
   end
 
   let(:default_values_args) do
@@ -76,18 +76,18 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
     end
 
     it 'has a value stanza' do
-      should contain_concat__fragment(concat_fragment_name).with_content(%r{<Value>.*</Value>}m)
+      is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{<Value>.*</Value>}m)
     end
 
     it 'has only one value stanza' do
-      should contain_concat__fragment(concat_fragment_name).without_content(%r{(.*<Value>.*){2,}})
+      is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*<Value>.*){2,}})
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Type "foo"}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Table false}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "bar"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Type "foo"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Table false}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "bar"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
   end
 
   context 'value section instance_prefix set' do
@@ -95,8 +95,8 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(values: [default_values_args.merge('instance_prefix' => 'baz')])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "baz"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstancePrefix "baz"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstanceFrom}) }
   end
 
   context 'value section instance_from array' do
@@ -104,10 +104,10 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(values: [default_values_args.merge('instance_from' => %w(alice bob carol))])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "alice"}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "bob"}) }
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "carol"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "alice"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "bob"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "carol"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
   end
 
   context 'value section instance_from string' do
@@ -115,9 +115,9 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(values: [default_values_args.merge('instance_from' => 'dave')])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "dave"}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{(.*InstancePrefix.*){2,}}) }
-    it { should contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "dave"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*InstancePrefix.*){2,}}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
   end
 
   context 'value section table true-like' do
@@ -126,7 +126,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
         default_params.merge(values: [default_values_args.merge('table' => truthy)])
       end
 
-      it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Table true}) }
+      it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Table true}) }
     end
   end
 
@@ -136,7 +136,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
         default_params.merge(values: [default_values_args.merge('table' => truthy)])
       end
 
-      it { should contain_concat__fragment(concat_fragment_name).with_content(%r{Table false}) }
+      it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Table false}) }
     end
   end
 
@@ -145,6 +145,6 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       default_params.merge(values: [default_values_args, default_values_args])
     end
 
-    it { should contain_concat__fragment(concat_fragment_name).with_content(%r{(.*<Value>.*</Value>.*){2}}m) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{(.*<Value>.*</Value>.*){2}}m) }
   end
 end

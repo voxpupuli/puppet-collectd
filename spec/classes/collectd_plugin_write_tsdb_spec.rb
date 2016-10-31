@@ -18,9 +18,9 @@ describe 'collectd::plugin::write_tsdb', type: :class do
     end
 
     it 'Will create /etc/collectd/conf.d/10-write_tsdb.conf' do
-      should contain_file('write_tsdb.load').with(ensure: 'present',
-                                                  path: '/etc/collectd/conf.d/10-write_tsdb.conf',
-                                                  content: %r{LoadPlugin write_tsdb})
+      is_expected.to contain_file('write_tsdb.load').with(ensure: 'present',
+                                                          path: '/etc/collectd/conf.d/10-write_tsdb.conf',
+                                                          content: %r{LoadPlugin write_tsdb})
     end
   end
 
@@ -37,7 +37,7 @@ describe 'collectd::plugin::write_tsdb', type: :class do
     end
 
     it 'Will not create /etc/collectd/conf.d/10-write_tsdb.conf' do
-      should contain_file('write_tsdb.load').
+      is_expected.to contain_file('write_tsdb.load').
         with(ensure: 'absent',
              path: '/etc/collectd/conf.d/10-write_tsdb.conf')
     end

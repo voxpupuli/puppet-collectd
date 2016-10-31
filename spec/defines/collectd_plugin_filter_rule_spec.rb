@@ -18,12 +18,12 @@ describe 'collectd::plugin::filter::rule', type: :define do
 
   context 'Add rule' do
     it 'create header and footer of rule' do
-      should contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_10_MyRule_0').with(
+      is_expected.to contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_10_MyRule_0').with(
         order: '10_MyRule_0',
         content: '  <Rule "MyRule">',
         target: '/etc/collectd/conf.d/filter-chain-MyChain.conf'
       )
-      should contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_10_MyRule_99').with(
+      is_expected.to contain_concat__fragment('/etc/collectd/conf.d/filter-chain-MyChain.conf_10_MyRule_99').with(
         order: '10_MyRule_99',
         content: '  </Rule>',
         target: '/etc/collectd/conf.d/filter-chain-MyChain.conf'
