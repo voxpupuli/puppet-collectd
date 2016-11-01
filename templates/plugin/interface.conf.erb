@@ -3,4 +3,7 @@
   Interface  "<%=interface %>"
 <% end -%>
   IgnoreSelected <%= @ignoreselected %>
+<% if scope.lookupvar('collectd::collectd_version_real') and scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.6']) >= 0 -%>
+  ReportInactive <%= @reportinactive %>
+<% end -%>
 </Plugin>
