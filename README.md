@@ -300,6 +300,7 @@ class { 'collectd::plugin::conntrack':
 * `reportbystate` available from collectd version >= 5.5
 * `reportbycpu` available from collectd version >= 5.5
 * `valuespercentage` available from collectd version >= 5.5
+* `reportnumcpu` available from collectd version >= 5.6
 
  See [collectd plugin_cpu documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cpu)
  for more details.
