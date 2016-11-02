@@ -74,7 +74,7 @@ describe 'collectd::plugin::cpu', type: :class do
       end
 
       it 'Will include ValuesPercentage in /etc/collectd.d/10-cpu.conf' do
-        should contain_file('cpu.load').with_content(%r{ReportNumCpu true})
+        is_expected.to contain_file('cpu.load').with_content(%r{ReportNumCpu true})
       end
     end
   end

@@ -54,7 +54,7 @@ describe 'collectd::plugin::interface', type: :class do
     end
 
     it 'Will include ValuesPercentage in /etc/collectd.d/10-interface.conf' do
-      should contain_file('interface.load').with_content(%r{ReportInactive true})
+      is_expected.to contain_file('interface.load').with_content(%r{ReportInactive true})
     end
   end
 end
