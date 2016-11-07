@@ -5,7 +5,8 @@ describe 'collectd::plugin::dns', type: :class do
     {
       collectd_version: '5.2',
       osfamily: 'RedHat',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 

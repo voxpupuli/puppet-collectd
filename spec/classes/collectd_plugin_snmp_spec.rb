@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::snmp', type: :class do
-  let :pre_condition do
-    'include ::collectd'
-  end
-
   let :facts do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
+  end
+
+  let :pre_condition do
+    'include ::collectd'
   end
 
   context ':ensure => present and dataset for AMAVIS-MIB::inMsgs.0' do

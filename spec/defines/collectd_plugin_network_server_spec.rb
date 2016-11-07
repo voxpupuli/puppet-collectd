@@ -6,7 +6,8 @@ describe 'collectd::plugin::network::server', type: :define do
       {
         osfamily: 'Redhat',
         collectd_version: '5.1.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'node1' }
@@ -33,7 +34,8 @@ describe 'collectd::plugin::network::server', type: :define do
       {
         osfamily: 'RedHat',
         collectd_version: '5.1.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'node1' }

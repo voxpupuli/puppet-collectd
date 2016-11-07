@@ -5,7 +5,8 @@ describe 'collectd::plugin::logfile', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present, default params' do
@@ -13,7 +14,8 @@ describe 'collectd::plugin::logfile', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -28,7 +30,8 @@ describe 'collectd::plugin::logfile', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '4.9.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -46,7 +49,8 @@ describe 'collectd::plugin::logfile', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '4.10.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -62,7 +66,8 @@ describe 'collectd::plugin::logfile', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '4.10.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -81,7 +86,8 @@ describe 'collectd::plugin::logfile', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do

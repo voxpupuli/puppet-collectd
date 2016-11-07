@@ -8,7 +8,8 @@ describe 'collectd::plugin::curl', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -17,7 +18,8 @@ describe 'collectd::plugin::curl', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     it 'Will create /etc/collectd.d/10-curl.conf' do
@@ -32,7 +34,8 @@ describe 'collectd::plugin::curl', type: :class do
       {
         osfamily: 'Debian',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -68,7 +71,8 @@ describe 'collectd::plugin::curl', type: :class do
       {
         osfamily: 'Debian',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -97,7 +101,8 @@ describe 'collectd::plugin::curl', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do

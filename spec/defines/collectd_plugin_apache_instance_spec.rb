@@ -5,7 +5,8 @@ describe 'collectd::plugin::apache::instance', type: :define do
     {
       osfamily: 'Debian',
       collectd_version: '5.5.',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 

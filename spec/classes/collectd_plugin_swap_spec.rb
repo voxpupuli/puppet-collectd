@@ -5,7 +5,8 @@ describe 'collectd::plugin::swap', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present, default params' do
@@ -13,7 +14,8 @@ describe 'collectd::plugin::swap', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     it 'Will create /etc/collectd.d/10-swap.conf' do
@@ -29,7 +31,8 @@ describe 'collectd::plugin::swap', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '5.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -46,7 +49,8 @@ describe 'collectd::plugin::swap', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '5.2.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -63,7 +67,8 @@ describe 'collectd::plugin::swap', type: :class do
       {
         osfamily: 'Redhat',
         collectd_version: '5.5.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -80,7 +85,8 @@ describe 'collectd::plugin::swap', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 

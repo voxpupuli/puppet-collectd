@@ -7,7 +7,8 @@ describe 'collectd::plugin', type: :define do
       {
         collectd_version: '5.3',
         osfamily: 'Debian',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -22,7 +23,8 @@ describe 'collectd::plugin', type: :define do
       {
         collectd_version: '4.9.3',
         osfamily: 'Debian',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
