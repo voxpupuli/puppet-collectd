@@ -144,6 +144,7 @@ documentation for each plugin for configurable attributes.
 * `target_v5upgrade` (see [collectd::plugin::target_v5upgrade](#class-collectdplugintarget_v5upgrade)
   below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
+* `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
@@ -1532,7 +1533,16 @@ collectd::plugin::tail::file { 'exim-log':
 }
 ```
 
-#### Class: `collectd::plugin::unixsock`
+####Class: `collectd::plugin::thermal`
+
+```puppet
+class { '::collectd::plugin::thermal':
+  devices        => ['foo0'],
+  ignoreselected => false,
+}
+```
+
+####Class: `collectd::plugin::unixsock`
 
 ```puppet
 class {'collectd::plugin::unixsock':
