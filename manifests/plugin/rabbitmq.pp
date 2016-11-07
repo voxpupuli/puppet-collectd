@@ -65,17 +65,38 @@ class collectd::plugin::rabbitmq (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
+  if ($_manage_package) {
+    if (!defined(Package['python-pip'])) {
+      package { 'python-pip': ensure => 'present', }
+
+      Package <| title == $package_name |> {
+        require => Package['python-pip'],
+      }
+
+      if $::osfamily == 'RedHat' {
+        # Epel is installed in install.pp if manage_repo is true
+        # python-pip doesn't exist in base for RedHat. Need epel installed first
+        if (defined(Yum::Install['epel-release'])) {
+          Package <| title == 'python-pip' |> {
+            require => Yum::Install['epel-release'],
+          }
+        }
+      }
+    }
+  }
+
   if ($_manage_package) and ($provider_proxy) {
     $install_options = [{'--proxy' => $provider_proxy}]
-  }
-  else {
+  } else {
     $install_options = undef
   }
+
   package { $package_name:
     ensure          => $ensure,
     provider        => $package_provider,
     install_options => $install_options,
-    }
+  }
+
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
     config => $config,
