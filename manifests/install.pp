@@ -20,7 +20,7 @@ class collectd::install (
       Package <| title == $package_name |> {
         require => Yum::Install['epel-release']
       }
-    } elsif ($::operatingsystemmajrelease == '12.04' or $::operatingsystemmajrelease == '14.04' or $::operatingsystemmajrelease == '16.04') {
+    } elsif $::operatingsystemmajrelease =~ /('12.04'|'14.04'|'16.04')/ {
       apt::source { 'ppa_collectd':
         location => 'http://ppa.launchpad.net/collectd/collectd-5.5/ubuntu',
         repos    => 'main',
