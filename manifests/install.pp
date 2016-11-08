@@ -35,6 +35,11 @@ class collectd::install (
             'server' => 'keyserver.ubuntu.com',
           },
         }
+        if defined(Package[$package_name]) {
+          Package[$package_name] {
+            require => Apt::Source['ppa_collectd']
+          }
+        }
       }
       default                   : {
       }
