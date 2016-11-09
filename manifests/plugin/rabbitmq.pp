@@ -70,7 +70,7 @@ class collectd::plugin::rabbitmq (
       package { 'python-pip': ensure => 'present', }
 
       Package[$package_name] {
-        require +> Package['python-pip'],
+        require => Package['python-pip'],
       }
 
       if $::osfamily == 'RedHat' {
@@ -78,7 +78,7 @@ class collectd::plugin::rabbitmq (
         # python-pip doesn't exist in base for RedHat. Need epel installed first
         if (defined(Yum::Install['epel-release'])) {
           Package['python-pip'] {
-            require +> Yum::Install['epel-release'],
+            require => Yum::Install['epel-release'],
           }
         }
       }
