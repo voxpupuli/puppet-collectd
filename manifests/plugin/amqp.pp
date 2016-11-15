@@ -11,6 +11,7 @@ class collectd::plugin::amqp (
   $amqpstorerates             = false,
   $amqpexchange               = 'metrics',
   $amqppersistent             = true,
+  $amqproutingkey             = 'collectd',
   $graphiteprefix             = 'collectd.',
   $escapecharacter            = '_',
   $interval                   = undef,
