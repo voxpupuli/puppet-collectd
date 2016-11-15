@@ -1303,14 +1303,14 @@ class { 'collectd::plugin::python':
   modules     => {
     'elasticsearch' => {
       'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-      'config'        => {'Cluster' => 'elasticsearch'},
+      'config'        => [{'Cluster' => 'elasticsearch'},],
     },
     'another-module' => {
-      'config'        => {'Verbose' => 'true'},
+      'config'        => [{'Verbose' => 'true'},],
     }
   }
   logtraces   => true,
-  interactive => false
+  interactive => false,
 }
 ```
 

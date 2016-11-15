@@ -76,10 +76,10 @@ describe 'collectd::plugin::python', type: :class do
           modules: {
             'elasticsearch' => {
               'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-              'config'        => { 'Cluster' => 'ES-clust' }
+              'config'        => [{ 'Cluster' => 'ES-clust' }, { 'Cluster' => 'Another-ES-clust' }]
             },
             'foo' => {
-              'config' => { 'Verbose' => true, 'Bar' => '"bar"' }
+              'config' => [{ 'Verbose' => true, 'Bar' => '"bar"' }]
             }
           }
         }
@@ -100,6 +100,12 @@ describe 'collectd::plugin::python', type: :class do
       it 'includes elasticsearch Cluster name' do
         is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
           with(content: %r{Cluster "ES-clust"},
+               target: '/etc/collectd/conf.d/python-config.conf')
+      end
+
+      it 'includes second elasticsearch Cluster name' do
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').
+          with(content: %r{Cluster "Another-ES-clust"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
@@ -132,7 +138,7 @@ describe 'collectd::plugin::python', type: :class do
           modules: {
             'elasticsearch' => {
               'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-              'config'        => { 'Cluster' => 'ES-clust' },
+              'config'        => [{ 'Cluster' => 'ES-clust' }],
               'modulepath'    => '/var/lib/collectd/python'
             }
           }
@@ -204,7 +210,7 @@ describe 'collectd::plugin::python', type: :class do
         modules: {
           'elasticsearch' => {
             'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-            'config'        => { 'Cluster' => 'ES-clust' }
+            'config'        => [{ 'Cluster' => 'ES-clust' }]
           }
         }
       }

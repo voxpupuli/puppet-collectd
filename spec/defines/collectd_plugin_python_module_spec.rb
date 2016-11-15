@@ -16,7 +16,7 @@ describe 'collectd::plugin::python::module', type: :define do
     let(:title) { 'spam' }
     let :params do
       {
-        config: { 'spam' => '"wonderful" "lovely"' },
+        config: [{ 'spam' => '"wonderful" "lovely"' }],
         modulepath: '/var/lib/collectd/python'
       }
     end
@@ -62,7 +62,7 @@ describe 'collectd::plugin::python::module', type: :define do
     let :params do
       {
         script_source: 'puppet:///modules/myorg/foo.py',
-        config: { 'bar' => 'baz' }
+        config: [{ 'bar' => 'baz' }]
       }
     end
 
@@ -88,7 +88,7 @@ describe 'collectd::plugin::python::module', type: :define do
     let(:title) { 'foo' }
     let :params do
       {
-        config: { 'k1' => 'v1', 'k2' => %w(v21 v22), 'k3' => { 'k31' => 'v31', 'k32' => 'v32' } }
+        config: [{ 'k1' => 'v1', 'k2' => %w(v21 v22), 'k3' => { 'k31' => 'v31', 'k32' => 'v32' } }]
       }
     end
 
