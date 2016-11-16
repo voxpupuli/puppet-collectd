@@ -120,6 +120,25 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
     it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{InstancePrefix}) }
   end
 
+  context 'value section attribute array' do
+    let(:params) do
+      default_params.merge(values: [default_values_args.merge('attribute' => %w(alice bob carol))])
+    end
+
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "alice"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "bob"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "carol"}) }
+  end
+
+  context 'value section attribute string' do
+    let(:params) do
+      default_params.merge(values: [default_values_args.merge('attribute' => 'dave')])
+    end
+
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Attribute "dave"}) }
+    it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*Attribute.*){2,}}) }
+  end
+
   context 'value section table true-like' do
     ['true', true].each do |truthy|
       let(:params) do
