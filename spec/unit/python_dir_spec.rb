@@ -7,7 +7,7 @@ describe 'python_dir', type: :fact do
     context 'default path' do
       before do
         Facter::Util::Resolution.stubs(:which).with('python').returns(true)
-        Facter::Util::Resolution.stubs(:exec).with('python -c "import site; print site.getsitepackages()[0]"').returns('/usr/local/lib/python2.7/dist-packages')
+        Facter::Util::Resolution.stubs(:exec).with('python -c "import site; print(site.getsitepackages()[0])"').returns('/usr/local/lib/python2.7/dist-packages')
       end
       it do
         expect(Facter.value(:python_dir)).to eq('/usr/local/lib/python2.7/dist-packages')
