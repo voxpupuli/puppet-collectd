@@ -10,6 +10,7 @@ class collectd (
   $internal_stats          = $collectd::params::internal_stats,
   $manage_package          = $collectd::params::manage_package,
   $manage_repo             = $collectd::params::manage_repo,
+  $ci_package_repo         = $collectd::params::ci_package_repo,
   $manage_service          = $collectd::params::manage_service,
   $minimum_version         = $collectd::params::minimum_version,
   $package_ensure          = $collectd::params::package_ensure,
@@ -39,12 +40,17 @@ class collectd (
     package_install_options => $package_install_options,
   }
 
+  class { '::collectd::repo': }
+
   class { '::collectd::config': }
 
   class { '::collectd::service': }
 
   anchor { 'collectd::begin': }
   anchor { 'collectd::end': }
+
+  Class['::collectd::repo'] ~>
+  Class['::collectd::install']
 
   Anchor['collectd::begin'] ->
   Class['collectd::install'] ->

@@ -188,9 +188,34 @@ describe 'collectd', type: :class do
         end
 
         context 'when manage_repo is true' do
-          let(:params) { { manage_repo: true } }
-          if facts[:osfamily] == 'RedHat'
-            it { is_expected.to contain_yum__install('epel-release') }
+          context 'and ci_package_repo empty' do
+            let(:params) { { manage_repo: true } }
+            if facts[:osfamily] == 'RedHat'
+              it { is_expected.to contain_yum__install('epel-release') }
+            end
+          end
+
+          context 'and ci_package_repo set to a version' do
+            let(:params) do
+              {
+                manage_repo: true,
+                ci_package_repo: '5.6'
+              }
+            end
+            if facts[:osfamily] == 'RedHat'
+              it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") }
+            end
+            if facts[:osfamily] == 'Debian'
+              it do
+                is_expected.to contain_apt__source('collectd-ci').
+                  with_location('https://pkg.ci.collectd.org/deb/').
+                  with_key(
+                    'id'     => 'F806817DC3F5EA417F9FA2963994D24FB8543576',
+                    'server' => 'pgp.mit.edu'
+                  ).
+                  with_repos('collectd-5.6')
+              end
+            end
           end
         end
 
