@@ -6,7 +6,8 @@ describe 'collectd::plugin::network::listener', type: :define do
       {
         osfamily: 'Redhat',
         collectd_version: '4.6',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'mylistener' }
@@ -29,7 +30,8 @@ describe 'collectd::plugin::network::listener', type: :define do
       {
         osfamily: 'Redhat',
         collectd_version: '5.1.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'mylistener' }

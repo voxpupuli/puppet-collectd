@@ -5,7 +5,8 @@ describe 'collectd::plugin::ceph', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '5.5',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -56,7 +57,8 @@ EOS
       {
         osfamily: 'RedHat',
         collectd_version: '5.5',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -77,7 +79,8 @@ EOS
       {
         osfamily: 'RedHat',
         collectd_version: '5.5',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 
@@ -97,7 +100,8 @@ EOS
       {
         osfamily: 'RedHat',
         collectd_version: '5.4',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 

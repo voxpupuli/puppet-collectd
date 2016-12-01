@@ -5,7 +5,8 @@ describe 'collectd::plugin::network', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present, default params' do
@@ -13,7 +14,8 @@ describe 'collectd::plugin::network', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
 

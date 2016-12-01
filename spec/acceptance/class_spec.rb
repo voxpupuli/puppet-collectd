@@ -22,12 +22,14 @@ describe 'collectd class' do
     end
   end
 
-  context 'install memory plugin' do
+  context 'install plugins' do
     it 'works idemptontently' do
       pp = <<-EOS
       class { '::collectd': }
 
       class { '::collectd::plugin::memory': }
+
+      class { '::collectd::plugin::rabbitmq': }
       EOS
 
       # Run it twice and test for idempotency

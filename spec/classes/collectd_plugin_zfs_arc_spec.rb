@@ -4,7 +4,8 @@ describe 'collectd::plugin::zfs_arc', type: :class do
   let :facts do
     {
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present' do
@@ -12,7 +13,8 @@ describe 'collectd::plugin::zfs_arc', type: :class do
       {
         osfamily: 'FreeBSD',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     it 'Will create 10-zfs_arc.conf' do
@@ -27,7 +29,8 @@ describe 'collectd::plugin::zfs_arc', type: :class do
       {
         osfamily: 'FreeBSD',
         collectd_version: '4.8.0',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do

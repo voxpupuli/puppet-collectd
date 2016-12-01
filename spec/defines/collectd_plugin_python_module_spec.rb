@@ -8,7 +8,8 @@ describe 'collectd::plugin::python::module', type: :define do
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -45,7 +46,7 @@ describe 'collectd::plugin::python::module', type: :define do
 
     it 'set default Python module path' do
       is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
-        with(content: %r{ModulePath "/usr/share/collectd/python"},
+        with(content: %r{ModulePath "/usr/local/lib/python2.7/dist-packages"},
              target: '/etc/collectd/conf.d/python-config.conf')
     end
 
@@ -80,7 +81,7 @@ describe 'collectd::plugin::python::module', type: :define do
 
     it 'created collectd plugin file on Debian default path' do
       is_expected.to contain_file('foo.script').with(ensure: 'present',
-                                                     path: '/usr/share/collectd/python/foo.py')
+                                                     path: '/usr/local/lib/python2.7/dist-packages/foo.py')
     end
   end
 

@@ -8,7 +8,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -19,7 +20,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         osfamily: 'RedHat',
         collectd_version: '5.3',
         concat_basedir: '/dne',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -42,7 +44,8 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         osfamily: 'RedHat',
         collectd_version: '5.4',
         concat_basedir: '/dne',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do

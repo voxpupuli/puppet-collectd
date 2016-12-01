@@ -10,7 +10,8 @@ describe 'collectd::plugin::varnish', type: :class do
       {
         osfamily: 'RedHat',
         collectd_version: '5.3',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -31,7 +32,8 @@ EOS
       {
         osfamily: 'RedHat',
         collectd_version: nil,
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -53,7 +55,8 @@ EOS
       {
         osfamily: 'RedHat',
         collectd_version: '5.4',
-        operatingsystemmajrelease: '7'
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     context 'when there are no params given' do

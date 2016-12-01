@@ -5,7 +5,8 @@ describe 'collectd::plugin::tcpconns', type: :class do
     {
       osfamily: 'RedHat',
       collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -70,7 +71,12 @@ describe 'collectd::plugin::tcpconns', type: :class do
 
   context ':allportssummary => true with collectd_version < 5.5.0' do
     let :facts do
-      { osfamily: 'RedHat', collectd_version: '5.4.1', operatingsystemmajrelease: '7' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.4.1',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
+      }
     end
     let :params do
       { ensure: 'present', allportssummary: true }
@@ -83,7 +89,12 @@ describe 'collectd::plugin::tcpconns', type: :class do
 
   context ':allportssummary => true with collectd_version = 5.5.0' do
     let :facts do
-      { osfamily: 'RedHat', collectd_version: '5.5.0', operatingsystemmajrelease: '7' }
+      {
+        osfamily: 'RedHat',
+        collectd_version: '5.5.0',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
+      }
     end
     let :params do
       { ensure: 'present', allportssummary: true }

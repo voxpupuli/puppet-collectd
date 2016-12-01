@@ -9,14 +9,15 @@ describe 'collectd::plugin::python', type: :class do
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '5.0',
-      operatingsystemmajrelease: '7'
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
   context ':ensure => present' do
     context ':ensure => present and default parameters' do
       it 'ensures that $modulepaths exits' do
-        is_expected.to contain_file('/usr/share/collectd/python').with(ensure: 'directory')
+        is_expected.to contain_file('/usr/local/lib/python2.7/dist-packages').with(ensure: 'directory')
       end
 
       it 'Will create /etc/collectd/conf.d/10-python.conf to load the plugin' do
@@ -36,7 +37,7 @@ describe 'collectd::plugin::python', type: :class do
 
       it 'set default Python module path' do
         is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
-          with(content: %r{ModulePath "/usr/share/collectd/python"},
+          with(content: %r{ModulePath "/usr/local/lib/python2.7/dist-packages"},
                target: '/etc/collectd/conf.d/python-config.conf')
       end
 
@@ -106,7 +107,7 @@ describe 'collectd::plugin::python', type: :class do
       it 'created collectd plugin file' do
         is_expected.to contain_file('elasticsearch.script').
           with(ensure: 'present',
-               path: '/usr/share/collectd/python/elasticsearch.py')
+               path: '/usr/local/lib/python2.7/dist-packages/elasticsearch.py')
       end
 
       # test foo module
