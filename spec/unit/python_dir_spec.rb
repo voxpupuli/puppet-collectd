@@ -14,4 +14,9 @@ describe 'python_dir', type: :fact do
       end
     end
   end
+
+  it 'is empty string if python not installed' do
+    Facter::Util::Resolution.stubs(:which).with('python').returns(nil)
+    expect(Facter.fact(:python_dir).value).to eq('')
+  end
 end
