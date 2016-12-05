@@ -99,6 +99,6 @@ class collectd::plugin::rabbitmq (
 
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
-    config => $config,
+    config => [$config],
   }
 }
