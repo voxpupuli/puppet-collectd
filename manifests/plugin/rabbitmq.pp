@@ -102,7 +102,7 @@ class collectd::plugin::rabbitmq (
 
   exec { 'update_typesdb':
     command => "/bin/cat ${rt} >> ${ct}",
-    unless  => "[ `cat ${ct} | sort -u | wc -l` -eq `cat ${rt} ${ct} | sort -u | wc -l` ] || exit 1",
+    unless  => "true && case $(cat ${ct}) in *$(cat ${rt})*) exit 0;; *) exit 1;; esac",
     path    => ['/usr/bin', '/bin'],
   }
 
