@@ -97,6 +97,15 @@ class collectd::plugin::rabbitmq (
     install_options => $install_options,
   }
 
+  $rt = '/usr/local/share/collectd-rabbitmq/types.db.custom' # RabbitMQ addon types file
+  $ct = '/usr/share/collectd/types.db'                       # CollectD types file
+
+  exec { 'update_typesdb':
+    command => "/bin/cat ${rt} >> ${ct}",
+    unless  => "[ `cat ${ct} | sort -u | wc -l` -eq `cat ${rt} ${ct} | sort -u | wc -l` ] || exit 1",
+    path    => ['/usr/bin', '/bin'],
+  }
+
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
     config => $config,
