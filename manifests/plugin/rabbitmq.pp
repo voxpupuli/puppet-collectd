@@ -101,9 +101,10 @@ class collectd::plugin::rabbitmq (
   $ct = '/usr/share/collectd/types.db'                       # CollectD types file
 
   exec { 'update_typesdb':
-    command => "/bin/cat ${rt} >> ${ct}",
-    unless  => "true && case $(cat ${ct}) in *$(cat ${rt})*) exit 0;; *) exit 1;; esac",
-    path    => ['/usr/bin', '/bin'],
+    command  => "/bin/cat ${rt} >> ${ct}",
+    unless   => "case $(cat ${ct}) in *$(cat ${rt})*) exit 0;; *) exit 1;; esac",
+    path     => ['/usr/bin', '/bin'],
+    provider => 'shell',
   }
 
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
