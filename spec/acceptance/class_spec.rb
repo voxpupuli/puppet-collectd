@@ -36,5 +36,10 @@ describe 'collectd class' do
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
     end
+
+    describe file('/usr/share/collectd/types.db') do
+      it { is_expected.to be_file }
+      it { is_expected.to contain 'rabbitmq_memory' }
+    end
   end
 end
