@@ -57,6 +57,7 @@ class collectd::plugin::rabbitmq (
   $package_name     = 'collectd-rabbitmq',
   $package_provider = 'pip',
   $provider_proxy   = undef,
+  $custom_types_db  = '/usr/local/share/collectd-rabbitmq/types.db.custom',
 ) {
   include ::collectd
 
@@ -95,6 +96,11 @@ class collectd::plugin::rabbitmq (
     ensure          => $ensure,
     provider        => $package_provider,
     install_options => $install_options,
+  }
+
+  collectd::plugin { 'rabbitmq':
+    ensure  => $ensure,
+    content => template('collectd/plugin/rabbitmq.conf.erb'),
   }
 
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':

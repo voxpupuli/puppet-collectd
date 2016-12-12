@@ -63,7 +63,6 @@ describe 'collectd', type: :class do
         it { is_expected.to contain_file('collectd.conf').with_content(%r{Timeout}) }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{ReadThreads}) }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{WriteThreads}) }
-        it { is_expected.to contain_file('collectd.conf').without_content(%r{^TypesDB}) }
         it { is_expected.to contain_file('collectd.conf').without_content(%r{^WriteQueueLimitLow}) }
         it { is_expected.to contain_file('collectd.conf').without_content(%r{^WriteQueueLimitHigh}) }
         it { is_expected.to contain_file('collectd.conf').without_content(%r{^CollectInternalStats}) }
