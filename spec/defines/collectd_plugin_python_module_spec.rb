@@ -8,6 +8,7 @@ describe 'collectd::plugin::python::module', type: :define do
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
+      operatingsystem: 'CentOS',
       operatingsystemmajrelease: '7',
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }

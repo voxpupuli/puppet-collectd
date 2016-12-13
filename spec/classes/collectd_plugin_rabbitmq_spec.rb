@@ -6,6 +6,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       osfamily: 'RedHat',
       collectd_version: '5.5.1',
       operatingsystemmajrelease: '7',
+      operatingsystem: 'CentOS',
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
@@ -64,6 +65,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
         {
           osfamily: 'RedHat',
           collectd_version: '5.5',
+          operatingsystem: 'CentOS',
           operatingsystemmajrelease: '7',
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
@@ -83,6 +85,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           osfamily: 'RedHat',
           collectd_version: '5.5',
           operatingsystemmajrelease: '7',
+          operatingsystem: 'CentOS',
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
@@ -100,6 +103,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
         {
           osfamily: 'RedHat',
           collectd_version: '5.5',
+          operatingsystem: 'CentOS',
           operatingsystemmajrelease: '7',
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
