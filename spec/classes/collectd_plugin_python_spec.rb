@@ -4,6 +4,7 @@ describe 'collectd::plugin::python', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
+      operatingsystem: 'Debian',
       concat_basedir: '/dne',
       id: 'root',
       kernel: 'Linux',

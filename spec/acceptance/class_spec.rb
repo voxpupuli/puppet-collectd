@@ -41,5 +41,9 @@ describe 'collectd class' do
       it { is_expected.to be_file }
       it { is_expected.to contain 'TypesDB "/usr/local/share/collectd-rabbitmq/types.db.custom"' }
     end
+
+    describe service('collectd') do
+      it { is_expected.to be_running }
+    end
   end
 end
