@@ -57,12 +57,23 @@ class collectd::plugin::rabbitmq (
   $package_name     = 'collectd-rabbitmq',
   $package_provider = 'pip',
   $provider_proxy   = undef,
+  $custom_types_db  = undef,
 ) {
   include ::collectd
 
   validate_string($ensure)
   validate_hash($config)
 
+  case $::osfamily {
+    'RedHat': {
+      $_custom_types_db = '/usr/share/collectd-rabbitmq/types.db.custom'
+    }
+    default: {
+      $_custom_types_db = '/usr/local/share/collectd-rabbitmq/types.db.custom'
+    }
+  }
+
+  $_real_custom_types_db = pick($custom_types_db, $_custom_types_db)
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
   if ($_manage_package) {
@@ -95,6 +106,16 @@ class collectd::plugin::rabbitmq (
     ensure          => $ensure,
     provider        => $package_provider,
     install_options => $install_options,
+  }
+
+  file { 'rabbitmq.load':
+    ensure  => $ensure,
+    path    => "${::collectd::plugin_conf_dir}/10-rabbitmq.conf",
+    owner   => root,
+    group   => $::collectd::root_group,
+    mode    => '0640',
+    content => template('collectd/plugin/rabbitmq.conf.erb'),
+    notify  => Service['collectd'],
   }
 
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':

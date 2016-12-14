@@ -58,6 +58,29 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       it 'Realm set to "RabbitMQ Management"' do
         is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Realm "RabbitMQ Management"})
       end
+
+      it 'Load custom TypesDB in included config' do
+        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/usr/share/collectd-rabbitmq/types.db.custom"})
+      end
+    end
+
+    context 'override custom TypesDB with new value' do
+      let :facts do
+        {
+          osfamily: 'RedHat',
+          collectd_version: '5.5',
+          operatingsystemmajrelease: '7',
+          operatingsystem: 'CentOS',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
+        }
+      end
+      let :params do
+        { custom_types_db: '/var/custom/types.db' }
+      end
+
+      it 'override custom TypesDB' do
+        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/var/custom/types.db"})
+      end
     end
 
     context 'override Username to foo' do

@@ -37,6 +37,20 @@ describe 'collectd class' do
       apply_manifest(pp, catch_changes: true)
     end
 
+    if fact(:osfamily) == 'Debian'
+      describe file('/etc/collectd/conf.d/10-rabbitmq.conf') do
+        it { is_expected.to be_file }
+        it { is_expected.to contain 'TypesDB "/usr/local/share/collectd-rabbitmq/types.db.custom"' }
+      end
+    end
+
+    if fact(:osfamily) == 'RedHat'
+      describe file('/etc/collectd.d/10-rabbitmq.conf') do
+        it { is_expected.to be_file }
+        it { is_expected.to contain 'TypesDB "/usr/share/collectd-rabbitmq/types.db.custom"' }
+      end
+    end
+
     describe service('collectd') do
       it { is_expected.to be_running }
     end
