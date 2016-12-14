@@ -37,7 +37,6 @@ describe 'collectd class' do
       apply_manifest(pp, catch_changes: true)
     end
 
-
     if fact(:osfamily) == 'Debian'
       describe file('/etc/collectd/conf.d/10-rabbitmq.conf') do
         it { is_expected.to be_file }
