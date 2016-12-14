@@ -60,7 +60,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'Load custom TypesDB in included config' do
-        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/usr/local/share/collectd-rabbitmq/types.db.custom"})
+        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/usr/share/collectd-rabbitmq/types.db.custom"})
       end
     end
 
@@ -70,7 +70,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           osfamily: 'RedHat',
           collectd_version: '5.5',
           operatingsystemmajrelease: '7',
-          operatingsystem: 'Debian',
+          operatingsystem: 'CentOS',
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end

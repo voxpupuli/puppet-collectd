@@ -63,7 +63,7 @@ class collectd::params {
       $config_file        = '/etc/collectd.conf'
       $root_group         = 'root'
       $java_dir           = '/usr/share/collectd/java'
-      $default_python_dir = '/usr/lib64/python2.7/site-packages'
+      $default_python_dir = '/usr/lib/python2.7/site-packages'
     }
     'Suse': {
       $package_name       = 'collectd'
