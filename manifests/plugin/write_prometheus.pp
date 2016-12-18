@@ -8,7 +8,7 @@ class collectd::plugin::write_prometheus (
   validate_string($port)
 
   collectd::plugin { 'write_prometheus':
-    ensure    => $ensure,
-    content   => template('collectd/plugin/write_prometheus.conf.erb'),
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_prometheus.conf.erb'),
   }
 }
