@@ -1,0 +1,5 @@
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.7']) >= 0) -%>
+<Plugin "write_prometheus">
+  Port "<%= @port %>"
+</Plugin>
+<% end -%>
