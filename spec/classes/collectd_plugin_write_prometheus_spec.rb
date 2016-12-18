@@ -27,7 +27,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
     end
     it 'Will not create ' do
       is_expected.to contain_file('write_prometheus.load').with(ensure: 'absent',
-                                                             path: '/etc/collectd.d/10-write_prometheus.conf')
+                                                                path: '/etc/collectd.d/10-write_prometheus.conf')
     end
   end
 end
