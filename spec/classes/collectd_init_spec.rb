@@ -29,7 +29,7 @@ describe 'collectd', type: :class do
           )
         end
         if facts[:osfamily] == 'RedHat'
-          it { is_expected.to contain_yum__install('epel-release') }
+          it { is_expected.to contain_class('epel') }
         end
       end
 
@@ -191,7 +191,7 @@ describe 'collectd', type: :class do
           context 'and ci_package_repo empty' do
             let(:params) { { manage_repo: true } }
             if facts[:osfamily] == 'RedHat'
-              it { is_expected.to contain_yum__install('epel-release') }
+              it { is_expected.to contain_class('epel') }
             end
           end
 

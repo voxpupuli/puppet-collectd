@@ -32,9 +32,9 @@ class collectd::plugin::cuda (
       if $::osfamily == 'RedHat' {
         # Epel is installed in install.pp if manage_repo is true
         # python-pip doesn't exist in base for RedHat. Need epel installed first
-        if (defined(Yum::Install['epel-release'])) {
+        if (defined(Class['::epel'])) {
           Package['python-pip'] {
-            require => Yum::Install['epel-release'],
+            require => Class['::epel'],
           }
         }
       }
