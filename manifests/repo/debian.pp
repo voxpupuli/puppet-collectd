@@ -15,7 +15,7 @@ class collectd::repo::debian {
   } else {
     if $::operatingsystem == 'Debian' {
       warning('Youre trying to use the Ubuntu PPA on a Debian Server, which may cause errors')
-      warning('We recomend you use the $ci_package_repo parameter if you with to use an upstream repo on Debian')
+      warning('We recommend you to use the $ci_package_repo parameter if you want to use an upstream repo on Debian')
     } else {
       apt::source { 'ppa_collectd':
         location => 'http://ppa.launchpad.net/collectd/collectd-5.5/ubuntu',
