@@ -14,7 +14,7 @@ Puppet module for configuring collectd and plugins.
 ## Usage
 
 The simplest use case is to use all of the configurations in
-the default collectd.conf file shipped with collectd. This can
+the default `collectd.conf` file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
@@ -22,7 +22,7 @@ include ::collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
-This is accomplished by removing the default collectd.conf file
+This is accomplished by removing the default `collectd.conf` file
 and replacing it with a file that includes all alternative
 configurations. Configure a node with the following class
 declaration:
@@ -36,17 +36,17 @@ class { '::collectd':
 }
 ```
 
-Set purge, recurse, and purge_config to true in order to override
-the default configurations shipped in collectd.conf and use
-custom configurations stored in conf.d. From here you can set up
+Set `purge`, `recurse`, and `purge_config` to `true` in order to override
+the default configurations shipped in `collectd.conf` and use
+custom configurations stored in `conf.d`. From here you can set up
 additional plugins as shown below.
 
-Specifying the version or minimum_version of collectd as shown above reduces
-the need for two puppet runs to coverge. See
+Specifying the `version` or `minimum_version` of collectd as shown above reduces
+the need for two puppet runs to converge. See
 [Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf-why)
 below.
 
-Hiera example in YAML of passing install_options to the package resource for
+Hiera example in YAML of passing `install_options` to the package resource for
 managing the collectd package. This parameter must be an array.
 
 ```yaml
@@ -62,8 +62,10 @@ Example of how to load plugins with no additional configuration:
 collectd::plugin { 'battery': }
 ```
 
-where 'battery' is the name of the plugin. Note, this should only be done in the
-case of a class for the plugin not existing in this module.
+Where `battery` is the name of the plugin.
+
+**Note:** this should only be done in the case of a class for the plugin
+not existing in this module.
 
 ## Repo management
 
@@ -180,6 +182,8 @@ documentation for each plugin for configurable attributes.
 * `write_kafka` (see [collectd::plugin::write_kafka](#class-collectdpluginwrite_kafka)
   below)
 * `write_log` (see [collectd::plugin::write_log](#class-collectdpluginwrite_log)
+  below)
+* `write_prometheus` (see [collectd::plugin::write_prometheus](#class-collectdpluginwrite_prometheus)
   below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network)
   below)
@@ -1689,6 +1693,16 @@ class { 'collectd::plugin::write_log':
   format => 'JSON',
 }
 ```
+
+#### Class: `collectd::plugin::write_prometheus`
+
+```puppet
+class { 'collectd::plugin::write_prometheus':
+  port => '9103',
+}
+```
+
+**Note:** Requires collectd 5.7 or later.
 
 #### Class: `collectd::plugin::write_network`
 
