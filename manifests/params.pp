@@ -25,6 +25,7 @@ class collectd::params {
   $manage_service            = true
   $package_install_options   = undef
   $plugin_conf_dir_mode      = '0750'
+  $ci_package_repo           = undef
 
   case getvar('::kernel') {
     'OpenBSD': { $has_wordexp   = false }

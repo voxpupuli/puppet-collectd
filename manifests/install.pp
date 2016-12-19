@@ -9,32 +9,6 @@ class collectd::install (
     validate_array($package_install_options)
   }
 
-  if $::collectd::manage_repo {
-    if $::osfamily == 'RedHat' {
-      if !defined(Yum::Install['epel-release']) {
-        yum::install { 'epel-release':
-          ensure => 'present',
-          source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
-        }
-      }
-      Package <| title == $package_name |> {
-        require => Yum::Install['epel-release']
-      }
-    } elsif $::operatingsystemmajrelease =~ /('12.04'|'14.04'|'16.04')/ {
-      apt::source { 'ppa_collectd':
-        location => 'http://ppa.launchpad.net/collectd/collectd-5.5/ubuntu',
-        repos    => 'main',
-        key      => {
-          'id'     => '7543C08D555DC473B9270ACDAF7ECBB3476ACEB3',
-          'server' => 'keyserver.ubuntu.com',
-        },
-      }
-      Package <| title == $package_name |> {
-        require => Apt::Source['ppa_collectd']
-      }
-    }
-  }
-
   if $manage_package {
     package { $package_name:
       ensure          => $package_ensure,

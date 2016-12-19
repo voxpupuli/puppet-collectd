@@ -65,6 +65,28 @@ collectd::plugin { 'battery': }
 where 'battery' is the name of the plugin. Note, this should only be done in the
 case of a class for the plugin not existing in this module.
 
+## Repo management
+
+The module will enable a repo by default.
+
+On CentOS that will be EPEL:
+* http://rpms.famillecollet.com/rpmphp/zoom.php?rpm=collectd
+
+On Ubuntu that'll be the CollectD PPA:
+* https://launchpad.net/~collectd/+archive/ubuntu/collectd-5.5
+
+### CI Packages
+
+Recently, Collectd CI packages are also avaliable from the CI repo
+
+More information is avaliable here:
+* https://github.com/collectd/collectd-ci
+
+You can choose the CI repo with the `$ci_package_repo` parameter.
+
+`$ci_package_repo` has to match '5.4', '5.5', '5.6', '5.7' or 'master' (RC for next release) as
+these are the current branches being built in the Collectd CI.
+
 ## Configurable Plugins
 
 Parameters will vary widely between plugins. See the collectd
