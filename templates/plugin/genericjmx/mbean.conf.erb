@@ -21,7 +21,9 @@
       <% end -%>
     <% end -%>
     Table <%= scope.function_str2bool([value['table'] || false ]) ? 'true' : 'false' %>
-    Attribute "<%= value['attribute'] %>"
+    <% Array(value['attribute']).each do |attribute_item| -%>
+    Attribute "<%= attribute_item %>"
+    <% end -%>
   </Value>
   <% end -%>
 </MBean>

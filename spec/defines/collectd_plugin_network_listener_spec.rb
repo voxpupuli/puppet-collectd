@@ -5,7 +5,9 @@ describe 'collectd::plugin::network::listener', type: :define do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '4.6'
+        collectd_version: '4.6',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'mylistener' }
@@ -16,7 +18,7 @@ describe 'collectd::plugin::network::listener', type: :define do
     end
 
     it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd < 4.7' do
-      should contain_file('/etc/collectd.d/network-listener-mylistener.conf').
+      is_expected.to contain_file('/etc/collectd.d/network-listener-mylistener.conf').
         with(ensure: 'present',
              path: '/etc/collectd.d/network-listener-mylistener.conf',
              content: "<Plugin network>\n  Listen \"mylistener\" \"1234\"\n</Plugin>\n")
@@ -27,7 +29,9 @@ describe 'collectd::plugin::network::listener', type: :define do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.1.0'
+        collectd_version: '5.1.0',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'mylistener' }
@@ -38,7 +42,7 @@ describe 'collectd::plugin::network::listener', type: :define do
     end
 
     it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
-      should contain_file('/etc/collectd.d/network-listener-mylistener.conf').
+      is_expected.to contain_file('/etc/collectd.d/network-listener-mylistener.conf').
         with(ensure: 'present',
              path: '/etc/collectd.d/network-listener-mylistener.conf',
              content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n")

@@ -31,10 +31,16 @@ class collectd::plugin::python (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'Redhat' {
+  if $ensure == 'present' {
+    $ensure_real = $::collectd::package_ensure
+  } elsif $ensure == 'absent' {
+    $ensure_real = 'absent'
+  }
+
+  if $::operatingsystem == 'Fedora' {
     if $_manage_package {
       package { 'collectd-python':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
@@ -54,7 +60,7 @@ class collectd::plugin::python (
   ensure_resource('file', $module_dirs,
     {
       'ensure'  => $ensure_modulepath,
-      'mode'    => '0750',
+      'mode'    => '0755',
       'owner'   => 'root',
       'purge'   => $::collectd::purge_config,
       'force'   => true,

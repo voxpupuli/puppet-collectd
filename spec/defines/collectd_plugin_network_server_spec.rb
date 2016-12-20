@@ -5,7 +5,9 @@ describe 'collectd::plugin::network::server', type: :define do
     let :facts do
       {
         osfamily: 'Redhat',
-        collectd_version: '5.1.0'
+        collectd_version: '5.1.0',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'node1' }
@@ -20,7 +22,7 @@ describe 'collectd::plugin::network::server', type: :define do
     end
 
     it 'Will create /etc/collectd.d/network-server-node1.conf for collectd >= 4.7' do
-      should contain_file('/etc/collectd.d/network-server-node1.conf').
+      is_expected.to contain_file('/etc/collectd.d/network-server-node1.conf').
         with(ensure: 'present',
              path: '/etc/collectd.d/network-server-node1.conf',
              content: "<Plugin network>\n  <Server \"node1\" \"1234\">\n    SecurityLevel \"Encrypt\"\n    Username \"foo\"\n    Password \"bar\"\n    Interface \"eth0\"\n\n  </Server>\n</Plugin>\n")
@@ -31,7 +33,9 @@ describe 'collectd::plugin::network::server', type: :define do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.1.0'
+        collectd_version: '5.1.0',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let(:title) { 'node1' }
@@ -42,7 +46,7 @@ describe 'collectd::plugin::network::server', type: :define do
     end
 
     it 'Will not create /etc/collectd.d/network-server-node1.conf' do
-      should contain_file('/etc/collectd.d/network-server-node1.conf').with(ensure: 'absent')
+      is_expected.to contain_file('/etc/collectd.d/network-server-node1.conf').with(ensure: 'absent')
     end
   end
 end

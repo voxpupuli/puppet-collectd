@@ -1,6 +1,6 @@
 # Single module definition
 define collectd::plugin::python::module (
-  $config        = {},
+  $config        = [],
   $ensure        = 'present',
   $module        = $title,
   $modulepath    = undef,
@@ -10,7 +10,7 @@ define collectd::plugin::python::module (
   include ::collectd
   include ::collectd::plugin::python
 
-  validate_hash($config)
+  validate_array($config)
 
   $module_dir = $modulepath ? {
     undef   => $collectd::python_dir,

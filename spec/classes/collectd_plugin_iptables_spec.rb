@@ -8,7 +8,9 @@ describe 'collectd::plugin::iptables', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present and :chains => { \'nat\' => \'In_SSH\' }' do
@@ -16,9 +18,9 @@ describe 'collectd::plugin::iptables', type: :class do
       { chains: { 'nat' => 'In_SSH' } }
     end
     it 'Will create /etc/collectd.d/10-iptables.conf' do
-      should contain_file('iptables.load').with(ensure: 'present',
-                                                path: '/etc/collectd.d/10-iptables.conf',
-                                                content: %r{Chain nat In_SSH})
+      is_expected.to contain_file('iptables.load').with(ensure: 'present',
+                                                        path: '/etc/collectd.d/10-iptables.conf',
+                                                        content: %r{Chain nat In_SSH})
     end
   end
 
@@ -29,12 +31,12 @@ describe 'collectd::plugin::iptables', type: :class do
       } }
     end
     it 'Will create /etc/collectd.d/10-iptables.conf' do
-      should contain_file('iptables.load').with(ensure: 'present',
-                                                path: '/etc/collectd.d/10-iptables.conf',
-                                                content: %r{Chain filter INPUT})
-      should contain_file('iptables.load').with(ensure: 'present',
-                                                path: '/etc/collectd.d/10-iptables.conf',
-                                                content: %r{Chain filter OUTPUT})
+      is_expected.to contain_file('iptables.load').with(ensure: 'present',
+                                                        path: '/etc/collectd.d/10-iptables.conf',
+                                                        content: %r{Chain filter INPUT})
+      is_expected.to contain_file('iptables.load').with(ensure: 'present',
+                                                        path: '/etc/collectd.d/10-iptables.conf',
+                                                        content: %r{Chain filter OUTPUT})
     end
   end
 
@@ -43,8 +45,8 @@ describe 'collectd::plugin::iptables', type: :class do
       { chains: { 'nat' => 'In_SSH' }, ensure: 'absent' }
     end
     it 'Will not create /etc/collectd.d/10-iptables.conf' do
-      should contain_file('iptables.load').with(ensure: 'absent',
-                                                path: '/etc/collectd.d/10-iptables.conf')
+      is_expected.to contain_file('iptables.load').with(ensure: 'absent',
+                                                        path: '/etc/collectd.d/10-iptables.conf')
     end
   end
 
@@ -53,7 +55,7 @@ describe 'collectd::plugin::iptables', type: :class do
       { chains: %w(nat In_SSH) }
     end
     it 'Will raise an error about :chains being an Array' do
-      should compile.and_raise_error(%r{Array})
+      is_expected.to compile.and_raise_error(%r{Array})
     end
   end
 end

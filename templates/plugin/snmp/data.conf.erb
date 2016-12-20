@@ -13,5 +13,10 @@
 <% if @shift -%>
     Shift <%= @shift %>
 <% end -%>
+<% if @ignore -%>
+     Ignore <%= Array(@ignore).map { |x| %Q{"#{x}"} }.join(' ') %>
+<% end -%>
+    InvertMatch <%= @invertmatch_bool ? 'true' : 'false' %>
   </Data>
 </Plugin>
+ 

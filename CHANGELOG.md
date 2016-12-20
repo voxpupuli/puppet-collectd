@@ -1,3 +1,39 @@
+## 2016-12-05 Release 5.2.0
+
+* Modulesync with latest Vox Pupuli defaults
+* Fix: Enforce collectd.d directory before all Concats
+* Fix: Add ability to add files via hiera
+* Fix: Don't accidently upgrade collectd while installing plugins
+* Fix: Manage EPEL if needed
+* Fix: Set correct installation path for plugins
+* Feature: Updat kafka plugin
+* Feature: Update Ceph plugin to support more cluster types
+* Feature: Add SMART plugin
+* Feature: Add support for multiple instances for memcached
+* Feature: Extend snmp plugin
+* Feature: Add hddtemp plugin
+* Feature: Add UUID plugin
+* Feature: Introduce rspec-puppet-facts to multiple spec tests
+* Feature: Add ppa support on Ubuntu
+* Feature: Add provider_proxy for pip
+* Feature: Add support for Interface plugin option ReportInactive
+* Feature: Add support for ReportNumCpu in CPU plugin introduced in collectd 5.6
+* Feature: Add thermal plugin
+* Feature: Allow multiple python plugin configs
+
+
+## 2016-08-18 Release 5.1.0
+
+* Modulesync with latest Vox Pupuli defaults
+* Fix: Target replace filter fix to allow identical keys with different values
+* Fix: Check $manage_package if not undef
+* Fix: Adding has_wordexp variable for template
+* Fix: Remove quotes from VerifyPeer and VerifyHost (don't treat bools as strings)
+* Feature: Add password parameter to redis plugin
+* Feature: Add scale plugin
+* Feature: Add a java_home option to javaplugin
+
+
 ## 2016-05-26 Release 5.0.0
 
 ### Backwards-incompatible changes:

@@ -8,14 +8,16 @@ describe 'collectd::plugin::filter', type: :class do
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '5.0'
+      collectd_version: '5.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
   context ':ensure => present and default parameters' do
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
-      should contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
-                                                                      path: '/etc/collectd/conf.d/01-filter.conf',
-                                                                      content: %r{PreCacheChain \"PreChain\"\nPostCacheChain \"PostChain\"})
+      is_expected.to contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
+                                                                              path: '/etc/collectd/conf.d/01-filter.conf',
+                                                                              content: %r{PreCacheChain \"PreChain\"\nPostCacheChain \"PostChain\"})
     end
   end
 
@@ -28,9 +30,9 @@ describe 'collectd::plugin::filter', type: :class do
       }
     end
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
-      should contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
-                                                                      path: '/etc/collectd/conf.d/01-filter.conf',
-                                                                      content: %r{PreCacheChain \"MyPreChain\"\nPostCacheChain \"MyPostChain\"})
+      is_expected.to contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
+                                                                              path: '/etc/collectd/conf.d/01-filter.conf',
+                                                                              content: %r{PreCacheChain \"MyPreChain\"\nPostCacheChain \"MyPostChain\"})
     end
   end
 
@@ -40,22 +42,22 @@ describe 'collectd::plugin::filter', type: :class do
     end
 
     it 'Will remove /etc/collectd/conf.d/01-filter.conf' do
-      should contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'absent',
-                                                                      path: '/etc/collectd/conf.d/01-filter.conf')
+      is_expected.to contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'absent',
+                                                                              path: '/etc/collectd/conf.d/01-filter.conf')
     end
 
     it 'Will remove loads of match plugins for filter' do
-      should contain_file('match_regex.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_regex.conf')
-      should contain_file('match_timediff.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_timediff.conf')
-      should contain_file('match_value.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_value.conf')
-      should contain_file('match_empty_counter.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_empty_counter.conf')
-      should contain_file('match_hashed.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_hashed.conf')
+      is_expected.to contain_file('match_regex.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_regex.conf')
+      is_expected.to contain_file('match_timediff.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_timediff.conf')
+      is_expected.to contain_file('match_value.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_value.conf')
+      is_expected.to contain_file('match_empty_counter.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_empty_counter.conf')
+      is_expected.to contain_file('match_hashed.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-match_hashed.conf')
     end
 
     it 'Will remove loads of target plugins for filter' do
-      should contain_file('target_notification.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_notification.conf')
-      should contain_file('target_replace.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_replace.conf')
-      should contain_file('target_set.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_set.conf')
+      is_expected.to contain_file('target_notification.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_notification.conf')
+      is_expected.to contain_file('target_replace.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_replace.conf')
+      is_expected.to contain_file('target_set.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/02-target_set.conf')
     end
   end
 end

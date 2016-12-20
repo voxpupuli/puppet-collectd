@@ -1,18 +1,20 @@
-Collectd module for Puppet
-==========================
+# Collectd module for Puppet
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd) [![Build Status](https://travis-ci.org/voxpupuli/puppet-collectd.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-collectd)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-collectd.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-collectd)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-collectd/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-collectd)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
 
-Description
------------
+## Description
 
 Puppet module for configuring collectd and plugins.
 
-Usage
------
+## Usage
 
 The simplest use case is to use all of the configurations in
-the default collectd.conf file shipped with collectd. This can
+the default `collectd.conf` file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
@@ -20,7 +22,7 @@ include ::collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
-This is accomplished by removing the default collectd.conf file
+This is accomplished by removing the default `collectd.conf` file
 and replacing it with a file that includes all alternative
 configurations. Configure a node with the following class
 declaration:
@@ -34,25 +36,25 @@ class { '::collectd':
 }
 ```
 
-Set purge, recurse, and purge_config to true in order to override
-the default configurations shipped in collectd.conf and use
-custom configurations stored in conf.d. From here you can set up
+Set `purge`, `recurse`, and `purge_config` to `true` in order to override
+the default configurations shipped in `collectd.conf` and use
+custom configurations stored in `conf.d`. From here you can set up
 additional plugins as shown below.
 
-Specifying the version or minimum_version of collectd as shown above reduces the need for
-two puppet runs to coverge. See [Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf,-why?) below.
+Specifying the `version` or `minimum_version` of collectd as shown above reduces
+the need for two puppet runs to converge. See
+[Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf-why)
+below.
 
-Hiera example in YAML of passing install_options to the package resource for managing the
-collectd package. This parameter must be an array.
+Hiera example in YAML of passing `install_options` to the package resource for
+managing the collectd package. This parameter must be an array.
 
 ```yaml
 collectd::package_install_options:
   - '--nogpgcheck'
 ```
 
-
-Simple Plugins
---------------
+## Simple Plugins
 
 Example of how to load plugins with no additional configuration:
 
@@ -60,15 +62,40 @@ Example of how to load plugins with no additional configuration:
 collectd::plugin { 'battery': }
 ```
 
-where 'battery' is the name of the plugin. Note, this should only be done in the case of a class for the plugin not existing in this module.
+Where `battery` is the name of the plugin.
 
-Configurable Plugins
-------------------
+**Note:** this should only be done in the case of a class for the plugin
+not existing in this module.
+
+## Repo management
+
+The module will enable a repo by default.
+
+On CentOS that will be EPEL:
+* http://rpms.famillecollet.com/rpmphp/zoom.php?rpm=collectd
+
+On Ubuntu that'll be the CollectD PPA:
+* https://launchpad.net/~collectd/+archive/ubuntu/collectd-5.5
+
+### CI Packages
+
+Recently, Collectd CI packages are also avaliable from the CI repo
+
+More information is avaliable here:
+* https://github.com/collectd/collectd-ci
+
+You can choose the CI repo with the `$ci_package_repo` parameter.
+
+`$ci_package_repo` has to match '5.4', '5.5', '5.6', '5.7' or 'master' (RC for next release) as
+these are the current branches being built in the Collectd CI.
+
+## Configurable Plugins
 
 Parameters will vary widely between plugins. See the collectd
 documentation for each plugin for configurable attributes.
 
-* `aggregation`  (see [collectd::plugin::aggregation](#class-collectdpluginaggregation) below)
+* `aggregation`  (see [collectd::plugin::aggregation](#class-collectdpluginaggregation)
+  below)
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
@@ -80,7 +107,8 @@ documentation for each plugin for configurable attributes.
 * `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
 * `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
-* `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json) below)
+* `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json)
+  below)
 * `dbi`  (see [collectd::plugin::dbi](#class-collectdplugindbi) below)
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
@@ -89,10 +117,14 @@ documentation for each plugin for configurable attributes.
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
 * `fhcount` (see [collectd::plugin::fhcount](#class-collectdpluginfhcount) below)
-* `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount) below)
+* `filecount` (see [collectd::plugin::filecount](#class-collectdpluginfilecount)
+  below)
 * `filter`  (see [collectd::plugin::filter](#class-collectdpluginfilter) below)
-* `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx) below)
-* `interface` (see [collectd::plugin::interface](#class-collectdplugininterface) below)
+* `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx)
+  below)
+* `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
+* `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
+  below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
@@ -101,7 +133,8 @@ documentation for each plugin for configurable attributes.
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `virt` (see [collectd::plugin::virt](#class-collectdpluginvirt) below)
 * `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
-* `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached) below )
+* `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached)
+  below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
 * `mongodb`(see [collectd::plugin::mongodb](#class-collectdpluginmongodb) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
@@ -114,37 +147,55 @@ documentation for each plugin for configurable attributes.
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
 * `perl` (see [collectd::plugin::perl](#class-collectdpluginperl) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
-* `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql) below)
+* `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql)
+  below)
 * `processes` (see [collectd::plugin:processes](#class-collectdpluginprocesses) below)
 * `protocols` (see [collectd::plugin:protocols](#class-collectdpluginprotocols) below)
 * `python` (see [collectd::plugin::python](#class-collectdpluginpython) below)
 * `redis` (see [collectd::plugin::redis](#class-collectdpluginredis) below)
-* `rabbitmq` (see [collectd-rabbitmq](https://pypi.python.org/pypi/collectd-rabbitmq) and [below](#class-collectdpluginrabbitmq) for implementation notes
-* `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached) below)
+* `rabbitmq` (see [collectd-rabbitmq](https://pypi.python.org/pypi/collectd-rabbitmq)
+  and [below](#class-collectdpluginrabbitmq) for implementation notes
+* `rrdcached` (see [collectd::plugin::rrdcached](#class-collectdpluginrrdcached)
+  below)
 * `rrdtool` (see [collectd::plugin::rrdtool](#class-collectdpluginrrdtool) below)
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
+* `smart` (see [collectd::plugin::smart](#class-collectdpluginsmart) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
 * `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
 * `tail` (see [collectd::plugin::tail](#class-collectdplugintail) below)
-* `target_v5upgrade` (see [collectd::plugin::target_v5upgrade](#class-collectdplugintarget_v5upgrade) below)
+* `target_v5upgrade` (see [collectd::plugin::target_v5upgrade](#class-collectdplugintarget_v5upgrade)
+  below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
+* `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
+* `uuid` (see [collectd::plugin::uuid](#class-collectdpluginuuid) below)
 * `varnish` (see [collectd::plugin::varnish](#class-collectdpluginvarnish) below)
 * `vmem` (see [collectd::plugin::vmem](#class-collectdpluginvmem) below)
-* `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite) below)
-* `write_http` (see [collectd::plugin::write_http](#class-collectdpluginwrite_http) below)
-* `write_kafka` (see [collectd::plugin::write_kafka](#class-collectdpluginwrite_kafka) below)
-* `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network) below)
-* `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann) below)
-* `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu) below)
-* `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb) below)
+* `write_graphite` (see [collectd::plugin::write_graphite](#class-collectdpluginwrite_graphite)
+ below)
+* `write_http` (see [collectd::plugin::write_http](#class-collectdpluginwrite_http)
+  below)
+* `write_kafka` (see [collectd::plugin::write_kafka](#class-collectdpluginwrite_kafka)
+  below)
+* `write_log` (see [collectd::plugin::write_log](#class-collectdpluginwrite_log)
+  below)
+* `write_prometheus` (see [collectd::plugin::write_prometheus](#class-collectdpluginwrite_prometheus)
+  below)
+* `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network)
+  below)
+* `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann)
+  below)
+* `write_sensu` (see [collectd::plugin::write_sensu](#class-collectdpluginwrite_sensu)
+  below)
+* `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb)
+  below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
 
-####Class: `collectd::plugin::aggregation`
+### Class: `collectd::plugin::aggregation`
 
 ```puppet
 collectd::plugin::aggregation::aggregator {
@@ -171,7 +222,7 @@ class { 'collectd::plugin::aggregation':
 }
 ```
 
-####Class: `collectd::plugin::amqp`
+### Class: `collectd::plugin::amqp`
 
 ```puppet
 class { 'collectd::plugin::amqp':
@@ -182,13 +233,15 @@ class { 'collectd::plugin::amqp':
 }
 ```
 
-####Class: `collectd::plugin::apache`
+### Class: `collectd::plugin::apache`
 
 ```puppet
 class { 'collectd::plugin::apache':
   instances => {
-    'apache80' => {
-      'url' => 'http://localhost/mod_status?auto', 'user' => 'collectd', 'password' => 'hoh2Coo6'
+    'apache80'     => {
+      'url'      => 'http://localhost/mod_status?auto',
+      'user'     => 'collectd',
+      'password' => 'hoh2Coo6'
     },
     'lighttpd8080' => {
       'url' => 'http://localhost:8080/mod_status?auto'
@@ -197,7 +250,7 @@ class { 'collectd::plugin::apache':
 }
 ```
 
-####Class: `collectd::plugin::bind`
+### Class: `collectd::plugin::bind`
 
 ```puppet
 class { 'collectd::plugin::bind':
@@ -205,17 +258,24 @@ class { 'collectd::plugin::bind':
 }
 ```
 
-####Class: `collectd::plugin::ceph`
+### Class: `collectd::plugin::ceph`
 
 ```puppet
 class { 'collectd::plugin::ceph':
-  osds          => [ 'osd.0', 'osd.1', 'osd.2'],
+  daemons        => [
+    '[clustername]-osd.0',
+    '[clustername]-osd.1',
+    '[clustername]-osd.2',
+    '[clustername]-mon.[hostname].asok'
+  ],
+  manage_package => true
 }
 ```
 
-####Class: `collectd::plugin::cgroups`
+### Class: `collectd::plugin::cgroups`
 
- See [collectd plugin_cgroups documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cgroups) for more details.
+ See [collectd plugin_cgroups documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cgroups)
+ for more details.
 
 ```puppet
 class { 'collectd::plugin::cgroups':
@@ -224,8 +284,7 @@ class { 'collectd::plugin::cgroups':
 }
 ```
 
-
-####Class: `collectd::plugin::chain`
+### Class: `collectd::plugin::chain`
 
 ```puppet
 class { 'collectd::plugin::chain':
@@ -256,22 +315,22 @@ class { 'collectd::plugin::chain':
   }
 ```
 
-####Class: `collectd::plugin::conntrack`
+### Class: `collectd::plugin::conntrack`
 
 ```puppet
 class { 'collectd::plugin::conntrack':
 }
-
-
 ```
 
-####Class: `collectd::plugin::cpu`
+### Class: `collectd::plugin::cpu`
 
- * `reportbystate` available from collectd version >= 5.5
- * `reportbycpu` available from collectd version >= 5.5
- * `valuespercentage` available from collectd version >= 5.5
+* `reportbystate` available from collectd version >= 5.5
+* `reportbycpu` available from collectd version >= 5.5
+* `valuespercentage` available from collectd version >= 5.5
+* `reportnumcpu` available from collectd version >= 5.6
 
- See [collectd plugin_cpu documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cpu) for more details.
+ See [collectd plugin_cpu documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_cpu)
+ for more details.
 
 ```puppet
 class { 'collectd::plugin::cpu':
@@ -279,17 +338,16 @@ class { 'collectd::plugin::cpu':
   reportbycpu => true,
   valuespercentage => true,
 }
-
-
 ```
-####Class: `collectd::plugin::cpufreq`
+
+### Class: `collectd::plugin::cpufreq`
 
 ```puppet
 class { 'collectd::plugin::cpufreq':
 }
 ```
 
-####Class: `collectd::plugin::csv`
+### Class: `collectd::plugin::csv`
 
 ```puppet
 class { 'collectd::plugin::csv':
@@ -298,7 +356,7 @@ class { 'collectd::plugin::csv':
 }
 ```
 
-####Class: `collectd::plugin::curl`
+### Class: `collectd::plugin::curl`
 
 ```puppet
 collectd::plugin::curl::page {
@@ -338,7 +396,7 @@ class { 'collectd::plugin::curl':
 }
 ```
 
-####Class: `collectd::plugin::curl_json`
+### Class: `collectd::plugin::curl_json`
 
 ```puppet
 collectd::plugin::curl_json {
@@ -355,7 +413,7 @@ collectd::plugin::curl_json {
 }
 ```
 
-####Class: `collectd::plugin::dbi`
+### Class: `collectd::plugin::dbi`
 
 ```puppet
 collectd::plugin::dbi::database{'monitoring_node1':
@@ -399,7 +457,7 @@ class { 'collectd::plugin::dbi':
 }
 ```
 
-####Class: `collectd::plugin::df`
+### Class: `collectd::plugin::df`
 
 ```puppet
 class { 'collectd::plugin::df':
@@ -409,7 +467,7 @@ class { 'collectd::plugin::df':
 }
 ```
 
-####Class: `collectd::plugin::disk`
+### Class: `collectd::plugin::disk`
 
 ```puppet
 class { 'collectd::plugin::disk':
@@ -419,71 +477,71 @@ class { 'collectd::plugin::disk':
 }
 ```
 
-####Class: `collectd::plugin::dns`
+### Class: `collectd::plugin::dns`
 
 ```puppet
 class { 'collectd::plugin::dns':
 }
 ```
 
-##### Parameters:
+#### Parameters
 
 See collectd [documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_dns).
 
-ensure
-------
+##### ensure
+
 Optional. String that must be 'present' or 'absent'.
 
 - *Default*: 'present'
 
-ignoresource
-------------
+##### ignoresource
+
 Optional. String of IP address to ignore.
 
 - *Default*: undef
 
-interface
----------
+##### interface
+
 String of interface to use. May be interface identifier such as 'eth0' or 'any'.
 
 - *Default*: 'any'
 
-interval
---------
+##### interval
+
 Numeric for interval in seconds. Changing this can be a disaster. Consult the documentation.
 
 - *Default*: undef
 
-manage_package
---------------
+##### manage_package
+
 Boolean to determine if system package for collectd's dns plugin should be
 managed. If set to true, you must specify the package name for any unsupported
 OS.
 
 - *Default*: false
 
-package_name
-------------
+##### package_name
+
 String for name of package. A value of 'USE_DEFAULTS' will set the value based
 on the platform. This is necessary when setting manage_package on an
 unsupported platform.
 
 - *Default*: 'USE_DEFAULTS'
 
-selectnumericquerytypes
------------------------
+##### selectnumericquerytypes
+
 Boolean for SelectNumericQueryTypes configuration option.
 
 - *Default*: true
 
-####Class: `collectd::plugin::entropy`
+#### Class: `collectd::plugin::entropy`
 
 ```puppet
 class { 'collectd::plugin::entropy':
 }
 ```
 
-####Class: `collectd::plugin::exec`
+#### Class: `collectd::plugin::exec`
 
 ```puppet
 collectd::plugin::exec::cmd {
@@ -492,9 +550,10 @@ collectd::plugin::exec::cmd {
     group => nogroup,
     exec => ["/bin/echo", "PUTVAL myhost/foo/gauge-flat N:1"],
 }
-
 ```
+
 You can also configure this plugin with a parameterized class:
+
 ```puppet
 class { 'collectd::plugin::exec':
   commands => {
@@ -512,17 +571,19 @@ class { 'collectd::plugin::exec':
 }
 ```
 
-####Class: `collectd::plugin::ethstat`
+#### Class: `collectd::plugin::ethstat`
 
 ```puppet
 class { 'collectd::plugin::ethstat':
   interfaces => [ 'eth0', 'eth1'],
-  maps       => [ '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"' ],
+  maps       => [
+    '"rx_csum_offload_errors" "if_rx_errors" "checksum_offload"', '"multicast" "if_multicast"'
+  ],
   mappedonly => false,
 }
 ```
 
-####Class: `collectd::plugin::fhcount`
+#### Class: `collectd::plugin::fhcount`
 
 ```puppet
 class { 'collectd::plugin::fhcount':
@@ -531,7 +592,7 @@ class { 'collectd::plugin::fhcount':
 }
 ```
 
-####Class: `collectd::plugin::filecount`
+#### Class: `collectd::plugin::filecount`
 
 ```puppet
 collectd::plugin::filecount::directory {'foodir':
@@ -541,9 +602,10 @@ collectd::plugin::filecount::directory {'foodir':
   recursive     => true,
   includehidden => false
 }
-
 ```
+
 You can also configure this plugin with a parameterized class:
+
 ```puppet
 class { 'collectd::plugin::filecount':
   directories => {
@@ -557,7 +619,9 @@ class { 'collectd::plugin::filecount':
   },
 }
 ```
+
 For backwards compatibility:
+
 ```puppet
 class { 'collectd::plugin::filecount':
   directories => {
@@ -569,17 +633,21 @@ class { 'collectd::plugin::filecount':
 
 #### Class: `collectd::plugin::filter`
 
-The filter plugin implements the powerful filter configuration of collectd. For further details have a look on the [collectd manpage](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#filter_configuration).
+The filter plugin implements the powerful filter configuration of collectd.
+For further details have a look on the [collectd manpage](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#filter_configuration).
 
-##### Parameters:
+##### Parameters
 
-* `ensure` (`"ensure"`,`"absent"`): Ob absent it will remove all references of the filter plugins. `Note`: The Chain config needs to be purged by the chain define.
+* `ensure` (`"ensure"`,`"absent"`): Ob absent it will remove all references of
+  the filter plugins. `Note`: The Chain config needs to be purged by the chain
+  define.
 * `precachechain` (String): The Name of the default Pre Chain.
 * `postcachechain` (String): The Name of the default Post Chain.
 
-##### Examples:
+##### Examples
 
-###### Overwrite default chains:
+###### Overwrite default chains
+
 ```puppet
 class { 'collectd::plugin::filter':
     ensure          => 'present',
@@ -588,7 +656,7 @@ class { 'collectd::plugin::filter':
 }
 ```
 
-###### Full Example:
+###### Full Example
 
 This Example will rename the hostname of the mysql plugin.
 
@@ -650,55 +718,65 @@ collectd::plugin::filter::target{ "1_prechain_jump_${chainname}":
 
 This define will create a new chain, which is required by targets, matches and rules.
 
-##### Parameters:
+##### Parameters
 
-* `ensure` (`"ensure"`,`"absent"`): When set to absent it will remove the chain with all assigned rules, targets and matches.
-* `target` (`'notification','replace','set','return','stop','write','jump'`): Optional. Set default target if no target has been applied. Strongly recommend for default chains.
+* `ensure` (`"ensure"`,`"absent"`): When set to absent it will remove the chain
+  with all assigned rules, targets and matches.
+* `target` (`'notification','replace','set','return','stop','write','jump'`):
+  Optional. Set default target if no target has been applied. Strongly recommend
+  for default chains.
 * `target_options` (Hash): If target is specified, pass optional hash to define.
 
-##### Example:
+##### Example
+
 see [collectd::plugin::filter](#class-collectdpluginfilter) above
 
 #### Define: `collectd::plugin::filter::rule`
 
 This define will add a new rule to a specific chain
 
-##### Parameters:
+##### Parameters
 
 * `chain` (String): Assign to this chain.
 
-##### Example:
+##### Example
+
 see [collectd::plugin::filter](#class-collectdpluginfilter) above
 
 #### Define: `collectd::plugin::filter::target`
 
 This define will add a target to a chain or rule.
 
-##### Parameters:
+##### Parameters
 
 * `chain` (String): Assign to this chain.
-* `plugin` (`'notification','replace','set','return','stop','write','jump'`): The plugin of the target.
+* `plugin` (`'notification','replace','set','return','stop','write','jump'`): The
+  plugin of the target.
 * `options` (Hash): Optional parameters of the target plugin.
-* `rule` (String): Optional. Assign to this rule. If not present, target will be applied at the end of chain without rule matching.
+* `rule` (String): Optional. Assign to this rule. If not present, target will be
+  applied at the end of chain without rule matching.
 
-##### Example:
+##### Example
+
 see [collectd::plugin::filter](#class-collectdpluginfilter) above
 
 #### Define: `collectd::plugin::filter::match`
 
 This define will add a match rule.
 
-##### Parameters:
+##### Parameters
 
 * `chain` (String): Assign to this chain.
 * `rule` (String): Assign to this rule.
-* `plugin` (`'regex','timediff','value','empty_counter','hashed'`): The plugin of the match.
+* `plugin` (`'regex','timediff','value','empty_counter','hashed'`): The plugin of
+  the match.
 * `options` (Hash): Optional parameters of the match plugin.
 
-##### Example:
+##### Example
+
 see [collectd::plugin::filter](#class-collectdpluginfilter) above
 
-####Class: `collectd::plugin::genericjmx`
+#### Class: `collectd::plugin::genericjmx`
 
 ```puppet
 include collectd::plugin::genericjmx
@@ -732,7 +810,16 @@ collectd::plugin::genericjmx::connection {
 
 ```
 
-####Class: `collectd::plugin::interface`
+#### Class: `collectd::plugin::hddtemp`
+
+```puppet
+class { 'collectd::plugin::hddtemp':
+  host => '127.0.0.1',
+  port => 7634,
+}
+```
+
+#### Class: `collectd::plugin::interface`
 
 ```puppet
 class { 'collectd::plugin::interface':
@@ -741,7 +828,7 @@ class { 'collectd::plugin::interface':
 }
 ```
 
-####Class: `collectd::plugin::irq`
+#### Class: `collectd::plugin::irq`
 
 ```puppet
 class { 'collectd::plugin::irq':
@@ -750,7 +837,7 @@ class { 'collectd::plugin::irq':
 }
 ```
 
-####Class: `collectd::plugin::ipmi`
+#### Class: `collectd::plugin::ipmi`
 
 ```puppet
 class { 'collectd::plugin::ipmi':
@@ -762,7 +849,7 @@ class { 'collectd::plugin::ipmi':
 }
 ```
 
-####Class: `collectd::plugin::iptables`
+#### Class: `collectd::plugin::iptables`
 
 ```puppet
 class { 'collectd::plugin::iptables':
@@ -773,26 +860,26 @@ class { 'collectd::plugin::iptables':
 }
 ```
 
-####Class: `collectd::plugin::java`
+#### Class: `collectd::plugin::java`
 
-jvmarg options must be declared if declaring loadplugin, as the JVM must be 
+jvmarg options must be declared if declaring loadplugin, as the JVM must be
 initialized prior to loading collectd java plugins.
 
 ```puppet
-class { 'collectd::plugin::java': 
+class { 'collectd::plugin::java':
   jvmarg      => ['arg1', 'arg2'],
   loadplugin  => {"plugin.name" => ["option line 1", "option line 2"]}
 }
 ```
 
-####Class: `collectd::plugin::load`
+#### Class: `collectd::plugin::load`
 
 ```puppet
 class { 'collectd::plugin::load':
 }
 ```
 
-####Class: `collectd::plugin::logfile`
+#### Class: `collectd::plugin::logfile`
 
 ```puppet
 class { 'collectd::plugin::logfile':
@@ -801,7 +888,7 @@ class { 'collectd::plugin::logfile':
 }
 ```
 
-####Class: `collectd::plugin::virt`
+#### Class: `collectd::plugin::virt`
 
 The interface_format parameter was introduced in collectd 5.0 and will
 therefore be ignored (with a warning) when specified with older versions.
@@ -813,29 +900,45 @@ class { 'collectd::plugin::virt':
 }
 ```
 
-####Class: `collectd::plugin::lvm`
+#### Class: `collectd::plugin::lvm`
 
 ```puppet
 class { 'collectd::plugin::lvm': }
 ```
 
-####Class: `collectd::plugin::memcached`
+#### Class: `collectd::plugin::memcached`
+
+The plugin supports multiple instances specified via host+port and socket:
 
 ```puppet
 class { 'collectd::plugin::memcached':
-  host => '192.168.122.1',
-  port => 11211,
+  instances => {
+    'sessions1' => {
+      'host' => '192.168.122.1',
+      'port' => '11211',
+    },
+    'storage1' => {
+      'host' => '192.168.122.1',
+      'port' => '11212',
+    },
+    'sessions2' => {
+      'socket'  => '/var/run/memcached.sessions.sock',
+    },
+    'storage2' => {
+      'socket'  => '/var/run/memcached.storage.sock',
+    },
+  }
 }
 ```
 
-####Class: `collectd::plugin::memory`
+#### Class: `collectd::plugin::memory`
 
 ```puppet
 class { 'collectd::plugin::memory':
 }
 ```
 
-####Class: `collectd::plugin::mysql`
+#### Class: `collectd::plugin::mysql`
 
 ```puppet
 collectd::plugin::mysql::database { 'betadase':
@@ -847,7 +950,7 @@ collectd::plugin::mysql::database { 'betadase':
 }
 ```
 
-####Class: `collectd::plugin::mongodb`
+#### Class: `collectd::plugin::mongodb`
 
 ```puppet
 class { 'collectd::plugin::mongodb':
@@ -856,15 +959,21 @@ class { 'collectd::plugin::mongodb':
 }
 ```
 
-##### Parameters:
+##### Parameters
 
-* `ensure` (String): String that must be 'present' or 'absent'. *Default*: 'present' 
-* `interval` (String): Number of seconds that collectd pauses between data collection. *Default*: undef
-* `db_host` (String): String that holds the IP of the MongoDB server. *Default*: '127.0.0.1'
-* `db_user` (String): Required. String that specifies the user name of an account that can log into MongoDB
-* `db_user` (String): Required. String that specifies the password of an account that can log into MongoDB
-* `configured_dbs` (String): Optional. Array of Strings that lists the databases that should be monitored in addition to the "admin"
-* `db_port` (String): Required if the configured_dbs parameter is set. Unused otherwise.  Integer that specifies with port MongoDB listens on.
+* `ensure` (String): String that must be 'present' or 'absent'. *Default*: 'present'
+* `interval` (String): Number of seconds that collectd pauses between data
+  collection. *Default*: undef
+* `db_host` (String): String that holds the IP of the MongoDB server. *Default*:
+  '127.0.0.1'
+* `db_user` (String): Required. String that specifies the user name of an account
+  that can log into MongoDB
+* `db_user` (String): Required. String that specifies the password of an account
+  that can log into MongoDB
+* `configured_dbs` (String): Optional. Array of Strings that lists the databases
+  that should be monitored in addition to the "admin"
+* `db_port` (String): Required if the configured_dbs parameter is set. Unused
+  otherwise.  Integer that specifies with port MongoDB listens on.
 
 ```puppet
 class { 'collectd::plugin::mongodb':
@@ -877,7 +986,7 @@ class { 'collectd::plugin::mongodb':
 }
 ```
 
-####Class: `collectd::plugin::netlink`
+#### Class: `collectd::plugin::netlink`
 
 ```puppet
 class { 'collectd::plugin::netlink':
@@ -890,7 +999,7 @@ class { 'collectd::plugin::netlink':
 }
 ```
 
-####Class: `collectd::plugin::network`
+#### Class: `collectd::plugin::network`
 
 ```puppet
 collectd::plugin::network::server{'hostname':
@@ -926,14 +1035,14 @@ class { 'collectd::plugin::network':
 }
 ```
 
-####Class: `collectd::plugin::nfs`
+#### Class: `collectd::plugin::nfs`
 
 ```puppet
 class { 'collectd::plugin::nfs':
 }
 ```
 
-####Class: `collectd::plugin::nginx`
+#### Class: `collectd::plugin::nginx`
 
 ```puppet
 class { 'collectd::plugin::nginx':
@@ -943,7 +1052,7 @@ class { 'collectd::plugin::nginx':
 }
 ```
 
-####Class: `collectd::plugin::ntpd`
+#### Class: `collectd::plugin::ntpd`
 
 ```puppet
 class { 'collectd::plugin::ntpd':
@@ -954,7 +1063,7 @@ class { 'collectd::plugin::ntpd':
 }
 ```
 
-####Class: `collectd::plugin::openldap`
+#### Class: `collectd::plugin::openldap`
 
 ```puppet
 class { 'collectd::plugin::openldap':
@@ -969,19 +1078,34 @@ class { 'collectd::plugin::openldap':
 }
 ```
 
-####Class: `collectd::plugin::openvpn`
+#### Class: `collectd::plugin::openvpn`
 
- * `statusfile` (String or Array) Status file(s) to collect data from. (Default `/etc/openvpn/openvpn-status.log`)
- * `improvednamingschema` (Bool) When enabled, the filename of the status file will be used as plugin instance and the client's "common name" will be used as type instance. This is required when reading multiple status files. (Default: `false`)
- * `collectcompression` Sets whether or not statistics about the compression used by OpenVPN should be collected. This information is only available in single mode. (Default `true`)
- * `collectindividualusers` Sets whether or not traffic information is collected for each connected client individually. If set to false, currently no traffic data is collected at all because aggregating this data in a save manner is tricky. (Default `true`)
- * `collectusercount` When enabled, the number of currently connected clients or users is collected.  This is especially interesting when CollectIndividualUsers is disabled, but can be configured independently from that option. (Default `false`)
+* `statusfile` (String or Array) Status file(s) to collect data from.
+  (Default `/etc/openvpn/openvpn-status.log`)
+* `improvednamingschema` (Bool) When enabled, the filename of the status file
+  will be used as plugin instance and the client's "common name" will be used
+  as type instance. This is required when reading multiple status files.
+  (Default: `false`)
+* `collectcompression` Sets whether or not statistics about the compression used
+  by OpenVPN should be collected. This information is only available in single
+  mode. (Default `true`)
+* `collectindividualusers` Sets whether or not traffic information is collected
+  for each connected client individually. If set to false, currently no traffic
+  data is collected at all because aggregating this data in a save manner is
+  tricky. (Default `true`)
+* `collectusercount` When enabled, the number of currently connected clients
+  or users is collected.  This is especially interesting when
+  CollectIndividualUsers is disabled, but can be configured independently from
+  that option. (Default `false`)
 
 Watch multiple `statusfile`s:
 
 ```puppet
 class { 'collectd::plugin::openvpn':
-  statusfile             => [ '/etc/openvpn/openvpn-status-tcp.log', '/etc/openvpn/openvpn-status-udp.log' ],
+  statusfile             => [
+    '/etc/openvpn/openvpn-status-tcp.log',
+    '/etc/openvpn/openvpn-status-udp.log'
+  ],
   collectindividualusers => false,
   collectusercount       => true,
 }
@@ -996,35 +1120,43 @@ class { 'collectd::plugin::openvpn':
 }
 ```
 
-
-####Class: `collectd::plugin::perl`
+#### Class: `collectd::plugin::perl`
 
 This class has no parameters and will load the actual perl plugin.
 It will be automatically included if any `perl::plugin` is defined.
 
-#####Example:
+##### Example
+
 ```puppet
 include collectd::plugin::perl
 ```
 
-####Define: `collectd::plugin::perl::plugin`
+#### Define: `collectd::plugin::perl::plugin`
 
 This define will load a new perl plugin.
 
-#####Parameters:
+##### Parameters
 
 * `module` (String): name of perl module to load (mandatory)
-* `enable_debugger` (False or String): whether to load the perl debugger. See *collectd-perl* manpage for more details.
+* `enable_debugger` (False or String): whether to load the perl debugger. See
+  *collectd-perl* manpage for more details.
 * `include_dir` (String or Array): directories to add to *@INC*
-* `provider` (`"package"`,`"cpan"`,`"file"` or `false`): method to get the plugin code
-* `source` (String): this parameter is consumed by the provider to infer the source of the plugin code
-* `destination (String or false): path to plugin code if `provider` is `file`. Ignored otherwise.
-* `order` (String containing numbers): order in which the plugin should be loaded. Defaults to `"00"`
-* `config` (Hash): plugin configuration in form of a hash. This will be converted to a suitable structure understood by *liboconfig* which is the *collectd* configuration parser. Defaults to `{}`
+* `provider` (`"package"`,`"cpan"`,`"file"` or `false`): method to get the
+  plugin code
+* `source` (String): this parameter is consumed by the provider to infer the
+  source of the plugin code
+* `destination` (String or false): path to plugin code if `provider` is `file`.
+  Ignored otherwise.
+* `order` (String containing numbers): order in which the plugin should be
+  loaded. Defaults to `"00"`
+* `config` (Hash): plugin configuration in form of a hash. This will be
+  converted to a suitable structure understood by *liboconfig* which is the
+  *collectd* configuration parser. Defaults to `{}`
 
-#####Examples:
+##### Examples
 
-######Using a preinstalled plugin:
+###### Using a preinstalled plugin
+
 ```puppet
 collectd::plugin::perl::plugin { 'foo':
     module          => 'Collectd::Plugins::Foo',
@@ -1033,7 +1165,8 @@ collectd::plugin::perl::plugin { 'foo':
 }
 ```
 
-######Using a plugin from a file from *source*:
+###### Using a plugin from a file from *source*
+
 ```puppet
 collectd::plugin::perl::plugin { 'baz':
     module      => 'Collectd::Plugins::Baz',
@@ -1043,7 +1176,8 @@ collectd::plugin::perl::plugin { 'baz':
 }
 ```
 
-######Using a plugin from cpan (requires the [puppet cpan module](https://forge.puppetlabs.com/meltwater/cpan)):
+###### Using a plugin from cpan (requires the [puppet cpan module](https://forge.puppetlabs.com/meltwater/cpan))
+
 ```puppet
 collectd::plugin::perl::plugin {
   'openafs_vos':
@@ -1054,7 +1188,8 @@ collectd::plugin::perl::plugin {
 }
 ```
 
-######Using a plugin from package source:
+###### Using a plugin from package source
+
 ```puppet
 collectd::plugin::perl::plugin {
   'bar':
@@ -1065,7 +1200,7 @@ collectd::plugin::perl::plugin {
 }
 ```
 
-####Class: `collectd::plugin::ping`
+#### Class: `collectd::plugin::ping`
 
 ```puppet
 collectd::plugin::ping {
@@ -1074,7 +1209,7 @@ collectd::plugin::ping {
 }
 ```
 
-####Class: `collectd::plugin::postgresql`
+#### Class: `collectd::plugin::postgresql`
 
 ```puppet
 collectd::plugin::postgresql::database{'monitoring_node1':
@@ -1124,7 +1259,7 @@ class { 'collectd::plugin::postgresql':
 }
 ```
 
-####Class: `collectd::plugin::processes`
+#### Class: `collectd::plugin::processes`
 
 You can either specify processes / process matches at once:
 
@@ -1138,6 +1273,7 @@ class { 'collectd::plugin::processes':
 ```
 
 Or define single processes / process matches:
+
 ```puppet
 collectd::plugin::processes::process { 'collectd' : }
 ```
@@ -1148,12 +1284,13 @@ collectd::plugin::processes::processmatch { 'elasticsearch' :
 }
 ```
 
-####Class: `collectd::plugin::protocols`
+#### Class: `collectd::plugin::protocols`
 
- * `values` is an array of `Protocol` names, `Protocol:ValueName` pairs, or a regex
- * see `/proc/net/netstat` and `/proc/net/snmp` for a list of `Protocol` targets
+* `values` is an array of `Protocol` names, `Protocol:ValueName` pairs, or a regex
+* see `/proc/net/netstat` and `/proc/net/snmp` for a list of `Protocol` targets
 
- See [collectd.conf documentation] (https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols) for details
+ See [collectd.conf documentation](https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols)
+ for details
 
 ```puppet
 class { 'collectd::plugin::protocols':
@@ -1162,17 +1299,29 @@ class { 'collectd::plugin::protocols':
 }
 ```
 
-####Class: `collectd::plugin::python`
+#### Class: `collectd::plugin::python`
 
- * `modulepaths` is an array of paths where will be Collectd looking for Python modules, Puppet will ensure that each of specified directories exists and it is owned by `root` (and `chmod 0750`). If you don't specify any `modulepaths` a default value for given distribution will be used.
- * `modules` a Hash containing configuration of Python modules, where the key is the module name
- * `globals` Unlike most other plugins, this one should set `Globals true`. This will cause collectd to export the name of all objects in the Python interpreter for all plugins to see. If you don't do this or your platform does not support it, the embedded interpreter will start anyway but you won't be able to load certain Python modules, e.g. "time".
- * `interactive` when `true` it will launch an interactive Python interpreter that reads from and writes to the terminal (default: `false`)
- * `logtraces` if a Python script throws an exception it will be logged by collectd with the name of the exception and the message (default: `false`)
+* `modulepaths` is an array of paths where will be Collectd looking for Python
+  modules, Puppet will ensure that each of specified directories exists and it
+  is owned by `root` (and `chmod 0750`). If you don't specify any `modulepaths`
+  a default value for given distribution will be used.
+* `modules` a Hash containing configuration of Python modules, where the key
+  is the module name
+* `globals` Unlike most other plugins, this one should set `Globals true`. This
+  will cause collectd to export the name of all objects in the Python
+  interpreter for all plugins to see. If you don't do this or your platform does
+  not support it, the embedded interpreter will start anyway but you won't be
+  able to load certain Python modules, e.g. "time".
+* `interactive` when `true` it will launch an interactive Python interpreter
+  that reads from and writes to the terminal (default: `false`)
+* `logtraces` if a Python script throws an exception it will be logged by
+  collectd with the name of the exception and the message (default: `false`)
 
- See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml) for more details.
+ See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml)
+ for more details.
 
-NOTE: Since `v3.4.0` the syntax of this plugin has changed. Make sure to update your existing configuration. Now you can specify multiple Python modules at once:
+NOTE: Since `v3.4.0` the syntax of this plugin has changed. Make sure to update
+your existing configuration. Now you can specify multiple Python modules at once:
 
 ```puppet
 class { 'collectd::plugin::python':
@@ -1180,16 +1329,17 @@ class { 'collectd::plugin::python':
   modules     => {
     'elasticsearch' => {
       'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-      'config'        => {'Cluster' => 'elasticsearch'},
+      'config'        => [{'Cluster' => 'elasticsearch'},],
     },
     'another-module' => {
-      'config'        => {'Verbose' => 'true'},
+      'config'        => [{'Verbose' => 'true'},],
     }
   }
   logtraces   => true,
-  interactive => false
+  interactive => false,
 }
 ```
+
 When `script_source` provided, a file called `{module}.py` will be created in `$modulepath/$module.py`.
 
 Or define single module:
@@ -1203,7 +1353,9 @@ collectd::plugin::python::module {'zk-collectd':
 }
 ```
 
-Each plugin might use different `modulepath`, however make sure that all paths are included in `collectd::plugin::python` variable `modulepaths`. If no `modulepath` is specified, OS default will be used.
+Each plugin might use different `modulepath`, however make sure that all paths
+are included in `collectd::plugin::python` variable `modulepaths`. If no
+`modulepath` is specified, OS default will be used.
 
 ```puppet
 collectd::plugin::python::module {'my-module':
@@ -1215,7 +1367,7 @@ collectd::plugin::python::module {'my-module':
 }
 ```
 
-####Class: `collectd::plugin::redis`
+#### Class: `collectd::plugin::redis`
 
 ```puppet
 class { 'collectd::plugin::redis':
@@ -1241,9 +1393,12 @@ class { 'collectd::plugin::redis':
 }
 ```
 
-####Class: `collectd::plugin::rabbitmq`
+#### Class: `collectd::plugin::rabbitmq`
 
-Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom). You will need to add this to [collectd::config::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/config.pp#L18) via hiera or in a manifest. Failure to set the types.db.custom content will result in *no* metrics from the rabbitmq plugin.
+Please note the rabbitmq plugin provides a [types.db.custom](https://github.com/NYTimes/collectd-rabbitmq/blob/master/config/types.db.custom).
+You will need to add this to [collectd::config::typesdb](https://github.com/voxpupuli/puppet-collectd/blob/master/manifests/config.pp#L18)
+via hiera or in a manifest. Failure to set the types.db.custom content will
+result in *no* metrics from the rabbitmq plugin.
 
 set typesdb to include the collectd-rabbitmq types.db.custom
 
@@ -1266,7 +1421,7 @@ class { '::collectd::plugin::rabbitmq':
 }
 ```
 
-####Class: `collectd::plugin::rrdcached`
+#### Class: `collectd::plugin::rrdcached`
 
 ```puppet
 class { 'collectd::plugin::rrdcached':
@@ -1275,7 +1430,7 @@ class { 'collectd::plugin::rrdcached':
 }
 ```
 
-####Class: `collectd::plugin::rrdtool`
+#### Class: `collectd::plugin::rrdtool`
 
 ```puppet
 class { 'collectd::plugin::rrdtool':
@@ -1290,7 +1445,7 @@ class { 'collectd::plugin::rrdtool':
 }
 ```
 
-####Class: `collectd::plugin::sensors`
+#### Class: `collectd::plugin::sensors`
 
 ```puppet
 class {'collectd::plugin::sensors':
@@ -1298,16 +1453,27 @@ class {'collectd::plugin::sensors':
 }
 ```
 
-####Class: `collectd::plugin::snmp`
+#### Class: `collectd::plugin::smart`
+
+```puppet
+class { '::collectd::plugin::smart':
+  disks          => ['/^dm/'],
+  ignoreselected => true,
+}
+```
+
+#### Class: `collectd::plugin::snmp`
 
 ```puppet
 class {'collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
-      'Type'     => 'counter',
-      'Table'    => false,
-      'Instance' => 'amavis.inMsgs',
-      'Values'   => ['AMAVIS-MIB::inMsgs.0']
+      'Type'        => 'counter',
+      'Table'       => false,
+      'Instance'    => 'amavis.inMsgs',
+      'Values'      => ['AMAVIS-MIB::inMsgs.0'],
+      'Ignore'      => [ '00:00', '*IgnoreString' ],
+      'InvertMatch' => false,
     }
   },
   hosts => {
@@ -1322,7 +1488,7 @@ class {'collectd::plugin::snmp':
 }
 ```
 
-####Class: `collectd::plugin::statsd`
+#### Class: `collectd::plugin::statsd`
 
 ```puppet
 class { 'collectd::plugin::statsd':
@@ -1336,7 +1502,7 @@ class { 'collectd::plugin::statsd':
 }
 ```
 
-####Class: `collectd::plugin::swap`
+#### Class: `collectd::plugin::swap`
 
 ```puppet
 class { 'collectd::plugin::swap':
@@ -1345,7 +1511,7 @@ class { 'collectd::plugin::swap':
 }
 ```
 
-####Class: `collectd::plugin::syslog`
+#### Class: `collectd::plugin::syslog`
 
 ```puppet
 class { 'collectd::plugin::syslog':
@@ -1353,14 +1519,14 @@ class { 'collectd::plugin::syslog':
 }
 ```
 
-####Class: `collectd::plugin::target_v5upgrade`
+#### Class: `collectd::plugin::target_v5upgrade`
 
 ```puppet
 class { 'collectd::plugin::target_v5upgrade':
 }
 ```
 
-####Class: `collectd::plugin::tcpconns`
+#### Class: `collectd::plugin::tcpconns`
 
 ```puppet
 class { 'collectd::plugin::tcpconns':
@@ -1369,7 +1535,8 @@ class { 'collectd::plugin::tcpconns':
   listening   => false,
 }
 ```
-####Class: `collectd::plugin::tail`
+
+#### Class: `collectd::plugin::tail`
 
 ```puppet
 collectd::plugin::tail::file { 'exim-log':
@@ -1392,6 +1559,15 @@ collectd::plugin::tail::file { 'exim-log':
 }
 ```
 
+####Class: `collectd::plugin::thermal`
+
+```puppet
+class { '::collectd::plugin::thermal':
+  devices        => ['foo0'],
+  ignoreselected => false,
+}
+```
+
 ####Class: `collectd::plugin::unixsock`
 
 ```puppet
@@ -1403,20 +1579,29 @@ class {'collectd::plugin::unixsock':
 }
 ```
 
-####Class: `collectd::plugin::uptime`
+#### Class: `collectd::plugin::uptime`
 
 ```puppet
 class {'collectd::plugin::uptime':
 }
 ```
 
-####Class: `collectd::plugin::users`
+#### Class: `collectd::plugin::users`
+
 ```puppet
 class {'collectd::plugin::users':
 }
 ```
 
-####Class: `collectd::plugin::varnish`
+#### Class: `collectd::plugin::uuid`
+
+```puppet
+class {'collectd::plugin::uuid':
+  uuid_file => '/etc/uuid',
+}
+```
+
+#### Class: `collectd::plugin::varnish`
 
 ```puppet
 class { 'collectd::plugin::varnish':
@@ -1436,7 +1621,7 @@ class { 'collectd::plugin::varnish':
 }
 ```
 
-####Class: `collectd::plugin::vmem`
+#### Class: `collectd::plugin::vmem`
 
 ```puppet
 class { 'collectd::plugin::vmem':
@@ -1444,9 +1629,11 @@ class { 'collectd::plugin::vmem':
 }
 ```
 
-####Class: `collectd::plugin::write_graphite`
+#### Class: `collectd::plugin::write_graphite`
 
-The `write_graphite` plugin writes data to Graphite, an open-source metrics storage and graphing project.
+The `write_graphite` plugin writes data to Graphite, an open-source metrics
+storage and graphing project.
+
 ```puppet
 collectd::plugin::write_graphite::carbon {'my_graphite':
   graphitehost   => 'graphite.example.org',
@@ -1456,7 +1643,8 @@ collectd::plugin::write_graphite::carbon {'my_graphite':
 }
 ```
 
-You can define multiple Graphite backends where will be metrics send. Each backend should have unique title:
+You can define multiple Graphite backends where will be metrics send. Each
+backend should have unique title:
 
 ```puppet
 collectd::plugin::write_graphite::carbon {'secondary_graphite':
@@ -1472,7 +1660,7 @@ collectd::plugin::write_graphite::carbon {'secondary_graphite':
 }
 ```
 
-####Class: `collectd::plugin::write_http`
+#### Class: `collectd::plugin::write_http`
 
 ```puppet
 class { 'collectd::plugin::write_http':
@@ -1483,7 +1671,7 @@ class { 'collectd::plugin::write_http':
 }
 ```
 
-####Class: `collectd::plugin::write_kafka`
+#### Class: `collectd::plugin::write_kafka`
 
 * Requires the [Apache Kafka C/C++ library](https://github.com/edenhill/librdkafka)
 * Available in collectd version >= 5.5.
@@ -1498,9 +1686,27 @@ class { 'collectd::plugin::write_kafka':
 }
 ```
 
-####Class: `collectd::plugin::write_network`
+#### Class: `collectd::plugin::write_log`
 
-**Deprecated**
+```puppet
+class { 'collectd::plugin::write_log':
+  format => 'JSON',
+}
+```
+
+#### Class: `collectd::plugin::write_prometheus`
+
+```puppet
+class { 'collectd::plugin::write_prometheus':
+  port => '9103',
+}
+```
+
+**Note:** Requires collectd 5.7 or later.
+
+#### Class: `collectd::plugin::write_network`
+
+##### Deprecated
 
 ```puppet
 class { 'collectd::plugin::write_network':
@@ -1511,7 +1717,7 @@ class { 'collectd::plugin::write_network':
 }
 ```
 
-####Class: `collectd::plugin::write_riemann`
+#### Class: `collectd::plugin::write_riemann`
 
 ```puppet
 class { 'collectd::plugin::write_riemann':
@@ -1522,7 +1728,7 @@ class { 'collectd::plugin::write_riemann':
 }
 ```
 
-####Class: `collectd::plugin::write_sensu`
+#### Class: `collectd::plugin::write_sensu`
 
 ```puppet
 class { 'collectd::plugin::write_sensu':
@@ -1531,7 +1737,7 @@ class { 'collectd::plugin::write_sensu':
 }
 ```
 
-####Class: `collectd::plugin::write_tsdb`
+#### Class: `collectd::plugin::write_tsdb`
 
 ```puppet
 class { 'collectd::plugin::write_tsdb':
@@ -1543,15 +1749,14 @@ class { 'collectd::plugin::write_tsdb':
 }
 ```
 
-####Class: `collectd::plugin::zfs_arc`
+#### Class: `collectd::plugin::zfs_arc`
 
 ```puppet
 class { 'collectd::plugin::zfs_arc':
 }
 ```
 
-types.db
---------
+##### types.db
 
 Collectd needs to know how to handle each collected datapoint.
 For this it uses a database file called [`types.db`](https://collectd.org/documentation/manpages/types.db.5.shtml)
@@ -1579,8 +1784,8 @@ class { 'collectd':
 }
 ```
 
-Other software may need to read the Collectd types database files. To allow non-root users to read from a `collectd::typesdb`
-file like so:
+Other software may need to read the Collectd types database files. To allow
+non-root users to read from a `collectd::typesdb` file like so:
 
 ```puppet
 $db = '/etc/collectd/types.db'
@@ -1589,20 +1794,23 @@ collectd::typesdb { $db:
 }
 ```
 
-##Limitations
+## Limitations
 
 See metadata.json for supported platforms
 
-##Known issues
+## Known issues
 
-###Puppet needs two runs to correctly write my conf, why?
+### Puppet needs two runs to correctly write my conf, why?
 
-Some plugins will need two runs of Puppet to fully generate the configuration for collectd. See [this issue](https://github.com/pdxcat/puppet-module-collectd/issues/162).
-This can be avoided by specifying a minimum version (`$minimum_version`) for the collectd class. e.g. Setting this to 1.2.3 will
-make this module assume on the first run (when the fact responsible to provide the collectd version is not yet available) that your systems are running collectd 1.2.3
-and generate the configuration accordingly.
+Some plugins will need two runs of Puppet to fully generate the configuration
+for collectd. See [this issue](https://github.com/pdxcat/puppet-module-collectd/issues/162).
+This can be avoided by specifying a minimum version (`$minimum_version`) for
+the collectd class. e.g. Setting this to 1.2.3 will make this module assume on
+the first run (when the fact responsible to provide the collectd version is not
+yet available) that your systems are running collectd 1.2.3 and generate the
+configuration accordingly.
 
-##Development
+## Development
 
 ### Running tests
 
@@ -1620,15 +1828,21 @@ bundle exec rake spec SPEC_OPTS='--format documentation'
 
 ### Version scoping
 
-Some plugins or some options in plugins are only available for recent versions of collectd.
+Some plugins or some options in plugins are only available for recent versions
+of collectd.
 
-This module shall not use unsupported configuration directives. Look at [templates/loadplugin.conf.erb](https://github.com/voxpupuli/puppet-collectd/blob/master/templates/loadplugin.conf.erb) for a hands-on example.
+This module shall not use unsupported configuration directives. Look at
+[templates/loadplugin.conf.erb](https://github.com/voxpupuli/puppet-collectd/blob/master/templates/loadplugin.conf.erb)
+for a hands-on example.
 
-Please make use of the search by branch/tags on the collectd github to see when a function has been first released.
+Please make use of the search by branch/tags on the collectd github to see when
+a function has been first released.
 
-Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master/src/collectd.conf.pod) file is good, validating the presence of the code in the .c files is even better.
-
+Reading the [collectd.conf.pod](https://github.com/collectd/collectd/blob/master/src/collectd.conf.pod)
+file is good, validating the presence of the code in the .c files is even better.
 
 ### Authors
 
-Puppet-collectd is maintained by VoxPupuli. Before moving to VoxPupuli it was written and maintained by [TheCAT](https://www.cat.pdx.edu/) in the [pdxcat](https://github.com/pdxcat/) github org.
+Puppet-collectd is maintained by VoxPupuli. Before moving to VoxPupuli it was
+written and maintained by [TheCAT](https://www.cat.pdx.edu/) in the
+[pdxcat](https://github.com/pdxcat/) github org.

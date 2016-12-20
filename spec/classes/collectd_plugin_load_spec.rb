@@ -8,7 +8,9 @@ describe 'collectd::plugin::load', type: :class do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.10.1'
+      collectd_version: '4.10.1',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -20,7 +22,7 @@ describe 'collectd::plugin::load', type: :class do
     end
 
     it 'is present' do
-      should contain_file('load.load').
+      is_expected.to contain_file('load.load').
         without_content(%r{\s{2}ReportRelative true\s{2}})
     end
   end

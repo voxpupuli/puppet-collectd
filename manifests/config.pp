@@ -73,7 +73,7 @@ class collectd::config (
     purge   => $purge,
     recurse => $recurse,
   }
-  
+ 
   if $collectd_selinux and $::selinux == 'true' {
     selboolean { 'collectd_tcp_network_connect':
       persistent => true,
@@ -110,4 +110,5 @@ class collectd::config (
     }
    
   }
+  File['collectd.d'] -> Concat <| |>
 }

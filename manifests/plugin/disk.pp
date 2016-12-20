@@ -16,13 +16,19 @@ class collectd::plugin::disk (
   validate_bool($ignoreselected)
 
   if $::osfamily == 'RedHat' {
-    if $manage_package {
+    if $manage_package != undef {
       $_manage_package = $manage_package
+    }
+
+    if $ensure == 'present' {
+      $ensure_real = $::collectd::package_ensure
+    } elsif $ensure == 'absent' {
+      $ensure_real = 'absent'
     }
 
     if $_manage_package {
       package { 'collectd-disk':
-        ensure => $ensure,
+        ensure => $ensure_real,
         name   => $package_name,
       }
     }

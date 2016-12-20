@@ -8,7 +8,9 @@
 <%    elsif value.kind_of?(Integer) or value.kind_of?(Float) or value.kind_of?(TrueClass) or value.kind_of?(FalseClass) -%>
       <%= key %> <%= value %>
 <%    elsif value.kind_of?(Array) -%>
-      <%= key %> <%= value.flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+			<% value.each do |array_val| -%>
+						<%= key %> <%= array_val %>
+			<%    end -%>
 <%    end -%>
 <%  end -%>
     </Target>

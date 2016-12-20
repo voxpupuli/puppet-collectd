@@ -17,12 +17,14 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '4.10.1'
+          collectd_version: '4.10.1',
+          operatingsystemmajrelease: '7',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
 
       it 'is ignored' do
-        should contain_file('libvirt.load').
+        is_expected.to contain_file('libvirt.load').
           without_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
@@ -31,12 +33,14 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.0.0'
+          collectd_version: '5.0.0',
+          operatingsystemmajrelease: '7',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
 
       it 'is included' do
-        should contain_file('libvirt.load').
+        is_expected.to contain_file('libvirt.load').
           with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end
@@ -45,12 +49,14 @@ describe 'collectd::plugin::virt', type: :class do
       let :facts do
         {
           osfamily: 'Debian',
-          collectd_version: '5.5.0'
+          collectd_version: '5.5.0',
+          operatingsystemmajrelease: '7',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
 
       it 'is included' do
-        should contain_file('virt.load').
+        is_expected.to contain_file('virt.load').
           with_content(%r{.*InterfaceFormat \"address\".*})
       end
     end

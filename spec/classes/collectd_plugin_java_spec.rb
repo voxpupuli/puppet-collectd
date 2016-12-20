@@ -4,13 +4,15 @@ describe 'collectd::plugin::java', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
   context ':ensure => present, defaults' do
     it 'Will load the plugin' do
-      should contain_collectd__plugin('java').with(ensure: 'present')
+      is_expected.to contain_collectd__plugin('java').with(ensure: 'present')
     end
   end
 
@@ -22,7 +24,7 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will not load the plugin' do
-      should contain_collectd__plugin('java').with(ensure: 'absent')
+      is_expected.to contain_collectd__plugin('java').with(ensure: 'absent')
     end
   end
 
@@ -34,7 +36,7 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have multiple jvmarg parameters' do
-      should contain_collectd__plugin('java').with_content(%r{JVMArg "foo".+JVMArg "bar".+JVMArg "baz"}m)
+      is_expected.to contain_collectd__plugin('java').with_content(%r{JVMArg "foo".+JVMArg "bar".+JVMArg "baz"}m)
     end
   end
 
@@ -46,11 +48,11 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a JVMArg parameter' do
-      should contain_collectd__plugin('java').with_content(%r{JVMArg "bat"})
+      is_expected.to contain_collectd__plugin('java').with_content(%r{JVMArg "bat"})
     end
 
     it 'will only have one JVMArg parameter' do
-      should contain_collectd__plugin('java').without_content(%r{(.*JVMArg.*){2,}}m)
+      is_expected.to contain_collectd__plugin('java').without_content(%r{(.*JVMArg.*){2,}}m)
     end
   end
 
@@ -63,11 +65,11 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a JVMArg parameter' do
-      should contain_collectd__plugin('java').with_content(%r{JVMArg "dog"})
+      is_expected.to contain_collectd__plugin('java').with_content(%r{JVMArg "dog"})
     end
 
     it 'will have a java plugin' do
-      should contain_collectd__plugin('java').with_content(%r{LoadPlugin "name.java"})
+      is_expected.to contain_collectd__plugin('java').with_content(%r{LoadPlugin "name.java"})
     end
   end
 
@@ -80,7 +82,7 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will have a java plugin option' do
-      should contain_collectd__plugin('java').with_content(%r{key = value})
+      is_expected.to contain_collectd__plugin('java').with_content(%r{key = value})
     end
   end
 
@@ -92,10 +94,10 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will not have a <Plugin java> stanza' do
-      should contain_collectd__plugin('java').without_content(%r{<Plugin java>})
+      is_expected.to contain_collectd__plugin('java').without_content(%r{<Plugin java>})
     end
     it 'will not have any jvmarg parameters' do
-      should contain_collectd__plugin('java').without_content(%r{JVMArg})
+      is_expected.to contain_collectd__plugin('java').without_content(%r{JVMArg})
     end
   end
 
@@ -108,18 +110,18 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will not have a java plugin load stanza' do
-      should contain_collectd__plugin('java').without_content(%r{name.java})
+      is_expected.to contain_collectd__plugin('java').without_content(%r{name.java})
     end
 
     it 'will not have java plugin options stanza' do
-      should contain_collectd__plugin('java').without_content(%r{key = value})
+      is_expected.to contain_collectd__plugin('java').without_content(%r{key = value})
     end
   end
 
   context 'java_home option is empty' do
     it 'will not contain libjvm' do
-      should_not contain_file('/usr/lib64/libjvm.so')
-      should_not contain_exec('/sbin/ldconfig')
+      is_expected.not_to contain_file('/usr/lib64/libjvm.so')
+      is_expected.not_to contain_exec('/sbin/ldconfig')
     end
   end
 
@@ -131,8 +133,8 @@ describe 'collectd::plugin::java', type: :class do
     end
 
     it 'will not contain libjvm' do
-      should contain_file('/usr/lib64/libjvm.so')
-      should contain_exec('/sbin/ldconfig')
+      is_expected.to contain_file('/usr/lib64/libjvm.so')
+      is_expected.to contain_exec('/sbin/ldconfig')
     end
   end
 end
