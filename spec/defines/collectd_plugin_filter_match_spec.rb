@@ -8,7 +8,9 @@ describe 'collectd::plugin::filter::match', type: :define do
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '5.0'
+      collectd_version: '5.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -27,16 +29,16 @@ describe 'collectd::plugin::filter::match', type: :define do
                            })
     end
     it 'Will ensure that plugin is loaded' do
-      should contain_collectd__plugin('match_regex').with(order: '02')
+      is_expected.to contain_collectd__plugin('match_regex').with(order: '02')
     end
     it 'Will add match to rule' do
-      should contain_concat__fragment(concat_fragment_name).with(
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{<Match "regex">})
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{Host "customer\[0-9\]\+"})
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{Plugin "\^foobar\$"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{<Match "regex">})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Host "customer\[0-9\]\+"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Plugin "\^foobar\$"})
     end
   end
 
@@ -45,14 +47,14 @@ describe 'collectd::plugin::filter::match', type: :define do
       default_params.merge(plugin: 'empty_counter')
     end
     it 'Will ensure that plugin is loaded' do
-      should contain_collectd__plugin('match_empty_counter').with(order: '02')
+      is_expected.to contain_collectd__plugin('match_empty_counter').with(order: '02')
     end
     it 'Will add match to rule' do
-      should contain_concat__fragment(concat_fragment_name).with(
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{Match "empty_counter"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Match "empty_counter"})
     end
   end
 end

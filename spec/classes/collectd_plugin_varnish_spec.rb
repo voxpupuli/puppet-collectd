@@ -9,7 +9,9 @@ describe 'collectd::plugin::varnish', type: :class do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.3'
+        collectd_version: '5.3',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -22,14 +24,16 @@ describe 'collectd::plugin::varnish', type: :class do
   </Instance>
 </Plugin>
 EOS
-      should contain_collectd__plugin('varnish').with_content(content)
+      is_expected.to contain_collectd__plugin('varnish').with_content(content)
     end
   end
   context 'When the version is nil' do
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: nil
+        collectd_version: nil,
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     let :params do
@@ -42,7 +46,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-      should contain_collectd__plugin('varnish').with_content(content)
+      is_expected.to contain_collectd__plugin('varnish').with_content(content)
     end
   end
 
@@ -50,7 +54,9 @@ EOS
     let :facts do
       {
         osfamily: 'RedHat',
-        collectd_version: '5.4'
+        collectd_version: '5.4',
+        operatingsystemmajrelease: '7',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
     context 'when there are no params given' do
@@ -64,7 +70,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-        should contain_collectd__plugin('varnish').with_content(content)
+        is_expected.to contain_collectd__plugin('varnish').with_content(content)
       end
     end
     context 'when there are params given' do
@@ -87,7 +93,7 @@ EOS
   </Instance>
 </Plugin>
 EOS
-        should contain_collectd__plugin('varnish').with_content(content)
+        is_expected.to contain_collectd__plugin('varnish').with_content(content)
       end
     end
   end

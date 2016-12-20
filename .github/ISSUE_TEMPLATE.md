@@ -1,26 +1,25 @@
-Please check the following items before submitting an issue -- thank you!
+<!--
+Thank you for contributing to this project!
 
-Note that this project is released with a Contributor Code of Conduct.
-By participating in this project you agree to abide by its terms.
-[Contributor Code of Conduct](https://voxpupuli.org/coc/).
+- This project has a Contributor Code of Conduct: https://voxpupuli.org/coc/
+- Please check that here is no existing issue or PR that addresses your problem.
+- Please fill the following form to enable us to help you.
 
-- [ ] There is no existing issue or PR that addresses this problem
+-->
 
-Optional, but makes our lives much easier:
+## Affected Puppet, Ruby, OS and module versions/distributions
 
-- [ ] The issue affects the latest release of this module at the time of
-  submission
+- Puppet:
+- Ruby:
+- Distribution:
+- Module version:
 
-- - -
+## How to reproduce (e.g Puppet code you use)
 
-### Affected Puppet, Ruby, OS and module versions/distributions
+## What are you seeing
 
-### What are you seeing
+## What behaviour did you expect instead
 
-### What behaviour did you expect instead
+## Output log
 
-### How did this behaviour get triggered
-
-### Output log
-
-### Any additional information you'd like to impart
+## Any additional information you'd like to impart

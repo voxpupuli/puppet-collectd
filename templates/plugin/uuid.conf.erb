@@ -1,0 +1,5 @@
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '4.3']) >= 0) -%>
+<Plugin "uuid">
+  UUIDFile "<%= @uuid_file %>"
+</Plugin>
+<% end -%>

@@ -4,7 +4,9 @@ describe 'collectd::plugin::snmp::data', type: :define do
   let :facts do
     {
       osfamily: 'Debian',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -23,31 +25,45 @@ describe 'collectd::plugin::snmp::data', type: :define do
     let(:params) { required_params }
 
     it do
-      should contain_file(filename).with(
+      is_expected.to contain_file(filename).with(
         ensure: 'present',
         path: '/etc/collectd/conf.d/15-snmp-data-foo.conf'
       )
     end
 
-    it { should contain_file('snmp-data-foo.conf').that_notifies('Service[collectd]') }
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{<Plugin snmp>}) }
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{<Data "foo">}) }
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Type "bar"}) }
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Instance "baz"}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').that_notifies('Service[collectd]') }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{<Plugin snmp>}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{<Data "foo">}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Type "bar"}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Instance "baz"}) }
   end
 
   context 'values is an array' do
     let(:params) do
       required_params.merge(values: %w(foo bar baz))
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
   end
 
   context 'values is just a string' do
     let(:params) do
       required_params.merge(values: 'bat')
     end
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"}) }
+  end
+
+  context 'Ignore is an array' do
+    let(:params) do
+      required_params.merge(ignore: %w(hamilton burr jefferson))
+    end
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "hamilton" "burr" "jefferson"}) }
+  end
+
+  context 'Ignore is just a string' do
+    let(:params) do
+      required_params.merge(ignore: 'washington')
+    end
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "washington"}) }
   end
 
   context 'table is true' do
@@ -57,7 +73,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Table true}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Table true}) }
   end
 
   context 'table is false' do
@@ -67,6 +83,26 @@ describe 'collectd::plugin::snmp::data', type: :define do
       }.merge(required_params)
     end
 
-    it { should contain_file('snmp-data-foo.conf').with_content(%r{Table false}) }
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Table false}) }
+  end
+
+  context 'InvertMatch is true' do
+    let(:params) do
+      {
+        invertmatch: true
+      }.merge(required_params)
+    end
+
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{InvertMatch true}) }
+  end
+
+  context 'InvertMatch is false' do
+    let(:params) do
+      {
+        invertmatch: false
+      }.merge(required_params)
+    end
+
+    it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{InvertMatch false}) }
   end
 end

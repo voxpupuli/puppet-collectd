@@ -4,6 +4,7 @@ class collectd::plugin::cpu (
   $reportbystate    = true,
   $reportbycpu      = true,
   $valuespercentage = false,
+  $reportnumcpu     = false,
   $interval         = undef,
 ) {
 
@@ -13,6 +14,7 @@ class collectd::plugin::cpu (
     $reportbystate,
     $reportbycpu,
     $valuespercentage,
+    $reportnumcpu,
   )
 
   collectd::plugin { 'cpu':

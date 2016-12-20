@@ -1,0 +1,6 @@
+---
+collectd_version: '5.5.0'
+python_dir: '/usr/local/lib/python2.7/dist-packages'
+operatingsystem: 'Debian'
+lsbdistid: 'Debian'
+lsbdistcodename: 'wheezy'

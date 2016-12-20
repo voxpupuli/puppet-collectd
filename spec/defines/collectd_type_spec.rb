@@ -7,7 +7,8 @@ describe 'collectd::type', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -24,8 +25,8 @@ describe 'collectd::type', type: :define do
     end
 
     it 'creates an entry' do
-      should contain_concat__fragment('/etc/collectd/types.db/index').with(target: '/etc/collectd/types.db',
-                                                                           content: "index\tsome_name:ABSOLUTE:4:5")
+      is_expected.to contain_concat__fragment('/etc/collectd/types.db/index').with(target: '/etc/collectd/types.db',
+                                                                                   content: "index\tsome_name:ABSOLUTE:4:5")
     end
   end
 end

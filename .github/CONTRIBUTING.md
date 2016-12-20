@@ -2,10 +2,11 @@ This module has grown over time based on a range of contributions from
 people using it. If you follow these contributing guidelines your patch
 will likely make it into a release a little quicker.
 
-
 ## Contributing
 
-Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms. [Contributor Code of Conduct](https://voxpupuli.org/coc/).
+Please note that this project is released with a Contributor Code of Conduct.
+By participating in this project you agree to abide by its terms.
+[Contributor Code of Conduct](https://voxpupuli.org/coc/).
 
 1. Fork the repo.
 
@@ -52,6 +53,11 @@ check various syntax and style things. You can run these locally with:
     bundle exec rake lint
     bundle exec rake validate
 
+It will also run some [Rubocop](http://batsov.com/rubocop/) tests
+against it. You can run those locally ahead of time with:
+
+    bundle exec rake rubocop
+
 ## Running the unit tests
 
 The unit test suite covers most of the code, as mentioned above please
@@ -71,7 +77,6 @@ To run the linter, the syntax checker and the unit tests:
 
     bundle exec rake test
 
-
 ## Integration tests
 
 The unit tests just check the code runs, not that it does exactly what
@@ -85,9 +90,9 @@ with:
     bundle exec rake acceptance
 
 This will run the tests on an Ubuntu 12.04 virtual machine. You can also
-run the integration tests against Centos 6.5 with.
+run the integration tests against Centos 6.6 with.
 
-    BEAKER_set=centos-64-x64 bundle exec rake acceptances
+    BEAKER_set=centos-66-x64 bundle exec rake acceptances
 
 If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_DESTROY=no` and `BEAKER_PROVISION=no`. On the first run you will

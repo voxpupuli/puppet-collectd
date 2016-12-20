@@ -4,7 +4,10 @@ describe 'collectd::plugin::rabbitmq', type: :class do
   let :facts do
     {
       osfamily: 'RedHat',
-      collectd_version: '5.5.1'
+      collectd_version: '5.5.1',
+      operatingsystemmajrelease: '7',
+      operatingsystem: 'CentOS',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -25,35 +28,58 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'Load collectd_rabbitmq in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
       end
 
       it 'import collectd_rabbitmq.collectd_plugin in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
       end
 
       it 'default to Username guest in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "guest"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "guest"})
       end
 
       it 'default to Password guest in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "guest"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "guest"})
       end
 
       it 'default to Port 15672 in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Port "15672"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Port "15672"})
       end
 
       it 'default to Scheme http in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "http"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "http"})
       end
 
       it 'Host should be set to $::fqdn python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Host "testhost.example.com"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Host "testhost.example.com"})
       end
 
       it 'Realm set to "RabbitMQ Management"' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Realm "RabbitMQ Management"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Realm "RabbitMQ Management"})
+      end
+
+      it 'Load custom TypesDB in included config' do
+        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/usr/share/collectd-rabbitmq/types.db.custom"})
+      end
+    end
+
+    context 'override custom TypesDB with new value' do
+      let :facts do
+        {
+          osfamily: 'RedHat',
+          collectd_version: '5.5',
+          operatingsystemmajrelease: '7',
+          operatingsystem: 'CentOS',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
+        }
+      end
+      let :params do
+        { custom_types_db: '/var/custom/types.db' }
+      end
+
+      it 'override custom TypesDB' do
+        is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/var/custom/types.db"})
       end
     end
 
@@ -61,7 +87,10 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5'
+          collectd_version: '5.5',
+          operatingsystem: 'CentOS',
+          operatingsystemmajrelease: '7',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
       let :params do
@@ -69,7 +98,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "foo"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "foo"})
       end
     end
 
@@ -77,7 +106,10 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5'
+          collectd_version: '5.5',
+          operatingsystemmajrelease: '7',
+          operatingsystem: 'CentOS',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
       let :params do
@@ -85,7 +117,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "foo"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "foo"})
       end
     end
 
@@ -93,7 +125,10 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       let :facts do
         {
           osfamily: 'RedHat',
-          collectd_version: '5.5'
+          collectd_version: '5.5',
+          operatingsystem: 'CentOS',
+          operatingsystemmajrelease: '7',
+          python_dir: '/usr/local/lib/python2.7/dist-packages'
         }
       end
       let :params do
@@ -101,7 +136,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
       end
 
       it 'override Username to foo in python-config' do
-        should contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "https"})
+        is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "https"})
       end
     end
   end
@@ -112,7 +147,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
     end
 
     it 'Will remove python-config' do
-      should_not contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with(ensure: 'present')
+      is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with(ensure: 'present')
     end
   end
 
@@ -134,7 +169,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                 end
 
                 it do
-                  should contain_package(packagename).with(
+                  is_expected.to contain_package(packagename).with(
                     'ensure' => ensure_value,
                     'provider' => provider
                   )

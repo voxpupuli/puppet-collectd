@@ -8,12 +8,15 @@ define collectd::plugin::snmp::data (
   $scale          = undef,
   $shift          = undef,
   $table          = false,
+  $ignore         = undef,
+  $invertmatch    = false,
 ) {
 
   include ::collectd
   include ::collectd::plugin::snmp
 
   $table_bool = str2bool($table)
+  $invertmatch_bool = str2bool($invertmatch)
   $conf_dir   = $collectd::plugin_conf_dir
   $root_group = $collectd::root_group
 

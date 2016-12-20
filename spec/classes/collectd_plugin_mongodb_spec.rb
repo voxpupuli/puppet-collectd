@@ -1,10 +1,16 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::mongodb', type: :class do
+  let :pre_condition do
+    'include ::collectd'
+  end
+
   let :facts do
     {
       collectd_version: '5.2',
-      osfamily: 'RedHat'
+      osfamily: 'RedHat',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -20,16 +26,16 @@ describe 'collectd::plugin::mongodb', type: :class do
       default_params
     end
 
-    it { should contain_class('collectd::plugin::mongodb') }
+    it { is_expected.to contain_class('collectd::plugin::mongodb') }
 
     it do
-      should contain_file('mongodb.load').with(
+      is_expected.to contain_file('mongodb.load').with(
         'ensure' => 'present'
       )
     end
 
     default_fixture = File.read(fixtures('plugins/mongodb.conf.default'))
-    it { should contain_file('mongodb.load').with_content(default_fixture) }
+    it { is_expected.to contain_file('mongodb.load').with_content(default_fixture) }
   end
 
   describe 'with ensure parameter' do
@@ -40,7 +46,7 @@ describe 'collectd::plugin::mongodb', type: :class do
         end
 
         it do
-          should contain_file('mongodb.load').with(
+          is_expected.to contain_file('mongodb.load').with(
             'ensure' => value
           )
         end
@@ -54,7 +60,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
       it 'fails' do
         expect do
-          should contain_class('collectd::plugin::mongodb')
+          is_expected.to contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::ensure is <invalid> and must be either 'present' or 'absent'\.})
       end
     end
@@ -67,7 +73,7 @@ describe 'collectd::plugin::mongodb', type: :class do
           default_params.merge(interval: value.to_s)
         end
 
-        it { should contain_file('mongodb.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
+        it { is_expected.to contain_file('mongodb.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
       end
     end
 
@@ -78,7 +84,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
       it 'fails' do
         expect do
-          should contain_class('collectd::plugin::mongodb')
+          is_expected.to contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, %r{Expected first argument to be a Numeric or Array, got String})
       end
     end
@@ -91,7 +97,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       hostdb_fixture = File.read(fixtures('plugins/mongodb.conf.hostdb'))
-      it { should contain_file('mongodb.load').with_content(hostdb_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(hostdb_fixture) }
     end
 
     %w(127001 nil).each do |value|
@@ -102,7 +108,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
         it 'fails' do
           expect do
-            should contain_class('collectd::plugin::mongodb')
+            is_expected.to contain_class('collectd::plugin::mongodb')
           end.to raise_error(Puppet::Error, %r{must be a valid IP address})
         end
       end
@@ -116,7 +122,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       confdb_fixture = File.read(fixtures('plugins/mongodb.conf.db_user'))
-      it { should contain_file('mongodb.load').with_content(confdb_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(confdb_fixture) }
     end
 
     context 'undefined' do
@@ -128,7 +134,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
       it 'fails' do
         expect do
-          should contain_class('collectd::plugin::mongodb')
+          is_expected.to contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, %r{is <undef> and must be a mongodb username})
       end
     end
@@ -141,7 +147,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       dbpass_fixture = File.read(fixtures('plugins/mongodb.conf.db_pass'))
-      it { should contain_file('mongodb.load').with_content(dbpass_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(dbpass_fixture) }
     end
 
     context 'undefined' do
@@ -153,7 +159,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
       it 'fails' do
         expect do
-          should contain_class('collectd::plugin::mongodb')
+          is_expected.to contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::db_pass is <undef>})
       end
     end
@@ -167,7 +173,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       dbport_single_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_single'))
-      it { should contain_file('mongodb.load').with_content(dbport_single_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(dbport_single_fixture) }
     end
 
     context 'set to a valid value with db_port defined and multiple DBs' do
@@ -177,7 +183,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       dbport_multi_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_multiple'))
-      it { should contain_file('mongodb.load').with_content(dbport_multi_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(dbport_multi_fixture) }
     end
 
     context 'set to a valid value with db_port undefined' do
@@ -187,7 +193,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
       it 'fails' do
         expect do
-          should contain_class('collectd::plugin::mongodb')
+          is_expected.to contain_class('collectd::plugin::mongodb')
         end.to raise_error(Puppet::Error, %r{db_port is undefined})
       end
     end
@@ -200,7 +206,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       end
 
       collectddir_fixture = File.read(fixtures('plugins/mongodb.conf.collectddir'))
-      it { should contain_file('mongodb.load').with_content(collectddir_fixture) }
+      it { is_expected.to contain_file('mongodb.load').with_content(collectddir_fixture) }
     end
   end
 end

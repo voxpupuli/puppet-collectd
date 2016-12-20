@@ -7,7 +7,9 @@ describe 'collectd::typesdb', type: :define do
       id: 'root',
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '4.8.0'
+      collectd_version: '4.8.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -15,7 +17,7 @@ describe 'collectd::typesdb', type: :define do
     let(:title) { '/etc/collectd/types.db' }
 
     it 'contains empty types.db' do
-      should contain_concat('/etc/collectd/types.db').with(
+      is_expected.to contain_concat('/etc/collectd/types.db').with(
         ensure: 'present',
         path: '/etc/collectd/types.db'
       ).with_mode('0640')
@@ -27,7 +29,7 @@ describe 'collectd::typesdb', type: :define do
     let(:params) { { 'mode' => '0644' } }
 
     it 'contains file with different mode' do
-      should contain_concat('/etc/collectd/types.db').with(
+      is_expected.to contain_concat('/etc/collectd/types.db').with(
         ensure: 'present',
         path: '/etc/collectd/types.db'
       ).with_mode('0644')

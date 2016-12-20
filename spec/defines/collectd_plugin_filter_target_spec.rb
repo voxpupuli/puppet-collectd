@@ -8,7 +8,9 @@ describe 'collectd::plugin::filter::target', type: :define do
       id: 'root',
       kernel: 'Linux',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-      collectd_version: '5.0'
+      collectd_version: '5.0',
+      operatingsystemmajrelease: '7',
+      python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
 
@@ -28,16 +30,16 @@ describe 'collectd::plugin::filter::target', type: :define do
                            })
     end
     it 'Will ensure that plugin is loaded' do
-      should contain_collectd__plugin('target_set').with(order: '02')
+      is_expected.to contain_collectd__plugin('target_set').with(order: '02')
     end
     it 'Will add target to rule' do
-      should contain_concat__fragment(concat_fragment_name).with(
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{<Target "set">})
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{PluginInstance "coretemp"})
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{TypeInstance "core3"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{<Target "set">})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{PluginInstance "coretemp"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{TypeInstance "core3"})
     end
   end
 
@@ -48,14 +50,14 @@ describe 'collectd::plugin::filter::target', type: :define do
       default_params.merge(plugin: 'return')
     end
     it 'Builtin plugin should not be tried to load' do
-      should_not contain_collectd__plugin('target_return')
+      is_expected.not_to contain_collectd__plugin('target_return')
     end
     it 'Will add target to chain' do
-      should contain_concat__fragment(concat_fragment_name).with(
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(
         order: concat_fragment_order,
         target: concat_fragment_target
       )
-      should contain_concat__fragment(concat_fragment_name).with(content: %r{Target "return"})
+      is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Target "return"})
     end
   end
 end

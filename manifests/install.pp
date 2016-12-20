@@ -5,7 +5,6 @@ class collectd::install (
   $package_install_options = $collectd::package_install_options,
   $manage_package          = $collectd::manage_package,
 ) {
-
   if $package_install_options != undef {
     validate_array($package_install_options)
   }

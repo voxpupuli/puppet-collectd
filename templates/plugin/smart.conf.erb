@@ -1,0 +1,8 @@
+<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
+<Plugin "smart">
+<% @disks.each do |disk| -%>
+  Disk "<%= disk %>"
+<% end -%>
+  IgnoreSelected <%= @ignoreselected %>
+</Plugin>
+<% end -%>
