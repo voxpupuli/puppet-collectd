@@ -7,6 +7,7 @@ class collectd::plugin::disk (
   $manage_package = undef,
   $package_name   = 'collectd-disk',
   $udevnameattr   = undef,
+  $_manage_package = undef,
 ) {
 
   include ::collectd
