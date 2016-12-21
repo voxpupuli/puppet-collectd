@@ -14,6 +14,7 @@ define collectd::plugin::oracle::database (
   validate_string($connect_id)
   validate_string($username)
   validate_string($password)
+  validate_array($query)
 
   concat::fragment { "collectd_plugin_oracle_database_${name}":
     order   => '10',

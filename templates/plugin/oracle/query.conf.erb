@@ -1,17 +1,15 @@
-<Query "<%= @query %>">
-  Statement "<%= @statement %>"
-  <% Array(@results).flatten.each do |result| -%>
-  <Result>
-    Type "<%= result['type'] %>"
-    <% if result['instance_prefix'] -%>
-    InstancePrefix "<%= result['instance_prefix'] %>"
-    <% end -%>
-    <% if result['instance_from'] -%>
-      <% Array(result['instance_from']).each do |instance_from_item| -%>
-    InstanceFrom "<%= instance_from_item %>"
-      <% end -%>
-    <% end -%>
-    ValuesFrom <%= Array(result['values_from']).flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
-  </Result>
-  <% end -%>
-</Query>
+  <Query "<%= @query %>">
+    Statement "<%= @statement %>"
+<% @results.each do |result| -%>
+    <Result>
+      Type "<%= result['type'] %>"
+<%   if result['instance_prefix'] -%>
+      InstancePrefix "<%= result['instance_prefix'] %>"
+<%   end -%>
+<%   if result['instances_from'] -%>
+      InstancesFrom <%= Array(result['instances_from']).flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+<%   end -%>
+      ValuesFrom <%= Array(result['values_from']).flatten.map {|entry| "\"#{entry}\""}.join(' ') %>
+    </Result>
+<% end -%>
+  </Query>

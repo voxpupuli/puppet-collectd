@@ -10,7 +10,7 @@ define collectd::plugin::oracle::query (
 
   validate_string($query)
   validate_string($statement)
-  validate_hash($results)
+  validate_array($results)
 
   concat::fragment { "collectd_plugin_oracle_query_${name}":
     order   => '10',

@@ -7,7 +7,7 @@ class collectd::plugin::oracle (
 ) {
   include ::collectd
 
-  $config_file = "${collectd::plugin_conf_dir}/15-genericjmx.conf"
+  $config_file = "${collectd::plugin_conf_dir}/15-oracle.conf"
 
   if $manage_package {
     package { 'collectd-oracle':
