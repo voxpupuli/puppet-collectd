@@ -78,12 +78,8 @@
   ],
   "requirements": [
     {
-      "name": "pe",
-      "version_requirement": ">= 3.2.0"
-    },
-    {
       "name": "puppet",
-      "version_requirement": ">= 3.2.0"
+      "version_requirement": ">= 3.8.7 < 5.0.0"
     }
   ],
   "name": "puppet-collectd",
