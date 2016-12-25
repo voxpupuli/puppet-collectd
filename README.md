@@ -201,7 +201,7 @@ documentation for each plugin for configurable attributes.
 collectd::plugin::aggregation::aggregator {
   cpu':
     plugin           => 'cpu',
-    type             => 'cpu',
+    agg_type         => 'cpu',
     groupby          => ["Host", "TypeInstance",],
     calculateaverage => true,
 }
@@ -214,7 +214,7 @@ class { 'collectd::plugin::aggregation':
   aggregators => {
     cpu' => {
       plugin           => 'cpu',
-      type             => 'cpu',
+      agg_type         => 'cpu',
       groupby          => ["Host", "TypeInstance",],
       calculateaverage => true,
     },
