@@ -2,39 +2,39 @@
 <Plugin snmp>
 <% @data.sort_by {|k,v| k}.each do |key,val| -%>
   <Data "<%=key %>">
-    Type "<%= val['Type'] %>"
-<% if val['Table'] -%>
-    Table <%= val['Table'] %>
+    Type "<%= val['type'] %>"
+<% if val['table'] -%>
+    Table <%= val['table'] %>
 <% end -%>
-<% if val['Instance'] -%>
-    Instance "<%= val['Instance'] %>"
+<% if val['instance'] -%>
+    Instance "<%= val['instance'] %>"
 <% end -%>
-<% if val['InstancePrefix'] -%>
-    InstancePrefix "<%= val['InstancePrefix'] %>"
+<% if val['instance_prefix'] -%>
+    InstancePrefix "<%= val['instance_prefix'] %>"
 <% end -%>
-    Values <% Array(val['Values']).each do |x| -%>"<%= x %>" <% end %>
-<% if val['Scale'] -%>
-    Scale <%= val['Scale'] %>
+    Values <% Array(val['values']).each do |x| -%>"<%= x %>" <% end %>
+<% if val['scale'] -%>
+    Scale <%= val['scale'] %>
 <% end -%>
-<% if val['Shift'] -%>
-    Shift <%= val['Shift'] %>
+<% if val['shift'] -%>
+    Shift <%= val['shift'] %>
 <% end -%>
-<% if val['Ignore'] -%>
-    Ignore <% Array(val['Ignore']).each do |x| -%>"<%= x %>" <% end %>
+<% if val['ignore'] -%>
+    Ignore <% Array(val['ignore']).each do |x| -%>"<%= x %>" <% end %>
 <% end -%>
-<% if val['InvertMatch'] -%>
-    InvertMatch <%= val['InvertMatch'] %>
+<% if val['invert_match'] -%>
+    InvertMatch <%= val['invert_match'] %>
 <% end -%>
   </Data>
 
 <% end -%>
 <% @hosts.sort_by {|k,v| k}.each do |key,val| -%>
   <Host "<%=key %>">
-    Address "<%= val['Address'] %>"
-    Version <%= val['Version'] %>
-    Community "<%= val['Community'] %>"
-    Collect <% Array(val['Collect']).sort.each do |x| -%>"<%= x -%>" <% end %>
-    Interval <%= val['Interval'] %>
+    Address "<%= val['address'] %>"
+    Version <%= val['version'] %>
+    Community "<%= val['community'] %>"
+    Collect <% Array(val['collect']).sort.each do |x| -%>"<%= x -%>" <% end %>
+    Interval <%= val['interval'] %>
   </Host>
 <% end -%>
 </Plugin>

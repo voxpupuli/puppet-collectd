@@ -1468,21 +1468,21 @@ class { '::collectd::plugin::smart':
 class {'collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
-      'Type'        => 'counter',
-      'Table'       => false,
-      'Instance'    => 'amavis.inMsgs',
-      'Values'      => ['AMAVIS-MIB::inMsgs.0'],
-      'Ignore'      => [ '00:00', '*IgnoreString' ],
-      'InvertMatch' => false,
+      'type'         => 'counter',
+      'table'        => false,
+      'instance'     => 'amavis.inMsgs',
+      'values'       => ['AMAVIS-MIB::inMsgs.0'],
+      'ignore'       => [ '00:00', '*IgnoreString' ],
+      'invert_match' => false,
     }
   },
   hosts => {
     debianvm => {
-      'Address'   => '127.0.0.1',
-      'Version'   => 2,
-      'Community' => 'public',
-      'Collect'   => ['amavis_incoming_messages'],
-      'Interval'  => 10
+      'address'   => '127.0.0.1',
+      'version'   => 2,
+      'community' => 'public',
+      'collect'   => ['amavis_incoming_messages'],
+      'interval'  => 10
     }
   },
 }
