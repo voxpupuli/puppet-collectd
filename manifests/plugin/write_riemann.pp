@@ -10,6 +10,7 @@ class collectd::plugin::write_riemann (
   $always_append_ds = false,
   $interval         = undef,
   $ttl_factor       = '2.0',
+  $check_thresholds = false,
   $tags             = [],
   $attributes       = {},
 ) {
@@ -21,6 +22,7 @@ class collectd::plugin::write_riemann (
   validate_bool($store_rates)
   validate_bool($always_append_ds)
   validate_bool($batch)
+  validate_bool($check_thresholds)
   validate_numeric($ttl_factor)
   validate_array($tags)
   validate_hash($attributes)

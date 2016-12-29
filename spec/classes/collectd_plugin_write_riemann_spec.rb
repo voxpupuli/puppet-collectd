@@ -13,7 +13,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
   context ':ensure => present and :riemann_host => \'myhost\'' do
     let :params do
       { riemann_host: 'myhost', riemann_port: '5555',
-        protocol: 'TCP', batch: false, ttl_factor: '3',
+        protocol: 'TCP', batch: false, ttl_factor: '3', check_thresholds: true,
         tags: ['foo'], attributes: { 'bar' => 'baz' } }
     end
     it 'Will create /etc/collectd.d/10-write_riemann.conf' do
@@ -24,6 +24,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
       is_expected.to contain_file('write_riemann.load').with(content: %r{Protocol TCP})
       is_expected.to contain_file('write_riemann.load').with(content: %r{Batch false})
       is_expected.to contain_file('write_riemann.load').with(content: %r{TTLFactor 3})
+      is_expected.to contain_file('write_riemann.load').with(content: %r{CheckThresholds true})
       is_expected.to contain_file('write_riemann.load').with(content: %r{Tag "foo"})
       is_expected.to contain_file('write_riemann.load').with(content: %r{Attribute "bar" "baz"})
     end
@@ -52,7 +53,16 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { batch: 'false' }
     end
-    it 'Will raise an error about :ttl_factor not being a Boolean' do
+    it 'Will raise an error about :batch not being a Boolean' do
+      is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
+    end
+  end
+
+  context ':check_thresholds is a boolean' do
+    let :params do
+      { check_thresholds: 'false' }
+    end
+    it 'Will raise an error about :check_thresholds not being a Boolean' do
       is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
     end
   end
