@@ -15,7 +15,7 @@ class collectd::plugin::curl (
   } elsif $ensure == 'absent' {
     $ensure_real = 'absent'
   }
-  
+
   if $::osfamily == 'Redhat' {
     if $_manage_package {
       package { 'collectd-curl':
