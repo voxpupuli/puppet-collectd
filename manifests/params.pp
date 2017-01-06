@@ -13,7 +13,6 @@ class collectd::params {
   $read_threads              = 5
   $write_threads             = 5
   $timeout                   = 2
-  $typesdb                   = [ '/usr/share/collectd/types.db' ]
   $write_queue_limit_high    = undef
   $write_queue_limit_low     = undef
   $package_ensure            = 'present'
@@ -43,6 +42,7 @@ class collectd::params {
       $root_group         = 'root'
       $java_dir           = '/usr/share/collectd/java'
       $default_python_dir = '/usr/local/lib/python2.7/dist-packages'
+      $typesdb            = [ '/usr/share/collectd/types.db' ]
     }
     'Solaris': {
       $package_name       = 'CSWcollectd'
@@ -54,6 +54,7 @@ class collectd::params {
       $root_group         = 'root'
       $java_dir           = undef
       $default_python_dir = '/opt/csw/share/collectd/python'
+      $typesdb            = [ '/opt/csw/share/collectd/types.db' ]
     }
     'Redhat': {
       $package_name       = 'collectd'
@@ -65,6 +66,7 @@ class collectd::params {
       $root_group         = 'root'
       $java_dir           = '/usr/share/collectd/java'
       $default_python_dir = '/usr/lib/python2.7/site-packages'
+      $typesdb            = [ '/usr/share/collectd/types.db' ]
     }
     'Suse': {
       $package_name       = 'collectd'
@@ -76,6 +78,7 @@ class collectd::params {
       $root_group         = 'root'
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
+      $typesdb            = [ '/usr/share/collectd/types.db' ]
     }
     'FreeBSD': {
       $package_name       = 'collectd5'
@@ -87,6 +90,7 @@ class collectd::params {
       $root_group         = 'wheel'
       $java_dir           = undef
       $default_python_dir = '/usr/local/share/collectd/python'
+      $typesdb            = [ '/usr/local/share/collectd/types.db' ]
     }
     'OpenBSD': {
       $package_name       = 'collectd'
@@ -98,6 +102,7 @@ class collectd::params {
       $root_group         = '_collectd'
       $java_dir           = undef
       $default_python_dir = '/usr/local/share/collectd/python'
+      $typesdb            = [ '/usr/local/share/collectd/types.db' ]
     }
     'Archlinux': {
       $package_name       = 'collectd'
@@ -109,6 +114,7 @@ class collectd::params {
       $root_group         = 'wheel'
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
+      $typesdb            = [ '/usr/share/collectd/types.db' ]
     }
     'Gentoo': {
       $package_name       = 'app-admin/collectd'
@@ -120,6 +126,7 @@ class collectd::params {
       $root_group         = 'collectd'
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
+      $typesdb            = [ '/usr/share/collectd/types.db' ]
     }
 
     default: {
