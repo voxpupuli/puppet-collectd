@@ -169,6 +169,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
+* `threshold` (see [collect::plugin::threshold](#class-collectdpluginthreshold) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
@@ -1565,6 +1566,13 @@ collectd::plugin::tail::file { 'exim-log':
 class { '::collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
+}
+```
+
+#### Class: `collectd::plugin::threshold`
+
+```puppet
+class { 'collectd::plugin::threshold':
 }
 ```
 
