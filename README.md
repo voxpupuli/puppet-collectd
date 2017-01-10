@@ -169,6 +169,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
+* `threshold` (see [collect::plugin::threshold](#class-collectdpluginthreshold) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
@@ -1565,6 +1566,39 @@ collectd::plugin::tail::file { 'exim-log':
 class { '::collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
+}
+```
+
+#### Class: `collectd::plugin::threshold`
+
+```puppet
+class { 'collectd::plugin::threshold':
+  threshold_types => {
+    'cpu' => {
+       'warningmin' => '1',
+       'warningmax' => '1'
+    },
+    'memory' => {
+       'failuremin' => '1',
+       'invert' => true
+    }
+  },
+  threshold_plugins => {
+    'interface' => {
+      'threshold_instance' => 'eth0',
+      'threshold_type' => 'if_octets',
+        'warningmin' => '1',
+        'invert' => true,
+    }
+  },
+  threshold_hosts => {
+    'hostname1' => {
+      'threshold_plugin' => 'interface',
+        'threshold_type' => 'if_octets',
+          'warningmin' => '1',
+          'invert' => true,
+    }
+  }
 }
 ```
 
