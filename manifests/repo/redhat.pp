@@ -9,19 +9,6 @@ class collectd::repo::redhat {
       gpgkey  => 'https://pkg.ci.collectd.org/pubkey.asc',
     }
 
-  } else {
-
-    # TODO: Replace this with EPEL module requirement in Major version bump
-
-    if !defined(Yum::Install['epel-release']) {
-      yum::install { 'epel-release':
-        ensure => 'present',
-        source => "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${::operatingsystemmajrelease}.noarch.rpm",
-        before => Package[$::collectd::package_name],
-      }
-    }
-
-
-  }
+  } 
 
 }

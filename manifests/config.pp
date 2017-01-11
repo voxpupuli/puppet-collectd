@@ -1,6 +1,7 @@
 # private
 class collectd::config (
   $collectd_hostname      = $collectd::collectd_hostname,
+  $collectd_selinux       = $collectd::collectd_selinux,
   $config_file            = $collectd::config_file,
   $conf_content           = $collectd::conf_content,
   $fqdnlookup             = $collectd::fqdnlookup,
@@ -15,6 +16,7 @@ class collectd::config (
   $purge                  = $collectd::purge,
   $purge_config           = $collectd::purge_config,
   $read_threads           = $collectd::read_threads,
+  $selmodule_dir	  = $collectd::selmodule_dir,
   $timeout                = $collectd::timeout,
   $typesdb                = $collectd::typesdb,
   $write_queue_limit_high = $collectd::write_queue_limit_high,
@@ -22,6 +24,7 @@ class collectd::config (
   $write_threads          = $collectd::write_threads,
 ) {
 
+  validate_bool($collectd_selinux)
   validate_absolute_path($config_file)
   validate_bool($fqdnlookup)
   validate_bool($has_wordexp)
@@ -34,6 +37,7 @@ class collectd::config (
   validate_integer($timeout)
   validate_array($typesdb)
   validate_integer($write_threads)
+  validate_absolute_path($selmodule_dir)
 
   $_conf_content = $purge_config ? {
     true    => template('collectd/collectd.conf.erb'),
@@ -69,7 +73,42 @@ class collectd::config (
     purge   => $purge,
     recurse => $recurse,
   }
+ 
+  if $collectd_selinux and $::selinux == 'true' {
+    selboolean { 'collectd_tcp_network_connect':
+      persistent => true,
+      provider   => getsetsebool,
+      name       => collectd_tcp_network_connect,
+      value      => 'on',
+    }
+    file { 'collectd_udev.pp':
+      path	=> "$selmodule_dir/collectd_udev.pp",
+      ensure	=> present,
+      source	=> 'puppet:///modules/collectd/collectd_udev.pp' 
+    }
+    selmodule { 'collectd_udev':
+      name		=> 'collectd_udev',
+      ensure		=> present,
+      selmoduledir	=> $selmodule_dir
+    }
+  } elsif !$collectd_selinux and $::selinux == 'true' {
+    selboolean { 'collectd_tcp_network_connect':
+      persistent => true,
+      provider   => getsetsebool,
+      name       => collectd_tcp_network_connect,
+      value      => 'off',
+    }
+    selmodule { 'collectd_udev':
+      name              => 'collectd_udev',
+      ensure            => absent,
+      selmoduledir      => $selmodule_dir
+    }
 
+    file { 'collectd_udev.pp':
+      path      => "$selmodule_dir/collectd_udev.pp",
+      ensure    => absent,
+    }
+   
+  }
   File['collectd.d'] -> Concat <| |>
-
 }
