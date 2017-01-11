@@ -1,0 +1,44 @@
+<% if @threshold_instance -%>
+  Instance "<%= @threshold_instance %>"
+<% end -%>
+  <Type "<%= @threshold_type %>">
+<% if @warningmin -%>
+    WarningMin <%= @warningmin %>
+<% end -%>
+<% if @warningmax -%>
+    WarningMax <%= @warningmax %>
+<% end -%>
+<% if @failuremin -%>
+    FailureMin <%= @failuremin %>
+<% end -%>
+<% if @failuremax -%>
+    FailureMax <%= @failuremax %>
+<% end -%>
+<% if @hits -%>
+    Hits <%= @hits %>
+<% end -%>
+<% if @hysteresis -%>
+    Hysteresis <%= @hysteresis %>
+<% end -%>
+<% if @invert -%>
+    Invert <%= @invert %>
+<% end -%>
+<% if @persist -%>
+    Persist <%= @persist %>
+<% end -%>
+<% if @persistok -%>
+    PersistOK <%= @persistok %>
+<% end -%>
+<% if @percentage -%>
+    Percentage <%= @percentage %>
+<% end -%>
+<% if @interesting -%>
+    Interesting <%= @interesting %>
+<% end -%>
+<% if @type_instance -%>
+    Instance "<%= @type_instance %>"
+<% end -%>
+<% if @datasource -%>
+    DataSource "<%= @datasource %>"
+<% end -%>
+  </Type>
