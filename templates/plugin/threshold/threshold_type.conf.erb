@@ -1,44 +1,44 @@
-<% if @threshold_instance -%>
-  Instance "<%= @threshold_instance %>"
+<% @values.each do |value| -%>
+<Type "<%= value['instance_type']  %>">
+<% if value['warningmin'] -%>
+    WarningMin <%= value['warningmin'] %>
 <% end -%>
-  <Type "<%= @threshold_type %>">
-<% if @warningmin -%>
-    WarningMin <%= @warningmin %>
+<% if value['warningmax'] -%>
+    WarningMax <%= value['warningmax'] %>
 <% end -%>
-<% if @warningmax -%>
-    WarningMax <%= @warningmax %>
+<% if value['failuremin'] -%>
+    FailureMin <%= value['failuremin'] %>
 <% end -%>
-<% if @failuremin -%>
-    FailureMin <%= @failuremin %>
+<% if value['failuremax'] -%>
+    FailureMax <%= value['failuremax'] %>
 <% end -%>
-<% if @failuremax -%>
-    FailureMax <%= @failuremax %>
+<% if value['hits'] -%>
+    Hits <%= value['hits'] %>
 <% end -%>
-<% if @hits -%>
-    Hits <%= @hits %>
+<% if value['hysteresis'] -%>
+    Hysteresis <%= value['hysteresis'] %>
 <% end -%>
-<% if @hysteresis -%>
-    Hysteresis <%= @hysteresis %>
+<% if value['invert'] -%>
+    Invert <%= value['invert'] %>
 <% end -%>
-<% if @invert -%>
-    Invert <%= @invert %>
+<% if value['persist'] -%>
+    Persist <%= value['persist'] %>
 <% end -%>
-<% if @persist -%>
-    Persist <%= @persist %>
+<% if value['persistok'] -%>
+    PersistOK <%= value['persistok'] %>
 <% end -%>
-<% if @persistok -%>
-    PersistOK <%= @persistok %>
+<% if value['percentage'] -%>
+    Percentage <%= value['percentage'] %>
 <% end -%>
-<% if @percentage -%>
-    Percentage <%= @percentage %>
+<% if value['interesting'] -%>
+    Interesting <%= value['interesting'] %>
 <% end -%>
-<% if @interesting -%>
-    Interesting <%= @interesting %>
+<% if value['type_instance'] -%>
+    Instance "<%= value['type_instance'] %>"
 <% end -%>
-<% if @type_instance -%>
-    Instance "<%= @type_instance %>"
+<% if value['datasource'] -%>
+    DataSource "<%= value['datasource'] %>"
 <% end -%>
-<% if @datasource -%>
-    DataSource "<%= @datasource %>"
+</Type>
 <% end -%>
-  </Type>
+
