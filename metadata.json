@@ -106,7 +106,7 @@
     },
     {
       "name": "puppet-yum",
-      "version_requirement": ">= 0.9.15"
+      "version_requirement": ">= 0.9.15 < 1.0.0"
     },
     {
       "name": "puppetlabs-apt",

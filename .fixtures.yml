@@ -9,5 +9,6 @@ fixtures:
       ref: '2.1.0'
     yum:
       repo: 'https://github.com/voxpupuli/puppet-yum.git'
+      ref: 'v0.10.0'
   symlinks:
     'collectd': "#{source_dir}"
