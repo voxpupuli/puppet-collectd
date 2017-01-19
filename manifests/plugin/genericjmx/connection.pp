@@ -2,7 +2,7 @@
 define collectd::plugin::genericjmx::connection (
   $collect,
   $service_url,
-  $host            = $name,
+  $host            = undef,
   $user            = undef,
   $password        = undef,
   $instance_prefix = undef,
