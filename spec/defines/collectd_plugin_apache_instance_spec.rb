@@ -36,7 +36,6 @@ describe 'collectd::plugin::apache::instance', type: :define do
     it { is_expected.to contain_file(filename).without_content(%r{User "}) }
     it { is_expected.to contain_file(filename).without_content(%r{Password "}) }
     it { is_expected.to contain_file(filename).without_content(%r{VerifyHost "}) }
-    it { is_expected.to contain_file(filename).without_content(%r{VerifyHost "}) }
     it { is_expected.to contain_file(filename).without_content(%r{CACert "}) }
   end
 
