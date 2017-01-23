@@ -1317,6 +1317,8 @@ class { 'collectd::plugin::protocols':
   that reads from and writes to the terminal (default: `false`)
 * `logtraces` if a Python script throws an exception it will be logged by
   collectd with the name of the exception and the message (default: `false`)
+* `conf_name` name of the file that will contain the python module configuration
+  (default: `python-config.conf`)
 
  See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml)
  for more details.
