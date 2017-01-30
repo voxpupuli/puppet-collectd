@@ -11,7 +11,7 @@ def location_for(place, fake_version = nil)
 end
 
 group :test do
-  gem 'puppetlabs_spec_helper', '~> 1.2.2',                         :require => false
+  gem 'puppetlabs_spec_helper',                                     :require => false, :git => 'https://github.com/puppetlabs/puppetlabs_spec_helper.git'
   gem 'rspec-puppet', '~> 2.5',                                     :require => false
   gem 'rspec-puppet-facts',                                         :require => false
   gem 'rspec-puppet-utils',                                         :require => false
@@ -35,6 +35,7 @@ group :test do
   gem 'github_changelog_generator', '~> 1.13.0',                    :require => false if RUBY_VERSION < '2.2.2'
   gem 'rack', '~> 1.0',                                             :require => false if RUBY_VERSION < '2.2.2'
   gem 'github_changelog_generator',                                 :require => false if RUBY_VERSION >= '2.2.2'
+  gem 'parallel_tests',                                             :require => false
 end
 
 group :development do
