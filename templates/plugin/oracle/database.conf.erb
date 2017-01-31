@@ -1,0 +1,8 @@
+  <Database "<%= @database %>">
+    ConnectID "<%= @connect_id %>"
+    Username "<%= @username %>"
+    Password "<%= @password %>"
+<% @query.each do |query| -%>
+    Query "<%= query %>"
+<% end -%>
+  </Database>

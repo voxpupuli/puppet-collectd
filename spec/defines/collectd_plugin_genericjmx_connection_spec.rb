@@ -35,7 +35,6 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
     end
 
     it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{<Connection>.*</Connection>}m) }
-    it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Host "foo\.example\.com"}) }
     it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{ServiceURL "foo:bar:baz"}) }
     it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{User}) }
     it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{Password}) }

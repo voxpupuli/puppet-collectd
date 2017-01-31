@@ -1,5 +1,6 @@
 ---
 sudo: false
+dist: trusty
 language: ruby
 cache: bundler
 bundler_args: --without system_tests development
@@ -15,46 +16,38 @@ script:
 matrix:
   fast_finish: true
   include:
-  - rvm: 1.9.3
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
-  - rvm: 1.9.3
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" FUTURE_PARSER="yes" CHECK=test
-  - rvm: 2.1.9
-    env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
   - rvm: 2.1.9
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.2.6
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.3.3
-    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
-  - rvm: 2.3.3
-    env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
-  - rvm: 2.3.3
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.4.0
     env: PUPPET_VERSION="~> 4.0" CHECK=test
-  - rvm: 2.3.1
+  - rvm: 2.4.0
+    env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
+  - rvm: 2.4.0
+    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
+  - rvm: 2.4.0
     env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/centos-7
     services: docker
     sudo: required
     bundler_args: --without development
-  - rvm: 2.3.1
+  - rvm: 2.4.0
     env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/debian-8
     services: docker
     sudo: required
     bundler_args: --without development
-  - rvm: 2.3.1
+  - rvm: 2.4.0
     env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/ubuntu-14.04
     services: docker
     sudo: required
     bundler_args: --without development
-  - rvm: 2.3.1
+  - rvm: 2.4.0
     env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/ubuntu-16.04
     services: docker
     sudo: required
     bundler_args: --without development
-  allow_failures:
-    - rvm: 2.4.0
 branches:
   only:
   - master

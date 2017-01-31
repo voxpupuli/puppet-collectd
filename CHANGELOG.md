@@ -1,3 +1,17 @@
+# Changelog
+
+# 2017-01-13 - Release 5.3.0
+
+This is the last release with Puppet 3 support!
+* Include custom rabbitmq types
+* Enable acceptance tests
+* Add Collectd CI Package repos
+* Add write_prometheus plugin (#600)
+* Fix python_dir fact for RedHat.
+* Updates to write_riemann (#605)
+* Add base threshold plugin
+* Tag collectd's concat resources
+
 ## 2016-12-05 Release 5.2.0
 
 * Modulesync with latest Vox Pupuli defaults
