@@ -70,6 +70,6 @@ class collectd::config (
     recurse => $recurse,
   }
 
-  File['collectd.d'] -> Concat <| |>
+  File['collectd.d'] -> Concat <| tag == 'collectd' |>
 
 }

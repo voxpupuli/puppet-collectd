@@ -1,5 +1,7 @@
 <Connection>
+  <% if @host -%>
   Host "<%= @host %>"
+  <% end -%>
   ServiceURL "<%= @service_url %>"
   <% Array(@collect).each do |collect| -%>
   Collect "<%= collect %>"

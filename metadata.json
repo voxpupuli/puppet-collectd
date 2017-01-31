@@ -79,11 +79,11 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.8.7 < 5.0.0"
+      "version_requirement": ">= 4.6.1 < 5.0.0"
     }
   ],
   "name": "puppet-collectd",
-  "version": "5.2.1-rc0",
+  "version": "5.3.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
@@ -106,7 +106,7 @@
     },
     {
       "name": "puppet-yum",
-      "version_requirement": ">= 0.9.15"
+      "version_requirement": ">= 0.9.15 < 1.0.0"
     },
     {
       "name": "puppetlabs-apt",

@@ -13,6 +13,7 @@ class collectd::plugin::python (
   $modulepaths    = [],
   $modules        = {},
   $order          = '10',
+  $conf_name      = 'python-config.conf',
 ) {
 
   include ::collectd
@@ -70,7 +71,7 @@ class collectd::plugin::python (
   )
 
   # should be loaded after global plugin configuration
-  $python_conf = "${collectd::plugin_conf_dir}/python-config.conf"
+  $python_conf = "${collectd::plugin_conf_dir}/${conf_name}"
 
   concat { $python_conf:
     ensure         => $ensure,

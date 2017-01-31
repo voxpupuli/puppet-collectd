@@ -170,6 +170,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
+* `threshold` (see [collect::plugin::threshold](#class-collectdpluginthreshold) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
@@ -1324,6 +1325,8 @@ class { 'collectd::plugin::protocols':
   that reads from and writes to the terminal (default: `false`)
 * `logtraces` if a Python script throws an exception it will be logged by
   collectd with the name of the exception and the message (default: `false`)
+* `conf_name` name of the file that will contain the python module configuration
+  (default: `python-config.conf`)
 
  See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml)
  for more details.
@@ -1573,6 +1576,13 @@ collectd::plugin::tail::file { 'exim-log':
 class { '::collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
+}
+```
+
+#### Class: `collectd::plugin::threshold`
+
+```puppet
+class { 'collectd::plugin::threshold':
 }
 ```
 

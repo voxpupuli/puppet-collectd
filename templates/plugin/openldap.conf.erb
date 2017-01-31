@@ -6,7 +6,7 @@
     StartTLS <%= values['starttls'] %>
 <% end -%>
 <% unless values['verifyhost'].nil? -%>
-    VerifyHost "<%= values['verifyhost'] %>"
+    VerifyHost <%= values['verifyhost'] %>
 <% end -%>
 <% if values['cacert'] -%>
     CACert "<%= values['cacert'] %>"

@@ -3,6 +3,7 @@ define collectd::plugin::python::module (
   $config        = [],
   $ensure        = 'present',
   $module        = $title,
+  $module_import = undef,
   $modulepath    = undef,
   $script_source = undef,
 ) {
@@ -17,6 +18,11 @@ define collectd::plugin::python::module (
     default => $modulepath
   }
   validate_absolute_path($module_dir)
+
+  $_module_import = $module_import ? {
+    undef   => $module,
+    default => $module_import
+  }
 
   if $script_source {
     file { "${module}.script":

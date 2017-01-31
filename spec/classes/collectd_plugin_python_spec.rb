@@ -169,6 +169,23 @@ describe 'collectd::plugin::python', type: :class do
                path: '/var/lib/collectd/python/elasticsearch.py')
       end
     end
+
+    context ':ensure => present and custom python config location' do
+      let :params do
+        {
+          conf_name: 'custom-location-config.conf'
+        }
+      end
+
+      it 'Will create /etc/collectd.d/conf.d/custom-location-config.conf' do
+        is_expected.to contain_concat('/etc/collectd/conf.d/custom-location-config.conf').
+          that_requires('File[collectd.d]')
+        is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').
+          with(content: %r{<Plugin "python">},
+               target: '/etc/collectd/conf.d/custom-location-config.conf',
+               order: '00')
+      end
+    end
   end
 
   context 'change globals parameter' do
