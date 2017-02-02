@@ -17,7 +17,7 @@ define collectd::plugin::oracle::database (
   validate_array($query)
 
   concat::fragment { "collectd_plugin_oracle_database_${name}":
-    order   => '10',
+    order   => '20',
     content => template('collectd/plugin/oracle/database.conf.erb'),
     target  => $collectd::plugin::oracle::config_file,
   }
