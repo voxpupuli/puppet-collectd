@@ -12,11 +12,6 @@
 #   Passed to package and collectd::plugin resources ( both )
 #   Default: present
 #
-# [*interval*]
-#   Integer
-#   Interval setting for the plugin
-#   Default: undef
-#
 # [*manage_package*]
 #   Boolean
 #   Toggles installation of plugin
@@ -27,15 +22,17 @@
 #   Passed to package resource
 #   Default: pip
 #
+# [*provider_proxy*]
+#   String
+#   Proxy for provider
+#   Default: undef
 #
 class collectd::plugin::cuda (
   $ensure           = 'present',
-  $interval         = undef,
   $manage_package   = undef,
   $package_name     = 'collectd-cuda',
   $package_provider = 'pip',
   $provider_proxy   = undef,
-  $custom_types_db  = undef,
 ) {
   include ::collectd
 
