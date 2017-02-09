@@ -462,6 +462,7 @@ class { 'collectd::plugin::dbi':
 
 ```puppet
 class { 'collectd::plugin::df':
+  devices        => ['proc','sysfs'],
   mountpoints    => ['/u'],
   fstypes        => ['nfs','tmpfs','autofs','gpfs','proc','devpts'],
   ignoreselected => true,

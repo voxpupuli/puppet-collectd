@@ -1,6 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:DF
 class collectd::plugin::df (
   $ensure           = 'present',
+  $devices          = [],
   $fstypes          = [],
   $ignoreselected   = false,
   $interval         = undef,
@@ -15,6 +16,7 @@ class collectd::plugin::df (
   include ::collectd
 
   validate_array(
+    $devices,
     $fstypes,
     $mountpoints,
   )
