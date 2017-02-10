@@ -31,7 +31,7 @@ describe 'collectd::plugin::cuda', type: :class do
 
   # based on manage_package from dns spec but I added support for multiple providers
   describe 'with manage_package parameter' do
-    ['true', true].each do |value|
+    [false, true].each do |value|
       context "set to #{value}" do
         %w(present absent).each do |ensure_value|
           %w(pip yum).each do |provider|

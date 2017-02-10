@@ -1,42 +1,23 @@
-# cuda plugin
-# https://pypi.python.org/pypi/collectd-cuda
+# Class: collectd::plugin::cuda
 #
-# == Class collectd::plugin::cuda
+# @see https://pypi.python.org/pypi/collectd-cuda
 #
 #  Configures cuda metrics collection. Optionally installs the plugin
 #  Note, it is up to you to support package installation and sources
 #
-# === Parameters:
-# [*ensure*]
-#   String
-#   Passed to package and collectd::plugin resources ( both )
-#   Default: present
-#
-# [*manage_package*]
-#   Boolean
-#   Toggles installation of plugin
-#   Default: undef
-#
-# [*package_provider*]
-#   String
-#   Passed to package resource
-#   Default: pip
-#
-# [*provider_proxy*]
-#   String
-#   Proxy for provider
-#   Default: undef
-#
+# @param ensure Optional[String] Passed to package and collectd::plugin resources (both). Default: present
+# @param manage_package Optional[Boolean] Toggles installation of plugin. Default: undef
+# @param package_name Optional[String] Name of plugin package to install. Default: collectd-cuda
+# @param package_provider Optional[String] Passed to package resource. Default: pip
+# @param provider_proxy Optional[String] Proxy for provider. Default: undef
 class collectd::plugin::cuda (
-  $ensure           = 'present',
-  $manage_package   = undef,
-  $package_name     = 'collectd-cuda',
-  $package_provider = 'pip',
-  $provider_proxy   = undef,
+  Optional[String] $ensure           = 'present',
+  Optional[Boolean] $manage_package   = undef,
+  Optional[String] $package_name     = 'collectd-cuda',
+  Optional[String] $package_provider = 'pip',
+  Optional[String] $provider_proxy   = undef,
 ) {
   include ::collectd
-
-  validate_string($ensure)
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
