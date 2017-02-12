@@ -106,6 +106,7 @@ documentation for each plugin for configurable attributes.
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
+* `cuda` (see [collectd::plugin::cuda](#class-collectdplugincuda) below)
 * `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json)
   below)
@@ -356,6 +357,15 @@ class { 'collectd::plugin::csv':
   storerates => false,
 }
 ```
+
+
+### Class: `collectd::plugin::cuda`
+
+```puppet
+class { 'collectd::plugin::cuda':
+}
+```
+
 
 ### Class: `collectd::plugin::curl`
 
