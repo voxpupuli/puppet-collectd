@@ -32,7 +32,7 @@ describe 'collectd::plugin::oracle::database', type: :define do
     let(:params) { default_params }
     it 'provides an oracle database stanza concat fragment' do
       is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
-                                                                         order: '10')
+                                                                         order: '20')
     end
 
     it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{<Database "foo">\s+ConnectID "connect_id"\s+Username "username"\s+Password "password"}m) }
