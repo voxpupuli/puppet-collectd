@@ -7,8 +7,7 @@ fixtures:
     concat:
       repo: 'git://github.com/puppetlabs/puppetlabs-concat'
       ref: '2.1.0'
-    yum:
-      repo: 'https://github.com/voxpupuli/puppet-yum.git'
-      ref: 'v0.10.0'
+    epel:
+      repo: 'https://github.com/stahnma/puppet-module-epel'
   symlinks:
     'collectd': "#{source_dir}"
