@@ -1,29 +1,35 @@
 define collectd::type (
-  $target,
-  $ds_type,
-  $ds = $title,
-  $min = 'U',
-  $max = 'U',
-  $ds_name = 'value',
+  String                                                      $target,
+  String                                                      $ds = $name,
+  # BC compatible ....
+  Optional[Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE']]    $ds_type = undef,
+  Variant[Numeric, Enum['U']]                                 $min = 'U',
+  Variant[Numeric, Enum['U']]                                 $max = 'U',
+  String                                                      $ds_name = 'value',
+  # BC compatible .... ending
+
+  Array[Struct[{
+    min     => Variant[Numeric, Enum['U']],
+    max     => Variant[Numeric, Enum['U']],
+    ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
+    ds_name => String,
+  }]]                                                         $types = [],
 ) {
-  validate_string($ds_name)
-  $upper_ds_type = upcase($ds_type)
-
-  validate_re($upper_ds_type,
-              ['^ABSOLUTE$', '^COUNTER$', '^DERIVE$', '^GAUGE$'])
-
-  if $min != 'U' {
-    validate_numeric($min)
+  if empty($types) {
+    $_types = [{
+      min     => $min,
+      max     => $max,
+      ds_type => $ds_type,
+      ds_name => $ds_name,
+    }]
+  } else {
+    $_types = $types
   }
 
-  if $max != 'U' {
-    validate_numeric($max)
-  }
-
-  $content = "${ds}\t${ds_name}:${upper_ds_type}:${min}:${max}"
+  $content = $_types.map |$type| { "${type['ds_name']}:${type['ds_type']}:${type['min']}:${type['max']}" }.join(', ')
 
   concat::fragment { "${target}/${ds}":
-    content => $content,
+    content => "${ds}\t${content}",
     target  => $target,
     order   => $ds,
   }
