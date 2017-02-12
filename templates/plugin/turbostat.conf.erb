@@ -1,0 +1,20 @@
+<Plugin turbostat>
+<% if @core_c_states -%>
+  CoreCstates "<%= @core_c_states %>"
+<% end -%>
+<% if @package_c_states -%>
+  PackageCstates "<%= @package_c_states %>"
+<% end -%>
+<% unless @system_management_interrupt.nil? -%>
+  SystemManagementInterrupt "<%= @system_management_interrupt %>"
+<% end -%>
+<% unless @digital_temperature_sensor.nil? -%>
+  DigitalTemperatureSensor "<%= @digital_temperature_sensor %>"
+<% end -%>
+<% if @tcc_activation_temp -%>
+  TCCActivationTemp "<%= @tcc_activation_temp %>"
+<% end -%>
+<% if @running_average_power_limit -%>
+  RunningAveragePowerLimit "<%= @running_average_power_limit %>"
+<% end -%>
+</Plugin>
