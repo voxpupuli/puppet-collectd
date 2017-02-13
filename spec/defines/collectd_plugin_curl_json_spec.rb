@@ -71,6 +71,5 @@ describe 'collectd::plugin::curl_json', type: :define do
     it do
       is_expected.to contain_package('libyajl1')
     end
-
   end
 end

@@ -38,6 +38,5 @@ describe 'curl_json defined type' do
     describe package(curl_json_package) do
       it { is_expected.to be_installed }
     end
-
   end
 end
