@@ -23,7 +23,11 @@ define collectd::plugin::curl_json (
 
   if $_manage_package {
     if $::osfamily == 'Debian' {
-      ensure_packages('libyajl2')
+      $libyajl_package = $::lsbdistcodename ? {
+        'precise' => 'libyajl1',
+        default   => 'libyajl2'
+      }
+      ensure_packages($libyajl_package)
     }
 
     if $::osfamily == 'Redhat' {

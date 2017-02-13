@@ -39,6 +39,10 @@ describe 'collectd::plugin::curl_json', type: :define do
       )
     end
 
+    it do
+      is_expected.to contain_package('libyajl2')
+    end
+
     it { is_expected.to contain_file(filename).that_notifies('Service[collectd]') }
     it { is_expected.to contain_file(filename).with_content(%r{LoadPlugin "curl_json"}) }
     it { is_expected.to contain_file(filename).with_content(%r{URL "http://localhost:55672/api/overview">}) }
@@ -49,5 +53,23 @@ describe 'collectd::plugin::curl_json', type: :define do
     it { is_expected.to contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
     it { is_expected.to contain_file(filename).with_content(%r{Type "gauge"}) }
     it { is_expected.to contain_file(filename).with_content(%r{Instance "overview"}) }
+  end
+
+  context 'on precise' do
+    let(:params) { my_params }
+
+    let :facts do
+      {
+        osfamily: 'Debian',
+        collectd_version: '4.8.0',
+        lsbdistcodename: 'precise',
+        operatingsystemmajrelease: '12.04',
+        python_dir: '/usr/local/lib/python2.7/dist-packages'
+      }
+    end
+
+    it do
+      is_expected.to contain_package('libyajl1')
+    end
   end
 end

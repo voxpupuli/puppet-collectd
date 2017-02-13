@@ -12,6 +12,8 @@ HOSTS:
     docker_image_commands:
       - 'apt-get install -y net-tools wget'
       - 'locale-gen en_US.UTF-8'
+      - 'ln -s /opt/puppetlabs/bin/facter /usr/bin/facter'
+      - 'ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet'
 CONFIG:
   trace_limit: 200
   masterless: true
