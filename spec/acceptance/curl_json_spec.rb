@@ -26,11 +26,11 @@ describe 'curl_json defined type' do
 
     case fact(:osfamily)
     when 'Debian'
-      if fact(:lsbdistcodename) == 'precise'
-        curl_json_package = 'libyajl1'
-      else
-        curl_json_package = 'libyajl2'
-      end
+      curl_json_package = if fact(:lsbdistcodename) == 'precise'
+                            'libyajl1'
+                          else
+                            'libyajl2'
+                          end
     when 'RedHat'
       curl_json_package = 'collectd-curl_json'
     end
