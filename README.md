@@ -412,10 +412,20 @@ class { 'collectd::plugin::curl':
 ```puppet
 collectd::plugin::curl_json {
   'rabbitmq_overview':
-    url => 'http://localhost:55672/api/overview',
-    instance => 'rabbitmq_overview',
-    interval => '300',
-    keys => {
+    url        => 'http://localhost:55672/api/overview',
+    host       => 'rabbitmq.example.net',
+    instance   => 'rabbitmq_overview',
+    interval   => '300',
+    user       => 'user',
+    password   => 'password',
+    digest     => 'false',
+    verifypeer => 'false',
+    verifyhost => 'false',
+    cacert     => '/path/to/ca.crt',
+    header     => 'Accept: application/json',
+    post       => '{secret: \"mysecret\"}',
+    timeout    => '1000',
+    keys       => {
       'message_stats/publish' => {
         'type'     => 'gauge',
         'instance' => 'overview',
