@@ -128,6 +128,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
+* `iscdhcp` (see [collectd::plugin::iscdhcp](#class-collectdpluginiscdhcp) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `java` (see [collectd::plugin::java](#class-collectdpluginjava) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
@@ -870,6 +871,12 @@ class { 'collectd::plugin::iptables':
     'filter' => 'HTTP'
   },
 }
+```
+
+#### Class: `collectd::plugin::iscdhcp`
+
+```puppet
+class { 'collectd::plugin::iscdhcp': }
 ```
 
 #### Class: `collectd::plugin::java`
