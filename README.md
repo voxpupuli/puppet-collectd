@@ -1242,6 +1242,7 @@ collectd::plugin::postgresql::database{'monitoring_node1':
 }
 collectd::plugin::postgresql::query{'log_delay':
   statement => 'SELECT * FROM log_delay_repli;',
+  params    => ['database'],
   results   => [{
     type           => 'gauge',
     instanceprefix => 'log_delay',
