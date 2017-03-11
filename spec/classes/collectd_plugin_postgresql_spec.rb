@@ -43,6 +43,7 @@ describe 'collectd::plugin::postgresql', type: :class do
         queries: {
           'log_delay' => {
             'statement' => 'SELECT * FROM log_delay_repli;',
+            'params'    => ['database'],
             'results'   => [{
               'type'           => 'gauge',
               'instanceprefix' => 'log_delay',
@@ -64,6 +65,7 @@ describe 'collectd::plugin::postgresql', type: :class do
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
+      is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Param \"database\"})
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
     end
   end
