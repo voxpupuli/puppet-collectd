@@ -2,6 +2,12 @@
 <% @instances.each do |name,values| -%>
   <Instance "<%= name %>">
     URL "<%= values['url'] %>"
+<% unless values['binddn'].nil? -%>
+    BindDN "<%= values['binddn'] %>"
+<% end -%>
+<% unless values['password'].nil? -%>
+    Password "<%= values['password'] %>"
+<% end -%>
 <% unless values['starttls'].nil? -%>
     StartTLS <%= values['starttls'] %>
 <% end -%>
