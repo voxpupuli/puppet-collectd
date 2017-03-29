@@ -49,11 +49,11 @@ class collectd (
   anchor { 'collectd::begin': }
   anchor { 'collectd::end': }
 
-  Class['::collectd::repo'] ~>
-  Class['::collectd::install']
+  Class['::collectd::repo']
+  ~> Class['::collectd::install']
 
-  Anchor['collectd::begin'] ->
-  Class['collectd::install'] ->
-  Class['collectd::config'] ~>
-  Class['collectd::service']
+  Anchor['collectd::begin']
+  -> Class['collectd::install']
+  -> Class['collectd::config']
+  ~> Class['collectd::service']
 }
