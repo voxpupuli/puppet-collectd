@@ -23,9 +23,9 @@ class collectd::plugin::java (
       file { '/usr/lib64/libjvm.so':
         ensure => 'link',
         target => "${java_home}/jre/lib/amd64/server/libjvm.so",
-      } ->
+      }
       # Reload SO files so libjvm.so can be found
-      exec { '/sbin/ldconfig':
+      -> exec { '/sbin/ldconfig':
         unless => '/sbin/ldconfig -p |grep libjvm.so >/dev/null 2>&1',
       }
     }

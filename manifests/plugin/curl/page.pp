@@ -10,6 +10,7 @@ define collectd::plugin::curl::page (
   $header              = undef,
   $post                = undef,
   $measureresponsetime = undef,
+  $measureresponsecode = undef,
   $matches             = undef,
   $plugininstance      = $name, # You can have multiple <Page> with the same name.
 ) {
