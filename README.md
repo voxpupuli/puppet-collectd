@@ -1369,9 +1369,9 @@ Or define single module:
 ```puppet
 collectd::plugin::python::module {'zk-collectd':
   script_source => 'puppet:///modules/myorg/zk-collectd.py',
-  config        => {
-    'Hosts' => "localhost:2181"
-  }
+  config        => [
+    {'Hosts' => "localhost:2181"}
+  ]
 }
 ```
 
@@ -1383,9 +1383,9 @@ are included in `collectd::plugin::python` variable `modulepaths`. If no
 collectd::plugin::python::module {'my-module':
   modulepath    => '/var/share/collectd',
   script_source => 'puppet:///modules/myorg/my-module.py',
-  config        => {
-    'Key' => "value"
-  }
+  config        => [
+    {'Key' => "value"}
+  ]
 }
 ```
 
