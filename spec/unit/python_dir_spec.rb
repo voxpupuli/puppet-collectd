@@ -6,6 +6,8 @@ describe 'python_dir', type: :fact do
   describe 'python dir' do
     context 'default path' do
       before do
+        # This is needed to make this spec work on Fedora, apparently
+        Facter.fact(:osfamily).stubs(:value).returns('AnythingNotRedHat')
         Facter::Util::Resolution.stubs(:which).with('python').returns(true)
         Facter::Util::Resolution.stubs(:exec).with('python -c "import site; print(site.getsitepackages()[0])"').returns('/usr/local/lib/python2.7/dist-packages')
       end

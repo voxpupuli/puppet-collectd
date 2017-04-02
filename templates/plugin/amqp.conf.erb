@@ -6,7 +6,7 @@
     User "<%= @amqpuser %>"
     Password "<%= @amqppass %>"
     Format "<%= @amqpformat %>"
-<% if @amqpstorerates and @amqformat == 'JSON' -%>
+<% if @amqpstorerates and @amqpformat == 'JSON' -%>
     StoreRates true
 <% else -%>
     StoreRates false
