@@ -19,6 +19,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
     let :params do
       { socket: '/var/run/mysqld/mysqld.sock' }
     end
+
     it 'Will create /etc/collectd/conf.d/mysql-test.conf' do
       is_expected.to contain_file('test.conf').with_content(%r{Socket "/var/run/mysqld/mysqld\.sock"$})
     end
@@ -26,6 +27,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
 
   context 'no custom socket' do
     let(:title) { 'test' }
+
     it 'Will create /etc/collectd/conf.d/mysql-test.conf' do
       is_expected.to contain_file('test.conf').without_content(%r{Socket})
     end

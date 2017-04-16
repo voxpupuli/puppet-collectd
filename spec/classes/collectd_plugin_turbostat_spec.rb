@@ -9,6 +9,7 @@ describe 'collectd::plugin::turbostat', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present, default params' do
     let :facts do
       {
@@ -18,6 +19,7 @@ describe 'collectd::plugin::turbostat', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').
         with(ensure: 'present',
@@ -30,6 +32,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { core_c_states: 392 }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',
@@ -41,6 +44,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { package_c_states: 396 }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',
@@ -52,6 +56,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { system_management_interrupt: false }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',
@@ -63,6 +68,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { digital_temperature_sensor: false }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',
@@ -74,6 +80,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { tcc_activation_temp: 40 }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',
@@ -85,6 +92,7 @@ describe 'collectd::plugin::turbostat', type: :class do
     let :params do
       { running_average_power_limit: 8 }
     end
+
     it 'Will create /etc/collectd.d/10-turbostat.conf' do
       is_expected.to contain_file('turbostat.load').with(ensure: 'present',
                                                          path: '/etc/collectd.d/10-turbostat.conf',

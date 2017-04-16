@@ -99,9 +99,11 @@ EOS
     end
 
     it 'Will create /etc/collectd.d/10-openldap.conf' do
-      is_expected.to contain_file('openldap.load').with(ensure: 'present',
-                                                        path: '/etc/collectd.d/10-openldap.conf',
-                                                        content: %r{^  Interval 15})
+      is_expected.to contain_file('openldap.load').with(
+        ensure: 'present',
+        path: '/etc/collectd.d/10-openldap.conf',
+        content: %r{^  Interval 15}
+      )
     end
   end
 
@@ -119,8 +121,10 @@ EOS
     end
 
     it 'Will not create /etc/collectd.d/10-openldap.conf' do
-      is_expected.to contain_file('openldap.load').with(ensure: 'absent',
-                                                        path: '/etc/collectd.d/10-openldap.conf')
+      is_expected.to contain_file('openldap.load').with(
+        ensure: 'absent',
+        path: '/etc/collectd.d/10-openldap.conf'
+      )
     end
   end
 end

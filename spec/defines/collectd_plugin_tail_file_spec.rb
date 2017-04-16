@@ -36,6 +36,7 @@ describe 'collectd::plugin::tail::file', type: :define do
         ]
       }
     end
+
     describe '/etc/collectd/conf.d/tail-exim-log.conf' do
       it 'Will create /etc/collectd/conf.d/tail-exim-log.conf' do
         is_expected.to contain_file('exim-log.conf').with(
@@ -85,6 +86,7 @@ describe 'collectd::plugin::tail::file', type: :define do
         ]
       }
     end
+
     it "templated file contains the 'ExcludeRegex' line" do
       content = catalogue.resource('file', 'test.conf').send(:parameters)[:content]
       expected_content  = %(  <Match>\n)

@@ -21,7 +21,7 @@ describe 'collectd::plugin::protocols', type: :class do
 
   context ':ensure => present, specific params' do
     let :params do
-      { values: %w(protocol1 protocol2) }
+      { values: %w[protocol1 protocol2] }
     end
 
     it 'Will create /etc/collectd.d/10-protocols.conf' do

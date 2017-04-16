@@ -17,6 +17,7 @@ describe 'collectd::plugin::varnish', type: :class do
     let :params do
       {}
     end
+
     it 'renders the template with the default values' do
       content = <<EOS
 <Plugin varnish>
@@ -39,6 +40,7 @@ EOS
     let :params do
       {}
     end
+
     it 'renders the template with the default values' do
       content = <<EOS
 <Plugin varnish>
@@ -59,10 +61,12 @@ EOS
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     context 'when there are no params given' do
       let :params do
         {}
       end
+
       it 'renders the template with the default values' do
         content = <<EOS
 <Plugin varnish>
@@ -84,6 +88,7 @@ EOS
           }
         }
       end
+
       it 'renders the template with the values passed in the params' do
         content = <<EOS
 <Plugin varnish>

@@ -6,11 +6,13 @@ describe 'collectd::plugin::amqp', type: :class do
       let :facts do
         facts
       end
+
       options = os_specific_options(facts)
       context ':ensure => present' do
         let :params do
           { ensure: 'present' }
         end
+
         it { is_expected.to contain_collectd__plugin('amqp') }
         it { is_expected.to contain_file('old_amqp.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_amqp.load').with_ensure('absent') }
@@ -50,6 +52,7 @@ describe 'collectd::plugin::amqp', type: :class do
             graphiteseparateinstances: true,
             graphitealwaysappendds: true }
         end
+
         it { is_expected.to contain_file('amqp.load').with(content: %r{<Publish "graphite">}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{Host "myhost"}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{Port "5666"}) }
@@ -67,6 +70,7 @@ describe 'collectd::plugin::amqp', type: :class do
           let :facts do
             facts.merge(collectd_version: '5.6.0')
           end
+
           it { is_expected.to contain_file('amqp.load').with(content: %r{GraphiteSeparateInstances true}) }
           it { is_expected.to contain_file('amqp.load').with(content: %r{GraphiteAlwaysAppendDS true}) }
         end
@@ -76,6 +80,7 @@ describe 'collectd::plugin::amqp', type: :class do
         let :params do
           { ensure: 'absent' }
         end
+
         it 'Will not create 10-amqp.conf' do
           is_expected.to contain_file('amqp.load').with(
             ensure: 'absent',

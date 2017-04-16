@@ -13,6 +13,7 @@ describe 'collectd::plugin::filter', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present and default parameters' do
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
       is_expected.to contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
@@ -29,6 +30,7 @@ describe 'collectd::plugin::filter', type: :class do
         postcachechain: 'MyPostChain'
       }
     end
+
     it 'Will create /etc/collectd/conf.d/01-filter.conf to set the default Chains' do
       is_expected.to contain_file('/etc/collectd/conf.d/01-filter.conf').with(ensure: 'present',
                                                                               path: '/etc/collectd/conf.d/01-filter.conf',

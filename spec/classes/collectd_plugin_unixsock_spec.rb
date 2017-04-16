@@ -23,6 +23,7 @@ describe 'collectd::plugin::unixsock', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-unixsock.conf' do
       is_expected.to contain_file('unixsock.load').
         with(ensure: 'absent',
@@ -34,6 +35,7 @@ describe 'collectd::plugin::unixsock', type: :class do
     let :params do
       { socketfile: 'var/run/socket' }
     end
+
     it 'Will raise an error about :socketfile' do
       is_expected.to compile.and_raise_error(%r{absolute path})
     end

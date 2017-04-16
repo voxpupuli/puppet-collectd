@@ -8,11 +8,13 @@ describe 'collectd::plugin::write_log', type: :class do
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         )
       end
+
       options = os_specific_options(facts)
       context ':ensure => present and :format => \'JSON\'' do
         let :params do
           { format: 'JSON' }
         end
+
         it { is_expected.to contain_collectd__plugin('write_log') }
         it { is_expected.to contain_file('old_write_log.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_write_log.load').with_ensure('absent') }
@@ -29,6 +31,7 @@ describe 'collectd::plugin::write_log', type: :class do
         let :params do
           { format: 'Graphite' }
         end
+
         it 'Will create 10-write_log.conf' do
           is_expected.to contain_file('write_log.load').with(
             ensure: 'present',
@@ -42,6 +45,7 @@ describe 'collectd::plugin::write_log', type: :class do
         let :params do
           { ensure: 'absent' }
         end
+
         it 'Will not create 10-write_log.conf' do
           is_expected.to contain_file('write_log.load').with(
             ensure: 'absent',

@@ -13,7 +13,7 @@ describe 'collectd::plugin::netlink', type: :class do
   context ':ensure => present, specific params' do
     let :params do
       {
-        interfaces: %w(eth0 eth1),
+        interfaces: %w[eth0 eth1],
         verboseinterfaces: ['ppp0'],
         qdiscs: ['"eth0" "pfifo_fast-1:0"', '"ppp0"'],
         classes: ['"ppp0" "htb-1:10"'],
@@ -22,6 +22,7 @@ describe 'collectd::plugin::netlink', type: :class do
 
       }
     end
+
     it 'Will create /etc/collectd.d/10-netlink.conf' do
       is_expected.to contain_file('netlink.load').with(ensure: 'present',
                                                        path: '/etc/collectd.d/10-netlink.conf')
@@ -46,6 +47,7 @@ describe 'collectd::plugin::netlink', type: :class do
     let :params do
       { interfaces: ['eth0'], ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-netlink.conf' do
       is_expected.to contain_file('netlink.load').with(ensure: 'absent',
                                                        path: '/etc/collectd.d/10-netlink.conf')
@@ -61,6 +63,7 @@ describe 'collectd::plugin::netlink', type: :class do
     let :params do
       { interfaces: 'eth0' }
     end
+
     it 'Will raise an error about :interfaces being a String' do
       is_expected.to compile.and_raise_error(%r{String})
     end

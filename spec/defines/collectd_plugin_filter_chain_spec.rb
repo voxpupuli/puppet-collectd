@@ -16,6 +16,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
 
   context ':ensure => present and default parameters' do
     let(:title) { 'MyChain' }
+
     it 'Will create /etc/collectd/conf.d/filter-chain-MyChain.conf' do
       is_expected.to contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'present').
         that_requires('File[collectd.d]')
@@ -44,6 +45,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
         }
       }
     end
+
     it 'Will add a default target with plugin set and options' do
       is_expected.to contain_collectd__plugin__filter__target('z_chain-MyChain-target').with(
         chain: 'MyChain',
@@ -63,6 +65,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
         ensure: 'absent'
       }
     end
+
     it 'Will remove file /etc/collectd/conf.d/filter-chain-MyChain.conf' do
       is_expected.to contain_concat('/etc/collectd/conf.d/filter-chain-MyChain.conf').with(ensure: 'absent')
     end

@@ -8,11 +8,13 @@ describe 'collectd::plugin::uuid', type: :class do
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         )
       end
+
       options = os_specific_options(facts)
       context ':ensure => present' do
         let :params do
           { ensure: 'present' }
         end
+
         it { is_expected.to contain_collectd__plugin('uuid') }
         it { is_expected.to contain_file('old_uuid.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_uuid.load').with_ensure('absent') }
@@ -29,6 +31,7 @@ describe 'collectd::plugin::uuid', type: :class do
         let :params do
           { ensure: 'absent' }
         end
+
         it 'Will not create 10-uuid.conf' do
           is_expected.to contain_file('uuid.load').with(
             ensure: 'absent',

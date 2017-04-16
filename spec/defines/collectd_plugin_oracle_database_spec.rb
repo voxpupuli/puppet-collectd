@@ -30,6 +30,7 @@ describe 'collectd::plugin::oracle::database', type: :define do
   # empty values array is technically not valid, but we'll test those cases later
   context 'defaults' do
     let(:params) { default_params }
+
     it 'provides an oracle database stanza concat fragment' do
       is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
                                                                          order: '20')
@@ -40,7 +41,7 @@ describe 'collectd::plugin::oracle::database', type: :define do
 
   context 'query array' do
     let(:params) do
-      default_params.merge(query: %w(foo bar baz))
+      default_params.merge(query: %w[foo bar baz])
     end
 
     it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Query "foo"\s+Query "bar"\s+Query "baz"}) }

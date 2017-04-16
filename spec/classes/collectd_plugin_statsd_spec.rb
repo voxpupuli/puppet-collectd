@@ -31,6 +31,7 @@ describe 'collectd::plugin::statsd', type: :class do
           port: '9876'
         }
       end
+
       it 'Will create /etc/collectd.d/10-statsd.conf' do
         is_expected.to contain_file('statsd.load').with(ensure: 'present',
                                                         path: '/etc/collectd.d/10-statsd.conf',
@@ -45,6 +46,7 @@ describe 'collectd::plugin::statsd', type: :class do
           countersum: true
         }
       end
+
       it 'Will create /etc/collectd.d/10-statsd.conf' do
         is_expected.to contain_file('statsd.load').with(ensure: 'present',
                                                         path: '/etc/collectd.d/10-statsd.conf',
@@ -59,6 +61,7 @@ describe 'collectd::plugin::statsd', type: :class do
         ensure: 'absent'
       }
     end
+
     it 'Will not create /etc/collectd.d/10-statsd.conf' do
       is_expected.to contain_file('statsd.load').with(ensure: 'absent',
                                                       path: '/etc/collectd.d/10-statsd.conf')

@@ -54,6 +54,7 @@ describe 'collectd::plugin::fhcount', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will remove /etc/collectd.d/10-fhcount.conf' do
       is_expected.to contain_file('fhcount.load').with(ensure: 'absent',
                                                        path: '/etc/collectd.d/10-fhcount.conf',

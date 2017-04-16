@@ -37,7 +37,7 @@ describe 'collectd::plugin::postgresql', type: :class do
             'user'     => 'postgres',
             'password' => 'postgres',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay)
+            'query'    => %w[disk_io log_delay]
           }
         },
         queries: {
@@ -60,6 +60,7 @@ describe 'collectd::plugin::postgresql', type: :class do
         }
       }
     end
+
     it 'Will create /etc/collectd.d/postgresql-config.conf' do
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
@@ -81,7 +82,7 @@ describe 'collectd::plugin::postgresql', type: :class do
             'password' => 'postgres',
             'port'     => '5432',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay)
+            'query'    => %w[disk_io log_delay]
           },
           'postgres_port_5433' => {
             'instance' => 'postgres',
@@ -90,12 +91,13 @@ describe 'collectd::plugin::postgresql', type: :class do
             'password' => 'postgres',
             'port'     => '5433',
             'sslmode'  => 'disable',
-            'query'    => %w(disk_io log_delay)
+            'query'    => %w[disk_io log_delay]
 
           }
         }
       }
     end
+
     it 'Will create /etc/collectd.d/postgresql-config.conf dsfd ' do
       is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5432').with(
         content: %r{Instance \"postgres\"}

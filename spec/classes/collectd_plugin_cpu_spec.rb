@@ -101,6 +101,7 @@ describe 'collectd::plugin::cpu', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will remove /etc/collectd.d/10-cpu.conf' do
       is_expected.to contain_file('cpu.load').with(ensure: 'absent',
                                                    path: '/etc/collectd.d/10-cpu.conf',

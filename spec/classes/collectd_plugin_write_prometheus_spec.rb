@@ -14,6 +14,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
     let :params do
       { port: '9103' }
     end
+
     it 'Will create /etc/collectd.d/10-write_prometheus.conf' do
       is_expected.to contain_file('write_prometheus.load').with(ensure: 'present')
       is_expected.to contain_file('write_prometheus.load').with(path: '/etc/collectd.d/10-write_prometheus.conf')
@@ -25,6 +26,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will not create ' do
       is_expected.to contain_file('write_prometheus.load').with(ensure: 'absent',
                                                                 path: '/etc/collectd.d/10-write_prometheus.conf')

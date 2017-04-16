@@ -32,6 +32,7 @@ describe 'collectd::plugin::oracle', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-oracle.conf' do
       is_expected.to contain_file('oracle.load').with(ensure: 'absent',
                                                       path: '/etc/collectd.d/10-oracle.conf')

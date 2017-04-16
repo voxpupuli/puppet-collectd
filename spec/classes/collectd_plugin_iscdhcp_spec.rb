@@ -29,9 +29,9 @@ describe 'collectd::plugin::cuda', type: :class do
       describe 'with manage_package parameter' do
         [false, true].each do |value|
           context "set to #{value}" do
-            %w(present absent).each do |ensure_value|
-              %w(pip yum).each do |provider|
-                %w(collectd-cuda collectd_cuda).each do |packagename|
+            %w[present absent].each do |ensure_value|
+              %w[pip yum].each do |provider|
+                %w[collectd-cuda collectd_cuda].each do |packagename|
                   context "and ensure set to #{ensure_value} for package #{packagename} with package_provider #{provider}" do
                     let :params do
                       {

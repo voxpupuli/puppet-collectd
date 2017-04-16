@@ -23,6 +23,7 @@ describe 'collectd::plugin::smart', type: :class do
     let :params do
       { disks: ['sda'] }
     end
+
     it 'Will create /etc/collectd.d/10-smart.conf' do
       is_expected.to contain_file('smart.load').with(ensure: 'present',
                                                      path: '/etc/collectd.d/10-smart.conf',
@@ -34,6 +35,7 @@ describe 'collectd::plugin::smart', type: :class do
     let :params do
       { disks: ['sda'], ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-smart.conf' do
       is_expected.to contain_file('smart.load').with(ensure: 'absent',
                                                      path: '/etc/collectd.d/10-smart.conf')
@@ -55,6 +57,7 @@ describe 'collectd::plugin::smart', type: :class do
         manage_package: true
       }
     end
+
     it 'Will manage collectd-smart' do
       is_expected.to contain_package('collectd-smart').with(ensure: 'present',
                                                             name: 'collectd-smart')
@@ -76,6 +79,7 @@ describe 'collectd::plugin::smart', type: :class do
         manage_package: false
       }
     end
+
     it 'Will not manage collectd-smart' do
       is_expected.not_to contain_package('collectd-smart').with(ensure: 'present',
                                                                 name: 'collectd-smart')
@@ -118,6 +122,7 @@ describe 'collectd::plugin::smart', type: :class do
     let :params do
       { disks: 'sda' }
     end
+
     it 'Will raise an error about :disks being a String' do
       is_expected.to compile.and_raise_error(%r{String})
     end

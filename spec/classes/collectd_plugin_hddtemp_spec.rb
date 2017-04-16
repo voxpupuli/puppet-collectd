@@ -8,6 +8,7 @@ describe 'collectd::plugin::hddtemp', type: :class do
           python_dir: '/usr/local/lib/python2.7/dist-packages'
         )
       end
+
       options = os_specific_options(facts)
       context ':ensure => present' do
         let :params do
@@ -16,6 +17,7 @@ describe 'collectd::plugin::hddtemp', type: :class do
             ensure: 'present'
           }
         end
+
         it { is_expected.to contain_collectd__plugin('hddtemp') }
         it { is_expected.to contain_file('old_hddtemp.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_hddtemp.load').with_ensure('absent') }
@@ -32,6 +34,7 @@ describe 'collectd::plugin::hddtemp', type: :class do
         let :params do
           { ensure: 'absent' }
         end
+
         it 'Will not create 10-hddtemp.conf' do
           is_expected.to contain_file('hddtemp.load').with(
             ensure: 'absent',
@@ -44,6 +47,7 @@ describe 'collectd::plugin::hddtemp', type: :class do
         let :params do
           { port: 'port' }
         end
+
         it 'Will raise an error about :port not being an integer' do
           is_expected.to compile.and_raise_error(%r{Expected first argument to be an Integer or Array, got String})
         end
