@@ -6,7 +6,7 @@ define collectd::plugin::mysql::database (
   $username           = 'UNSET',
   $password           = 'UNSET',
   $port               = '3306',
-  $masterstats        = false,
+  $masterstats        = false,		
   $slavestats         = false,
   $socket             = undef,
   $innodbstats        = undef,
@@ -20,6 +20,7 @@ define collectd::plugin::mysql::database (
 
   validate_string($database, $host, $username, $password, $port)
   validate_bool($masterstats, $slavestats)
+  
   if $socket {
     validate_string($socket)
   }
