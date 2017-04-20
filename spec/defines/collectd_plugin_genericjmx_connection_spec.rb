@@ -57,7 +57,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
 
   context 'collect array' do
     let(:params) do
-      default_params.merge(collect: %w(foo bar baz))
+      default_params.merge(collect: %w[foo bar baz])
     end
 
     it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "foo".*Collect "bar".*Collect "baz"}m) }

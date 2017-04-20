@@ -9,6 +9,7 @@ describe 'collectd::plugin::swap', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present, default params' do
     let :facts do
       {
@@ -18,6 +19,7 @@ describe 'collectd::plugin::swap', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will create /etc/collectd.d/10-swap.conf' do
       is_expected.to contain_file('swap.load').
         with(ensure: 'present',

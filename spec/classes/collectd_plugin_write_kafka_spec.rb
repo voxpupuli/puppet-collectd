@@ -14,6 +14,7 @@ describe 'collectd::plugin::write_kafka', type: :class do
     let :params do
       { kafka_host: 'myhost', kafka_port: '9092', topics: { 'my-topic' => { 'format' => 'JSON' } } }
     end
+
     it 'Will create /etc/collectd/conf.d/10-write_kafka.conf' do
       is_expected.to contain_file('write_kafka.load').with(ensure: 'present')
       is_expected.to contain_file('write_kafka.load').with(path: '/etc/collectd/conf.d/10-write_kafka.conf')
@@ -27,6 +28,7 @@ describe 'collectd::plugin::write_kafka', type: :class do
     let :params do
       { kafka_host: ['myhost'], ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd/conf.d/10-write_kafka.conf' do
       is_expected.to contain_file('write_kafka.load').with(ensure: 'absent', path: '/etc/collectd/conf.d/10-write_kafka.conf')
     end
@@ -34,8 +36,9 @@ describe 'collectd::plugin::write_kafka', type: :class do
 
   context ':topics is a hash' do
     let :params do
-      { topics: %w(test) }
+      { topics: %w[test] }
     end
+
     it 'Will raise an error about :topics being an Array' do
       is_expected.to compile.and_raise_error(%r{Array})
     end

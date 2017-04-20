@@ -9,6 +9,8 @@ AllCops:
     - .vendor/**/*
     - pkg/**/*
     - spec/fixtures/**/*
+    - Gemfile
+    - Rakefile
 Lint/ConditionPosition:
   Enabled: True
 
@@ -519,6 +521,9 @@ RSpec/RepeatedDescription:
 RSpec/NestedGroups:
   Enabled: False
 
+# this is broken on ruby1.9
+Style/IndentHeredoc:
+  Enabled: False
 # disable Yaml safe_load. This is needed to support ruby2.0.0 development envs
 Security/YAMLLoad:
   Enabled: false

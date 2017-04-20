@@ -40,8 +40,9 @@ describe 'collectd::plugin::snmp::data', type: :define do
 
   context 'values is an array' do
     let(:params) do
-      required_params.merge(values: %w(foo bar baz))
+      required_params.merge(values: %w[foo bar baz])
     end
+
     it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
   end
 
@@ -49,13 +50,15 @@ describe 'collectd::plugin::snmp::data', type: :define do
     let(:params) do
       required_params.merge(values: 'bat')
     end
+
     it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"}) }
   end
 
   context 'Ignore is an array' do
     let(:params) do
-      required_params.merge(ignore: %w(hamilton burr jefferson))
+      required_params.merge(ignore: %w[hamilton burr jefferson])
     end
+
     it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "hamilton" "burr" "jefferson"}) }
   end
 
@@ -63,6 +66,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
     let(:params) do
       required_params.merge(ignore: 'washington')
     end
+
     it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "washington"}) }
   end
 

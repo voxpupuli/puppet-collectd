@@ -36,6 +36,7 @@ describe 'collectd::plugin::snmp', type: :class do
         }
       }
     end
+
     it 'Will create /etc/collectd.d/10-snmp.conf' do
       is_expected.to contain_file('snmp.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-snmp.conf',
@@ -66,6 +67,7 @@ describe 'collectd::plugin::snmp', type: :class do
         }
       }
     end
+
     it 'Will not create /etc/collectd.d/10-snmp.conf' do
       is_expected.to contain_file('snmp.load').with(ensure: 'absent',
                                                     path: '/etc/collectd.d/10-snmp.conf')

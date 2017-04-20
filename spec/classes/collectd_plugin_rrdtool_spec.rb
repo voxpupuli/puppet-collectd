@@ -29,6 +29,7 @@ describe 'collectd::plugin::rrdtool', type: :class do
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-rrdtool.conf' do
       is_expected.to contain_file('rrdtool.load').
         with(ensure: 'absent',

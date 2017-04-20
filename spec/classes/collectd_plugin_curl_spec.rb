@@ -22,6 +22,7 @@ describe 'collectd::plugin::curl', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will create /etc/collectd.d/10-curl.conf' do
       is_expected.to contain_file('curl.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-curl.conf',

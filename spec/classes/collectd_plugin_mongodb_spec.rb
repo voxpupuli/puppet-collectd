@@ -39,7 +39,7 @@ describe 'collectd::plugin::mongodb', type: :class do
   end
 
   describe 'with ensure parameter' do
-    %w(present absent).each do |value|
+    %w[present absent].each do |value|
       context "set to a valid value of #{value}" do
         let :params do
           default_params.merge(ensure: value.to_s)
@@ -100,7 +100,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       it { is_expected.to contain_file('mongodb.load').with_content(hostdb_fixture) }
     end
 
-    %w(127001 nil).each do |value|
+    %w[127001 nil].each do |value|
       context 'set to and invalid IP' do
         let :params do
           default_params.merge(db_host: value.to_s)

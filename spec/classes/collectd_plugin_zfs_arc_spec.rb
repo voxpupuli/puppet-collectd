@@ -8,6 +8,7 @@ describe 'collectd::plugin::zfs_arc', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present' do
     let :facts do
       {
@@ -17,6 +18,7 @@ describe 'collectd::plugin::zfs_arc', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will create 10-zfs_arc.conf' do
       is_expected.to contain_file('zfs_arc.load').with(ensure: 'present',
                                                        path: '/usr/local/etc/collectd/10-zfs_arc.conf',

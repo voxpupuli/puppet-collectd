@@ -18,6 +18,7 @@ describe 'collectd::plugin::ping', type: :class do
     let :params do
       { hosts: ['google.com'] }
     end
+
     it 'Will create /etc/collectd.d/10-ping.conf' do
       is_expected.to contain_file('ping.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-ping.conf',
@@ -29,6 +30,7 @@ describe 'collectd::plugin::ping', type: :class do
     let :params do
       { hosts: ['google.com', 'puppetlabs.com'] }
     end
+
     it 'Will create /etc/collectd.d/10-ping.conf' do
       is_expected.to contain_file('ping.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-ping.conf').with_content(
@@ -43,6 +45,7 @@ describe 'collectd::plugin::ping', type: :class do
     let :params do
       { hosts: ['google.com'], ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-ping.conf' do
       is_expected.to contain_file('ping.load').with(ensure: 'absent',
                                                     path: '/etc/collectd.d/10-ping.conf')
@@ -53,6 +56,7 @@ describe 'collectd::plugin::ping', type: :class do
     let :params do
       { hosts: 'google.com' }
     end
+
     it 'Will raise an error about :interfaces being a String' do
       is_expected.to compile.and_raise_error(%r{String})
     end

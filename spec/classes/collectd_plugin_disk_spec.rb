@@ -14,6 +14,7 @@ describe 'collectd::plugin::disk', type: :class do
     let :params do
       { disks: ['sda'] }
     end
+
     it 'Will create /etc/collectd.d/10-disk.conf' do
       is_expected.to contain_file('disk.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-disk.conf',
@@ -25,6 +26,7 @@ describe 'collectd::plugin::disk', type: :class do
     let :params do
       { disks: ['sda'], ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-disk.conf' do
       is_expected.to contain_file('disk.load').with(ensure: 'absent',
                                                     path: '/etc/collectd.d/10-disk.conf')
@@ -46,6 +48,7 @@ describe 'collectd::plugin::disk', type: :class do
         manage_package: true
       }
     end
+
     it 'Will manage collectd-disk' do
       is_expected.to contain_package('collectd-disk').with(ensure: 'present',
                                                            name: 'collectd-disk')
@@ -67,6 +70,7 @@ describe 'collectd::plugin::disk', type: :class do
         manage_package: false
       }
     end
+
     it 'Will not manage collectd-disk' do
       is_expected.not_to contain_package('collectd-disk').with(ensure: 'present',
                                                                name: 'collectd-disk')
@@ -109,6 +113,7 @@ describe 'collectd::plugin::disk', type: :class do
     let :params do
       { disks: 'sda' }
     end
+
     it 'Will raise an error about :disks being a String' do
       is_expected.to compile.and_raise_error(%r{String})
     end
@@ -126,6 +131,7 @@ describe 'collectd::plugin::disk', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will not include the setting' do
       is_expected.to contain_file('disk.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-disk.conf').without_content(%r{UdevNameAttr DM_NAME})
@@ -144,6 +150,7 @@ describe 'collectd::plugin::disk', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will include the setting' do
       is_expected.to contain_file('disk.load').with(ensure: 'present',
                                                     path: '/etc/collectd.d/10-disk.conf',

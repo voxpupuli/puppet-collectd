@@ -40,7 +40,7 @@ describe 'collectd::plugin::dbi', type: :class do
               'password' => 'dbpasswd'
             },
             'selectdb' => 'db',
-            'query'    => %w(disk_io log_delay)
+            'query'    => %w[disk_io log_delay]
           }
         },
         queries: {
@@ -49,7 +49,7 @@ describe 'collectd::plugin::dbi', type: :class do
             'results'   => [{
               'type'           => 'gauge',
               'instanceprefix' => 'log_delay',
-              'instancesfrom'  => %w(inet_server_port inet_server_host),
+              'instancesfrom'  => %w[inet_server_port inet_server_host],
               'valuesfrom'     => 'log_delay'
             }]
           }

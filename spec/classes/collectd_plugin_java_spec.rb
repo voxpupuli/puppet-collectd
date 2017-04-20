@@ -31,7 +31,7 @@ describe 'collectd::plugin::java', type: :class do
   context 'jvmarg parameter array' do
     let(:params) do
       {
-        jvmarg: %w(foo bar baz)
+        jvmarg: %w[foo bar baz]
       }
     end
 

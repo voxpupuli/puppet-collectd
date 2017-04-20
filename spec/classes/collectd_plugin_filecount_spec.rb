@@ -14,6 +14,7 @@ describe 'collectd::plugin::filecount', type: :class do
     let :params do
       { directories: { 'active' => '/var/spool/postfix/active' } }
     end
+
     it 'Will create /etc/collectd.d/10-filecount.conf' do
       is_expected.to contain_file('filecount.load').
         with(ensure: 'present',
@@ -32,6 +33,7 @@ describe 'collectd::plugin::filecount', type: :class do
         'includehidden' => false
       } } }
     end
+
     it 'Will create foodir collectd::plugin::filecount::directory resource' do
       is_expected.to contain_collectd__plugin__filecount__directory('foodir').
         with(ensure: 'present',
@@ -47,6 +49,7 @@ describe 'collectd::plugin::filecount', type: :class do
     let :params do
       { directories: { 'active' => '/var/spool/postfix/active' }, ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/10-filecount.conf' do
       is_expected.to contain_file('filecount.load').
         with(ensure: 'absent',
@@ -58,6 +61,7 @@ describe 'collectd::plugin::filecount', type: :class do
     let :params do
       { directories: '/var/spool/postfix/active' }
     end
+
     it 'Will raise an error about :directories being a String' do
       is_expected.to compile.and_raise_error(%r{String})
     end

@@ -9,6 +9,7 @@ describe 'collectd::plugin::logfile', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present, default params' do
     let :facts do
       {

@@ -29,6 +29,7 @@ describe 'collectd::plugin::filter::target', type: :define do
                              'TypeInstance'   => 'core3'
                            })
     end
+
     it 'Will ensure that plugin is loaded' do
       is_expected.to contain_collectd__plugin('target_set').with(order: '02')
     end
@@ -49,6 +50,7 @@ describe 'collectd::plugin::filter::target', type: :define do
     let(:params) do
       default_params.merge(plugin: 'return')
     end
+
     it 'Builtin plugin should not be tried to load' do
       is_expected.not_to contain_collectd__plugin('target_return')
     end

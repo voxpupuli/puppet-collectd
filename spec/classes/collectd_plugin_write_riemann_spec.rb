@@ -16,6 +16,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
         protocol: 'TCP', batch: false, ttl_factor: '3', check_thresholds: true,
         tags: ['foo'], attributes: { 'bar' => 'baz' } }
     end
+
     it 'Will create /etc/collectd.d/10-write_riemann.conf' do
       is_expected.to contain_file('write_riemann.load').with(ensure: 'present')
       is_expected.to contain_file('write_riemann.load').with(path: '/etc/collectd.d/10-write_riemann.conf')
@@ -34,6 +35,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { riemann_host: ['myhost'], ensure: 'absent' }
     end
+
     it 'Will not create ' do
       is_expected.to contain_file('write_riemann.load').with(ensure: 'absent',
                                                              path: '/etc/collectd.d/10-write_riemann.conf')
@@ -44,6 +46,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { ttl_factor: 'four' }
     end
+
     it 'Will raise an error about :ttl_factor not being a Number' do
       is_expected.to compile.and_raise_error(%r{Expected first argument to be a Numeric or Array})
     end
@@ -53,6 +56,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { batch: 'false' }
     end
+
     it 'Will raise an error about :batch not being a Boolean' do
       is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
     end
@@ -62,6 +66,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { check_thresholds: 'false' }
     end
+
     it 'Will raise an error about :check_thresholds not being a Boolean' do
       is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
     end
@@ -71,6 +76,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { tags: 'test' }
     end
+
     it 'Will raise an error about :tags not being an array' do
       is_expected.to compile.and_raise_error(%r{"test" is not an Array})
     end
@@ -80,6 +86,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
     let :params do
       { attributes: 'test' }
     end
+
     it 'Will raise an error about :attributes not being a hash' do
       is_expected.to compile.and_raise_error(%r{"test" is not a Hash})
     end

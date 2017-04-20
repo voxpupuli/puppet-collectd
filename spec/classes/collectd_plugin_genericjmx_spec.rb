@@ -48,7 +48,8 @@ describe 'collectd::plugin::genericjmx', type: :class do
   end
 
   context 'jvmarg parameter array' do
-    let(:params) { { jvmarg: %w(foo bar baz) } }
+    let(:params) { { jvmarg: %w[foo bar baz] } }
+
     it 'has multiple jvmarg parameters' do
       is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
         with_content(%r{JVMArg "foo".*JVMArg "bar".*JVMArg "baz"}m)
@@ -57,6 +58,7 @@ describe 'collectd::plugin::genericjmx', type: :class do
 
   context 'jvmarg parameter string' do
     let(:params) { { jvmarg: 'bat' } }
+
     it 'has one jvmarg parameter' do
       is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').with_content(%r{JVMArg "bat"})
     end
@@ -67,6 +69,7 @@ describe 'collectd::plugin::genericjmx', type: :class do
 
   context 'jvmarg parameter empty' do
     let(:params) { { jvmarg: [] } }
+
     it 'does not have any jvmarg parameters other than classpath' do
       is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(%r{(.*JVMArg.*){2,}}m)
     end

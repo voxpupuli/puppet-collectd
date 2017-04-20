@@ -45,6 +45,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
                             community: 'opensesame',
                             interval: '30')
     end
+
     it { is_expected.to contain_file(filename).with_content(%r{Address "bar\.example\.com"}) }
     it { is_expected.to contain_file(filename).with_content(%r{Version 2}) }
     it { is_expected.to contain_file(filename).with_content(%r{Community "opensesame"}) }
@@ -54,9 +55,10 @@ describe 'collectd::plugin::snmp::host', type: :define do
   context 'collect is an array' do
     let(:params) do
       {
-        collect: %w(foo bar baz)
+        collect: %w[foo bar baz]
       }
     end
+
     it { is_expected.to contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }
   end
 
@@ -66,6 +68,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
         collect: 'bat'
       }
     end
+
     it { is_expected.to contain_file(filename).with_content(%r{Collect "bat"}) }
   end
 end

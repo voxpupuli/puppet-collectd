@@ -155,9 +155,9 @@ describe 'collectd::plugin::rabbitmq', type: :class do
   describe 'with manage_package parameter' do
     ['true', true].each do |value|
       context "set to #{value}" do
-        %w(present absent).each do |ensure_value|
-          %w(pip yum).each do |provider|
-            %w(collectd-rabbitmq collectd_rabbitmq).each do |packagename|
+        %w[present absent].each do |ensure_value|
+          %w[pip yum].each do |provider|
+            %w[collectd-rabbitmq collectd_rabbitmq].each do |packagename|
               context "and ensure set to #{ensure_value} for package #{packagename} with package_provider #{provider}" do
                 let :params do
                   {

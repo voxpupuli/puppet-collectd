@@ -33,6 +33,7 @@ describe 'collectd::plugin::memcached', type: :class do
         }
       }
     end
+
     it 'Will create /etc/collectd.d/memcached.conf' do
       content = <<EOS
   <Instance "sessions1">
@@ -63,6 +64,7 @@ EOS
         }
       }
     end
+
     it 'Will create /etc/collectd.d/memcached.conf' do
       content = <<EOS
   <Instance "sessions2">
@@ -82,6 +84,7 @@ EOS
     let :params do
       { ensure: 'absent' }
     end
+
     it 'Will not create /etc/collectd.d/memcached.conf' do
       is_expected.to contain_file('memcached.load').with(ensure: 'absent',
                                                          path: '/etc/collectd.d/10-memcached.conf')

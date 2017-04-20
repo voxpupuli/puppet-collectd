@@ -26,7 +26,7 @@ describe 'collectd::plugin::dns', type: :class do
   end
 
   describe 'with ensure parameter' do
-    %w(present absent).each do |value|
+    %w[present absent].each do |value|
       context "set to a valid value of #{value}" do
         let :params do
           { ensure: value }
@@ -92,7 +92,7 @@ describe 'collectd::plugin::dns', type: :class do
 
     context 'set to an invalid value (non-string)' do
       let :params do
-        { interface: %w(not a string) }
+        { interface: %w[not a string] }
       end
 
       it 'fails' do
@@ -154,7 +154,7 @@ describe 'collectd::plugin::dns', type: :class do
   describe 'with manage_package parameter' do
     ['true', true].each do |value|
       context "set to #{value}" do
-        %w(present absent).each do |ensure_value|
+        %w[present absent].each do |ensure_value|
           context "and ensure set to #{ensure_value}" do
             let :params do
               {

@@ -9,6 +9,7 @@ describe 'collectd::plugin::cgroups', type: :class do
       python_dir: '/usr/local/lib/python2.7/dist-packages'
     }
   end
+
   context ':ensure => present, default params' do
     let :facts do
       {
@@ -18,6 +19,7 @@ describe 'collectd::plugin::cgroups', type: :class do
         python_dir: '/usr/local/lib/python2.7/dist-packages'
       }
     end
+
     it 'Will create /etc/collectd.d/10-cgroups.conf' do
       is_expected.to contain_file('cgroups.load').
         with(ensure: 'present',

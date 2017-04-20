@@ -28,6 +28,7 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
   # empty values array is technically not valid, but we'll test those cases later
   context 'defaults' do
     let(:params) { default_params }
+
     it 'provides an oracle query stanza concat fragment' do
       is_expected.to contain_concat__fragment(concat_fragment_name).with(target: config_filename,
                                                                          order: '10')
@@ -59,7 +60,7 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
           {
             'type' => 'sessions',
             'instance_prefix' => 'sessions',
-            'values_from' => %w(ACTUAL_SESSIONS MAX_SESSIONS)
+            'values_from' => %w[ACTUAL_SESSIONS MAX_SESSIONS]
           }
         ]
       )
@@ -90,8 +91,8 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
         results: [
           {
             'type' => 'sessions',
-            'instances_from' => %w(STAT_NAME STAT_VAR),
-            'values_from' => %w(VALUE VALUE2)
+            'instances_from' => %w[STAT_NAME STAT_VAR],
+            'values_from' => %w[VALUE VALUE2]
           }
         ]
       )

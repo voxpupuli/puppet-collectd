@@ -28,6 +28,7 @@ describe 'collectd::plugin::filter::match', type: :define do
                              'Plugin' => '^foobar$'
                            })
     end
+
     it 'Will ensure that plugin is loaded' do
       is_expected.to contain_collectd__plugin('match_regex').with(order: '02')
     end
@@ -46,6 +47,7 @@ describe 'collectd::plugin::filter::match', type: :define do
     let(:params) do
       default_params.merge(plugin: 'empty_counter')
     end
+
     it 'Will ensure that plugin is loaded' do
       is_expected.to contain_collectd__plugin('match_empty_counter').with(order: '02')
     end

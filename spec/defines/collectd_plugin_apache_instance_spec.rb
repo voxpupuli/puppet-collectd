@@ -48,6 +48,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
                             verifyhost: false,
                             cacert: '/etc/ssl/certs/ssl-cert-snakeoil.pem')
     end
+
     it { is_expected.to contain_file(filename).with_content(%r{URL "http://bar\.example\.com/server-status\?auto"}) }
     it { is_expected.to contain_file(filename).with_content(%r{User "admin"}) }
     it { is_expected.to contain_file(filename).with_content(%r{Password "admin123"}) }
