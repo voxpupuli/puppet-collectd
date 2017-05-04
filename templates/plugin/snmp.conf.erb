@@ -1,10 +1,10 @@
 <% if @data or @hosts -%>
 <Plugin snmp>
 <% @data.sort_by {|k,v| k}.each do |key,val| -%>
-  <Data "<%=key %>">
+  <Data "<%= key %>">
     Type "<%= val['type'] %>"
-<% if val['table'] -%>
-    Table <%= val['table'] %>
+<% unless val['table'].nil? -%>
+    Table <%= val['table'] ? 'true' : 'false' %>
 <% end -%>
 <% if val['instance'] -%>
     Instance "<%= val['instance'] %>"
@@ -22,19 +22,37 @@
 <% if val['ignore'] -%>
     Ignore <% Array(val['ignore']).each do |x| -%>"<%= x %>" <% end %>
 <% end -%>
-<% if val['invert_match'] -%>
-    InvertMatch <%= val['invert_match'] %>
+<% unless val['invert_match'].nil? -%>
+    InvertMatch <%= val['invert_match'] ? 'true' : 'false' %>
 <% end -%>
   </Data>
 
 <% end -%>
 <% @hosts.sort_by {|k,v| k}.each do |key,val| -%>
-  <Host "<%=key %>">
+  <Host "<%= key %>">
     Address "<%= val['address'] %>"
     Version <%= val['version'] %>
+<%   if val['version'].to_i < 3 -%>
     Community "<%= val['community'] %>"
+<%   else -%>
+    Username "<%= val['username'] %>"
+<%     if val['context'] -%>
+    Context "<%= val['context'] %>"
+<%     end -%>
+    SecurityLevel "<%= val['security_level'] %>"
+<%     if ['authPriv', 'authNoPriv'].include?(val['security_level']) -%>
+    AuthProtocol "<%= val['auth_protocol'] %>"
+    AuthPassphrase "<%= val['auth_passphrase'] %>"
+<%     end -%>
+<%     if val['security_level'].eql?('authPriv') -%>
+    PrivacyProtocol "<%= val['privacy_protocol'] %>"
+    PrivacyPassphrase "<%= val['privacy_passphrase'] %>"
+<%     end -%>
+<%   end -%>
     Collect <% Array(val['collect']).sort.each do |x| -%>"<%= x -%>" <% end %>
+<%   if val['interval'] -%>
     Interval <%= val['interval'] %>
+<%   end -%>
   </Host>
 <% end -%>
 </Plugin>

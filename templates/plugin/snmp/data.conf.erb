@@ -1,10 +1,10 @@
 <Plugin snmp>
   <Data "<%= @name %>">
     Type "<%= @type %>"
-    Table <%= @table_bool ? 'true' : 'false' %>
+    Table <%= @table ? 'true' : 'false' %>
     Instance "<%= @instance %>"
-<% if @instanceprefix -%>
-    InstancePrefix "<%= @instanceprefix %>"
+<% if @instance_prefix -%>
+    InstancePrefix "<%= @instance_prefix %>"
 <% end -%>
     Values <%= Array(@values).map { |x| %Q{"#{x}"} }.join(' ') %>
 <% if @scale -%>
@@ -14,9 +14,9 @@
     Shift <%= @shift %>
 <% end -%>
 <% if @ignore -%>
-     Ignore <%= Array(@ignore).map { |x| %Q{"#{x}"} }.join(' ') %>
+   Ignore <%= Array(@ignore).map { |x| %Q{"#{x}"} }.join(' ') %>
 <% end -%>
-    InvertMatch <%= @invertmatch_bool ? 'true' : 'false' %>
+    InvertMatch <%= @invert_match ? 'true' : 'false' %>
   </Data>
 </Plugin>
  

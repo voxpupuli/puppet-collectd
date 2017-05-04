@@ -41,7 +41,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
           required_params.merge(address: 'bar.example.com',
                                 version: '2',
                                 community: 'opensesame',
-                                interval: '30')
+                                interval: 30)
         end
 
         it { is_expected.to contain_file(filename).with_content(%r{Address "bar\.example\.com"}) }
