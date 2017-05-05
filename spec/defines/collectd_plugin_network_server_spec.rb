@@ -4,7 +4,7 @@ describe 'collectd::plugin::network::server', type: :define do
   context ':ensure => present, create one complex server, collectd 5.1.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.1.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'

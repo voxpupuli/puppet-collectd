@@ -18,7 +18,7 @@ class collectd::plugin::netlink (
   validate_array($interfaces, $verboseinterfaces, $qdiscs, $classes, $filters)
   validate_bool($ignoreselected)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-netlink':
         ensure => $ensure,

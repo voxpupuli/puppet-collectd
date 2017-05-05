@@ -31,7 +31,7 @@ describe 'collectd::plugin::cgroups', type: :class do
   context ':ensure => present, specific params, collectd version 5.4.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.4.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'

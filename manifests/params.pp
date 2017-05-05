@@ -56,7 +56,7 @@ class collectd::params {
       $default_python_dir = '/opt/csw/share/collectd/python'
       $manage_repo        = false
     }
-    'Redhat': {
+    'RedHat': {
       $package_name       = 'collectd'
       $package_provider   = 'yum'
       $collectd_dir       = '/etc/collectd.d'

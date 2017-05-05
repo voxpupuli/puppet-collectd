@@ -15,7 +15,7 @@ class collectd::plugin::lvm (
     $ensure_real = 'absent'
   }
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-lvm':
         ensure => $ensure_real,

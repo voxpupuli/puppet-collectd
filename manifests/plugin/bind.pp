@@ -29,7 +29,7 @@ class collectd::plugin::bind (
   )
   validate_array($views)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-bind':
         ensure => $ensure,

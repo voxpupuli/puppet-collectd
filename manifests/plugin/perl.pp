@@ -12,7 +12,7 @@ class collectd::plugin::perl (
 
   $conf_dir = $collectd::plugin_conf_dir
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-perl':
         ensure => $ensure,
