@@ -18,8 +18,8 @@ describe 'collectd_version', type: :fact do
     expect(Facter.fact(:collectd_version).value).to eq('5.1.0.git')
   end
 
-  it 'is empty string if collectd not installed' do
+  it 'is not defined if collectd not installed' do
     Facter::Util::Resolution.stubs(:which).with('collectd').returns(nil)
-    expect(Facter.fact(:collectd_version).value).to eq('')
+    expect(Facter.fact(:collectd_version).value).to be_nil
   end
 end
