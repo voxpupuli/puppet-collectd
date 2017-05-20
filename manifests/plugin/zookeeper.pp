@@ -1,5 +1,6 @@
 class collectd::plugin::zookeeper (
   $ensure           = 'present',
+  $interval         = undef,
   $zookeeper_host   = 'localhost',
   $zookeeper_port   = 2181,
 ) {
