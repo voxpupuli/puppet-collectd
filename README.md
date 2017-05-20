@@ -197,6 +197,8 @@ documentation for each plugin for configurable attributes.
 * `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb)
   below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
+* `zookeeper` (see
+  [collectd::plugin::zookeeper](#class-collectdzookeeper) below)
 
 ### Class: `collectd::plugin::aggregation`
 
@@ -1830,6 +1832,15 @@ class { 'collectd::plugin::write_tsdb':
 
 ```puppet
 class { 'collectd::plugin::zfs_arc':
+}
+```
+
+#### Class: `collectd::plugin::zookeeper`
+
+```puppet
+class { 'collectd::plugin::zookeeper':
+  zookeeper_host  => 'localhost',
+  zookeeper_port  => '2181',
 }
 ```
 
