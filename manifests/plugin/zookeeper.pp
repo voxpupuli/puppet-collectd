@@ -1,8 +1,8 @@
 class collectd::plugin::zookeeper (
-  $ensure           = 'present',
-  $interval         = undef,
-  $zookeeper_host   = 'localhost',
-  $zookeeper_port   = 2181,
+  Enum['present', 'absent'] $ensure           = 'present',
+  Optional[Integer]         $interval         = undef,
+  String                    $zookeeper_host   = 'localhost',
+  Integer                   $zookeeper_port   = 2181,
 ) {
 
   include ::collectd
