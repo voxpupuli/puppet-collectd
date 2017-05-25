@@ -25,7 +25,7 @@ class collectd::plugin::amqp (
 
   validate_bool($amqppersistent, $graphiteseparateinstances, $graphitealwaysappendds)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-amqp':
         ensure => $ensure,

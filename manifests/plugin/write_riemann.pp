@@ -27,7 +27,7 @@ class collectd::plugin::write_riemann (
   validate_array($tags)
   validate_hash($attributes)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-write_riemann':
         ensure => $ensure,

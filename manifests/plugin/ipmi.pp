@@ -24,7 +24,7 @@ class collectd::plugin::ipmi (
     $notify_sensor_remove,
   )
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $manage_package_real {
       package { 'collectd-ipmi':
         ensure => $ensure_package,

@@ -12,7 +12,7 @@ class collectd::plugin::java (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-java':
         ensure => $ensure,

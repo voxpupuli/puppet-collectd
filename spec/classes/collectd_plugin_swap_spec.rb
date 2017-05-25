@@ -31,7 +31,7 @@ describe 'collectd::plugin::swap', type: :class do
   context ':ensure => present, specific params, collectd version 5.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'
@@ -49,7 +49,7 @@ describe 'collectd::plugin::swap', type: :class do
   context ':ensure => present, specific params, collectd version 5.2.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.2.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'
@@ -67,7 +67,7 @@ describe 'collectd::plugin::swap', type: :class do
   context ':ensure => present, specific params, collectd version 5.5.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.5.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'

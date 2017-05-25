@@ -4,7 +4,7 @@ describe 'collectd::plugin::network::listener', type: :define do
   context ':ensure => present, collectd version 4.6' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '4.6',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'
@@ -28,7 +28,7 @@ describe 'collectd::plugin::network::listener', type: :define do
   context ':ensure => present, collectd version 5.1.0' do
     let :facts do
       {
-        osfamily: 'Redhat',
+        osfamily: 'RedHat',
         collectd_version: '5.1.0',
         operatingsystemmajrelease: '7',
         python_dir: '/usr/local/lib/python2.7/dist-packages'

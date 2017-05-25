@@ -34,7 +34,7 @@ define collectd::plugin::curl_json (
       ensure_packages($libyajl_package)
     }
 
-    if $::osfamily == 'Redhat' {
+    if $::osfamily == 'RedHat' {
       ensure_packages('collectd-curl_json')
     }
   }

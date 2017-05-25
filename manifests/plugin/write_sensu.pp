@@ -20,7 +20,7 @@ class collectd::plugin::write_sensu (
   validate_bool($store_rates)
   validate_bool($always_append_ds)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-write_sensu':
         ensure => $ensure,
