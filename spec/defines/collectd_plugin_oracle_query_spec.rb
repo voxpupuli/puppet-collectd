@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::oracle::query', 'type' => :define do
-on_supported_os.each do |os, facts|
+  on_supported_os.each do |os, facts|
     context "on #{os} " do
       let :facts do
         facts
@@ -98,4 +98,3 @@ on_supported_os.each do |os, facts|
     end
   end
 end
-
