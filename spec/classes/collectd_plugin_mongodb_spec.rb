@@ -5,208 +5,206 @@ describe 'collectd::plugin::mongodb', type: :class do
     'include ::collectd'
   end
 
-  let :facts do
-    {
-      collectd_version: '5.2',
-      osfamily: 'RedHat',
-      operatingsystemmajrelease: '7',
-      python_dir: '/usr/local/lib/python2.7/dist-packages'
-    }
-  end
-
   let :default_params do
     {
       db_user: 'test_user',
       db_pass: 'password'
     }
   end
+  on_supported_os.each do |os, facts|
+    context "on #{os} " do
+      let :facts do
+        facts
+      end
 
-  context 'with default values for all parameters' do
-    let :params do
-      default_params
-    end
-
-    it { is_expected.to contain_class('collectd::plugin::mongodb') }
-
-    it do
-      is_expected.to contain_file('mongodb.load').with(
-        'ensure' => 'present'
-      )
-    end
-
-    default_fixture = File.read(fixtures('plugins/mongodb.conf.default'))
-    it { is_expected.to contain_file('mongodb.load').with_content(default_fixture) }
-  end
-
-  describe 'with ensure parameter' do
-    %w[present absent].each do |value|
-      context "set to a valid value of #{value}" do
+      context 'with default values for all parameters' do
         let :params do
-          default_params.merge(ensure: value.to_s)
+          default_params
         end
+
+        it { is_expected.to contain_class('collectd::plugin::mongodb') }
 
         it do
           is_expected.to contain_file('mongodb.load').with(
-            'ensure' => value
+            'ensure' => 'present'
           )
         end
-      end
-    end
 
-    context 'set to an invalid value' do
-      let :params do
-        default_params.merge(ensure: 'invalid')
+        default_fixture = File.read(fixtures('plugins/mongodb.conf.default'))
+        it { is_expected.to contain_file('mongodb.load').with_content(default_fixture) }
       end
 
-      it 'fails' do
-        expect do
-          is_expected.to contain_class('collectd::plugin::mongodb')
-        end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::ensure is <invalid> and must be either 'present' or 'absent'\.})
-      end
-    end
-  end
+      describe 'with ensure parameter' do
+        %w[present absent].each do |value|
+          context "set to a valid value of #{value}" do
+            let :params do
+              default_params.merge(ensure: value.to_s)
+            end
 
-  describe 'with interval parameter' do
-    ['10.0', '3600'].each do |value|
-      context "set to a valid numeric of #{value}" do
-        let(:params) do
-          default_params.merge(interval: value.to_s)
+            it do
+              is_expected.to contain_file('mongodb.load').with(
+                'ensure' => value
+              )
+            end
+          end
         end
 
-        it { is_expected.to contain_file('mongodb.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
-      end
-    end
+        context 'set to an invalid value' do
+          let :params do
+            default_params.merge(ensure: 'invalid')
+          end
 
-    context 'set to an invalid value' do
-      let :params do
-        default_params.merge(interval: 'invalid')
-      end
-
-      it 'fails' do
-        expect do
-          is_expected.to contain_class('collectd::plugin::mongodb')
-        end.to raise_error(Puppet::Error, %r{Expected first argument to be a Numeric or Array, got String})
-      end
-    end
-  end
-
-  describe 'with db_host parameter' do
-    context 'set to a valid IP' do
-      let :params do
-        default_params.merge(db_host: '127.0.0.1')
-      end
-
-      hostdb_fixture = File.read(fixtures('plugins/mongodb.conf.hostdb'))
-      it { is_expected.to contain_file('mongodb.load').with_content(hostdb_fixture) }
-    end
-
-    %w[127001 nil].each do |value|
-      context 'set to and invalid IP' do
-        let :params do
-          default_params.merge(db_host: value.to_s)
-        end
-
-        it 'fails' do
-          expect do
-            is_expected.to contain_class('collectd::plugin::mongodb')
-          end.to raise_error(Puppet::Error, %r{must be a valid IP address})
+          it 'fails' do
+            expect do
+              is_expected.to contain_class('collectd::plugin::mongodb')
+            end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::ensure is <invalid> and must be either 'present' or 'absent'\.})
+          end
         end
       end
-    end
-  end
 
-  describe 'with db_user parameter' do
-    context 'set to a valid user name' do
-      let :params do
-        default_params.merge(db_user: 'test_user')
+      describe 'with interval parameter' do
+        ['10.0', '3600'].each do |value|
+          context "set to a valid numeric of #{value}" do
+            let(:params) do
+              default_params.merge(interval: value.to_s)
+            end
+
+            it { is_expected.to contain_file('mongodb.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
+          end
+        end
+
+        context 'set to an invalid value' do
+          let :params do
+            default_params.merge(interval: 'invalid')
+          end
+
+          it 'fails' do
+            expect do
+              is_expected.to contain_class('collectd::plugin::mongodb')
+            end.to raise_error(Puppet::Error, %r{Expected first argument to be a Numeric or Array, got String})
+          end
+        end
       end
 
-      confdb_fixture = File.read(fixtures('plugins/mongodb.conf.db_user'))
-      it { is_expected.to contain_file('mongodb.load').with_content(confdb_fixture) }
-    end
+      describe 'with db_host parameter' do
+        context 'set to a valid IP' do
+          let :params do
+            default_params.merge(db_host: '127.0.0.1')
+          end
 
-    context 'undefined' do
-      let :params do
-        {
-          db_pass: 'password'
-        }
+          hostdb_fixture = File.read(fixtures('plugins/mongodb.conf.hostdb'))
+          it { is_expected.to contain_file('mongodb.load').with_content(hostdb_fixture) }
+        end
+
+        %w[127001 nil].each do |value|
+          context 'set to and invalid IP' do
+            let :params do
+              default_params.merge(db_host: value.to_s)
+            end
+
+            it 'fails' do
+              expect do
+                is_expected.to contain_class('collectd::plugin::mongodb')
+              end.to raise_error(Puppet::Error, %r{must be a valid IP address})
+            end
+          end
+        end
       end
 
-      it 'fails' do
-        expect do
-          is_expected.to contain_class('collectd::plugin::mongodb')
-        end.to raise_error(Puppet::Error, %r{is <undef> and must be a mongodb username})
-      end
-    end
-  end
+      describe 'with db_user parameter' do
+        context 'set to a valid user name' do
+          let :params do
+            default_params.merge(db_user: 'test_user')
+          end
 
-  describe 'with db_pass parameter' do
-    context 'set to a valid password' do
-      let :params do
-        default_params.merge(db_pass: 'foo')
-      end
+          confdb_fixture = File.read(fixtures('plugins/mongodb.conf.db_user'))
+          it { is_expected.to contain_file('mongodb.load').with_content(confdb_fixture) }
+        end
 
-      dbpass_fixture = File.read(fixtures('plugins/mongodb.conf.db_pass'))
-      it { is_expected.to contain_file('mongodb.load').with_content(dbpass_fixture) }
-    end
+        context 'undefined' do
+          let :params do
+            {
+              db_pass: 'password'
+            }
+          end
 
-    context 'undefined' do
-      let :params do
-        {
-          db_user: 'test_user'
-        }
-      end
-
-      it 'fails' do
-        expect do
-          is_expected.to contain_class('collectd::plugin::mongodb')
-        end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::db_pass is <undef>})
-      end
-    end
-  end
-
-  describe 'with configured_dbs parameter' do
-    context 'set to a valid value with db_port defined and a single db' do
-      let :params do
-        default_params.merge(configured_dbs: [25],
-                             db_port: '8080')
+          it 'fails' do
+            expect do
+              is_expected.to contain_class('collectd::plugin::mongodb')
+            end.to raise_error(Puppet::Error, %r{is <undef> and must be a mongodb username})
+          end
+        end
       end
 
-      dbport_single_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_single'))
-      it { is_expected.to contain_file('mongodb.load').with_content(dbport_single_fixture) }
-    end
+      describe 'with db_pass parameter' do
+        context 'set to a valid password' do
+          let :params do
+            default_params.merge(db_pass: 'foo')
+          end
 
-    context 'set to a valid value with db_port defined and multiple DBs' do
-      let :params do
-        default_params.merge(configured_dbs: [25, 26],
-                             db_port: '8080')
+          dbpass_fixture = File.read(fixtures('plugins/mongodb.conf.db_pass'))
+          it { is_expected.to contain_file('mongodb.load').with_content(dbpass_fixture) }
+        end
+
+        context 'undefined' do
+          let :params do
+            {
+              db_user: 'test_user'
+            }
+          end
+
+          it 'fails' do
+            expect do
+              is_expected.to contain_class('collectd::plugin::mongodb')
+            end.to raise_error(Puppet::Error, %r{collectd::plugin::mongodb::db_pass is <undef>})
+          end
+        end
       end
 
-      dbport_multi_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_multiple'))
-      it { is_expected.to contain_file('mongodb.load').with_content(dbport_multi_fixture) }
-    end
+      describe 'with configured_dbs parameter' do
+        context 'set to a valid value with db_port defined and a single db' do
+          let :params do
+            default_params.merge(configured_dbs: [25],
+                                 db_port: '8080')
+          end
 
-    context 'set to a valid value with db_port undefined' do
-      let :params do
-        default_params.merge(configured_dbs: [25])
+          dbport_single_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_single'))
+          it { is_expected.to contain_file('mongodb.load').with_content(dbport_single_fixture) }
+        end
+
+        context 'set to a valid value with db_port defined and multiple DBs' do
+          let :params do
+            default_params.merge(configured_dbs: [25, 26],
+                                 db_port: '8080')
+          end
+
+          dbport_multi_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_multiple'))
+          it { is_expected.to contain_file('mongodb.load').with_content(dbport_multi_fixture) }
+        end
+
+        context 'set to a valid value with db_port undefined' do
+          let :params do
+            default_params.merge(configured_dbs: [25])
+          end
+
+          it 'fails' do
+            expect do
+              is_expected.to contain_class('collectd::plugin::mongodb')
+            end.to raise_error(Puppet::Error, %r{db_port is undefined})
+          end
+        end
       end
 
-      it 'fails' do
-        expect do
-          is_expected.to contain_class('collectd::plugin::mongodb')
-        end.to raise_error(Puppet::Error, %r{db_port is undefined})
-      end
-    end
-  end
+      describe 'with collectd_dir parameter' do
+        context 'defined' do
+          let :params do
+            default_params.merge(collectd_dir: '/tmp/collectd_test_dir')
+          end
 
-  describe 'with collectd_dir parameter' do
-    context 'defined' do
-      let :params do
-        default_params.merge(collectd_dir: '/tmp/collectd_test_dir')
+          collectddir_fixture = File.read(fixtures('plugins/mongodb.conf.collectddir'))
+          it { is_expected.to contain_file('mongodb.load').with_content(collectddir_fixture) }
+        end
       end
-
-      collectddir_fixture = File.read(fixtures('plugins/mongodb.conf.collectddir'))
-      it { is_expected.to contain_file('mongodb.load').with_content(collectddir_fixture) }
     end
   end
 end
