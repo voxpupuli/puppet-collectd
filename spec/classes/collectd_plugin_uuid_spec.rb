@@ -4,9 +4,7 @@ describe 'collectd::plugin::uuid', type: :class do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
       let :facts do
-        facts.merge(
-          python_dir: '/usr/local/lib/python2.7/dist-packages'
-        )
+        facts
       end
 
       options = os_specific_options(facts)
