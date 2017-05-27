@@ -1,5 +1,5 @@
 def os_specific_options(facts)
-  case facts[:osfamily]
+  case facts[:os]['family']
   when 'Gentoo'
     { package: 'app-admin/collectd', service: 'collectd', plugin_conf_dir: '/etc/collectd.d' }
   when 'Solaris'
