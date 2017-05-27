@@ -9,7 +9,6 @@ describe 'collectd::plugin::openvpn', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-
         it "Will create #{options[:plugin_conf_dir]}/10-openvpn.conf" do
           is_expected.to contain_file('openvpn.load').with(
             ensure: 'present',
@@ -20,7 +19,6 @@ describe 'collectd::plugin::openvpn', type: :class do
       end
 
       context ':statusfile param is an array' do
-
         let :params do
           { statusfile: ['/etc/openvpn/openvpn-tcp.status', '/etc/openvpn/openvpn-udp.status'] }
         end
@@ -35,7 +33,6 @@ describe 'collectd::plugin::openvpn', type: :class do
       end
 
       context ':statusfile is a string but not an absolute path' do
-
         let :params do
           { statusfile: 'megafrobber' }
         end
@@ -46,7 +43,6 @@ describe 'collectd::plugin::openvpn', type: :class do
       end
 
       context ':statusfile param is not a string or array' do
-
         let :params do
           { statusfile: true }
         end

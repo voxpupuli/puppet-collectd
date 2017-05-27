@@ -9,7 +9,6 @@ describe 'collectd::plugin::logfile', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-
         it "Will create #{options[:plugin_conf_dir]}/05-logfile.conf" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'present',

@@ -4,10 +4,8 @@ describe 'collectd::plugin::dns', type: :class do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
       let :facts do
-        facts                                                                                             
+        facts
       end
-  
-      options = os_specific_options(facts)
 
       context 'with default values for all parameters' do
         it { is_expected.to contain_class('collectd::plugin::dns') }

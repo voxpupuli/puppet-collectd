@@ -17,7 +17,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
           is_expected.to contain_file('write_prometheus.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
-            content: %r{Port "9103"},
+            content: %r{Port "9103"}
           )
         end
       end

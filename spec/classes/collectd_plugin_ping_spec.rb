@@ -12,7 +12,6 @@ describe 'collectd::plugin::ping', type: :class do
         'include ::collectd'
       end
 
-
       context ':hosts => [\'google.com\']' do
         let :params do
           { hosts: ['google.com'] }

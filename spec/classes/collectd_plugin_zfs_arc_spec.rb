@@ -9,7 +9,6 @@ describe 'collectd::plugin::zfs_arc', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present' do
-
         it 'Will create 10-zfs_arc.conf' do
           is_expected.to contain_file('zfs_arc.load').with(
             ensure: 'present',

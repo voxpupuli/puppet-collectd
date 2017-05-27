@@ -7,7 +7,6 @@ describe 'collectd::plugin::load', type: :class do
         facts
       end
 
-      options = os_specific_options(facts)
       let :pre_condition do
         'include ::collectd'
       end

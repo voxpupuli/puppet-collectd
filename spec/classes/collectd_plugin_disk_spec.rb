@@ -36,7 +36,6 @@ describe 'collectd::plugin::disk', type: :class do
       end
 
       context ':manage_package => false' do
-
         let :params do
           {
             manage_package: false

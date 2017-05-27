@@ -16,8 +16,7 @@ describe 'collectd::plugin::exec', type: :class do
                 'user' => 'nobody',
                 'group' => 'users',
                 'exec' => ['/bin/echo', 'hello world']
-              }
-            }
+              } }
           }
         end
 

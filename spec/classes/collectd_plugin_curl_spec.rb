@@ -49,7 +49,8 @@ describe 'collectd::plugin::curl', type: :class do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/curl-stocks_ILD.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/curl-stocks_ILD.conf",
-            content: "<Plugin curl>\n  <Page \"stocks_ILD\">\n    URL \"http://finance.google.com/finance?q=EPA%3AILD\"\n    User \"foo\"\n    Password \"bar\"\n  <Match>\n    Regex \"]*> *([0-9]*\\.[0-9]+) *\"\n    DSType \"GaugeAverage\"\n    Type \"stock_value\"\n    Instance \"ILD\"\n  </Match>\n\n  </Page>\n</Plugin>\n")
+            content: "<Plugin curl>\n  <Page \"stocks_ILD\">\n    URL \"http://finance.google.com/finance?q=EPA%3AILD\"\n    User \"foo\"\n    Password \"bar\"\n  <Match>\n    Regex \"]*> *([0-9]*\\.[0-9]+) *\"\n    DSType \"GaugeAverage\"\n    Type \"stock_value\"\n    Instance \"ILD\"\n  </Match>\n\n  </Page>\n</Plugin>\n"
+          )
         end
       end
 
@@ -72,7 +73,8 @@ describe 'collectd::plugin::curl', type: :class do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/curl-selfsigned_ssl.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/curl-selfsigned_ssl.conf",
-            content: "<Plugin curl>\n  <Page \"selfsigned_ssl\">\n    URL \"https://some.selfsigned.ssl.site/\"\n    VerifyPeer false\n    VerifyHost false\n    MeasureResponseTime true\n  </Page>\n</Plugin>\n")
+            content: "<Plugin curl>\n  <Page \"selfsigned_ssl\">\n    URL \"https://some.selfsigned.ssl.site/\"\n    VerifyPeer false\n    VerifyHost false\n    MeasureResponseTime true\n  </Page>\n</Plugin>\n"
+          )
         end
       end
 

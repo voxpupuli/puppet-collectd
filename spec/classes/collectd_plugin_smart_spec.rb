@@ -9,7 +9,6 @@ describe 'collectd::plugin::smart', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present and :disks => ["sda"]' do
-
         let :params do
           { disks: ['sda'] }
         end
@@ -39,7 +38,6 @@ describe 'collectd::plugin::smart', type: :class do
       case facts[:os]['family']
       when 'RedHat'
         context ':manage_package => true on osfamily => RedHat' do
-
           let :params do
             {
               manage_package: true
@@ -53,7 +51,6 @@ describe 'collectd::plugin::smart', type: :class do
         end
 
         context ':manage_package => false on osfamily => RedHat' do
-
           let :params do
             {
               manage_package: false

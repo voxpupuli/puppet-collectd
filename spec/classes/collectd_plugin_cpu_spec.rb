@@ -13,6 +13,7 @@ describe 'collectd::plugin::cpu', type: :class do
           let :facts do
             facts.merge(collectd_version: '5.4')
           end
+
           it "Will create #{options[:plugin_conf_dir]}/10-cpu.conf to load the plugin" do
             is_expected.to contain_file('cpu.load').with(
               ensure: 'present',

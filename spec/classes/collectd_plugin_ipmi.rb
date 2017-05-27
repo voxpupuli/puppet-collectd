@@ -14,17 +14,15 @@ describe 'collectd::plugin::ipmi', type: :class do
       end
 
       context ':ensure => present, default params and legacy collectd 5.4' do
-
         it "Will create #{options[:plugin_conf_dir]}/10-ipmi.conf" do
           is_expected.to contain_file('ipmi.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf",
+            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf"
           )
         end
       end
 
       context ':sensors param is not an array' do
-
         let :params do
           { sensors: true }
         end

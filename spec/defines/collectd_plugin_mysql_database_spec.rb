@@ -7,9 +7,9 @@ describe 'collectd::plugin::mysql::database', type: :define do
         facts
       end
 
-      options = os_specific_options(facts)  
+      options = os_specific_options(facts)
 
-       let :pre_condition do
+      let :pre_condition do
         'include ::collectd'
       end
 

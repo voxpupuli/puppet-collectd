@@ -11,6 +11,7 @@ describe 'collectd::plugin::mongodb', type: :class do
       db_pass: 'password'
     }
   end
+
   on_supported_os.each do |os, facts|
     context "on #{os} " do
       let :facts do

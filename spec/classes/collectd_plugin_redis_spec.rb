@@ -9,17 +9,15 @@ describe 'collectd::plugin::redis', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-
         it "Will create #{options[:plugin_conf_dir]}/10-redis.conf" do
           is_expected.to contain_file('redis.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-redis.conf",
+            path: "#{options[:plugin_conf_dir]}/10-redis.conf"
           )
         end
       end
 
       context ':ensure => present, password => "testpassword"' do
-
         let :params do
           {
             nodes: {
@@ -36,7 +34,7 @@ describe 'collectd::plugin::redis', type: :class do
         it "Will create #{options[:plugin_conf_dir]}/10-redis.conf with password" do
           is_expected.to contain_file('redis.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-redis.conf",
+            path: "#{options[:plugin_conf_dir]}/10-redis.conf"
           )
         end
       end

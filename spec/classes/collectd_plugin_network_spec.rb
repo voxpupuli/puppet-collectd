@@ -12,7 +12,7 @@ describe 'collectd::plugin::network', type: :class do
         it "Will create #{options[:plugin_conf_dir]}/10-network.conf" do
           is_expected.to contain_file('network.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-network.conf",
+            path: "#{options[:plugin_conf_dir]}/10-network.conf"
           )
         end
       end

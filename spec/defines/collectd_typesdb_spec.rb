@@ -7,7 +7,6 @@ describe 'collectd::typesdb', type: :define do
         facts
       end
 
-      options = os_specific_options(facts)
       context 'without any types' do
         let(:title) { '/etc/collectd/types.db' }
 

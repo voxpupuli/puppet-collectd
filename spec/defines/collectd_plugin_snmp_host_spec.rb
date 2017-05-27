@@ -5,7 +5,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
     context "on #{os} " do
       let :facts do
         facts
-      end 
+      end
 
       options = os_specific_options(facts)
       let(:title) { 'foo.example.com' }

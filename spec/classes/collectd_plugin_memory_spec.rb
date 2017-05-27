@@ -9,7 +9,6 @@ describe 'collectd::plugin::memory', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-
         it "Will create #{options[:plugin_conf_dir]}/10-memory.conf" do
           is_expected.to contain_file('memory.load').with(
             ensure: 'present',

@@ -5,7 +5,7 @@ describe 'collectd::plugin::virt', type: :class do
     context "on #{os} " do
       let :facts do
         facts
-      end 
+      end
 
       let :pre_condition do
         'include ::collectd'
@@ -43,7 +43,7 @@ describe 'collectd::plugin::virt', type: :class do
 
         context 'with collectd_version >= 5.5' do
           let :facts do
-              facts.merge(collectd_version: '5.5.0')
+            facts.merge(collectd_version: '5.5.0')
           end
 
           it 'is included' do

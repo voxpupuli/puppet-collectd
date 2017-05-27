@@ -12,7 +12,7 @@ describe 'collectd::plugin::turbostat', type: :class do
         it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
+            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf"
           )
         end
       end

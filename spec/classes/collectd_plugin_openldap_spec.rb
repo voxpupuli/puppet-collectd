@@ -13,7 +13,6 @@ describe 'collectd::plugin::openldap', type: :class do
       end
 
       context ':ensure => present, default params' do
-
         it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf" do
           content = <<EOS
 <Plugin "openldap">

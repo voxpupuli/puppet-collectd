@@ -112,7 +112,7 @@ describe 'collectd::plugin::python', type: :class do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').with(
               content: %r{Cluster "Another-ES-clust"},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
-              )
+            )
           end
 
           it 'created collectd plugin file' do
