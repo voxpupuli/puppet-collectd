@@ -4,7 +4,7 @@ describe 'collectd::plugin::curl_json', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
       let :facts do
-        facts
+        facts.merge(collectd_version: '4.8.0')
       end
 
       options = os_specific_options(facts)
@@ -55,10 +55,6 @@ describe 'collectd::plugin::curl_json', type: :define do
           is_expected.to contain_file(filename).with(
             path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
           )
-        end
-
-        it do
-          is_expected.to contain_package('libyajl2')
         end
 
         it { is_expected.to contain_file(filename).that_notifies('Service[collectd]') }
