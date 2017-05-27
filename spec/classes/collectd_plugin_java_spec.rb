@@ -115,23 +115,26 @@ describe 'collectd::plugin::java', type: :class do
         end
       end
 
-      context 'java_home option is empty' do
-        it 'will not contain libjvm' do
-          is_expected.not_to contain_file('/usr/lib64/libjvm.so')
-          is_expected.not_to contain_exec('/sbin/ldconfig')
-        end
-      end
-
-      context 'java_home option provided' do
-        let(:params) do
-          {
-            java_home: '/'
-          }
+      case facts[:os]['family']
+      when 'RedHat'
+        context 'java_home option is empty' do
+          it 'will not contain libjvm' do
+            is_expected.not_to contain_file('/usr/lib64/libjvm.so')
+            is_expected.not_to contain_exec('/sbin/ldconfig')
+          end
         end
 
-        it 'will not contain libjvm' do
-          is_expected.to contain_file('/usr/lib64/libjvm.so')
-          is_expected.to contain_exec('/sbin/ldconfig')
+        context 'java_home option provided' do
+          let(:params) do
+            {
+              java_home: '/bla'
+            }
+          end
+
+          it 'will contain libjvm' do
+            is_expected.to contain_file('/usr/lib64/libjvm.so')
+            is_expected.to contain_exec('/sbin/ldconfig')
+          end
         end
       end
     end
