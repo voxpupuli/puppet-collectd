@@ -2,22 +2,22 @@
 <% @hosts.each do |host| -%>
 	Host "<%= host %>"
 <% end -%>
-<% if @interval %>
+<% if @interval -%>
 	Interval "<%= @interval %>"
 <% end -%>
-<% if @timeout %>
+<% if @timeout -%>
 	Timeout "<%= @timeout %>"
 <% end -%>
-<% if @ttl %>
+<% if @ttl -%>
 	TTL "<%= @ttl %>"
 <% end -%>
-<% if @source_address %>
+<% if @source_address -%>
 	SourceAddress "<%= @source_address %>"
 <% end -%>
-<% if @device %>
+<% if @device -%>
 	Device "<%= @device %>"
 <% end -%>
-<% if @max_missed %>
+<% if @max_missed -%>
 	MaxMissed "<%= @max_missed %>"
 <% end -%>
 </Plugin>
