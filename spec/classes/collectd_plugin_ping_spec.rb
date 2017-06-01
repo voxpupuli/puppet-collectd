@@ -26,22 +26,75 @@ describe 'collectd::plugin::ping', type: :class do
         end
       end
 
-      context ':hosts => [\'google.com\', \'puppetlabs.com\']' do
-        let :params do
-          { hosts: ['google.com', 'puppetlabs.com'] }
-        end
-
-        it "Will create #{options[:plugin_conf_dir]}/10-ping.conf" do
-          is_expected.to contain_file('ping.load').with(
-            ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ping.conf"
-          ).with_content(
-            %r{Host "google.com"}
-          ).with_content(
-            %r{Host "puppetlabs.com"}
-          )
-        end
+    context ':hosts => [\'google.com\']' do
+      let :params do
+        {
+          hosts: ['google.com'],
+          interval: '0.100'
+        }
       end
+
+      it 'Will create intervals right' do
+        is_expected.to contain_file('ping.load').with(ensure: 'present',
+                                                      path: '/etc/collectd.d/10-ping.conf').with_content(
+                                                        %r{^\s*Interval "0.100"$}
+                                                      )
+      end
+    end
+
+    context ':hosts => [\'google.com\']' do
+      let :params do
+        {
+          hosts: ['google.com'],
+          interval: '60',
+          ping_interval: '0.100'
+        }
+      end
+
+      it 'Will create intervals right' do
+        is_expected.to contain_file('ping.load').with(ensure: 'present',
+                                                      path: '/etc/collectd.d/10-ping.conf').without_content(
+                                                        %r{^\s*Interval 60$}
+                                                      ).with_content(
+                                                        %r{^\s*Interval "0.100"$}
+                                                      )
+      end
+    end
+
+    context ':hosts => [\'google.com\']' do
+      let :params do
+        {
+          hosts: ['google.com'],
+          interval: '60',
+          ping_interval: '0.100'
+        }
+      end
+
+      it 'Will create intervals right' do
+        is_expected.to contain_file('ping.load').with(ensure: 'present',
+                                                      path: '/etc/collectd.d/10-ping.conf').with_content(
+                                                        %r{^\s*Interval 60$}
+                                                      ).with_content(
+                                                        %r{^\s*Interval "0.100"$}
+                                                      )
+      end
+    end
+
+    context ':hosts => [\'google.com\', \'puppetlabs.com\']' do
+      let :params do
+        { hosts: ['google.com', 'puppetlabs.com'] }
+      end
+          it "Will create #{options[:plugin_conf_dir]}/10-ping.conf" do
+            is_expected.to contain_file('ping.load').with(
+              ensure: 'present',
+              path: "#{options[:plugin_conf_dir]}/10-ping.conf"
+            ).with_content(
+              %r{Host "google.com"}
+            ).with_content(
+              %r{Host "puppetlabs.com"}
+            )
+          end
+        end
 
       context ':ensure => absent' do
         let :params do

@@ -2,8 +2,8 @@
 <% @hosts.each do |host| -%>
 	Host "<%= host %>"
 <% end -%>
-<% if @interval -%>
-	Interval "<%= @interval %>"
+<% if @_ping_interval -%>
+	Interval "<%= @_ping_interval %>"
 <% end -%>
 <% if @timeout -%>
 	Timeout "<%= @timeout %>"

@@ -1241,7 +1241,9 @@ collectd::plugin::perl::plugin {
 ```puppet
 collectd::plugin::ping {
   'example':
-    hosts => ['example.com'],
+    hosts         => ['example.com'],
+    ping_interval => '0.100',
+    timeout       => '0.095',
 }
 ```
 
