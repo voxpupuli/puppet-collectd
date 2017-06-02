@@ -3,12 +3,24 @@ class collectd::plugin::genericjmx (
   $ensure         = 'present',
   $jvmarg         = [],
   $manage_package = undef,
+  Array[String[1]] $class_path_prepend = [],
+  Array[String[1]] $class_path_default = [],
+  Array[String[1]] $class_path_append = [],
 ) {
 
   include ::collectd
   include ::collectd::plugin::java
 
-  $class_path  = "${collectd::java_dir}/collectd-api.jar:${collectd::java_dir}/generic-jmx.jar"
+  if empty($class_path_default) {
+    $_class_path_default = [
+      "${collectd::java_dir}/collectd-api.jar",
+      "${collectd::java_dir}/generic-jmx.jar",
+    ]
+  } else {
+    $_class_path_default = $class_path_default
+  }
+
+  $class_path = join([] + $class_path_prepend + $_class_path_default + $class_path_append, ':')
   $config_file = "${collectd::plugin_conf_dir}/15-genericjmx.conf"
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
