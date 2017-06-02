@@ -1,29 +1,28 @@
-<MBean "<%= @name %>">
-  ObjectName "<%= @object_name %>"
-  <% if @instance_prefix -%>
-  InstancePrefix "<%= @instance_prefix %>"
-  <% end -%>
-  <% if @instance_from -%>
-    <% Array(@instance_from).each do |instance_from_item| -%>
-  InstanceFrom "<%= instance_from_item %>"
-    <% end -%>
-  <% end -%>
-
-  <% @values.each do |value| -%>
-  <Value>
-    Type "<%= value['mbean_type'] %>"
-    <% if value['instance_prefix'] -%>
-    InstancePrefix "<%= value['instance_prefix'] %>"
-    <% end -%>
-    <% if value['instance_from'] -%>
-      <% Array(value['instance_from']).each do |instance_from_item| -%>
-    InstanceFrom "<%= instance_from_item %>"
-      <% end -%>
-    <% end -%>
-    Table <%= scope.function_str2bool([value['table'] || false ]) ? 'true' : 'false' %>
-    <% Array(value['attribute']).each do |attribute_item| -%>
-    Attribute "<%= attribute_item %>"
-    <% end -%>
-  </Value>
-  <% end -%>
-</MBean>
+    <MBean "<%= @name %>">
+      ObjectName "<%= @object_name %>"
+<% if @instance_prefix -%>
+      InstancePrefix "<%= @instance_prefix %>"
+<% end -%>
+<% if @instance_from -%>
+<% Array(@instance_from).each do |instance_from_item| -%>
+      InstanceFrom "<%= instance_from_item %>"
+<% end -%>
+<% end -%>
+<% @values.each do |value| -%>
+      <Value>
+        Type "<%= value['mbean_type'] %>"
+<% if value['instance_prefix'] -%>
+        InstancePrefix "<%= value['instance_prefix'] %>"
+<% end -%>
+<% if value['instance_from'] -%>
+<% Array(value['instance_from']).each do |instance_from_item| -%>
+        InstanceFrom "<%= instance_from_item %>"
+<% end -%>
+<% end -%>
+        Table <%= scope.function_str2bool([value['table'] || false ]) ? 'true' : 'false' %>
+<% Array(value['attribute']).each do |attribute_item| -%>
+        Attribute "<%= attribute_item %>"
+<% end -%>
+      </Value>
+<% end -%>
+    </MBean>
