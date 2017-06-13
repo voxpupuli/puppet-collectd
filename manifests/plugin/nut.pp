@@ -4,7 +4,7 @@ class collectd::plugin::nut (
   $upss       = { },
 ) {
 
-  include ::collectd
+  include collectd
 
 
   collectd::plugin { 'nut':
