@@ -3,7 +3,7 @@ class collectd::plugin::sensors (
   $ensure           = 'present',
   $manage_package   = undef,
   $sensorconfigfile = undef,
-  $sensor           = undef,
+  $sensors          = undef,
   $ignoreselected   = undef,
   $interval         = undef,
 ) {
