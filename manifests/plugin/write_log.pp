@@ -1,7 +1,6 @@
 class collectd::plugin::write_log (
   $format   = 'JSON',
   $ensure   = 'present',
-  $interval = undef,
 ) {
 
   include ::collectd
@@ -11,6 +10,5 @@ class collectd::plugin::write_log (
   collectd::plugin { 'write_log':
     ensure   => $ensure,
     content  => template('collectd/plugin/write_log.conf.erb'),
-    interval => $interval,
   }
 }

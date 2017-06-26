@@ -4,7 +4,6 @@ class collectd::plugin::write_kafka (
   $kafka_hosts = ['localhost:9092'],
   $kafka_port = 9092,
   $topics     = {},
-  $interval   = undef,
 ) {
 
   include ::collectd
@@ -22,6 +21,5 @@ class collectd::plugin::write_kafka (
   collectd::plugin { 'write_kafka':
     ensure   => $ensure,
     content  => template('collectd/plugin/write_kafka.conf.erb'),
-    interval => $interval,
   }
 }
