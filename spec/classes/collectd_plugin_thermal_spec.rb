@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::thermal', type: :class do
-  on_supported_os.each do |os, facts|
+  on_supported_os(test_on).each do |os, facts|
     context "on #{os} " do
       let :facts do
-        facts.merge(
-          python_dir: '/usr/local/lib/python2.7/dist-packages'
-        )
+        facts
       end
 
       options = os_specific_options(facts)

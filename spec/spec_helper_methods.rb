@@ -14,3 +14,29 @@ def os_specific_options(facts)
     { package: 'collectd', service: 'collectd', plugin_conf_dir: '/etc/collectd' }
   end
 end
+
+def test_on
+  {
+    supported_os: [
+      {
+        'operatingsystem' => 'Debian',
+        'operatingsystemrelease' => ['8']
+      },
+      {
+        'operatingsystem' => 'CentOS',
+        'operatingsystemrelease' => ['7']
+      },
+      {
+        'operatingsystem' => 'Ubuntu',
+        'operatingsystemrelease' => ['16.04']
+      },
+      {
+        'operatingsystem' => 'FreeBSD',
+        'operatingsystemrelease' => ['10']
+      },
+      {
+        'operatingsystem' => 'Archlinux'
+      }
+    ]
+  }
+end

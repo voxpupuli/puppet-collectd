@@ -1,43 +1,45 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::unixsock', type: :class do
-  let :facts do
-    {
-      osfamily: 'RedHat',
-      collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7',
-      python_dir: '/usr/local/lib/python2.7/dist-packages'
-    }
-  end
+  on_supported_os(test_on).each do |os, facts|
+    context "on #{os} " do
+      let :facts do
+        facts
+      end
 
-  context ':ensure => present and default parameters' do
-    it 'Will create /etc/collectd.d/10-unixsock.conf' do
-      is_expected.to contain_file('unixsock.load').
-        with(ensure: 'present',
-             path: '/etc/collectd.d/10-unixsock.conf',
-             content: %r{SocketFile  "/var/run/collectd-socket".+SocketGroup "collectd".+SocketPerms "0770"}m)
-    end
-  end
+      options = os_specific_options(facts)
+      context ':ensure => present and default parameters' do
+        it 'Will create /etc/collectd.d/10-unixsock.conf' do
+          is_expected.to contain_file('unixsock.load').with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/10-unixsock.conf",
+            content: %r{SocketFile  "/var/run/collectd-socket".+SocketGroup "collectd".+SocketPerms "0770"}m
+          )
+        end
+      end
 
-  context ':ensure => absent' do
-    let :params do
-      { ensure: 'absent' }
-    end
+      context ':ensure => absent' do
+        let :params do
+          { ensure: 'absent' }
+        end
 
-    it 'Will not create /etc/collectd.d/10-unixsock.conf' do
-      is_expected.to contain_file('unixsock.load').
-        with(ensure: 'absent',
-             path: '/etc/collectd.d/10-unixsock.conf')
-    end
-  end
+        it 'Will not create /etc/collectd.d/10-unixsock.conf' do
+          is_expected.to contain_file('unixsock.load').with(
+            ensure: 'absent',
+            path: "#{options[:plugin_conf_dir]}/10-unixsock.conf"
+          )
+        end
+      end
 
-  context ':socketfile is not an absolute path' do
-    let :params do
-      { socketfile: 'var/run/socket' }
-    end
+      context ':socketfile is not an absolute path' do
+        let :params do
+          { socketfile: 'var/run/socket' }
+        end
 
-    it 'Will raise an error about :socketfile' do
-      is_expected.to compile.and_raise_error(%r{absolute path})
+        it 'Will raise an error about :socketfile' do
+          is_expected.to compile.and_raise_error(%r{absolute path})
+        end
+      end
     end
   end
 end

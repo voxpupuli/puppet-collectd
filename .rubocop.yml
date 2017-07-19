@@ -533,3 +533,6 @@ Style/IndentHeredoc:
 # disable Yaml safe_load. This is needed to support ruby2.0.0 development envs
 Security/YAMLLoad:
   Enabled: false
+
+RSpec/ScatteredLet:
+  Enabled: False

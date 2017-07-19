@@ -1,51 +1,29 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::network::listener', type: :define do
-  context ':ensure => present, collectd version 4.6' do
-    let :facts do
-      {
-        osfamily: 'RedHat',
-        collectd_version: '4.6',
-        operatingsystemmajrelease: '7',
-        python_dir: '/usr/local/lib/python2.7/dist-packages'
-      }
-    end
-    let(:title) { 'mylistener' }
-    let :params do
-      {
-        port: '1234'
-      }
-    end
+  on_supported_os.each do |os, facts|
+    context "on #{os} " do
+      let :facts do
+        facts
+      end
 
-    it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd < 4.7' do
-      is_expected.to contain_file('/etc/collectd.d/network-listener-mylistener.conf').
-        with(ensure: 'present',
-             path: '/etc/collectd.d/network-listener-mylistener.conf',
-             content: "<Plugin network>\n  Listen \"mylistener\" \"1234\"\n</Plugin>\n")
-    end
-  end
+      options = os_specific_options(facts)
+      context ':ensure => present, collectd version 5.1.0' do
+        let(:title) { 'mylistener' }
+        let :params do
+          {
+            port: '1234'
+          }
+        end
 
-  context ':ensure => present, collectd version 5.1.0' do
-    let :facts do
-      {
-        osfamily: 'RedHat',
-        collectd_version: '5.1.0',
-        operatingsystemmajrelease: '7',
-        python_dir: '/usr/local/lib/python2.7/dist-packages'
-      }
-    end
-    let(:title) { 'mylistener' }
-    let :params do
-      {
-        port: '1234'
-      }
-    end
-
-    it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
-      is_expected.to contain_file('/etc/collectd.d/network-listener-mylistener.conf').
-        with(ensure: 'present',
-             path: '/etc/collectd.d/network-listener-mylistener.conf',
-             content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n")
+        it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
+          is_expected.to contain_file("#{options[:plugin_conf_dir]}/network-listener-mylistener.conf").with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/network-listener-mylistener.conf",
+            content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n"
+          )
+        end
+      end
     end
   end
 end
