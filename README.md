@@ -615,6 +615,13 @@ class { 'collectd::plugin::fhcount':
 }
 ```
 
+#### Class: `collectd::plugin::fscache`
+
+```puppet
+class { 'collectd::plugin::fscache':
+}
+```
+
 #### Class: `collectd::plugin::filecount`
 
 ```puppet
