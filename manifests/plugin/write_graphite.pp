@@ -2,7 +2,6 @@
 class collectd::plugin::write_graphite (
   $carbons           = {},
   $carbon_defaults   = {},
-  $interval          = undef,
   $ensure            = 'present',
   $globals           = false,
 ) {
@@ -12,9 +11,8 @@ class collectd::plugin::write_graphite (
   validate_hash($carbons)
 
   collectd::plugin { 'write_graphite':
-    ensure   => $ensure,
-    globals  => $globals,
-    interval => $interval,
+    ensure  => $ensure,
+    globals => $globals,
   }
 
   # should be loaded after global plugin configuration

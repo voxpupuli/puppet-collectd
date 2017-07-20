@@ -8,7 +8,6 @@ class collectd::plugin::write_riemann (
   $batch            = true,
   $store_rates      = false,
   $always_append_ds = false,
-  $interval         = undef,
   $ttl_factor       = '2.0',
   $check_thresholds = false,
   $tags             = [],
@@ -36,8 +35,7 @@ class collectd::plugin::write_riemann (
   }
 
   collectd::plugin { 'write_riemann':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_riemann.conf.erb'),
-    interval => $interval,
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_riemann.conf.erb'),
   }
 }

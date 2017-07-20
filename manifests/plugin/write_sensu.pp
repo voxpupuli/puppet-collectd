@@ -6,7 +6,6 @@ class collectd::plugin::write_sensu (
   $sensu_port       = 3030,
   $store_rates      = false,
   $always_append_ds = false,
-  $interval         = undef,
   $metrics          = false,
   $metrics_handler  = 'example_metric_handler',
   $notifications    = false,
@@ -29,8 +28,7 @@ class collectd::plugin::write_sensu (
   }
 
   collectd::plugin { 'write_sensu':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_sensu.conf.erb'),
-    interval => $interval,
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_sensu.conf.erb'),
   }
 }
