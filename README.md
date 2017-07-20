@@ -1488,6 +1488,7 @@ class { 'collectd::plugin::rrdtool':
 
 ```puppet
 class {'collectd::plugin::sensors':
+  sensors        => ['sensors-coretemp-isa-0000/temperature-temp2', 'sensors-coretemp-isa-0000/temperature-temp3'],
   ignoreselected => false,
 }
 ```
