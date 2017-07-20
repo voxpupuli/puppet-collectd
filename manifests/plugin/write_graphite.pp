@@ -11,8 +11,8 @@ class collectd::plugin::write_graphite (
   validate_hash($carbons)
 
   collectd::plugin { 'write_graphite':
-    ensure   => $ensure,
-    globals  => $globals,
+    ensure  => $ensure,
+    globals => $globals,
   }
 
   # should be loaded after global plugin configuration

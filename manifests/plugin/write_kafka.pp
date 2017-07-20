@@ -19,7 +19,7 @@ class collectd::plugin::write_kafka (
   $kafka_broker = join($real_kafka_hosts, ',')
 
   collectd::plugin { 'write_kafka':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_kafka.conf.erb'),
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_kafka.conf.erb'),
   }
 }

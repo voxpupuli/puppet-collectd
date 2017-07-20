@@ -28,7 +28,7 @@ class collectd::plugin::write_sensu (
   }
 
   collectd::plugin { 'write_sensu':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_sensu.conf.erb'),
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_sensu.conf.erb'),
   }
 }

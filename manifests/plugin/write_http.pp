@@ -9,7 +9,7 @@ class collectd::plugin::write_http (
   validate_hash($urls)
 
   collectd::plugin { 'write_http':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_http.conf.erb'),
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_http.conf.erb'),
   }
 }

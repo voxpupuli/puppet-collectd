@@ -8,7 +8,7 @@ class collectd::plugin::write_log (
   validate_string($format)
 
   collectd::plugin { 'write_log':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/write_log.conf.erb'),
+    ensure  => $ensure,
+    content => template('collectd/plugin/write_log.conf.erb'),
   }
 }
