@@ -75,6 +75,41 @@ describe 'collectd::plugin::snmp', type: :class do
           )
         end
       end
+
+      context 'SNMPv3' do
+        let :params do
+          {
+            data: {
+              'hc_octets' => {
+                'type'     => 'if_octets',
+                'table'    => true,
+                'instance' => 'IF-MIB::ifName',
+                'values'   => ['IF-MIB::ifHCInOctets', 'IF-MIB::ifHCOutOctets']
+              }
+            },
+            hosts: {
+              'router' => {
+                'address'            => '192.0.2.1',
+                'version'            => 3,
+                'username'           => 'collectd',
+                'security_level'     => 'authPriv',
+                'auth_protocol'      => 'SHA',
+                'auth_passphrase'    => 'mekmitasdigoat',
+                'privacy_protocol'   => 'AES',
+                'privacy_passphrase' => 'mekmitasdigoat',
+                'collect'            => ['hc_octets'],
+                'interval'           => 30
+              }
+            }
+          }
+        end
+
+        it "Will create #{options[:plugin_conf_dir]}/10-snmp.conf" do
+          is_expected.to contain_file('snmp.load').with(ensure: 'present',
+                                                        path: "#{options[:plugin_conf_dir]}/10-snmp.conf",
+                                                        content: %r{Data "hc_octets".+Instance "IF-MIB::ifName".+Host "router".+Username "collectd".+SecurityLevel "authPriv".+AuthProtocol "SHA".+PrivacyProtocol "AES"}m)
+        end
+      end
     end
   end
 end

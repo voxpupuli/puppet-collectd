@@ -1528,6 +1528,33 @@ class {'collectd::plugin::snmp':
 }
 ```
 
+```puppet
+class { 'collectd::plugin::snmp':
+  data  => {
+    hc_octets => {
+      'type'     => 'if_octets',
+      'table'    => true,
+      'instance' => 'IF-MIB::ifName',
+      'values'   => ['IF-MIB::ifHCInOctets', 'IF-MIB::ifHCOutOctets'],
+    },
+  },
+  hosts => {
+    router => {
+      'address'            => '192.0.2.1',
+      'version'            => 3,
+      'security_level'     => 'authPriv',
+      'username'           => 'collectd',
+      'auth_protocol'      => 'SHA',
+      'auth_passphrase'    => 'mekmitasdigoat',
+      'privacy_protocol'   => 'AES',
+      'privacy_passphrase' => 'mekmitasdigoat',
+      'collect'            => ['hc_octets'],
+      'interval'           => 10,
+    },
+  },
+}
+```
+
 #### Class: `collectd::plugin::statsd`
 
 ```puppet

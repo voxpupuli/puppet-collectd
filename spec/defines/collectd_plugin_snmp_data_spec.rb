@@ -93,7 +93,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'InvertMatch is true' do
         let(:params) do
           {
-            invertmatch: true
+            invert_match: true
           }.merge(required_params)
         end
 
@@ -103,7 +103,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'InvertMatch is false' do
         let(:params) do
           {
-            invertmatch: false
+            invert_match: false
           }.merge(required_params)
         end
 
