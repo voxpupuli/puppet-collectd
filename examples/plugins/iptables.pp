@@ -6,7 +6,6 @@ class { '::collectd::plugin::iptables':
     'filter' => 'HTTP',
   },
   chains6 => {
-    'nat'    => 'In6_SSH',
     'filter' => 'HTTP6',
   },
 }
