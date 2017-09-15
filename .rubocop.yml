@@ -466,9 +466,6 @@ Metrics/ParameterLists:
 Lint/RequireParentheses:
   Enabled: True
 
-Style/SpaceBeforeFirstArg:
-  Enabled: True
-
 Style/ModuleFunction:
   Enabled: True
 
@@ -526,13 +523,13 @@ RSpec/RepeatedDescription:
 RSpec/NestedGroups:
   Enabled: False
 
-RSpec/ScatteredLet:
-  Enabled: False
-
 # this is broken on ruby1.9
 Layout/IndentHeredoc:
   Enabled: False
 
 # disable Yaml safe_load. This is needed to support ruby2.0.0 development envs
 Security/YAMLLoad:
+  Enabled: false
+
+RSpec/ScatteredLet:
   Enabled: false
