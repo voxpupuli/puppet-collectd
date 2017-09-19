@@ -26,6 +26,20 @@ describe 'collectd::plugin::iptables', type: :class do
         end
       end
 
+      context ':ensure => present and :chains6 => { \'filter\' => \'In6_SSH\' }' do
+        let :params do
+          { chains6: { 'filter' => 'In6_SSH' } }
+        end
+
+        it "Will create #{options[:plugin_conf_dir]}/10-iptables.conf" do
+          is_expected.to contain_file('iptables.load').with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/10-iptables.conf",
+            content: %r{Chain6 filter In6_SSH}
+          )
+        end
+      end
+
       context ':ensure => present and :chains has two chains from the same table' do
         let :params do
           { chains: {
