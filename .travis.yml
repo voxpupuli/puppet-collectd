@@ -15,12 +15,12 @@ script:
 matrix:
   fast_finish: true
   include:
-  - rvm: 2.4.1
+  - rvm: 2.1.9
     bundler_args: --without system_tests development
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.4.1
     bundler_args: --without system_tests development
-    env: PUPPET_VERSION="~> 5.0" CHECK=test
+    env: PUPPET_VERSION="~> 5.0" CHECK=test_with_coveralls
   - rvm: 2.4.1
     bundler_args: --without system_tests development
     env: PUPPET_VERSION="~> 5.0" CHECK=rubocop

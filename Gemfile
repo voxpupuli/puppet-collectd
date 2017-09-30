@@ -15,7 +15,6 @@ group :test do
   gem 'rspec-puppet', '~> 2.5',                                     :require => false
   gem 'rspec-puppet-facts',                                         :require => false
   gem 'rspec-puppet-utils',                                         :require => false
-  gem 'puppet-lint-absolute_classname-check',                       :require => false
   gem 'puppet-lint-leading_zero-check',                             :require => false
   gem 'puppet-lint-trailing_comma-check',                           :require => false
   gem 'puppet-lint-version_comparison-check',                       :require => false
@@ -46,6 +45,7 @@ group :development do
 end
 
 group :system_tests do
+  gem 'winrm',                         :require => false
   if beaker_version = ENV['BEAKER_VERSION']
     gem 'beaker', *location_for(beaker_version)
   end
@@ -56,6 +56,7 @@ group :system_tests do
   end
   gem 'serverspec',                    :require => false
   gem 'beaker-puppet_install_helper',  :require => false
+  gem 'beaker-module_install_helper',  :require => false
 end
 
 
@@ -63,7 +64,7 @@ end
 if facterversion = ENV['FACTER_GEM_VERSION']
   gem 'facter', facterversion.to_s, :require => false, :groups => [:test]
 else
-gem 'facter', '~> 2.4.6', :require => false, :groups => [:test]
+  gem 'facter', :require => false, :groups => [:test]
 end
 
 ENV['PUPPET_VERSION'].nil? ? puppetversion = '~> 5.0' : puppetversion = ENV['PUPPET_VERSION'].to_s
