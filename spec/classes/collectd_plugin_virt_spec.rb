@@ -8,7 +8,7 @@ describe 'collectd::plugin::virt', type: :class do
       end
 
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
 
       context 'interface_format in virt.conf' do

@@ -3,11 +3,10 @@ require 'spec_helper'
 describe 'collectd::plugin::filter::target', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
       let(:title) { 'MyTarget' }
       let(:default_params) { { chain: 'MyChain' } }
       let(:concat_fragment_target) { "#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf" }
@@ -34,10 +33,10 @@ describe 'collectd::plugin::filter::target', type: :define do
             order: concat_fragment_order,
             target: concat_fragment_target
           )
-          is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{<Target "set">})
-          is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{PluginInstance "coretemp"})
-          is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{TypeInstance "core3"})
         end
+        it { is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{<Target "set">}) }
+        it { is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{PluginInstance "coretemp"}) }
+        it { is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{TypeInstance "core3"}) }
       end
 
       context 'Add builtin target return without rule to chain' do
@@ -55,8 +54,8 @@ describe 'collectd::plugin::filter::target', type: :define do
             order: concat_fragment_order,
             target: concat_fragment_target
           )
-          is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Target "return"})
         end
+        it { is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Target "return"}) }
       end
     end
   end

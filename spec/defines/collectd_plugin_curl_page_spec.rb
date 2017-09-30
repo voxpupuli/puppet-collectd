@@ -6,11 +6,11 @@ describe 'collectd::plugin::curl::page', type: :define do
       let :facts do
         facts
       end
+      let :pre_condition do
+        'include collectd'
+      end
 
       options = os_specific_options(facts)
-      let :pre_condition do
-        'include ::collectd'
-      end
 
       context 'simple case' do
         let(:title) { 'test' }

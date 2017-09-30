@@ -8,7 +8,7 @@ describe 'collectd::plugin::load', type: :class do
       end
 
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
 
       context 'report_relative in load.conf' do

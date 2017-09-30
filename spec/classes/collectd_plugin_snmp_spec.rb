@@ -6,11 +6,11 @@ describe 'collectd::plugin::snmp', type: :class do
       let :facts do
         facts
       end
+      let :pre_condition do
+        'include collectd'
+      end
 
       options = os_specific_options(facts)
-      let :pre_condition do
-        'include ::collectd'
-      end
 
       context ':ensure => present and dataset for AMAVIS-MIB::inMsgs.0' do
         let :params do

@@ -3,14 +3,12 @@ require 'spec_helper'
 describe 'collectd::plugin::ipmi', type: :class do
   on_supported_os(test_on).each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
-
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
 
       context ':ensure => present, default params and legacy collectd 5.4' do

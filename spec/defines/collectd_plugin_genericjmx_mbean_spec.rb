@@ -3,22 +3,19 @@ require 'spec_helper'
 describe 'collectd::plugin::genericjmx::mbean', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-      options = os_specific_options(facts)
-
+      let(:title) { 'foo' }
+      let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo' }
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-genericjmx.conf" }
-
       let(:default_params) do
         {
           object_name: 'bar',
           values: []
         }
       end
-
-      let(:title) { 'foo' }
-      let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo' }
 
       # empty values array is technically not valid, but we'll test those cases later
       context 'defaults' do
