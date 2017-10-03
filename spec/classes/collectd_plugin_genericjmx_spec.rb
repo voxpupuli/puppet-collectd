@@ -3,12 +3,10 @@ require 'spec_helper'
 describe 'collectd::plugin::genericjmx', type: :class do
   on_supported_os(test_on).each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
-
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-genericjmx.conf" }
 
       context 'defaults' do

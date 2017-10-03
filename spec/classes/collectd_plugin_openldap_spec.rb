@@ -6,11 +6,11 @@ describe 'collectd::plugin::openldap', type: :class do
       let :facts do
         facts
       end
+      let :pre_condition do
+        'include collectd'
+      end
 
       options = os_specific_options(facts)
-      let :pre_condition do
-        'include ::collectd'
-      end
 
       context ':ensure => present, default params' do
         it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf" do

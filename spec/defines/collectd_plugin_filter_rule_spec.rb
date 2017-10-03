@@ -6,10 +6,10 @@ describe 'collectd::plugin::filter::rule', type: :define do
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
       let(:title) { 'MyRule' }
       let(:params) { { chain: 'MyChain' } }
+
+      options = os_specific_options(facts)
 
       context 'Add rule' do
         it 'create header and footer of rule' do

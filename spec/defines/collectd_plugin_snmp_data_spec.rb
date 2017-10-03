@@ -6,11 +6,8 @@ describe 'collectd::plugin::snmp::data', type: :define do
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
-
       let(:title) { 'foo' }
-
+      let(:filename) { 'snmp-data-foo.conf' }
       let(:required_params) do
         {
           type: 'bar',
@@ -19,7 +16,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
         }
       end
 
-      let(:filename) { 'snmp-data-foo.conf' }
+      options = os_specific_options(facts)
 
       context 'required params' do
         let(:params) { required_params }

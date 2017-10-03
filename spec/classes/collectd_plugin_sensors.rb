@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'collectd::plugin::sensors', type: :class do
   let :pre_condition do
-    'include ::collectd'
+    'include collectd'
   end
   ######################################################################
   # Default param validation, compilation succeeds

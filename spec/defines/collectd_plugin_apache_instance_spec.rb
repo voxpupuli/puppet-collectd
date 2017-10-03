@@ -6,17 +6,15 @@ describe 'collectd::plugin::apache::instance', type: :define do
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
-
       let(:title) { 'foo.example.com' }
       let(:required_params) do
         {
           url: 'http://localhost/mod_status?auto'
         }
       end
-
       let(:filename) { 'apache-instance-foo.example.com.conf' }
+
+      options = os_specific_options(facts)
 
       context 'default params' do
         let(:params) { required_params }

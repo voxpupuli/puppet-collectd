@@ -6,11 +6,11 @@ describe 'collectd::plugin::ping', type: :class do
       let :facts do
         facts
       end
+      let :pre_condition do
+        'include collectd'
+      end
 
       options = os_specific_options(facts)
-      let :pre_condition do
-        'include ::collectd'
-      end
 
       context ':hosts => [\'google.com\']' do
         let :params do

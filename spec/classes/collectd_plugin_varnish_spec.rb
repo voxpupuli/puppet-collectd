@@ -8,7 +8,7 @@ describe 'collectd::plugin::varnish', type: :class do
       end
 
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
 
       context 'When the version is not 5.4' do

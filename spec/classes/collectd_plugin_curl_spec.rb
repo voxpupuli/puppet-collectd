@@ -7,11 +7,11 @@ describe 'collectd::plugin::curl', type: :class do
         facts
       end
 
-      options = os_specific_options(facts)
-
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
+
+      options = os_specific_options(facts)
 
       context ':ensure => present, default params' do
         it "Will create #{options[:plugin_conf_dir]}/10-curl.conf" do

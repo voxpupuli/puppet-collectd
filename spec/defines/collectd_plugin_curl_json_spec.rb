@@ -3,12 +3,10 @@ require 'spec_helper'
 describe 'collectd::plugin::curl_json', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts.merge(collectd_version: '4.8.0')
       end
-
-      options = os_specific_options(facts)
-
       let(:title) { 'rabbitmq_overview' }
       let(:my_params) do
         {
@@ -45,7 +43,6 @@ describe 'collectd::plugin::curl_json', type: :define do
           }
         }
       end
-
       let(:filename) { 'rabbitmq_overview.load' }
 
       context 'default params' do

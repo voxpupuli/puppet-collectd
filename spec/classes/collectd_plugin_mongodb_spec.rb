@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'collectd::plugin::mongodb', type: :class do
   let :pre_condition do
-    'include ::collectd'
+    'include collectd'
   end
 
   let :default_params do

@@ -7,10 +7,11 @@ describe 'collectd::plugin::tail::file', type: :define do
         facts
       end
 
-      options = os_specific_options(facts)
       let :pre_condition do
-        'include ::collectd'
+        'include collectd'
       end
+
+      options = os_specific_options(facts)
 
       context 'Example from README' do
         let(:title) { 'exim-log' }

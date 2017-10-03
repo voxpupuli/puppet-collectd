@@ -3,21 +3,18 @@ require 'spec_helper'
 describe 'collectd::plugin::genericjmx::connection', type: :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
+      let(:title) { 'foo.example.com' }
+      let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo.example.com' }
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-genericjmx.conf" }
-
       let(:default_params) do
         {
           service_url: 'foo:bar:baz'
         }
       end
-
-      let(:title) { 'foo.example.com' }
-      let(:concat_fragment_name) { 'collectd_plugin_genericjmx_conf_foo.example.com' }
 
       context 'required params' do
         let(:params) do

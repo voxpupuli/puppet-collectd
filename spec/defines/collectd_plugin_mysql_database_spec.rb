@@ -6,12 +6,11 @@ describe 'collectd::plugin::mysql::database', type: :define do
       let :facts do
         facts
       end
+      let :pre_condition do
+        'include collectd'
+      end
 
       options = os_specific_options(facts)
-
-      let :pre_condition do
-        'include ::collectd'
-      end
 
       context ':socket => /var/run/mysqld/mysqld.sock, custom socket' do
         let(:title) { 'test' }

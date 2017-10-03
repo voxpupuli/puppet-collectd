@@ -3,22 +3,19 @@ require 'spec_helper'
 describe 'collectd::plugin::oracle::query', 'type' => :define do
   on_supported_os.each do |os, facts|
     context "on #{os} " do
+      options = os_specific_options(facts)
       let :facts do
         facts
       end
-
-      options = os_specific_options(facts)
+      let(:title) { 'foo' }
+      let(:concat_fragment_name) { 'collectd_plugin_oracle_query_foo' }
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-oracle.conf" }
-
       let(:default_params) do
         {
           statement: "select (select count(*) as count from v$session) ACTUAL_SESSIONS, (select value from v$parameter where name='sessions') MAX_SESSIONS FROM dual",
           results: []
         }
       end
-
-      let(:title) { 'foo' }
-      let(:concat_fragment_name) { 'collectd_plugin_oracle_query_foo' }
 
       # empty values array is technically not valid, but we'll test those cases later
       context 'defaults' do
