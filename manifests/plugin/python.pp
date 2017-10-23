@@ -63,7 +63,7 @@ class collectd::plugin::python (
       'ensure'  => $ensure_modulepath,
       'mode'    => '0755',
       'owner'   => 'root',
-      'purge'   => $::collectd::purge_config,
+      'purge'   => $::collectd::purge_config_python,
       'force'   => true,
       'group'   => $collectd::root_group,
       'require' => Package[$collectd::package_name]
