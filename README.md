@@ -839,7 +839,22 @@ collectd::plugin::genericjmx::connection {
     service_url     => 'service:jmx:rmi:///jndi/rmi://localhost:3637/jmxrmi',
     collect         => [ 'memory-heap', 'memory-nonheap','garbage_collector' ],
 }
+```
 
+Use jboss-cli-client.jar to collect values from newer jboss. You need
+to provide the jar.
+```
+class { 'collectd::plugin::genericjmx':
+  class_path_prepend => '/usr/lib/java/jboss-cli-client.jar',
+  class_path_append => '/usr/lib/java/local.jar',
+}
+
+collectd::plugin::genericjmx::connection {
+  'jboss':
+    service_url => 'service:jmx:remote+http://127.0.0.1:9990',
+    user        => 'admin'
+    password    => 'admin',
+}
 ```
 
 #### Class: `collectd::plugin::hddtemp`

@@ -48,6 +48,20 @@ describe 'collectd::plugin::genericjmx', type: :class do
             with_content(%r{JVMArg "foo".*JVMArg "bar".*JVMArg "baz"}m)
         end
       end
+  context 'class_path' do
+    let(:params) do
+      {
+        class_path_prepend: ['/usr/lib/java/prepend.jar'],
+        class_path_default: ['/usr/lib/java/default.jar'],
+        class_path_append: ['/usr/lib/java/append.jar']
+      }
+    end
+
+    it 'class_path can be prepended and appended' do
+      is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
+        with_content(%r{JVMArg "-Djava\.class\.path=/usr/lib/java/prepend\.jar:/usr/lib/java/default\.jar:/usr/lib/java/append\.jar"})
+    end
+  end
 
       context 'jvmarg parameter string' do
         let(:params) { { jvmarg: 'bat' } }
@@ -64,7 +78,7 @@ describe 'collectd::plugin::genericjmx', type: :class do
         let(:params) { { jvmarg: [] } }
 
         it 'does not have any jvmarg parameters other than classpath' do
-          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(%r{(.*JVMArg.*){2,}}m)
+            is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(%r{(.*JVMArg.*){2,}}m)
         end
       end
     end
