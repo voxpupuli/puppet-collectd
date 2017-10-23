@@ -25,7 +25,7 @@ describe 'collectd::plugin::zookeeper', type: :class do
 
   context ':ensure => absent' do
     let :params do
-      { zookeeper_host: ['myhost'], ensure: 'absent' }
+      { zookeeper_host: 'myhost', ensure: 'absent' }
     end
 
     it 'Will not create ' do
