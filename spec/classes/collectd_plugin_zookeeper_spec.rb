@@ -14,11 +14,11 @@ describe 'collectd::plugin::zookeeper', type: :class do
           { zookeeper_host: 'myhost', zookeeper_port: '2181' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-zookeeper.conf" do
-          is_expected.to contain_file('write_riemann.load').with(ensure: 'present')
-          is_expected.to contain_file('write_riemann.load').with(path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf")
-          is_expected.to contain_file('write_riemann.load').with(content: %r{Host "myhost"})
-          is_expected.to contain_file('write_riemann.load').with(content: %r{Port "2181"})
+        it "Will create #{options[:plugin_conf_dir]}/10-zookeeper.load" do
+          is_expected.to contain_file('zookeeper.load').with(ensure: 'present')
+          is_expected.to contain_file('zookeeper.load').with(path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf")
+          is_expected.to contain_file('zookeeper.load').with(content: %r{Host "myhost"})
+          is_expected.to contain_file('zookeeper.load').with(content: %r{Port "2181"})
         end
       end
 
