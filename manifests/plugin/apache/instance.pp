@@ -1,12 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:Apache
 define collectd::plugin::apache::instance (
-  $url,
-  $ensure = present,
-  $user = undef,
-  $password = undef,
-  $verifypeer = undef,
-  $verifyhost = undef,
-  $cacert = undef,
+  Stdlib::Httpurl $url,
+  String $ensure                         = present,
+  Optional[String] $user                 = undef,
+  Optional[String] $password             = undef,
+  Optional[Boolean] $verifypeer          = undef,
+  Optional[Boolean] $verifyhost          = undef,
+  Optional[Stdlib::Absolutepath] $cacert = undef,
 ) {
   include ::collectd
   include ::collectd::plugin::apache
