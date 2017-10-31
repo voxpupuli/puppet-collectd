@@ -54,7 +54,7 @@ describe 'collectd::plugin::curl', type: :class do
         end
       end
 
-      context ':ensure => present, verifypeer => false, verifyhost => \'false\', measureresponsetime => true, matches empty' do
+      context ':ensure => present, verifypeer => false, verifyhost => false, measureresponsetime => true, matches empty' do
         let :params do
           {
             ensure: 'present',
@@ -62,7 +62,7 @@ describe 'collectd::plugin::curl', type: :class do
               'selfsigned_ssl' => {
                 'url'                 => 'https://some.selfsigned.ssl.site/',
                 'verifypeer'          => false,
-                'verifyhost'          => 'false',
+                'verifyhost'          => false,
                 'measureresponsetime' => true
               }
             }
