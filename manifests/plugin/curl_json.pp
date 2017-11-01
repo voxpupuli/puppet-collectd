@@ -2,7 +2,7 @@
 define collectd::plugin::curl_json (
   $url,
   $instance,
-  $keys,
+  Hash $keys,
   $ensure         = 'present',
   $host           = undef,
   $interval       = undef,
@@ -20,8 +20,6 @@ define collectd::plugin::curl_json (
 ) {
 
   include ::collectd
-
-  validate_hash($keys)
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
