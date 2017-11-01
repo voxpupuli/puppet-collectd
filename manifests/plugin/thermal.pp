@@ -1,15 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:thermal
 class collectd::plugin::thermal (
-  $devices        = [],
-  $ensure         = 'present',
-  $ignoreselected = false,
-  $interval       = undef,
+  Array $devices          = [],
+  $ensure                 = 'present',
+  Boolean $ignoreselected = false,
+  $interval               = undef,
 ) {
 
   include ::collectd
-
-  validate_array($devices)
-  validate_bool($ignoreselected)
 
   collectd::plugin { 'thermal':
     ensure   => $ensure,
