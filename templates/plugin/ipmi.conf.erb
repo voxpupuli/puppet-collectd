@@ -1,5 +1,5 @@
 <Plugin "ipmi">
-<% @sensors_real.each do |sensor| -%>
+<% @sensors.each do |sensor| -%>
   Sensor "<%= sensor %>"
 <% end -%>
   IgnoreSelected <%= @ignore_selected %>
