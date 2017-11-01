@@ -1,15 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:IRQ
 class collectd::plugin::irq (
-  $ensure         = 'present',
-  $irqs           = [],
-  $ignoreselected = false,
-  $interval       = undef,
+  $ensure                 = 'present',
+  Array $irqs             = [],
+  Boolean $ignoreselected = false,
+  $interval               = undef,
 ) {
 
   include ::collectd
-
-  validate_array($irqs)
-  validate_bool($ignoreselected)
 
   collectd::plugin { 'irq':
     ensure   => $ensure,
