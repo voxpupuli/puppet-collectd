@@ -1,11 +1,9 @@
 # Tail plugin
 # https://collectd.org/wiki/index.php/Plugin:Tail
 class collectd::plugin::tail (
-  $interval = undef,
-  $files = undef,
+  $interval             = undef,
+  Optional[Hash] $files = undef,
 ) {
-
-  if $files { validate_hash($files) }
 
   collectd::plugin { 'tail':
     interval => $interval,
