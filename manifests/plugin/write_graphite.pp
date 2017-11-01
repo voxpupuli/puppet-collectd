@@ -1,14 +1,12 @@
 # https://collectd.org/wiki/index.php/Graphite
 class collectd::plugin::write_graphite (
-  $carbons           = {},
+  Hash $carbons           = {},
   $carbon_defaults   = {},
   $ensure            = 'present',
   $globals           = false,
 ) {
 
   include ::collectd
-
-  validate_hash($carbons)
 
   collectd::plugin { 'write_graphite':
     ensure  => $ensure,
