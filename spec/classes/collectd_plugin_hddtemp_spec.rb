@@ -40,16 +40,6 @@ describe 'collectd::plugin::hddtemp', type: :class do
           )
         end
       end
-
-      context ':port is not an integer' do
-        let :params do
-          { port: 'port' }
-        end
-
-        it 'Will raise an error about :port not being an integer' do
-          is_expected.to compile.and_raise_error(%r{Expected first argument to be an Integer or Array, got String})
-        end
-      end
     end
   end
 end
