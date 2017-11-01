@@ -1,6 +1,6 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 class collectd::plugin::ping (
-  $hosts,
+  Array $hosts,
   $ensure         = 'present',
   $manage_package = undef,
   $interval       = undef,
@@ -14,8 +14,6 @@ class collectd::plugin::ping (
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  validate_array($hosts)
 
   if $::osfamily == 'RedHat' {
     if $_manage_package {

@@ -1,13 +1,11 @@
 # https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_openldap
 class collectd::plugin::openldap (
-  $ensure     = 'present',
-  $instances  = { 'localhost' => { 'url' => 'ldap://localhost/' } },
-  $interval   = undef,
+  $ensure         = 'present',
+  Hash $instances = { 'localhost' => { 'url' => 'ldap://localhost/' } },
+  $interval       = undef,
 ) {
 
   include ::collectd
-
-  validate_hash($instances)
 
   collectd::plugin { 'openldap':
     ensure   => $ensure,

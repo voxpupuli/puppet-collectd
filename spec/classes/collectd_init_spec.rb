@@ -42,18 +42,6 @@ describe 'collectd', type: :class do
 
           it { is_expected.to contain_package(options[:package]).with_install_options(['--nogpgcheck']) }
         end
-
-        context 'set to an invalid value (non-array)' do
-          let :params do
-            { package_install_options: 'not_an_array' }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd')
-            end.to raise_error(Puppet::Error, %r{is not an Array})
-          end
-        end
       end
 
       context 'when purge_config is enabled' do

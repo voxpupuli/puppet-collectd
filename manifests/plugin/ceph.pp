@@ -1,14 +1,14 @@
 #== Class: collectd::plugin::ceph
 #
-# Class to manage ceph plugin for collectd 
+# Class to manage ceph plugin for collectd
 # === Parameters
 # [*ensure*]
 #   ensure param for collectd::plugin type
-# 
+#
 # [*daemons*]
 #   array of ceph daemons to create config for (replace clustername, hostname as appropriate)
 #   example: [ '[clustername]-osd.1', '[clustername]-osd.2', '[clustername]-osd.3', '[clustername]-mon.[hostname].asok' ]
-#  
+#
 #
 # [*longrunavglatency*] If enabled, latency values(sum,count pairs) are
 #   calculated as the long run average - average since the ceph daemon was
@@ -32,9 +32,9 @@
 # [*package_name*]
 #   to be used with manage_package; if manage_package is true, this gives the name
 #   of the package to manage. Defaults to 'collectd-ceph'
-# 
+#
 class collectd::plugin::ceph (
-  $daemons,
+  Array $daemons,
   $ensure                    = 'present',
   $longrunavglatency         = false,
   $convertspecialmetrictypes = true,
@@ -43,8 +43,6 @@ class collectd::plugin::ceph (
 ) {
 
   include ::collectd
-
-  validate_array($daemons)
 
   if $manage_package {
     package { 'collectd-ceph':

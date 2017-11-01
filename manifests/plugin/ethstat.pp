@@ -1,16 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:Ethstat
 class collectd::plugin::ethstat (
-  $ensure     = 'present',
-  $interfaces = [],
-  $maps       = [],
-  $mappedonly = false,
-  $interval   = undef,
+  $ensure           = 'present',
+  Array $interfaces = [],
+  Array $maps       = [],
+  $mappedonly       = false,
+  $interval         = undef,
 ) {
 
   include ::collectd
-
-  validate_array($interfaces,$maps)
-  validate_bool($mappedonly)
 
   collectd::plugin { 'ethstat':
     ensure   => $ensure,

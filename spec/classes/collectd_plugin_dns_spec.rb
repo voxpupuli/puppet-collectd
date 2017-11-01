@@ -32,18 +32,6 @@ describe 'collectd::plugin::dns', type: :class do
             it { is_expected.to contain_file('dns.load').with('ensure' => value) }
           end
         end
-
-        context 'set to an invalid value' do
-          let :params do
-            { ensure: 'invalid' }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, %r{collectd::plugin::dns::ensure is <invalid> and must be either 'present' or 'absent'\.})
-          end
-        end
       end
 
       describe 'with ignoresource parameter' do
@@ -59,18 +47,6 @@ describe 'collectd::plugin::dns', type: :class do
         context 'set to undef' do
           it { is_expected.to contain_file('dns.load').without_content(%r{IgnoreSource\s+10\.10\.10\.10}) }
         end
-
-        context 'set to an invalid value' do
-          let :params do
-            { ignoresource: 'not_an_ip' }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, %r{collectd::plugin::dns::ignoresource is <not_an_ip> and must be a valid IP address\.})
-          end
-        end
       end
 
       describe 'with interface parameter' do
@@ -81,18 +57,6 @@ describe 'collectd::plugin::dns', type: :class do
 
           interface_fixture = File.read(fixtures('plugins/dns.conf.interface'))
           it { is_expected.to contain_file('dns.load').with_content(interface_fixture) }
-        end
-
-        context 'set to an invalid value (non-string)' do
-          let :params do
-            { interface: %w[not a string] }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, %r{is not a string})
-          end
         end
       end
 
@@ -106,18 +70,6 @@ describe 'collectd::plugin::dns', type: :class do
             it { is_expected.to contain_file('dns.load').with_content(%r{\s*Interval\s+#{Regexp.escape(value)}}) }
           end
         end
-
-        context 'set to an invalid value' do
-          let :params do
-            { interval: 'invalid' }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, %r{Expected first argument to be a Numeric or Array, got String})
-          end
-        end
       end
 
       describe 'with selectnumericquerytypes parameter' do
@@ -128,18 +80,6 @@ describe 'collectd::plugin::dns', type: :class do
             end
 
             it { is_expected.to contain_file('dns.load').with_content(%r{\s*SelectNumericQueryTypes\s+#{Regexp.escape(value.to_s)}}) }
-          end
-        end
-
-        context 'set to an invalid value (non-boolean and non-stringified boolean)' do
-          let :params do
-            { selectnumericquerytypes: 'invalid' }
-          end
-
-          it 'fails' do
-            expect do
-              is_expected.to contain_class('collectd::plugin::dns')
-            end.to raise_error(Puppet::Error, %r{Unknown type of boolean})
           end
         end
       end

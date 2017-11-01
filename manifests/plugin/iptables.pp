@@ -3,17 +3,14 @@ class collectd::plugin::iptables (
   $ensure         = 'present',
   $ensure_package = 'present',
   $manage_package = undef,
-  $chains         = {},
-  $chains6        = {},
+  Hash $chains    = {},
+  Hash $chains6   = {},
   $interval       = undef,
 ) {
 
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  validate_hash($chains)
-  validate_hash($chains6)
 
   if $::osfamily == 'RedHat' {
     if $_manage_package {

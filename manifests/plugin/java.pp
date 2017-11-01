@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:Java
 class collectd::plugin::java (
-  $ensure         = 'present',
-  $jvmarg         = [],
-  $loadplugin     = {},
-  $interval       = undef,
-  $manage_package = undef,
-  $java_home      = undef,
+  $ensure                                   = 'present',
+  $jvmarg                                   = [],
+  $loadplugin                               = {},
+  $interval                                 = undef,
+  $manage_package                           = undef,
+  Optional[Stdlib::Absolutepath] $java_home = undef,
 ) {
 
   include ::collectd
@@ -19,7 +19,6 @@ class collectd::plugin::java (
       }
     }
     if $java_home {
-      validate_string($java_home)
       file { '/usr/lib64/libjvm.so':
         ensure => 'link',
         target => "${java_home}/jre/lib/amd64/server/libjvm.so",

@@ -4,8 +4,8 @@ class collectd::plugin::write_sensu (
   $manage_package   = undef,
   $sensu_host       = 'localhost',
   $sensu_port       = 3030,
-  $store_rates      = false,
-  $always_append_ds = false,
+  Boolean $store_rates      = false,
+  Boolean $always_append_ds = false,
   $metrics          = false,
   $metrics_handler  = 'example_metric_handler',
   $notifications    = false,
@@ -15,9 +15,6 @@ class collectd::plugin::write_sensu (
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  validate_bool($store_rates)
-  validate_bool($always_append_ds)
 
   if $::osfamily == 'RedHat' {
     if $_manage_package {

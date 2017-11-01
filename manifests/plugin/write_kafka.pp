@@ -1,15 +1,12 @@
 class collectd::plugin::write_kafka (
-  $ensure     = 'present',
-  $kafka_host = undef,
-  $kafka_hosts = ['localhost:9092'],
-  $kafka_port = 9092,
-  $topics     = {},
+  $ensure                    = 'present',
+  $kafka_host                = undef,
+  Array[String] $kafka_hosts = ['localhost:9092'],
+  $kafka_port                = 9092,
+  Hash $topics               = {},
 ) {
 
   include ::collectd
-
-  validate_hash($topics)
-  validate_array($kafka_hosts)
 
   if($kafka_host and $kafka_port) {
     $real_kafka_hosts = [ "${kafka_host}:${kafka_port}" ]

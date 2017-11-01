@@ -1,14 +1,12 @@
 #
 define collectd::plugin::postgresql::writer (
-  $ensure     = 'present',
-  $statement  = undef,
-  $storerates = undef,
+  $ensure           = 'present',
+  String $statement = undef,
+  $storerates       = undef,
 ) {
 
   include ::collectd
   include ::collectd::plugin::postgresql
-
-  validate_string($statement)
 
   concat::fragment{ "collectd_plugin_postgresql_conf_writer_${title}":
     order   => '40',

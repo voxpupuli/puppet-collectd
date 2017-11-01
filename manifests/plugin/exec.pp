@@ -1,15 +1,12 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
 class collectd::plugin::exec (
-  $commands          = {},
-  $interval          = undef,
-  $ensure            = 'present',
-  $globals           = false,
+  Hash $commands   = {},
+  $interval        = undef,
+  $ensure          = 'present',
+  Boolean $globals = false,
 ) {
 
   include ::collectd
-
-  validate_hash($commands)
-  validate_bool($globals)
 
   collectd::plugin { 'exec':
     ensure   => $ensure,

@@ -1,13 +1,13 @@
 # Class: collectd::plugin::dns
 #
 class collectd::plugin::dns (
-  $ensure                  = 'present',
-  $ignoresource            = undef,
-  $interface               = 'any',
-  $interval                = undef,
-  $manage_package          = undef,
-  $package_name            = 'collectd-dns',
-  $selectnumericquerytypes = true,
+  Enum['present','absent'] $ensure                   = 'present',
+  Optional[Stdlib::Compat::Ip_address] $ignoresource = undef,
+  String $interface                                  = 'any',
+  Optional[String] $interval                         = undef,
+  $manage_package                                    = undef,
+  $package_name                                      = 'collectd-dns',
+  Variant[String,Boolean] $selectnumericquerytypes   = true,
 ) {
 
   include ::collectd
@@ -20,26 +20,6 @@ class collectd::plugin::dns (
       name   => $package_name,
     }
   }
-
-  validate_re($ensure,'^(present)|(absent)$',
-    "collectd::plugin::dns::ensure is <${ensure}> and must be either 'present' or 'absent'.")
-
-  if ( $ignoresource != undef ) and ( is_ip_address($ignoresource) == false ) {
-    fail("collectd::plugin::dns::ignoresource is <${ignoresource}> and must be a valid IP address.")
-  }
-
-  validate_string($interface)
-
-  if $interval != undef {
-    validate_numeric($interval)
-  }
-
-  if is_string($selectnumericquerytypes) == true {
-    $selectnumericquerytypes_real = str2bool($selectnumericquerytypes)
-  } else {
-    $selectnumericquerytypes_real = $selectnumericquerytypes
-  }
-  validate_bool($selectnumericquerytypes_real)
 
   collectd::plugin { 'dns':
     ensure   => $ensure,

@@ -1,18 +1,18 @@
 # https://collectd.org/wiki/index.php/Rrdcached
 class collectd::plugin::rrdcached (
-  $ensure            = 'present',
-  $daemonaddress     = 'unix:/tmp/rrdcached.sock',
-  $datadir           = '/var/lib/rrdcached/db/collectd',
-  $createfiles       = true,
-  $createfilesasync  = false,
-  $stepsize          = undef,
-  $heartbeat         = undef,
-  $interval          = undef,
-  $rrarows           = undef,
-  $rratimespan       = [],
-  $xff               = undef,
-  $collectstatistics = undef,
-  $manage_package    = undef,
+  $ensure                   = 'present',
+  $daemonaddress            = 'unix:/tmp/rrdcached.sock',
+  $datadir                  = '/var/lib/rrdcached/db/collectd',
+  Boolean $createfiles      = true,
+  Boolean $createfilesasync = false,
+  $stepsize                 = undef,
+  $heartbeat                = undef,
+  $interval                 = undef,
+  $rrarows                  = undef,
+  Array $rratimespan        = [],
+  $xff                      = undef,
+  $collectstatistics        = undef,
+  $manage_package           = undef,
 ) {
 
   include ::collectd
@@ -26,9 +26,6 @@ class collectd::plugin::rrdcached (
       }
     }
   }
-
-  validate_array($rratimespan)
-  validate_bool($createfiles, $createfilesasync)
 
   collectd::plugin { 'rrdcached':
     ensure   => $ensure,
