@@ -30,16 +30,6 @@ describe 'collectd::plugin::unixsock', type: :class do
           )
         end
       end
-
-      context ':socketfile is not an absolute path' do
-        let :params do
-          { socketfile: 'var/run/socket' }
-        end
-
-        it 'Will raise an error about :socketfile' do
-          is_expected.to compile.and_raise_error(%r{absolute path})
-        end
-      end
     end
   end
 end
