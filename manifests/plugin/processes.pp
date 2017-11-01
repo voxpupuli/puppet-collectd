@@ -1,16 +1,13 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
-  $ensure          = 'present',
-  $order           = 10,
-  $interval        = undef,
-  $processes       = undef,
-  $process_matches = undef,
+  $ensure                          = 'present',
+  $order                           = 10,
+  $interval                        = undef,
+  Optional[Array] $processes       = undef,
+  Optional[Array] $process_matches = undef,
 ) {
 
   include ::collectd
-
-  if $processes { validate_array($processes) }
-  if $process_matches { validate_array($process_matches) }
 
   collectd::plugin { 'processes':
     ensure   => $ensure,
