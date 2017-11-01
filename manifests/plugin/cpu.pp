@@ -1,21 +1,14 @@
 # https://collectd.org/wiki/index.php/Plugin:CPU
 class collectd::plugin::cpu (
   $ensure           = 'present',
-  $reportbystate    = true,
-  $reportbycpu      = true,
-  $valuespercentage = false,
-  $reportnumcpu     = false,
+  Boolean $reportbystate    = true,
+  Boolean $reportbycpu      = true,
+  Boolean $valuespercentage = false,
+  Boolean $reportnumcpu     = false,
   $interval         = undef,
 ) {
 
   include ::collectd
-
-  validate_bool(
-    $reportbystate,
-    $reportbycpu,
-    $valuespercentage,
-    $reportnumcpu,
-  )
 
   collectd::plugin { 'cpu':
     ensure   => $ensure,
