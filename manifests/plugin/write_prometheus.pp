@@ -1,11 +1,9 @@
 class collectd::plugin::write_prometheus (
-  $port   = '9103',
-  $ensure = 'present',
+  String $port = '9103',
+  $ensure      = 'present',
 ) {
 
   include ::collectd
-
-  validate_string($port)
 
   collectd::plugin { 'write_prometheus':
     ensure  => $ensure,
