@@ -1,17 +1,14 @@
 # https://collectd.org/wiki/index.php/Plugin:SMART
 class collectd::plugin::smart (
-  $disks          = [],
-  $ensure         = 'present',
-  $ignoreselected = false,
-  $interval       = undef,
-  $manage_package = undef,
-  $package_name   = 'collectd-smart',
+  Array $disks            = [],
+  $ensure                 = 'present',
+  Boolean $ignoreselected = false,
+  $interval               = undef,
+  $manage_package         = undef,
+  $package_name           = 'collectd-smart',
 ) {
 
   include ::collectd
-
-  validate_array($disks)
-  validate_bool($ignoreselected)
 
   if $::osfamily == 'RedHat' {
     if $manage_package != undef {
