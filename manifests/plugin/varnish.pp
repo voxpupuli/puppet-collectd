@@ -2,7 +2,7 @@
 class collectd::plugin::varnish (
   $ensure         = 'present',
   $manage_package = undef,
-  $instances      = {
+  Hash $instances = {
     'localhost' => {
     },
   },
@@ -12,8 +12,6 @@ class collectd::plugin::varnish (
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  validate_hash($instances)
 
   if $::osfamily == 'RedHat' {
     if $_manage_package {
