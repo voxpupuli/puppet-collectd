@@ -1,22 +1,19 @@
 # https://collectd.org/wiki/index.php/Plugin:Netlink
 class collectd::plugin::netlink (
-  $ensure            = 'present',
-  $manage_package    = undef,
-  $interfaces        = [],
-  $verboseinterfaces = [],
-  $qdiscs            = [],
-  $classes           = [],
-  $filters           = [],
-  $ignoreselected    = false,
-  $interval          = undef,
+  $ensure                  = 'present',
+  $manage_package          = undef,
+  Array $interfaces        = [],
+  Array $verboseinterfaces = [],
+  Array $qdiscs            = [],
+  Array $classes           = [],
+  Array $filters           = [],
+  Boolean $ignoreselected  = false,
+  $interval                = undef,
 ) {
 
   include ::collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  validate_array($interfaces, $verboseinterfaces, $qdiscs, $classes, $filters)
-  validate_bool($ignoreselected)
 
   if $::osfamily == 'RedHat' {
     if $_manage_package {
