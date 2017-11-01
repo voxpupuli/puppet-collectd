@@ -1,16 +1,13 @@
 define collectd::plugin::exec::cmd (
   $user,
   $group,
-  $exec              = [],
-  $notification_exec = [],
-  $ensure = 'present',
+  Array $exec              = [],
+  Array $notification_exec = [],
+  $ensure                  = 'present',
 ) {
 
   include ::collectd
   include ::collectd::plugin::exec
-
-  validate_array($exec)
-  validate_array($notification_exec)
 
   $conf_dir = $collectd::plugin_conf_dir
 
