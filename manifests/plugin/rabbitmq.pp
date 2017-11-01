@@ -42,7 +42,7 @@
 #
 class collectd::plugin::rabbitmq (
   # lint:ignore:parameter_order
-  $config           = {
+  Hash $config      = {
     'Username' => 'guest',
     'Password' => 'guest',
     'Scheme'   => 'http',
@@ -51,7 +51,7 @@ class collectd::plugin::rabbitmq (
     'Realm'    => '"RabbitMQ Management"',
   },
   # lint:endignore
-  $ensure           = 'present',
+  String $ensure    = 'present',
   $interval         = undef,
   $manage_package   = undef,
   $package_name     = 'collectd-rabbitmq',
@@ -60,9 +60,6 @@ class collectd::plugin::rabbitmq (
   $custom_types_db  = undef,
 ) {
   include ::collectd
-
-  validate_string($ensure)
-  validate_hash($config)
 
   case $::osfamily {
     'RedHat': {
