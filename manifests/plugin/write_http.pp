@@ -1,12 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_HTTP
 class collectd::plugin::write_http (
-  $ensure   = 'present',
-  $urls     = {},
+  $ensure    = 'present',
+  Hash $urls = {},
 ) {
 
   include ::collectd
-
-  validate_hash($urls)
 
   collectd::plugin { 'write_http':
     ensure  => $ensure,
