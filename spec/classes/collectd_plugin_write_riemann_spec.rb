@@ -41,56 +41,6 @@ describe 'collectd::plugin::write_riemann', type: :class do
           )
         end
       end
-
-      context ':ttl_factor is a number' do
-        let :params do
-          { ttl_factor: 'four' }
-        end
-
-        it 'Will raise an error about :ttl_factor not being a Number' do
-          is_expected.to compile.and_raise_error(%r{Expected first argument to be a Numeric or Array})
-        end
-      end
-
-      context ':batch is a boolean' do
-        let :params do
-          { batch: 'false' }
-        end
-
-        it 'Will raise an error about :batch not being a Boolean' do
-          is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
-        end
-      end
-
-      context ':check_thresholds is a boolean' do
-        let :params do
-          { check_thresholds: 'false' }
-        end
-
-        it 'Will raise an error about :check_thresholds not being a Boolean' do
-          is_expected.to compile.and_raise_error(%r{"false" is not a boolean})
-        end
-      end
-
-      context ':tags is an array' do
-        let :params do
-          { tags: 'test' }
-        end
-
-        it 'Will raise an error about :tags not being an array' do
-          is_expected.to compile.and_raise_error(%r{"test" is not an Array})
-        end
-      end
-
-      context ':attributes is a hash' do
-        let :params do
-          { attributes: 'test' }
-        end
-
-        it 'Will raise an error about :attributes not being a hash' do
-          is_expected.to compile.and_raise_error(%r{"test" is not a Hash})
-        end
-      end
     end
   end
 end
