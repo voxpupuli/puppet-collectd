@@ -34,16 +34,6 @@ describe 'collectd::plugin::write_kafka', type: :class do
           )
         end
       end
-
-      context ':topics is a hash' do
-        let :params do
-          { topics: %w[test] }
-        end
-
-        it 'Will raise an error about :topics being an Array' do
-          is_expected.to compile.and_raise_error(%r{Array})
-        end
-      end
     end
   end
 end
