@@ -32,66 +32,6 @@ describe 'collectd::plugin::openvpn', type: :class do
         end
       end
 
-      context ':statusfile is a string but not an absolute path' do
-        let :params do
-          { statusfile: 'megafrobber' }
-        end
-
-        it 'Will raise an error about :statusfile not being an absolute path' do
-          is_expected.to compile.and_raise_error(%r{"megafrobber" is not an absolute path.})
-        end
-      end
-
-      context ':statusfile param is not a string or array' do
-        let :params do
-          { statusfile: true }
-        end
-
-        it 'Will raise an error about :statusfile not being a string or array' do
-          is_expected.to compile.and_raise_error(%r{array or string:})
-        end
-      end
-
-      context ':improvednamingschema is not a bool' do
-        let :params do
-          { improvednamingschema: 'true' }
-        end
-
-        it 'Will raise an error about :improvednamingschema not being a boolean' do
-          is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
-        end
-      end
-
-      context ':collectcompression is not a bool' do
-        let :params do
-          { collectcompression: 'true' }
-        end
-
-        it 'Will raise an error about :collectcompression not being a boolean' do
-          is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
-        end
-      end
-
-      context ':collectindividualusers is not a bool' do
-        let :params do
-          { collectindividualusers: 'true' }
-        end
-
-        it 'Will raise an error about :collectindividualusers not being a boolean' do
-          is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
-        end
-      end
-
-      context ':collectusercount is not a bool' do
-        let :params do
-          { collectusercount: 'true' }
-        end
-
-        it 'Will raise an error about :collectusercount not being a boolean' do
-          is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
-        end
-      end
-
       context ':interval is not default and is an integer' do
         let :params do
           { interval: 15 }
