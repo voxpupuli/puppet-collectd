@@ -30,19 +30,6 @@ describe 'collectd::plugin::fhcount', type: :class do
         end
       end
 
-      context 'default parameters are not booleans' do
-        let :params do
-          {
-            valuesabsolute: 'string_b',
-            valuespercentage: 'string_c'
-          }
-        end
-
-        it 'Will raise an error about parameters not being boolean' do
-          is_expected.to compile.and_raise_error(%r{bool})
-        end
-      end
-
       context ':ensure => absent' do
         let :params do
           { ensure: 'absent' }
