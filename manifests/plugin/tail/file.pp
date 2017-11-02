@@ -1,8 +1,8 @@
 #
 define collectd::plugin::tail::file (
-  $filename,
-  $instance,
-  $matches,
+  Stdlib::Absolutepath $filename,
+  String $instance,
+  Array[Hash] $matches,
   $ensure = 'present',
 ) {
 
@@ -10,11 +10,6 @@ define collectd::plugin::tail::file (
   include ::collectd::plugin::tail
 
   $conf_dir = $collectd::plugin_conf_dir
-
-  validate_absolute_path($filename)
-  validate_string($instance)
-  validate_array($matches)
-  validate_hash($matches[0])
 
   file { "${name}.conf":
     ensure  => $ensure,

@@ -14,7 +14,7 @@ Puppet module for configuring collectd and plugins.
 ## Usage
 
 The simplest use case is to use all of the configurations in
-the default collectd.conf file shipped with collectd. This can
+the default `collectd.conf` file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
@@ -22,7 +22,7 @@ include ::collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
-This is accomplished by removing the default collectd.conf file
+This is accomplished by removing the default `collectd.conf` file
 and replacing it with a file that includes all alternative
 configurations. Configure a node with the following class
 declaration:
@@ -36,17 +36,17 @@ class { '::collectd':
 }
 ```
 
-Set purge, recurse, and purge_config to true in order to override
-the default configurations shipped in collectd.conf and use
-custom configurations stored in conf.d. From here you can set up
+Set `purge`, `recurse`, and `purge_config` to `true` in order to override
+the default configurations shipped in `collectd.conf` and use
+custom configurations stored in `conf.d`. From here you can set up
 additional plugins as shown below.
 
-Specifying the version or minimum_version of collectd as shown above reduces
-the need for two puppet runs to coverge. See
+Specifying the `version` or `minimum_version` of collectd as shown above reduces
+the need for two puppet runs to converge. See
 [Puppet needs two runs to correctly write my conf, why?](#puppet-needs-two-runs-to-correctly-write-my-conf-why)
 below.
 
-Hiera example in YAML of passing install_options to the package resource for
+Hiera example in YAML of passing `install_options` to the package resource for
 managing the collectd package. This parameter must be an array.
 
 ```yaml
@@ -62,8 +62,32 @@ Example of how to load plugins with no additional configuration:
 collectd::plugin { 'battery': }
 ```
 
-where 'battery' is the name of the plugin. Note, this should only be done in the
-case of a class for the plugin not existing in this module.
+Where `battery` is the name of the plugin.
+
+**Note:** this should only be done in the case of a class for the plugin
+not existing in this module.
+
+## Repo management
+
+The module will enable a repo by default.
+
+On CentOS that will be EPEL:
+* http://rpms.famillecollet.com/rpmphp/zoom.php?rpm=collectd
+
+On Ubuntu that'll be the CollectD PPA:
+* https://launchpad.net/~collectd/+archive/ubuntu/collectd-5.5
+
+### CI Packages
+
+Recently, Collectd CI packages are also avaliable from the CI repo
+
+More information is avaliable here:
+* https://github.com/collectd/collectd-ci
+
+You can choose the CI repo with the `$ci_package_repo` parameter.
+
+`$ci_package_repo` has to match '5.4', '5.5', '5.6', '5.7' or 'master' (RC for next release) as
+these are the current branches being built in the Collectd CI.
 
 ## Configurable Plugins
 
@@ -82,6 +106,7 @@ documentation for each plugin for configurable attributes.
 * `cpu`  (see [collectd::plugin::cpu](#class-collectdplugincpu) below)
 * `cpufreq`  (see [collectd::plugin::cpufreq](#class-collectdplugincpufreq) below)
 * `csv`  (see [collectd::plugin::csv](#class-collectdplugincsv) below)
+* `cuda` (see [collectd::plugin::cuda](#class-collectdplugincuda) below)
 * `curl` (see [collectd::plugin::curl](#class-collectdplugincurl) below)
 * `curl_json` (see [collectd::plugin::curl_json](#class-collectdplugincurl_json)
   below)
@@ -103,6 +128,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
+* `iscdhcp` (see [collectd::plugin::iscdhcp](#class-collectdpluginiscdhcp) below)
 * `irq` (see [collectd::plugin::irq](#class-collectdpluginirq) below)
 * `java` (see [collectd::plugin::java](#class-collectdpluginjava) below)
 * `load` (see [collectd::plugin::load](#class-collectdpluginload) below)
@@ -145,6 +171,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `tcpconns` (see [collectd::plugin::tcpconns](#class-collectdplugintcpconns) below)
 * `thermal` (see [collectd::plugin::thermal](#class-collectdpluginthermal) below)
+* `threshold` (see [collect::plugin::threshold](#class-collectdpluginthreshold) below)
 * `unixsock` (see [collectd::plugin::unixsock](#class-collectdpluginunixsock) below)
 * `uptime` (see [collectd::plugin::uptime](#class-collectdpluginuptime) below)
 * `users` (see [collectd::plugin::users](#class-collectdpluginusers) below)
@@ -159,6 +186,8 @@ documentation for each plugin for configurable attributes.
   below)
 * `write_log` (see [collectd::plugin::write_log](#class-collectdpluginwrite_log)
   below)
+* `write_prometheus` (see [collectd::plugin::write_prometheus](#class-collectdpluginwrite_prometheus)
+  below)
 * `write_network` (see [collectd::plugin::write_network](#class-collectdpluginwrite_network)
   below)
 * `write_riemann` (see [collectd::plugin::write_riemann](#class-collectdpluginwrite_riemann)
@@ -168,6 +197,8 @@ documentation for each plugin for configurable attributes.
 * `write_tsdb` (see [collectd::plugin::write_tsdb](#class-collectdpluginwrite_tsdb)
   below)
 * `zfs_arc` (see [collectd::plugin::zfs_arc](#class-collectdpluginzfs_arc) below)
+* `zookeeper` (see
+  [collectd::plugin::zookeeper](#class-collectdzookeeper) below)
 
 ### Class: `collectd::plugin::aggregation`
 
@@ -175,7 +206,7 @@ documentation for each plugin for configurable attributes.
 collectd::plugin::aggregation::aggregator {
   cpu':
     plugin           => 'cpu',
-    type             => 'cpu',
+    agg_type         => 'cpu',
     groupby          => ["Host", "TypeInstance",],
     calculateaverage => true,
 }
@@ -188,7 +219,7 @@ class { 'collectd::plugin::aggregation':
   aggregators => {
     cpu' => {
       plugin           => 'cpu',
-      type             => 'cpu',
+      agg_type         => 'cpu',
       groupby          => ["Host", "TypeInstance",],
       calculateaverage => true,
     },
@@ -330,6 +361,15 @@ class { 'collectd::plugin::csv':
 }
 ```
 
+
+### Class: `collectd::plugin::cuda`
+
+```puppet
+class { 'collectd::plugin::cuda':
+}
+```
+
+
 ### Class: `collectd::plugin::curl`
 
 ```puppet
@@ -375,10 +415,20 @@ class { 'collectd::plugin::curl':
 ```puppet
 collectd::plugin::curl_json {
   'rabbitmq_overview':
-    url => 'http://localhost:55672/api/overview',
-    instance => 'rabbitmq_overview',
-    interval => '300',
-    keys => {
+    url        => 'http://localhost:55672/api/overview',
+    host       => 'rabbitmq.example.net',
+    instance   => 'rabbitmq_overview',
+    interval   => '300',
+    user       => 'user',
+    password   => 'password',
+    digest     => 'false',
+    verifypeer => 'false',
+    verifyhost => 'false',
+    cacert     => '/path/to/ca.crt',
+    header     => 'Accept: application/json',
+    post       => '{secret: \"mysecret\"}',
+    timeout    => '1000',
+    keys       => {
       'message_stats/publish' => {
         'type'     => 'gauge',
         'instance' => 'overview',
@@ -435,6 +485,7 @@ class { 'collectd::plugin::dbi':
 
 ```puppet
 class { 'collectd::plugin::df':
+  devices        => ['proc','sysfs'],
   mountpoints    => ['/u'],
   fstypes        => ['nfs','tmpfs','autofs','gpfs','proc','devpts'],
   ignoreselected => true,
@@ -563,6 +614,13 @@ class { 'collectd::plugin::ethstat':
 class { 'collectd::plugin::fhcount':
   valuesabsolute   => true,
   valuespercentage => false,
+}
+```
+
+#### Class: `collectd::plugin::fscache`
+
+```puppet
+class { 'collectd::plugin::fscache':
 }
 ```
 
@@ -829,9 +887,18 @@ class { 'collectd::plugin::ipmi':
 class { 'collectd::plugin::iptables':
   chains  => {
     'nat'    => 'In_SSH',
-    'filter' => 'HTTP'
+    'filter' => 'HTTP',
+  },
+  chains6 => {
+    'filter' => 'HTTP6',
   },
 }
+```
+
+#### Class: `collectd::plugin::iscdhcp`
+
+```puppet
+class { 'collectd::plugin::iscdhcp': }
 ```
 
 #### Class: `collectd::plugin::java`
@@ -1197,6 +1264,7 @@ collectd::plugin::postgresql::database{'monitoring_node1':
 }
 collectd::plugin::postgresql::query{'log_delay':
   statement => 'SELECT * FROM log_delay_repli;',
+  params    => ['database'],
   results   => [{
     type           => 'gauge',
     instanceprefix => 'log_delay',
@@ -1290,6 +1358,8 @@ class { 'collectd::plugin::protocols':
   that reads from and writes to the terminal (default: `false`)
 * `logtraces` if a Python script throws an exception it will be logged by
   collectd with the name of the exception and the message (default: `false`)
+* `conf_name` name of the file that will contain the python module configuration
+  (default: `python-config.conf`)
 
  See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml)
  for more details.
@@ -1303,14 +1373,14 @@ class { 'collectd::plugin::python':
   modules     => {
     'elasticsearch' => {
       'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-      'config'        => {'Cluster' => 'elasticsearch'},
+      'config'        => [{'Cluster' => 'elasticsearch'},],
     },
     'another-module' => {
-      'config'        => {'Verbose' => 'true'},
+      'config'        => [{'Verbose' => 'true'},],
     }
   }
   logtraces   => true,
-  interactive => false
+  interactive => false,
 }
 ```
 
@@ -1321,9 +1391,9 @@ Or define single module:
 ```puppet
 collectd::plugin::python::module {'zk-collectd':
   script_source => 'puppet:///modules/myorg/zk-collectd.py',
-  config        => {
-    'Hosts' => "localhost:2181"
-  }
+  config        => [
+    {'Hosts' => "localhost:2181"}
+  ]
 }
 ```
 
@@ -1335,9 +1405,9 @@ are included in `collectd::plugin::python` variable `modulepaths`. If no
 collectd::plugin::python::module {'my-module':
   modulepath    => '/var/share/collectd',
   script_source => 'puppet:///modules/myorg/my-module.py',
-  config        => {
-    'Key' => "value"
-  }
+  config        => [
+    {'Key' => "value"}
+  ]
 }
 ```
 
@@ -1423,6 +1493,7 @@ class { 'collectd::plugin::rrdtool':
 
 ```puppet
 class {'collectd::plugin::sensors':
+  sensors        => ['sensors-coretemp-isa-0000/temperature-temp2', 'sensors-coretemp-isa-0000/temperature-temp3'],
   ignoreselected => false,
 }
 ```
@@ -1442,22 +1513,49 @@ class { '::collectd::plugin::smart':
 class {'collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
-      'Type'        => 'counter',
-      'Table'       => false,
-      'Instance'    => 'amavis.inMsgs',
-      'Values'      => ['AMAVIS-MIB::inMsgs.0'],
-      'Ignore'      => [ '00:00', '*IgnoreString' ],
-      'InvertMatch' => false,
+      'type'         => 'counter',
+      'table'        => false,
+      'instance'     => 'amavis.inMsgs',
+      'values'       => ['AMAVIS-MIB::inMsgs.0'],
+      'ignore'       => [ '00:00', '*IgnoreString' ],
+      'invert_match' => false,
     }
   },
   hosts => {
     debianvm => {
-      'Address'   => '127.0.0.1',
-      'Version'   => 2,
-      'Community' => 'public',
-      'Collect'   => ['amavis_incoming_messages'],
-      'Interval'  => 10
+      'address'   => '127.0.0.1',
+      'version'   => 2,
+      'community' => 'public',
+      'collect'   => ['amavis_incoming_messages'],
+      'interval'  => 10
     }
+  },
+}
+```
+
+```puppet
+class { 'collectd::plugin::snmp':
+  data  => {
+    hc_octets => {
+      'type'     => 'if_octets',
+      'table'    => true,
+      'instance' => 'IF-MIB::ifName',
+      'values'   => ['IF-MIB::ifHCInOctets', 'IF-MIB::ifHCOutOctets'],
+    },
+  },
+  hosts => {
+    router => {
+      'address'            => '192.0.2.1',
+      'version'            => 3,
+      'security_level'     => 'authPriv',
+      'username'           => 'collectd',
+      'auth_protocol'      => 'SHA',
+      'auth_passphrase'    => 'mekmitasdigoat',
+      'privacy_protocol'   => 'AES',
+      'privacy_passphrase' => 'mekmitasdigoat',
+      'collect'            => ['hc_octets'],
+      'interval'           => 10,
+    },
   },
 }
 ```
@@ -1539,6 +1637,13 @@ collectd::plugin::tail::file { 'exim-log':
 class { '::collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
+}
+```
+
+#### Class: `collectd::plugin::threshold`
+
+```puppet
+class { 'collectd::plugin::threshold':
 }
 ```
 
@@ -1668,6 +1773,16 @@ class { 'collectd::plugin::write_log':
 }
 ```
 
+#### Class: `collectd::plugin::write_prometheus`
+
+```puppet
+class { 'collectd::plugin::write_prometheus':
+  port => '9103',
+}
+```
+
+**Note:** Requires collectd 5.7 or later.
+
 #### Class: `collectd::plugin::write_network`
 
 ##### Deprecated
@@ -1717,6 +1832,15 @@ class { 'collectd::plugin::write_tsdb':
 
 ```puppet
 class { 'collectd::plugin::zfs_arc':
+}
+```
+
+#### Class: `collectd::plugin::zookeeper`
+
+```puppet
+class { 'collectd::plugin::zookeeper':
+  zookeeper_host  => 'localhost',
+  zookeeper_port  => '2181',
 }
 ```
 

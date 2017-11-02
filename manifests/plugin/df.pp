@@ -1,31 +1,19 @@
 # https://collectd.org/wiki/index.php/Plugin:DF
 class collectd::plugin::df (
-  $ensure           = 'present',
-  $fstypes          = [],
-  $ignoreselected   = false,
-  $interval         = undef,
-  $mountpoints      = [],
-  $reportbydevice   = false,
-  $reportinodes     = true,
-  $reportreserved   = true,
-  $valuesabsolute   = true,
-  $valuespercentage = false,
+  $ensure                   = 'present',
+  Array $devices            = [],
+  Array $fstypes            = [],
+  Boolean $ignoreselected   = false,
+  $interval                 = undef,
+  Array $mountpoints        = [],
+  Boolean $reportbydevice   = false,
+  Boolean $reportinodes     = true,
+  Boolean $reportreserved   = true,
+  Boolean $valuesabsolute   = true,
+  Boolean $valuespercentage = false,
 ) {
 
   include ::collectd
-
-  validate_array(
-    $fstypes,
-    $mountpoints,
-  )
-  validate_bool(
-    $ignoreselected,
-    $reportbydevice,
-    $reportinodes,
-    $reportreserved,
-    $valuesabsolute,
-    $valuespercentage,
-  )
 
   collectd::plugin { 'df':
     ensure   => $ensure,

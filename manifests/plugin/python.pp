@@ -1,27 +1,22 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
 class collectd::plugin::python (
   # Python 2 defaults to 'ascii' and Python 3 to 'utf-8'
-  $encoding       = undef,
-  $ensure         = 'present',
+  $encoding            = undef,
+  $ensure              = 'present',
   # Unlike most other plugins, this one should set "Globals true". This will cause collectd
   # to export the name of all objects in the Python interpreter for all plugins to see.
-  $globals        = true,
-  $interactive    = false,
-  $interval       = undef,
-  $logtraces      = false,
-  $manage_package = undef,
-  $modulepaths    = [],
-  $modules        = {},
-  $order          = '10',
+  Boolean $globals     = true,
+  Boolean $interactive = false,
+  $interval            = undef,
+  Boolean $logtraces   = false,
+  $manage_package      = undef,
+  Array $modulepaths   = [],
+  Hash $modules        = {},
+  $order               = '10',
+  $conf_name           = 'python-config.conf',
 ) {
 
   include ::collectd
-
-  validate_hash($modules)
-  validate_bool($interactive)
-  validate_bool($logtraces)
-  validate_bool($globals)
-  validate_array($modulepaths)
 
   $module_dirs = empty($modulepaths) ? {
     true  => [$collectd::python_dir],
@@ -37,7 +32,7 @@ class collectd::plugin::python (
     $ensure_real = 'absent'
   }
 
-  if $::osfamily == 'Redhat' {
+  if $facts['os']['name'] == 'Fedora' or $facts['os']['name'] == 'Amazon' {
     if $_manage_package {
       package { 'collectd-python':
         ensure => $ensure_real,
@@ -60,7 +55,7 @@ class collectd::plugin::python (
   ensure_resource('file', $module_dirs,
     {
       'ensure'  => $ensure_modulepath,
-      'mode'    => '0750',
+      'mode'    => '0755',
       'owner'   => 'root',
       'purge'   => $::collectd::purge_config,
       'force'   => true,
@@ -70,7 +65,7 @@ class collectd::plugin::python (
   )
 
   # should be loaded after global plugin configuration
-  $python_conf = "${collectd::plugin_conf_dir}/python-config.conf"
+  $python_conf = "${collectd::plugin_conf_dir}/${conf_name}"
 
   concat { $python_conf:
     ensure         => $ensure,

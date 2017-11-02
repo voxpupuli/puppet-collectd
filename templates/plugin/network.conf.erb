@@ -6,10 +6,10 @@
     MaxPacketSize <%= @maxpacketsize %>
 <% end -%>
 <% unless @forward.nil? -%>
-    Forward "<%= @forward %>"
+    Forward <%= @forward %>
 <% end -%>
 <% unless @reportstats.nil? -%>
-    ReportStats "<%= @reportstats %>"
+    ReportStats <%= @reportstats %>
 <% end -%>
   
 </Plugin>

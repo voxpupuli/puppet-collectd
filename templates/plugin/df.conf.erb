@@ -1,4 +1,7 @@
 <Plugin df>
+<% @devices.each do |dev| -%>
+  Device "<%= dev %>"
+<% end -%>
 <% @mountpoints.each do |mp| -%>
   MountPoint "<%= mp %>"
 <% end -%>

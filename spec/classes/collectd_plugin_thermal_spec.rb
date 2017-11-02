@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::thermal', type: :class do
-  on_supported_os.each do |os, facts|
+  on_supported_os(test_on).each do |os, facts|
     context "on #{os} " do
       let :facts do
         facts
       end
+
       options = os_specific_options(facts)
       context ':ensure => present' do
         let :params do
@@ -14,6 +15,7 @@ describe 'collectd::plugin::thermal', type: :class do
             ensure: 'present'
           }
         end
+
         it { is_expected.to contain_collectd__plugin('thermal') }
         it 'Will create 10-thermal.conf' do
           is_expected.to contain_file('thermal.load').with(
@@ -28,6 +30,7 @@ describe 'collectd::plugin::thermal', type: :class do
         let :params do
           { ensure: 'absent' }
         end
+
         it 'Will not create 10-thermal.conf' do
           is_expected.to contain_file('thermal.load').with(
             ensure: 'absent',
@@ -40,6 +43,7 @@ describe 'collectd::plugin::thermal', type: :class do
         let :params do
           { devices: 'foo0' }
         end
+
         it 'Will raise an error about :devices not being an array' do
           is_expected.to compile.and_raise_error(%r{String})
         end

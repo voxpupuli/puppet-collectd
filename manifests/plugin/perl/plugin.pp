@@ -1,14 +1,14 @@
 #
 define collectd::plugin::perl::plugin (
   $module,
-  $manage_package  = true,
-  $enable_debugger = false,
-  $include_dir     = false,
-  $provider        = false,
-  $source          = false,
-  $destination     = false,
-  $order           = '01',
-  $config          = {},
+  $manage_package                              = true,
+  Variant[Boolean, String] $enable_debugger    = false,
+  Variant[Boolean, String, Array] $include_dir = false,
+  $provider                                    = false,
+  Variant[Boolean, String] $source             = false,
+  Variant[Boolean, String] $destination        = false,
+  String $order                                = '01',
+  Hash $config                                 = {},
 ) {
 
   include ::collectd
@@ -17,11 +17,6 @@ define collectd::plugin::perl::plugin (
     include ::collectd::plugin::perl
   }
 
-  validate_hash($config)
-  validate_re($order, '\d+')
-  if $enable_debugger {
-    validate_string($enable_debugger)
-  }
   if $include_dir {
     if is_string($include_dir) {
       $include_dirs = [ $include_dir ]
@@ -47,7 +42,6 @@ define collectd::plugin::perl::plugin (
 
   case $provider {
     'package': {
-      validate_string($source)
       $_manage_package = pick($manage_package, $::collectd::manage_package)
       if $_manage_package {
         package { $source:
@@ -56,15 +50,12 @@ define collectd::plugin::perl::plugin (
       }
     }
     'cpan': {
-      validate_string($source)
       include ::cpan
       cpan { $source:
         require => Collectd::Plugin['perl'],
       }
     }
     'file': {
-      validate_string($source)
-      validate_string($destination)
       file { "collectd_plugin_perl_${name}.pm":
         path    => "${destination}/${module}.pm",
         mode    => '0644',

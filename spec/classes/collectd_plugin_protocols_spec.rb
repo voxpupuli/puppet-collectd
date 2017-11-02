@@ -1,45 +1,49 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::protocols', type: :class do
-  let :facts do
-    {
-      osfamily: 'RedHat',
-      collectd_version: '4.8.0',
-      operatingsystemmajrelease: '7'
-    }
-  end
+  on_supported_os(test_on).each do |os, facts|
+    context "on #{os} " do
+      let :facts do
+        facts
+      end
 
-  context ':ensure => present, default params' do
-    it 'Will create /etc/collectd.d/10-protocols.conf' do
-      is_expected.to contain_file('protocols.load').
-        with(ensure: 'present',
-             path: '/etc/collectd.d/10-protocols.conf',
-             content: %r{})
-    end
-  end
+      options = os_specific_options(facts)
+      context ':ensure => present, default params' do
+        it 'Will create /etc/collectd.d/10-protocols.conf' do
+          is_expected.to contain_file('protocols.load').with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/10-protocols.conf",
+            content: %r{}
+          )
+        end
+      end
 
-  context ':ensure => present, specific params' do
-    let :params do
-      { values: %w(protocol1 protocol2) }
-    end
+      context ':ensure => present, specific params' do
+        let :params do
+          { values: %w[protocol1 protocol2] }
+        end
 
-    it 'Will create /etc/collectd.d/10-protocols.conf' do
-      is_expected.to contain_file('protocols.load').
-        with(ensure: 'present',
-             path: '/etc/collectd.d/10-protocols.conf',
-             content: %r{<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n</Plugin>})
-    end
-  end
+        it "Will create #{options[:plugin_conf_dir]}/10-protocols.conf" do
+          is_expected.to contain_file('protocols.load').with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/10-protocols.conf",
+            content: %r{<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n</Plugin>}
+          )
+        end
+      end
 
-  context ':ensure => absent' do
-    let :params do
-      { ensure: 'absent' }
-    end
+      context ':ensure => absent' do
+        let :params do
+          { ensure: 'absent' }
+        end
 
-    it 'Will not create /etc/collectd.d/10-protocols.conf' do
-      is_expected.to contain_file('protocols.load').
-        with(ensure: 'absent',
-             path: '/etc/collectd.d/10-protocols.conf')
+        it "Will not create #{options[:plugin_conf_dir]}/10-protocols.conf" do
+          is_expected.to contain_file('protocols.load').with(
+            ensure: 'absent',
+            path: "#{options[:plugin_conf_dir]}/10-protocols.conf"
+          )
+        end
+      end
     end
   end
 end

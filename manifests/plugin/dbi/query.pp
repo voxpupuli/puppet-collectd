@@ -1,16 +1,13 @@
 #
 define collectd::plugin::dbi::query (
-  $statement,
-  $ensure     = 'present',
-  $results    = [{}],
-  $minversion = undef,
-  $maxversion = undef,
+  String $statement,
+  String $ensure               = 'present',
+  Array $results               = [{}],
+  Optional[String] $minversion = undef,
+  Optional[String] $maxversion = undef,
 ) {
   include ::collectd
   include ::collectd::plugin::dbi
-
-  validate_string($statement)
-  validate_array($results)
 
   concat::fragment{ "collectd_plugin_dbi_conf_query_${title}":
     order   => '30',

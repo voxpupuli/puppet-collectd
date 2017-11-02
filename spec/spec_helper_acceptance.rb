@@ -1,6 +1,7 @@
 require 'beaker-rspec'
+require 'beaker/puppet_install_helper'
 
-install_puppet_agent_on hosts, {} unless ENV['BEAKER_provision'] == 'no'
+run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
 
 RSpec.configure do |c|
   # Project root
@@ -17,7 +18,7 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-apt'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppetlabs-concat'), acceptable_exit_codes: [0]
-      on host, puppet('module', 'install', 'puppet-yum'), acceptable_exit_codes: [0]
+      on host, puppet('module', 'install', 'stahnma-epel'), acceptable_exit_codes: [0]
     end
   end
 end

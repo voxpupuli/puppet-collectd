@@ -1,7 +1,7 @@
   <Query <%= @name %>>
     Statement "<%= @statement %>"
 <% @params.each do |param| -%>
-    Param "<%= @param %>"
+    Param "<%= param %>"
 <% end -%>
 <% if @minversion -%>
     MinVersion <%= @minversion %>

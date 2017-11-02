@@ -2,10 +2,26 @@
   <Host "<%= @name %>">
     Address "<%= @address %>"
     Version <%= @version %>
+<% if @version.to_i < 3 -%>
     Community "<%= @community %>"
+<% else -%>
+    Username "<%= @username %>"
+<%   if @context -%>
+    Context "<%= @context %>"
+<%   end -%>
+    SecurityLevel "<%= @security_level %>"
+<%   if ['authPriv', 'authNoPriv'].include?(@security_level) -%>
+    AuthProtocol "<%= @auth_protocol %>"
+    AuthPassphrase "<%= @auth_passphrase %>"
+<%   end -%>
+<%   if @security_level.eql?('authPriv') -%>
+    PrivacyProtocol "<%= @privacy_protocol %>"
+    PrivacyPassphrase "<%= @privacy_passphrase %>"
+<%   end -%>
+<% end -%>
     Collect <%= Array(@collect).map { |x| %Q{"#{x}"} }.join(' ') %>
-    <%- if !@interval.nil? -%>
+<% if @interval -%>
     Interval <%= @interval %>
-    <%- end -%>
+<% end -%>
   </Host>
 </Plugin>

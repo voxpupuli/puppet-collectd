@@ -2,31 +2,37 @@
 define collectd::plugin::curl_json (
   $url,
   $instance,
-  $keys,
+  Hash $keys,
   $ensure         = 'present',
+  $host           = undef,
   $interval       = undef,
   $user           = undef,
   $password       = undef,
+  $digest         = undef,
   $verifypeer     = undef,
   $verifyhost     = undef,
   $cacert         = undef,
   $header         = undef,
+  $post           = undef,
+  $timeout        = undef,
   $order          = '10',
   $manage_package = undef,
 ) {
 
   include ::collectd
 
-  validate_hash($keys)
-
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
   if $_manage_package {
     if $::osfamily == 'Debian' {
-      ensure_packages('libyajl2')
+      $libyajl_package = $::lsbdistcodename ? {
+        'precise' => 'libyajl1',
+        default   => 'libyajl2'
+      }
+      ensure_packages($libyajl_package)
     }
 
-    if $::osfamily == 'Redhat' {
+    if $::osfamily == 'RedHat' {
       ensure_packages('collectd-curl_json')
     }
   }

@@ -25,6 +25,9 @@
 <% unless @measureresponsetime.nil? -%>
     MeasureResponseTime <%= @measureresponsetime %>
 <% end -%>
+<% unless @measureresponsecode.nil? -%>
+    MeasureResponseCode <%= @measureresponsecode %>
+<% end -%>
 <% if @matches -%>
 <%= scope.function_template(["collectd/plugin/match.tpl.erb"]) %>
 <% end -%>

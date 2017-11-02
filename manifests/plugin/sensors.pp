@@ -3,7 +3,7 @@ class collectd::plugin::sensors (
   $ensure           = 'present',
   $manage_package   = undef,
   $sensorconfigfile = undef,
-  $sensor           = undef,
+  $sensors          = undef,
   $ignoreselected   = undef,
   $interval         = undef,
 ) {
@@ -12,7 +12,7 @@ class collectd::plugin::sensors (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'Redhat' {
+  if $::osfamily == 'RedHat' {
     if $_manage_package {
       package { 'collectd-sensors':
         ensure => $ensure,

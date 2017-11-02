@@ -1,0 +1,2 @@
+#
+type Collectd::SNMP::Host::V3 = Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]

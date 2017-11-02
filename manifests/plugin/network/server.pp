@@ -15,8 +15,6 @@ define collectd::plugin::network::server (
 
   $conf_dir = $::collectd::plugin_conf_dir
 
-  validate_string($name)
-
   file { "${conf_dir}/network-server-${name}.conf":
     ensure  => $ensure,
     mode    => '0640',
