@@ -26,12 +26,12 @@ class collectd::params {
   $plugin_conf_dir_mode      = '0750'
   $ci_package_repo           = undef
 
-  case getvar('::kernel') {
-    'OpenBSD': { $has_wordexp   = false }
-    default: { $has_wordexp   = true }
+  case $facts['kernel'] {
+    'OpenBSD': { $has_wordexp = false }
+    default:   { $has_wordexp = true }
   }
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian': {
       $package_name       = [ 'collectd', 'collectd-core' ]
       $package_provider   = 'apt'
@@ -130,7 +130,7 @@ class collectd::params {
     }
 
     default: {
-      fail("${::osfamily} is not supported.")
+      fail("${facts['os']['family']} is not supported.")
     }
   }
 

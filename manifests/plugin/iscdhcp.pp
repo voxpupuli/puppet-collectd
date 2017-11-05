@@ -28,7 +28,7 @@ class collectd::plugin::iscdhcp (
         require => Package['python-pip'],
       }
 
-      if $::osfamily == 'RedHat' {
+      if $facts['os']['family'] == 'RedHat' {
         # Epel is installed in install.pp if manage_repo is true
         # python-pip doesn't exist in base for RedHat. Need epel installed first
         if (defined(Class['::epel'])) {
