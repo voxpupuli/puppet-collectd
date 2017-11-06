@@ -15,7 +15,7 @@ class collectd::plugin::ipmi (
 
   $manage_package_real = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     if $manage_package_real {
       package { 'collectd-ipmi':
         ensure => $ensure_package,

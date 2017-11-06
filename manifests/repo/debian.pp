@@ -13,8 +13,8 @@ class collectd::repo::debian {
       },
     }
   } else {
-    if $::operatingsystem == 'Debian' {
-      warning('Youre trying to use the Ubuntu PPA on a Debian Server, which may cause errors')
+    if $facts['os']['name'] == 'Debian' {
+      warning('You\'re trying to use the Ubuntu PPA on a Debian Server, which may cause errors')
       warning('We recommend you to use the $ci_package_repo parameter if you want to use an upstream repo on Debian')
     } else {
       apt::source { 'ppa_collectd':

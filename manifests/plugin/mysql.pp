@@ -10,7 +10,7 @@ class collectd::plugin::mysql (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
       package { 'collectd-mysql':
         ensure => $ensure,

@@ -15,7 +15,7 @@ class collectd::plugin::ping (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
       package { 'collectd-ping':
         ensure => $ensure,

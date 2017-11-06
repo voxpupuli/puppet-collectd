@@ -253,7 +253,7 @@ describe 'collectd', type: :class do
           it { is_expected.to contain_file('collectd.conf').with_content(%r{Hello World}) }
         end
         context 'on non supported operating systems' do
-          let(:facts) { { osfamily: 'foo' } }
+          let(:facts) { { os: { family: 'foo' } } }
 
           it 'fails' do
             is_expected.to compile.and_raise_error(%r{foo is not supported})
