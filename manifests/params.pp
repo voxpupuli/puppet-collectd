@@ -135,5 +135,5 @@ class collectd::params {
   }
 
   # Override with custom fact value (present only if python is installed)
-  $python_dir            = pick($::python_dir, $default_python_dir)
+  $python_dir = pick($facts['python_dir'], $default_python_dir)
 }
