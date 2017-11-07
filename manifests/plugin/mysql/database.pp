@@ -11,6 +11,7 @@ define collectd::plugin::mysql::database (
   Optional[String] $socket             = undef,
   Optional[Boolean] $innodbstats       = undef,
   Optional[String] $slavenotifications = undef,
+  Optional[Boolean] $wsrepstats        = undef,
 ) {
 
   include ::collectd

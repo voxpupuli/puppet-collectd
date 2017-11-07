@@ -988,6 +988,7 @@ collectd::plugin::mysql::database { 'betadase':
   password    => 'secret',
   port        => '3306',
   masterstats => true,
+  wsrepstats  => true,
 }
 ```
 
