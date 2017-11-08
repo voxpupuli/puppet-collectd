@@ -1631,7 +1631,7 @@ collectd::plugin::tail::file { 'exim-log':
 }
 ```
 
-####Class: `collectd::plugin::thermal`
+#### Class: `collectd::plugin::thermal`
 
 ```puppet
 class { '::collectd::plugin::thermal':
@@ -1647,7 +1647,7 @@ class { 'collectd::plugin::threshold':
 }
 ```
 
-####Class: `collectd::plugin::unixsock`
+#### Class: `collectd::plugin::unixsock`
 
 ```puppet
 class {'collectd::plugin::unixsock':
