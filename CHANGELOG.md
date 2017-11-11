@@ -4,6 +4,40 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v7.0.0) (2017-11-11)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v6.0.0...v7.0.0)
+
+**Breaking changes:**
+
+- Bump puppetlabs-stdlib to 4.13.1 [\#703](https://github.com/voxpupuli/puppet-collectd/pull/703) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Implemented enhancements:**
+
+- Add Zookeeper plugin [\#670](https://github.com/voxpupuli/puppet-collectd/pull/670) ([jamtur01](https://github.com/jamtur01))
+
+**Fixed bugs:**
+
+- Fix markup of headers [\#711](https://github.com/voxpupuli/puppet-collectd/pull/711) ([traylenator](https://github.com/traylenator))
+- Fix strict variables error when facts are missing [\#708](https://github.com/voxpupuli/puppet-collectd/pull/708) ([alexjfisher](https://github.com/alexjfisher))
+- Install 'collectd-python' package on Amazon Linux. [\#671](https://github.com/voxpupuli/puppet-collectd/pull/671) ([irgeek](https://github.com/irgeek))
+
+**Closed issues:**
+
+- Support the ZooKeeper plugin [\#654](https://github.com/voxpupuli/puppet-collectd/issues/654)
+- Collectd::Plugin::Aggregation::Aggregator fails on 5.2 [\#596](https://github.com/voxpupuli/puppet-collectd/issues/596)
+
+**Merged pull requests:**
+
+- Use $facts hash instead of topscope variables [\#709](https://github.com/voxpupuli/puppet-collectd/pull/709) ([alexjfisher](https://github.com/alexjfisher))
+- replace validate\_\* with datatypes [\#706](https://github.com/voxpupuli/puppet-collectd/pull/706) ([bastelfreak](https://github.com/bastelfreak))
+- plugin::dbi - Use data types [\#705](https://github.com/voxpupuli/puppet-collectd/pull/705) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::curl - Use data types [\#704](https://github.com/voxpupuli/puppet-collectd/pull/704) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::aggregation - Use data types [\#702](https://github.com/voxpupuli/puppet-collectd/pull/702) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::apache - Use data types [\#701](https://github.com/voxpupuli/puppet-collectd/pull/701) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Fix zookeeper tests [\#698](https://github.com/voxpupuli/puppet-collectd/pull/698) ([bastelfreak](https://github.com/bastelfreak))
+- release 6.0.0 [\#697](https://github.com/voxpupuli/puppet-collectd/pull/697) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v6.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v6.0.0) (2017-10-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v5.3.0...v6.0.0)
