@@ -1,17 +1,13 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::target (
-  $chain,
-  $plugin,
-  $options = undef,
-  $rule    = undef,
+  String $chain,
+  Collectd::Filter::Target $plugin,
+  Optional[Hash] $options = undef,
+  Optional[String] $rule  = undef,
 ) {
 
   include ::collectd
   include ::collectd::plugin::filter
-
-  unless $plugin in ['return','stop','write', 'jump'] or $plugin in $collectd::plugin::filter::plugin_targets {
-    fail("Unknown rule plugin '${plugin}' provided")
-  }
 
   # Load plugins
   if $plugin in $collectd::plugin::filter::plugin_targets {
