@@ -3,10 +3,8 @@
   <% if @instance_prefix -%>
   InstancePrefix "<%= @instance_prefix %>"
   <% end -%>
-  <% if @instance_from -%>
-    <% Array(@instance_from).each do |instance_from_item| -%>
+  <% @instance_from.each do |instance_from_item| -%>
   InstanceFrom "<%= instance_from_item %>"
-    <% end -%>
   <% end -%>
 
   <% @values.each do |value| -%>
@@ -16,7 +14,7 @@
     InstancePrefix "<%= value['instance_prefix'] %>"
     <% end -%>
     <% if value['instance_from'] -%>
-      <% Array(value['instance_from']).each do |instance_from_item| -%>
+      <% value['instance_from'].each do |instance_from_item| -%>
     InstanceFrom "<%= instance_from_item %>"
       <% end -%>
     <% end -%>
