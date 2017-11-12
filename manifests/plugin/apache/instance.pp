@@ -11,14 +11,11 @@ define collectd::plugin::apache::instance (
   include ::collectd
   include ::collectd::plugin::apache
 
-  $conf_dir = $collectd::params::plugin_conf_dir
-  $root_group = $collectd::params::root_group
-
   file { "apache-instance-${name}.conf":
     ensure  => $ensure,
-    path    => "${conf_dir}/25-apache-instance-${name}.conf",
+    path    => "${collectd::plugin_conf_dir}/25-apache-instance-${name}.conf",
     owner   => root,
-    group   => $root_group,
+    group   => $collectd::root_group,
     mode    => '0640',
     content => template('collectd/plugin/apache/instance.conf.erb'),
     notify  => Service['collectd'],
