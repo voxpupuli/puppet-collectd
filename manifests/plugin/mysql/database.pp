@@ -1,6 +1,6 @@
 #
 define collectd::plugin::mysql::database (
-  $ensure                              = 'present',
+  Enum['present', 'absent'] $ensure    = 'present',
   String $database                     = $name,
   String $host                         = 'UNSET',
   String $username                     = 'UNSET',
@@ -17,11 +17,9 @@ define collectd::plugin::mysql::database (
   include ::collectd
   include ::collectd::plugin::mysql
 
-  $conf_dir = $collectd::plugin_conf_dir
-
   file { "${name}.conf":
     ensure  => $ensure,
-    path    => "${conf_dir}/mysql-${name}.conf",
+    path    => "${collectd::plugin_conf_dir}/mysql-${name}.conf",
     mode    => '0640',
     owner   => 'root',
     group   => $collectd::root_group,
