@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::rule (
-  $chain,
+  String $chain,
 ) {
 
   include ::collectd
