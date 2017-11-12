@@ -1,17 +1,13 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::match (
-  $chain,
-  $rule,
-  $plugin,
-  $options = undef,
+  String $chain,
+  String $rule,
+  Collectd::Filter::Match $plugin,
+  Optional[Hash] $options = undef,
 ) {
 
   include ::collectd
   include ::collectd::plugin::filter
-
-  unless $plugin in $collectd::plugin::filter::plugin_matches {
-    fail("Unknown match plugin '${plugin}' provided")
-  }
 
   ensure_resource('collectd::plugin', "match_${plugin}", { 'order' => '02'} )
 
