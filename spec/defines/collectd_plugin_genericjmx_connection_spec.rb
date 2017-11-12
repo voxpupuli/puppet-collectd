@@ -51,7 +51,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Host "bar\.example\.com"}) }
       end
 
-      context 'collect array' do
+      context 'with a collect array of multiple values' do
         let(:params) do
           default_params.merge(collect: %w[foo bar baz])
         end
@@ -59,9 +59,9 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "foo".*Collect "bar".*Collect "baz"}m) }
       end
 
-      context 'collect string' do
+      context 'with a collect array of one value' do
         let(:params) do
-          default_params.merge(collect: 'bat')
+          default_params.merge(collect: %w[bat])
         end
 
         it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Collect "bat"}) }
