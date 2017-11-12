@@ -1,9 +1,9 @@
 # https://collectd.org/wiki/index.php/Plugin:GenericJMX
 define collectd::plugin::genericjmx::mbean (
-  $object_name,
+  String $object_name,
   Array $values,
-  $instance_prefix = undef,
-  $instance_from   = undef,
+  Optional[String] $instance_prefix = undef,
+  Array $instance_from              = [],
 ) {
 
   include ::collectd
