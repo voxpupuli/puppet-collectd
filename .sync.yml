@@ -3,6 +3,7 @@
   docker_sets:
     - set: docker/ubuntu-14.04
     - set: docker/ubuntu-16.04
+    - set: docker/centos-6
     - set: docker/centos-7
     - set: docker/debian-8
   secure: "FAK3Izs5bSZyblGvcFnGWm0exZV5+v9pbwfRDD2oihWxX3U3pArGW+3XcwcJfLQgrUYBsOTmHC8yPjlgTBYeIt/5pvg9X+3jwNgeto6kozpI/nvAq4NtcHhzxRejuPELhFYeXZ3hEw0w+v/ZRo2cNLwI0LLpiWEDvCMZN1CJ2RY="
