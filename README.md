@@ -1460,7 +1460,7 @@ class { '::collectd::plugin::rabbitmq':
     'Password' => $admin_pass,
     'Scheme'   => 'https',
     'Port'     => '15671',
-    'Host'     => $::fqdn,
+    'Host'     => $facts['fqdn'],
     'Realm'    => '"RabbitMQ Management"',
   },
 }

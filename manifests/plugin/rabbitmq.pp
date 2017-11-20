@@ -36,7 +36,7 @@
 #    'Password' => 'guest_pass',
 #    'Scheme'   => 'http',
 #    'Port'     => '15672',
-#    'Host'     => $::fqdn,
+#    'Host'     => $facts['fqdn'],
 #    'Realm'    => '"RabbitMQ Management"',
 #   }
 #
@@ -47,7 +47,7 @@ class collectd::plugin::rabbitmq (
     'Password' => 'guest',
     'Scheme'   => 'http',
     'Port'     => '15672',
-    'Host'     => $::fqdn,
+    'Host'     => $facts['fqdn'],
     'Realm'    => '"RabbitMQ Management"',
   },
   # lint:endignore
