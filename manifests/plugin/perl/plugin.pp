@@ -68,7 +68,7 @@ define collectd::plugin::perl::plugin (
       $include_dirs_prefixed = prefix($include_dirs, '-I')
       $include_dirs_prefixed_joined = join($include_dirs_prefixed,' ')
       exec { "perl ${include_dirs_prefixed_joined} -e 'my\$m=shift;eval\"use \$m\";exit!exists\$INC{\$m=~s!::!/!gr.\".pm\"}' ${module}":
-        path => $::path,
+        path => $facts['path'],
       }
     }
     default: {
