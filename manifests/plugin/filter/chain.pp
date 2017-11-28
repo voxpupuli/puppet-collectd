@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::chain (
-  $ensure         = 'present',
-  $target         = undef,
-  $target_options = undef,
+  Enum['present', 'absent'] $ensure          = 'present',
+  Optional[Collectd::Filter::Target] $target = undef,
+  Optional[Hash] $target_options             = undef,
 ) {
 
   include ::collectd
