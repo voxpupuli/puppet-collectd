@@ -15,14 +15,8 @@ class collectd::plugin::processes (
     interval => $interval,
   }
 
-  if ( $processes or $process_matches ) {
-    $process_config_ensure = 'present'
-  } else {
-    $process_config_ensure = absent
-  }
-
   concat { "${collectd::plugin_conf_dir}/processes-config.conf":
-    ensure         => $process_config_ensure,
+    ensure         => $ensure,
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
