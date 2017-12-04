@@ -203,11 +203,10 @@ documentation for each plugin for configurable attributes.
 ### Class: `collectd::plugin::aggregation`
 
 ```puppet
-collectd::plugin::aggregation::aggregator {
-  cpu':
+collectd::plugin::aggregation::aggregator { 'cpu':
     plugin           => 'cpu',
     agg_type         => 'cpu',
-    groupby          => ["Host", "TypeInstance",],
+    groupby          => ['Host', 'TypeInstance',],
     calculateaverage => true,
 }
 ```
@@ -217,7 +216,7 @@ You can as well configure this plugin with a parameterized class :
 ```puppet
 class { 'collectd::plugin::aggregation':
   aggregators => {
-    cpu' => {
+    'cpu' => {
       plugin           => 'cpu',
       agg_type         => 'cpu',
       groupby          => ["Host", "TypeInstance",],
