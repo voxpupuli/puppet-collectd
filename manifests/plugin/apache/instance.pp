@@ -18,6 +18,6 @@ define collectd::plugin::apache::instance (
     group   => $collectd::root_group,
     mode    => '0640',
     content => template('collectd/plugin/apache/instance.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

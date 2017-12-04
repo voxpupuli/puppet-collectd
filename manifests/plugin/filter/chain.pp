@@ -15,7 +15,7 @@ define collectd::plugin::filter::chain (
     mode           => '0640',
     owner          => 'root',
     group          => $collectd::root_group,
-    notify         => Service['collectd'],
+    notify         => Service[$collectd::service_name],
     ensure_newline => true,
   }
 
