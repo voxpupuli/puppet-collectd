@@ -4,6 +4,42 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.0) (2017-12-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v7.0.0...v8.0.0)
+
+**Breaking changes:**
+
+- plugin::genericjmx::mbean - Use data types [\#726](https://github.com/voxpupuli/puppet-collectd/pull/726) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::genericjmx::connection - Use data types [\#725](https://github.com/voxpupuli/puppet-collectd/pull/725) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filecount::directory - data type changes [\#718](https://github.com/voxpupuli/puppet-collectd/pull/718) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Make it possible to add processes one by one [\#712](https://github.com/voxpupuli/puppet-collectd/pull/712) ([oscarkraemer](https://github.com/oscarkraemer))
+
+**Implemented enhancements:**
+
+- Escape json posts in curl\_json plugin [\#735](https://github.com/voxpupuli/puppet-collectd/pull/735) ([alexjfisher](https://github.com/alexjfisher))
+- added: check params variable in query pg template [\#731](https://github.com/voxpupuli/puppet-collectd/pull/731) ([vaclandic](https://github.com/vaclandic))
+- plugin/mysql: optional wsrepstats setting [\#710](https://github.com/voxpupuli/puppet-collectd/pull/710) ([martbhell](https://github.com/martbhell))
+
+**Fixed bugs:**
+
+- Process plugin silently breaks processmatch/process defines. [\#652](https://github.com/voxpupuli/puppet-collectd/issues/652)
+- Processes plugin creates strange config [\#595](https://github.com/voxpupuli/puppet-collectd/issues/595)
+
+**Merged pull requests:**
+
+- Fix typos in README [\#737](https://github.com/voxpupuli/puppet-collectd/pull/737) ([alexjfisher](https://github.com/alexjfisher))
+- replace topscope variables with facts hash [\#734](https://github.com/voxpupuli/puppet-collectd/pull/734) ([bastelfreak](https://github.com/bastelfreak))
+- Remove EOL operatingsystems [\#733](https://github.com/voxpupuli/puppet-collectd/pull/733) ([ekohl](https://github.com/ekohl))
+- plugin::mysql::database - Add data type [\#727](https://github.com/voxpupuli/puppet-collectd/pull/727) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::target - Use data types [\#723](https://github.com/voxpupuli/puppet-collectd/pull/723) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::rule - add data type [\#722](https://github.com/voxpupuli/puppet-collectd/pull/722) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::match - Use data types [\#721](https://github.com/voxpupuli/puppet-collectd/pull/721) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::chain - Use data types [\#720](https://github.com/voxpupuli/puppet-collectd/pull/720) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::exec::cmd clean up [\#717](https://github.com/voxpupuli/puppet-collectd/pull/717) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::apache::instance -don't assign from params [\#715](https://github.com/voxpupuli/puppet-collectd/pull/715) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- release 7.0.0 [\#714](https://github.com/voxpupuli/puppet-collectd/pull/714) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v7.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v7.0.0) (2017-11-11)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v6.0.0...v7.0.0)
