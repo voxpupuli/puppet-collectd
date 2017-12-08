@@ -40,8 +40,20 @@ LoadPlugin "curl_json"
 <% if @header -%>
     Header "<%= @header %>"
 <% end -%>
+<%-
+  def valid_json?(json)
+    JSON.parse(json)
+    return true
+  rescue JSON::ParserError
+    return false
+  end
+-%>
 <% unless @post.nil? -%>
+<% if valid_json?(@post) -%>
+    Post "<%= @post.gsub('\\"','\\\\\\\\\"').gsub!(%r{(?<!\\)"},'\"') %>"
+<% else -%>
     Post "<%= @post %>"
+<% end -%>
 <% end -%>
 <% end -%>
 <% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>

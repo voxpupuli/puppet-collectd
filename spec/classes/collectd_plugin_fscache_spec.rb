@@ -13,6 +13,7 @@ describe 'collectd::plugin::fscache', type: :class do
     let :facts do
       {
         osfamily: 'FreeBSD',
+        operatingsystem: 'FreeBSD',
         os: { family: 'FreeBSD' },
         collectd_version: '4.7.0',
         operatingsystemmajrelease: '7',
@@ -31,6 +32,7 @@ describe 'collectd::plugin::fscache', type: :class do
     let :facts do
       {
         osfamily: 'FreeBSD',
+        operatingsystem: 'FreeBSD',
         os: { family: 'FreeBSD' },
         collectd_version: '4.7.0',
         operatingsystemmajrelease: '7',

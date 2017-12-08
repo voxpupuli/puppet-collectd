@@ -28,8 +28,8 @@ describe 'collectd::plugin::curl_json', type: :define do
           verifypeer: 'false',
           verifyhost: 'false',
           cacert: '/path/to/ca.crt',
-          header: 'Accept: application/json',
-          post: '{secret: \"mysecret\"}',
+          header: 'Content-Type: application/x-www-form-urlencoded',
+          post: 'secret=mysecret&foo=bar',
           timeout: 1000,
           keys: {
             'message_stats/publish' => {
@@ -106,8 +106,8 @@ describe 'collectd::plugin::curl_json', type: :define do
         it { is_expected.to contain_file(filename).with_content(%r{VerifyPeer false}) }
         it { is_expected.to contain_file(filename).with_content(%r{VerifyHost false}) }
         it { is_expected.to contain_file(filename).with_content(%r{CACert "/path/to/ca.crt"}) }
-        it { is_expected.to contain_file(filename).with_content(%r{Header "Accept: application/json"}) }
-        it { is_expected.to contain_file(filename).with_content(%r|Post "{secret: \\"mysecret\\"}"|) }
+        it { is_expected.to contain_file(filename).with_content(%r{Header "Content-Type: application/x-www-form-urlencoded"}) }
+        it { is_expected.to contain_file(filename).with_content(%r{Post "secret=mysecret&foo=bar"}) }
         it { is_expected.to contain_file(filename).without_content(%r{Timeout}) }
         it { is_expected.to contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
         it { is_expected.to contain_file(filename).with_content(%r{Type "gauge"}) }
@@ -139,8 +139,8 @@ describe 'collectd::plugin::curl_json', type: :define do
         it { is_expected.to contain_file(filename).with_content(%r{VerifyPeer false}) }
         it { is_expected.to contain_file(filename).with_content(%r{VerifyHost false}) }
         it { is_expected.to contain_file(filename).with_content(%r{CACert "/path/to/ca.crt"}) }
-        it { is_expected.to contain_file(filename).with_content(%r{Header "Accept: application/json"}) }
-        it { is_expected.to contain_file(filename).with_content(%r|Post "{secret: \\"mysecret\\"}"|) }
+        it { is_expected.to contain_file(filename).with_content(%r{Header "Content-Type: application/x-www-form-urlencoded"}) }
+        it { is_expected.to contain_file(filename).with_content(%r{Post "secret=mysecret&foo=bar"}) }
         it { is_expected.to contain_file(filename).with_content(%r{Timeout 1000}) }
         it { is_expected.to contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
         it { is_expected.to contain_file(filename).with_content(%r{Type "gauge"}) }
@@ -172,8 +172,8 @@ describe 'collectd::plugin::curl_json', type: :define do
         it { is_expected.to contain_file(filename).with_content(%r{VerifyPeer false}) }
         it { is_expected.to contain_file(filename).with_content(%r{VerifyHost false}) }
         it { is_expected.to contain_file(filename).with_content(%r{CACert "/path/to/ca.crt"}) }
-        it { is_expected.to contain_file(filename).with_content(%r{Header "Accept: application/json"}) }
-        it { is_expected.to contain_file(filename).with_content(%r|Post "{secret: \\"mysecret\\"}"|) }
+        it { is_expected.to contain_file(filename).with_content(%r{Header "Content-Type: application/x-www-form-urlencoded"}) }
+        it { is_expected.to contain_file(filename).with_content(%r{Post "secret=mysecret&foo=bar"}) }
         it { is_expected.to contain_file(filename).with_content(%r{Timeout 1000}) }
         it { is_expected.to contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
         it { is_expected.to contain_file(filename).with_content(%r{Type "gauge"}) }
@@ -210,6 +210,28 @@ describe 'collectd::plugin::curl_json', type: :define do
         it { is_expected.to contain_file(filename).with_content(%r{Key "message_stats/publish">}) }
         it { is_expected.to contain_file(filename).with_content(%r{Type "gauge"}) }
         it { is_expected.to contain_file(filename).with_content(%r{Instance "overview"}) }
+      end
+
+      context 'json posts' do
+        let(:post) do
+          {
+            'type' => 'read',
+            'mbean' => 'Catalina:name="http-nio-127.0.0.1-8080",type=GlobalRequestProcessor'
+          }.to_json
+        end
+
+        let(:params) do
+          my_params.merge(header: 'Content-Type: application/json', post: post)
+        end
+
+        let :facts do
+          facts.merge(collectd_version: '5.6.0')
+        end
+
+        it { is_expected.to contain_file(filename).with_content(%r{Header "Content-Type: application/json"}) }
+
+        # In the regex below, we have to escape the backslashes in "{\"type\":\"read\",\"mbean\":\"Catalina:name=\\\"http-nio-127.0.0.1-8080\\\",type=GlobalRequestProcessor\"}"
+        it { is_expected.to contain_file(filename).with_content(%r|Post "{\\"type\\":\\"read\\",\\"mbean\\":\\"Catalina:name=\\\\\\"http-nio-127\.0\.0\.1-8080\\\\\\",type=GlobalRequestProcessor\\"}"|) }
       end
     end
   end
