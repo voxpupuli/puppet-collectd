@@ -1,0 +1,20 @@
+<Plugin "ovs_events">
+<%- if @port %>
+  Port <%= @port %>
+<%- end -%>
+<%- if @address %>
+  Address "<%= @address %>"
+<%- end -%>
+<%- if @socket %>
+  Socket "<%= @socket %>"
+<%- end -%>
+<%- if !@interfaces.empty? %>
+  Interfaces "<%= @interfaces.join('" "') %>"
+<%- end -%>
+<%- if defined?(@send_notification) %>
+  SendNotification <%= @send_notification %>
+<%- end -%>
+<%- if defined?(@dispatch) %>
+  DispatchValues <%= @dispatch %>
+<%- end -%>
+</Plugin>
