@@ -15,6 +15,7 @@ class collectd (
   $minimum_version                                                    = $collectd::params::minimum_version,
   $package_ensure                                                     = $collectd::params::package_ensure,
   $package_install_options                                            = $collectd::params::package_install_options,
+  String $package_keyserver                                           = $collectd::params::package_keyserver,
   $package_name                                                       = $collectd::params::package_name,
   $package_provider                                                   = $collectd::params::package_provider,
   $plugin_conf_dir                                                    = $collectd::params::plugin_conf_dir,

@@ -77,6 +77,11 @@ On CentOS that will be EPEL:
 On Ubuntu that'll be the CollectD PPA:
 * https://launchpad.net/~collectd/+archive/ubuntu/collectd-5.5
 
+### Public key keyserver
+In case you need to change the server where to download the public key from for
+whatever reason (AKA: server is down) you can use the parameter
+`$package_keyserver`
+
 ### CI Packages
 
 Recently, Collectd CI packages are also avaliable from the CI repo
