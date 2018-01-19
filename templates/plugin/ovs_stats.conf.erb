@@ -1,0 +1,14 @@
+<Plugin "ovs_stats">
+<%- if @port %>
+  Port <%= @port %>
+<%- end -%>
+<%- if @address %>
+  Address "<%= @address %>"
+<%- end -%>
+<%- if @socket %>
+  Socket "<%= @socket %>"
+<%- end -%>
+<%- if @bridges %>
+  Bridges "<%= @bridges.join('" "') %>"
+<%- end -%>
+</Plugin>
