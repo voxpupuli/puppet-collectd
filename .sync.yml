@@ -1,30 +1,10 @@
 ---
 .travis.yml:
-  extras:
-  - rvm: 2.4.1
-    env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/centos-7
-    services: docker
-    sudo: required
-    bundler_args: --without development
-    dist: trusty
-  - rvm: 2.4.1
-    env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/debian-8
-    services: docker
-    sudo: required
-    bundler_args: --without development
-    dist: trusty
-  - rvm: 2.4.1
-    env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/ubuntu-14.04
-    services: docker
-    sudo: required
-    bundler_args: --without development
-    dist: trusty
-  - rvm: 2.4.1
-    env: PUPPET_INSTALL_TYPE=agent CHECK=acceptance BEAKER_debug=true BEAKER_set=docker/ubuntu-16.04
-    services: docker
-    sudo: required
-    bundler_args: --without development
-    dist: trusty
+  docker_sets:
+    - set: docker/ubuntu-14.04
+    - set: docker/ubuntu-16.04
+    - set: docker/centos-7
+    - set: docker/debian-8
   secure: "FAK3Izs5bSZyblGvcFnGWm0exZV5+v9pbwfRDD2oihWxX3U3pArGW+3XcwcJfLQgrUYBsOTmHC8yPjlgTBYeIt/5pvg9X+3jwNgeto6kozpI/nvAq4NtcHhzxRejuPELhFYeXZ3hEw0w+v/ZRo2cNLwI0LLpiWEDvCMZN1CJ2RY="
 spec/spec_helper.rb:
   spec_overrides: "require 'spec_helper_methods'"
