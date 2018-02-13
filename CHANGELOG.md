@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v8.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.1) (2018-01-25)
+## [v8.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.1.0) (2018-02-13)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.0.1...v8.1.0)
+
+**Implemented enhancements:**
+
+- update version for collectd package [\#752](https://github.com/voxpupuli/puppet-collectd/pull/752) ([vaclandic](https://github.com/vaclandic))
+
+**Merged pull requests:**
+
+- generate acceptance tests by modulesync [\#754](https://github.com/voxpupuli/puppet-collectd/pull/754) ([bastelfreak](https://github.com/bastelfreak))
+- add ruby 2.5.0 to the testmatrix [\#751](https://github.com/voxpupuli/puppet-collectd/pull/751) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v8.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.1) (2018-01-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.0.0...v8.0.1)
 
