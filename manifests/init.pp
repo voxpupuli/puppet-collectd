@@ -10,7 +10,7 @@ class collectd (
   $internal_stats                                                     = $collectd::params::internal_stats,
   $manage_package                                                     = $collectd::params::manage_package,
   $manage_repo                                                        = $collectd::params::manage_repo,
-  Optional[Pattern[/(^5.4|^5.5|^5.6|^5.7|^master)/]] $ci_package_repo = $collectd::params::ci_package_repo,
+  Optional[Collectd::Manifests::Init] $ci_package_repo                = $collectd::params::ci_package_repo,
   $manage_service                                                     = $collectd::params::manage_service,
   $minimum_version                                                    = $collectd::params::minimum_version,
   $package_ensure                                                     = $collectd::params::package_ensure,
