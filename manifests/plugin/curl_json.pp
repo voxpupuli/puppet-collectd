@@ -25,7 +25,12 @@ define collectd::plugin::curl_json (
 
   if $_manage_package {
     if $facts['os']['family'] == 'Debian' {
-      $libyajl_package = $facts['os']['distro']['codename'] ? {
+      if $facts['facterversion'] >= '3'  {
+        $codename = $facts['os']['distro']['codename']
+      } else {
+        $codename = $facts['os']['lsb']['distcodename']
+      }
+      $libyajl_package = $codename ? {
         'precise' => 'libyajl1',
         default   => 'libyajl2'
       }
