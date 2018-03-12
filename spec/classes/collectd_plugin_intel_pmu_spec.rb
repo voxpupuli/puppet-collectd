@@ -73,9 +73,10 @@ describe 'collectd::plugin::intel_pmu', type: :class do
         end
       end
 
-      context ':ensure => present and :hardware_events => L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS' do
+      context ':ensure => present and :hardware_events => L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS with event_list' do
         let :params do
-          { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'] }
+          { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'],
+            event_list: '/var/cache/pmu/GenuineIntel-6-2D-core.json' }
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
@@ -84,6 +85,16 @@ describe 'collectd::plugin::intel_pmu', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
             content: %r{HardwareEvents "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS"}m
           )
+        end
+      end
+
+      context ':ensure => present and :hardware_events => L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS without event_list' do
+        let :params do
+          { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'] }
+        end
+
+        it "Will raise error" do
+          is_expected.to compile.and_raise_error(/event_list must be defined if hardware_events is used/)
         end
       end
     end
