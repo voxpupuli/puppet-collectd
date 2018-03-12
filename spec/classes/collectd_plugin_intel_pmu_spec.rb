@@ -93,8 +93,8 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'] }
         end
 
-        it "Will raise error" do
-          is_expected.to compile.and_raise_error(/event_list must be defined if hardware_events is used/)
+        it 'Will raise error' do
+          is_expected.to compile.and_raise_error(%r{event_list must be defined if hardware_events is used})
         end
       end
     end
