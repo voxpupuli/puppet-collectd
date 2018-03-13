@@ -26,7 +26,7 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportHardwareCacheEvents "true"}m
+            content: %r{ReportHardwareCacheEvents true}m
           )
         end
       end
@@ -40,7 +40,7 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportKernelPMUEvents "true"}m
+            content: %r{ReportKernelPMUEvents true}m
           )
         end
       end
@@ -54,7 +54,7 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportSoftwareEvents "true"}m
+            content: %r{ReportSoftwareEvents true}m
           )
         end
       end
