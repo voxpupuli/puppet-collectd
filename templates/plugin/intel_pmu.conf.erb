@@ -1,0 +1,17 @@
+<Plugin intel_pmu>
+<% unless @report_hardware_cache_events.nil? -%>
+  ReportHardwareCacheEvents <%= @report_hardware_cache_events %>
+<% end -%>
+<% unless @report_kernel_pmu_events.nil? -%>
+  ReportKernelPMUEvents <%= @report_kernel_pmu_events %>
+<% end -%>
+<% unless @report_software_events.nil? -%>
+  ReportSoftwareEvents <%= @report_software_events %>
+<% end -%>
+<% if @event_list -%>
+  EventList "<%= @event_list %>"
+<% end -%>
+<% if @hardware_events -%>
+  HardwareEvents "<%= @hardware_events.join(',') %>"
+<% end -%>
+</Plugin>

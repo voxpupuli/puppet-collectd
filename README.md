@@ -129,6 +129,7 @@ documentation for each plugin for configurable attributes.
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx)
   below)
 * `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
+* `intel_pmu` (see [collectd::plugin::intel_pmu](#class-collectdpluginintel_pmu) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
   below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
@@ -852,6 +853,15 @@ collectd::plugin::genericjmx::connection {
 class { 'collectd::plugin::hddtemp':
   host => '127.0.0.1',
   port => 7634,
+}
+```
+
+#### Class: `collectd::plugin::intel_pmu`
+```puppet
+class { 'collectd::plugin::intel_pmu':
+  report_hardware_cache_events => true,
+  report_kernel_pmu_events => true,
+  report_software_events => true,
 }
 ```
 
