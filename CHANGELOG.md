@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.2.0) (2018-03-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.1.0...v8.2.0)
+
+**Implemented enhancements:**
+
+- Add intel\_pmu plugin [\#760](https://github.com/voxpupuli/puppet-collectd/pull/760) ([pllopis](https://github.com/pllopis))
+- feat: add package\_keyserver parameter [\#746](https://github.com/voxpupuli/puppet-collectd/pull/746) ([marcdeop](https://github.com/marcdeop))
+- Add class ovs\_events plugin [\#743](https://github.com/voxpupuli/puppet-collectd/pull/743) ([paramite](https://github.com/paramite))
+
+**Fixed bugs:**
+
+- Collectd fails to start when wsrepstats is enabled [\#757](https://github.com/voxpupuli/puppet-collectd/issues/757)
+- Fix the MySQL plugin's WsrepStats parameter [\#758](https://github.com/voxpupuli/puppet-collectd/pull/758) ([steventwheeler](https://github.com/steventwheeler))
+
 ## [v8.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.1.0) (2018-02-13)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.0.1...v8.1.0)
@@ -14,6 +29,7 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
+- release 8.1.0 [\#755](https://github.com/voxpupuli/puppet-collectd/pull/755) ([bastelfreak](https://github.com/bastelfreak))
 - generate acceptance tests by modulesync [\#754](https://github.com/voxpupuli/puppet-collectd/pull/754) ([bastelfreak](https://github.com/bastelfreak))
 - add ruby 2.5.0 to the testmatrix [\#751](https://github.com/voxpupuli/puppet-collectd/pull/751) ([bastelfreak](https://github.com/bastelfreak))
 
@@ -77,6 +93,7 @@ These should not affect the functionality of the module.
 
 **Fixed bugs:**
 
+- Fix markup of headers [\#711](https://github.com/voxpupuli/puppet-collectd/pull/711) ([traylenator](https://github.com/traylenator))
 - Fix strict variables error when facts are missing [\#708](https://github.com/voxpupuli/puppet-collectd/pull/708) ([alexjfisher](https://github.com/alexjfisher))
 - Install 'collectd-python' package on Amazon Linux. [\#671](https://github.com/voxpupuli/puppet-collectd/pull/671) ([irgeek](https://github.com/irgeek))
 
@@ -87,7 +104,6 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
-- Fix markup of headers [\#711](https://github.com/voxpupuli/puppet-collectd/pull/711) ([traylenator](https://github.com/traylenator))
 - Use $facts hash instead of topscope variables [\#709](https://github.com/voxpupuli/puppet-collectd/pull/709) ([alexjfisher](https://github.com/alexjfisher))
 - replace validate\_\* with datatypes [\#706](https://github.com/voxpupuli/puppet-collectd/pull/706) ([bastelfreak](https://github.com/bastelfreak))
 - plugin::dbi - Use data types [\#705](https://github.com/voxpupuli/puppet-collectd/pull/705) ([juniorsysadmin](https://github.com/juniorsysadmin))
@@ -114,6 +130,7 @@ These should not affect the functionality of the module.
 - Change 'Redhat' to 'RedHat' when comparing against the osfamily fact [\#667](https://github.com/voxpupuli/puppet-collectd/pull/667) ([bodgit](https://github.com/bodgit))
 - Add SNMPv3 support [\#665](https://github.com/voxpupuli/puppet-collectd/pull/665) ([bodgit](https://github.com/bodgit))
 - Add tests for the AMQP plugin and fix broken StoreRates configuration when amqpformat = JSON [\#661](https://github.com/voxpupuli/puppet-collectd/pull/661) ([oranenj](https://github.com/oranenj))
+- provide sane defaults for manage\_repo [\#658](https://github.com/voxpupuli/puppet-collectd/pull/658) ([bastelfreak](https://github.com/bastelfreak))
 - openldap - add binddn and password parameters [\#657](https://github.com/voxpupuli/puppet-collectd/pull/657) ([leonkyneur](https://github.com/leonkyneur))
 - Added ISC DHCP pool metrics plugin [\#650](https://github.com/voxpupuli/puppet-collectd/pull/650) ([Yuav](https://github.com/Yuav))
 - df: add devices parameter [\#646](https://github.com/voxpupuli/puppet-collectd/pull/646) ([maage](https://github.com/maage))
@@ -131,7 +148,6 @@ These should not affect the functionality of the module.
 
 - Template in collectd::plugin::perl::plugin generates unstable output [\#635](https://github.com/voxpupuli/puppet-collectd/issues/635)
 - Unable to define a multi-value type [\#549](https://github.com/voxpupuli/puppet-collectd/issues/549)
-- provide sane defaults for manage\_repo [\#658](https://github.com/voxpupuli/puppet-collectd/pull/658) ([bastelfreak](https://github.com/bastelfreak))
 - Fix writing of postgresql query params and add a test [\#656](https://github.com/voxpupuli/puppet-collectd/pull/656) ([andrewward](https://github.com/andrewward))
 - Add Support for older versions of `libyajl` [\#648](https://github.com/voxpupuli/puppet-collectd/pull/648) ([petems](https://github.com/petems))
 - Oracle Database definition must be at bottom [\#643](https://github.com/voxpupuli/puppet-collectd/pull/643) ([jkroepke](https://github.com/jkroepke))
