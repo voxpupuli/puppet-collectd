@@ -4,6 +4,7 @@ class collectd::plugin::ping (
   $ensure         = 'present',
   $manage_package = undef,
   $interval       = undef,
+  $ping_interval  = undef,
   $timeout        = undef,
   $ttl            = undef,
   $source_address = undef,
@@ -21,6 +22,12 @@ class collectd::plugin::ping (
         ensure => $ensure,
       }
     }
+  }
+
+  if versioncmp($::collectd::collectd_version_real, '5.2') < 0 and $interval and ! $ping_interval {
+    $_ping_interval = $interval
+  } else {
+    $_ping_interval = $ping_interval
   }
 
   collectd::plugin { 'ping':
