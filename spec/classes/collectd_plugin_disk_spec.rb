@@ -136,6 +136,20 @@ describe 'collectd::plugin::disk', type: :class do
             )
           end
         end
+        context ':install_options install package with install options' do
+          let :params do
+            {
+              package_install_options: ['--enablerepo=mycollectd-repo']
+            }
+          end
+
+          it 'Will install the package with install options' do
+            is_expected.to contain_package('collectd-disk').with(
+              ensure: 'present',
+              install_options: ['--enablerepo=mycollectd-repo']
+            )
+          end
+        end
       end
     end
   end
