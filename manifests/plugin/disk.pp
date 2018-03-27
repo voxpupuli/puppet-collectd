@@ -7,6 +7,7 @@ class collectd::plugin::disk (
   $manage_package         = undef,
   $package_name           = 'collectd-disk',
   $udevnameattr           = undef,
+  Optional[Array[String]] $package_install_options = undef
 ) {
 
   include ::collectd
@@ -30,8 +31,9 @@ class collectd::plugin::disk (
 
     if $_manage_package {
       package { 'collectd-disk':
-        ensure => $ensure_real,
-        name   => $package_name,
+        ensure          => $ensure_real,
+        name            => $package_name,
+        install_options => $package_install_options,
       }
     }
   }

@@ -6,6 +6,7 @@ class collectd::plugin::sensors (
   $sensors          = undef,
   $ignoreselected   = undef,
   $interval         = undef,
+  Optional[Array[String]] $package_install_options = undef
 ) {
 
   include ::collectd
@@ -15,7 +16,8 @@ class collectd::plugin::sensors (
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
       package { 'collectd-sensors':
-        ensure => $ensure,
+        ensure          => $ensure,
+        install_options => $package_install_options,
       }
     }
   }
