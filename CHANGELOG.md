@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.3.0) (2018-03-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.2.0...v8.3.0)
+
+**Breaking changes:**
+
+- use Stdlib::Fqdn type for package\_keyserver / bump stdlib to 4.25 [\#759](https://github.com/voxpupuli/puppet-collectd/pull/759) ([marcdeop](https://github.com/marcdeop))
+
+**Implemented enhancements:**
+
+- Install package with options in sensors and disk plugins [\#762](https://github.com/voxpupuli/puppet-collectd/pull/762) ([jfroche](https://github.com/jfroche))
+
+**Merged pull requests:**
+
+- bump puppet version dependency to \>= 4.10.0 \< 6.0.0 [\#764](https://github.com/voxpupuli/puppet-collectd/pull/764) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v8.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.2.0) (2018-03-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.1.0...v8.2.0)
@@ -29,7 +45,6 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
-- release 8.1.0 [\#755](https://github.com/voxpupuli/puppet-collectd/pull/755) ([bastelfreak](https://github.com/bastelfreak))
 - generate acceptance tests by modulesync [\#754](https://github.com/voxpupuli/puppet-collectd/pull/754) ([bastelfreak](https://github.com/bastelfreak))
 - add ruby 2.5.0 to the testmatrix [\#751](https://github.com/voxpupuli/puppet-collectd/pull/751) ([bastelfreak](https://github.com/bastelfreak))
 
@@ -41,7 +56,6 @@ These should not affect the functionality of the module.
 
 - Adds class ovs\_stats plugin [\#742](https://github.com/voxpupuli/puppet-collectd/pull/742) ([paramite](https://github.com/paramite))
 - Remove duplicate 'include' [\#740](https://github.com/voxpupuli/puppet-collectd/pull/740) ([alexjfisher](https://github.com/alexjfisher))
-- Release 8.0.0 [\#739](https://github.com/voxpupuli/puppet-collectd/pull/739) ([alexjfisher](https://github.com/alexjfisher))
 
 ## [v8.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.0) (2017-12-08)
 
@@ -77,7 +91,6 @@ These should not affect the functionality of the module.
 - plugin::filter::chain - Use data types [\#720](https://github.com/voxpupuli/puppet-collectd/pull/720) ([juniorsysadmin](https://github.com/juniorsysadmin))
 - collectd::plugin::exec::cmd clean up [\#717](https://github.com/voxpupuli/puppet-collectd/pull/717) ([juniorsysadmin](https://github.com/juniorsysadmin))
 - plugin::apache::instance -don't assign from params [\#715](https://github.com/voxpupuli/puppet-collectd/pull/715) ([juniorsysadmin](https://github.com/juniorsysadmin))
-- release 7.0.0 [\#714](https://github.com/voxpupuli/puppet-collectd/pull/714) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v7.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v7.0.0) (2017-11-11)
 
@@ -111,7 +124,6 @@ These should not affect the functionality of the module.
 - plugin::aggregation - Use data types [\#702](https://github.com/voxpupuli/puppet-collectd/pull/702) ([juniorsysadmin](https://github.com/juniorsysadmin))
 - plugin::apache - Use data types [\#701](https://github.com/voxpupuli/puppet-collectd/pull/701) ([juniorsysadmin](https://github.com/juniorsysadmin))
 - Fix zookeeper tests [\#698](https://github.com/voxpupuli/puppet-collectd/pull/698) ([bastelfreak](https://github.com/bastelfreak))
-- release 6.0.0 [\#697](https://github.com/voxpupuli/puppet-collectd/pull/697) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v6.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v6.0.0) (2017-10-18)
 
