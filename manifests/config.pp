@@ -22,6 +22,8 @@ class collectd::config (
   Integer $write_threads                = $collectd::write_threads,
 ) {
 
+  assert_private()
+
   $_conf_content = $purge_config ? {
     true    => template('collectd/collectd.conf.erb'),
     default => $conf_content,
