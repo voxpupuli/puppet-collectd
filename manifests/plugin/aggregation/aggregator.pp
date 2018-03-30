@@ -30,6 +30,6 @@ define collectd::plugin::aggregation::aggregator (
     owner   => 'root',
     group   => $collectd::root_group,
     content => template('collectd/plugin/aggregation-aggregator.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

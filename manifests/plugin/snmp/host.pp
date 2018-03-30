@@ -30,6 +30,6 @@ define collectd::plugin::snmp::host (
     group   => $root_group,
     mode    => '0640',
     content => template('collectd/plugin/snmp/host.conf.erb'),
-    notify  => Service['collectd'];
+    notify  => Service[$collectd::service_name];
   }
 }

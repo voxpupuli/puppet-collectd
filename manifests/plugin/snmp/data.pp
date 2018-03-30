@@ -25,6 +25,6 @@ define collectd::plugin::snmp::data (
     group   => $root_group,
     mode    => '0640',
     content => template('collectd/plugin/snmp/data.conf.erb'),
-    notify  => Service['collectd'];
+    notify  => Service[$collectd::service_name];
   }
 }

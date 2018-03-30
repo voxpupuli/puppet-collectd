@@ -16,7 +16,7 @@ class collectd::plugin::filter (
     group   => $collectd::root_group,
     mode    => '0644',
     content => "PreCacheChain \"${precachechain}\"\nPostCacheChain \"${postcachechain}\"\n\n",
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 
   unless $ensure == 'present' {
