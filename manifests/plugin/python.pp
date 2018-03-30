@@ -55,11 +55,11 @@ class collectd::plugin::python (
   ensure_resource('file', $module_dirs,
     {
       'ensure'  => $ensure_modulepath,
-      'mode'    => '0755',
-      'owner'   => 'root',
+      'mode'    => $collectd::plugin_conf_dir_mode,
+      'owner'   => $collectd::config_owner,
       'purge'   => $::collectd::purge_config,
       'force'   => true,
-      'group'   => $collectd::root_group,
+      'group'   => $collectd::config_group,
       'require' => Package[$collectd::package_name]
     }
   )
@@ -69,9 +69,9 @@ class collectd::plugin::python (
 
   concat { $python_conf:
     ensure         => $ensure,
-    mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::root_group,
+    mode           => $collectd::config_mode,
+    owner          => $collectd::config_owner,
+    group          => $collectd::config_group,
     notify         => Service['collectd'],
     ensure_newline => true,
     require        => File['collectd.d'],

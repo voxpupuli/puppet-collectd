@@ -21,14 +21,13 @@ define collectd::plugin::snmp::host (
   include ::collectd::plugin::snmp
 
   $conf_dir   = $collectd::plugin_conf_dir
-  $root_group = $collectd::root_group
 
   file { "snmp-host-${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/25-snmp-host-${name}.conf",
-    owner   => 'root',
-    group   => $root_group,
-    mode    => '0640',
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    mode    => $collectd::config_mode,
     content => template('collectd/plugin/snmp/host.conf.erb'),
     notify  => Service['collectd'];
   }

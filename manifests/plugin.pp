@@ -11,14 +11,14 @@ define collectd::plugin (
   include ::collectd
 
   $conf_dir = $::collectd::plugin_conf_dir
-  $root_group = $::collectd::root_group
+  $config_group = $::collectd::config_group
 
   file { "${plugin}.load":
     ensure  => $ensure,
     path    => "${conf_dir}/${order}-${plugin}.conf",
-    owner   => root,
-    group   => $root_group,
-    mode    => '0640',
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    mode    => $collectd::config_mode,
     content => template('collectd/loadplugin.conf.erb'),
     notify  => Service['collectd'],
   }

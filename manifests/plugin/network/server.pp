@@ -17,9 +17,9 @@ define collectd::plugin::network::server (
 
   file { "${conf_dir}/network-server-${name}.conf":
     ensure  => $ensure,
-    mode    => '0640',
-    owner   => 'root',
-    group   => $::collectd::root_group,
+    mode    => $collectd::config_mode,
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
     content => template('collectd/plugin/network/server.conf.erb'),
     notify  => Service['collectd'],
   }

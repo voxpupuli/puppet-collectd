@@ -22,9 +22,9 @@ class collectd::plugin::oracle (
 
   concat { $config_file:
     ensure         => $ensure,
-    mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::root_group,
+    mode           => $collectd::config_mode,
+    owner          => $collectd::config_owner,
+    group          => $collectd::config_group,
     notify         => Service['collectd'],
     ensure_newline => true,
   }

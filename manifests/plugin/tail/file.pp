@@ -14,9 +14,9 @@ define collectd::plugin::tail::file (
   file { "${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/tail-${name}.conf",
-    mode    => '0644',
-    owner   => 'root',
-    group   => $collectd::root_group,
+    mode    => $collectd::config_mode,
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
     content => template('collectd/tail-file.conf.erb'),
     notify  => Service['collectd'],
   }
