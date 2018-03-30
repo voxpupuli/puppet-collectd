@@ -37,9 +37,7 @@ class collectd (
 
   $collectd_version_real = pick_default($facts['collectd_version'], $minimum_version)
 
-  class { '::collectd::install':
-    package_install_options => $package_install_options,
-  }
+  class { '::collectd::install': }
 
   class { '::collectd::repo': }
 
