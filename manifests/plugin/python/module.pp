@@ -30,7 +30,7 @@ define collectd::plugin::python::module (
       mode    => $collectd::config_mode,
       source  => $script_source,
       require => File[$module_dir],
-      notify  => Service['collectd'],
+      notify  => Service[$collectd::service_name],
     }
   }
 

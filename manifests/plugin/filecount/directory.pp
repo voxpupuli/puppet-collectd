@@ -19,6 +19,6 @@ define collectd::plugin::filecount::directory (
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     content => template('collectd/plugin/filecount-directory.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

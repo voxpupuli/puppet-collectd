@@ -13,6 +13,6 @@ define collectd::typesdb (
     group          => $group,
     mode           => $mode,
     ensure_newline => true,
-    notify         => Service['collectd'],
+    notify         => Service[$collectd::service_name],
   }
 }

@@ -22,7 +22,7 @@ class collectd::plugin::write_graphite (
         mode           => $collectd::config_mode,
         owner          => $collectd::config_owner,
         group          => $collectd::config_group,
-        notify         => Service['collectd'],
+        notify         => Service[$collectd::service_name],
         ensure_newline => true,
       }
 
