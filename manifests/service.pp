@@ -5,6 +5,8 @@ class collectd::service (
   $manage_service = $collectd::manage_service,
 ) {
 
+  assert_private()
+
   if $manage_service {
     service { 'collectd':
       ensure => $service_ensure,

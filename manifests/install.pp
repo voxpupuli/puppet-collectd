@@ -6,6 +6,8 @@ class collectd::install (
   $manage_package                           = $collectd::manage_package,
 ) {
 
+  assert_private()
+
   if $manage_package {
     package { $package_name:
       ensure          => $package_ensure,
