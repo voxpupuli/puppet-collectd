@@ -15,7 +15,7 @@ def os_specific_options(facts)
   end
 end
 
-def test_on
+def all_supported_os_hash
   {
     supported_os: [
       {
@@ -36,6 +36,17 @@ def test_on
       },
       {
         'operatingsystem' => 'Archlinux'
+      }
+    ]
+  }
+end
+
+def baseline_os_hash
+  {
+    supported_os: [
+      {
+        'operatingsystem' => 'CentOS',
+        'operatingsystemrelease' => ['7']
       }
     ]
   }
