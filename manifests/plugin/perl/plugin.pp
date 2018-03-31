@@ -34,9 +34,9 @@ define collectd::plugin::perl::plugin (
   $filename = "${conf_dir}/perl/plugin-${order}_${name}.conf"
 
   file { $filename:
-    owner   => $collectd::root_user,
-    group   => $collectd::root_group,
-    mode    => '0644',
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    mode    => $collectd::config_mode,
     content => template('collectd/plugin/perl/plugin.erb'),
   }
 

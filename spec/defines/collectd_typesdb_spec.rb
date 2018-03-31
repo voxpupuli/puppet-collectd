@@ -7,6 +7,10 @@ describe 'collectd::typesdb', type: :define do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       context 'without any types' do
         let(:title) { '/etc/collectd/types.db' }
 

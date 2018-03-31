@@ -30,9 +30,9 @@ class collectd::plugin::perl (
 
   file { "${conf_dir}/perl":
     ensure => directory,
-    mode   => '0755',
-    owner  => $collectd::root_user,
-    group  => $collectd::root_group,
+    mode   => $collectd::plugin_conf_dir_mode,
+    owner  => $collectd::config_owner,
+    group  => $collectd::config_group,
   }
 }
 

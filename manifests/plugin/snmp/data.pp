@@ -16,14 +16,13 @@ define collectd::plugin::snmp::data (
   include ::collectd::plugin::snmp
 
   $conf_dir   = $collectd::plugin_conf_dir
-  $root_group = $collectd::root_group
 
   file { "snmp-data-${name}.conf":
     ensure  => $ensure,
     path    => "${conf_dir}/15-snmp-data-${name}.conf",
-    owner   => 'root',
-    group   => $root_group,
-    mode    => '0640',
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    mode    => $collectd::config_mode,
     content => template('collectd/plugin/snmp/data.conf.erb'),
     notify  => Service['collectd'];
   }
