@@ -24,6 +24,6 @@ define collectd::plugin::mysql::database (
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     content => template('collectd/mysql-database.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

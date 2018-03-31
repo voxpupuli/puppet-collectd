@@ -53,6 +53,6 @@ define collectd::plugin::curl_json (
       group   => $collectd::config_group,
       mode    => $collectd::config_mode,
       content => template('collectd/curl_json.conf.erb'),
-      notify  => Service['collectd'],
+      notify  => Service[$collectd::service_name],
   }
 }

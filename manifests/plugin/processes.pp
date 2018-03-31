@@ -20,7 +20,7 @@ class collectd::plugin::processes (
     mode           => $collectd::config_mode,
     owner          => $collectd::config_owner,
     group          => $collectd::config_group,
-    notify         => Service['collectd'],
+    notify         => Service[$collectd::service_name],
     ensure_newline => true,
   }
   concat::fragment { 'collectd_plugin_processes_conf_header':

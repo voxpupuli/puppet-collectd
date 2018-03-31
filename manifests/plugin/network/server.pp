@@ -21,6 +21,6 @@ define collectd::plugin::network::server (
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     content => template('collectd/plugin/network/server.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

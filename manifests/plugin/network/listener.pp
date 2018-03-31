@@ -18,6 +18,6 @@ define collectd::plugin::network::listener (
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     content => template('collectd/plugin/network/listener.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }
