@@ -9,9 +9,9 @@ class collectd::params {
   $interval                  = 10
   $include                   = []
   $internal_stats            = false
-  $purge                     = undef
+  $purge                     = false
   $purge_config              = false
-  $recurse                   = undef
+  $recurse                   = false
   $read_threads              = 5
   $write_threads             = 5
   $timeout                   = 2
