@@ -10,9 +10,11 @@ define collectd::plugin::oracle::database (
   include ::collectd
   include ::collectd::plugin::oracle
 
+  $conf_dir = $collectd::plugin_conf_dir
+
   concat::fragment { "collectd_plugin_oracle_database_${name}":
     order   => '20',
     content => template('collectd/plugin/oracle/database.conf.erb'),
-    target  => $collectd::plugin::oracle::config_file,
+    target  => "${conf_dir}/15-oracle.conf",
   }
 }
