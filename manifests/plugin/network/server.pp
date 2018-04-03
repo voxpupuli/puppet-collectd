@@ -1,13 +1,13 @@
 #
 define collectd::plugin::network::server (
-  $ensure          = 'present',
-  $username        = undef,
-  $password        = undef,
-  $port            = undef,
-  $securitylevel   = undef,
-  $interface       = undef,
-  $forward         = undef,
-  $resolveinterval = undef,
+  Enum['present', 'absent'] $ensure                         = 'present',
+  Optional[String] $username                                = undef,
+  Optional[String] $password                                = undef,
+  Optional[Integer] $port                                   = undef,
+  Optional[Collectd::Network::SecurityLevel] $securitylevel = undef,
+  Optional[String] $interface                               = undef,
+  Optional[Boolean] $forward                                = undef,
+  Optional[Integer[1]] $resolveinterval                     = undef,
 ) {
 
   include ::collectd
