@@ -9,20 +9,13 @@ describe 'collectd', type: :class do
 
       options = os_specific_options(facts)
       context 'with all defaults' do
-        it { is_expected.to contain_class('collectd') }
-        it { is_expected.to contain_class('collectd::params') }
         it { is_expected.to compile.with_all_deps }
-        it { is_expected.to contain_anchor('collectd::begin') }
-        it { is_expected.to contain_anchor('collectd::end') }
         it { is_expected.to contain_file('collectd.conf').without_content }
         it { is_expected.to contain_file('collectd.d').with_ensure('directory') }
         it { is_expected.to contain_file_line('include_conf_d').with_ensure('absent') }
         it { is_expected.to contain_file_line('include_conf_d_dot_conf').with_ensure('present') }
         it { is_expected.to contain_package(options[:package]).with_ensure('present') }
         it { is_expected.to contain_package(options[:package]).with_install_options(nil) }
-        it { is_expected.to contain_class('collectd::install').that_comes_before('Class[collectd::config]') }
-        it { is_expected.to contain_class('collectd::config').that_notifies('Class[collectd::service]') }
-        it { is_expected.to contain_class('collectd::service') }
         it do
           is_expected.to contain_service('collectd').with(
             ensure: 'running',
@@ -84,7 +77,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              write_queue_limit_low: '100'
+              write_queue_limit_low: 100
             }
           end
 
@@ -95,7 +88,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              write_queue_limit_high: '100'
+              write_queue_limit_high: 100
             }
           end
 
@@ -259,12 +252,6 @@ describe 'collectd', type: :class do
           let(:params) { { manage_service: false } }
 
           it { is_expected.not_to contain_service('collectd') }
-        end
-
-        context 'when manage_service is undefined' do
-          let(:params) { { manage_service: nil } }
-
-          it { is_expected.to contain_service('collectd').with_ensure('running') }
         end
 
         context 'when plugin_conf_dir_mode is set' do
