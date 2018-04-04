@@ -1,13 +1,14 @@
 # Oracle plugin
 # https://collectd.org/wiki/index.php/Plugin:Oracle
 class collectd::plugin::oracle (
-  $ensure           = 'present',
-  $manage_package   = undef,
-  $interval         = undef,
+  Enum['present', 'absent'] $ensure = 'present',
+  Boolean $manage_package           = false,
+  Optional[Integer[1]] $interval    = undef,
 ) {
+
   include ::collectd
 
-  $config_file = "${collectd::plugin_conf_dir}/15-oracle.conf"
+  $conf_dir = $collectd::plugin_conf_dir
 
   if $manage_package {
     package { 'collectd-oracle':
@@ -20,7 +21,7 @@ class collectd::plugin::oracle (
     interval => $interval,
   }
 
-  concat { $config_file:
+  concat { "${conf_dir}/15-oracle.conf":
     ensure         => $ensure,
     mode           => $collectd::config_mode,
     owner          => $collectd::config_owner,
@@ -33,10 +34,13 @@ class collectd::plugin::oracle (
     'collectd_plugin_oracle_conf_header':
       order   => '00',
       content => '<Plugin oracle>',
-      target  => $config_file;
+      target  => "${conf_dir}/15-oracle.conf",
+  }
+
+  concat::fragment {
     'collectd_plugin_oracle_conf_footer':
       order   => '99',
       content => '</Plugin>',
-      target  => $config_file;
+      target  => "${conf_dir}/15-oracle.conf",
   }
 }

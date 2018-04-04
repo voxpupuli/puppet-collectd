@@ -8,9 +8,11 @@ define collectd::plugin::oracle::query (
   include ::collectd
   include ::collectd::plugin::oracle
 
+  $conf_dir = $collectd::plugin_conf_dir
+
   concat::fragment { "collectd_plugin_oracle_query_${name}":
     order   => '10',
     content => template('collectd/plugin/oracle/query.conf.erb'),
-    target  => $collectd::plugin::oracle::config_file,
+    target  => "${conf_dir}/15-oracle.conf",
   }
 }
