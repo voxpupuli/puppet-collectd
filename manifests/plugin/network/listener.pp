@@ -1,10 +1,10 @@
 #
 define collectd::plugin::network::listener (
-  $ensure        = 'present',
-  $authfile      = undef,
-  $port          = undef,
-  $securitylevel = undef,
-  $interface     = undef,
+  Enum['present', 'absent'] $ensure                         = 'present',
+  Optional[Stdlib::Absolutepath] $authfile                  = undef,
+  Optional[Integer] $port                                   = undef,
+  Optional[Collectd::Network::SecurityLevel] $securitylevel = undef,
+  Optional[String] $interface                               = undef,
 ) {
 
   include ::collectd

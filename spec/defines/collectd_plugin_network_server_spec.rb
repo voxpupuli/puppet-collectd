@@ -12,7 +12,7 @@ describe 'collectd::plugin::network::server', type: :define do
         let(:title) { 'node1' }
         let :params do
           {
-            port: '1234',
+            port: 1234,
             interface: 'eth0',
             securitylevel: 'Encrypt',
             username: 'foo',

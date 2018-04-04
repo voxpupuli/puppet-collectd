@@ -12,7 +12,7 @@ describe 'collectd::plugin::network::listener', type: :define do
         let(:title) { 'mylistener' }
         let :params do
           {
-            port: '1234'
+            port: 1234
           }
         end
 
