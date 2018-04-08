@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:ContextSwitch
 class collectd::plugin::contextswitch (
-  $ensure   = 'present',
-  $interval = undef,
+  Enum['present', 'absent'] $ensure   = 'present',
+  Optional[Integer[1]] $interval      = undef,
 ) {
 
   include ::collectd
