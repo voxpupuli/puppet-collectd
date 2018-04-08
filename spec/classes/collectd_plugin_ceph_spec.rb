@@ -7,6 +7,10 @@ describe 'collectd::plugin::ceph', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       options = os_specific_options(facts)
 
       context ':ensure => present and :daemons => [ \'ceph-osd.0\, \ceph-osd.1\, \ceph-osd.2\, \test-osd.0\, \ceph-mon.mon01\ ]' do
@@ -71,9 +75,10 @@ EOS
         end
       end
 
-      context ':manage_package => undef/false' do
+      context ':manage_package => false' do
         let :params do
           {
+            manage_package: false,
             daemons: ['ceph-osd.0']
           }
         end
@@ -83,35 +88,6 @@ EOS
             ensure: 'present',
             name: 'collectd-ceph'
           )
-        end
-      end
-
-      context ':manage_package => undef/false on osfamily => RedHat with collectd 5.4 and below' do
-        let :facts do
-          facts.merge(collectd_version: '5.4')
-        end
-
-        let :params do
-          {
-            daemons: ['ceph-osd.0']
-          }
-        end
-
-        it 'Will not manage collectd-ceph' do
-          is_expected.not_to contain_package('collectd-ceph').with(
-            ensure: 'present',
-            name: 'collectd-ceph'
-          )
-        end
-      end
-
-      context ':ceph is not an array' do
-        let :params do
-          { daemons: 'ceph-osd.0' }
-        end
-
-        it 'Will raise an error about :daemons being a String' do
-          is_expected.to compile.and_raise_error(%r{String})
         end
       end
     end
