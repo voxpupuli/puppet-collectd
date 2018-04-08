@@ -1,9 +1,9 @@
 #
 class collectd::plugin::chain (
-  $chainname     = 'Main',
-  $ensure        = 'present',
-  $defaulttarget = 'write',
-  $rules         = []
+  String $chainname                       = 'Main',
+  Enum['present', 'absent'] $ensure       = 'present',
+  Collectd::Filter::Target $defaulttarget = 'write',
+  Array $rules                            = []
 ) {
 
   include ::collectd
