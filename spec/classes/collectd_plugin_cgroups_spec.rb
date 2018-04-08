@@ -7,6 +7,10 @@ describe 'collectd::plugin::cgroups', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       options = os_specific_options(facts)
 
       context ':ensure => present, default params' do
