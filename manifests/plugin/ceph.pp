@@ -35,11 +35,11 @@
 #
 class collectd::plugin::ceph (
   Array $daemons,
-  $ensure                    = 'present',
-  $longrunavglatency         = false,
-  $convertspecialmetrictypes = true,
-  $manage_package            = undef,
-  $package_name              = 'collectd-ceph'
+  Enum['present', 'absent'] $ensure  = 'present',
+  Boolean $longrunavglatency         = false,
+  Boolean $convertspecialmetrictypes = true,
+  Boolean $manage_package            = $collectd::manage_package,
+  String $package_name               = 'collectd-ceph'
 ) {
 
   include ::collectd
