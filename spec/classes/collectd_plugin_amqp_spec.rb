@@ -7,6 +7,10 @@ describe 'collectd::plugin::amqp', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       options = os_specific_options(facts)
       context ':ensure => present' do
         let :params do
@@ -39,7 +43,7 @@ describe 'collectd::plugin::amqp', type: :class do
       context 'overriding default parameters' do
         let(:params) do
           { amqphost: 'myhost',
-            amqpport: '5666',
+            amqpport: 5666,
             amqpvhost: 'amqp',
             amqpuser: 'user',
             amqppass: 'pass',
