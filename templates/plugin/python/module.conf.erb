@@ -6,7 +6,7 @@
   <Module "<%= @module %>">
   <%- configuration.sort.each do |key,value| -%>
   <%- if value.is_a?(Array) -%>
-  <%- value.sort.each do |v| -%>
+  <%- value.each do |v| -%>
     <%= key %> <% if !!v == v %><%= v %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
   <%- end -%>
   <%- elsif value.is_a?(Hash) -%>
