@@ -4,6 +4,49 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v9.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.0) (2018-05-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.3.0...v9.0.0)
+
+**Breaking changes:**
+
+- collectd::plugin::ceph - Add additional data types [\#781](https://github.com/voxpupuli/puppet-collectd/pull/781) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::bind - Add additional data types [\#780](https://github.com/voxpupuli/puppet-collectd/pull/780) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::apache - Use data types [\#779](https://github.com/voxpupuli/puppet-collectd/pull/779) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::amqp - Use data types [\#778](https://github.com/voxpupuli/puppet-collectd/pull/778) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::oracle - Use data types [\#776](https://github.com/voxpupuli/puppet-collectd/pull/776) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::network - Add data types [\#775](https://github.com/voxpupuli/puppet-collectd/pull/775) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Use data types, remove anchors [\#773](https://github.com/voxpupuli/puppet-collectd/pull/773) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- config.pp clean up [\#772](https://github.com/voxpupuli/puppet-collectd/pull/772) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Standardize file permissions, allow non-root [\#767](https://github.com/voxpupuli/puppet-collectd/pull/767) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Implemented enhancements:**
+
+- Owner and modes for plugin files should reference ones set in collectd init [\#719](https://github.com/voxpupuli/puppet-collectd/issues/719)
+- Add support for nut plugin \(\#621\) [\#681](https://github.com/voxpupuli/puppet-collectd/pull/681) ([trustchk](https://github.com/trustchk))
+
+**Fixed bugs:**
+
+- service resource name 'collectd' should be renamed [\#688](https://github.com/voxpupuli/puppet-collectd/issues/688)
+- Remove array sorting in python module template \(\#586\) [\#792](https://github.com/voxpupuli/puppet-collectd/pull/792) ([jlutran](https://github.com/jlutran))
+- Use $collectd::service\_name consistently [\#771](https://github.com/voxpupuli/puppet-collectd/pull/771) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Merged pull requests:**
+
+- Rely on beaker-hostgenerator for docker nodesets [\#791](https://github.com/voxpupuli/puppet-collectd/pull/791) ([ekohl](https://github.com/ekohl))
+- collectd::plugin::contextswitch - Use data types [\#787](https://github.com/voxpupuli/puppet-collectd/pull/787) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cpu - Use data types [\#786](https://github.com/voxpupuli/puppet-collectd/pull/786) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cpufreq - Use data types [\#785](https://github.com/voxpupuli/puppet-collectd/pull/785) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::conntrack - Use data types [\#784](https://github.com/voxpupuli/puppet-collectd/pull/784) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::chain - Use data types [\#783](https://github.com/voxpupuli/puppet-collectd/pull/783) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cgroups - Add more data types [\#782](https://github.com/voxpupuli/puppet-collectd/pull/782) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::aggregation - add data types [\#777](https://github.com/voxpupuli/puppet-collectd/pull/777) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Use one operating system for most RSpec tests [\#770](https://github.com/voxpupuli/puppet-collectd/pull/770) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Remove parameters from collectd::install class [\#769](https://github.com/voxpupuli/puppet-collectd/pull/769) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Remove parameters from collectd::service class [\#768](https://github.com/voxpupuli/puppet-collectd/pull/768) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- add assert\_private to private classes [\#766](https://github.com/voxpupuli/puppet-collectd/pull/766) ([bastelfreak](https://github.com/bastelfreak))
+- Convert collectd\_plugin\_fscache\_spec to rspec-puppet-facts [\#736](https://github.com/voxpupuli/puppet-collectd/pull/736) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v8.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.3.0) (2018-03-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.2.0...v8.3.0)
@@ -165,7 +208,6 @@ These should not affect the functionality of the module.
 - Oracle Database definition must be at bottom [\#643](https://github.com/voxpupuli/puppet-collectd/pull/643) ([jkroepke](https://github.com/jkroepke))
 - Remove quotes from boolean options [\#640](https://github.com/voxpupuli/puppet-collectd/pull/640) ([mirekys](https://github.com/mirekys))
 - Use sort on hashes in template perl/plugin.erb [\#636](https://github.com/voxpupuli/puppet-collectd/pull/636) ([blajos](https://github.com/blajos))
-- pin puppet-yum to \< 1.0.0 [\#628](https://github.com/voxpupuli/puppet-collectd/pull/628) ([bastelfreak](https://github.com/bastelfreak))
 
 **Closed issues:**
 
