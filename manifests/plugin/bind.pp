@@ -10,7 +10,7 @@ class collectd::plugin::bind (
   Boolean $resolverstats            = false,
   Boolean $serverstats              = true,
   Boolean $zonemaintstats           = true,
-  Array $views                      = [],
+  Array[Collectd::Bind::View] $views = [],
   Optional[Integer[1]] $interval    = undef,
 ) {
 
