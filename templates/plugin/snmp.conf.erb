@@ -12,7 +12,7 @@
 <% if val['instance_prefix'] -%>
     InstancePrefix "<%= val['instance_prefix'] %>"
 <% end -%>
-    Values <% Array(val['values']).each do |x| -%>"<%= x %>" <% end %>
+    Values <%= Array(val['values']).map { |x| %("#{x}") }.join(' ') %>
 <% if val['scale'] -%>
     Scale <%= val['scale'] %>
 <% end -%>
@@ -20,7 +20,7 @@
     Shift <%= val['shift'] %>
 <% end -%>
 <% if val['ignore'] -%>
-    Ignore <% Array(val['ignore']).each do |x| -%>"<%= x %>" <% end %>
+    Ignore <%= Array(val['ignore']).map { |x| %("#{x}") }.join(' ') %>
 <% end -%>
 <% unless val['invert_match'].nil? -%>
     InvertMatch <%= val['invert_match'] ? 'true' : 'false' %>
@@ -49,7 +49,7 @@
     PrivacyPassphrase "<%= val['privacy_passphrase'] %>"
 <%     end -%>
 <%   end -%>
-    Collect <% Array(val['collect']).sort.each do |x| -%>"<%= x -%>" <% end %>
+    Collect <%= Array(val['collect']).sort.map { |x| %("#{x}") }.join(' ') %>
 <%   if val['interval'] -%>
     Interval <%= val['interval'] %>
 <%   end -%>
