@@ -40,7 +40,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
           required_params.merge(values: %w[foo bar baz])
         end
 
-        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"}) }
+        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "foo" "bar" "baz"$}) }
       end
 
       context 'values is just a string' do
@@ -48,7 +48,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
           required_params.merge(values: 'bat')
         end
 
-        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"}) }
+        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Values "bat"$}) }
       end
 
       context 'Ignore is an array' do
@@ -56,7 +56,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
           required_params.merge(ignore: %w[hamilton burr jefferson])
         end
 
-        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "hamilton" "burr" "jefferson"}) }
+        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "hamilton" "burr" "jefferson"$}) }
       end
 
       context 'Ignore is just a string' do
@@ -64,7 +64,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
           required_params.merge(ignore: 'washington')
         end
 
-        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "washington"}) }
+        it { is_expected.to contain_file('snmp-data-foo.conf').with_content(%r{Ignore "washington"$}) }
       end
 
       context 'table is true' do

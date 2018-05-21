@@ -80,7 +80,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
           }
         end
 
-        it { is_expected.to contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"}) }
+        it { is_expected.to contain_file(filename).with_content(%r{Collect "foo" "bar" "baz"$}) }
       end
 
       context 'collect is just a string' do
@@ -90,7 +90,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
           }
         end
 
-        it { is_expected.to contain_file(filename).with_content(%r{Collect "bat"}) }
+        it { is_expected.to contain_file(filename).with_content(%r{Collect "bat"$}) }
       end
     end
   end
