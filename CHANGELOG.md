@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v9.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.1) (2018-05-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.0...v9.0.1)
+
+**Fixed bugs:**
+
+- Fix trailing spaces in the snmp plugin config file [\#794](https://github.com/voxpupuli/puppet-collectd/pull/794) ([smortex](https://github.com/smortex))
+
 ## [v9.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.0) (2018-05-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.3.0...v9.0.0)
