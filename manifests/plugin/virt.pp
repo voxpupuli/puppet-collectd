@@ -10,6 +10,7 @@ class collectd::plugin::virt (
   Optional[Boolean] $ignore_selected           = undef,
   Optional[String] $hostname_format            = undef,
   Optional[String] $interface_format           = undef,
+  Optional[String] $extra_stats                = undef,
   $interval                                    = undef,
 ) {
 
