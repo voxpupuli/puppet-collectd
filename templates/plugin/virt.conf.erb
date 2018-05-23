@@ -22,6 +22,9 @@
 <% if @hostname_format != nil -%>
   HostnameFormat "<%= @hostname_format %>"
 <% end -%>
+<% if @extra_stats != nil -%>
+  ExtraStats "<%= @extra_stats %>"
+<% end -%>
 <% if @interface_format != nil
      if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5']) >= 0) -%>
   InterfaceFormat "<%= @interface_format %>"
