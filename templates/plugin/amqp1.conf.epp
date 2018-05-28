@@ -1,0 +1,48 @@
+<Plugin amqp1>
+  <Transport "<%= $::collectd::plugin::amqp1::transport %>">
+    Host "<%= $::collectd::plugin::amqp1::host %>"
+    Port "<%= $::collectd::plugin::amqp1::port %>"
+    User "<%= $::collectd::plugin::amqp1::user %>"
+    Password "<%= $::collectd::plugin::amqp1::password %>"
+    Address "<%= $::collectd::plugin::amqp1::address %>"
+<% unless $::collectd::plugin::amqp1::retry_delay =~ Undef { -%>
+    RetryDelay <%= $::collectd::plugin::amqp1::retry_delay %>
+<% } -%>
+<% $::collectd::plugin::amqp1::instances.keys.sort.each |$name| { -%>
+    <Instance "<%= $name %>">
+<% $::collectd::plugin::amqp1::instances[$name].keys.sort.each |$key| { -%>
+<% if $key == 'format' { -%>
+      Format "<%= $::collectd::plugin::amqp1::instances[$name][$key] %>"
+<% } -%>
+<% if $key == 'presettle' { -%>
+      PreSettle <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% if $key == 'notify' { -%>
+      Notify <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% if $key == 'store_rates' { -%>
+      StoreRates <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% if $key == 'graphite_prefix' { -%>
+      GraphitePrefix "<%= $::collectd::plugin::amqp1::instances[$name][$key] %>"
+<% } -%>
+<% if $key == 'graphite_postfix' { -%>
+      GraphitePostfix "<%= $::collectd::plugin::amqp1::instances[$name][$key] %>"
+<% } -%>
+<% if $key == 'graphite_escape_char' { -%>
+      GraphiteEscapeChar "<%= $::collectd::plugin::amqp1::instances[$name][$key] %>"
+<% } -%>
+<% if $key == 'graphite_separate_instances' { -%>
+      GraphiteSeparateInstances <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% if $key == 'graphite_always_append_ds' { -%>
+      GraphiteAlwaysAppendDS <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% if $key == 'graphite_preserve_separator' { -%>
+      GraphitePreserveSeparator <%= $::collectd::plugin::amqp1::instances[$name][$key] %>
+<% } -%>
+<% } -%>
+    </Instance>
+<% } -%>
+  </Transport>
+</Plugin>
