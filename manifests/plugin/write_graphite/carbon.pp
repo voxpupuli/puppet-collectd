@@ -12,6 +12,7 @@ define collectd::plugin::write_graphite::carbon (
   $protocol                  = 'tcp',
   Boolean $separateinstances = false,
   Boolean $logsenderrors     = true,
+  Boolean $preserveseparator = false,
 ) {
 
   include ::collectd
