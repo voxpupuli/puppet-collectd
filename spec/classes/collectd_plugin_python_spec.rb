@@ -57,7 +57,9 @@ describe 'collectd::plugin::python', type: :class do
           end
 
           it 'will ensure the two directories are here' do
-            is_expected.to contain_file('/tmp/')
+            is_expected.to contain_file('/tmp/').with(
+              require: 'Package[collectd]'
+            )
             is_expected.to contain_file('/data/')
           end
           it 'will set two modulepath in the module conf' do
