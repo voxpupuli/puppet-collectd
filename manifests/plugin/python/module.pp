@@ -33,10 +33,25 @@ define collectd::plugin::python::module (
       notify  => Service[$collectd::service_name],
     }
   }
-
-  concat::fragment{ "collectd_plugin_python_conf_${module}":
-    order   => '50', # somewhere between header and footer
-    target  => $collectd::plugin::python::python_conf,
-    content => template('collectd/plugin/python/module.conf.erb'),
+  $_python_module_conf = "${collectd::plugin_conf_dir}/${collectd::plugin::python::python_conf_dir}/${module}.conf"
+  concat{$_python_module_conf:
+    ensure         => $ensure,
+    mode           => $collectd::config_mode,
+    owner          => $collectd::config_owner,
+    group          => $collectd::config_group,
+    notify         => Service[$collectd::service_name],
+    ensure_newline => true,
   }
+
+  concat::fragment{ "collectd_plugin_python_conf_${module}_header":
+    order   => '00', # header
+    target  => $_python_module_conf,
+    content => template('collectd/plugin/python/module_header.conf.erb'),
+  }
+  concat::fragment{ "collectd_plugin_python_conf_${module}_footer":
+    order   => '99', #  footer
+    target  => $_python_module_conf,
+    content => "   </Module>\n</Plugin>",
+  }
+
 }

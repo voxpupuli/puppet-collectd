@@ -1,3 +1,4 @@
+<Plugin "python">
   <%- require 'shellwords' -%>
   Import "<%= @_module_import %>"
 
@@ -17,5 +18,4 @@
     <%= key %> <% if !!value == value %><%= value %><% else %>"<%= Shellwords.split(value).join('" "') %>"<% end %>
   <%- end -%>
   <%- end -%>
-  </Module>
   <%- end -%>
