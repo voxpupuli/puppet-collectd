@@ -6,8 +6,8 @@ define collectd::plugin::tail::file (
   $ensure = 'present',
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::tail
+  include collectd
+  include collectd::plugin::tail
 
   $conf_dir = $collectd::plugin_conf_dir
 

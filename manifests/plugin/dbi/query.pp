@@ -6,8 +6,8 @@ define collectd::plugin::dbi::query (
   Optional[String] $minversion = undef,
   Optional[String] $maxversion = undef,
 ) {
-  include ::collectd
-  include ::collectd::plugin::dbi
+  include collectd
+  include collectd::plugin::dbi
 
   concat::fragment{ "collectd_plugin_dbi_conf_query_${title}":
     order   => '30',

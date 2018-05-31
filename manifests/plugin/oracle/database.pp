@@ -7,8 +7,8 @@ define collectd::plugin::oracle::database (
   String $database   = $name,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::oracle
+  include collectd
+  include collectd::plugin::oracle
 
   $conf_dir = $collectd::plugin_conf_dir
 

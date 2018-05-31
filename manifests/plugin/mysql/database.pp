@@ -14,8 +14,8 @@ define collectd::plugin::mysql::database (
   Optional[Boolean] $wsrepstats        = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::mysql
+  include collectd
+  include collectd::plugin::mysql
 
   file { "${name}.conf":
     ensure  => $ensure,

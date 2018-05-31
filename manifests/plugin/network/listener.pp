@@ -7,8 +7,8 @@ define collectd::plugin::network::listener (
   Optional[String] $interface                               = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::network
+  include collectd
+  include collectd::plugin::network
 
   $conf_dir = $collectd::plugin_conf_dir
 

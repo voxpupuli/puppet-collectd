@@ -6,8 +6,8 @@ define collectd::plugin::filter::match (
   Optional[Hash] $options = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::filter
+  include collectd
+  include collectd::plugin::filter
 
   ensure_resource('collectd::plugin', "match_${plugin}", { 'order' => '02'} )
 

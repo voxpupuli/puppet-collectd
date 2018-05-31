@@ -3,8 +3,8 @@ define collectd::plugin::processes::process (
   $ensure  = 'present'
 ) {
 
-  include ::collectd::plugin::processes
-  include ::collectd
+  include collectd::plugin::processes
+  include collectd
 
   concat::fragment{ "collectd_plugin_processes_conf_process_${process}":
     order   => '50',

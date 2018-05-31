@@ -14,8 +14,8 @@ define collectd::plugin::curl::page (
   String $plugininstance                 = $name, # You can have multiple <Page> with the same name.
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::curl
+  include collectd
+  include collectd::plugin::curl
 
   $conf_dir = $collectd::plugin_conf_dir
 

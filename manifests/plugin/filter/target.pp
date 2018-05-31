@@ -6,8 +6,8 @@ define collectd::plugin::filter::target (
   Optional[String] $rule  = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::filter
+  include collectd
+  include collectd::plugin::filter
 
   # Load plugins
   if $plugin in $collectd::plugin::filter::plugin_targets {
