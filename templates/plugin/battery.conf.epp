@@ -1,0 +1,5 @@
+<Plugin "battery">
+  ValuesPercentage <%= $collectd::plugin::battery::values_percentage %>
+  ReportDegraded <%= $collectd::plugin::battery::report_degraded %>
+  QueryStateFS <%= $collectd::plugin::battery::query_state_fs %>
+</Plugin>

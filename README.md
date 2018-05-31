@@ -103,6 +103,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
+* `battery`  (see [collectd::plugin::battery](#class-collectdpluginbattery) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `ceph`  (see [collectd::plugin::ceph](#class-ceph) below)
 * `cgroups` (see [collectd::plugin::cgroups](#class-collectdplugincgroups) below)
@@ -258,6 +259,17 @@ class { 'collectd::plugin::apache':
       'url' => 'http://localhost:8080/mod_status?auto'
     }
   },
+}
+```
+
+### Class: `collectd::plugin::battery`
+
+```puppet
+class { 'collectd::plugin::battery':
+  interval => 30,
+  values_percentage => true,
+  report_degraded => true,
+  query_state_fs => true,
 }
 ```
 
