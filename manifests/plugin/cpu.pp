@@ -5,6 +5,8 @@ class collectd::plugin::cpu (
   Boolean $reportbycpu              = true,
   Boolean $valuespercentage         = false,
   Boolean $reportnumcpu             = false,
+  Boolean $reportgueststate         = false,
+  Boolean $subtractgueststate       = true,
   Optional[Integer[1]] $interval    = undef,
 ) {
 
@@ -12,7 +14,7 @@ class collectd::plugin::cpu (
 
   collectd::plugin { 'cpu':
     ensure   => $ensure,
-    content  => template('collectd/plugin/cpu.conf.erb'),
+    content  => epp('collectd/plugin/cpu.conf.epp'),
     interval => $interval,
   }
 }

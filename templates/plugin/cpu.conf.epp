@@ -1,0 +1,14 @@
+<% if versioncmp($::collectd::collectd_version_real, '5.5') >= 0 { -%>
+<Plugin cpu>
+  ReportByState <%= $::collectd::plugin::cpu::reportbystate %>
+  ReportByCpu <%= $::collectd::plugin::cpu::reportbycpu %>
+  ValuesPercentage <%= $::collectd::plugin::cpu::valuespercentage %>
+<% if versioncmp($::collectd::collectd_version_real, '5.6') >= 0 { -%>
+  ReportNumCpu <%= $::collectd::plugin::cpu::reportnumcpu %>
+<% } -%>
+<% if versioncmp($::collectd::collectd_version_real, '5.8') >= 0 { -%>
+  ReportGuestState <%= $::collectd::plugin::cpu::reportgueststate %>
+  SubtractGuestState <%= $::collectd::plugin::cpu::subtractgueststate %>
+<% } -%>
+</Plugin>
+<% } -%>
