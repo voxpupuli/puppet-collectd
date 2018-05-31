@@ -6,8 +6,8 @@ define collectd::plugin::genericjmx::mbean (
   Array $instance_from              = [],
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::genericjmx
+  include collectd
+  include collectd::plugin::genericjmx
 
   concat::fragment { "collectd_plugin_genericjmx_conf_${name}":
     order   => '10',

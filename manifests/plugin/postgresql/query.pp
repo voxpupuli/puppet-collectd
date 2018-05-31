@@ -8,8 +8,8 @@ define collectd::plugin::postgresql::query (
   $maxversion       = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::postgresql
+  include collectd
+  include collectd::plugin::postgresql
 
   concat::fragment{ "collectd_plugin_postgresql_conf_query_${title}":
     order   => '30',

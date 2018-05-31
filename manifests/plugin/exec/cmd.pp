@@ -5,8 +5,8 @@ define collectd::plugin::exec::cmd (
   Array $notification_exec = [],
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::exec
+  include collectd
+  include collectd::plugin::exec
 
   concat::fragment{ "collectd_plugin_exec_conf_${title}":
     order   => '50', # somewhere between header and footer

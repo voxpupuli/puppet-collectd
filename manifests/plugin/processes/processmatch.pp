@@ -4,8 +4,8 @@ define collectd::plugin::processes::processmatch (
   $matchname = $name
 ) {
 
-  include ::collectd::plugin::processes
-  include ::collectd
+  include collectd::plugin::processes
+  include collectd
 
   concat::fragment{ "collectd_plugin_processes_conf_processmatch_${matchname}":
     order   => '51',

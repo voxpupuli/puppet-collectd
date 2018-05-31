@@ -5,8 +5,8 @@ define collectd::plugin::filter::chain (
   Optional[Hash] $target_options             = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::filter
+  include collectd
+  include collectd::plugin::filter
 
   $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${title}.conf"
 

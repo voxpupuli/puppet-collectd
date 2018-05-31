@@ -8,8 +8,8 @@ define collectd::plugin::python::module (
   $script_source                             = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::python
+  include collectd
+  include collectd::plugin::python
 
   $module_dir = $modulepath ? {
     undef   => $collectd::python_dir,

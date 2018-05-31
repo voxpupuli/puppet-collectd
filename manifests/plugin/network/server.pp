@@ -10,10 +10,10 @@ define collectd::plugin::network::server (
   Optional[Integer[1]] $resolveinterval                     = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::network
+  include collectd
+  include collectd::plugin::network
 
-  $conf_dir = $::collectd::plugin_conf_dir
+  $conf_dir = $collectd::plugin_conf_dir
 
   file { "${conf_dir}/network-server-${name}.conf":
     ensure  => $ensure,

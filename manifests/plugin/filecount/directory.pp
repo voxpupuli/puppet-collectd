@@ -10,8 +10,8 @@ define collectd::plugin::filecount::directory (
   Optional[Boolean] $includehidden  = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::filecount
+  include collectd
+  include collectd::plugin::filecount
 
   file { "${collectd::plugin_conf_dir}/15-filecount-${name}.conf":
     ensure  => $ensure,

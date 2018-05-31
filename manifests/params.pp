@@ -2,7 +2,7 @@
 class collectd::params {
 
   $fqdnlookup                = true
-  $collectd_hostname         = $::hostname
+  $collectd_hostname         = $facts['hostname']
   $conf_content              = undef
   $config_mode               = '0640'
   $config_owner              = 'root'

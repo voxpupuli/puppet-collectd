@@ -17,8 +17,8 @@ define collectd::plugin::snmp::host (
   Optional[String[1]]                       $privacy_passphrase = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::snmp
+  include collectd
+  include collectd::plugin::snmp
 
   $conf_dir   = $collectd::plugin_conf_dir
 

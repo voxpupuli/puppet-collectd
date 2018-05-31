@@ -12,8 +12,8 @@ define collectd::plugin::snmp::data (
   Boolean                                           $invert_match    = false,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::snmp
+  include collectd
+  include collectd::plugin::snmp
 
   $conf_dir   = $collectd::plugin_conf_dir
 

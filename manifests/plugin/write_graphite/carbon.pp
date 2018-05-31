@@ -14,8 +14,8 @@ define collectd::plugin::write_graphite::carbon (
   Boolean $logsenderrors     = true,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::write_graphite
+  include collectd
+  include collectd::plugin::write_graphite
 
   concat::fragment { "collectd_plugin_write_graphite_conf_${title}_${protocol}_${graphiteport}":
     order   => '50', # somewhere between header and footer

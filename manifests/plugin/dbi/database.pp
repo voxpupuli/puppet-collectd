@@ -10,8 +10,8 @@ define collectd::plugin::dbi::database (
   Array $query               = [],
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::dbi
+  include collectd
+  include collectd::plugin::dbi
 
   concat::fragment{ "collectd_plugin_dbi_conf_db_${title}":
     order   => '50',
