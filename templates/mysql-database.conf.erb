@@ -5,17 +5,23 @@
     Host "<%= @host %>"
     User "<%= @username %>"
     Password "<%= @password %>"
-<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0) -%>
+<% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0 -%>
     Port "<%= @port %>"
 <% else -%>
     Port <%= @port %>
-<% end -%>
+<%- end -%>
     MasterStats <%= @masterstats %>
     SlaveStats <%= @slavestats %>
 <%- if @socket -%>
     Socket "<%= @socket %>"
 <%- end -%>
-<% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
+<% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0 -%>
+<%- if not @aliasname.nil? -%>
+    Alias "<%= @aliasname %>"
+<%- end -%>
+<%- if not @connecttimeout.nil? -%>
+    ConnectTimeout <%= @connecttimeout %>
+<%- end -%>
 <%- if not @innodbstats.nil? -%>
     InnodbStats <%= @innodbstats %>
 <%- end -%>
@@ -25,6 +31,23 @@
 <%- end -%>
 <%- if not @slavenotifications.nil? -%>
     SlaveNotifications <%= @slavenotifications %>
+<%- end -%>
+<% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.6']) >= 0 -%>
+<%- if not @sslkey.nil? -%>
+    SSLKey "<%= @sslkey %>"
+<%- end -%>
+<%- if not @sslcert.nil? -%>
+    SSLCert "<%= @sslcert %>"
+<%- end -%>
+<%- if not @sslca.nil? -%>
+    SSLCA "<%= @sslca %>"
+<%- end -%>
+<%- if not @sslcapath.nil? -%>
+    SSLCAPath "<%= @sslcapath %>"
+<%- end -%>
+<%- if not @sslcipher.nil? -%>
+    SSLCipher "<%= @sslcipher %>"
+<%- end -%>
 <%- end -%>
   </Database>
 </Plugin>
