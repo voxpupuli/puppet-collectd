@@ -17,6 +17,12 @@
 <% if values['cacert'] -%>
     CACert "<%= values['cacert'] %>"
 <% end -%>
+<% if values['sslciphers'] -%>
+    SSLCiphers "<%= values['sslciphers'] %>"
+<% end -%>
+<% if values['timeout'] -%>
+    Timeout <%= values['timeout'] %>
+<% end -%>
   </Instance>
 <% end -%>
 </Plugin>
