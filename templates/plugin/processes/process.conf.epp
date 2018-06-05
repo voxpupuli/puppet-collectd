@@ -1,0 +1,16 @@
+<%- | String $process,
+      Optional[Boolean] $collect_context_switch,
+      Optional[Boolean] $collect_file_descriptor,
+      Optional[Boolean] $collect_memory_maps,
+| -%>
+  <Process "<%= $process %>">
+<% unless $collect_context_switch =~ Undef { -%>
+    CollectContextSwitch <%= $collect_context_switch %>
+<% } -%>
+<% unless $collect_file_descriptor =~ Undef { -%>
+    CollectFileDescriptor <%= $collect_file_descriptor %>
+<% } -%>
+<% unless $collect_memory_maps =~ Undef { -%>
+    CollectMemoryMaps <%= $collect_memory_maps %>
+<% } -%>
+  </Process>

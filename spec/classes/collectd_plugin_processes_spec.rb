@@ -21,7 +21,7 @@ describe 'collectd::plugin::processes', type: :class do
           it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
             is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes-config.conf").that_requires('File[collectd.d]')
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
-              content: %r{<Plugin processes>},
+              content: "<Plugin processes>\n",
               target: "#{options[:plugin_conf_dir]}/processes-config.conf",
               order: '00'
             )
@@ -32,6 +32,110 @@ describe 'collectd::plugin::processes', type: :class do
               content: %r{</Plugin>},
               target: "#{options[:plugin_conf_dir]}/processes-config.conf",
               order: '99'
+            )
+          end
+        end
+        context ':ensure => present and overrided parameters' do
+          let :params do
+            {
+              collect_context_switch: true,
+              collect_file_descriptor: false,
+              collect_memory_maps: true,
+              processes: [
+                {
+                  name: 'httpd',
+                  collect_context_switch: false,
+                  collect_file_descriptor: true,
+                  collect_memory_maps: false
+                },
+                'mysql'
+              ],
+              process_matches: [
+                {
+                  name: 'post',
+                  regex: 'post.*',
+                  collect_context_switch: false,
+                  collect_file_descriptor: true,
+                  collect_memory_maps: false
+                },
+                {
+                  name: 'dove',
+                  regex: 'dove.*'
+                }
+              ]
+            }
+          end
+
+          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes-config.conf").that_requires('File[collectd.d]')
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
+              content: "<Plugin processes>
+  CollectContextSwitch true
+  CollectFileDescriptor false
+  CollectMemoryMaps true
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '00'
+            )
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_httpd').with(
+              content: "  <Process \"httpd\">
+    CollectContextSwitch false
+    CollectFileDescriptor true
+    CollectMemoryMaps false
+  </Process>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '50'
+            )
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_mysql').with(
+              content: "  <Process \"mysql\">
+  </Process>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '50'
+            )
+
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_processmatch_post').with(
+              content: "  <ProcessMatch \"post\" \"post.*\">
+    CollectContextSwitch false
+    CollectFileDescriptor true
+    CollectMemoryMaps false
+  </ProcessMatch>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '51'
+            )
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_processmatch_dove').with(
+              content: "  <ProcessMatch \"dove\" \"dove.*\">
+  </ProcessMatch>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '51'
+            )
+          end
+        end
+
+        context ':ensure => present and overrided parameters backward compat for process' do
+          let :params do
+            {
+              processes: %w[process1 process2]
+            }
+          end
+
+          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_process1').with(
+              content: "  <Process \"process1\">
+  </Process>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '50'
+            )
+            is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_process2').with(
+              content: "  <Process \"process2\">
+  </Process>
+",
+              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              order: '50'
             )
           end
         end

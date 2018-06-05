@@ -1,0 +1,10 @@
+<Plugin processes>
+<% unless $collectd::plugin::processes::collect_context_switch =~ Undef { -%>
+  CollectContextSwitch <%= $collectd::plugin::processes::collect_context_switch %>
+<% } -%>
+<% unless $collectd::plugin::processes::collect_file_descriptor =~ Undef { -%>
+  CollectFileDescriptor <%= $collectd::plugin::processes::collect_file_descriptor %>
+<% } -%>
+<% unless $collectd::plugin::processes::collect_memory_maps =~ Undef { -%>
+  CollectMemoryMaps <%= $collectd::plugin::processes::collect_memory_maps %>
+<% } -%>
