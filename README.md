@@ -130,6 +130,7 @@ documentation for each plugin for configurable attributes.
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx)
   below)
 * `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
+* `hugepages` (see [collectd::plugin::hugepages](#class-collectdpluginhugepages) below)
 * `intel_pmu` (see [collectd::plugin::intel_pmu](#class-collectdpluginintel_pmu) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
   below)
@@ -866,6 +867,18 @@ collectd::plugin::genericjmx::connection {
 class { 'collectd::plugin::hddtemp':
   host => '127.0.0.1',
   port => 7634,
+}
+```
+
+#### Class: `collectd::plugin::hugepages`
+
+```puppet
+class { 'collectd::plugin::hugepages':
+  report_per_node_hp => true,
+  report_root_hp     => true,
+  values_pages       => true,
+  values_bytes       => false,
+  values_percentage  => false
 }
 ```
 

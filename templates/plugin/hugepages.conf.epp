@@ -1,0 +1,7 @@
+<Plugin "hugepages">
+  ReportPerNodeHP <%= $collectd::plugin::hugepages::report_per_node_hp %>
+  ReportRootHP <%= $collectd::plugin::hugepages::report_root_hp %>
+  ValuesPages <%= $collectd::plugin::hugepages::values_pages %>
+  ValuesBytes <%= $collectd::plugin::hugepages::values_bytes %>
+  ValuesPercentage <%= $collectd::plugin::hugepages::values_percentage %>
+</Plugin>
