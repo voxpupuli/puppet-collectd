@@ -132,6 +132,7 @@ documentation for each plugin for configurable attributes.
 * `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
 * `hugepages` (see [collectd::plugin::hugepages](#class-collectdpluginhugepages) below)
 * `intel_pmu` (see [collectd::plugin::intel_pmu](#class-collectdpluginintel_pmu) below)
+* `intel_rdt` (see [collectd::plugin::intel_rdt](#class-collectdpluginintel_rdt) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
   below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
@@ -889,6 +890,13 @@ class { 'collectd::plugin::intel_pmu':
   report_hardware_cache_events => true,
   report_kernel_pmu_events => true,
   report_software_events => true,
+}
+```
+
+#### Class: `collectd::plugin::intel_rdt`
+```puppet
+class { 'collectd::plugin::intel_rdt':
+  cores => ['0-2' '3,4,6' '8-10,15']
 }
 ```
 
