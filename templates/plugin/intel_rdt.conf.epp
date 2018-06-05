@@ -1,0 +1,3 @@
+<Plugin "intel_rdt">
+  Cores "<%= $collectd::plugin::intel_rdt::cores.join('" "') %>"
+</Plugin>
