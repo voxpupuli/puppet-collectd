@@ -152,6 +152,7 @@ documentation for each plugin for configurable attributes.
 * `nfs`  (see [collectd::plugin::nfs](#class-collectdpluginnfs) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
+* `numa` (see [collectd::plugin::numa](#class-collectdpluginnuma) below)
 * `nut` (see [collectd::plugin::nut](#class-collectdpluginnut) below)
 * `openldap` (see [collectd::plugin::openldap](#class-collectdpluginopenldap) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
@@ -1131,6 +1132,14 @@ class { 'collectd::plugin::ntpd':
   includeunitid  => false,
 }
 ```
+
+#### Class: `collectd::plugin::numa`
+
+```puppet
+class { 'collectd::plugin::numa':
+}
+```
+
 #### Class: `collectd::plugin::nut`
 
 ```puppet
