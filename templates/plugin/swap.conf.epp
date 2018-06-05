@@ -1,0 +1,13 @@
+<Plugin swap>
+  ReportByDevice <%= $::collectd::plugin::swap::reportbydevice %>
+<% if versioncmp($::collectd::collectd_version_real, '5.2') > 0 { -%>
+  ReportBytes <%= $::collectd::plugin::swap::reportbytes %>
+<% } -%>
+<% if versioncmp($::collectd::collectd_version_real, '5.5') > 0 { -%>
+  ValuesAbsolute <%= $::collectd::plugin::swap::valuesabsolute %>
+  ValuesPercentage <%= $::collectd::plugin::swap::valuespercentage %>
+<% } -%>
+<% if versioncmp($::collectd::collectd_version_real, '5.8') > 0 { -%>
+  ReportIO <%= $::collectd::plugin::swap::reportio %>
+<% } -%>
+</Plugin>
