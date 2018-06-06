@@ -9,8 +9,8 @@ describe 'collectd::plugin::cuda', type: :class do
 
       context 'package ensure' do
         context ':ensure => present' do
-          it 'import collectd_cuda.collectd_plugin in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin').with_content(%r{Import "collectd_cuda.collectd_plugin"})
+          it 'import collectd_cuda.collectd_plugin in cuda.conf' do
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin_header').with_content(%r{Import "collectd_cuda.collectd_plugin"})
           end
         end
       end

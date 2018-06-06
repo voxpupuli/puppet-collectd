@@ -1428,6 +1428,8 @@ non-default value.
   collectd with the name of the exception and the message (default: `false`)
 * `conf_name` name of the file that will contain the python module configuration
   (default: `python-config.conf`)
+* `python_conf_dir` name of directory inside which individual python plugins will write
+  their configuration to. (default: `python.d`)
 
  See [collectd-python documentation](https://collectd.org/documentation/manpages/collectd-python.5.shtml)
  for more details.

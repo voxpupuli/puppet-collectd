@@ -14,6 +14,7 @@ class collectd::plugin::python (
   Hash $modules        = {},
   $order               = '10',
   $conf_name           = 'python-config.conf',
+  $python_conf_dir     = 'python.d',
 ) {
 
   include ::collectd
@@ -52,6 +53,14 @@ class collectd::plugin::python (
     default  => 'directory',
   }
 
+  file{"${collectd::plugin_conf_dir}/${python_conf_dir}":
+    ensure  => directory,
+    mode    => $collectd::plugin_conf_dir_mode,
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    require => Package[$collectd::package_name],
+  }
+
   ensure_resource('file', $module_dirs,
     {
       'ensure'  => $ensure_modulepath,
@@ -85,7 +94,7 @@ class collectd::plugin::python (
 
   concat::fragment { 'collectd_plugin_python_conf_footer':
     order   => '99',
-    content => '</Plugin>',
+    content => "</Plugin>\nInclude \"${collectd::plugin_conf_dir}/${python_conf_dir}/*.conf\"",
     target  => $python_conf,
   }
 
