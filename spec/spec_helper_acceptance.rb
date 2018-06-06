@@ -15,6 +15,8 @@ RSpec.configure do |c|
     # Install module and dependencies
     puppet_module_install(source: proj_root, module_name: 'collectd')
     hosts.each do |host|
+      # python is pre-requisite to the python_path fact.
+      on host, puppet('resource', 'package', 'python', 'ensure=installed')
       on host, puppet('module', 'install', 'puppetlabs-apt'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppetlabs-stdlib'), acceptable_exit_codes: [0]
       on host, puppet('module', 'install', 'puppetlabs-concat'), acceptable_exit_codes: [0]
