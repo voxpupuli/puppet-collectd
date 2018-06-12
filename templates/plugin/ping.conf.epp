@@ -1,0 +1,26 @@
+<Plugin ping>
+<% $collectd::plugin::ping::hosts.each |$host| { -%>
+  Host "<%= $host %>"
+<% } -%>
+<% if $collectd::plugin::ping::interval { -%>
+  Interval "<%= $collectd::plugin::ping::interval %>"
+<% } -%>
+<% if $collectd::plugin::ping::timeout { -%>
+  Timeout "<%= $collectd::plugin::ping::timeout %>"
+<% } -%>
+<% if $collectd::plugin::ping::ttl { -%>
+  TTL "<%= $collectd::plugin::ping::ttl %>"
+<% } -%>
+<% if $collectd::plugin::ping::source_address { -%>
+  SourceAddress "<%= $collectd::plugin::ping::source_address %>"
+<% } -%>
+<% if $collectd::plugin::ping::device { -%>
+  Device "<%= $collectd::plugin::ping::device %>"
+<% } -%>
+<% if $collectd::plugin::ping::max_missed { -%>
+  MaxMissed "<%= $collectd::plugin::ping::max_missed %>"
+<% } -%>
+<% if $collectd::plugin::ping::size { -%>
+  Size "<%= $collectd::plugin::ping::size %>"
+<% } -%>
+</Plugin>
