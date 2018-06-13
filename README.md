@@ -1474,7 +1474,9 @@ collectd::plugin::python::module {'my-module':
   modulepath    => '/var/share/collectd',
   script_source => 'puppet:///modules/myorg/my-module.py',
   config        => [
-    {'Key' => "value"}
+    {'Key'   => "value",
+     'Value' => 3.4,
+    }
   ]
 }
 ```
