@@ -1,15 +1,16 @@
 # https://collectd.org/wiki/index.php/Plugin:SysLog
 class collectd::plugin::syslog (
-  $ensure    = 'present',
-  $interval  = undef,
-  $log_level = 'info'
+  Enum['present', 'absent'] $ensure = 'present',
+  Optional[Float] $interval  = undef,
+  Enum['debug', 'info', 'notice', 'warning', 'err'] $log_level = 'info',
+  Optional[Enum['OKAY', 'WARNING', 'FAILURE']] $notify_level   = undef
 ) {
 
   include ::collectd
 
   collectd::plugin { 'syslog':
     ensure   => $ensure,
-    content  => template('collectd/plugin/syslog.conf.erb'),
+    content  => epp('collectd/plugin/syslog.conf.epp'),
     interval => $interval,
     # Load logging plugin first
     # https://github.com/puppet-community/puppet-collectd/pull/166#issuecomment-50591413
