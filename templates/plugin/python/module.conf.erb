@@ -7,14 +7,16 @@
   <%- configuration.sort.each do |key,value| -%>
   <%- if value.is_a?(Array) -%>
   <%- value.each do |v| -%>
-    <%= key %> <% if !!v == v %><%= v %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
+    <%= key %> <% if !!v == v %><%= v %><% elsif v.is_a?(Numeric) %><%= v.to_s %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
   <%- end -%>
+  <%  elsif value.is_a?(Numeric) -%>
+    <%= key %> <%= value.to_s %>
   <%- elsif value.is_a?(Hash) -%>
   <%- value.sort.each do |k,v| -%>
-    <%= key %> <%= k %> <% if !!v == v %><%= v %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
+    <%= key %> <%= k %> <% if !!v == v %><%= v %><% elsif v.is_a?(Numeric) %><%= v.to_s %><% else %>"<%= Shellwords.split(v).join('" "') %>"<% end %>
   <%- end -%>
   <%- else -%>
-    <%= key %> <% if !!value == value %><%= value %><% else %>"<%= Shellwords.split(value).join('" "') %>"<% end %>
+    <%= key %> <% if !!value == value %><%= value %><% elsif value.is_a?(Numeric) %><%= value.to_s %><% else %>"<%= Shellwords.split(value).join('" "') %>"<% end %>
   <%- end -%>
   <%- end -%>
   </Module>
