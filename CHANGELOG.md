@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v9.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.1.0) (2018-06-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.1...v9.1.0)
+
+**Implemented enhancements:**
+
+- syslog: Add option notify\_level [\#817](https://github.com/voxpupuli/puppet-collectd/pull/817) ([sileht](https://github.com/sileht))
+- ping: set parameters type and add Size [\#816](https://github.com/voxpupuli/puppet-collectd/pull/816) ([sileht](https://github.com/sileht))
+- turbotstat: Add LogicalCoreNames option [\#815](https://github.com/voxpupuli/puppet-collectd/pull/815) ([sileht](https://github.com/sileht))
+- Add numa plugin [\#813](https://github.com/voxpupuli/puppet-collectd/pull/813) ([sileht](https://github.com/sileht))
+- Add intel\_rdt plugin [\#812](https://github.com/voxpupuli/puppet-collectd/pull/812) ([sileht](https://github.com/sileht))
+- add hugepages plugin [\#811](https://github.com/voxpupuli/puppet-collectd/pull/811) ([sileht](https://github.com/sileht))
+- mysql: Add some missing options [\#810](https://github.com/voxpupuli/puppet-collectd/pull/810) ([sileht](https://github.com/sileht))
+- Add amqp1 plugin support [\#802](https://github.com/voxpupuli/puppet-collectd/pull/802) ([paramite](https://github.com/paramite))
+- plugin: update cpu for collectd 5.8 [\#801](https://github.com/voxpupuli/puppet-collectd/pull/801) ([sileht](https://github.com/sileht))
+- plugin: add battery plugin [\#800](https://github.com/voxpupuli/puppet-collectd/pull/800) ([sileht](https://github.com/sileht))
+- apache: sync options and add tests [\#798](https://github.com/voxpupuli/puppet-collectd/pull/798) ([sileht](https://github.com/sileht))
+- Add ExtraStats parameter to virt plugin [\#797](https://github.com/voxpupuli/puppet-collectd/pull/797) ([mrunge](https://github.com/mrunge))
+- Validate bind view parameters [\#796](https://github.com/voxpupuli/puppet-collectd/pull/796) ([smortex](https://github.com/smortex))
+
+**Fixed bugs:**
+
+- collectd::plugin::python::module does not support number options [\#662](https://github.com/voxpupuli/puppet-collectd/issues/662)
+- Fixes \#662 accept numbers into configuration file [\#818](https://github.com/voxpupuli/puppet-collectd/pull/818) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+- dont use topscope variables or includes [\#809](https://github.com/voxpupuli/puppet-collectd/pull/809) ([bastelfreak](https://github.com/bastelfreak))
+- drop centos 6 support [\#808](https://github.com/voxpupuli/puppet-collectd/pull/808) ([bastelfreak](https://github.com/bastelfreak))
+- A collectd::plugin::python acceptance test [\#805](https://github.com/voxpupuli/puppet-collectd/pull/805) ([traylenator](https://github.com/traylenator))
+- doc: tell rake rubocop is needed [\#799](https://github.com/voxpupuli/puppet-collectd/pull/799) ([sileht](https://github.com/sileht))
+
 ## [v9.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.1) (2018-05-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.0...v9.0.1)
