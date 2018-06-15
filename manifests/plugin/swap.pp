@@ -6,13 +6,14 @@ class collectd::plugin::swap (
   Boolean $reportbytes      = true,
   Boolean $valuesabsolute   = true,
   Boolean $valuespercentage = false,
+  Boolean $reportio         = true,
 ) {
 
   include ::collectd
 
   collectd::plugin { 'swap':
     ensure   => $ensure,
-    content  => template('collectd/plugin/swap.conf.erb'),
+    content  => epp('collectd/plugin/swap.conf.epp'),
     interval => $interval,
   }
 }
