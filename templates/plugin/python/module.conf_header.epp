@@ -1,0 +1,3 @@
+<%- | String $module_import,
+| -%>
+  Import "<%= $module_import %>"

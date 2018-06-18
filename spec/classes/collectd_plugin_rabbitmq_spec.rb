@@ -18,41 +18,41 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                 'Port'     => '15672',
                 'Scheme'   => 'http',
                 'Host'     => 'testhost.example.com',
-                'Realm'    => '"RabbitMQ Management"'
+                'Realm'    => 'RabbitMQ Management'
               }
             }
           end
 
-          it 'Load collectd_rabbitmq in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
+          it 'import collectd_rabbitmq.collectd_plugin in python-config' do
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_header').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
           end
 
-          it 'import collectd_rabbitmq.collectd_plugin in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
+          it 'Load collectd_rabbitmq in python-config' do
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
           end
 
           it 'default to Username guest in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "guest"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "guest"})
           end
 
           it 'default to Password guest in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "guest"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "guest"})
           end
 
           it 'default to Port 15672 in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Port "15672"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Port "15672"})
           end
 
           it 'default to Scheme http in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "http"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "http"})
           end
 
           it 'Host should be set to $::fqdn python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Host "testhost.example.com"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Host "testhost.example.com"})
           end
 
           it 'Realm set to "RabbitMQ Management"' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Realm "RabbitMQ Management"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Realm "RabbitMQ Management"})
           end
         end
 
@@ -72,7 +72,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           end
 
           it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Username "foo"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "foo"})
           end
         end
 
@@ -82,7 +82,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           end
 
           it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Password "foo"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "foo"})
           end
         end
 
@@ -92,7 +92,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           end
 
           it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with_content(%r{Scheme "https"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "https"})
           end
         end
       end
@@ -103,7 +103,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
         end
 
         it 'Will remove python-config' do
-          is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin').with(ensure: 'present')
+          is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with(ensure: 'present')
         end
       end
 
