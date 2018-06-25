@@ -39,7 +39,7 @@ define collectd::plugin::python::module (
     {
       'order'   => "50_${module}_00",
       'target'  => $collectd::plugin::python::python_conf,
-      'content' => epp('collectd/plugin/python/module.conf_header',
+      'content' => epp('collectd/plugin/python/module.conf_header.epp',
         {
           'module_import' => $_module_import,
         },
@@ -51,7 +51,7 @@ define collectd::plugin::python::module (
   concat::fragment{ "collectd_plugin_python_conf_${title}_config":
     order   => "50_${module}_50",
     target  => $collectd::plugin::python::python_conf,
-    content => epp('collectd/plugin/python/module.conf_config',
+    content => epp('collectd/plugin/python/module.conf_config.epp',
       {
         'title'  => $title,
         'config' => $config,
