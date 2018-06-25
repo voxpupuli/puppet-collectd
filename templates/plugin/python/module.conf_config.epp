@@ -1,0 +1,27 @@
+<%- | Array $config,
+      String $title,
+      String $module,
+| -%>
+  # Configuration for <%= $title %>
+<%- $config.each |$configuration| { -%>
+  <Module "<%= $module %>">
+  <%- $configuration.each |$key,$value| { -%>
+    <%- if ($value =~ Numeric or $value =~ Boolean) { -%>
+    <%= $key %> <%= $value %>
+    <%- } elsif $value =~ Array { %>
+      <%# Render arrays as key "Value 1" "Value2" 22 false #%>
+    <%= $key -%> 
+      <%- $value.each |$v| { -%>
+        <%- if ($v =~ Boolean or $v =~ Numeric) { -%>
+ <%= $v -%>
+        <%- } else { -%>
+ "<%= $v -%><%= '"' -%>
+        <%- } -%>
+      <%- } -%>
+<%= "\n" -%>
+    <%- } else { -%>
+    <%= $key %> "<%= $value %>"
+    <%- } -%>
+  <%- } -%>
+  </Module>
+<%- } -%>

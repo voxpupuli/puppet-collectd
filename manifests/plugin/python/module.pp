@@ -1,11 +1,11 @@
 # Single module definition
 define collectd::plugin::python::module (
-  Array $config                              = [],
-  $ensure                                    = 'present',
-  $module                                    = $title,
-  $module_import                             = undef,
+  Array[Hash[String,Variant[String,Boolean,Numeric,Array[Variant[Boolean,String,Numeric]]]]] $config = [],
+  Enum['present','absent'] $ensure = 'present',
+  String $module = $title,
+  Optional[String] $module_import = undef,
   Optional[Stdlib::Absolutepath] $modulepath = undef,
-  $script_source                             = undef,
+  Optional[String] $script_source = undef,
 ) {
 
   include collectd
@@ -34,9 +34,29 @@ define collectd::plugin::python::module (
     }
   }
 
-  concat::fragment{ "collectd_plugin_python_conf_${module}":
-    order   => '50', # somewhere between header and footer
+  # Exactly one per module.
+  ensure_resource('concat::fragment',"collectd_plugin_python_conf_${module}_header",
+    {
+      'order'   => "50_${module}_00",
+      'target'  => $collectd::plugin::python::python_conf,
+      'content' => epp('collectd/plugin/python/module.conf_header.epp',
+        {
+          'module_import' => $_module_import,
+        },
+      ),
+    }
+  )
+
+  # Possibly many per instance of a module configuration.
+  concat::fragment{ "collectd_plugin_python_conf_${title}_config":
+    order   => "50_${module}_50",
     target  => $collectd::plugin::python::python_conf,
-    content => template('collectd/plugin/python/module.conf.erb'),
+    content => epp('collectd/plugin/python/module.conf_config.epp',
+      {
+        'title'  => $title,
+        'config' => $config,
+        'module' => $_module_import,
+      },
+    ),
   }
 }

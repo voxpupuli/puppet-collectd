@@ -1460,9 +1460,27 @@ Or define single module:
 collectd::plugin::python::module {'zk-collectd':
   script_source => 'puppet:///modules/myorg/zk-collectd.py',
   config        => [
-    {'Hosts' => "localhost:2181"}
+    {'Hosts'   => "localhost:2181",
+     'Verbose' => true,
+     'Values'  => ["abc","def"],
+     'Name'    => 'My Name',
+     'Limit'   => 4.5,
+    }
   ]
 }
+```
+
+The resulting configuration would be 
+
+```apache
+Import "zk-collectd"
+<Module "zk-collectd">
+  Hosts "localhost:2181"
+  Verbose true
+  Values "abc" "def"
+  Limit 4.5
+</Module>
+ 
 ```
 
 Each plugin might use different `modulepath`, however make sure that all paths
@@ -1530,7 +1548,7 @@ class { '::collectd::plugin::rabbitmq':
     'Scheme'   => 'https',
     'Port'     => '15671',
     'Host'     => $facts['fqdn'],
-    'Realm'    => '"RabbitMQ Management"',
+    'Realm'    => 'RabbitMQ Management',
   },
 }
 ```

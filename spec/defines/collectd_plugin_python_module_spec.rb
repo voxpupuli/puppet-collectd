@@ -12,25 +12,25 @@ describe 'collectd::plugin::python::module', type: :define do
         let(:title) { 'spam' }
         let :params do
           {
-            config: [{ 'spam' => '"wonderful" "lovely"' }],
+            config: [{ 'spam' => %w[wonderful lovely] }],
             modulepath: '/var/lib/collectd/python'
           }
         end
 
         it 'imports spam module' do
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam').with(
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam_header').with(
             content: %r{Import "spam"},
             target: "#{options[:plugin_conf_dir]}/python-config.conf"
           )
         end
 
         it 'includes spam module configuration' do
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam').with(
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam_config').with(
             content: %r{<Module "spam">},
             target: "#{options[:plugin_conf_dir]}/python-config.conf"
           )
 
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam').with(
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam_config').with(
             content: %r{spam "wonderful" "lovely"}
           )
         end
@@ -69,18 +69,25 @@ describe 'collectd::plugin::python::module', type: :define do
         end
 
         it 'imports foo module' do
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_header').with(
             content: %r{Import "foo"},
             target: "#{options[:plugin_conf_dir]}/python-config.conf"
           )
         end
 
         it 'includes foo module configuration' do
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(
             content: %r{<Module "foo">},
             target: "#{options[:plugin_conf_dir]}/python-config.conf"
           )
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{bar "baz"})
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{bar "baz"})
+        end
+
+        it 'closes the module foo' do
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(
+            content: %r{</Module>},
+            target: "#{options[:plugin_conf_dir]}/python-config.conf"
+          )
         end
 
         it 'created collectd plugin file on Debian default path' do
@@ -95,16 +102,13 @@ describe 'collectd::plugin::python::module', type: :define do
         let(:title) { 'foo' }
         let :params do
           {
-            config: [{ 'k1' => 'v1', 'k2' => %w[v21 v22], 'k3' => { 'k31' => 'v31', 'k32' => 'v32' } }]
+            config: [{ 'k1' => 'v1', 'k2' => %w[v21 v22] }]
           }
         end
 
         it 'includes foo module configuration' do
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{k1 "v1"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{k2 "v21"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{k2 "v22"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{k3 k31 "v31"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{k3 k32 "v32"})
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k1 "v1"})
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k2 "v21" "v22"})
         end
       end
     end
