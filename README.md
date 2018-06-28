@@ -1374,6 +1374,44 @@ class { 'collectd::plugin::postgresql':
 }
 ```
 
+#### Class: `collectd::plugin::powerdns`
+
+You can either specify powerdns servers / recursors at once:
+
+```puppet
+class { 'collectd::plugin::powerdns':
+  recursors => {
+    'recursor1' => {
+      'socket'  => '/var/run/my-socket',
+      'collect' => ['cache-hits', 'cache-misses'],
+    },
+    'recursor2' => {}
+  },
+  servers => {
+    'server1' => {
+      'socket'  => '/var/run/my-socket',
+      'collect' => ['latency', 'recursing-answers', 'recursing-questions'],
+    }
+  },
+}
+```
+
+Or define single server / recursor:
+
+```puppet
+collectd::plugin::powerdns::recursor { 'my-recursor' :
+  socket  => '/var/run/my-socket',
+  collect => ['cache-hits', 'cache-misses'],
+}
+```
+
+```puppet
+collectd::plugin::powerdns::server { 'my-server' :
+  socket  => '/var/run/my-socket',
+  collect => ['latency', 'recursing-answers', 'recursing-questions'],
+}
+```
+
 #### Class: `collectd::plugin::processes`
 
 You can either specify processes / process matches at once:
