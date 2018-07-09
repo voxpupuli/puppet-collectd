@@ -135,6 +135,7 @@ documentation for each plugin for configurable attributes.
 * `intel_rdt` (see [collectd::plugin::intel_rdt](#class-collectdpluginintel_rdt) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
   below)
+* `ipc` (see [collectd::plugin::ipc](#class-collectdpluginipc) below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `iscdhcp` (see [collectd::plugin::iscdhcp](#class-collectdpluginiscdhcp) below)
@@ -915,6 +916,13 @@ class { 'collectd::plugin::interface':
 class { 'collectd::plugin::irq':
   irqs           => ['7', '23'],
   ignoreselected => true,
+}
+```
+
+#### Class: `collectd::plugin::ipc`
+
+```puppet
+class { 'collectd::plugin::ipc':
 }
 ```
 
