@@ -1,0 +1,27 @@
+<Plugin "table">
+<% $collectd::plugin::table::tables.each |$path, $table| { -%>
+  <Table "<%= $path %>">
+<% unless $table['plugin'] =~ Undef { -%>
+    Plugin "<%= $table['plugin'] %>"
+<% } -%>
+<% unless $table['separator'] =~ Undef { -%>
+    Separator "<%= $table['separator'] %>"
+<% } -%>
+<% unless $table['instance'] =~ Undef { -%>
+    Instance "<%= $table['instance'] %>"
+<% } -%>
+<% $table['results'].each |$result| { -%>
+    <Result>
+      Type <%= $result['type'] %>
+<% unless $result['instance_prefix'] =~ Undef { -%>
+      InstancePrefix "<%= $result['instance_prefix'] %>"
+<% } -%>
+<% unless $result['instances_from'] =~ Undef { -%>
+      InstancesFrom <%= $result['instances_from'].join(' ') %>
+<% } -%>
+      ValuesFrom <%= $result['values_from'].join(' ') %>
+    </Result>
+<% } -%>
+  </Table>
+<% } -%>
+</Plugin>
