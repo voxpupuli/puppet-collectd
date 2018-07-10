@@ -1,0 +1,4 @@
+<Plugin "powerdns">
+<% unless $collectd::plugin::powerdns::local_socket =~ Undef { -%>
+  LocalSocket "<%= $collectd::plugin::powerdns::local_socket %>"
+<% } -%>

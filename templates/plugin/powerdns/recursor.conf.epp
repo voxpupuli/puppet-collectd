@@ -1,0 +1,12 @@
+<%- | String $name,
+      Optional[String] $socket = undef,
+      Array[String] $collect   = [],
+| -%>
+  <Recursor "<%= $name %>">
+<% $collect.each |$k| { -%>
+    Collect "<%= $k %>"
+<% } -%>
+<% unless $socket =~ Undef { -%>
+    Socket "<%= $socket %>"
+<% } -%>
+  </Recursor>
