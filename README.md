@@ -1727,6 +1727,29 @@ collectd::plugin::tail::file { 'exim-log':
 }
 ```
 
+#### Class: `collectd::plugin::tail_csv`
+
+```puppet
+class { '::collectd::plugin::tail_csv':
+  metrics => {
+    'snort-dropped' => {
+      'type'        => 'gauge',
+      'values_from' => 1,
+      'instance'    => "dropped"
+    },
+  },
+  files  => {
+    '/var/log/snort/snort.stats' => {
+      'collect'   => ['snort-dropped'],
+      'plugin'    => 'snortstats',
+      'instance'  => 'eth0',
+      'interval'  => 600,
+      'time_from' => 5,
+    }
+  }
+}
+```
+
 #### Class: `collectd::plugin::thermal`
 
 ```puppet
