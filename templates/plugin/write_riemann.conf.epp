@@ -1,13 +1,29 @@
 <Plugin "write_riemann">
   <Node "default">
+    <%- if $collectd::plugin::write_riemann::riemann_host != undef { -%>
     Host "<%= $collectd::plugin::write_riemann::riemann_host  %>"
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::riemann_port != undef { -%>
     Port "<%= $collectd::plugin::write_riemann::riemann_port  %>"
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::protocol != undef { -%>
     Protocol <%= $collectd::plugin::write_riemann::protocol %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::batch != undef { -%>
     Batch <%= $collectd::plugin::write_riemann::batch %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::store_rates != undef { -%>
     StoreRates <%= $collectd::plugin::write_riemann::store_rates %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::always_append_ds != undef { -%>
     AlwaysAppendDS <%= $collectd::plugin::write_riemann::always_append_ds %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::ttl_factor != undef { -%>
     TTLFactor <%= $collectd::plugin::write_riemann::ttl_factor %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::check_thresholds != undef { -%>
     CheckThresholds <%= $collectd::plugin::write_riemann::check_thresholds %>
+    <%- } -%>
   </Node>
 <% $collectd::plugin::write_riemann::tags.each |$t| { -%>
   Tag "<%= $t %>"

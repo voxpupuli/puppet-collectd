@@ -1,17 +1,17 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_riemann (
-  Enum['present', 'absent'] $ensure = 'present',
-  Boolean $manage_package           = $collectd::manage_package,
-  String[1] $riemann_host           = 'localhost',
-  Variant[Integer,String[1]] $riemann_port = 5555,
-  Enum['TCP', 'TLS', 'UDP'] $protocol = 'UDP',
-  Boolean $batch                    = true,
-  Boolean $store_rates              = false,
-  Boolean $always_append_ds         = false,
-  Variant[Float,String[1]] $ttl_factor = '2.0',
-  Boolean $check_thresholds         = false,
-  Array[String[1]] $tags               = [],
-  Hash[String[1],String[1]] $attributes   = {},
+  Enum['present', 'absent'] $ensure                 = 'present',
+  Boolean $manage_package                           = $collectd::manage_package,
+  Optional[String[1]] $riemann_host                 = undef,
+  Optional[Variant[Integer,String[1]] $riemann_port = undef,
+  Optional[Enum['TCP', 'TLS', 'UDP']] $protocol     = undef,
+  Optional[Boolean] $batch                          = undef,
+  Optional[Boolean] $store_rates                    = undef,
+  Optional[Boolean] $always_append_ds               = undef,
+  Optional[Variant[Float,String[1]]] $ttl_factor    = undef,
+  Optional[Boolean] $check_thresholds               = undef,
+  Array[String[1]] $tags                            = [],
+  Hash[String[1],String[1]] $attributes             = {},
 ) {
 
   include ::collectd
