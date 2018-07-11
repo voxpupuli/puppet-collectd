@@ -9,8 +9,23 @@
     <%- if $collectd::plugin::write_riemann::protocol != undef { -%>
     Protocol <%= $collectd::plugin::write_riemann::protocol %>
     <%- } -%>
+    <%- if $collectd::plugin::write_riemann::tls_cert_file != undef { -%>
+    TLSCertFile <%= $collectd::plugin::write_riemann::tls_cert_file %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::tls_ca_file != undef { -%>
+    TLSCAFile <%= $collectd::plugin::write_riemann::tls_ca_file %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::tls_key_file != undef { -%>
+    TLSKeyFile <%= $collectd::plugin::write_riemann::tls_key_file %>
+    <%- } -%>
     <%- if $collectd::plugin::write_riemann::batch != undef { -%>
     Batch <%= $collectd::plugin::write_riemann::batch %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::batch_max_size != undef { -%>
+    BatchMaxSize <%= $collectd::plugin::write_riemann::batch_max_size %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::batch_flush_timeout != undef { -%>
+    BatchFlushTimeout <%= $collectd::plugin::write_riemann::batch_flush_timeout %>
     <%- } -%>
     <%- if $collectd::plugin::write_riemann::store_rates != undef { -%>
     StoreRates <%= $collectd::plugin::write_riemann::store_rates %>
@@ -21,8 +36,14 @@
     <%- if $collectd::plugin::write_riemann::ttl_factor != undef { -%>
     TTLFactor <%= $collectd::plugin::write_riemann::ttl_factor %>
     <%- } -%>
+    <%- if $collectd::plugin::write_riemann::notifications != undef { -%>
+    Notifications <%= $collectd::plugin::write_riemann::notifications %>
+    <%- } -%>
     <%- if $collectd::plugin::write_riemann::check_thresholds != undef { -%>
     CheckThresholds <%= $collectd::plugin::write_riemann::check_thresholds %>
+    <%- } -%>
+    <%- if $collectd::plugin::write_riemann::event_service_prefix != undef { -%>
+    EventServicePrefix "<%= $collectd::plugin::write_riemann::event_service_prefix %>"
     <%- } -%>
   </Node>
 <% $collectd::plugin::write_riemann::tags.each |$t| { -%>
