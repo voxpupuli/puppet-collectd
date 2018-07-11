@@ -1,11 +1,11 @@
 <Plugin "write_riemann">
   <%- $collectd::plugin::write_riemann::nodes.each |$node| { -%>
   <Node "<%= $node['name'] %>">
-    <%- if $node['riemann_host'] != undef { -%>
-    Host "<%= $node['riemann_host']  %>"
+    <%- if $node['host'] != undef { -%>
+    Host "<%= $node['host']  %>"
     <%- } -%>
-    <%- if $node['riemann_port'] != undef { -%>
-    Port "<%= $node['riemann_port']  %>"
+    <%- if $node['port'] != undef { -%>
+    Port "<%= $node['port']  %>"
     <%- } -%>
     <%- if $node['protocol'] != undef { -%>
     Protocol <%= $node['protocol'] %>
