@@ -1,4 +1,4 @@
 type Collectd::Threshold::Host = Struct[{
-  plugins => Hash[String, Collectd::Threshold::Plugin],
-  types   => Hash[String, Collectd::Threshold::Type],
+  plugins => Hash[String[1], Collectd::Threshold::Plugin],
+  types   => Hash[String[1], Collectd::Threshold::Type],
 }]

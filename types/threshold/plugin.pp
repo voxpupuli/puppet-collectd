@@ -1,4 +1,4 @@
 type Collectd::Threshold::Plugin = Struct[{
-  instance => Optional[String],
-  types    => Hash[String, Collectd::Threshold::Type],
+  instance => Optional[String[1]],
+  types    => Hash[String[1], Collectd::Threshold::Type],
 }]

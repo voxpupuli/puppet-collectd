@@ -2,9 +2,9 @@
 class collectd::plugin::threshold (
   $ensure   = 'present',
   $interval = undef,
-  Hash[String, Collectd::Threshold::Type]   $types   = {},
-  Hash[String, Collectd::Threshold::Plugin] $plugins = {},
-  Hash[String, Collectd::Threshold::Host]   $hosts   = {},
+  Hash[String[1], Collectd::Threshold::Type]   $types   = {},
+  Hash[String[1], Collectd::Threshold::Plugin] $plugins = {},
+  Hash[String[1], Collectd::Threshold::Host]   $hosts   = {},
 ) {
 
   include ::collectd
