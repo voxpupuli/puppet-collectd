@@ -7,6 +7,10 @@ describe 'collectd::plugin::write_riemann', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       options = os_specific_options(facts)
       context ':ensure => present and :riemann_host => "myhost"' do
         let :params do
@@ -31,7 +35,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
 
       context ':ensure => absent' do
         let :params do
-          { riemann_host: ['myhost'], ensure: 'absent' }
+          { riemann_host: 'myhost', ensure: 'absent' }
         end
 
         it 'Will not create ' do
