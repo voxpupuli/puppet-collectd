@@ -1,0 +1,18 @@
+<Plugin "write_riemann">
+  <Node "default">
+    Host "<%= $collectd::plugin::write_riemann::riemann_host  %>"
+    Port "<%= $collectd::plugin::write_riemann::riemann_port  %>"
+    Protocol <%= $collectd::plugin::write_riemann::protocol %>
+    Batch <%= $collectd::plugin::write_riemann::batch %>
+    StoreRates <%= $collectd::plugin::write_riemann::store_rates %>
+    AlwaysAppendDS <%= $collectd::plugin::write_riemann::always_append_ds %>
+    TTLFactor <%= $collectd::plugin::write_riemann::ttl_factor %>
+    CheckThresholds <%= $collectd::plugin::write_riemann::check_thresholds %>
+  </Node>
+<% $collectd::plugin::write_riemann::tags.each |$t| { -%>
+  Tag "<%= $t %>"
+<% } -%>
+<% $collectd::plugin::write_riemann::attributes.each |$k, $v| { -%>
+  Attribute "<%= $k %>" "<%= $v %>"
+<% } -%>
+</Plugin>
