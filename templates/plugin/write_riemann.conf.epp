@@ -1,51 +1,53 @@
 <Plugin "write_riemann">
-  <Node "default">
-    <%- if $collectd::plugin::write_riemann::riemann_host != undef { -%>
-    Host "<%= $collectd::plugin::write_riemann::riemann_host  %>"
+  <%- $collectd::plugin::write_riemann::nodes.each |$node| { -%>
+  <Node "<%= $node['name'] %>">
+    <%- if $node['riemann_host'] != undef { -%>
+    Host "<%= $node['riemann_host']  %>"
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::riemann_port != undef { -%>
-    Port "<%= $collectd::plugin::write_riemann::riemann_port  %>"
+    <%- if $node['riemann_port'] != undef { -%>
+    Port "<%= $node['riemann_port']  %>"
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::protocol != undef { -%>
-    Protocol <%= $collectd::plugin::write_riemann::protocol %>
+    <%- if $node['protocol'] != undef { -%>
+    Protocol <%= $node['protocol'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::tls_cert_file != undef { -%>
-    TLSCertFile <%= $collectd::plugin::write_riemann::tls_cert_file %>
+    <%- if $node['tls_cert_file'] != undef { -%>
+    TLSCertFile <%= $node['tls_cert_file'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::tls_ca_file != undef { -%>
-    TLSCAFile <%= $collectd::plugin::write_riemann::tls_ca_file %>
+    <%- if $node['tls_ca_file'] != undef { -%>
+    TLSCAFile <%= $node['tls_ca_file'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::tls_key_file != undef { -%>
-    TLSKeyFile <%= $collectd::plugin::write_riemann::tls_key_file %>
+    <%- if $node['tls_key_file'] != undef { -%>
+    TLSKeyFile <%= $node['tls_key_file'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::batch != undef { -%>
-    Batch <%= $collectd::plugin::write_riemann::batch %>
+    <%- if $node['batch'] != undef { -%>
+    Batch <%= $node['batch'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::batch_max_size != undef { -%>
-    BatchMaxSize <%= $collectd::plugin::write_riemann::batch_max_size %>
+    <%- if $node['batch_max_size'] != undef { -%>
+    BatchMaxSize <%= $node['batch_max_size'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::batch_flush_timeout != undef { -%>
-    BatchFlushTimeout <%= $collectd::plugin::write_riemann::batch_flush_timeout %>
+    <%- if $node['batch_flush_timeout'] != undef { -%>
+    BatchFlushTimeout <%= $node['batch_flush_timeout'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::store_rates != undef { -%>
-    StoreRates <%= $collectd::plugin::write_riemann::store_rates %>
+    <%- if $node['store_rates'] != undef { -%>
+    StoreRates <%= $node['store_rates'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::always_append_ds != undef { -%>
-    AlwaysAppendDS <%= $collectd::plugin::write_riemann::always_append_ds %>
+    <%- if $node['always_append_ds'] != undef { -%>
+    AlwaysAppendDS <%= $node['always_append_ds'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::ttl_factor != undef { -%>
-    TTLFactor <%= $collectd::plugin::write_riemann::ttl_factor %>
+    <%- if $node['ttl_factor'] != undef { -%>
+    TTLFactor <%= $node['ttl_factor'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::notifications != undef { -%>
-    Notifications <%= $collectd::plugin::write_riemann::notifications %>
+    <%- if $node['notifications'] != undef { -%>
+    Notifications <%= $node['notifications'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::check_thresholds != undef { -%>
-    CheckThresholds <%= $collectd::plugin::write_riemann::check_thresholds %>
+    <%- if $node['check_thresholds'] != undef { -%>
+    CheckThresholds <%= $node['check_thresholds'] %>
     <%- } -%>
-    <%- if $collectd::plugin::write_riemann::event_service_prefix != undef { -%>
-    EventServicePrefix "<%= $collectd::plugin::write_riemann::event_service_prefix %>"
+    <%- if $node['event_service_prefix'] != undef { -%>
+    EventServicePrefix "<%= $node['event_service_prefix'] %>"
     <%- } -%>
   </Node>
+  <%- } -%>
 <% $collectd::plugin::write_riemann::tags.each |$t| { -%>
   Tag "<%= $t %>"
 <% } -%>

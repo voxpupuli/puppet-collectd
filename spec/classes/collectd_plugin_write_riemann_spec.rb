@@ -14,8 +14,8 @@ describe 'collectd::plugin::write_riemann', type: :class do
       options = os_specific_options(facts)
       context ':ensure => present and :riemann_host => "myhost"' do
         let :params do
-          { riemann_host: 'myhost', riemann_port: '5555',
-            protocol: 'TCP', batch: false, ttl_factor: '3', check_thresholds: true,
+          { nodes: [ { name: 'myhost', riemann_host: 'myhost', riemann_port: '5555',
+            protocol: 'TCP', batch: false, ttl_factor: '3', check_thresholds: true } ],
             tags: ['foo'], attributes: { 'bar' => 'baz' } }
         end
 
@@ -35,7 +35,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
 
       context ':ensure => absent' do
         let :params do
-          { riemann_host: 'myhost', ensure: 'absent' }
+          { nodes: [], ensure: 'absent' }
         end
 
         it 'Will not create ' do
