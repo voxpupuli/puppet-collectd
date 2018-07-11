@@ -1,0 +1,11 @@
+<Plugin "threshold">
+  <%- $collectd::plugin::threshold::hosts.each |$name, $values| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/host.epp', {name => $name, values => $values })) -%>
+  <%- } -%>
+  <%- $collectd::plugin::threshold::plugins.each |$name, $values| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/plugin.epp', {name => $name, values => $values })) -%>
+  <%- } -%>
+  <%- $collectd::plugin::threshold::types.each |$name, $values| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/type.epp', {name => $name, values => $values })) -%>
+  <%- } -%>
+</Plugin>

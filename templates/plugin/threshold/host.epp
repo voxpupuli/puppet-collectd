@@ -1,0 +1,8 @@
+<Host "<%= $name %>">
+  <%- $values['plugins'].each |$name, $values| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/plugin.epp', {name => $name, values => $values })) -%>
+  <%- } -%>
+  <%- $values['types'].each |$name, $values| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/type.epp', {name => $name, values => $values })) -%>
+  <%- } -%>
+</Host>
