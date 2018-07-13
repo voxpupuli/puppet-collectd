@@ -9,8 +9,9 @@ describe 'collectd::plugin::threshold', type: :class do
 
       let :params do
         {
-          'types' => {
-            'foo' => {
+          'types' => [
+            {
+              'name'        => 'foo',
               'warning_min' =>    0.00,
               'warning_max' => 1000.00,
               'failure_min' =>    0.00,
@@ -18,44 +19,51 @@ describe 'collectd::plugin::threshold', type: :class do
               'invert'      => false,
               'instance'    => 'bar'
             }
-          },
-          'plugins' => {
-            'interface' => {
+          ],
+          'plugins' => [
+            {
+              'name'     => 'interface',
               'instance' => 'eth0',
-              'types'    => {
-                'if_octets' => {
+              'types'    => [
+                {
+                  'name'        => 'if_octets',
                   'failure_max' => 10_000_000,
                   'data_source' => 'rx'
                 }
-              }
+              ]
             }
-          },
-          'hosts' => {
-            'hostname' => {
-              'types' => {
-                'cpu' => {
+          ],
+          'hosts' => [
+            {
+              'name'  => 'hostname',
+              'types' => [
+                {
+                  'name'        => 'cpu',
                   'instance'    => 'idle',
                   'failure_min' => 10
                 },
-                'load' => {
+                {
+                  'name'        => 'load',
                   'data_source' => 'midterm',
                   'failure_max' => 4,
                   'hits'        => 3,
                   'hysteresis'  => 3
                 }
-              },
-              'plugins' => {
-                'memory' => {
-                  'types' => {
-                    'memory' => {
+              ],
+              'plugins' => [
+                {
+                  'name'  => 'memory',
+                  'types' => [
+                    {
+                      'name'        => 'memory',
                       'instance'    => 'cached',
                       'warning_min' => 100_000_000
                     }
-                  }
+                  ]
                 }
-              }
+              ]
             }
-          }
+          ]
         }
       end
 

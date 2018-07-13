@@ -1,41 +1,41 @@
-<Type "<%= $name %>">
-  <%- if $values['instance'] != undef { -%>
-  Instance "<%= $values['instance'] %>"
+<Type "<%= $type['name'] %>">
+  <%- if $type['instance'] != undef { -%>
+  Instance "<%= $type['instance'] %>"
   <%- } -%>
-  <%- if $values['failure_max'] != undef { -%>
-  FailureMax <%= $values['failure_max'] %>
+  <%- if $type['failure_max'] != undef { -%>
+  FailureMax <%= $type['failure_max'] %>
   <%- } -%>
-  <%- if $values['failure_min'] != undef { -%>
-  FailureMin <%= $values['failure_min'] %>
+  <%- if $type['failure_min'] != undef { -%>
+  FailureMin <%= $type['failure_min'] %>
   <%- } -%>
-  <%- if $values['warning_max'] != undef { -%>
-  WarningMax <%= $values['warning_max'] %>
+  <%- if $type['warning_max'] != undef { -%>
+  WarningMax <%= $type['warning_max'] %>
   <%- } -%>
-  <%- if $values['warning_min'] != undef { -%>
-  WarningMin <%= $values['warning_min'] %>
+  <%- if $type['warning_min'] != undef { -%>
+  WarningMin <%= $type['warning_min'] %>
   <%- } -%>
-  <%- if $values['data_source'] != undef { -%>
-  DataSource "<%= $values['data_source'] %>"
+  <%- if $type['data_source'] != undef { -%>
+  DataSource "<%= $type['data_source'] %>"
   <%- } -%>
-  <%- if $values['invert'] != undef { -%>
-  Invert <%= $values['invert'] %>
+  <%- if $type['invert'] != undef { -%>
+  Invert <%= $type['invert'] %>
   <%- } -%>
-  <%- if $values['persist'] != undef { -%>
-  Persist <%= $values['persist'] %>
+  <%- if $type['persist'] != undef { -%>
+  Persist <%= $type['persist'] %>
   <%- } -%>
-  <%- if $values['persist_ok'] != undef { -%>
-  PersistOK <%= $values['persist_ok'] %>
+  <%- if $type['persist_ok'] != undef { -%>
+  PersistOK <%= $type['persist_ok'] %>
   <%- } -%>
-  <%- if $values['percentage'] != undef { -%>
-  Percentage <%= $values['percentage'] %>
+  <%- if $type['percentage'] != undef { -%>
+  Percentage <%= $type['percentage'] %>
   <%- } -%>
-  <%- if $values['hits'] != undef { -%>
-  Hits <%= $values['hits'] %>
+  <%- if $type['hits'] != undef { -%>
+  Hits <%= $type['hits'] %>
   <%- } -%>
-  <%- if $values['hysteresis'] != undef { -%>
-  Hysteresis <%= $values['hysteresis'] %>
+  <%- if $type['hysteresis'] != undef { -%>
+  Hysteresis <%= $type['hysteresis'] %>
   <%- } -%>
-  <%- if $values['interesting'] != undef { -%>
-  Interesting <%= $values['interesting'] %>
+  <%- if $type['interesting'] != undef { -%>
+  Interesting <%= $type['interesting'] %>
   <%- } -%>
 </Type>

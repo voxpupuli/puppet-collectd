@@ -1,4 +1,5 @@
 type Collectd::Threshold::Type = Struct[{
+  name        => String[1],
   instance    => Optional[String[1]],
   failure_max => Optional[Numeric],
   warning_max => Optional[Numeric],

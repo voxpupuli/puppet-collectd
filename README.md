@@ -1801,6 +1801,42 @@ class { '::collectd::plugin::thermal':
 
 ```puppet
 class { 'collectd::plugin::threshold':
+  hosts   => [
+    {
+      name    => 'example.com',
+      plugins => [
+        {
+          name  => 'load',
+          types => [
+            {
+              name        => 'load',
+              data_source => 'shortterm',
+              warning_max => $facts.dig('processors', 'count') * 1.2,
+              failure_max => $facts.dig('processors', 'count') * 1.9,
+            },
+            {
+              name        => 'load',
+              data_source => 'midterm',
+              warning_max => $facts.dig('processors', 'count') * 1.1,
+              failure_max => $facts.dig('processors', 'count') * 1.7,
+            },
+            {
+              name        => 'load',
+              data_source => 'longterm',
+              warning_max => $facts.dig('processors', 'count'),
+              failure_max => $facts.dig('processors', 'count') * 1.5,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  plugins => [
+    # See plugin definition above
+  ],
+  types   => [
+    # See types definition above
+  ],
 }
 ```
 
