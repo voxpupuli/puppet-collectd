@@ -2,7 +2,7 @@
   <%- if $plugin['instance'] != undef { -%>
   Instance "<%= $plugin['instance'] %>"
   <%- } -%>
-  <%- $plugin['types'].each |$type| { -%>
+  <%- $plugin['types'].lest || { [] }.each |$type| { -%>
 <%= collectd::indent(epp('collectd/plugin/threshold/type.epp', { type => $type })) -%>
   <%- } -%>
 </Plugin>

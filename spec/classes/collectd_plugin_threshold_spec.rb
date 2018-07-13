@@ -7,7 +7,7 @@ describe 'collectd::plugin::threshold', type: :class do
         facts
       end
 
-      let :params do
+      let :custom_params do
         {
           'types' => [
             {
@@ -76,6 +76,31 @@ describe 'collectd::plugin::threshold', type: :class do
               path: "#{options[:plugin_conf_dir]}/10-threshold.conf",
               content: %r{LoadPlugin threshold}
             )
+          end
+        end
+
+        context ':ensure => present and empty configurations' do
+          let :params do
+            {
+              'hosts' => [
+                {
+                  'name' => 'example.com'
+                }
+              ],
+              'plugins' => [
+                {
+                  'name' => 'interface'
+                }
+              ]
+            }
+          end
+
+          it { is_expected.to compile }
+        end
+
+        context ':ensure => present and custom parameters' do
+          let :params do
+            custom_params
           end
 
           it { is_expected.to contain_file('threshold.load').with(content: %r{<Type "foo">}) }
