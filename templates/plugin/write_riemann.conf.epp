@@ -1,0 +1,57 @@
+<Plugin "write_riemann">
+  <%- $collectd::plugin::write_riemann::nodes.each |$node| { -%>
+  <Node "<%= $node['name'] %>">
+    <%- if $node['host'] != undef { -%>
+    Host "<%= $node['host']  %>"
+    <%- } -%>
+    <%- if $node['port'] != undef { -%>
+    Port "<%= $node['port']  %>"
+    <%- } -%>
+    <%- if $node['protocol'] != undef { -%>
+    Protocol <%= $node['protocol'] %>
+    <%- } -%>
+    <%- if $node['tls_cert_file'] != undef { -%>
+    TLSCertFile <%= $node['tls_cert_file'] %>
+    <%- } -%>
+    <%- if $node['tls_ca_file'] != undef { -%>
+    TLSCAFile <%= $node['tls_ca_file'] %>
+    <%- } -%>
+    <%- if $node['tls_key_file'] != undef { -%>
+    TLSKeyFile <%= $node['tls_key_file'] %>
+    <%- } -%>
+    <%- if $node['batch'] != undef { -%>
+    Batch <%= $node['batch'] %>
+    <%- } -%>
+    <%- if $node['batch_max_size'] != undef { -%>
+    BatchMaxSize <%= $node['batch_max_size'] %>
+    <%- } -%>
+    <%- if $node['batch_flush_timeout'] != undef { -%>
+    BatchFlushTimeout <%= $node['batch_flush_timeout'] %>
+    <%- } -%>
+    <%- if $node['store_rates'] != undef { -%>
+    StoreRates <%= $node['store_rates'] %>
+    <%- } -%>
+    <%- if $node['always_append_ds'] != undef { -%>
+    AlwaysAppendDS <%= $node['always_append_ds'] %>
+    <%- } -%>
+    <%- if $node['ttl_factor'] != undef { -%>
+    TTLFactor <%= $node['ttl_factor'] %>
+    <%- } -%>
+    <%- if $node['notifications'] != undef { -%>
+    Notifications <%= $node['notifications'] %>
+    <%- } -%>
+    <%- if $node['check_thresholds'] != undef { -%>
+    CheckThresholds <%= $node['check_thresholds'] %>
+    <%- } -%>
+    <%- if $node['event_service_prefix'] != undef { -%>
+    EventServicePrefix "<%= $node['event_service_prefix'] %>"
+    <%- } -%>
+  </Node>
+  <%- } -%>
+<% $collectd::plugin::write_riemann::tags.each |$t| { -%>
+  Tag "<%= $t %>"
+<% } -%>
+<% $collectd::plugin::write_riemann::attributes.each |$k, $v| { -%>
+  Attribute "<%= $k %>" "<%= $v %>"
+<% } -%>
+</Plugin>
