@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v10.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.0) (2018-07-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.1.0...v10.0.0)
+
+**Breaking changes:**
+
+- write\_riemann plugin fixes and enhancements [\#830](https://github.com/voxpupuli/puppet-collectd/pull/830) ([smortex](https://github.com/smortex))
+- Cleanup how python modules are configured [\#821](https://github.com/voxpupuli/puppet-collectd/pull/821) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- Hash, Array entries in config to python plugin ? [\#819](https://github.com/voxpupuli/puppet-collectd/issues/819)
+- Array sorted in python module [\#586](https://github.com/voxpupuli/puppet-collectd/issues/586)
+- Feature request - thresholds [\#292](https://github.com/voxpupuli/puppet-collectd/issues/292)
+- Make the threshold plugin configurable [\#829](https://github.com/voxpupuli/puppet-collectd/pull/829) ([smortex](https://github.com/smortex))
+- Add tail\_csv plugin [\#827](https://github.com/voxpupuli/puppet-collectd/pull/827) ([sileht](https://github.com/sileht))
+- Add table plugin [\#826](https://github.com/voxpupuli/puppet-collectd/pull/826) ([sileht](https://github.com/sileht))
+- Add powerdns plugin [\#824](https://github.com/voxpupuli/puppet-collectd/pull/824) ([sileht](https://github.com/sileht))
+- Add ipc plugin [\#823](https://github.com/voxpupuli/puppet-collectd/pull/823) ([sileht](https://github.com/sileht))
+- processes: Add missing options [\#822](https://github.com/voxpupuli/puppet-collectd/pull/822) ([sileht](https://github.com/sileht))
+- swap: add ReportIO option [\#814](https://github.com/voxpupuli/puppet-collectd/pull/814) ([sileht](https://github.com/sileht))
+
 ## [v9.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.1.0) (2018-06-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.1...v9.1.0)
