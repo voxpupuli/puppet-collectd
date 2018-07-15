@@ -1,0 +1,11 @@
+<Plugin "threshold">
+  <%- $collectd::plugin::threshold::hosts.lest || { [] }.each |$host| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/host.epp', { host => $host })) -%>
+  <%- } -%>
+  <%- $collectd::plugin::threshold::plugins.lest || { [] }.each |$plugin| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/plugin.epp', { plugin => $plugin })) -%>
+  <%- } -%>
+  <%- $collectd::plugin::threshold::types.lest || { [] }.each |$type| { -%>
+<%= collectd::indent(epp('collectd/plugin/threshold/type.epp', { type => $type })) -%>
+  <%- } -%>
+</Plugin>

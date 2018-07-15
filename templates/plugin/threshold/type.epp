@@ -1,0 +1,41 @@
+<Type "<%= $type['name'] %>">
+  <%- if $type['instance'] != undef { -%>
+  Instance "<%= $type['instance'] %>"
+  <%- } -%>
+  <%- if $type['failure_max'] != undef { -%>
+  FailureMax <%= $type['failure_max'] %>
+  <%- } -%>
+  <%- if $type['failure_min'] != undef { -%>
+  FailureMin <%= $type['failure_min'] %>
+  <%- } -%>
+  <%- if $type['warning_max'] != undef { -%>
+  WarningMax <%= $type['warning_max'] %>
+  <%- } -%>
+  <%- if $type['warning_min'] != undef { -%>
+  WarningMin <%= $type['warning_min'] %>
+  <%- } -%>
+  <%- if $type['data_source'] != undef { -%>
+  DataSource "<%= $type['data_source'] %>"
+  <%- } -%>
+  <%- if $type['invert'] != undef { -%>
+  Invert <%= $type['invert'] %>
+  <%- } -%>
+  <%- if $type['persist'] != undef { -%>
+  Persist <%= $type['persist'] %>
+  <%- } -%>
+  <%- if $type['persist_ok'] != undef { -%>
+  PersistOK <%= $type['persist_ok'] %>
+  <%- } -%>
+  <%- if $type['percentage'] != undef { -%>
+  Percentage <%= $type['percentage'] %>
+  <%- } -%>
+  <%- if $type['hits'] != undef { -%>
+  Hits <%= $type['hits'] %>
+  <%- } -%>
+  <%- if $type['hysteresis'] != undef { -%>
+  Hysteresis <%= $type['hysteresis'] %>
+  <%- } -%>
+  <%- if $type['interesting'] != undef { -%>
+  Interesting <%= $type['interesting'] %>
+  <%- } -%>
+</Type>
