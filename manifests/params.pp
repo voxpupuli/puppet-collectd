@@ -46,6 +46,7 @@ class collectd::params {
       $java_dir           = '/usr/share/collectd/java'
       $default_python_dir = '/usr/local/lib/python2.7/dist-packages'
       $manage_repo        = true
+      $package_configs    = {}
     }
     'Solaris': {
       $package_name       = 'CSWcollectd'
@@ -58,6 +59,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/opt/csw/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
     'RedHat': {
       $package_name       = 'collectd'
@@ -70,6 +72,12 @@ class collectd::params {
       $java_dir           = '/usr/share/collectd/java'
       $default_python_dir = '/usr/lib/python2.7/site-packages'
       $manage_repo        = true
+      $package_configs    = {
+        ovs_events => 'ovs-events.conf',
+        ovs_stats => 'ovs-stats.conf',
+        processes => 'processes-config.conf',
+        virt => 'libvirt.conf',
+      }
     }
     'Suse': {
       $package_name       = 'collectd'
@@ -82,6 +90,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
     'FreeBSD': {
       $package_name       = 'collectd5'
@@ -94,6 +103,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/usr/local/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
     'OpenBSD': {
       $package_name       = 'collectd'
@@ -106,6 +116,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/usr/local/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
     'Archlinux': {
       $package_name       = 'collectd'
@@ -118,6 +129,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
     'Gentoo': {
       $package_name       = 'app-admin/collectd'
@@ -130,6 +142,7 @@ class collectd::params {
       $java_dir           = undef
       $default_python_dir = '/usr/share/collectd/python'
       $manage_repo        = false
+      $package_configs    = {}
     }
 
     default: {
