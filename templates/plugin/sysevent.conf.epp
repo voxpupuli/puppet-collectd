@@ -1,0 +1,10 @@
+<Plugin sysevent>
+    Listen "<%= $::collectd::plugin::sysevent::listen_host %>" "<%= $::collectd::plugin::sysevent::listen_port %>"
+    RegexFilter "<%= $::collectd::plugin::sysevent::regex_filter %>"
+<% unless $::collectd::plugin::sysevent::buffer_size =~ Undef { -%>
+    BufferSize <%= $::collectd::plugin::sysevent::buffer_size %>
+<% } -%>
+<% unless $::collectd::plugin::sysevent::buffer_length =~ Undef { -%>
+    BufferLength <%= $::collectd::plugin::sysevent::buffer_length %>
+<% } -%>
+</Plugin>
