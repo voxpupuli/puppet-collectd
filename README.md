@@ -1993,8 +1993,14 @@ class { 'collectd::plugin::write_network':
 
 ```puppet
 class { 'collectd::plugin::write_riemann':
-  riemann_host => 'riemann.example.org',
-  riemann_port => 5555,
+  nodes => [
+    {
+      'name' => 'riemann.example.org',
+      'host' => 'riemann.example.org',
+      'port' => 5555,
+      'protocol' => 'TCP'
+    }
+  ],
   tags         => ['foo'],
   attributes   => {'bar' => 'baz'},
 }
