@@ -10,8 +10,8 @@ define collectd::plugin (
 
   include ::collectd
 
-  $conf_dir = $::collectd::plugin_conf_dir
-  $config_group = $::collectd::config_group
+  $conf_dir = $collectd::plugin_conf_dir
+  $config_group = $collectd::config_group
 
   file { "${plugin}.load":
     ensure  => $ensure,

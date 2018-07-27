@@ -13,7 +13,7 @@ class collectd::plugin::ipmi (
 
   include ::collectd
 
-  $manage_package_real = pick($manage_package, $::collectd::manage_package)
+  $manage_package_real = pick($manage_package, $collectd::manage_package)
 
   if $facts['os']['family'] == 'RedHat' {
     if $manage_package_real {

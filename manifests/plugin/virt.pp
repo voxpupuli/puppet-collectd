@@ -16,7 +16,7 @@ class collectd::plugin::virt (
 
   include ::collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
@@ -26,7 +26,7 @@ class collectd::plugin::virt (
     }
   }
 
-  if versioncmp("${::collectd::collectd_version_real}", '5.5') >= 0 { # lint:ignore:only_variable_string
+  if versioncmp("${collectd::collectd_version_real}", '5.5') >= 0 { # lint:ignore:only_variable_string
     $plugin_name = 'virt'
   } else {
     $plugin_name = 'libvirt'
