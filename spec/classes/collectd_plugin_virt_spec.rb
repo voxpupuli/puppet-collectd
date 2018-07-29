@@ -51,6 +51,15 @@ describe 'collectd::plugin::virt', type: :class do
               with_content(%r{.*InterfaceFormat \"address\".*})
           end
         end
+
+        case facts[:os]['family']
+        when 'RedHat'
+          context 'on osfamily => RedHat' do
+            it 'Will delete packaging config file' do
+              is_expected.to contain_file('package_virt.load').with_ensure('absent')
+            end
+          end
+        end
       end
     end
   end

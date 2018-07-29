@@ -75,6 +75,15 @@ describe 'collectd::plugin::ovs_events', type: :class do
           )
         end
       end
+
+      case facts[:os]['family']
+      when 'RedHat'
+        context 'on osfamily => RedHat' do
+          it 'Will delete packaging config file' do
+            is_expected.to contain_file('package_ovs_events.load').with_ensure('absent')
+          end
+        end
+      end
     end
   end
 end
