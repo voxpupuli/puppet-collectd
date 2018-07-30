@@ -1,0 +1,5 @@
+<Plugin connectivity>
+<% $collectd::plugin::connectivity::interfaces.each |$intf| { -%>
+  Interface "<%= $intf %>"
+<% } -%>
+</Plugin>
