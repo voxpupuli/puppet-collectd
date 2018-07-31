@@ -6,6 +6,11 @@ FQDNLookup false
 #Hostname localhost
 FQDNLookup true
 <% end %>
+<% if @autoloadplugin -%>
+AutoLoadPlugin true
+<% else -%>
+AutoLoadPlugin false
+<% end -%>
 #BaseDir "/var/lib/collectd"
 #PluginDir "/usr/lib/collectd"
 <% if @typesdb and not @typesdb.empty? -%>

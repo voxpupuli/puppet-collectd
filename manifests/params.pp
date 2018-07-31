@@ -1,6 +1,7 @@
 #
 class collectd::params {
 
+  $autoloadplugin            = false
   $fqdnlookup                = true
   $collectd_hostname         = $facts['hostname']
   $conf_content              = undef

@@ -41,6 +41,7 @@ describe 'collectd', type: :class do
         let(:params) { { purge_config: true } }
 
         it { is_expected.to contain_file('collectd.conf').with_content(%r{FQDNLookup true}) }
+        it { is_expected.to contain_file('collectd.conf').with_content(%r{AutoLoadPlugin}) }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{Interval}) }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{Timeout}) }
         it { is_expected.to contain_file('collectd.conf').with_content(%r{ReadThreads}) }
