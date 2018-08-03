@@ -1317,8 +1317,7 @@ collectd::plugin::perl::plugin {
 #### Class: `collectd::plugin::ping`
 
 ```puppet
-collectd::plugin::ping {
-  'example':
+class { 'collectd::plugin::ping':
     hosts => ['example.com'],
 }
 ```
