@@ -32,10 +32,12 @@ class collectd::plugin::python (
     $ensure_real = 'absent'
   }
 
-  if $facts['os']['name'] == 'Fedora' or $facts['os']['name'] == 'Amazon' {
-    if $_manage_package {
-      package { 'collectd-python':
-        ensure => $ensure_real,
+  case $::operatingsystem {
+    'RedHat', 'Fedora', 'CentOS', 'Scientific', 'OracleLinux', 'Amazon', 'CloudLinux': {
+      if $_manage_package {
+        package { 'collectd-python':
+          ensure => $ensure_real,
+        }
       }
     }
   }
