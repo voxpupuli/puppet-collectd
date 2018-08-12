@@ -49,10 +49,12 @@ group :system_tests do
   if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
     gem 'beaker-rspec', *location_for(beaker_rspec_version)
   else
-    gem 'beaker-rspec', '>= 6.0', :require => false
+    gem 'beaker-rspec',  :require => false
   end
   gem 'serverspec',                         :require => false
   gem 'beaker-hostgenerator', '>= 1.1.10',  :require => false
+  gem 'beaker-docker',                      :require => false
+  gem 'beaker-puppet',                      :require => false
   gem 'beaker-puppet_install_helper',       :require => false
   gem 'beaker-module_install_helper',       :require => false
   gem 'rbnacl', '>= 4',                     :require => false if RUBY_VERSION >= '2.2.6'
