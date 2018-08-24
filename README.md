@@ -1933,7 +1933,7 @@ collectd::plugin::write_graphite::carbon {'secondary_graphite':
 
 #### Class: `collectd::plugin::write_http`
 
-Thw write_http plugin supports two ways of configuration, the old plugin format using urls:
+The write_http plugin supports two ways of configuration, the old plugin format using urls:
 
 ```puppet
 class { 'collectd::plugin::write_http':
