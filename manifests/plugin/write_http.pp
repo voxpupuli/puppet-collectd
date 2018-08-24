@@ -1,7 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_HTTP
 class collectd::plugin::write_http (
-  $ensure    = 'present',
-  Hash $urls = {},
+  $ensure     = 'present',
+  Hash $nodes = {},
+  Hash $urls  = {}
 ) {
 
   include ::collectd

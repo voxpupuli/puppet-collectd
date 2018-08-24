@@ -1,6 +1,17 @@
 <Plugin "write_http">
-<% @urls.each do |name,values| -%>
+<% endpoints = {} -%>
+<% if !@nodes.empty? -%>
+<% endpoints = @nodes -%>
+<% elsif !@urls.empty? -%>
+<% endpoints = @urls -%>
+<% end -%>
+<% endpoints.each do |name,values| -%>
+<% if values['url'] -%>
+  <Node "<%= name %>">
+    URL "<%= values['url'] %>"
+<% else -%>
   <URL "<%= name %>">
+<% end %>
 <% if values['user'] -%>
     User "<%= values['user'] %>"
 <% end -%>
@@ -22,6 +33,11 @@
 <% if values['storerates'] -%>
     StoreRates <%= values['storerates'] %>
 <% end -%>
+<% if values['url'] -%>
+  </Node>
+<% else -%>
   </URL>
 <% end -%>
+<% end -%>
+
 </Plugin>
