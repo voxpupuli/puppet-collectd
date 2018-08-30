@@ -1933,11 +1933,24 @@ collectd::plugin::write_graphite::carbon {'secondary_graphite':
 
 #### Class: `collectd::plugin::write_http`
 
+The write_http plugin supports two ways of configuration, the old plugin format using urls:
+
 ```puppet
 class { 'collectd::plugin::write_http':
   urls => {
     'collect1.example.org' => { 'format' => 'JSON' },
     'collect2.example.org' => {},
+  }
+}
+```
+
+And the new plugin format using nodes:
+
+```puppet
+class { 'collectd::plugin::write_http':
+  nodes => {
+    'collect1' => { 'url' => 'collect1.example.org', 'format' => 'JSON' },
+    'collect2' => { 'url' => 'collect2.example.org'},
   }
 }
 ```

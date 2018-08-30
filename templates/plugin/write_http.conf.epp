@@ -1,0 +1,38 @@
+<%- | Hash $endpoints = {} | -%>
+<Plugin "write_http">
+<% $endpoints.each |$name, $values| { -%>
+<% if $values['url'] { -%>
+  <Node "<%= $name %>">
+    URL "<%= $values['url'] %>"
+<% } else { -%>
+  <URL "<%= $name %>">
+<% } %>
+<% if $values['user'] { -%>
+    User "<%= $values['user'] %>"
+<% } -%>
+<% if $values['password'] { -%>
+    Password "<%= $values['password'] %>"
+<% } -%>
+<% unless $values['verifypeer'] =~ Undef { -%>
+    VerifyPeer <%= $values['verifypeer'] %>
+<% } -%>
+<% unless $values['verifyhost'] =~ Undef { -%>
+    VerifyHost <%= $values['verifyhost'] %>
+<% } -%>
+<% if $values['cacert'] { -%>
+    CACert "<%= $values['cacert'] %>"
+<% } -%>
+<% if $values['format'] { -%>
+    Format "<%= $values['format'] %>"
+<% } -%>
+<% if $values['storerates'] { -%>
+    StoreRates <%= $values['storerates'] %>
+<% } -%>
+<% if $values['url'] { -%>
+  </Node>
+<% } else { -%>
+  </URL>
+<% } -%>
+<% } -%>
+
+</Plugin>
