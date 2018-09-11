@@ -9,12 +9,19 @@ describe 'collectd::plugin::memcached', type: :class do
 
       options = os_specific_options(facts)
 
-      context ':ensure => present, default host and port' do
+      context ':ensure => present, default host, address, and port' do
         it "Will create #{options[:plugin_conf_dir]}/memcached.conf" do
+          content = <<EOS
+  <Instance "default">
+    Host "localhost"
+    Address "127.0.0.1"
+    Port 11211
+  </Instance>
+EOS
           is_expected.to contain_file('memcached.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-memcached.conf",
-            content: %r{Host "127.0.0.1"\n.+Port 11211}
+            content: %r{#{content}}
           )
         end
       end
@@ -24,12 +31,17 @@ describe 'collectd::plugin::memcached', type: :class do
           {
             'instances' => {
               'sessions1' => {
-                'host' => '127.0.0.1',
+                'host' => 'localhost',
+                'address' => '127.0.0.1',
                 'port' => '11211'
               },
               'cache1' => {
-                'host' => '127.0.0.1',
+                'host' => 'localhost',
                 'port' => '11212'
+              },
+              'cache3' => {
+                'address' => '127.0.0.1',
+                'port' => '11213'
               }
             }
           }
@@ -38,12 +50,17 @@ describe 'collectd::plugin::memcached', type: :class do
         it "Will create #{options[:plugin_conf_dir]}/memcached.conf" do
           content = <<EOS
   <Instance "sessions1">
-    Host "127.0.0.1"
+    Host "localhost"
+    Address "127.0.0.1"
     Port 11211
   </Instance>
   <Instance "cache1">
-    Host "127.0.0.1"
+    Host "localhost"
     Port 11212
+  </Instance>
+  <Instance "cache3">
+    Address "127.0.0.1"
+    Port 11213
   </Instance>
 EOS
           is_expected.to contain_file('memcached.load').with(
