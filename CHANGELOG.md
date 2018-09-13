@@ -4,6 +4,69 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v10.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.1) (2018-07-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.0...v10.0.1)
+
+**Fixed bugs:**
+
+- update broken README.md example for plugin::write\_riemann [\#837](https://github.com/voxpupuli/puppet-collectd/pull/837) ([archii](https://github.com/archii))
+- Flush plugin config files [\#832](https://github.com/voxpupuli/puppet-collectd/pull/832) ([paramite](https://github.com/paramite))
+
+## [v10.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.0) (2018-07-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.1.0...v10.0.0)
+
+**Breaking changes:**
+
+- write\_riemann plugin fixes and enhancements [\#830](https://github.com/voxpupuli/puppet-collectd/pull/830) ([smortex](https://github.com/smortex))
+- Cleanup how python modules are configured [\#821](https://github.com/voxpupuli/puppet-collectd/pull/821) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- Hash, Array entries in config to python plugin ? [\#819](https://github.com/voxpupuli/puppet-collectd/issues/819)
+- Array sorted in python module [\#586](https://github.com/voxpupuli/puppet-collectd/issues/586)
+- Feature request - thresholds [\#292](https://github.com/voxpupuli/puppet-collectd/issues/292)
+- Make the threshold plugin configurable [\#829](https://github.com/voxpupuli/puppet-collectd/pull/829) ([smortex](https://github.com/smortex))
+- Add tail\_csv plugin [\#827](https://github.com/voxpupuli/puppet-collectd/pull/827) ([sileht](https://github.com/sileht))
+- Add table plugin [\#826](https://github.com/voxpupuli/puppet-collectd/pull/826) ([sileht](https://github.com/sileht))
+- Add powerdns plugin [\#824](https://github.com/voxpupuli/puppet-collectd/pull/824) ([sileht](https://github.com/sileht))
+- Add ipc plugin [\#823](https://github.com/voxpupuli/puppet-collectd/pull/823) ([sileht](https://github.com/sileht))
+- processes: Add missing options [\#822](https://github.com/voxpupuli/puppet-collectd/pull/822) ([sileht](https://github.com/sileht))
+- swap: add ReportIO option [\#814](https://github.com/voxpupuli/puppet-collectd/pull/814) ([sileht](https://github.com/sileht))
+
+## [v9.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.1.0) (2018-06-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.1...v9.1.0)
+
+**Implemented enhancements:**
+
+- syslog: Add option notify\_level [\#817](https://github.com/voxpupuli/puppet-collectd/pull/817) ([sileht](https://github.com/sileht))
+- ping: set parameters type and add Size [\#816](https://github.com/voxpupuli/puppet-collectd/pull/816) ([sileht](https://github.com/sileht))
+- turbotstat: Add LogicalCoreNames option [\#815](https://github.com/voxpupuli/puppet-collectd/pull/815) ([sileht](https://github.com/sileht))
+- Add numa plugin [\#813](https://github.com/voxpupuli/puppet-collectd/pull/813) ([sileht](https://github.com/sileht))
+- Add intel\_rdt plugin [\#812](https://github.com/voxpupuli/puppet-collectd/pull/812) ([sileht](https://github.com/sileht))
+- add hugepages plugin [\#811](https://github.com/voxpupuli/puppet-collectd/pull/811) ([sileht](https://github.com/sileht))
+- mysql: Add some missing options [\#810](https://github.com/voxpupuli/puppet-collectd/pull/810) ([sileht](https://github.com/sileht))
+- Add amqp1 plugin support [\#802](https://github.com/voxpupuli/puppet-collectd/pull/802) ([paramite](https://github.com/paramite))
+- plugin: update cpu for collectd 5.8 [\#801](https://github.com/voxpupuli/puppet-collectd/pull/801) ([sileht](https://github.com/sileht))
+- plugin: add battery plugin [\#800](https://github.com/voxpupuli/puppet-collectd/pull/800) ([sileht](https://github.com/sileht))
+- apache: sync options and add tests [\#798](https://github.com/voxpupuli/puppet-collectd/pull/798) ([sileht](https://github.com/sileht))
+- Add ExtraStats parameter to virt plugin [\#797](https://github.com/voxpupuli/puppet-collectd/pull/797) ([mrunge](https://github.com/mrunge))
+- Validate bind view parameters [\#796](https://github.com/voxpupuli/puppet-collectd/pull/796) ([smortex](https://github.com/smortex))
+
+**Fixed bugs:**
+
+- collectd::plugin::python::module does not support number options [\#662](https://github.com/voxpupuli/puppet-collectd/issues/662)
+- Fixes \#662 accept numbers into configuration file [\#818](https://github.com/voxpupuli/puppet-collectd/pull/818) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+- dont use topscope variables or includes [\#809](https://github.com/voxpupuli/puppet-collectd/pull/809) ([bastelfreak](https://github.com/bastelfreak))
+- drop centos 6 support [\#808](https://github.com/voxpupuli/puppet-collectd/pull/808) ([bastelfreak](https://github.com/bastelfreak))
+- A collectd::plugin::python acceptance test [\#805](https://github.com/voxpupuli/puppet-collectd/pull/805) ([traylenator](https://github.com/traylenator))
+- doc: tell rake rubocop is needed [\#799](https://github.com/voxpupuli/puppet-collectd/pull/799) ([sileht](https://github.com/sileht))
+
 ## [v9.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.1) (2018-05-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.0...v9.0.1)
@@ -822,4 +885,4 @@ Add curl_json and apache plugin
   9cac9c4 Add collectd support.
 
 
-\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*

@@ -5,8 +5,8 @@ define collectd::plugin::oracle::query (
   String $query = $name,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::oracle
+  include collectd
+  include collectd::plugin::oracle
 
   $conf_dir = $collectd::plugin_conf_dir
 

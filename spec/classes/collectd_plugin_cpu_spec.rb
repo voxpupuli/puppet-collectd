@@ -33,6 +33,13 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will not include ValuesPercentage in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ValuesPercentage})
           end
+
+          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
+          end
+          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
+          end
         end
 
         context 'cpu options should be set with collectd 5.5' do
@@ -58,6 +65,13 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ValuesPercentage true})
           end
+
+          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
+          end
+          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
+          end
         end
 
         context 'cpu options should be set with collectd 5.6' do
@@ -72,6 +86,32 @@ describe 'collectd::plugin::cpu', type: :class do
 
           it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportNumCpu true})
+          end
+
+          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
+          end
+          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
+          end
+        end
+
+        context 'cpu options should be set with collectd 5.8' do
+          let :facts do
+            facts.merge(collectd_version: '5.8')
+          end
+          let :params do
+            {
+              reportgueststate: true,
+              subtractgueststate: false
+            }
+          end
+
+          it "Will include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.to contain_file('cpu.load').with_content(%r{ReportGuestState true})
+          end
+          it "Will include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+            is_expected.to contain_file('cpu.load').with_content(%r{SubtractGuestState false})
           end
         end
       end

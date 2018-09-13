@@ -1,0 +1,6 @@
+<Plugin syslog>
+  LogLevel <%= $collectd::plugin::syslog::log_level %>
+<% if  $collectd::plugin::syslog::notify_level { -%>
+  NotifyLevel <%= $collectd::plugin::syslog::notify_level %>
+<% } -%>
+</Plugin>

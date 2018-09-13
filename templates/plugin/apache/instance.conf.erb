@@ -16,5 +16,11 @@
 <% if @cacert -%>
     CACert "<%= @cacert %>"
 <% end -%>
+<% if @sslciphers -%>
+    SSLCiphers "<%= @sslciphers %>"
+<% end -%>
+<% if @timeout -%>
+    Timeout <%= @timeout %>
+<% end -%>
   </Instance>
 </Plugin>

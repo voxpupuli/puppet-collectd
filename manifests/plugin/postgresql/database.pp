@@ -16,8 +16,8 @@ define collectd::plugin::postgresql::database (
   $service      = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::postgresql
+  include collectd
+  include collectd::plugin::postgresql
 
   concat::fragment{ "collectd_plugin_postgresql_conf_db_${title}":
     order   => '50',

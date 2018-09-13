@@ -3,28 +3,24 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "Scientific",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
@@ -76,7 +72,7 @@
     }
   ],
   "name": "puppet-collectd",
-  "version": "9.0.2-rc0",
+  "version": "10.0.2-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
@@ -91,11 +87,11 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.0 < 5.0.0"
+      "version_requirement": ">= 4.25.0 < 6.0.0"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 1.2.5 < 5.0.0"
+      "version_requirement": ">= 1.2.5 < 6.0.0"
     },
     {
       "name": "stahnma-epel",
@@ -103,7 +99,7 @@
     },
     {
       "name": "puppetlabs-apt",
-      "version_requirement": ">= 2.2.0 < 5.0.0"
+      "version_requirement": ">= 2.2.0 < 7.0.0"
     }
   ]
 }

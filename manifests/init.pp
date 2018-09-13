@@ -1,5 +1,6 @@
 #
 class collectd (
+  Boolean $autoloadplugin                              = $collectd::params::autoloadplugin,
   String $collectd_hostname                            = $collectd::params::collectd_hostname,
   Optional[String] $conf_content                       = $collectd::params::conf_content,
   String $config_file                                  = $collectd::params::config_file,

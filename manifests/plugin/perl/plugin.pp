@@ -11,10 +11,10 @@ define collectd::plugin::perl::plugin (
   Hash $config                                 = {},
 ) {
 
-  include ::collectd
+  include collectd
 
   if ! defined(Class['Collectd::Plugin::Perl']) {
-    include ::collectd::plugin::perl
+    include collectd::plugin::perl
   }
 
   if $include_dir {
@@ -42,7 +42,7 @@ define collectd::plugin::perl::plugin (
 
   case $provider {
     'package': {
-      $_manage_package = pick($manage_package, $::collectd::manage_package)
+      $_manage_package = pick($manage_package, $collectd::manage_package)
       if $_manage_package {
         package { $source:
           require => Collectd::Plugin['perl'],

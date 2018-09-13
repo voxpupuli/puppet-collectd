@@ -1,10 +1,13 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
-  $ensure                          = 'present',
-  $order                           = 10,
-  $interval                        = undef,
-  Optional[Array] $processes       = undef,
-  Optional[Array] $process_matches = undef,
+  Enum['present', 'absent'] $ensure          = 'present',
+  Integer $order                             = 10,
+  Optional[Numeric] $interval                = undef,
+  Optional[Array] $processes                 = undef,
+  Optional[Array] $process_matches           = undef,
+  Optional[Boolean] $collect_context_switch  = undef,
+  Optional[Boolean] $collect_file_descriptor = undef,
+  Optional[Boolean] $collect_memory_maps     = undef,
 ) {
 
   include ::collectd
@@ -25,21 +28,29 @@ class collectd::plugin::processes (
   }
   concat::fragment { 'collectd_plugin_processes_conf_header':
     order   => '00',
-    content => '<Plugin processes>',
+    content => epp('collectd/plugin/processes-header.conf.epp'),
     target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
+
   concat::fragment { 'collectd_plugin_processes_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
 
+  $defaults = { 'ensure' => $ensure }
+
   if $processes {
-    collectd::plugin::processes::process { $processes : }
+    $process_resources = collectd_convert_processes($processes)
+    create_resources(
+      collectd::plugin::processes::process,
+      $process_resources,
+      $defaults,
+    )
+
   }
   if $process_matches {
-    $process_matches_resources = collectd_convert_processmatch($process_matches)
-    $defaults = { 'ensure' => $ensure }
+    $process_matches_resources = collectd_convert_processes($process_matches)
     create_resources(
       collectd::plugin::processes::processmatch,
       $process_matches_resources,

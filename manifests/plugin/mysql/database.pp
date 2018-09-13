@@ -10,12 +10,20 @@ define collectd::plugin::mysql::database (
   Boolean $slavestats                  = false,
   Optional[String] $socket             = undef,
   Optional[Boolean] $innodbstats       = undef,
+  # FIXME(sileht): Should be boolean
   Optional[String] $slavenotifications = undef,
   Optional[Boolean] $wsrepstats        = undef,
+  Optional[String] $aliasname          = undef,
+  Optional[Integer] $connecttimeout    = undef,
+  Optional[String] $sslkey             = undef,
+  Optional[String] $sslcert            = undef,
+  Optional[String] $sslca              = undef,
+  Optional[String] $sslcapath          = undef,
+  Optional[String] $sslcipher          = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::mysql
+  include collectd
+  include collectd::plugin::mysql
 
   file { "${name}.conf":
     ensure  => $ensure,

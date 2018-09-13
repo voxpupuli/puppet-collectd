@@ -7,9 +7,11 @@ define collectd::plugin::apache::instance (
   Optional[Boolean] $verifypeer          = undef,
   Optional[Boolean] $verifyhost          = undef,
   Optional[Stdlib::Absolutepath] $cacert = undef,
+  Optional[String] $sslciphers           = undef,
+  Optional[Integer] $timeout             = undef,
 ) {
-  include ::collectd
-  include ::collectd::plugin::apache
+  include collectd
+  include collectd::plugin::apache
 
   file { "apache-instance-${name}.conf":
     ensure  => $ensure,

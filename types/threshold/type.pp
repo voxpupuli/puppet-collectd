@@ -1,0 +1,16 @@
+type Collectd::Threshold::Type = Struct[{
+  name        => String[1],
+  instance    => Optional[String[1]],
+  failure_max => Optional[Numeric],
+  warning_max => Optional[Numeric],
+  failure_min => Optional[Numeric],
+  warning_min => Optional[Numeric],
+  data_source => Optional[String[1]],
+  invert      => Optional[Boolean],
+  persist     => Optional[Boolean],
+  persist_ok  => Optional[Boolean],
+  percentage  => Optional[Boolean],
+  hits        => Optional[Integer],
+  hysteresis  => Optional[Integer],
+  interesting => Optional[Boolean],
+}]

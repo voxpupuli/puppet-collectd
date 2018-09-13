@@ -1,0 +1,25 @@
+<Plugin turbostat>
+<% if $collectd::plugin::turbostat::core_c_states { -%>
+  CoreCstates "<%= $collectd::plugin::turbostat::core_c_states %>"
+<% } -%>
+<% if $collectd::plugin::turbostat::package_c_states { -%>
+  PackageCstates "<%= $collectd::plugin::turbostat::package_c_states %>"
+<% } -%>
+<% if $collectd::plugin::turbostat::system_management_interrupt != undef { -%>
+  SystemManagementInterrupt "<%= $collectd::plugin::turbostat::system_management_interrupt %>"
+<% } -%>
+<% if $collectd::plugin::turbostat::digital_temperature_sensor != undef { -%>
+  DigitalTemperatureSensor "<%= $collectd::plugin::turbostat::digital_temperature_sensor %>"
+<% } -%>
+<% if $collectd::plugin::turbostat::tcc_activation_temp { -%>
+  TCCActivationTemp "<%= $collectd::plugin::turbostat::tcc_activation_temp %>"
+<% } -%>
+<% if $collectd::plugin::turbostat::running_average_power_limit { -%>
+  RunningAveragePowerLimit "<%= $collectd::plugin::turbostat::running_average_power_limit %>"
+<% } -%>
+<% if versioncmp($collectd::collectd_version_real, '5.7') >= 0 { -%>
+<% if $collectd::plugin::turbostat::logical_core_names { -%>
+  LogicalCoreNames "<%= $collectd::plugin::turbostat::logical_core_names %>"
+<% } -%>
+<% } -%>
+</Plugin>

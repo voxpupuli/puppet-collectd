@@ -5,8 +5,8 @@ define collectd::plugin::postgresql::writer (
   $storerates       = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::postgresql
+  include collectd
+  include collectd::plugin::postgresql
 
   concat::fragment{ "collectd_plugin_postgresql_conf_writer_${title}":
     order   => '40',

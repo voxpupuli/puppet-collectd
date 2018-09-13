@@ -10,7 +10,7 @@ describe 'collectd::plugin::cuda', type: :class do
       context 'package ensure' do
         context ':ensure => present' do
           it 'import collectd_cuda.collectd_plugin in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin').with_content(%r{Import "collectd_cuda.collectd_plugin"})
+            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin_header').with_content(%r{Import "collectd_cuda.collectd_plugin"})
           end
         end
       end
@@ -21,7 +21,7 @@ describe 'collectd::plugin::cuda', type: :class do
         end
 
         it 'Will remove python-config' do
-          is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin').with(ensure: 'present')
+          is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin_header').with(ensure: 'present')
         end
       end
 

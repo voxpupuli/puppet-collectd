@@ -7,11 +7,15 @@ describe 'collectd::plugin::write_riemann', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       options = os_specific_options(facts)
-      context ':ensure => present and :riemann_host => "myhost"' do
+      context ':ensure => present and :host => "myhost"' do
         let :params do
-          { riemann_host: 'myhost', riemann_port: '5555',
-            protocol: 'TCP', batch: false, ttl_factor: '3', check_thresholds: true,
+          { nodes: [{ name: 'myhost', host: 'myhost', port: 5555,
+                      protocol: 'TCP', batch: false, ttl_factor: 3.0, check_thresholds: true }],
             tags: ['foo'], attributes: { 'bar' => 'baz' } }
         end
 
@@ -22,7 +26,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
           is_expected.to contain_file('write_riemann.load').with(content: %r{Port "5555"})
           is_expected.to contain_file('write_riemann.load').with(content: %r{Protocol TCP})
           is_expected.to contain_file('write_riemann.load').with(content: %r{Batch false})
-          is_expected.to contain_file('write_riemann.load').with(content: %r{TTLFactor 3})
+          is_expected.to contain_file('write_riemann.load').with(content: %r{TTLFactor 3.0})
           is_expected.to contain_file('write_riemann.load').with(content: %r{CheckThresholds true})
           is_expected.to contain_file('write_riemann.load').with(content: %r{Tag "foo"})
           is_expected.to contain_file('write_riemann.load').with(content: %r{Attribute "bar" "baz"})
@@ -31,7 +35,7 @@ describe 'collectd::plugin::write_riemann', type: :class do
 
       context ':ensure => absent' do
         let :params do
-          { riemann_host: ['myhost'], ensure: 'absent' }
+          { nodes: [], ensure: 'absent' }
         end
 
         it 'Will not create ' do

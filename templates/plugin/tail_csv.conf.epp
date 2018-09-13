@@ -1,0 +1,34 @@
+<Plugin "tail_csv">
+<% $collectd::plugin::tail_csv::metrics.each |$name, $metric| { -%>
+  <Metric "<%= $name %>">
+<% unless $metric['type'] =~ Undef { -%>
+    Type "<%= $metric['type'] %>"
+<% } -%>
+<% unless $metric['instance'] =~ Undef { -%>
+    Instance "<%= $metric['instance'] %>"
+<% } -%>
+<% unless $metric['value_from'] =~ Undef { -%>
+    ValueFrom <%= $metric['value_from'] %>
+<% } -%>
+  </Metric>
+<% } -%>
+<% $collectd::plugin::tail_csv::files.each |$path, $file| { -%>
+  <File "<%= $path %>">
+<% unless $file['plugin'] =~ Undef { -%>
+    Plugin "<%= $file['plugin'] %>"
+<% } -%>
+<% unless $file['instance'] =~ Undef { -%>
+    Instance "<%= $file['instance'] %>"
+<% } -%>
+<% $file['collect'].each |$collect| { -%>
+    Collect "<%= $collect %>"
+<% } -%>
+<% unless $file['interval'] =~ Undef { -%>
+    Interval <%= $file['interval'] %>
+<% } -%>
+<% unless $file['time_from'] =~ Undef { -%>
+    TimeFrom <%= $file['time_from'] %>
+<% } -%>
+  </File>
+<% } -%>
+</Plugin>

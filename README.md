@@ -103,6 +103,7 @@ documentation for each plugin for configurable attributes.
   below)
 * `amqp`  (see [collectd::plugin::amqp](#class-collectdpluginamqp) below)
 * `apache`  (see [collectd::plugin::apache](#class-collectdpluginapache) below)
+* `battery`  (see [collectd::plugin::battery](#class-collectdpluginbattery) below)
 * `bind`  (see [collectd::plugin::bind](#class-collectdpluginbind) below)
 * `ceph`  (see [collectd::plugin::ceph](#class-ceph) below)
 * `cgroups` (see [collectd::plugin::cgroups](#class-collectdplugincgroups) below)
@@ -129,9 +130,12 @@ documentation for each plugin for configurable attributes.
 * `genericjmx` (see [collectd::plugin::genericjmx](#class-collectdplugingenericjmx)
   below)
 * `hddtemp` (see [collectd::plugin::hddtemp](#class-collectdpluginhddtemp) below)
+* `hugepages` (see [collectd::plugin::hugepages](#class-collectdpluginhugepages) below)
 * `intel_pmu` (see [collectd::plugin::intel_pmu](#class-collectdpluginintel_pmu) below)
+* `intel_rdt` (see [collectd::plugin::intel_rdt](#class-collectdpluginintel_rdt) below)
 * `interface` (see [collectd::plugin::interface](#class-collectdplugininterface)
   below)
+* `ipc` (see [collectd::plugin::ipc](#class-collectdpluginipc) below)
 * `ipmi` (see [collectd::plugin::ipmi](#class-collectdpluginipmi) below)
 * `iptables` (see [collectd::plugin::iptables](#class-collectdpluginiptables) below)
 * `iscdhcp` (see [collectd::plugin::iscdhcp](#class-collectdpluginiscdhcp) below)
@@ -151,6 +155,7 @@ documentation for each plugin for configurable attributes.
 * `nfs`  (see [collectd::plugin::nfs](#class-collectdpluginnfs) below)
 * `nginx` (see [collectd::plugin::nginx](#class-collectdpluginnginx) below)
 * `ntpd` (see [collectd::plugin::ntpd](#class-collectdpluginntpd) below)
+* `numa` (see [collectd::plugin::numa](#class-collectdpluginnuma) below)
 * `nut` (see [collectd::plugin::nut](#class-collectdpluginnut) below)
 * `openldap` (see [collectd::plugin::openldap](#class-collectdpluginopenldap) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
@@ -258,6 +263,17 @@ class { 'collectd::plugin::apache':
       'url' => 'http://localhost:8080/mod_status?auto'
     }
   },
+}
+```
+
+### Class: `collectd::plugin::battery`
+
+```puppet
+class { 'collectd::plugin::battery':
+  interval => 30,
+  values_percentage => true,
+  report_degraded => true,
+  query_state_fs => true,
 }
 ```
 
@@ -857,12 +873,31 @@ class { 'collectd::plugin::hddtemp':
 }
 ```
 
+#### Class: `collectd::plugin::hugepages`
+
+```puppet
+class { 'collectd::plugin::hugepages':
+  report_per_node_hp => true,
+  report_root_hp     => true,
+  values_pages       => true,
+  values_bytes       => false,
+  values_percentage  => false
+}
+```
+
 #### Class: `collectd::plugin::intel_pmu`
 ```puppet
 class { 'collectd::plugin::intel_pmu':
   report_hardware_cache_events => true,
   report_kernel_pmu_events => true,
   report_software_events => true,
+}
+```
+
+#### Class: `collectd::plugin::intel_rdt`
+```puppet
+class { 'collectd::plugin::intel_rdt':
+  cores => ['0-2' '3,4,6' '8-10,15']
 }
 ```
 
@@ -881,6 +916,13 @@ class { 'collectd::plugin::interface':
 class { 'collectd::plugin::irq':
   irqs           => ['7', '23'],
   ignoreselected => true,
+}
+```
+
+#### Class: `collectd::plugin::ipc`
+
+```puppet
+class { 'collectd::plugin::ipc':
 }
 ```
 
@@ -1119,6 +1161,14 @@ class { 'collectd::plugin::ntpd':
   includeunitid  => false,
 }
 ```
+
+#### Class: `collectd::plugin::numa`
+
+```puppet
+class { 'collectd::plugin::numa':
+}
+```
+
 #### Class: `collectd::plugin::nut`
 
 ```puppet
@@ -1267,8 +1317,7 @@ collectd::plugin::perl::plugin {
 #### Class: `collectd::plugin::ping`
 
 ```puppet
-collectd::plugin::ping {
-  'example':
+class { 'collectd::plugin::ping':
     hosts => ['example.com'],
 }
 ```
@@ -1324,6 +1373,44 @@ class { 'collectd::plugin::postgresql':
 }
 ```
 
+#### Class: `collectd::plugin::powerdns`
+
+You can either specify powerdns servers / recursors at once:
+
+```puppet
+class { 'collectd::plugin::powerdns':
+  recursors => {
+    'recursor1' => {
+      'socket'  => '/var/run/my-socket',
+      'collect' => ['cache-hits', 'cache-misses'],
+    },
+    'recursor2' => {}
+  },
+  servers => {
+    'server1' => {
+      'socket'  => '/var/run/my-socket',
+      'collect' => ['latency', 'recursing-answers', 'recursing-questions'],
+    }
+  },
+}
+```
+
+Or define single server / recursor:
+
+```puppet
+collectd::plugin::powerdns::recursor { 'my-recursor' :
+  socket  => '/var/run/my-socket',
+  collect => ['cache-hits', 'cache-misses'],
+}
+```
+
+```puppet
+collectd::plugin::powerdns::server { 'my-server' :
+  socket  => '/var/run/my-socket',
+  collect => ['latency', 'recursing-answers', 'recursing-questions'],
+}
+```
+
 #### Class: `collectd::plugin::processes`
 
 You can either specify processes / process matches at once:
@@ -1365,6 +1452,9 @@ class { 'collectd::plugin::protocols':
 ```
 
 #### Class: `collectd::plugin::python`
+The plugin uses a fact `python_dir` to find the python load path for modules.
+python must be installed as a pre-requisite for the this fact to give a
+non-default value.
 
 * `modulepaths` is an array of paths where will be Collectd looking for Python
   modules, Puppet will ensure that each of specified directories exists and it
@@ -1415,9 +1505,27 @@ Or define single module:
 collectd::plugin::python::module {'zk-collectd':
   script_source => 'puppet:///modules/myorg/zk-collectd.py',
   config        => [
-    {'Hosts' => "localhost:2181"}
+    {'Hosts'   => "localhost:2181",
+     'Verbose' => true,
+     'Values'  => ["abc","def"],
+     'Name'    => 'My Name',
+     'Limit'   => 4.5,
+    }
   ]
 }
+```
+
+The resulting configuration would be 
+
+```apache
+Import "zk-collectd"
+<Module "zk-collectd">
+  Hosts "localhost:2181"
+  Verbose true
+  Values "abc" "def"
+  Limit 4.5
+</Module>
+ 
 ```
 
 Each plugin might use different `modulepath`, however make sure that all paths
@@ -1429,7 +1537,9 @@ collectd::plugin::python::module {'my-module':
   modulepath    => '/var/share/collectd',
   script_source => 'puppet:///modules/myorg/my-module.py',
   config        => [
-    {'Key' => "value"}
+    {'Key'   => "value",
+     'Value' => 3.4,
+    }
   ]
 }
 ```
@@ -1483,7 +1593,7 @@ class { '::collectd::plugin::rabbitmq':
     'Scheme'   => 'https',
     'Port'     => '15671',
     'Host'     => $facts['fqdn'],
-    'Realm'    => '"RabbitMQ Management"',
+    'Realm'    => 'RabbitMQ Management',
   },
 }
 ```
@@ -1654,6 +1764,29 @@ collectd::plugin::tail::file { 'exim-log':
 }
 ```
 
+#### Class: `collectd::plugin::tail_csv`
+
+```puppet
+class { '::collectd::plugin::tail_csv':
+  metrics => {
+    'snort-dropped' => {
+      'type'        => 'gauge',
+      'values_from' => 1,
+      'instance'    => "dropped"
+    },
+  },
+  files  => {
+    '/var/log/snort/snort.stats' => {
+      'collect'   => ['snort-dropped'],
+      'plugin'    => 'snortstats',
+      'instance'  => 'eth0',
+      'interval'  => 600,
+      'time_from' => 5,
+    }
+  }
+}
+```
+
 #### Class: `collectd::plugin::thermal`
 
 ```puppet
@@ -1667,6 +1800,42 @@ class { '::collectd::plugin::thermal':
 
 ```puppet
 class { 'collectd::plugin::threshold':
+  hosts   => [
+    {
+      name    => 'example.com',
+      plugins => [
+        {
+          name  => 'load',
+          types => [
+            {
+              name        => 'load',
+              data_source => 'shortterm',
+              warning_max => $facts.dig('processors', 'count') * 1.2,
+              failure_max => $facts.dig('processors', 'count') * 1.9,
+            },
+            {
+              name        => 'load',
+              data_source => 'midterm',
+              warning_max => $facts.dig('processors', 'count') * 1.1,
+              failure_max => $facts.dig('processors', 'count') * 1.7,
+            },
+            {
+              name        => 'load',
+              data_source => 'longterm',
+              warning_max => $facts.dig('processors', 'count'),
+              failure_max => $facts.dig('processors', 'count') * 1.5,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  plugins => [
+    # See plugin definition above
+  ],
+  types   => [
+    # See types definition above
+  ],
 }
 ```
 
@@ -1764,11 +1933,24 @@ collectd::plugin::write_graphite::carbon {'secondary_graphite':
 
 #### Class: `collectd::plugin::write_http`
 
+The write_http plugin supports two ways of configuration, the old plugin format using urls:
+
 ```puppet
 class { 'collectd::plugin::write_http':
   urls => {
     'collect1.example.org' => { 'format' => 'JSON' },
     'collect2.example.org' => {},
+  }
+}
+```
+
+And the new plugin format using nodes:
+
+```puppet
+class { 'collectd::plugin::write_http':
+  nodes => {
+    'collect1' => { 'url' => 'collect1.example.org', 'format' => 'JSON' },
+    'collect2' => { 'url' => 'collect2.example.org'},
   }
 }
 ```
@@ -1823,8 +2005,14 @@ class { 'collectd::plugin::write_network':
 
 ```puppet
 class { 'collectd::plugin::write_riemann':
-  riemann_host => 'riemann.example.org',
-  riemann_port => 5555,
+  nodes => [
+    {
+      'name' => 'riemann.example.org',
+      'host' => 'riemann.example.org',
+      'port' => 5555,
+      'protocol' => 'TCP'
+    }
+  ],
   tags         => ['foo'],
   attributes   => {'bar' => 'baz'},
 }

@@ -19,8 +19,8 @@ define collectd::plugin::aggregation::aggregator (
   Optional[Boolean] $calculatestddev      = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::aggregation
+  include collectd
+  include collectd::plugin::aggregation
 
   $conf_dir = $collectd::plugin_conf_dir
 

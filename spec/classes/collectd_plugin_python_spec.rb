@@ -57,7 +57,9 @@ describe 'collectd::plugin::python', type: :class do
           end
 
           it 'will ensure the two directories are here' do
-            is_expected.to contain_file('/tmp/')
+            is_expected.to contain_file('/tmp/').with(
+              require: 'Package[collectd]'
+            )
             is_expected.to contain_file('/data/')
           end
           it 'will set two modulepath in the module conf' do
@@ -82,34 +84,37 @@ describe 'collectd::plugin::python', type: :class do
                 },
                 'foo' => {
                   'config' => [{ 'Verbose' => true, 'Bar' => '"bar"' }]
+                },
+                'alpha' => {
+                  'config' => [{ 'Beta' => 4.2, 'Gamma' => 'b', 'Delta' => ['a', 4, 5] }]
                 }
               }
             }
           end
 
           it 'imports elasticsearch module' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_header').with(
               content: %r{Import "elasticsearch"},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
           end
 
           it 'includes elasticsearch module configuration' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{<Module "elasticsearch">},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
           end
 
           it 'includes elasticsearch Cluster name' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{Cluster "ES-clust"},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
           end
 
           it 'includes second elasticsearch Cluster name' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{Cluster "Another-ES-clust"},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
@@ -124,19 +129,90 @@ describe 'collectd::plugin::python', type: :class do
 
           # test foo module
           it 'imports foo module' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_header').with(
               content: %r{Import "foo"},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
           end
 
           it 'includes foo module configuration' do
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(
               content: %r{<Module "foo">},
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Verbose true})
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo').with(content: %r{Bar "bar"})
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{Verbose true})
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{Bar ""bar""})
+          end
+
+          it 'includes alpha module configuration' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(
+              content: %r{<Module "alpha">},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Beta 4.2})
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta "a" 4 5})
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Gamma "b"})
+          end
+        end
+
+        context 'two modules with same python module should not clash' do
+          let :params do
+            {
+              modules: {
+                'One' => {
+                  'module' => 'funky',
+                  'config' => [{ 'Verbose' => true }, { 'Junk' => 'help' }]
+                },
+                'Two' => {
+                  'module' => 'funky',
+                  'config' => [{ 'Junk' => 'morehelp' }]
+                }
+              }
+            }
+          end
+
+          it 'import funky module' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_funky_header').with(
+              content: %r{Import "funky"},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+          it 'open instance One of module' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
+              content: %r{<Module "funky">},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+          it 'open instance Two of module' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
+              content: %r{<Module "funky">},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+
+          it 'configure  instance One of module' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
+              content: %r{Verbose true},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+          it 'configure  instance Two of module' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
+              content: %r{Junk "morehelp"},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+          it 'close funky module instance One' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
+              content: %r{</Module>},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
+          end
+          it 'close funky module instance Two' do
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
+              content: %r{</Module>},
+              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+            )
           end
         end
 

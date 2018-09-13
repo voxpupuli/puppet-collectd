@@ -73,6 +73,24 @@ describe 'collectd::plugin::turbostat', type: :class do
         end
       end
 
+      context ':ensure => present and :logical_core_names => true and collectd 5.7' do
+        let :facts do
+          facts.merge(collectd_version: '5.7')
+        end
+
+        let :params do
+          { logical_core_names: true }
+        end
+
+        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+          is_expected.to contain_file('turbostat.load').with(
+            ensure: 'present',
+            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
+            content: %r{LogicalCoreNames "true"}m
+          )
+        end
+      end
+
       context ':ensure => present and :tcc_activation_temp => 40' do
         let :params do
           { tcc_activation_temp: 40 }
