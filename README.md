@@ -7,6 +7,10 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/collectd.svg)](https://forge.puppetlabs.com/puppet/collectd)
 
+## CI test - do not merge
+
+This is a test and should not get merged.
+
 ## Description
 
 Puppet module for configuring collectd and plugins.
