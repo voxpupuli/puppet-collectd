@@ -54,7 +54,7 @@ group :system_tests do
   gem 'serverspec',                         :require => false
   gem 'beaker-hostgenerator', '>= 1.1.10',  :require => false
   gem 'beaker-docker',                      :require => false
-  gem 'beaker-puppet',                      :require => false
+  gem 'beaker-puppet',                      :require => false, :git => 'https://github.com/alexjfisher/beaker-puppet.git', :branch => 'fact_on'
   gem 'beaker-puppet_install_helper',       :require => false
   gem 'beaker-module_install_helper',       :require => false
   gem 'rbnacl', '>= 4',                     :require => false if RUBY_VERSION >= '2.2.6'
