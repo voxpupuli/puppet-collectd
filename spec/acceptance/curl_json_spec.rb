@@ -24,9 +24,9 @@ describe 'curl_json defined type' do
       apply_manifest(pp, catch_changes: true)
     end
 
-    case fact(:osfamily)
+    case fact('osfamily')
     when 'Debian'
-      curl_json_package = if fact(:lsbdistcodename) == 'precise'
+      curl_json_package = if fact('lsbdistcodename') == 'precise'
                             'libyajl1'
                           else
                             'libyajl2'
