@@ -34,7 +34,8 @@ describe 'collectd::plugin::postgresql', type: :class do
                 'user'     => 'postgres',
                 'password' => 'postgres',
                 'sslmode'  => 'disable',
-                'query'    => %w[disk_io log_delay]
+                'query'    => %w[disk_io log_delay],
+                'interval' => 60
               }
             },
             queries: {
@@ -61,6 +62,7 @@ describe 'collectd::plugin::postgresql', type: :class do
         it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Interval 60})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Param \"database\"})
