@@ -4,7 +4,7 @@ require 'spec_helper'
 facterdb_facterversion = case Puppet.version
                          when %r{^4}
                            '3.6.7'
-                         when %r{^5}
+                         else
                            '3.8.0'
                          end
 
