@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v10.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.1.0) (2018-10-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.1...v10.1.0)
+
+**Implemented enhancements:**
+
+- Adapt write http plugin to new format [\#848](https://github.com/voxpupuli/puppet-collectd/pull/848) ([kazeborja](https://github.com/kazeborja))
+- allow puppetlabs/apt 5.x [\#842](https://github.com/voxpupuli/puppet-collectd/pull/842) ([bastelfreak](https://github.com/bastelfreak))
+- add AutoLoadPlugin to global options [\#840](https://github.com/voxpupuli/puppet-collectd/pull/840) ([mrunge](https://github.com/mrunge))
+- Add configuration/support for NFVPE plugins [\#835](https://github.com/voxpupuli/puppet-collectd/pull/835) ([paramite](https://github.com/paramite))
+
+**Fixed bugs:**
+
+- Persist the interval in the conf file as a number [\#859](https://github.com/voxpupuli/puppet-collectd/pull/859) ([nbarrientos](https://github.com/nbarrientos))
+- Fix wrong closure of Host parameter for curljson template [\#845](https://github.com/voxpupuli/puppet-collectd/pull/845) ([kazeborja](https://github.com/kazeborja))
+
+**Closed issues:**
+
+- Documentation for collectd::plugin::ping, needed to use class [\#841](https://github.com/voxpupuli/puppet-collectd/issues/841)
+
+**Merged pull requests:**
+
+- allow puppet 6.x [\#861](https://github.com/voxpupuli/puppet-collectd/pull/861) ([bastelfreak](https://github.com/bastelfreak))
+- Fix beaker tests [\#858](https://github.com/voxpupuli/puppet-collectd/pull/858) ([alexjfisher](https://github.com/alexjfisher))
+- allow puppetlabs/stdlib 5.x , puppetlabs/apt 6.x and puppetlabs/concat 5.x [\#850](https://github.com/voxpupuli/puppet-collectd/pull/850) ([bastelfreak](https://github.com/bastelfreak))
+- update gem dependencies [\#846](https://github.com/voxpupuli/puppet-collectd/pull/846) ([bastelfreak](https://github.com/bastelfreak))
+- Update collectd::plugin::ping example with an example that has been tested to succeeded [\#843](https://github.com/voxpupuli/puppet-collectd/pull/843) ([pckizer](https://github.com/pckizer))
+
 ## [v10.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.1) (2018-07-29)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.0...v10.0.1)
