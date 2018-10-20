@@ -1,9 +1,16 @@
 <Plugin memcached>
 <% @instances.each do |name,values| -%>
   <Instance "<%= name %>">
-<% if values['host'] and values['port'] -%>
+<% if values['host'] or values['address'] or values['port'] -%>
+<%- if values['host'] -%>
     Host "<%= values['host'] %>"
+<%- end -%>
+<%- if values['address'] -%>
+    Address "<%= values['address'] %>"
+<%- end -%>
+<%- if values['port'] -%>
     Port <%= values['port'] %>
+<%- end -%>
 <% elsif values['socket'] -%>
     Socket "<%= values['socket'] %>"
 <% end -%>
