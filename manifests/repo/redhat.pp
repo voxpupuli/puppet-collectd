@@ -8,7 +8,7 @@ class collectd::repo::redhat {
     } else {
       $path_prefix = ''
     }
-      
+
     yumrepo { 'collectd-ci':
       ensure  => present,
       enabled => '1',
