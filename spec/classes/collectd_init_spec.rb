@@ -241,6 +241,16 @@ describe 'collectd', type: :class do
               end
             end
           end
+          context 'and ci_package_repo set to `master`' do
+            let(:params) { { manage_repo: true, ci_package_repo: 'master' } }
+
+            if facts[:osfamily] == 'RedHat'
+              it { is_expected.to contain_yumrepo('collectd-ci').with_baseurl("https://pkg.ci.collectd.org/rpm/master/epel-#{facts[:operatingsystemmajrelease]}-x86_64") }
+            end
+            if facts[:osfamily] == 'Debian'
+              it { is_expected.to contain_apt__source('collectd-ci').with_repos('master') }
+            end
+          end
         end
 
         context 'when manage_service is true' do

@@ -6,7 +6,7 @@ class collectd::repo::debian {
 
     apt::source { 'collectd-ci':
       location => 'https://pkg.ci.collectd.org/deb/',
-      repos    => "collectd-${$::collectd::ci_package_repo}",
+      repos    => $collectd::repo::real_ci_package_repo,
       key      => {
         'id'     => 'F806817DC3F5EA417F9FA2963994D24FB8543576',
         'server' => $::collectd::package_keyserver,
