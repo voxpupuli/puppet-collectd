@@ -28,7 +28,7 @@ def all_supported_os_hash
       },
       {
         'operatingsystem' => 'Ubuntu',
-        'operatingsystemrelease' => ['16.04']
+        'operatingsystemrelease' => ['16.04', '18.04']
       },
       {
         'operatingsystem' => 'FreeBSD',

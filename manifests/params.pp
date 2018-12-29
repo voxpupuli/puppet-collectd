@@ -46,7 +46,7 @@ class collectd::params {
       $config_group       = 'root'
       $java_dir           = '/usr/share/collectd/java'
       $default_python_dir = '/usr/local/lib/python2.7/dist-packages'
-      $manage_repo        = true
+      $manage_repo        = $facts['os']['release']['full'] != '18.04'
       $package_configs    = {}
     }
     'Solaris': {
