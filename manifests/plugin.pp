@@ -51,7 +51,7 @@ define collectd::plugin (
 
   # Delete default config file created by platform packaging and not matching
   # plugin name
-  if has_key($::collectd::package_configs, $plugin) {
+  if ($plugin in $collectd::package_configs) {
     file { "package_${plugin}.load":
       ensure  => absent,
       path    => "${conf_dir}/${::collectd::package_configs[$plugin]}",
