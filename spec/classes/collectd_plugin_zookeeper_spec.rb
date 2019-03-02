@@ -11,7 +11,7 @@ describe 'collectd::plugin::zookeeper', type: :class do
 
       context ":ensure => present and :zookeeper_host => 'myhost'" do
         let :params do
-          { zookeeper_host: 'myhost', zookeeper_port: '2181' }
+          { zookeeper_host: 'myhost', zookeeper_port: 2181 }
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-zookeeper.load" do

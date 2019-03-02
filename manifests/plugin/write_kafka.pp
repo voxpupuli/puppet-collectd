@@ -2,7 +2,7 @@ class collectd::plugin::write_kafka (
   $ensure                    = 'present',
   $kafka_host                = undef,
   Array[String] $kafka_hosts = ['localhost:9092'],
-  $kafka_port                = 9092,
+  Stdlib::Port $kafka_port   = 9092,
   Hash $topics               = {},
   Hash $properties           = {},
   Hash $meta                 = {},

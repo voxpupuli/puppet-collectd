@@ -2,8 +2,8 @@
 class collectd::plugin::write_sensu (
   $ensure           = 'present',
   $manage_package   = undef,
-  $sensu_host       = 'localhost',
-  $sensu_port       = 3030,
+  Stdlib::Host $sensu_host = 'localhost',
+  Stdlib::Port $sensu_port = 3030,
   Boolean $store_rates      = false,
   Boolean $always_append_ds = false,
   $metrics          = false,

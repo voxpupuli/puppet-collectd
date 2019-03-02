@@ -21,7 +21,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           {
             'aliasname' => 'fancyname',
             'host' => 'database.serv.er',
-            'port' => '8010',
+            'port' => 8010,
             'username' => 'db_user',
             'password' => 'secret',
             'sslkey' => '/path/to/key.pem',

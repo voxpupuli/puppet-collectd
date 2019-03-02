@@ -2,7 +2,7 @@
 define collectd::plugin::network::listener (
   Enum['present', 'absent'] $ensure                         = 'present',
   Optional[Stdlib::Absolutepath] $authfile                  = undef,
-  Optional[Integer] $port                                   = undef,
+  Optional[Stdlib::Port] $port                              = undef,
   Optional[Collectd::Network::SecurityLevel] $securitylevel = undef,
   Optional[String] $interface                               = undef,
 ) {
