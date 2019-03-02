@@ -1,8 +1,8 @@
 # a single graphite backend
 define collectd::plugin::write_graphite::carbon (
   $ensure                    = 'present',
-  $graphitehost              = 'localhost',
-  $graphiteport              = 2003,
+  Stdlib::Host $graphitehost = 'localhost',
+  Stdlib::Port $graphiteport = 2003,
   Boolean $storerates        = true,
   $graphiteprefix            = 'collectd.',
   $graphitepostfix           = undef,

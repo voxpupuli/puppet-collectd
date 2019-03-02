@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:StatsD
 class collectd::plugin::statsd (
   $ensure                = 'present',
-  $host                  = undef,
-  $port                  = undef,
+  Optional[Stdlib::Host] $host = undef,
+  Optional[Stdlib::Port] $port = undef,
   $deletecounters        = undef,
   $deletetimers          = undef,
   $deletegauges          = undef,

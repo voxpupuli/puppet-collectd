@@ -10,7 +10,7 @@ describe 'collectd::plugin::write_kafka', type: :class do
       options = os_specific_options(facts)
       context ':ensure => present and :kafka_host => \'myhost\'' do
         let :params do
-          { kafka_host: 'myhost', kafka_port: '9092', topics: { 'my-topic' => { 'format' => 'JSON' } } }
+          { kafka_host: 'myhost', kafka_port: 9092, topics: { 'my-topic' => { 'format' => 'JSON' } } }
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-write_kafka.conf" do
