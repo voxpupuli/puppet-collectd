@@ -1,11 +1,12 @@
 #
 define collectd::plugin (
-  $ensure   = 'present',
-  $content  = undef,
-  $order    = '10',
-  $globals  = false,
-  $interval = undef,
-  $plugin   = $name
+  $ensure                          = 'present',
+  $content                         = undef,
+  $order                           = '10',
+  $globals                         = false,
+  $interval                        = undef,
+  $plugin                          = $name,
+  Optional[Integer] $flushinterval = undef,
 ) {
 
   include ::collectd
