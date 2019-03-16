@@ -8,7 +8,7 @@ class collectd::plugin::tcpconns (
   $ensure                            = 'present'
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'tcpconns':
     ensure   => $ensure,

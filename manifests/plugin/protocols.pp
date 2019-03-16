@@ -5,7 +5,7 @@ class collectd::plugin::protocols (
   Array $values           = []
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'protocols':
     ensure  => $ensure,

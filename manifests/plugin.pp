@@ -8,7 +8,7 @@ define collectd::plugin (
   $plugin   = $name
 ) {
 
-  include ::collectd
+  include collectd
 
   $conf_dir = $::collectd::plugin_conf_dir
   $config_group = $::collectd::config_group

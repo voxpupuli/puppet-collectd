@@ -6,7 +6,7 @@ class collectd::plugin::write_kafka (
   Hash $topics               = {},
 ) {
 
-  include ::collectd
+  include collectd
 
   if($kafka_host and $kafka_port) {
     $real_kafka_hosts = [ "${kafka_host}:${kafka_port}" ]

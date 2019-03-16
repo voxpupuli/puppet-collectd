@@ -5,7 +5,7 @@ class collectd::plugin::filecount (
   $interval         = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   # We support two formats for directories:
   #  - new: hash for create_resources collectd::plugin::filecount::directory

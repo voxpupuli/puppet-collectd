@@ -16,7 +16,7 @@ class collectd::plugin::python (
   $conf_name           = 'python-config.conf',
 ) {
 
-  include ::collectd
+  include collectd
 
   $module_dirs = empty($modulepaths) ? {
     true  => [$collectd::python_dir],

@@ -1,10 +1,10 @@
-class { '::collectd':
+class { 'collectd':
   purge_config => true,
   purge        => true,
   recurse      => true,
 }
 
-class { '::collectd::plugin::perl':
+class { 'collectd::plugin::perl':
   order => 42,
 }
 

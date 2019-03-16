@@ -11,7 +11,7 @@ class collectd::plugin::mongodb (
   $collectd_dir                             = '/usr/lib/collectd',
 ) {
 
-  include ::collectd
+  include collectd
 
   if $configured_dbs {
     assert_type(String, $db_port)

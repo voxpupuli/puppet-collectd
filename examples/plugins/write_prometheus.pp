@@ -1,5 +1,5 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::write_prometheus':
+class { 'collectd::plugin::write_prometheus':
   port => '9103',
 }

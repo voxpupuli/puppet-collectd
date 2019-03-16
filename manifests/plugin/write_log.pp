@@ -3,7 +3,7 @@ class collectd::plugin::write_log (
   $ensure        = 'present',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'write_log':
     ensure  => $ensure,

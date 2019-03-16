@@ -14,7 +14,7 @@ class collectd::plugin::bind (
   Optional[Integer[1]] $interval     = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   if $facts['os']['family'] == 'RedHat' {
     if $manage_package {

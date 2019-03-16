@@ -1,5 +1,5 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::syslog':
+class { 'collectd::plugin::syslog':
   log_level => 'debug',
 }

@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::disk':
+class { 'collectd::plugin::disk':
   disks          => ['/^dm/'],
   ignoreselected => true,
 }

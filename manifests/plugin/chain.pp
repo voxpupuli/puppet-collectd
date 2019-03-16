@@ -6,7 +6,7 @@ class collectd::plugin::chain (
   Array $rules                            = []
 ) {
 
-  include ::collectd
+  include collectd
 
   $conf_dir = $collectd::plugin_conf_dir
 

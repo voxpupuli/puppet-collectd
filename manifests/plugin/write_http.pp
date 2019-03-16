@@ -5,7 +5,7 @@ class collectd::plugin::write_http (
   Hash[String, Hash[String, Scalar]] $urls  = {}
 ) {
 
-  include ::collectd
+  include collectd
 
   if !empty($nodes) and !empty($urls) {
     fail('Only one of nodes or urls is supposed to be defined')

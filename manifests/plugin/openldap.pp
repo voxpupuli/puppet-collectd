@@ -5,7 +5,7 @@ class collectd::plugin::openldap (
   $interval       = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'openldap':
     ensure   => $ensure,

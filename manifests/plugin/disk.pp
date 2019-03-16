@@ -10,7 +10,7 @@ class collectd::plugin::disk (
   Optional[Array[String]] $package_install_options = undef
 ) {
 
-  include ::collectd
+  include collectd
 
   if $facts['os']['family'] == 'RedHat' {
     if $manage_package != undef {

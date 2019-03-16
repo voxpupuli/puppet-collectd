@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::smart':
+class { 'collectd::plugin::smart':
   disks          => ['/^dm/'],
   ignoreselected => true,
 }

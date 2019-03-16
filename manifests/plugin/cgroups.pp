@@ -6,7 +6,7 @@ class collectd::plugin::cgroups (
   Optional[Integer[1]] $interval    = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'cgroups':
     ensure   => $ensure,

@@ -9,7 +9,7 @@ class collectd::plugin::openvpn (
   $interval                                                              = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   if is_string($statusfile) {
     $statusfiles = [ $statusfile ]

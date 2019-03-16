@@ -3,7 +3,7 @@ class collectd::plugin::target_v5upgrade (
   $ensure = 'present',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'target_v5upgrade':
     ensure  => $ensure,

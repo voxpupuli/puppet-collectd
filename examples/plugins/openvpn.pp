@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::openvpn':
+class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
 }

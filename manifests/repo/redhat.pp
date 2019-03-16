@@ -10,7 +10,7 @@ class collectd::repo::redhat {
     }
 
   } else {
-    require ::epel
+    require epel
   }
 
 }

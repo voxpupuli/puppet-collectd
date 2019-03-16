@@ -4,7 +4,7 @@ class collectd::plugin::entropy (
   $interval = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'entropy':
     ensure   => $ensure,

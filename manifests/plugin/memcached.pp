@@ -11,7 +11,7 @@ class collectd::plugin::memcached (
   $interval       = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'memcached':
     ensure   => $ensure,

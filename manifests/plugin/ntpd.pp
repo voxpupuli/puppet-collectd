@@ -8,7 +8,7 @@ class collectd::plugin::ntpd (
   $interval         = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'ntpd':
     ensure   => $ensure,

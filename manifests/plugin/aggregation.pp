@@ -5,7 +5,7 @@ class collectd::plugin::aggregation (
   Hash $aggregators                 = {},
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'aggregation':
     ensure   => $ensure,

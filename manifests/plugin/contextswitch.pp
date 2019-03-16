@@ -4,7 +4,7 @@ class collectd::plugin::contextswitch (
   Optional[Integer[1]] $interval      = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'contextswitch':
     ensure   => $ensure,

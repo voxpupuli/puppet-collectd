@@ -7,7 +7,7 @@ class collectd::plugin::snmp (
   Optional[Integer[0]]                  $interval       = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 

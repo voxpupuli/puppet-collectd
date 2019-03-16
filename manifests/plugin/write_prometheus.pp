@@ -3,7 +3,7 @@ class collectd::plugin::write_prometheus (
   $ensure      = 'present',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'write_prometheus':
     ensure  => $ensure,

@@ -1,6 +1,6 @@
 class collectd::repo::debian {
 
-  contain ::apt
+  contain apt
 
   if $::collectd::ci_package_repo {
 

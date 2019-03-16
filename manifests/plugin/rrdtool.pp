@@ -13,7 +13,7 @@ class collectd::plugin::rrdtool (
   Optional[Integer] $writespersecond = 50
 ) {
 
-  include ::collectd
+  include collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 

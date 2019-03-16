@@ -1,4 +1,4 @@
-include ::collectd
+include collectd
 
 collectd::plugin::tail::file { 'exim-log':
   filename => '/var/log/exim4/mainlog',

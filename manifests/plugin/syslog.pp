@@ -6,7 +6,7 @@ class collectd::plugin::syslog (
   Optional[Enum['OKAY', 'WARNING', 'FAILURE']] $notify_level   = undef
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'syslog':
     ensure   => $ensure,

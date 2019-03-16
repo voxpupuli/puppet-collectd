@@ -6,7 +6,7 @@ class collectd::plugin::fhcount (
   $interval                 = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'fhcount':
     ensure   => $ensure,

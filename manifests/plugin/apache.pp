@@ -7,7 +7,7 @@ class collectd::plugin::apache (
   Optional[Array] $package_install_options = $collectd::package_install_options,
 ) {
 
-  include ::collectd
+  include collectd
 
   if $facts['os']['family'] == 'RedHat' {
     if $manage_package {

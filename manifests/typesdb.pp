@@ -5,7 +5,7 @@ define collectd::typesdb (
   $owner = $collectd::config_owner,
 ) {
 
-  include ::collectd
+  include collectd
 
   concat { $path:
     ensure         => present,

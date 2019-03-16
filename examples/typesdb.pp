@@ -1,6 +1,6 @@
 $typesdb = '/etc/collectd/types.db'
 
-class { '::collectd':
+class { 'collectd':
   typesdb => [
     $typesdb,
   ],

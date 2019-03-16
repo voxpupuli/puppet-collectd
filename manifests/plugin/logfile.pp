@@ -8,7 +8,7 @@ class collectd::plugin::logfile (
   $print_severity = false
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'logfile':
     ensure   => $ensure,

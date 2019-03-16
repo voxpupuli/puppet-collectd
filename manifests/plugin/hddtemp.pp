@@ -6,7 +6,7 @@ class collectd::plugin::hddtemp (
   $interval     = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'hddtemp':
     ensure   => $ensure,

@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class {'::collectd::plugin::snmp':
+class {'collectd::plugin::snmp':
   data  =>  {
     amavis_incoming_messages => {
       'type'     => 'counter',

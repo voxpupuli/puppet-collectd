@@ -9,7 +9,7 @@ class collectd::plugin::turbostat (
   Optional[Integer]         $running_average_power_limit = undef,
   Optional[Boolean]         $logical_core_names          = undef,
 ) {
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'turbostat':
     ensure  => $ensure,

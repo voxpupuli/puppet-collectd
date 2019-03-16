@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::memcached':
+class { 'collectd::plugin::memcached':
     instances => {
         'default' => {
             'host'    => 'localhost',

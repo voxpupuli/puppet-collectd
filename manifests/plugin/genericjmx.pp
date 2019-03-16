@@ -5,8 +5,8 @@ class collectd::plugin::genericjmx (
   $manage_package = undef,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::java
+  include collectd
+  include collectd::plugin::java
 
   $class_path  = "${collectd::java_dir}/collectd-api.jar:${collectd::java_dir}/generic-jmx.jar"
   $config_file = "${collectd::plugin_conf_dir}/15-genericjmx.conf"

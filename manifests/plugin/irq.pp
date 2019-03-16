@@ -6,7 +6,7 @@ class collectd::plugin::irq (
   $interval               = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'irq':
     ensure   => $ensure,
