@@ -6,7 +6,7 @@ class collectd::plugin::write_graphite (
   $globals           = false,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'write_graphite':
     ensure  => $ensure,

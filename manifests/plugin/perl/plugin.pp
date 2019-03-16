@@ -50,7 +50,7 @@ define collectd::plugin::perl::plugin (
       }
     }
     'cpan': {
-      include ::cpan
+      include cpan
       cpan { $source:
         require => Collectd::Plugin['perl'],
       }

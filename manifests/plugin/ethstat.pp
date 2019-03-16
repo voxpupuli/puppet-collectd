@@ -7,7 +7,7 @@ class collectd::plugin::ethstat (
   $interval         = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'ethstat':
     ensure   => $ensure,

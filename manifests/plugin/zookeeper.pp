@@ -5,7 +5,7 @@ class collectd::plugin::zookeeper (
   String                    $zookeeper_port   = '2181',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'zookeeper':
     ensure   => $ensure,

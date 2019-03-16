@@ -19,7 +19,7 @@ define collectd::plugin::curl_json (
   $manage_package = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 

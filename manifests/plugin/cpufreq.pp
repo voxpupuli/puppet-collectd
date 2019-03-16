@@ -3,7 +3,7 @@ class collectd::plugin::cpufreq (
   Enum['present', 'absent'] $ensure = 'present',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'cpufreq':
     ensure => $ensure,

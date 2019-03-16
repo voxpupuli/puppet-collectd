@@ -43,7 +43,7 @@ class collectd::plugin::ovs_stats (
   Optional[String] $socket  = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   if $manage_package {
     package { 'collectd-ovs-stats':

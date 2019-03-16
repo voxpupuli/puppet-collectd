@@ -10,7 +10,7 @@ class collectd::plugin::processes (
   Optional[Boolean] $collect_memory_maps     = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'processes':
     ensure   => $ensure,

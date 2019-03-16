@@ -8,7 +8,7 @@ class collectd::plugin::intel_pmu (
   Optional[Array[String]]   $hardware_events              = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   if $hardware_events and $event_list == undef {
     fail('event_list must be defined if hardware_events is used.')

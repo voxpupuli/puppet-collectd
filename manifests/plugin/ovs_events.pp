@@ -54,7 +54,7 @@ class collectd::plugin::ovs_events (
   Optional[String] $socket             = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   if $manage_package {
     package { 'collectd-ovs-events':

@@ -9,7 +9,7 @@ class collectd::plugin::write_tsdb (
   Boolean $always_append_ds = false,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin {'write_tsdb':
     ensure  => $collectd::plugin::write_tsdb::ensure,

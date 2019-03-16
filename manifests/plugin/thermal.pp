@@ -6,7 +6,7 @@ class collectd::plugin::thermal (
   $interval               = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'thermal':
     ensure   => $ensure,

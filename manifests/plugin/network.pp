@@ -10,7 +10,7 @@ class collectd::plugin::network (
   Hash $servers                              = {},
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'network':
     ensure   => $ensure,

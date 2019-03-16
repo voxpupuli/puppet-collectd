@@ -9,7 +9,7 @@ class collectd::plugin::swap (
   Boolean $reportio         = true,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'swap':
     ensure   => $ensure,

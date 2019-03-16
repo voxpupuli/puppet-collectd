@@ -4,7 +4,7 @@ class collectd::plugin::write_network (
   Hash $servers = { 'localhost'  =>  { 'serverport' => '25826' } },
 ) {
 
-  include ::collectd
+  include collectd
 
   $servernames = keys($servers)
   if empty($servernames) {
@@ -14,7 +14,7 @@ class collectd::plugin::write_network (
   $servername = $servernames[0]
   $serverport = $servers[$servername]['serverport']
 
-  class { '::collectd::plugin::network':
+  class { 'collectd::plugin::network':
     server     => $servername,
     serverport => $serverport,
   }

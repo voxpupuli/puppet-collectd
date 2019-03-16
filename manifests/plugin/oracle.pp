@@ -6,7 +6,7 @@ class collectd::plugin::oracle (
   Optional[Integer[1]] $interval    = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   $conf_dir = $collectd::plugin_conf_dir
 

@@ -3,7 +3,7 @@ class collectd::plugin::fscache (
   $ensure = 'present',
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'fscache':
     ensure => $ensure,

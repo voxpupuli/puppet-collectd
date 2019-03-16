@@ -7,7 +7,7 @@ class collectd::plugin::interface (
   $interval               = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'interface':
     ensure   => $ensure,

@@ -1,4 +1,4 @@
-include ::collectd
+include collectd
 
 collectd::plugin { 'load':
   ensure => 'present',

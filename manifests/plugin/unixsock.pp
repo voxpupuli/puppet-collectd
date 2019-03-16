@@ -8,7 +8,7 @@ class collectd::plugin::unixsock (
   $interval                        = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'unixsock':
     ensure   => $ensure,

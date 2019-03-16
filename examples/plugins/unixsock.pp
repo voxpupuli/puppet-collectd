@@ -1,6 +1,6 @@
-include ::collectd
+include collectd
 
-class { '::collectd::plugin::unixsock':
+class { 'collectd::plugin::unixsock':
   socketfile  => '/var/run/collectd-sock',
   socketgroup => 'nagios',
 }

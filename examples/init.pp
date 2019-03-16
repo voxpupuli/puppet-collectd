@@ -1,1 +1,1 @@
-include ::collectd
+include collectd

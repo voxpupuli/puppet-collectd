@@ -4,7 +4,7 @@ class collectd::plugin::filter (
   $precachechain   = 'PreChain',
   $postcachechain  = 'PostChain',
 ) {
-  include ::collectd
+  include collectd
 
   $plugin_matches = ['regex','timediff','value','empty_counter','hashed']
   $plugin_targets = ['notification','replace','set','scale']

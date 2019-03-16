@@ -5,7 +5,7 @@ class collectd::plugin::vmem (
   $verbose  = false,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'vmem':
     ensure   => $ensure,

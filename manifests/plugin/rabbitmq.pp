@@ -59,7 +59,7 @@ class collectd::plugin::rabbitmq (
   $provider_proxy   = undef,
   $custom_types_db  = undef,
 ) {
-  include ::collectd
+  include collectd
 
   case $facts['os']['family'] {
     'RedHat': {

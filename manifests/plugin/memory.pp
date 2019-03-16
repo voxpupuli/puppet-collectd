@@ -6,7 +6,7 @@ class collectd::plugin::memory (
   $interval                 = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'memory':
     ensure   => $ensure,

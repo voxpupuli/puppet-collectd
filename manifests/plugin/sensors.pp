@@ -9,7 +9,7 @@ class collectd::plugin::sensors (
   Optional[Array[String]] $package_install_options = undef
 ) {
 
-  include ::collectd
+  include collectd
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 

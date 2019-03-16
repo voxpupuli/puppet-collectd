@@ -1,4 +1,4 @@
-include ::collectd
+include collectd
 
 collectd::plugin::mysql::database { 'puppetdb':
   host     => 'localhost',

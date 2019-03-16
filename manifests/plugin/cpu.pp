@@ -10,7 +10,7 @@ class collectd::plugin::cpu (
   Optional[Integer[1]] $interval    = undef,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'cpu':
     ensure   => $ensure,

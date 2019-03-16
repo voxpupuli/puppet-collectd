@@ -6,7 +6,7 @@ class collectd::plugin::exec (
   Boolean $globals = false,
 ) {
 
-  include ::collectd
+  include collectd
 
   collectd::plugin { 'exec':
     ensure   => $ensure,
