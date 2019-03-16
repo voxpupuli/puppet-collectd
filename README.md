@@ -1515,7 +1515,7 @@ collectd::plugin::python::module {'zk-collectd':
 }
 ```
 
-The resulting configuration would be 
+The resulting configuration would be
 
 ```apache
 Import "zk-collectd"
@@ -1525,7 +1525,6 @@ Import "zk-collectd"
   Values "abc" "def"
   Limit 4.5
 </Module>
- 
 ```
 
 Each plugin might use different `modulepath`, however make sure that all paths
