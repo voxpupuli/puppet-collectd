@@ -33,7 +33,7 @@ describe 'collectd::plugin', type: :define do
       context 'loading a plugin without flushinterval param set' do
         let(:title) { 'test_without_flushinterval' }
 
-        it "Will create #{options[:plugin_conf_dir]}conf.d/10-test_without_flushinterval.conf without the setting: FlushInterval" do
+        it "Will create #{options[:plugin_conf_dir]}conf.d/10-test_without_flushinterval.conf without setting: FlushInterval" do
           is_expected.to contain_file('test_without_flushinterval.load').without_content(%r{FlushInterval})
         end
       end
