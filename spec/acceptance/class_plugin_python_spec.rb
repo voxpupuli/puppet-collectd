@@ -57,7 +57,7 @@ describe 'collectd::plugin::python class' do
       # Run it twice and test for idempotency
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
-      shell('sleep 10')
+      shell('sleep 30')
     end
     describe service('collectd') do
       it { is_expected.to be_running }
@@ -86,7 +86,7 @@ describe 'collectd::plugin::python class' do
 	ensure   => 'present',
         provider => 'pip',
 	source   => 'git+https://github.com/mbachry/collectd-systemd.git',
-	before   => Service['collectd'],
+	notify   => Service['collectd'],
       }
       class{'collectd':
         typesdb => ['/usr/share/collectd/types.db'],
@@ -113,7 +113,7 @@ describe 'collectd::plugin::python class' do
       # Run it twice and test for idempotency
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
-      shell('sleep 10')
+      shell('sleep 30')
     end
     describe service('collectd') do
       it { is_expected.to be_running }
