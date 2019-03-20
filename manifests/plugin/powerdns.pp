@@ -3,12 +3,15 @@ class collectd::plugin::powerdns (
   Enum['present', 'absent'] $ensure       = 'present',
   Integer $order                          = 10,
   Optional[Numeric] $interval             = undef,
-  Optional[Hash[String, Hash]] $servers   = undef,
-  Optional[Hash[String, Hash]] $recursors = undef,
+  Optional[Hash[String, Hash]] $servers   = {},
+  Optional[Hash[String, Hash]] $recursors = {},
   Optional[String] $local_socket          = undef,
 ) {
 
   include collectd
+
+  $servers_defaults   = { 'ensure' => $ensure }
+  $recursors_defaults = { 'ensure' => $ensure }
 
   collectd::plugin { 'powerdns':
     ensure   => $ensure,
@@ -36,21 +39,15 @@ class collectd::plugin::powerdns (
     target  => "${collectd::plugin_conf_dir}/powerdns-config.conf",
   }
 
-  $defaults = { 'ensure' => $ensure }
-
-  if $servers {
-    create_resources(
-      collectd::plugin::powerdns::server,
-      $servers,
-      $defaults,
-    )
+  $servers.each |String $resource, Hash $attributes| {
+    collectd::plugin::powerdns::server { $resource:
+      * => $servers_defaults + $attributes,
+    }
   }
 
-  if $recursors {
-    create_resources(
-      collectd::plugin::powerdns::recursor,
-      $recursors,
-      $defaults
-    )
+  $recursors.each |String $resource, Hash $attributes| {
+    collectd::plugin::powerdns::recursor { $resource:
+      * => $recursors_defaults + $attributes,
+    }
   }
 }

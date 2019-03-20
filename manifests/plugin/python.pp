@@ -93,5 +93,10 @@ class collectd::plugin::python (
     'ensure'     => $ensure,
     'modulepath' => $module_dirs[0],
   }
-  create_resources(collectd::plugin::python::module, $modules, $defaults)
+
+  $modules.each |String $resource, Hash $attributes| {
+    collectd::plugin::python::module { $resource:
+      * => $defaults + $attributes,
+    }
+  }
 }

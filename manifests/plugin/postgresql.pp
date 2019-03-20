@@ -10,7 +10,10 @@ class collectd::plugin::postgresql (
 
   include ::collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package    = pick($manage_package, $::collectd::manage_package)
+  $databases_defaults = { 'ensure' => $ensure }
+  $queries_defaults   = { 'ensure' => $ensure }
+  $writers_defaults   = { 'ensure' => $ensure }
 
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
@@ -45,11 +48,21 @@ class collectd::plugin::postgresql (
     target  => "${collectd::plugin_conf_dir}/postgresql-config.conf",
   }
 
-  $defaults = {
-    'ensure' => $ensure,
+  $databases.each |String $resource, Hash $attributes| {
+    collectd::plugin::postgresql::database { $resource:
+      * => $databases_defaults + $attributes,
+    }
   }
 
-  create_resources(collectd::plugin::postgresql::database, $databases, $defaults)
-  create_resources(collectd::plugin::postgresql::query, $queries, $defaults)
-  create_resources(collectd::plugin::postgresql::writer, $writers, $defaults)
+  $queries.each |String $resource, Hash $attributes| {
+    collectd::plugin::postgresql::query { $resource:
+      * => $queries_defaults + $attributes,
+    }
+  }
+
+  $writers.each |String $resource, Hash $attributes| {
+    collectd::plugin::postgresql::writer { $resource:
+      * => $writers_defaults + $attributes,
+    }
+  }
 }

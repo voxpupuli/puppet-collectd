@@ -12,14 +12,29 @@ class collectd::plugin::network (
 
   include ::collectd
 
+  $listeners_defaults = {
+    'ensure' => $ensure,
+  }
+
+  $servers_defaults   = {
+    'ensure' => $ensure,
+  }
+
   collectd::plugin { 'network':
     ensure   => $ensure,
     content  => template('collectd/plugin/network.conf.erb'),
     interval => $interval,
   }
-  $defaults = {
-    'ensure' => $ensure,
+
+  $listeners.each |String $resource, Hash $attributes| {
+    collectd::plugin::network::listener { $resource:
+      * => $listeners_defaults + $attributes,
+    }
   }
-  create_resources(collectd::plugin::network::listener, $listeners, $defaults)
-  create_resources(collectd::plugin::network::server, $servers, $defaults)
+
+  $servers.each |String $resource, Hash $attributes| {
+    collectd::plugin::network::server { $resource:
+      * => $servers_defaults + $attributes,
+    }
+  }
 }
