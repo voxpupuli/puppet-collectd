@@ -5,7 +5,8 @@ define collectd::plugin (
   $order    = '10',
   $globals  = false,
   $interval = undef,
-  $plugin   = $name
+  $plugin   = $name,
+  Optional[Integer] $flushinterval = undef,
 ) {
 
   include ::collectd
