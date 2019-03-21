@@ -2,6 +2,9 @@
 <% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '4.9.4']) >= 0) -%>
 <LoadPlugin <%= @plugin %>>
   Globals <%= @globals %>
+<% if @flushinterval and scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.2']) >= 0) -%>
+  FlushInterval <%= @flushinterval %>
+<% end -%>
 <% if @interval and scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.2']) >= 0) -%>
   Interval <%= @interval %>
 <% end -%>
