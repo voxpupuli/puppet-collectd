@@ -12,7 +12,7 @@ class collectd::plugin::dns (
 
   include collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if $_manage_package {
     package { 'collectd-dns':

@@ -10,7 +10,7 @@ class collectd::plugin::postgresql (
 
   include collectd
 
-  $_manage_package    = pick($manage_package, $::collectd::manage_package)
+  $_manage_package    = pick($manage_package, $collectd::manage_package)
   $databases_defaults = { 'ensure' => $ensure }
   $queries_defaults   = { 'ensure' => $ensure }
   $writers_defaults   = { 'ensure' => $ensure }

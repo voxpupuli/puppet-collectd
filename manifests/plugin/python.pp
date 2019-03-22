@@ -24,10 +24,10 @@ class collectd::plugin::python (
     false => $modulepaths
   }
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if $ensure == 'present' {
-    $ensure_real = $::collectd::package_ensure
+    $ensure_real = $collectd::package_ensure
   } elsif $ensure == 'absent' {
     $ensure_real = 'absent'
   }
@@ -57,7 +57,7 @@ class collectd::plugin::python (
       'ensure'  => $ensure_modulepath,
       'mode'    => $collectd::plugin_conf_dir_mode,
       'owner'   => $collectd::config_owner,
-      'purge'   => $::collectd::purge_config,
+      'purge'   => $collectd::purge_config,
       'force'   => true,
       'group'   => $collectd::config_group,
       'require' => Package[$collectd::package_name]

@@ -14,7 +14,7 @@ class collectd::plugin::smart (
     if $manage_package != undef {
       $_manage_package = $manage_package
     } else {
-      if versioncmp($::collectd::collectd_version_real, '5.5') >= 0 {
+      if versioncmp($collectd::collectd_version_real, '5.5') >= 0 {
         $_manage_package = true
     } else {
         $_manage_package = false
