@@ -11,7 +11,7 @@ class collectd::plugin::genericjmx (
   $class_path  = "${collectd::java_dir}/collectd-api.jar:${collectd::java_dir}/generic-jmx.jar"
   $config_file = "${collectd::plugin_conf_dir}/15-genericjmx.conf"
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {

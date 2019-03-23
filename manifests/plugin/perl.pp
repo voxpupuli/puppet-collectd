@@ -8,7 +8,7 @@ class collectd::plugin::perl (
 
   include collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   $conf_dir = $collectd::plugin_conf_dir
 

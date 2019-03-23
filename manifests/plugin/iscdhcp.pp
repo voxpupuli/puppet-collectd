@@ -18,7 +18,7 @@ class collectd::plugin::iscdhcp (
 ) {
   include collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if ($_manage_package) {
     if (!defined(Package['python-pip'])) {

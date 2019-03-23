@@ -71,7 +71,7 @@ class collectd::plugin::rabbitmq (
   }
 
   $_real_custom_types_db = pick($custom_types_db, $_custom_types_db)
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if ($_manage_package) {
     if (!defined(Package['python-pip'])) {
@@ -107,7 +107,7 @@ class collectd::plugin::rabbitmq (
 
   file { 'rabbitmq.load':
     ensure  => $ensure,
-    path    => "${::collectd::plugin_conf_dir}/10-rabbitmq.conf",
+    path    => "${collectd::plugin_conf_dir}/10-rabbitmq.conf",
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     mode    => $collectd::config_mode,
