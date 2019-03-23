@@ -10,7 +10,15 @@ class collectd::plugin::dbi (
 
   include collectd
 
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
+  $_manage_package     = pick($manage_package, $::collectd::manage_package)
+
+  $_databases_defaults = {
+    'ensure' => $ensure,
+  }
+
+  $_queries_defaults   = {
+    'ensure' => $ensure,
+  }
 
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
@@ -53,10 +61,15 @@ class collectd::plugin::dbi (
     target  => "${collectd::plugin_conf_dir}/dbi-config.conf",
   }
 
-  $defaults = {
-    'ensure' => $ensure,
+  $databases.each |String $resource, Hash $attributes| {
+    collectd::plugin::dbi::database { $resource:
+      * => $_databases_defaults + $attributes,
+    }
   }
 
-  create_resources(collectd::plugin::dbi::database, $databases, $defaults)
-  create_resources(collectd::plugin::dbi::query, $queries, $defaults)
+  $queries.each |String $resource, Hash $attributes| {
+    collectd::plugin::dbi::query { $resource:
+      * => $_queries_defaults + $attributes,
+    }
+  }
 }

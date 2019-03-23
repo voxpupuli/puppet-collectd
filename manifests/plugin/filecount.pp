@@ -13,7 +13,11 @@ class collectd::plugin::filecount (
   $values = values($directories)
   if size($values) > 0 and is_hash($values[0]) {
     $content = undef
-    create_resources(collectd::plugin::filecount::directory, $directories, {ensure => $ensure})
+    $directories.each |String $resource, Hash $attributes| {
+      collectd::plugin::filecount::directory { $resource:
+        * => { ensure => $ensure } + $attributes,
+      }
+    }
   } else {
     $content = template('collectd/plugin/filecount.conf.erb')
   }

@@ -12,6 +12,9 @@ class collectd::plugin::processes (
 
   include collectd
 
+  $processes_defaults       = { 'ensure' => $ensure }
+  $process_matches_defaults = { 'ensure' => $ensure }
+
   collectd::plugin { 'processes':
     ensure   => $ensure,
     order    => $order,
@@ -38,23 +41,21 @@ class collectd::plugin::processes (
     target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
 
-  $defaults = { 'ensure' => $ensure }
-
   if $processes {
     $process_resources = collectd_convert_processes($processes)
-    create_resources(
-      collectd::plugin::processes::process,
-      $process_resources,
-      $defaults,
-    )
-
+    $process_resources.each |String $resource, Hash $attributes| {
+      collectd::plugin::processes::process { $resource:
+        * => $processes_defaults + $attributes,
+      }
+    }
   }
+
   if $process_matches {
     $process_matches_resources = collectd_convert_processes($process_matches)
-    create_resources(
-      collectd::plugin::processes::processmatch,
-      $process_matches_resources,
-      $defaults
-    )
+    $process_matches_resources.each |String $resource, Hash $attributes| {
+      collectd::plugin::processes::processmatch { $resource:
+        * => $process_matches_defaults + $attributes,
+      }
+    }
   }
 }

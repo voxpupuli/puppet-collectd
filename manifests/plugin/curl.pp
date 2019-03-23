@@ -27,5 +27,9 @@ class collectd::plugin::curl (
     'ensure' => $ensure,
   }
 
-  create_resources(collectd::plugin::curl::page, $pages, $defaults)
+  $pages.each |String $resource, Hash $attributes| {
+    collectd::plugin::curl::page { $resource:
+      * => $defaults + $attributes,
+    }
+  }
 }

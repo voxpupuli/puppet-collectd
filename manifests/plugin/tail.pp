@@ -2,14 +2,18 @@
 # https://collectd.org/wiki/index.php/Plugin:Tail
 class collectd::plugin::tail (
   $interval             = undef,
-  Optional[Hash] $files = undef,
+  Optional[Hash] $files = {},
 ) {
 
   collectd::plugin { 'tail':
     interval => $interval,
   }
 
-  if $files {
-    create_resources(collectd::plugin::tail::file, $files)
+  $defaults = {}
+
+  $files.each |String $resource, Hash $attributes| {
+    collectd::plugin::tail::file { $resource:
+      * => $defaults + $attributes,
+    }
   }
 }
