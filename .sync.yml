@@ -9,3 +9,4 @@
   secure: "FAK3Izs5bSZyblGvcFnGWm0exZV5+v9pbwfRDD2oihWxX3U3pArGW+3XcwcJfLQgrUYBsOTmHC8yPjlgTBYeIt/5pvg9X+3jwNgeto6kozpI/nvAq4NtcHhzxRejuPELhFYeXZ3hEw0w+v/ZRo2cNLwI0LLpiWEDvCMZN1CJ2RY="
 spec/spec_helper.rb:
   spec_overrides: "require 'spec_helper_methods'"
+  mock_with: ':mocha'
