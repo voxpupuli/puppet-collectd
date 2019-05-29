@@ -19,13 +19,23 @@ class collectd::plugin::java (
       }
     }
     if $java_home {
-      file { '/usr/lib64/libjvm.so':
-        ensure => 'link',
-        target => "${java_home}/jre/lib/amd64/server/libjvm.so",
+      # OpenJDK based Java distribution
+      exec { "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/server/libjvm.so":
+        creates => '/usr/lib64/libjvm.so',
+        onlyif  => "test -e ${java_home}/jre/lib/server/libjvm.so",
+        notify  => Exec['/sbin/ldconfig']
       }
+
+      # Oracle based Java distribution
+      exec { "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/amd64/server/libjvm.so":
+        creates => '/usr/lib64/libjvm.so',
+        onlyif  => "test -e ${java_home}/jre/lib/amd64/server/libjvm.so",
+        notify  => Exec['/sbin/ldconfig']
+      }
+
       # Reload SO files so libjvm.so can be found
-      -> exec { '/sbin/ldconfig':
-        unless => '/sbin/ldconfig -p |grep libjvm.so >/dev/null 2>&1',
+      exec { '/sbin/ldconfig':
+        unless  => '/sbin/ldconfig -p |grep libjvm.so >/dev/null 2>&1',
       }
     }
   }
