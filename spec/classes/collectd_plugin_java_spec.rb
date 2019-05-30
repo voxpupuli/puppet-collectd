@@ -120,7 +120,7 @@ describe 'collectd::plugin::java', type: :class do
         context 'java_home option is empty' do
           it 'will not contain libjvm' do
             is_expected.not_to contain_exec('Link libjvm.so on OpenJDK').with_onlyif('test -e /bla/jre/lib/server/libjvm.so')
-            is_expected.not_to contain_exec('Link libjvm.so on Oracle').with_onlyif('test -e /bla/jre/lib/server/amd64/libjvm.so')
+            is_expected.not_to contain_exec('Link libjvm.so on Oracle').with_onlyif('test -e /bla/jre/lib/amd64/server/libjvm.so')
             is_expected.not_to contain_exec('/sbin/ldconfig')
           end
         end
@@ -134,7 +134,7 @@ describe 'collectd::plugin::java', type: :class do
 
           it 'will contain libjvm' do
             is_expected.to contain_exec('Link libjvm.so on OpenJDK').with_onlyif('test -e /bla/jre/lib/server/libjvm.so')
-            is_expected.to contain_exec('Link libjvm.so on Oracle').with_onlyif('test -e /bla/jre/lib/server/amd64/libjvm.so')
+            is_expected.to contain_exec('Link libjvm.so on Oracle').with_onlyif('test -e /bla/jre/lib/amd64/server/libjvm.so')
             is_expected.to contain_exec('/sbin/ldconfig')
           end
         end
