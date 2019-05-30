@@ -36,6 +36,7 @@ class collectd::plugin::java (
       # Reload SO files so libjvm.so can be found
       exec { '/sbin/ldconfig':
         unless  => '/sbin/ldconfig -p |grep libjvm.so >/dev/null 2>&1',
+        require => [Exec['Link libjvm.so on OpenJDK'], Exec['Link libjvm.so on Oracle']]
       }
     }
   }
