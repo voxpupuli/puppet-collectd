@@ -20,14 +20,14 @@ class collectd::plugin::java (
     }
     if $java_home {
       exec { 'Link libjvm.so on OpenJDK':
-        command => "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/server/libjvm.so",
+        command => "/usr/bin/ln -s ${java_home}/jre/lib/server/libjvm.so /usr/lib64/libjvm.so",
         creates => '/usr/lib64/libjvm.so',
         onlyif  => "/usr/bin/test -e ${java_home}/jre/lib/server/libjvm.so",
         notify  => Exec['/sbin/ldconfig'],
       }
 
       exec { 'Link libjvm.so on Oracle':
-        command => "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/amd64/server/libjvm.so",
+        command => "/usr/bin/ln -s ${java_home}/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so",
         creates => '/usr/lib64/libjvm.so',
         onlyif  => "/usr/bin/test -e ${java_home}/jre/lib/amd64/server/libjvm.so",
         notify  => Exec['/sbin/ldconfig'],
