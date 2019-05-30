@@ -19,15 +19,15 @@ class collectd::plugin::java (
       }
     }
     if $java_home {
-      # OpenJDK based Java distribution
-      exec { "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/server/libjvm.so":
+      exec { 'Link libjvm.so on OpenJDK':
+        command => "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/server/libjvm.so",
         creates => '/usr/lib64/libjvm.so',
         onlyif  => "test -e ${java_home}/jre/lib/server/libjvm.so",
         notify  => Exec['/sbin/ldconfig'],
       }
 
-      # Oracle based Java distribution
-      exec { "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/amd64/server/libjvm.so":
+      exec { 'Link libjvm.so on Oracle':
+        command => "/usr/bin/ln -s /usr/lib64/libjvm.so ${java_home}/jre/lib/amd64/server/libjvm.so",
         creates => '/usr/lib64/libjvm.so',
         onlyif  => "test -e ${java_home}/jre/lib/amd64/server/libjvm.so",
         notify  => Exec['/sbin/ldconfig'],
