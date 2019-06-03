@@ -87,20 +87,20 @@
   ],
   "dependencies": [
     {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.0 < 6.0.0"
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 2.2.0 < 8.0.0"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 1.2.5 < 6.0.0"
+      "version_requirement": ">= 4.1.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0 < 7.0.0"
     },
     {
       "name": "stahnma-epel",
       "version_requirement": ">= 1.2.2 < 2.0.0"
-    },
-    {
-      "name": "puppetlabs-apt",
-      "version_requirement": ">= 2.2.0 < 8.0.0"
     }
   ]
 }
