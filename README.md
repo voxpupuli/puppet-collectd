@@ -2092,6 +2092,57 @@ collectd::typesdb { $db:
 }
 ```
 
+## Puppet Tasks
+Assuming that the collectdctl command is available on remote nodes puppet tasks exist to
+run collectdctl and collect results from nodes.
+
+### Puppet Task collectd::listval
+```bash
+$ bolt task show collectd::listval
+collectd::listval - Lists all available collectd metrics
+
+USAGE:
+bolt task run --nodes <node-name> collectd::listval
+collectd::listval - Lists all available collectd metrics
+
+USAGE:
+bolt task run --nodes <node-name> collectd::listval
+```
+
+### Puppet Task collectd::getval
+```bash
+$ bolt task show collectd::getval
+
+collectd::getval - Get a particular metric for a host
+
+USAGE:
+bolt task run --nodes <node-name> collectd::getval metric=<value>
+
+PARAMETERS:
+- metric: String[1]
+    Name of metric, e.g. load/load-relative
+
+```
+
+#### Example Task collectd::getval
+
+```bash
+$ bolt -u root task run collectd::getval metric=load/load-relative -n aiadm32.example.org
+```
+
+returns the values of the load metric.
+
+```json
+  {
+    "metric": "load/load-relative",
+    "values": {
+      "shortterm": "1.750000e-01",
+      "longterm": "8.000000e-02",
+      "midterm": "8.500000e-02"
+    }
+  }
+```
+
 ## Limitations
 
 See metadata.json for supported platforms

@@ -1,0 +1,11 @@
+{
+    "description": "Get a particular metric for a host",
+    "input_method": "stdin",
+    "files": ["python_task_helper/files/task_helper.py"],
+    "parameters": {
+      "metric": {
+        "description": "Name of metric, e.g. load/load-relative",
+        "type": "String[1]"
+      }
+    }
+}
