@@ -2094,7 +2094,8 @@ collectd::typesdb { $db:
 
 ## Puppet Tasks
 Assuming that the collectdctl command is available on remote nodes puppet tasks exist to
-run collectdctl and collect results from nodes.
+run collectdctl and collect results from nodes. The tasks rely on `python3` being available
+also.
 
 ### Puppet Task collectd::listval
 ```bash

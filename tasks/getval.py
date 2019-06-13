@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os, sys
 import subprocess
@@ -12,7 +12,7 @@ HOSTNAME = socket.gethostname()
 class GetVal(TaskHelper):
     def task(self, args):
         fullmetric = HOSTNAME+'/'+args['metric']
-        results = subprocess.check_output(['/usr/bin/collectdctl', 'getval',fullmetric]).rstrip().split('\n')
+        results = subprocess.check_output(['/usr/bin/collectdctl', 'getval',fullmetric]).rstrip().decode().split('\n')
         values = { k:v for k,v in (x.split('=')  for x in results)}
         return {
                   'metric': args['metric'],
