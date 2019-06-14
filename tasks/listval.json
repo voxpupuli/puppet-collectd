@@ -1,0 +1,5 @@
+{
+    "description": "Lists all available collectd metrics",
+    "input_method": "stdin",
+    "files": ["python_task_helper/files/task_helper.py"]
+}
