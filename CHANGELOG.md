@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v11.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.0.0) (2019-06-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.1.0...v11.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.6.0 and drop Puppet 4 [\#872](https://github.com/voxpupuli/puppet-collectd/pull/872) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Replace create\_resources\(\) calls [\#716](https://github.com/voxpupuli/puppet-collectd/issues/716)
+- Add puppet tasks to call collectdctl [\#882](https://github.com/voxpupuli/puppet-collectd/pull/882) ([traylenator](https://github.com/traylenator))
+- replace create\_resources with resource types [\#874](https://github.com/voxpupuli/puppet-collectd/pull/874) ([zoojar](https://github.com/zoojar))
+- add flushinterval param to loadplugin config [\#873](https://github.com/voxpupuli/puppet-collectd/pull/873) ([zoojar](https://github.com/zoojar))
+- add Ubuntu 18.04 support [\#868](https://github.com/voxpupuli/puppet-collectd/pull/868) ([bastelfreak](https://github.com/bastelfreak))
+- Add address field to memcached plugin [\#853](https://github.com/voxpupuli/puppet-collectd/pull/853) ([mrunge](https://github.com/mrunge))
+
+**Fixed bugs:**
+
+- Cannot specify ci\_package\_repo =\> 5.8 even though 5.8 is available [\#741](https://github.com/voxpupuli/puppet-collectd/issues/741)
+- Allow puppetlabs/concat 6.x, puppetlabs/stdlib 6.x [\#881](https://github.com/voxpupuli/puppet-collectd/pull/881) ([dhoppe](https://github.com/dhoppe))
+- remove reference to collectd::plugin::perl::filename [\#849](https://github.com/voxpupuli/puppet-collectd/pull/849) ([mindriot88](https://github.com/mindriot88))
+
+**Merged pull requests:**
+
+- Allow puppetlabs/apt 7.x [\#878](https://github.com/voxpupuli/puppet-collectd/pull/878) ([dhoppe](https://github.com/dhoppe))
+- puppet-lint: fix topscope\_variable [\#875](https://github.com/voxpupuli/puppet-collectd/pull/875) ([bastelfreak](https://github.com/bastelfreak))
+- replace deprecated has\_key\(\) with `in` [\#869](https://github.com/voxpupuli/puppet-collectd/pull/869) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v10.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.1.0) (2018-10-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.1...v10.1.0)
