@@ -30,7 +30,6 @@ define collectd::plugin::perl::plugin (
   }
 
   $conf_dir = $collectd::plugin_conf_dir
-  $base_filename = $collectd::plugin::perl::filename
   $filename = "${conf_dir}/perl/plugin-${order}_${name}.conf"
 
   file { $filename:
