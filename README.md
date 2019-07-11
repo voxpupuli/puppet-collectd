@@ -1453,8 +1453,8 @@ class { 'collectd::plugin::protocols':
 
 #### Class: `collectd::plugin::python`
 The plugin uses a fact `python_dir` to find the python load path for modules.
-python must be installed as a pre-requisite for the this fact to give a
-non-default value.
+python or python3 must be installed as a pre-requisite for the this
+fact to give a non-default value.
 
 * `modulepaths` is an array of paths where will be Collectd looking for Python
   modules, Puppet will ensure that each of specified directories exists and it
