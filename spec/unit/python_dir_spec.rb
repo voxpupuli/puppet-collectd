@@ -26,10 +26,23 @@ describe 'python_dir', type: :fact do
         expect(Facter.value(:python_dir)).to eq('/usr/lib/python2.7/site-packages')
       end
     end
+
+    context 'RedHat versioned python' do
+      before do
+        Facter.fact(:osfamily).stubs(:value).returns('RedHat')
+        Facter::Util::Resolution.stubs(:which).with('python').returns(false)
+        Facter::Util::Resolution.stubs(:which).with('python3').returns(true)
+        Facter::Util::Resolution.stubs(:exec).with('python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').returns('/usr/lib/python3.6/site-packages')
+      end
+      it do
+        expect(Facter.value(:python_dir)).to eq('/usr/lib/python3.6/site-packages')
+      end
+    end
   end
 
   it 'is empty string if python not installed' do
     Facter::Util::Resolution.stubs(:which).with('python').returns(nil)
+    Facter::Util::Resolution.stubs(:which).with('python3').returns(nil)
     expect(Facter.fact(:python_dir).value).to eq('')
   end
 end
