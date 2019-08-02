@@ -1976,6 +1976,12 @@ class { 'collectd::plugin::write_kafka':
   kafka_port => 9092,
   topics     => {
     'mytopic'      => { 'format' => 'JSON' },
+  },
+  properties => {
+    'myproperty'   => { 'myvalue' },
+  },
+  meta       => {
+    'mymeta'       => { 'myvalue' },
   }
 }
 ```
