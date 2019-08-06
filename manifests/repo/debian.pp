@@ -1,6 +1,9 @@
 class collectd::repo::debian {
 
   contain apt
+  if $collectd::manage_package {
+    Exec['apt_update'] -> Package[$collectd::package_name]
+  }
 
   if $collectd::ci_package_repo {
 
