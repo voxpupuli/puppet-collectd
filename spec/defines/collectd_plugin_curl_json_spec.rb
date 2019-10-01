@@ -1,15 +1,7 @@
 require 'spec_helper'
 
-# Facter 2 doesn't include the os.distro fact so override the facter version we tell facterdb to use.
-facterdb_facterversion = case Puppet.version
-                         when %r{^4}
-                           '3.6.7'
-                         else
-                           '3.8.0'
-                         end
-
 describe 'collectd::plugin::curl_json', type: :define do
-  on_supported_os(facterversion: facterdb_facterversion).each do |os, facts|
+  on_supported_os.each do |os, facts|
     context "on #{os} " do
       options = os_specific_options(facts)
       let :facts do

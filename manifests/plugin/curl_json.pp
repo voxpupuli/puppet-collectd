@@ -25,11 +25,7 @@ define collectd::plugin::curl_json (
 
   if $_manage_package {
     if $facts['os']['family'] == 'Debian' {
-      $libyajl_package = $facts['os']['distro']['codename'] ? {
-        'precise' => 'libyajl1',
-        default   => 'libyajl2'
-      }
-      ensure_packages($libyajl_package)
+      ensure_packages('libyajl2')
     }
 
     if $facts['os']['family'] == 'RedHat' {
