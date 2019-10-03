@@ -17,6 +17,9 @@
   LogSendErrors <%= @logsenderrors %>
   Protocol "<%= @protocol %>"
 <%- end -%>
+<%- if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.6']) >= 0) -%>
+  ReconnectInterval <%= @reconnectinterval %>
+<%- end -%>
 <%- if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.3']) >= 0) -%>
 </Node>
 <%- else -%>
