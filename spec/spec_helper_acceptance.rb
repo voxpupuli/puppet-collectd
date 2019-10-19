@@ -6,17 +6,17 @@ require 'beaker/module_install_helper'
 run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
 
 RSpec.configure do |c|
-  install_module_on(hosts)
-  install_module_dependencies_on(hosts)
-
   # Readable test descriptions
   c.formatter = :documentation
 
   # Configure all nodes in nodeset
   c.before :suite do
+    install_module
+    install_module_dependencies
+
     hosts.each do |host|
       # python is pre-requisite to the python_path fact.
-      on host, puppet('resource', 'package', 'python', 'ensure=installed')
+      host.install_package('python')
     end
   end
 end
