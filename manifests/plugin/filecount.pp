@@ -11,7 +11,7 @@ class collectd::plugin::filecount (
   #  - new: hash for create_resources collectd::plugin::filecount::directory
   #  - old: backward compatibility, simple instance => path hash
   $values = values($directories)
-  if size($values) > 0 and is_hash($values[0]) {
+  if size($values) > 0 and $values[0] =~ Hash {
     $content = undef
     $directories.each |String $resource, Hash $attributes| {
       collectd::plugin::filecount::directory { $resource:

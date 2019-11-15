@@ -11,7 +11,7 @@ class collectd::plugin::openvpn (
 
   include collectd
 
-  if is_string($statusfile) {
+  if $statusfile =~ String {
     $statusfiles = [ $statusfile ]
   } else {
     $statusfiles = $statusfile
