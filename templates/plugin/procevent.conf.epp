@@ -2,8 +2,8 @@
 <% unless $::collectd::plugin::procevent::process  =~ Undef { -%>
     Process "<%= $::collectd::plugin::procevent::process %>"
 <% } -%>
-<% unless $::collectd::plugin::procevent::regex_process  =~ Undef { -%>
-    RegexProcess "<%= $::collectd::plugin::procevent::regex_process %>"
+<% unless $::collectd::plugin::procevent::process_regex  =~ Undef { -%>
+    ProcessRegex "<%= $::collectd::plugin::procevent::process_regex %>"
 <% } -%>
 <% unless $::collectd::plugin::procevent::buffer_length =~ Undef { -%>
     BufferLength <%= $::collectd::plugin::procevent::buffer_length %>

@@ -20,7 +20,7 @@
 #  name will be monitored for EXECs and EXITs.
 #  Defaults to undef
 #
-# [*regex_process*]
+# [*process_regex*]
 #  Enumerate a process pattern to monitor.  All processes that match this
 #  regular expression will be monitored for EXECs and EXITs.
 #  Defaults to undef
@@ -35,7 +35,7 @@ class collectd::plugin::procevent (
   Enum['present', 'absent'] $ensure            = 'present',
   Boolean $manage_package                      = $collectd::manage_package,
   Optional[String[1]] $process                 = undef,
-  Optional[String[1]] $regex_process           = undef,
+  Optional[String[1]] $process_regex           = undef,
   Optional[Integer[1, default]] $buffer_length = undef,
 ) {
 

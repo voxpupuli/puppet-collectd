@@ -34,12 +34,12 @@ describe 'collectd::plugin::procevent', type: :class do
         let(:params) do
           { ensure: 'present',
             process: 'foo',
-            regex_process: '/bar/',
+            process_regex: '/bar/',
             buffer_length: 10 }
         end
 
         it { is_expected.to contain_file('procevent.load').with(content: %r{Process "foo"}) }
-        it { is_expected.to contain_file('procevent.load').with(content: %r{RegexProcess "/bar/"}) }
+        it { is_expected.to contain_file('procevent.load').with(content: %r{ProcessRegex "/bar/"}) }
         it { is_expected.to contain_file('procevent.load').with(content: %r{BufferLength 10}) }
       end
 
