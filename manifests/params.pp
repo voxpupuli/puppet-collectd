@@ -3,7 +3,7 @@ class collectd::params {
 
   $autoloadplugin            = false
   $fqdnlookup                = true
-  $collectd_hostname         = $facts['hostname']
+  $collectd_hostname         = $facts['networking']['hostname']
   $conf_content              = undef
   $config_mode               = '0640'
   $config_owner              = 'root'
