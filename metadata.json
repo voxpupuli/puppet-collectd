@@ -45,14 +45,6 @@
       ]
     },
     {
-      "operatingsystem": "OpenBSD",
-      "operatingsystemrelease": [
-        "5.7",
-        "5.8",
-        "5.9"
-      ]
-    },
-    {
       "operatingsystem": "Gentoo"
     },
     {
