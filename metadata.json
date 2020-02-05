@@ -38,12 +38,6 @@
       ]
     },
     {
-      "operatingsystem": "Solaris",
-      "operatingsystemrelease": [
-        "11"
-      ]
-    },
-    {
       "operatingsystem": "FreeBSD",
       "operatingsystemrelease": [
         "11",
