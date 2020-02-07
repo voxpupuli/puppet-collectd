@@ -159,6 +159,7 @@ documentation for each plugin for configurable attributes.
 * `nut` (see [collectd::plugin::nut](#class-collectdpluginnut) below)
 * `openldap` (see [collectd::plugin::openldap](#class-collectdpluginopenldap) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `pcie_errors` (see [collectd::plugin::pcie_errors](#class-collectdpluginpcie_errors) below)
 * `perl` (see [collectd::plugin::perl](#class-collectdpluginperl) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
 * `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql)
@@ -1231,6 +1232,17 @@ Watch the single default `statusfile`:
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
+}
+```
+
+#### Class: `collectd::plugin::pcie_errors`
+
+```puppet
+class { 'collectd::plugin::pcie_errors':
+  source                   => undef,
+  access_dir               => undef,
+  report_masked            => false,
+  persistent_notifications => false,
 }
 ```
 
