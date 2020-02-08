@@ -18,9 +18,9 @@ define collectd::plugin::perl::plugin (
   }
 
   if $include_dir {
-    if is_string($include_dir) {
+    if $include_dir =~ String {
       $include_dirs = [ $include_dir ]
-    } elsif is_array($include_dir) {
+    } elsif $include_dir =~ Array {
       $include_dirs = $include_dir
     } else {
       fail("include_dir must be either array or string: ${include_dir}")
