@@ -4,12 +4,47 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v11.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.1.0) (2020-02-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.0.0...v11.1.0)
+
+**Implemented enhancements:**
+
+- Add Mce log plugin [\#904](https://github.com/voxpupuli/puppet-collectd/pull/904) ([MichalRebisz](https://github.com/MichalRebisz))
+- Fix stdlib deprecation warnings [\#895](https://github.com/voxpupuli/puppet-collectd/pull/895) ([amorphina](https://github.com/amorphina))
+- Add ReconnectInterval option to the write\_graphite plugin \(defaults to zero, introduced in version 5.6\) [\#892](https://github.com/voxpupuli/puppet-collectd/pull/892) ([markasammut](https://github.com/markasammut))
+- Plugin write kafka custom properties and meta [\#888](https://github.com/voxpupuli/puppet-collectd/pull/888) ([nitrik](https://github.com/nitrik))
+- Accept to use python3 if python is not on the path [\#885](https://github.com/voxpupuli/puppet-collectd/pull/885) ([traylenator](https://github.com/traylenator))
+
+**Fixed bugs:**
+
+- fixes \#901 by excluding the ReportRelative option [\#907](https://github.com/voxpupuli/puppet-collectd/pull/907) ([bastelfreak](https://github.com/bastelfreak))
+- plugin/java: handle OpenJDK as well [\#880](https://github.com/voxpupuli/puppet-collectd/pull/880) ([GiedriusS](https://github.com/GiedriusS))
+
+**Closed issues:**
+
+- Error with Plugin "Load" with collectd-5.9 and RHEL-8 [\#901](https://github.com/voxpupuli/puppet-collectd/issues/901)
+- ProcEvent plugin uses ProcessRegex instead of RegexProcess [\#897](https://github.com/voxpupuli/puppet-collectd/issues/897)
+
+**Merged pull requests:**
+
+- update repo links to https [\#903](https://github.com/voxpupuli/puppet-collectd/pull/903) ([bastelfreak](https://github.com/bastelfreak))
+- modulesync 2.10.1 / Drop FreeBSD 9 & 10 / Add FreeBSD 11 and 12 / Drop Solaris [\#899](https://github.com/voxpupuli/puppet-collectd/pull/899) ([dhoppe](https://github.com/dhoppe))
+- Remove duplicate CONTRIBUTING.md file [\#898](https://github.com/voxpupuli/puppet-collectd/pull/898) ([dhoppe](https://github.com/dhoppe))
+- RegexProcess has been renamed during collectd [\#896](https://github.com/voxpupuli/puppet-collectd/pull/896) ([mrunge](https://github.com/mrunge))
+- drop Ubuntu 14.04 support [\#894](https://github.com/voxpupuli/puppet-collectd/pull/894) ([bastelfreak](https://github.com/bastelfreak))
+- Clean up acceptance spec helper [\#893](https://github.com/voxpupuli/puppet-collectd/pull/893) ([ekohl](https://github.com/ekohl))
+- drop legacy precise code [\#891](https://github.com/voxpupuli/puppet-collectd/pull/891) ([bastelfreak](https://github.com/bastelfreak))
+- travis: switch base OS from xenial to bionic [\#890](https://github.com/voxpupuli/puppet-collectd/pull/890) ([bastelfreak](https://github.com/bastelfreak))
+- Apt update before installation of collectd [\#889](https://github.com/voxpupuli/puppet-collectd/pull/889) ([theosotr](https://github.com/theosotr))
+
 ## [v11.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.0.0) (2019-06-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.1.0...v11.0.0)
 
 **Breaking changes:**
 
+- drop EOL Ubuntu 14.04 [\#884](https://github.com/voxpupuli/puppet-collectd/pull/884) ([bastelfreak](https://github.com/bastelfreak))
 - modulesync 2.6.0 and drop Puppet 4 [\#872](https://github.com/voxpupuli/puppet-collectd/pull/872) ([bastelfreak](https://github.com/bastelfreak))
 
 **Implemented enhancements:**

@@ -1,0 +1,20 @@
+<%- | Optional[String] $mceloglogfile = undef,
+      Optional $memory   = undef,
+| -%>
+<Plugin mcelog>
+<% if $mceloglogfile { %>
+McelogLogfile "<%= $mceloglogfile %>"
+<% } -%>
+<% if $collectd::plugin::mcelog::memory { %>
+<Memory>
+<% $collectd::plugin::mcelog::memory.keys.sort.each |$key| { -%>
+<% if $key == 'mcelogclientsocket' { -%>
+McelogClientSocket "<%= $collectd::plugin::mcelog::memory[$key] %>"
+<% } -%>
+<% if $key == 'persistentnotification' { -%>
+PersistentNotification <%= $collectd::plugin::mcelog::memory[$key] %>
+<% } -%>
+<% } -%>
+</Memory>
+<% } -%>
+</Plugin>

@@ -32,7 +32,7 @@ def all_supported_os_hash
       },
       {
         'operatingsystem' => 'FreeBSD',
-        'operatingsystemrelease' => ['10']
+        'operatingsystemrelease' => %w[11 12]
       },
       {
         'operatingsystem' => 'Archlinux'

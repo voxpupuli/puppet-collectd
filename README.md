@@ -145,6 +145,7 @@ documentation for each plugin for configurable attributes.
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `virt` (see [collectd::plugin::virt](#class-collectdpluginvirt) below)
 * `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
+* `mcelog` (see [collectd::plugin::mcelog](#class-collectdpluginmcelog) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached)
   below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
@@ -894,6 +895,16 @@ class { 'collectd::plugin::intel_pmu':
 }
 ```
 
+#### Class: `collectd::plugin::mcelog`
+
+```puppet
+class { 'collectd::plugin::mcelog':
+  mceloglogfile           => '/var/log/mcelog'
+  memory                  => true
+  mcelogclientsocket      => '/var/run/mcelog-client'
+  persistentnotification  => true
+}
+```
 #### Class: `collectd::plugin::intel_rdt`
 ```puppet
 class { 'collectd::plugin::intel_rdt':
@@ -1965,6 +1976,12 @@ class { 'collectd::plugin::write_kafka':
   kafka_port => 9092,
   topics     => {
     'mytopic'      => { 'format' => 'JSON' },
+  },
+  properties => {
+    'myproperty'   => { 'myvalue' },
+  },
+  meta       => {
+    'mymeta'       => { 'myvalue' },
   }
 }
 ```
