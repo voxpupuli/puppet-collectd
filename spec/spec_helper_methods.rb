@@ -24,7 +24,7 @@ def all_supported_os_hash
       },
       {
         'operatingsystem' => 'CentOS',
-        'operatingsystemrelease' => ['7', '8']
+        'operatingsystemrelease' => %w[7 8]
       },
       {
         'operatingsystem' => 'Ubuntu',
@@ -46,7 +46,7 @@ def baseline_os_hash
     supported_os: [
       {
         'operatingsystem' => 'CentOS',
-        'operatingsystemrelease' => ['7', '8']
+        'operatingsystemrelease' => %w[7 8]
       }
     ]
   }
