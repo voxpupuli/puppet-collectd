@@ -1,0 +1,51 @@
+<%- | Optional $logfile = undef | -%>
+<Plugin log_parser>
+<% $logfile.keys.sort.each |$path,$file| { -%>
+<Logfile "<%= $key %>">
+<% unless $file['firstfullread'] =~ Undef { -%>
+FirstFullRead "<%= $table['firstfullread'] %>"
+<% } -%>
+<% $file['message'].each |$key,$message| { -%>
+<Message "<%= $key %>">
+<% unless $message['defaultplugininstance'] =~ Undef { -%>
+DefaultPluginInstance "<%= $message['defaultplugininstance'] %>"
+<% } -%>
+<% unless $message['defaulttype'] =~ Undef { -%>
+DefaultType "<%= $message['defaulttype'] %>"
+<% } -%>
+<% unless $message['defaulttypeinstance'] =~ Undef { -%>
+DefaultTypeInstance "<%= $message['defaulttypeinstance'] %>"
+<% } -%>
+<% unless $message['defaultseverity'] =~ Undef { -%>
+DefaultSeverity "<%= $message['defaultseverity'] %>"
+<% } -%>
+<% $message['match'].each |$key,$match| { -%>
+<Match "<%= $key %>">
+Regex "<%= $match['regex'] %>"
+<% unless $match['submatchidx'] =~ Undef { -%>
+SubmatchIdx "<%= $match['submatchidx'] %>"
+<% } -%>
+<% unless $match['excluderegex'] =~ Undef { -%>
+ExcludeRegex "<%= $match['excluderegex'] %>"
+<% } -%>
+<% unless $match['ismandatory'] =~ Undef { -%>
+IsMandatory "<%= $match['ismandatory'] %>"
+<% } -%>
+<% unless $match['severity'] =~ Undef { -%>
+Severity "<%= $match['severity'] %>"
+<% } -%>
+<% unless $match['plugininstance'] =~ Undef { -%>
+PluginInstance "<%= $message['plugininstance'] %>"
+<% } -%>
+<% unless $message['type'] =~ Undef { -%>
+Type "<%= $match['type'] %>"
+<% } -%>
+<% unless $match['typeinstance'] =~ Undef { -%>
+TypeInstance "<%= $match['typeinstance'] %>"
+<% } -%>
+</Match>
+<% } -%>
+</Message>
+<% } -%>
+</Logfile>
+</Plugin>

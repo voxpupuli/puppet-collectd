@@ -7,7 +7,9 @@ include collectd
 
   collectd::plugin { 'log_parser':
     ensure  => $ensure,
-    content => epp('collectd/plugin/log_parser.conf.epp'),
+    content => epp('collectd/plugin/log_parser.conf.epp', {
+      'logfile' => $logfile,
+    }),
     order   => '06',
   }
 }
