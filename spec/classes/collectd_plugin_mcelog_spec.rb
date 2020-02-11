@@ -17,6 +17,9 @@ describe 'collectd::plugin::mcelog', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
           )
         end
+        it { is_expected.to contain_file('mcelog.load').with(content: %r{<Memory>}) }
+        it { is_expected.to contain_file('mcelog.load').with(content: %r{McelogClientSocket "/var/run/mcelog-client"}) }
+        it { is_expected.to contain_file('mcelog.load').with(content: %r{PersistentNotification false}) }
       end
 
       context ':ensure => :mceloglogfile => true' do
