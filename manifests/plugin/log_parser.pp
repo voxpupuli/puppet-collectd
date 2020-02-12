@@ -1,7 +1,7 @@
 #https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 class collectd::plugin::log_parser (
   $ensure         = 'present',
-  Array[Collectd::LOG_PARSER::Logfile] $logfile = []
+  Array[Hash[String[1],Collectd::LOG_PARSER::Logfile]] $logfile = []
 ){
 include collectd
 

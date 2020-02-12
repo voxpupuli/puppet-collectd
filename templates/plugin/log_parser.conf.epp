@@ -1,51 +1,70 @@
 <%- | Optional $logfile = undef | -%>
 <Plugin log_parser>
-<% $logfile.keys.sort.each |$path,$file| { -%>
+<% $logfile.each |$file| { -%>
+<% $file.keys.sort.each |$key| { -%>
 <Logfile "<%= $key %>">
-<% unless $file['firstfullread'] =~ Undef { -%>
-FirstFullRead "<%= $table['firstfullread'] %>"
+<% $file[$key].keys.sort.each |$value| { -%>
+<% if $value == 'firstfullread' { -%>
+FirstFullRead "<%= $file[$key][$value] %>"
 <% } -%>
-<% $file['message'].each |$key,$message| { -%>
-<Message "<%= $key %>">
-<% unless $message['defaultplugininstance'] =~ Undef { -%>
-DefaultPluginInstance "<%= $message['defaultplugininstance'] %>"
+<% if $value == 'message' { -%>
+<% $file[$key][$value].each |$message| { -%>
+<% $message.keys.sort.each |$messagekey| { -%>
+<Message "<%= $messagekey %>">
+<% $message[$messagekey].keys.sort.each |$messagevalue| { -%>
+<% if $messagevalue == 'defaultplugininstance' { -%>
+DefaultPluginInstance "<%= $message[$messagekey][$messagevalue] %>"
 <% } -%>
-<% unless $message['defaulttype'] =~ Undef { -%>
-DefaultType "<%= $message['defaulttype'] %>"
+<% if $messagevalue == 'defaultseverity' { -%>
+DefaultType "<%= $message[$messagekey][$messagevalue] %>"
 <% } -%>
-<% unless $message['defaulttypeinstance'] =~ Undef { -%>
-DefaultTypeInstance "<%= $message['defaulttypeinstance'] %>"
+<% if $messagevalue == 'defaulttype' { -%>
+DefaultTypeInstance "<%= $message[$messagekey][$messagevalue] %>"
 <% } -%>
-<% unless $message['defaultseverity'] =~ Undef { -%>
-DefaultSeverity "<%= $message['defaultseverity'] %>"
+<% if $messagevalue == 'defaulttypeinstance' { -%>
+DefaultSeverity "<%= $message[$messagekey][$messagevalue] %>"
 <% } -%>
-<% $message['match'].each |$key,$match| { -%>
-<Match "<%= $key %>">
-Regex "<%= $match['regex'] %>"
-<% unless $match['submatchidx'] =~ Undef { -%>
-SubmatchIdx "<%= $match['submatchidx'] %>"
+<% if $messagevalue == 'match' { -%>
+<% $message[$messagekey][$messagevalue].each |$match| { -%>
+<% $match.keys.sort.each |$matchkey| { -%>
+<Match "<%= $matchkey %>">
+<% $match[$matchkey].keys.sort.each |$matchvalue| { -%>
+<% if $matchvalue == 'regex' { -%>
+Regex "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $match['excluderegex'] =~ Undef { -%>
-ExcludeRegex "<%= $match['excluderegex'] %>"
+<% if $matchvalue == 'submatchidx' { -%>
+SubmatchIdx "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $match['ismandatory'] =~ Undef { -%>
-IsMandatory "<%= $match['ismandatory'] %>"
+<% if $matchvalue == 'excluderegex' { -%>
+ExcludeRegex "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $match['severity'] =~ Undef { -%>
-Severity "<%= $match['severity'] %>"
+<% if $matchvalue == 'ismandatory' { -%>
+IsMandatory "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $match['plugininstance'] =~ Undef { -%>
-PluginInstance "<%= $message['plugininstance'] %>"
+<% if $matchvalue == 'severity' { -%>
+Severity "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $message['type'] =~ Undef { -%>
-Type "<%= $match['type'] %>"
+<% if $matchvalue == 'plugininstance' { -%>
+PluginInstance "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
-<% unless $match['typeinstance'] =~ Undef { -%>
-TypeInstance "<%= $match['typeinstance'] %>"
+<% if $matchvalue == 'type' { -%>
+Type "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'typeinstance' { -%>
+TypeInstance "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
 <% } -%>
 </Match>
 <% } -%>
+<% } -%>
+<% } -%>
+<% } -%>
 </Message>
 <% } -%>
+<% } -%>
+<% } -%>
+<% } -%>
 </Logfile>
+<% } -%>
+<% } -%>
 </Plugin>
