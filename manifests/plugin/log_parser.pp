@@ -4,14 +4,14 @@ class collectd::plugin::log_parser (
   Array[Hash[String[1],Collectd::LOG_PARSER::Logfile]] $logfile = [{
     '/var/log/syslog' => {
       'firstfullread' => false,
-      'message' => [{
+      'message' => [
         'pcie_errors' => {
           'defaulttype' => 'pcie_error',
           'defaultseverity' => 'warning',
           'match' => [{
             'aer error' => {
               'regex' => 'AER:.*error received',
-              'submatchidx' = -1
+              'submatchidx' => -1,
             },
             'incident time' => {
               'regex' => '(... .. ..:..:..) .* pcieport.*AER',
@@ -60,7 +60,7 @@ class collectd::plugin::log_parser (
             }
           }]
         }
-      }]
+      ]
     }
   }]
 ){

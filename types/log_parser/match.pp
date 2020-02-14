@@ -3,9 +3,9 @@ type Collectd::LOG_PARSER::Match = Struct[{
   'regex' => String,
   Optional['submatchidx'] => Integer,
   Optional['excluderegex'] => String,
-  Optional['ismandatory'] => Boolean,
+  Optional['ismandatory'] => Variant[Boolean, String],
   Optional['severity'] => String,
-  Optional['plugininstance'] => String,
-  Optional['type'] => String,
-  Optional['typeinstance'] => String
+  Optional['plugininstance'] => Variant[Boolean, String],
+  Optional['type'] => Variant[Boolean, String],
+  Optional['typeinstance'] => Variant[Boolean, String],
 }]

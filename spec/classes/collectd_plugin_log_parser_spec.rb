@@ -33,7 +33,7 @@ describe 'collectd::plugin::log_parser', type: :class do
                     'match' => [
                       'sample_error' => {
                         'regex' => 'regex',
-                        'submatchidx' => 'index',
+                        'submatchidx' => 0,
                         'excluderegex' => 'exclude',
                         'ismandatory' => false,
                         'severity' => 'severity',
