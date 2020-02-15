@@ -16,12 +16,12 @@ class collectd::plugin::log_parser (
             'incident time' => {
               'regex' => '(... .. ..:..:..) .* pcieport.*AER',
               'submatchidx' => 1,
-              'ismandatory' => false
+              'ismandatory' => false,
             },
             'root port' => {
               'regex' =>'pcieport (.*): AER:',
               'submatchidx' => 1,
-              'ismandatory' => true
+              'ismandatory' => true,
             },
             'device' => {
               'plugininstance' => true,
@@ -31,36 +31,36 @@ class collectd::plugin::log_parser (
             },
             'severity_mandatory' => {
               'regex' => 'severity=',
-              'submatchidx' => 1
+              'submatchidx' => 1,
             },
             'nonfatal' => {
               'regex' => 'severity=.*\\([nN]on-[fF]atal',
               'typeinstance' => 'non_fatal',
-              'ismandatory' => false
+              'ismandatory' => false,
             },
             'fatal' => {
               'regex' => 'severity=.*\\([fF]atal',
               'severity' => 'failure',
               'typeinstance' => 'fatal',
-              'ismandatory' => false
+              'ismandatory' => false,
             },
             'corrected' => {
               'regex' => 'severity=Corrected',
               'typeinstance' => 'correctable',
-              'ismandatory' => false
+              'ismandatory' => false,
             },
             'error type' => {
               'regex' => 'type=(.*),',
               'submatchidx' => 1,
-              'ismandatory' => false
+              'ismandatory' => false,
             },
             'id' => {
               'regex' => ', id=(.*)',
-              'submatchidx' => 1
-            }
-          }]
-        }
-      ]
+              'submatchidx' => 1,
+            },
+          }],
+        },
+      ],
     }
   }]
 ){

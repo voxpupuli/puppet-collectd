@@ -22,8 +22,8 @@ describe 'collectd::plugin::log_parser', type: :class do
       context ':ensure => log parser created with logfile' do
         let :params do
           {
-            logfile:[
-            'file01.log' => {
+            logfile: [
+              'file01.log' => {
                 'message' => [
                   'msg_1' => {
                     'defaultplugininstance' => 'plugin_instance',
@@ -45,7 +45,7 @@ describe 'collectd::plugin::log_parser', type: :class do
                   }
                 ],
                 'firstfullread' => false
-            }
+              }
             ]
           }
         end
@@ -57,7 +57,6 @@ describe 'collectd::plugin::log_parser', type: :class do
           )
         end
       end
-
     end
   end
 end
