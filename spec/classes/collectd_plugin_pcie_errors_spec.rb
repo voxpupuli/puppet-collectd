@@ -34,9 +34,9 @@ EOS
         end
       end
 
-      context ':ensure => present and :source => sfsys' do
+      context ':ensure => present and :source => proc' do
         let :params do
-          { source: 'sfsys' }
+          { source: 'proc' }
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
@@ -44,7 +44,7 @@ EOS
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: %r{Source "sfsys"}m
+            content: %r{Source "proc"}m
           )
         end
       end

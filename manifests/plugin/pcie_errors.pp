@@ -8,7 +8,7 @@
 #
 class collectd::plugin::pcie_errors (
   Enum['present', 'absent'] $ensure                   = 'present',
-  Optional[String]          $source                   = 'sysfs',
+  Enum['sysfs', 'proc']     $source                   = 'sysfs',
   Optional[String]          $access_dir               = undef,
   Boolean                   $report_masked            = false,
   Boolean                   $persistent_notifications = false,
