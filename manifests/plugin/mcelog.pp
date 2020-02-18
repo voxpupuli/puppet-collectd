@@ -3,7 +3,10 @@ class collectd::plugin::mcelog (
   Enum['present', 'absent'] $ensure = 'present',
   # Log file option and memory option are mutualy exclusive.
   Optional[String] $mceloglogfile = undef,
-  Optional[Collectd::MCELOG::Memory] $memory = undef
+  Optional[Collectd::MCELOG::Memory] $memory = {
+    'mcelogclientsocket' => '/var/run/mcelog-client',
+    'persistentnotification' => false,
+  }
 ) {
 
   include collectd
