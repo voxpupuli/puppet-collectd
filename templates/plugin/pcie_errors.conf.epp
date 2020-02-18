@@ -1,0 +1,14 @@
+<Plugin pcie_errors>
+<% if $collectd::plugin::pcie_errors::source { -%>
+  Source "<%= $collectd::plugin::pcie_errors::source %>"
+<% } -%>
+<% if $collectd::plugin::pcie_errors::access_dir { -%>
+  AccessDir "<%= $collectd::plugin::pcie_errors::access_dir %>"
+<% } -%>
+<% unless $collectd::plugin::pcie_errors::report_masked =~ Undef { -%>
+  ReportMasked <%= $collectd::plugin::pcie_errors::report_masked %>
+<% } -%>
+<% unless $collectd::plugin::pcie_errors::persistent_notifications =~ Undef { -%>
+#  PersistentNotifications <%= $collectd::plugin::pcie_errors::persistent_notifications %>
+<% } -%>
+</Plugin>
