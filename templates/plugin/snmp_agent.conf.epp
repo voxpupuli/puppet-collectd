@@ -1,4 +1,3 @@
-
 <%- | Optional $data = undef,
       Optional $table = undef,
  | -%>
