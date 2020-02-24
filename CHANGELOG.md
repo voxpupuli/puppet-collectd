@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v11.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.2.0) (2020-02-24)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.1.0...v11.2.0)
+
+**Implemented enhancements:**
+
+- Add dcpmm plugin [\#914](https://github.com/voxpupuli/puppet-collectd/pull/914) ([prabiegx](https://github.com/prabiegx))
+- Add pcie\_errors plugin [\#911](https://github.com/voxpupuli/puppet-collectd/pull/911) ([prabiegx](https://github.com/prabiegx))
+- Add SNMP agent plugin [\#910](https://github.com/voxpupuli/puppet-collectd/pull/910) ([MichalRebisz](https://github.com/MichalRebisz))
+
+**Merged pull requests:**
+
+- Plugin Mcelog default config [\#909](https://github.com/voxpupuli/puppet-collectd/pull/909) ([MichalRebisz](https://github.com/MichalRebisz))
+
 ## [v11.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.1.0) (2020-02-08)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.0.0...v11.1.0)
