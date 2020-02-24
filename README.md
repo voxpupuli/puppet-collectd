@@ -178,6 +178,7 @@ documentation for each plugin for configurable attributes.
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
 * `smart` (see [collectd::plugin::smart](#class-collectdpluginsmart) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `snmp_agent` (see [collectd::plugin::snmp_agent](#class-collectdpluginsnmpagent) below)
 * `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
@@ -1726,7 +1727,39 @@ class { 'collectd::plugin::snmp':
   },
 }
 ```
+#### Class: `collectd::plugin::snmp_agent`
 
+```puppet
+class {'collectd::plugin::snmp_agent':
+  table => {
+    ifTable => {
+      'indexoid' => 'IF-MIB::ifIndex',
+      'sizeoid' => 'IF-MIB::ifNumber',
+      data => [{
+        ifDescr => {
+          'plugin' => 'interface',
+          'oids' => 'IF-MIB::ifDescr'
+        },
+        'ifDescr2' => {
+          'plugin' => 'interface2',
+          'oids' => 'IF-MIB::ifDescr2'
+        }
+      }]
+    }
+  },
+  data => {
+    memAvailReal => {
+      'plugin' => 'memory',
+      'type' => 'memory',
+      'oids' => '1.3.6.1.4.1.2021.4.6.0',
+      'typeinstance' => 'free',
+      'indexkey' => {
+      'source' => 'PluginInstance'
+      }
+    }
+  }
+}
+```
 #### Class: `collectd::plugin::statsd`
 
 ```puppet
