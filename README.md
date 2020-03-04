@@ -121,6 +121,7 @@ documentation for each plugin for configurable attributes.
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `dns` (see [collectd::plugin::dns](#class-collectdplugindns) below)
 * `dcpmm` (see [collectd::plugin::dcpmm](#class-collectdplugindcpmm) below)
+* `dpdk_telemetry` (see [collectd::plugin::dpdk_telemetry](#class-collectdplugindpdk_telemetry) below)
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
@@ -584,6 +585,15 @@ unsupported platform.
 Boolean for SelectNumericQueryTypes configuration option.
 
 - *Default*: true
+
+#### Class: `collectd::plugin::dpdk_telemetry`
+
+```puppet
+class { 'collectd::plugin::dpdk_telemetry':
+  client_socket_path => '/var/run/.client',
+  dpdk_socket_path   => '/var/run/dpdk/rte/telemetry',
+}
+```
 
 #### Class: `collectd::plugin::dcpmm`
 
