@@ -61,6 +61,10 @@ class collectd::plugin::rabbitmq (
 ) {
   include collectd
 
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'8') >= 0 {
+    fail('https://pypi.org/project/collectd-rabbitmq/ does not support Python 3')
+  }
+
   case $facts['os']['family'] {
     'RedHat': {
       $_custom_types_db = '/usr/share/collectd-rabbitmq/types.db.custom'

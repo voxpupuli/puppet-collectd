@@ -17,6 +17,9 @@ describe 'curl_json defined type' do
             },
           }
       }
+      # Adding one write plugin removes a lot
+      # of confusing/misleading warnings in collectd logs
+      class { 'collectd::plugin::csv':}
       EOS
 
       # Run it twice and test for idempotency
