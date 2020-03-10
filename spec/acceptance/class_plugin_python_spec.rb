@@ -27,12 +27,6 @@ describe 'collectd::plugin::python class' do
   context 'trivial pip module connect-time' do
     it 'works idempotently with no errors' do
       pp = <<-EOS
-      if $facts['os']['family'] == 'Debian' or ( $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8' )  {
-        # for collectdctl command
-        package{'collectd-utils':
-       	  ensure => present,
-        }
-      }
       if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8'  {
         $_python_pip_package = 'python3-pip'
         $_pip_provider = 'pip3'
@@ -48,6 +42,9 @@ describe 'collectd::plugin::python class' do
         provider => $_pip_provider,
 	      require  => Package[$_python_pip_package],
 	      before   => Service['collectd'],
+      }
+      class{'collectd':
+        utils => true,
       }
       class{'collectd::plugin::python':
 	      logtraces   => true,
@@ -84,8 +81,7 @@ describe 'collectd::plugin::python class' do
     it 'works idempotently with no errors' do
       pp = <<-EOS
       if $facts['os']['family'] == 'Debian' {
-        # for collectdctl command
-        package{['collectd-utils','python-dbus']:
+        package{'python-dbus':
 	        ensure => present,
         }
       }
@@ -116,6 +112,7 @@ describe 'collectd::plugin::python class' do
 	      before   => Service['collectd'],
       }
       class{'collectd':
+        utils   => true,
         typesdb => ['/usr/share/collectd/types.db'],
       }
       class{'collectd::plugin::python':

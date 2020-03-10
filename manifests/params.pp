@@ -29,6 +29,7 @@ class collectd::params {
   $plugin_conf_dir_mode      = '0750'
   $ci_package_repo           = undef
   $package_keyserver         = 'keyserver.ubuntu.com'
+  $utils                     = false
 
   case $facts['kernel'] {
     'OpenBSD': { $has_wordexp = false }
