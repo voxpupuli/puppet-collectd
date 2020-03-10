@@ -11,28 +11,46 @@
 # @param provider_proxy Optional[String] Proxy for provider. Default: undef
 class collectd::plugin::iscdhcp (
   Optional[String] $ensure           = 'present',
-  Optional[Boolean] $manage_package   = undef,
+  Optional[Boolean] $manage_package  = undef,
   Optional[String] $package_name     = 'collectd-iscdhcp',
-  Optional[String] $package_provider = 'pip',
+  Optional[String] $package_provider = undef,
   Optional[String] $provider_proxy   = undef,
 ) {
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)
 
+  if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8' {
+    $_python_pip_package = 'python3-pip'
+    if $package_provider =~ Undef {
+      $_package_provider = 'pip3'
+    }
+    else {
+      $_package_provider = $package_provider
+    }
+  } else {
+    $_python_pip_package = 'python-pip'
+    if $package_provider =~ Undef {
+      $_package_provider = 'pip'
+    }
+    else {
+      $_package_provider = $package_provider
+    }
+  }
+
   if ($_manage_package) {
-    if (!defined(Package['python-pip'])) {
-      package { 'python-pip': ensure => 'present', }
+    if (!defined(Package[$_python_pip_package])) {
+      package { $_python_pip_package: ensure => 'present', }
 
       Package[$package_name] {
-        require => Package['python-pip'],
+        require => Package[$_python_pip_package],
       }
 
       if $facts['os']['family'] == 'RedHat' {
         # Epel is installed in install.pp if manage_repo is true
         # python-pip doesn't exist in base for RedHat. Need epel installed first
         if (defined(Class['::epel'])) {
-          Package['python-pip'] {
+          Package[$_python_pip_package] {
             require => Class['::epel'],
           }
         }
@@ -48,7 +66,7 @@ class collectd::plugin::iscdhcp (
 
   package { $package_name:
     ensure          => $ensure,
-    provider        => $package_provider,
+    provider        => $_package_provider,
     install_options => $install_options,
   }
 

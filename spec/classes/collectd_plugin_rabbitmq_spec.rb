@@ -23,36 +23,41 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             }
           end
 
-          it 'import collectd_rabbitmq.collectd_plugin in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_header').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
-          end
+          case [facts[:os]['family'], facts[:os]['release']['major']]
+          when %w[RedHat 8]
+            it { is_expected.to raise_error(%r{does not support Python 3}) }
+          else
+            it 'import collectd_rabbitmq.collectd_plugin in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_header').with_content(%r{Import "collectd_rabbitmq.collectd_plugin"})
+            end
 
-          it 'Load collectd_rabbitmq in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
-          end
+            it 'Load collectd_rabbitmq in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Module "collectd_rabbitmq.collectd_plugin"})
+            end
 
-          it 'default to Username guest in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "guest"})
-          end
+            it 'default to Username guest in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "guest"})
+            end
 
-          it 'default to Password guest in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "guest"})
-          end
+            it 'default to Password guest in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "guest"})
+            end
 
-          it 'default to Port 15672 in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Port "15672"})
-          end
+            it 'default to Port 15672 in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Port "15672"})
+            end
 
-          it 'default to Scheme http in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "http"})
-          end
+            it 'default to Scheme http in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "http"})
+            end
 
-          it 'Host should be set to $::fqdn python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Host "testhost.example.com"})
-          end
+            it 'Host should be set to $::fqdn python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Host "testhost.example.com"})
+            end
 
-          it 'Realm set to "RabbitMQ Management"' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Realm "RabbitMQ Management"})
+            it 'Realm set to "RabbitMQ Management"' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Realm "RabbitMQ Management"})
+            end
           end
         end
 
@@ -61,8 +66,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { custom_types_db: '/var/custom/types.db' }
           end
 
-          it 'override custom TypesDB' do
-            is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/var/custom/types.db"})
+          case [facts[:os]['family'], facts[:os]['release']['major']]
+          when %w[RedHat 8]
+            it { is_expected.to raise_error(%r{does not support Python 3}) }
+          else
+            it 'override custom TypesDB' do
+              is_expected.to contain_file('rabbitmq.load').with_content(%r{TypesDB "/var/custom/types.db"})
+            end
           end
         end
 
@@ -71,8 +81,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Username' => 'foo' } }
           end
 
-          it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "foo"})
+          case [facts[:os]['family'], facts[:os]['release']['major']]
+          when %w[RedHat 8]
+            it { is_expected.to raise_error(%r{does not support Python 3}) }
+          else
+            it 'override Username to foo in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Username "foo"})
+            end
           end
         end
 
@@ -81,8 +96,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Password' => 'foo' } }
           end
 
-          it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "foo"})
+          case [facts[:os]['family'], facts[:os]['release']['major']]
+          when %w[RedHat 8]
+            it { is_expected.to raise_error(%r{does not support Python 3}) }
+          else
+            it 'override Username to foo in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Password "foo"})
+            end
           end
         end
 
@@ -91,8 +111,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Scheme' => 'https' } }
           end
 
-          it 'override Username to foo in python-config' do
-            is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "https"})
+          case [facts[:os]['family'], facts[:os]['release']['major']]
+          when %w[RedHat 8]
+            it { is_expected.to raise_error(%r{does not support Python 3}) }
+          else
+            it 'override Username to foo in python-config' do
+              is_expected.to contain_concat_fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with_content(%r{Scheme "https"})
+            end
           end
         end
       end
@@ -102,8 +127,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will remove python-config' do
-          is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with(ensure: 'present')
+        case [facts[:os]['family'], facts[:os]['release']['major']]
+        when %w[RedHat 8]
+          it { is_expected.to raise_error(%r{does not support Python 3}) }
+        else
+          it 'Will remove python-config' do
+            is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with(ensure: 'present')
+          end
         end
       end
 
@@ -124,11 +154,16 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                       }
                     end
 
-                    it do
-                      is_expected.to contain_package(packagename).with(
-                        'ensure' => ensure_value,
-                        'provider' => provider
-                      )
+                    case [facts[:os]['family'], facts[:os]['release']['major']]
+                    when %w[RedHat 8]
+                      it { is_expected.to raise_error(%r{does not support Python 3}) }
+                    else
+                      it do
+                        is_expected.to contain_package(packagename).with(
+                          'ensure' => ensure_value,
+                          'provider' => provider
+                        )
+                      end
                     end
                   end # packagename
                 end # ensure set

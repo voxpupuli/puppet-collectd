@@ -71,7 +71,10 @@ class collectd::params {
       $config_file        = '/etc/collectd.conf'
       $config_group       = 'root'
       $java_dir           = '/usr/share/collectd/java'
-      $default_python_dir = '/usr/lib/python2.7/site-packages'
+      $default_python_dir = $facts['os']['release']['major'] ? {
+        '7'     => '/usr/lib/python2.7/site-packages',
+        default => '/usr/lib/python3.6/site-packages',
+      }
       $manage_repo        = true
       $package_configs    = {
         ovs_events => 'ovs-events.conf',

@@ -1622,6 +1622,8 @@ You will need to add this to [collectd::config::typesdb](https://github.com/voxp
 via hiera or in a manifest. Failure to set the types.db.custom content will
 result in *no* metrics from the rabbitmq plugin.
 
+The rabbitmq plugin has not been ported to python3 and will fail on CentOS 8 [#75](https://github.com/nytimes/collectd-rabbitmq/issues/75)
+
 set typesdb to include the collectd-rabbitmq types.db.custom
 
 ```yaml
