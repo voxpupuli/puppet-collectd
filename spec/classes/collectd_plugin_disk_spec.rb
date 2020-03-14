@@ -108,8 +108,8 @@ describe 'collectd::plugin::disk', type: :class do
         end
       end
 
-      case facts[:os]['family']
-      when 'RedHat'
+      case [facts[:os]['family'], facts[:os]['release']['major']]
+      when %w[RedHat 8]
         context ':manage_package => undef  with collectd 5.5 and up' do
           let :facts do
             facts.merge(collectd_version: '5.5')
