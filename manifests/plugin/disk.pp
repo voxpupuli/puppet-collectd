@@ -12,7 +12,7 @@ class collectd::plugin::disk (
 
   include collectd
 
-  if $facts['os']['family'] == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'8') >= 0 {
     if $manage_package != undef {
       $_manage_package = $manage_package
     } else {

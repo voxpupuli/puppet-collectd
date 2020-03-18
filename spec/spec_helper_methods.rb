@@ -28,11 +28,11 @@ def all_supported_os_hash
       },
       {
         'operatingsystem' => 'Ubuntu',
-        'operatingsystemrelease' => ['16.04', '18.04']
+        'operatingsystemrelease' => %w[16.04 18.04]
       },
       {
         'operatingsystem' => 'FreeBSD',
-        'operatingsystemrelease' => ['10']
+        'operatingsystemrelease' => %w[11 12]
       },
       {
         'operatingsystem' => 'Archlinux'

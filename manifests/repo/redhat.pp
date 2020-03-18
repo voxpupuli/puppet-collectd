@@ -5,7 +5,7 @@ class collectd::repo::redhat {
     yumrepo { 'collectd-ci':
       ensure  => present,
       enabled => '1',
-      baseurl => "https://pkg.ci.collectd.org/rpm/collectd-${collectd::ci_package_repo}/epel-${facts['os']['release']['major']}-${facts['architecture']}",
+      baseurl => "https://pkg.ci.collectd.org/rpm/collectd-${collectd::ci_package_repo}/epel-${facts['os']['release']['major']}-${facts['os']['architecture']}",
       gpgkey  => 'https://pkg.ci.collectd.org/pubkey.asc',
     }
 

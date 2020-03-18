@@ -1,0 +1,8 @@
+<Plugin dpdk_telemetry>
+<% if $collectd::plugin::dpdk_telemetry::client_socket_path { -%>
+  ClientSocketPath "<%= $collectd::plugin::dpdk_telemetry::client_socket_path %>"
+<% } -%>
+<% if $collectd::plugin::dpdk_telemetry::dpdk_socket_path { -%>
+  DpdkSocketPath "<%= $collectd::plugin::dpdk_telemetry::dpdk_socket_path %>"
+<% } -%>
+</Plugin>

@@ -42,24 +42,10 @@
       ]
     },
     {
-      "operatingsystem": "Solaris",
-      "operatingsystemrelease": [
-        "11"
-      ]
-    },
-    {
       "operatingsystem": "FreeBSD",
       "operatingsystemrelease": [
-        "9",
-        "10"
-      ]
-    },
-    {
-      "operatingsystem": "OpenBSD",
-      "operatingsystemrelease": [
-        "5.7",
-        "5.8",
-        "5.9"
+        "11",
+        "12"
       ]
     },
     {
@@ -76,7 +62,7 @@
     }
   ],
   "name": "puppet-collectd",
-  "version": "11.0.1-rc0",
+  "version": "11.2.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
@@ -102,8 +88,8 @@
       "version_requirement": ">= 4.25.0 < 7.0.0"
     },
     {
-      "name": "stahnma-epel",
-      "version_requirement": ">= 1.2.2 < 2.0.0"
+      "name": "puppet-epel",
+      "version_requirement": ">= 3.0.0 < 4.0.0"
     },
     {
       "name": "puppetlabs-python_task_helper",

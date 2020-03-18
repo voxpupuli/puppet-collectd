@@ -120,6 +120,8 @@ documentation for each plugin for configurable attributes.
 * `df`  (see [collectd::plugin::df](#class-collectdplugindf) below)
 * `disk` (see [collectd::plugin::disk](#class-collectdplugindisk) below)
 * `dns` (see [collectd::plugin::dns](#class-collectdplugindns) below)
+* `dcpmm` (see [collectd::plugin::dcpmm](#class-collectdplugindcpmm) below)
+* `dpdk_telemetry` (see [collectd::plugin::dpdk_telemetry](#class-collectdplugindpdk_telemetry) below)
 * `entropy`  (see [collectd::plugin::entropy](#class-collectdpluginentropy) below)
 * `exec`  (see [collectd::plugin::exec](#class-collectdpluginexec) below)
 * `ethstat`  (see [collectd::plugin::ethstat](#class-collectdpluginethstat) below)
@@ -145,6 +147,7 @@ documentation for each plugin for configurable attributes.
 * `logfile` (see [collectd::plugin::logfile](#class-collectdpluginlogfile) below)
 * `virt` (see [collectd::plugin::virt](#class-collectdpluginvirt) below)
 * `lvm` (see [collectd::plugin::lvm](#class-collectdpluginlvm) below)
+* `mcelog` (see [collectd::plugin::mcelog](#class-collectdpluginmcelog) below)
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached)
   below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
@@ -159,6 +162,7 @@ documentation for each plugin for configurable attributes.
 * `nut` (see [collectd::plugin::nut](#class-collectdpluginnut) below)
 * `openldap` (see [collectd::plugin::openldap](#class-collectdpluginopenldap) below)
 * `openvpn` (see [collectd::plugin::openvpn](#class-collectdpluginopenvpn) below)
+* `pcie_errors` (see [collectd::plugin::pcie_errors](#class-collectdpluginpcie_errors) below)
 * `perl` (see [collectd::plugin::perl](#class-collectdpluginperl) below)
 * `ping` (see [collectd::plugin::ping](#class-collectdpluginping) below)
 * `postgresql` (see [collectd::plugin::postgresql](#class-collectdpluginpostgresql)
@@ -175,6 +179,7 @@ documentation for each plugin for configurable attributes.
 * `sensors` (see [collectd::plugin::sensors](#class-collectdpluginsensors) below)
 * `smart` (see [collectd::plugin::smart](#class-collectdpluginsmart) below)
 * `snmp` (see [collectd::plugin::snmp](#class-collectdpluginsnmp) below)
+* `snmp_agent` (see [collectd::plugin::snmp_agent](#class-collectdpluginsnmpagent) below)
 * `statsd` (see [collectd::plugin::statsd](#class-collectdpluginstatsd) below)
 * `swap` (see [collectd::plugin::swap](#class-collectdpluginswap) below)
 * `syslog` (see [collectd::plugin::syslog](#class-collectdpluginsyslog) below)
@@ -581,6 +586,26 @@ Boolean for SelectNumericQueryTypes configuration option.
 
 - *Default*: true
 
+#### Class: `collectd::plugin::dpdk_telemetry`
+
+```puppet
+class { 'collectd::plugin::dpdk_telemetry':
+  client_socket_path => '/var/run/.client',
+  dpdk_socket_path   => '/var/run/dpdk/rte/telemetry',
+}
+```
+
+#### Class: `collectd::plugin::dcpmm`
+
+```puppet
+class { 'collectd::plugin::dcpmm':
+  interval             => 10.0,
+  collect_health       => false,
+  collect_perf_metrics => true,
+  enable_dispatch_all  => false,
+}
+```
+
 #### Class: `collectd::plugin::entropy`
 
 ```puppet
@@ -894,6 +919,16 @@ class { 'collectd::plugin::intel_pmu':
 }
 ```
 
+#### Class: `collectd::plugin::mcelog`
+
+```puppet
+class { 'collectd::plugin::mcelog':
+  mceloglogfile           => '/var/log/mcelog'
+  memory                  => true
+  mcelogclientsocket      => '/var/run/mcelog-client'
+  persistentnotification  => true
+}
+```
 #### Class: `collectd::plugin::intel_rdt`
 ```puppet
 class { 'collectd::plugin::intel_rdt':
@@ -1231,6 +1266,17 @@ Watch the single default `statusfile`:
 class { 'collectd::plugin::openvpn':
   collectindividualusers => false,
   collectusercount       => true,
+}
+```
+
+#### Class: `collectd::plugin::pcie_errors`
+
+```puppet
+class { 'collectd::plugin::pcie_errors':
+  source                   => undef,
+  access_dir               => undef,
+  report_masked            => false,
+  persistent_notifications => false,
 }
 ```
 
@@ -1576,6 +1622,8 @@ You will need to add this to [collectd::config::typesdb](https://github.com/voxp
 via hiera or in a manifest. Failure to set the types.db.custom content will
 result in *no* metrics from the rabbitmq plugin.
 
+The rabbitmq plugin has not been ported to python3 and will fail on CentOS 8 [#75](https://github.com/nytimes/collectd-rabbitmq/issues/75)
+
 set typesdb to include the collectd-rabbitmq types.db.custom
 
 ```yaml
@@ -1691,7 +1739,39 @@ class { 'collectd::plugin::snmp':
   },
 }
 ```
+#### Class: `collectd::plugin::snmp_agent`
 
+```puppet
+class {'collectd::plugin::snmp_agent':
+  table => {
+    ifTable => {
+      'indexoid' => 'IF-MIB::ifIndex',
+      'sizeoid' => 'IF-MIB::ifNumber',
+      data => [{
+        ifDescr => {
+          'plugin' => 'interface',
+          'oids' => 'IF-MIB::ifDescr'
+        },
+        'ifDescr2' => {
+          'plugin' => 'interface2',
+          'oids' => 'IF-MIB::ifDescr2'
+        }
+      }]
+    }
+  },
+  data => {
+    memAvailReal => {
+      'plugin' => 'memory',
+      'type' => 'memory',
+      'oids' => '1.3.6.1.4.1.2021.4.6.0',
+      'typeinstance' => 'free',
+      'indexkey' => {
+      'source' => 'PluginInstance'
+      }
+    }
+  }
+}
+```
 #### Class: `collectd::plugin::statsd`
 
 ```puppet
@@ -1965,6 +2045,12 @@ class { 'collectd::plugin::write_kafka':
   kafka_port => 9092,
   topics     => {
     'mytopic'      => { 'format' => 'JSON' },
+  },
+  properties => {
+    'myproperty'   => { 'myvalue' },
+  },
+  meta       => {
+    'mymeta'       => { 'myvalue' },
   }
 }
 ```

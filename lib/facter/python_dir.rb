@@ -16,6 +16,8 @@ Facter.add(:python_dir) do
       else
         Facter::Util::Resolution.exec('python3 -c "import site; print(site.getsitepackages()[0])"')
       end
+    elsif File.exist?('/usr/libexec/platform-python')
+      Facter::Util::Resolution.exec('/usr/libexec/platform-python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"')
     else
       ''
     end

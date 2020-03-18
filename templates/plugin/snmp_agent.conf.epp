@@ -1,0 +1,108 @@
+<%- | Optional $data = undef,
+      Optional $table = undef,
+ | -%>
+ # THIS FILE IS MANAGED BY PUPPET
+<Plugin snmp_agent>
+<% if $data { -%>
+<% $data.keys.sort.each |$key| { -%>
+<Data "<%= $key %>">
+<% $data[$key].each |$keyvalue, $value| { -%>
+<% if $keyvalue == 'plugin' { -%>
+Plugin "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'oids' { -%>
+OIDs "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'type' { -%>
+Type "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'typeinstance' { -%>
+TypeInstance "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'scale' { -%>
+Scale "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'shift' { -%>
+Shift "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'plugininstance' { -%>
+PluginInstance "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'indexkey' { -%>
+<IndexKey>
+<% $value.keys.sort.each |$indexkey| { -%>
+<% if $indexkey == 'source' { -%>
+Source "<%= $value[$indexkey] %>"
+<% } -%>
+<% if $indexkey == 'regex' { -%>
+Regex "<%= $value[$indexkey] %>"
+<% } -%>
+<% if $indexkey == 'group' { -%>
+Group "<%= $value[$indexkey] %>"
+<% } -%>
+<% } -%>
+</IndexKey>
+<% } -%>
+<% } -%>
+</Data>
+<% } -%>
+<% } -%>
+<% if $table { -%>
+<% $table.keys.sort.each |$key| { -%>
+<Table "<%= $key %>">
+<% $table[$key].each |$keyvalue, $value| { -%>
+<% if $keyvalue == 'indexoid' { -%>
+IndexOID "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'sizeoid' { -%>
+SizeOID "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'data' { -%>
+<% $value.keys.sort.each |$key| { -%>
+<Data "<%= $key %>">
+<% $value[$key].each |$keyvalue, $value| { -%>
+<% if $keyvalue == 'plugin' { -%>
+Plugin "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'oids' { -%>
+OIDs "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'type' { -%>
+Type "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'typeinstance' { -%>
+TypeInstance "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'scale' { -%>
+Scale "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'shift' { -%>
+Shift "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'plugininstance' { -%>
+PluginInstance "<%= $value %>"
+<% } -%>
+<% if $keyvalue == 'indexkey' { -%>
+<IndexKey>
+<% $value.keys.sort.each |$indexkey| { -%>
+<% if $indexkey == 'source' { -%>
+Source "<%= $value[$indexkey] %>"
+<% } -%>
+<% if $indexkey == 'regex' { -%>
+Regex "<%= $value[$indexkey] %>"
+<% } -%>
+<% if $indexkey == 'group' { -%>
+Group "<%= $value[$indexkey] %>"
+<% } -%>
+<% } -%>
+</IndexKey>
+<% } -%>
+<% } -%>
+</Data>
+<% } -%>
+<% } -%>
+<% } -%>
+</Table>
+<% } -%>
+<% } -%>
+</Plugin>

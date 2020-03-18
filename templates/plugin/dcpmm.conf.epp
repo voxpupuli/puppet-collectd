@@ -1,0 +1,14 @@
+<Plugin dcpmm>
+<% if $collectd::plugin::dcpmm::interval { -%>
+  Interval <%= $collectd::plugin::dcpmm::interval %>
+<% } -%>
+<% unless $collectd::plugin::dcpmm::collect_health =~ Undef { -%>
+  CollectHealth <%= $collectd::plugin::dcpmm::collect_health %>
+<% } -%>
+<% unless $collectd::plugin::dcpmm::collect_perf_metrics =~ Undef { -%>
+  CollectPerfMetrics <%= $collectd::plugin::dcpmm::collect_perf_metrics %>
+<% } -%>
+<% unless $collectd::plugin::dcpmm::enable_dispatch_all =~ Undef { -%>
+  EnableDispatchAll <%= $collectd::plugin::dcpmm::enable_dispatch_all %>
+<% } -%>
+</Plugin>

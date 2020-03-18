@@ -13,10 +13,5 @@ RSpec.configure do |c|
   c.before :suite do
     install_module
     install_module_dependencies
-
-    hosts.each do |host|
-      # python is pre-requisite to the python_path fact.
-      host.install_package('python')
-    end
   end
 end
