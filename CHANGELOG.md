@@ -4,7 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v11.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.2.0) (2020-02-24)
+## [v11.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.3.0) (2020-03-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.2.0...v11.3.0)
+
+**Implemented enhancements:**
+
+- New utils parameter to install collectdctl [\#919](https://github.com/voxpupuli/puppet-collectd/pull/919) ([traylenator](https://github.com/traylenator))
+- Require puppet-epel over stahnma-epel [\#918](https://github.com/voxpupuli/puppet-collectd/pull/918) ([traylenator](https://github.com/traylenator))
+- Add CentOS 8 support [\#917](https://github.com/voxpupuli/puppet-collectd/pull/917) ([traylenator](https://github.com/traylenator))
+- Add dpdk\_telemetry plugin [\#913](https://github.com/voxpupuli/puppet-collectd/pull/913) ([prabiegx](https://github.com/prabiegx))
+
+**Fixed bugs:**
+
+- write\_http/disk is own sub package on CentOS 8 [\#920](https://github.com/voxpupuli/puppet-collectd/pull/920) ([traylenator](https://github.com/traylenator))
+
+**Closed issues:**
+
+- Time for a new version ? [\#684](https://github.com/voxpupuli/puppet-collectd/issues/684)
+
+## [v11.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.2.0) (2020-02-25)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.1.0...v11.2.0)
 
