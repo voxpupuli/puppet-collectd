@@ -42,7 +42,9 @@ describe 'python_dir', type: :fact do
 
   it 'is empty string if python not installed' do
     Facter::Util::Resolution.stubs(:which).with('python').returns(nil)
+    Facter::Util::Resolution.stubs(:which).with('python2').returns(nil)
     Facter::Util::Resolution.stubs(:which).with('python3').returns(nil)
+    File.stubs(:exist?).with('/usr/libexec/platform-python').returns(nil)
     expect(Facter.fact(:python_dir).value).to eq('')
   end
 end
