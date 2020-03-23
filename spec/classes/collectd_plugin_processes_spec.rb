@@ -18,19 +18,19 @@ describe 'collectd::plugin::processes', type: :class do
             )
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes-config.conf").that_requires('File[collectd.d]')
+          it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf").that_requires('File[collectd.d]')
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
               content: "<Plugin processes>\n",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '00'
             )
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
+          it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_footer').with(
               content: %r{</Plugin>},
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '99'
             )
           end
@@ -66,15 +66,15 @@ describe 'collectd::plugin::processes', type: :class do
             }
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes-config.conf").that_requires('File[collectd.d]')
+          it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf").that_requires('File[collectd.d]')
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
               content: "<Plugin processes>
   CollectContextSwitch true
   CollectFileDescriptor false
   CollectMemoryMaps true
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '00'
             )
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_httpd').with(
@@ -84,14 +84,14 @@ describe 'collectd::plugin::processes', type: :class do
     CollectMemoryMaps false
   </Process>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '50'
             )
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_mysql').with(
               content: "  <Process \"mysql\">
   </Process>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '50'
             )
 
@@ -102,14 +102,14 @@ describe 'collectd::plugin::processes', type: :class do
     CollectMemoryMaps false
   </ProcessMatch>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '51'
             )
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_processmatch_dove').with(
               content: "  <ProcessMatch \"dove\" \"dove.*\">
   </ProcessMatch>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '51'
             )
           end
@@ -122,19 +122,19 @@ describe 'collectd::plugin::processes', type: :class do
             }
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/processes-config.conf" do
+          it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_process1').with(
               content: "  <Process \"process1\">
   </Process>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '50'
             )
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_process_process2').with(
               content: "  <Process \"process2\">
   </Process>
 ",
-              target: "#{options[:plugin_conf_dir]}/processes-config.conf",
+              target: "#{options[:plugin_conf_dir]}/processes_config.conf",
               order: '50'
             )
           end
@@ -145,6 +145,10 @@ describe 'collectd::plugin::processes', type: :class do
           context 'on osfamily => RedHat' do
             it 'Will delete packaging config file' do
               is_expected.to contain_file('package_processes.load').with_ensure('absent')
+              is_expected.to contain_file('package_processes.load').with_path('/etc/collectd.d/processes-config.conf')
+            end
+            it 'Will not clash with package file' do
+              is_expected.not_to contain_concat('/etc/collectd.d/processes-config.conf')
             end
           end
         end
