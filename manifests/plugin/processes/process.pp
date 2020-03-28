@@ -17,7 +17,7 @@ define collectd::plugin::processes::process (
       'collect_file_descriptor' => $collect_file_descriptor,
       'collect_memory_maps'     => $collect_memory_maps,
     }),
-    target  => "${collectd::plugin_conf_dir}/processes-config.conf",
+    target  => "${collectd::plugin_conf_dir}/processes_config.conf",
   }
 
 }
