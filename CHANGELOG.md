@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v11.4.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.4.0) (2020-03-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.3.0...v11.4.0)
+
+**Implemented enhancements:**
+
+- Add Plugin Log parser [\#912](https://github.com/voxpupuli/puppet-collectd/pull/912) ([MichalRebisz](https://github.com/MichalRebisz))
+
+**Fixed bugs:**
+
+- processes-config.conf file is not created [\#926](https://github.com/voxpupuli/puppet-collectd/issues/926)
+- Create processes plugin configuration on RedHat [\#927](https://github.com/voxpupuli/puppet-collectd/pull/927) ([traylenator](https://github.com/traylenator))
+- Skip Load:ReportRelative as problematic for collectd 5.9.0 [\#924](https://github.com/voxpupuli/puppet-collectd/pull/924) ([traylenator](https://github.com/traylenator))
+- Ignore more installed versions of python during tests [\#923](https://github.com/voxpupuli/puppet-collectd/pull/923) ([traylenator](https://github.com/traylenator))
+
 ## [v11.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.3.0) (2020-03-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.2.0...v11.3.0)
