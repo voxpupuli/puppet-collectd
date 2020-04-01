@@ -1,5 +1,5 @@
 #https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-type Collectd::LOG_PARSER::Match = Struct[{
+type Collectd::LOGPARSER::Match = Struct[{
   'regex' => String,
   Optional['submatchidx'] => Integer,
   Optional['excluderegex'] => String,
