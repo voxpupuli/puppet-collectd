@@ -28,7 +28,7 @@ describe 'collectd::plugin::statsd', type: :class do
             {
               ensure: 'present',
               host: '192.0.0.1',
-              port: '9876'
+              port: 9876
             }
           end
 

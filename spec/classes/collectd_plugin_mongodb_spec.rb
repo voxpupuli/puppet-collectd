@@ -100,7 +100,7 @@ describe 'collectd::plugin::mongodb', type: :class do
         context 'set to a valid value with db_port defined and a single db' do
           let :params do
             default_params.merge(configured_dbs: [25],
-                                 db_port: '8080')
+                                 db_port: 8080)
           end
 
           dbport_single_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_single'))
@@ -110,7 +110,7 @@ describe 'collectd::plugin::mongodb', type: :class do
         context 'set to a valid value with db_port defined and multiple DBs' do
           let :params do
             default_params.merge(configured_dbs: [25, 26],
-                                 db_port: '8080')
+                                 db_port: 8080)
           end
 
           dbport_multi_fixture = File.read(fixtures('plugins/mongodb.conf.configured_dbs_multiple'))

@@ -3,7 +3,7 @@ define collectd::plugin::network::server (
   Enum['present', 'absent'] $ensure                         = 'present',
   Optional[String] $username                                = undef,
   Optional[String] $password                                = undef,
-  Optional[Integer] $port                                   = undef,
+  Optional[Stdlib::Port] $port                              = undef,
   Optional[Collectd::Network::SecurityLevel] $securitylevel = undef,
   Optional[String] $interface                               = undef,
   Optional[Boolean] $forward                                = undef,

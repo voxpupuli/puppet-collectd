@@ -2,9 +2,9 @@
 # useful if you have multiple instances of different version of pg
 define collectd::plugin::postgresql::database (
   $ensure       = 'present',
-  $host         = undef,
+  Optional[Stdlib::Host] $host = undef,
   $databasename = $name,
-  $port         = undef,
+  Optional[Stdlib::Port] $port = undef,
   $user         = undef,
   $password     = undef,
   $sslmode      = undef,
