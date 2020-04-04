@@ -1,7 +1,7 @@
 #https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-class collectd::plugin::log_parser (
+class collectd::plugin::logparser (
   $ensure         = 'present',
-  Array[Hash[String[1],Collectd::LOG_PARSER::Logfile]] $logfile = [{
+  Array[Hash[String[1],Collectd::LOGPARSER::Logfile]] $logfile = [{
     '/var/log/syslog' => {
       'firstfullread' => false,
       'message' => [
@@ -66,9 +66,9 @@ class collectd::plugin::log_parser (
 ){
 include collectd
 
-  collectd::plugin { 'log_parser':
+  collectd::plugin { 'logparser':
     ensure  => $ensure,
-    content => epp('collectd/plugin/log_parser.conf.epp', {
+    content => epp('collectd/plugin/logparser.conf.epp', {
       'logfile' => $logfile,
     }),
     order   => '06',

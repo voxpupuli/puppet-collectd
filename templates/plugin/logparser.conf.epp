@@ -1,5 +1,5 @@
 <%- | Optional $logfile = undef | -%>
-<Plugin log_parser>
+<Plugin logparser>
 <% $logfile.each |$file| { -%>
 <% $file.keys.sort.each |$key| { -%>
   <Logfile "<%= $key %>">
