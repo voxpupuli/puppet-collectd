@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v11.4.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.4.0) (2020-03-28)
+## [v12.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.0.0) (2020-04-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.4.0...v12.0.0)
+
+**Breaking changes:**
+
+- \[collectd\] rename log\_parser to logparser [\#930](https://github.com/voxpupuli/puppet-collectd/pull/930) ([prabiegx](https://github.com/prabiegx))
+- Change all `port` parameters to use `Stdlib::Port` [\#906](https://github.com/voxpupuli/puppet-collectd/pull/906) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Install disk package if required prior CentOS 8 [\#929](https://github.com/voxpupuli/puppet-collectd/pull/929) ([NikolayTsvetkov](https://github.com/NikolayTsvetkov))
+
+## [v11.4.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.4.0) (2020-03-29)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.3.0...v11.4.0)
 
