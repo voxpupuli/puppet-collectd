@@ -1,5 +1,5 @@
 class collectd::plugin::write_prometheus (
-  Stdlib::Port $port = 9103,
+  Variant[Stdlib::Port,String] $port = 9103,
   $ensure = 'present',
 ) {
 

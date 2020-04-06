@@ -5,7 +5,7 @@ define collectd::plugin::mysql::database (
   String $host                         = 'UNSET',
   String $username                     = 'UNSET',
   String $password                     = 'UNSET',
-  Stdlib::Port $port                   = 3306,
+  Variant[Stdlib::Port,String] $port   = 3306,
   Boolean $masterstats                 = false,
   Boolean $slavestats                  = false,
   Optional[String] $socket             = undef,

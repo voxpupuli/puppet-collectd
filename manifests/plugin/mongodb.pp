@@ -3,12 +3,12 @@
 class collectd::plugin::mongodb (
   String $db_user,
   String $db_pass,
-  Enum['absent','present'] $ensure          = 'present',
-  Optional[Variant[String,Float]] $interval = undef,
-  Stdlib::Host $db_host                     = '127.0.0.1',
-  Optional[Stdlib::Port] $db_port           = undef,
-  Optional[Array] $configured_dbs           = undef,
-  $collectd_dir                             = '/usr/lib/collectd',
+  Enum['absent','present'] $ensure                = 'present',
+  Optional[Variant[String,Float]] $interval       = undef,
+  Stdlib::Host $db_host                           = '127.0.0.1',
+  Optional[Variant[Stdlib::Port,String]] $db_port = undef,
+  Optional[Array] $configured_dbs                 = undef,
+  $collectd_dir                                   = '/usr/lib/collectd',
 ) {
 
   include collectd

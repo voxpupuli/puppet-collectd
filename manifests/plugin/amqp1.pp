@@ -104,7 +104,7 @@ class collectd::plugin::amqp1 (
   Boolean $manage_package            = $collectd::manage_package,
   String $transport                  = 'metrics',
   Stdlib::Host $host                 = 'localhost',
-  Stdlib::Port $port                 = 5672,
+  Variant[Stdlib::Port,String] $port = 5672,
   String $user                       = 'guest',
   String $password                   = 'guest',
   String $address                    = 'collectd',
