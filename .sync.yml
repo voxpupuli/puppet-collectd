@@ -10,3 +10,5 @@
 spec/spec_helper.rb:
   spec_overrides: "require 'spec_helper_methods'"
   mock_with: ':mocha'
+spec/spec_helper_acceptance.rb:
+  unmanaged: false
