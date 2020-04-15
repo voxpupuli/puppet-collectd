@@ -27,7 +27,7 @@
 #  Service name or port number on which the AMQP 1.0 intermediary accepts
 #  connections. This argument must be a string, even if the numeric form
 #  is used.
-#  Defaults to '5672'
+#  Defaults to 5672
 #
 # [*user*]
 #  User part of credentials used to authenticate to the AMQP 1.0 intermediary.
@@ -104,7 +104,7 @@ class collectd::plugin::amqp1 (
   Boolean $manage_package            = $collectd::manage_package,
   String $transport                  = 'metrics',
   Stdlib::Host $host                 = 'localhost',
-  String $port                       = '5672',
+  Stdlib::Port $port                 = 5672,
   String $user                       = 'guest',
   String $password                   = 'guest',
   String $address                    = 'collectd',

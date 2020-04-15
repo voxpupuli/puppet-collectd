@@ -8,9 +8,9 @@ describe 'collectd::plugin::write_prometheus', type: :class do
       end
 
       options = os_specific_options(facts)
-      context ':ensure => present and :port => "9103"' do
+      context ':ensure => present and :port => 9103' do
         let :params do
-          { port: '9103' }
+          { port: 9103 }
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-write_prometheus.conf" do

@@ -4,6 +4,67 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v12.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.0.0) (2020-04-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.4.0...v12.0.0)
+
+**Breaking changes:**
+
+- \[collectd\] rename log\_parser to logparser [\#930](https://github.com/voxpupuli/puppet-collectd/pull/930) ([prabiegx](https://github.com/prabiegx))
+- Change all `port` parameters to use `Stdlib::Port` [\#906](https://github.com/voxpupuli/puppet-collectd/pull/906) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Install disk package if required prior CentOS 8 [\#929](https://github.com/voxpupuli/puppet-collectd/pull/929) ([NikolayTsvetkov](https://github.com/NikolayTsvetkov))
+
+## [v11.4.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.4.0) (2020-03-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.3.0...v11.4.0)
+
+**Implemented enhancements:**
+
+- Add Plugin Log parser [\#912](https://github.com/voxpupuli/puppet-collectd/pull/912) ([MichalRebisz](https://github.com/MichalRebisz))
+
+**Fixed bugs:**
+
+- processes-config.conf file is not created [\#926](https://github.com/voxpupuli/puppet-collectd/issues/926)
+- Create processes plugin configuration on RedHat [\#927](https://github.com/voxpupuli/puppet-collectd/pull/927) ([traylenator](https://github.com/traylenator))
+- Skip Load:ReportRelative as problematic for collectd 5.9.0 [\#924](https://github.com/voxpupuli/puppet-collectd/pull/924) ([traylenator](https://github.com/traylenator))
+- Ignore more installed versions of python during tests [\#923](https://github.com/voxpupuli/puppet-collectd/pull/923) ([traylenator](https://github.com/traylenator))
+
+## [v11.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.3.0) (2020-03-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.2.0...v11.3.0)
+
+**Implemented enhancements:**
+
+- New utils parameter to install collectdctl [\#919](https://github.com/voxpupuli/puppet-collectd/pull/919) ([traylenator](https://github.com/traylenator))
+- Require puppet-epel over stahnma-epel [\#918](https://github.com/voxpupuli/puppet-collectd/pull/918) ([traylenator](https://github.com/traylenator))
+- Add CentOS 8 support [\#917](https://github.com/voxpupuli/puppet-collectd/pull/917) ([traylenator](https://github.com/traylenator))
+- Add dpdk\_telemetry plugin [\#913](https://github.com/voxpupuli/puppet-collectd/pull/913) ([prabiegx](https://github.com/prabiegx))
+
+**Fixed bugs:**
+
+- write\_http/disk is own sub package on CentOS 8 [\#920](https://github.com/voxpupuli/puppet-collectd/pull/920) ([traylenator](https://github.com/traylenator))
+
+**Closed issues:**
+
+- Time for a new version ? [\#684](https://github.com/voxpupuli/puppet-collectd/issues/684)
+
+## [v11.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.2.0) (2020-02-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.1.0...v11.2.0)
+
+**Implemented enhancements:**
+
+- Add dcpmm plugin [\#914](https://github.com/voxpupuli/puppet-collectd/pull/914) ([prabiegx](https://github.com/prabiegx))
+- Add pcie\_errors plugin [\#911](https://github.com/voxpupuli/puppet-collectd/pull/911) ([prabiegx](https://github.com/prabiegx))
+- Add SNMP agent plugin [\#910](https://github.com/voxpupuli/puppet-collectd/pull/910) ([MichalRebisz](https://github.com/MichalRebisz))
+
+**Merged pull requests:**
+
+- Plugin Mcelog default config [\#909](https://github.com/voxpupuli/puppet-collectd/pull/909) ([MichalRebisz](https://github.com/MichalRebisz))
+
 ## [v11.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v11.1.0) (2020-02-08)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.0.0...v11.1.0)

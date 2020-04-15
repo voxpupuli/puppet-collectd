@@ -37,6 +37,23 @@ describe 'collectd', type: :class do
         end
       end
 
+      context 'when utils false' do
+        let(:params) { { utils: false } }
+
+        it { is_expected.not_to contain_package('collectd-utils') }
+      end
+
+      context 'when utils true' do
+        let(:params) { { utils: true } }
+
+        case "#{facts[:os]['family']}-#{facts[:os]['release']['major']}"
+        when %r{^Debian-.+}, 'RedHat-8'
+          it { is_expected.to contain_package('collectd-utils') }
+        else
+          it { is_expected.not_to contain_package('collectd-utils') }
+        end
+      end
+
       context 'when purge_config is enabled' do
         let(:params) { { purge_config: true } }
 

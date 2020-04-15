@@ -21,7 +21,7 @@ class collectd::plugin::processes (
     interval => $interval,
   }
 
-  concat { "${collectd::plugin_conf_dir}/processes-config.conf":
+  concat { "${collectd::plugin_conf_dir}/processes_config.conf":
     ensure         => $ensure,
     mode           => $collectd::config_mode,
     owner          => $collectd::config_owner,
@@ -32,13 +32,13 @@ class collectd::plugin::processes (
   concat::fragment { 'collectd_plugin_processes_conf_header':
     order   => '00',
     content => epp('collectd/plugin/processes-header.conf.epp'),
-    target  => "${collectd::plugin_conf_dir}/processes-config.conf",
+    target  => "${collectd::plugin_conf_dir}/processes_config.conf",
   }
 
   concat::fragment { 'collectd_plugin_processes_conf_footer':
     order   => '99',
     content => '</Plugin>',
-    target  => "${collectd::plugin_conf_dir}/processes-config.conf",
+    target  => "${collectd::plugin_conf_dir}/processes_config.conf",
   }
 
   if $processes {

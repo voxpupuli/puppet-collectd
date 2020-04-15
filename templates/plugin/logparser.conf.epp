@@ -1,0 +1,70 @@
+<%- | Optional $logfile = undef | -%>
+<Plugin logparser>
+<% $logfile.each |$file| { -%>
+<% $file.keys.sort.each |$key| { -%>
+  <Logfile "<%= $key %>">
+<% $file[$key].keys.sort.each |$value| { -%>
+<% if $value == 'firstfullread' { -%>
+    FirstFullRead "<%= $file[$key][$value] %>"
+<% } -%>
+<% if $value == 'message' { -%>
+<% $file[$key][$value].each |$message| { -%>
+<% $message.keys.sort.each |$messagekey| { -%>
+    <Message "<%= $messagekey %>">
+<% $message[$messagekey].keys.sort.each |$messagevalue| { -%>
+<% if $messagevalue == 'defaultplugininstance' { -%>
+      DefaultPluginInstance "<%= $message[$messagekey][$messagevalue] %>"
+<% } -%>
+<% if $messagevalue == 'defaultseverity' { -%>
+      DefaultType "<%= $message[$messagekey][$messagevalue] %>"
+<% } -%>
+<% if $messagevalue == 'defaulttype' { -%>
+      DefaultTypeInstance "<%= $message[$messagekey][$messagevalue] %>"
+<% } -%>
+<% if $messagevalue == 'defaulttypeinstance' { -%>
+      DefaultSeverity "<%= $message[$messagekey][$messagevalue] %>"
+<% } -%>
+<% if $messagevalue == 'match' { -%>
+<% $message[$messagekey][$messagevalue].each |$match| { -%>
+<% $match.keys.sort.each |$matchkey| { -%>
+      <Match "<%= $matchkey %>">
+<% $match[$matchkey].keys.sort.each |$matchvalue| { -%>
+<% if $matchvalue == 'regex' { -%>
+        Regex "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'submatchidx' { -%>
+        SubmatchIdx "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'excluderegex' { -%>
+        ExcludeRegex "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'ismandatory' { -%>
+        IsMandatory "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'severity' { -%>
+        Severity "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'plugininstance' { -%>
+        PluginInstance "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'type' { -%>
+        Type "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% if $matchvalue == 'typeinstance' { -%>
+        TypeInstance "<%= $match[$matchkey][$matchvalue] %>"
+<% } -%>
+<% } -%>
+      </Match>
+<% } -%>
+<% } -%>
+<% } -%>
+<% } -%>
+    </Message>
+<% } -%>
+<% } -%>
+<% } -%>
+<% } -%>
+  </Logfile>
+<% } -%>
+<% } -%>
+</Plugin>

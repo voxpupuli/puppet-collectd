@@ -3,19 +3,22 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -58,7 +61,7 @@
     }
   ],
   "name": "puppet-collectd",
-  "version": "11.1.1-rc0",
+  "version": "12.0.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
@@ -84,8 +87,8 @@
       "version_requirement": ">= 4.25.0 < 7.0.0"
     },
     {
-      "name": "stahnma-epel",
-      "version_requirement": ">= 1.2.2 < 2.0.0"
+      "name": "puppet-epel",
+      "version_requirement": ">= 3.0.0 < 4.0.0"
     },
     {
       "name": "puppetlabs-python_task_helper",

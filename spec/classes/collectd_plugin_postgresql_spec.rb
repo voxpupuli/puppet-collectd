@@ -79,7 +79,7 @@ describe 'collectd::plugin::postgresql', type: :class do
                 'host'     => 'localhost',
                 'user'     => 'postgres',
                 'password' => 'postgres',
-                'port'     => '5432',
+                'port'     => 5432,
                 'sslmode'  => 'disable',
                 'query'    => %w[disk_io log_delay]
               },
@@ -88,7 +88,7 @@ describe 'collectd::plugin::postgresql', type: :class do
                 'host'     => 'localhost',
                 'user'     => 'postgres',
                 'password' => 'postgres',
-                'port'     => '5433',
+                'port'     => 5433,
                 'sslmode'  => 'disable',
                 'query'    => %w[disk_io log_delay]
 

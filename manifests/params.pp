@@ -29,6 +29,7 @@ class collectd::params {
   $plugin_conf_dir_mode      = '0750'
   $ci_package_repo           = undef
   $package_keyserver         = 'keyserver.ubuntu.com'
+  $utils                     = false
 
   case $facts['kernel'] {
     'OpenBSD': { $has_wordexp = false }
@@ -71,7 +72,10 @@ class collectd::params {
       $config_file        = '/etc/collectd.conf'
       $config_group       = 'root'
       $java_dir           = '/usr/share/collectd/java'
-      $default_python_dir = '/usr/lib/python2.7/site-packages'
+      $default_python_dir = $facts['os']['release']['major'] ? {
+        '7'     => '/usr/lib/python2.7/site-packages',
+        default => '/usr/lib/python3.6/site-packages',
+      }
       $manage_repo        = true
       $package_configs    = {
         ovs_events => 'ovs-events.conf',

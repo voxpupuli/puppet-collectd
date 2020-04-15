@@ -7,6 +7,8 @@ describe 'collectd::plugin::python class' do
       pp = <<-EOS
       class{'collectd::plugin::python':
       }
+      # Enable one write plugin to make logs quieter
+      class { 'collectd::plugin::csv':}
       EOS
       # Run 3 times since the collectd_version
       # fact is impossible until collectd is
@@ -22,39 +24,45 @@ describe 'collectd::plugin::python class' do
     end
   end
 
-  context 'trivial module' do
+  context 'trivial pip module connect-time' do
     it 'works idempotently with no errors' do
       pp = <<-EOS
-      if $facts['os']['family'] == 'Debian' {
-        # for collectdctl command
-        package{'collectd-utils':
-	  ensure => present,
-        }
+      if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8'  {
+        $_python_pip_package = 'python3-pip'
+        $_pip_provider = 'pip3'
+      } else {
+        $_python_pip_package = 'python-pip'
+        $_pip_provider = 'pip'
       }
-      package{'python-pip':
+      package{$_python_pip_package:
         ensure => present,
       }
       package{['collectd-connect-time']:
-	ensure   => 'present',
-        provider => 'pip',
-	require  => Package['python-pip'],
-	before   => Service['collectd'],
+	      ensure   => 'present',
+        provider => $_pip_provider,
+	      require  => Package[$_python_pip_package],
+	      before   => Service['collectd'],
+      }
+      class{'collectd':
+        utils => true,
       }
       class{'collectd::plugin::python':
-	logtraces   => true,
-	interactive => false,
+	      logtraces   => true,
+	      interactive => false,
         modules     => {
            'collectd_connect_time' => {
-	     config => [{'target' => 'google.de'}],
-	   },
-	},
+	            config => [{'target' => 'google.de'}],
+	          },
+	      },
       }
       class{'collectd::plugin::unixsock':
-        socketfile => '/var/run/collectd-sock',
+        socketfile  => '/var/run/collectd-sock',
+        socketgroup => 'root',
       }
       EOS
 
-      # Run it twice and test for idempotency
+      # Run it twice or thrice and test for idempotency
+      apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
       shell('sleep 10')
@@ -73,41 +81,59 @@ describe 'collectd::plugin::python class' do
     it 'works idempotently with no errors' do
       pp = <<-EOS
       if $facts['os']['family'] == 'Debian' {
-        # for collectdctl command
-        package{['collectd-utils','python-dbus']:
-	  ensure => present,
+        package{'python-dbus':
+	        ensure => present,
         }
       }
-      package{['git','python-pip']:
-        ensure => present,
-	before => Package['collectd-systemd'],
+      if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8'  {
+        $_python_pip_package = 'python3-pip'
+        $_pip_provider = 'pip3'
+      } else {
+        $_python_pip_package = 'python-pip'
+        $_pip_provider = 'pip'
       }
+
+      package{['git',$_python_pip_package]:
+        ensure => present,
+	      before => Package['collectd-systemd'],
+      }
+      # Dependency on dbus for collectd-systemd installed with pip.
+      # https://github.com/mbachry/collectd-systemd/issues/11
+      if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8'  {
+        package{'python3-dbus':
+          ensure => present,
+        }
+      }
+
       package{'collectd-systemd':
-	ensure   => 'present',
-        provider => 'pip',
-	source   => 'git+https://github.com/mbachry/collectd-systemd.git',
-	before   => Service['collectd'],
+	      ensure   => 'present',
+        provider => $_pip_provider,
+	      source   => 'git+https://github.com/mbachry/collectd-systemd.git',
+	      before   => Service['collectd'],
       }
       class{'collectd':
+        utils   => true,
         typesdb => ['/usr/share/collectd/types.db'],
       }
       class{'collectd::plugin::python':
-	logtraces   => true,
-	interactive => false,
+	      logtraces   => true,
+	      interactive => false,
         modules     => {
            'instanceA' => {
-	     module => 'collectd_systemd',
-	     config => [{'Service' => 'collectd'}],
-	   },
+	             module => 'collectd_systemd',
+	             config => [{'Service' => 'collectd'}],
+	          },
            'instanceB' => {
 	     module => 'collectd_systemd',
 	     config => [{'Service' => 'sshd'}],
-	   },
-	},
+	     },
+	    },
       }
       class{'collectd::plugin::unixsock':
         socketfile => '/var/run/collectd-sock',
+        socketgroup => 'root',
       }
+      class { 'collectd::plugin::csv':}
       EOS
 
       # Run it twice and test for idempotency
