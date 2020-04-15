@@ -1,12 +1,9 @@
-<%- | Optional $data = undef,
-      Optional $table = undef,
- | -%>
  # THIS FILE IS MANAGED BY PUPPET
 <Plugin snmp_agent>
-<% if $data { -%>
-<% $data.keys.sort.each |$key| { -%>
+<% if $collectd::plugin::snmp_agent::data { -%>
+<% $collectd::plugin::snmp_agent::data.keys.sort.each |$key| { -%>
 <Data "<%= $key %>">
-<% $data[$key].each |$keyvalue, $value| { -%>
+<% $collectd::plugin::snmp_agent::data[$key].each |$keyvalue, $value| { -%>
 <% if $keyvalue == 'plugin' { -%>
 Plugin "<%= $value %>"
 <% } -%>
@@ -47,10 +44,10 @@ Group "<%= $value[$indexkey] %>"
 </Data>
 <% } -%>
 <% } -%>
-<% if $table { -%>
-<% $table.keys.sort.each |$key| { -%>
+<% if $collectd::plugin::snmp_agent::table { -%>
+<% $collectd::plugin::snmp_agent::table.keys.sort.each |$key| { -%>
 <Table "<%= $key %>">
-<% $table[$key].each |$keyvalue, $value| { -%>
+<% $collectd::plugin::snmp_agent::table[$key].each |$keyvalue, $value| { -%>
 <% if $keyvalue == 'indexoid' { -%>
 IndexOID "<%= $value %>"
 <% } -%>

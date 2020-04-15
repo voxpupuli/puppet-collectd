@@ -1,9 +1,6 @@
-<%- | Optional[String] $mceloglogfile = undef,
-      Optional $memory   = undef,
-| -%>
 <Plugin mcelog>
-<% if $mceloglogfile { %>
-McelogLogfile "<%= $mceloglogfile %>"
+<% if $collectd::plugin::mcelog::mceloglogfile { %>
+McelogLogfile "<%= $collectd::plugin::mcelog::mceloglogfile %>"
 <% } -%>
 <% if $collectd::plugin::mcelog::memory { %>
 <Memory>
