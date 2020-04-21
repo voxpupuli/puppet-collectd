@@ -33,7 +33,7 @@
         Regex "<%= $match[$matchkey][$matchvalue] %>"
 <% } -%>
 <% if $matchvalue == 'submatchidx' { -%>
-        SubmatchIdx "<%= $match[$matchkey][$matchvalue] %>"
+        SubmatchIdx <%= $match[$matchkey][$matchvalue] %>
 <% } -%>
 <% if $matchvalue == 'excluderegex' { -%>
         ExcludeRegex "<%= $match[$matchkey][$matchvalue] %>"

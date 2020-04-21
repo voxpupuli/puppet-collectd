@@ -11,7 +11,7 @@
       DefaultTypeInstance "pcie_error"
       <Match "aer error">
         Regex "AER:.*error received"
-        SubmatchIdx "-1"
+        SubmatchIdx -1
       </Match>
       <Match "corrected">
         IsMandatory "false"
@@ -22,12 +22,12 @@
         IsMandatory "false"
         PluginInstance "true"
         Regex " ([0-9a-fA-F:\.]*): PCIe Bus Error"
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
       <Match "error type">
         IsMandatory "false"
         Regex "type=(.*),"
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
       <Match "fatal">
         IsMandatory "false"
@@ -37,12 +37,12 @@
       </Match>
       <Match "id">
         Regex ", id=(.*)"
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
       <Match "incident time">
         IsMandatory "false"
         Regex "(... .. ..:..:..) .* pcieport.*AER"
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
       <Match "nonfatal">
         IsMandatory "false"
@@ -52,11 +52,11 @@
       <Match "root port">
         IsMandatory "true"
         Regex "pcieport (.*): AER:"
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
       <Match "severity_mandatory">
         Regex "severity="
-        SubmatchIdx "1"
+        SubmatchIdx 1
       </Match>
     </Message>
   </Logfile>
