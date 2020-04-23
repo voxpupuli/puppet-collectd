@@ -31,7 +31,7 @@ class collectd::plugin::snmp_agent(
         },
         'ifOctets' => {
           'plugin'   => 'interface',
-          'oids'     => 'F-MIB::ifInOctets" "IF-MIB::ifOutOctets',
+          'oids'     => 'IF-MIB::ifInOctets" "IF-MIB::ifOutOctets',
           'type'     => 'if_octets',
           'typeinstance' => '',
         },

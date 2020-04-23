@@ -19,7 +19,7 @@ describe 'collectd::plugin::snmp_agent', type: :class do
         end
       end
 
-      it { is_expected.to contain_file('snmp_agent.load').with_content(%r{OIDs "F-MIB::ifInOctets" "IF-MIB::ifOutOctets"}) }
+      it { is_expected.to contain_file('snmp_agent.load').with_content(%r{OIDs "IF-MIB::ifInOctets" "IF-MIB::ifOutOctets"}) }
       it { is_expected.to contain_file('snmp_agent.load').with_content(%r{<Data "ifOctets">}) }
       it { is_expected.to contain_file('snmp_agent.load').with_content(%r{<Table "ifTable">}) }
       it { is_expected.to contain_file('snmp_agent.load').with_content(%r{<Data "memAvailReal">}) }
