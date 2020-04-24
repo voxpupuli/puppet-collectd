@@ -31,7 +31,7 @@ class collectd::plugin::logparser (
             },
             'severity_mandatory' => {
               'regex' => 'severity=',
-              'submatchidx' => 1,
+              'submatchidx' => -1,
             },
             'nonfatal' => {
               'regex' => 'severity=.*\\([nN]on-[fF]atal',

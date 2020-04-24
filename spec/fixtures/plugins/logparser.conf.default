@@ -5,7 +5,7 @@
 
 <Plugin logparser>
   <Logfile "/var/log/syslog">
-    FirstFullRead "false"
+    FirstFullRead false
     <Message "pcie_errors">
       DefaultType "warning"
       DefaultTypeInstance "pcie_error"
@@ -14,23 +14,23 @@
         SubmatchIdx -1
       </Match>
       <Match "corrected">
-        IsMandatory "false"
+        IsMandatory false
         Regex "severity=Corrected"
         TypeInstance "correctable"
       </Match>
       <Match "device">
-        IsMandatory "false"
-        PluginInstance "true"
+        IsMandatory false
+        PluginInstance true
         Regex " ([0-9a-fA-F:\.]*): PCIe Bus Error"
         SubmatchIdx 1
       </Match>
       <Match "error type">
-        IsMandatory "false"
+        IsMandatory false
         Regex "type=(.*),"
         SubmatchIdx 1
       </Match>
       <Match "fatal">
-        IsMandatory "false"
+        IsMandatory false
         Regex "severity=.*\([fF]atal"
         Severity "failure"
         TypeInstance "fatal"
@@ -40,23 +40,23 @@
         SubmatchIdx 1
       </Match>
       <Match "incident time">
-        IsMandatory "false"
+        IsMandatory false
         Regex "(... .. ..:..:..) .* pcieport.*AER"
         SubmatchIdx 1
       </Match>
       <Match "nonfatal">
-        IsMandatory "false"
+        IsMandatory false
         Regex "severity=.*\([nN]on-[fF]atal"
         TypeInstance "non_fatal"
       </Match>
       <Match "root port">
-        IsMandatory "true"
+        IsMandatory true
         Regex "pcieport (.*): AER:"
         SubmatchIdx 1
       </Match>
       <Match "severity_mandatory">
         Regex "severity="
-        SubmatchIdx 1
+        SubmatchIdx -1
       </Match>
     </Message>
   </Logfile>
