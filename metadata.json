@@ -1,4 +1,34 @@
 {
+  "name": "puppet-collectd",
+  "version": "12.0.1-rc0",
+  "source": "https://github.com/voxpupuli/puppet-collectd",
+  "author": "Vox Pupuli",
+  "license": "Apache-2.0",
+  "summary": "Puppet module for Collectd",
+  "project_page": "https://github.com/voxpupuli/puppet-collectd",
+  "issues_url": "https://github.com/voxpupuli/puppet-collectd/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 2.2.0 < 8.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 4.1.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0 < 7.0.0"
+    },
+    {
+      "name": "puppet-epel",
+      "version_requirement": ">= 3.0.0 < 4.0.0"
+    },
+    {
+      "name": "puppetlabs-python_task_helper",
+      "version_requirement": ">= 0.2.0 < 1.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -30,7 +60,9 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9",
+        "10"
       ]
     },
     {
@@ -60,39 +92,9 @@
       "version_requirement": ">= 5.5.8 < 7.0.0"
     }
   ],
-  "name": "puppet-collectd",
-  "version": "12.0.1-rc0",
-  "source": "https://github.com/voxpupuli/puppet-collectd",
-  "author": "Vox Pupuli",
-  "license": "Apache-2.0",
-  "summary": "Puppet module for Collectd",
-  "project_page": "https://github.com/voxpupuli/puppet-collectd",
-  "issues_url": "https://github.com/voxpupuli/puppet-collectd/issues",
   "tags": [
     "collectd",
     "statistics",
     "graphite"
-  ],
-  "dependencies": [
-    {
-      "name": "puppetlabs-apt",
-      "version_requirement": ">= 2.2.0 < 8.0.0"
-    },
-    {
-      "name": "puppetlabs/concat",
-      "version_requirement": ">= 4.1.0 < 7.0.0"
-    },
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.0 < 7.0.0"
-    },
-    {
-      "name": "puppet-epel",
-      "version_requirement": ">= 3.0.0 < 4.0.0"
-    },
-    {
-      "name": "puppetlabs-python_task_helper",
-      "version_requirement": ">= 0.2.0 < 1.0.0"
-    }
   ]
 }
