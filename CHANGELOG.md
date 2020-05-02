@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v12.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.1.0) (2020-05-03)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.0.0...v12.1.0)
+
+**Implemented enhancements:**
+
+- Add support for Debian 9/10 [\#938](https://github.com/voxpupuli/puppet-collectd/pull/938) ([dhoppe](https://github.com/dhoppe))
+
+**Fixed bugs:**
+
+- Snmp agent fix [\#937](https://github.com/voxpupuli/puppet-collectd/pull/937) ([MichalRebisz](https://github.com/MichalRebisz))
+- Fix Logparser template datatype handling [\#936](https://github.com/voxpupuli/puppet-collectd/pull/936) ([MichalRebisz](https://github.com/MichalRebisz))
+
+**Merged pull requests:**
+
+- Use voxpupuli-acceptance [\#934](https://github.com/voxpupuli/puppet-collectd/pull/934) ([ekohl](https://github.com/ekohl))
+
 ## [v12.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.0.0) (2020-04-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v11.4.0...v12.0.0)
