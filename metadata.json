@@ -1,6 +1,6 @@
 {
   "name": "puppet-collectd",
-  "version": "12.1.0",
+  "version": "12.1.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-collectd",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
