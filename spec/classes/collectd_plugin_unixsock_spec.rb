@@ -13,7 +13,7 @@ describe 'collectd::plugin::unixsock', type: :class do
           is_expected.to contain_file('unixsock.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-unixsock.conf",
-            content: %r{SocketFile  "/var/run/collectd-socket".+SocketGroup "collectd".+SocketPerms "0770"}m
+            content: %r{SocketFile  "/var/run/collectd-unixsock".+SocketGroup "collectd".+SocketPerms "0770"}m
           )
         end
       end

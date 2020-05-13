@@ -1,6 +1,6 @@
 # https://collectd.org/wiki/index.php/Plugin:UnixSock
 class collectd::plugin::unixsock (
-  Stdlib::Absolutepath $socketfile = '/var/run/collectd-socket',
+  Stdlib::Absolutepath $socketfile = '/var/run/collectd-unixsock',
   $socketgroup                     = 'collectd',
   $socketperms                     = '0770',
   $deletesocket                    = false,
