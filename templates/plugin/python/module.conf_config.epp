@@ -8,7 +8,7 @@
   <%- $configuration.each |$key,$value| { -%>
     <%- if ($value =~ Numeric or $value =~ Boolean) { -%>
     <%= $key %> <%= $value %>
-    <%- } elsif $value =~ Array { %>
+    <%- } elsif $value =~ Array { -%>
       <%#- Render arrays as key "Value 1" "Value2" 22 false -%>
     <%= $key -%> 
       <%- $value.each |$v| { -%>
