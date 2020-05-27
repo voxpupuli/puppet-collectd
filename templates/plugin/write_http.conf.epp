@@ -28,6 +28,12 @@
 <% if $values['storerates'] { -%>
     StoreRates <%= $values['storerates'] %>
 <% } -%>
+<% if $values['header'] { -%>
+    Header "<%= $values['header'] %>"
+<% } -%>
+<% if $values['metrics'] { -%>
+    Metrics <%= $values['metrics'] %>
+<% } -%>
 <% if $values['url'] { -%>
   </Node>
 <% } else { -%>
