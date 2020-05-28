@@ -2,12 +2,13 @@
 #
 define collectd::plugin::dbi::database (
   String $driver,
-  String $ensure             = 'present',
-  Optional[String] $host     = undef,
-  String $databasename       = $name,
-  Hash $driveroption         = {},
-  Optional[String] $selectdb = undef,
-  Array $query               = [],
+  String $ensure                        = 'present',
+  Optional[String] $host                = undef,
+  String $databasename                  = $name,
+  Hash $driveroption                    = {},
+  Optional[String] $selectdb            = undef,
+  Array $query                          = [],
+  OptionalInteger[1] $db_query_interval = undef,
 ) {
 
   include collectd
