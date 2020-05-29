@@ -1,5 +1,8 @@
   <Database "<%= @databasename %>">
     Driver "<%= @driver %>"
+<% if @db_query_interval -%>    
+    Interval <%= @db_query_interval %>
+<% end -%>
 <% @driveroption.each do |key, value| -%>
     DriverOption "<%= key %>" "<%= value %>"
 <% end -%>
