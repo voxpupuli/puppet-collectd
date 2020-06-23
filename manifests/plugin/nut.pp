@@ -11,8 +11,8 @@ class collectd::plugin::nut (
     ensure   => $ensure,
   }
   $upss.each |String $ups| {
-      collectd::plugin::nut::ups { $upss:
-        ensure => $ensure,
-      }
+    collectd::plugin::nut::ups { $upss:
+      ensure => $ensure,
+    }
   }
 }

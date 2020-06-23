@@ -71,8 +71,7 @@ define collectd::plugin::perl::plugin (
       }
     }
     default: {
-      fail("Unsupported provider: ${provider}. Use 'package', 'cpan',
-      'file' or false.")
+      fail("Unsupported provider: ${provider}. Use 'package', 'cpan', 'file' or false.")
     }
   }
 }
