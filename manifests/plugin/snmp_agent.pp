@@ -45,8 +45,8 @@ class collectd::plugin::snmp_agent(
   collectd::plugin { 'snmp_agent':
     ensure  => $ensure,
     content => epp('collectd/plugin/snmp_agent.conf.epp', {
-      'data'  => $data,
-      'table' => $table
+        'data'  => $data,
+        'table' => $table
     }),
   }
 }

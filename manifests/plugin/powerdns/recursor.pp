@@ -10,9 +10,9 @@ define collectd::plugin::powerdns::recursor (
   concat::fragment{ "collectd_plugin_powerdns_conf_recursor_${name}":
     order   => '51',
     content => epp('collectd/plugin/powerdns/recursor.conf.epp', {
-      'name'    => $name,
-      'socket'  => $socket,
-      'collect' => $collect,
+        'name'    => $name,
+        'socket'  => $socket,
+        'collect' => $collect,
     }),
     target  => "${collectd::plugin_conf_dir}/powerdns-config.conf",
   }

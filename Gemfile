@@ -12,6 +12,7 @@ end
 
 group :test do
   gem 'voxpupuli-test', '>= 1.0.0',  :require => false
+  gem 'puppet-lint-strict_indent-check', :require => false
   gem 'coveralls',                   :require => false
   gem 'simplecov-console',           :require => false
 end
