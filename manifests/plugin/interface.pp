@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Interface
 class collectd::plugin::interface (
   $ensure                 = 'present',
-  Array $interfaces       = [],
   Boolean $ignoreselected = false,
-  Boolean $reportinactive = true,
+  Array $interfaces       = [],
   $interval               = undef,
+  Boolean $reportinactive = true
 ) {
 
   include collectd

@@ -2,9 +2,9 @@
 class collectd::plugin::exec (
   Hash $commands          = {},
   Hash $commands_defaults = {},
-  $interval               = undef,
   $ensure                 = 'present',
   Boolean $globals        = false,
+  $interval               = undef
 ) {
 
   include collectd

@@ -4,9 +4,9 @@ class collectd::plugin::swap (
   $interval                 = undef,
   Boolean $reportbydevice   = false,
   Boolean $reportbytes      = true,
-  Boolean $valuesabsolute   = true,
-  Boolean $valuespercentage = false,
   Boolean $reportio         = true,
+  Boolean $valuesabsolute   = true,
+  Boolean $valuespercentage = false
 ) {
 
   include collectd

@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:FileCount
 class collectd::plugin::filecount (
-  $ensure           = 'present',
   Hash $directories = {},
-  $interval         = undef,
+  $ensure           = 'present',
+  $interval         = undef
 ) {
 
   include collectd

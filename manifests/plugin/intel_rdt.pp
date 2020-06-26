@@ -27,9 +27,9 @@
 #  Defaults to ""
 #
 class collectd::plugin::intel_rdt (
-  Enum['present', 'absent'] $ensure   = 'present',
-  Optional[Integer] $interval         = undef,
   Array[String[1]] $cores             = [],
+  Enum['present', 'absent'] $ensure   = 'present',
+  Optional[Integer] $interval         = undef
 ) {
 
   include collectd

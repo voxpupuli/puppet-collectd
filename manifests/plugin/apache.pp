@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Apache
 class collectd::plugin::apache (
   Enum['present', 'absent'] $ensure        = 'present',
-  Boolean $manage_package                  = $collectd::manage_package,
   Hash $instances                          = { 'localhost' => { 'url' => 'http://localhost/mod_status?auto' } },
   Optional[Integer[1]] $interval           = undef,
-  Optional[Array] $package_install_options = $collectd::package_install_options,
+  Boolean $manage_package                  = $collectd::manage_package,
+  Optional[Array] $package_install_options = $collectd::package_install_options
 ) {
 
   include collectd

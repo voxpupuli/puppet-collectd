@@ -4,11 +4,10 @@
 #
 #  Configues snmp agent plugin.
 #
-# @param ensure String Passed to package and collectd::plugin resources (both). Default: present
 # @param data Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] Defines scalar field, must be put outside Table block.
+# @param ensure String Passed to package and collectd::plugin resources (both). Default: present
 # @param table Hash[String[1], Collectd::SNMP_AGENT::Table] Defines a table consisting of several Data blocks being its columns
 class collectd::plugin::snmp_agent(
-  Enum['present', 'absent'] $ensure = 'present',
   Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] $data = {
     'memAvailReal' => {
       'oids' => '1.3.6.1.4.1.2021.4.6.0',
@@ -17,6 +16,7 @@ class collectd::plugin::snmp_agent(
       'typeinstance' => 'free',
     },
   },
+  Enum['present', 'absent'] $ensure = 'present',
   Hash[String[1], Collectd::SNMP_AGENT::Table] $table = {
     'ifTable' => {
       'indexoid' => 'IF-MIB::ifIndex',

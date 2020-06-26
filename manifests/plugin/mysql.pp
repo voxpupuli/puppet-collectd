@@ -2,8 +2,8 @@
 # https://collectd.org/wiki/index.php/Plugin:MySQL
 class collectd::plugin::mysql (
   $ensure           = 'present',
-  $manage_package   = undef,
   $interval         = undef,
+  $manage_package   = undef
 ) {
 
   include collectd

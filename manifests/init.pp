@@ -7,17 +7,20 @@
 # @param utils Install collectd utilities package containing collectdctl, collectd-nagios
 class collectd (
   Boolean $autoloadplugin                              = $collectd::params::autoloadplugin,
+  Optional[Collectd::Manifests::Init] $ci_package_repo = $collectd::params::ci_package_repo,
   String $collectd_hostname                            = $collectd::params::collectd_hostname,
   Optional[String] $conf_content                       = $collectd::params::conf_content,
   String $config_file                                  = $collectd::params::config_file,
+  String $config_group                                 = $collectd::params::config_group,
+  String $config_mode                                  = $collectd::params::config_mode,
+  String $config_owner                                 = $collectd::params::config_owner,
   Boolean $fqdnlookup                                  = $collectd::params::fqdnlookup,
   Boolean $has_wordexp                                 = $collectd::params::has_wordexp,
   Array $include                                       = $collectd::params::include,
-  Integer[1] $interval                                 = $collectd::params::interval,
   Boolean $internal_stats                              = $collectd::params::internal_stats,
+  Integer[1] $interval                                 = $collectd::params::interval,
   Boolean $manage_package                              = $collectd::params::manage_package,
   Boolean $manage_repo                                 = $collectd::params::manage_repo,
-  Optional[Collectd::Manifests::Init] $ci_package_repo = $collectd::params::ci_package_repo,
   Boolean $manage_service                              = $collectd::params::manage_service,
   String $minimum_version                              = $collectd::params::minimum_version,
   String $package_ensure                               = $collectd::params::package_ensure,
@@ -31,18 +34,15 @@ class collectd (
   Boolean $purge_config                                = $collectd::params::purge_config,
   Integer[1] $read_threads                             = $collectd::params::read_threads,
   Boolean $recurse                                     = $collectd::params::recurse,
-  String $config_group                                 = $collectd::params::config_group,
-  String $config_mode                                  = $collectd::params::config_mode,
-  String $config_owner                                 = $collectd::params::config_owner,
   Boolean $service_enable                              = $collectd::params::service_enable,
   String $service_ensure                               = $collectd::params::service_ensure,
   String $service_name                                 = $collectd::params::service_name,
   Integer[1] $timeout                                  = $collectd::params::timeout,
   Array $typesdb                                       = $collectd::params::typesdb,
+  Boolean    $utils                                    = $collectd::params::utils,
   Optional[Integer] $write_queue_limit_high            = $collectd::params::write_queue_limit_high,
   Optional[Integer] $write_queue_limit_low             = $collectd::params::write_queue_limit_low,
-  Integer[1] $write_threads                            = $collectd::params::write_threads,
-  Boolean    $utils                                    = $collectd::params::utils,
+  Integer[1] $write_threads                            = $collectd::params::write_threads
 ) inherits collectd::params {
 
   $collectd_version_real = pick_default($facts['collectd_version'], $minimum_version)

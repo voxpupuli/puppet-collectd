@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:TCPConns
 class collectd::plugin::tcpconns (
-  Optional[Array[Stdlib::Port]] $localports  = undef,
-  Optional[Array[Stdlib::Port]] $remoteports = undef,
-  $listening                         = undef,
-  $interval                          = undef,
   Optional[Boolean] $allportssummary = undef,
-  $ensure                            = 'present'
+  $ensure                            = 'present',
+  $interval                          = undef,
+  $listening                         = undef,
+  Optional[Array[Stdlib::Port]] $localports  = undef,
+  Optional[Array[Stdlib::Port]] $remoteports = undef
 ) {
 
   include collectd

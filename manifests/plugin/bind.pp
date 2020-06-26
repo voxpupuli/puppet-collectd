@@ -2,6 +2,7 @@
 class collectd::plugin::bind (
   Stdlib::Httpurl $url,
   Enum['present', 'absent'] $ensure  = 'present',
+  Optional[Integer[1]] $interval     = undef,
   Boolean $manage_package            = $collectd::manage_package,
   Boolean $memorystats               = true,
   Boolean $opcodes                   = true,
@@ -9,9 +10,8 @@ class collectd::plugin::bind (
   Boolean $qtypes                    = true,
   Boolean $resolverstats             = false,
   Boolean $serverstats               = true,
-  Boolean $zonemaintstats            = true,
   Array[Collectd::Bind::View] $views = [],
-  Optional[Integer[1]] $interval     = undef,
+  Boolean $zonemaintstats            = true
 ) {
 
   include collectd

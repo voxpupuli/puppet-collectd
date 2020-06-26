@@ -1,13 +1,13 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
-  Enum['present', 'absent'] $ensure          = 'present',
-  Integer $order                             = 10,
-  Optional[Numeric] $interval                = undef,
-  Optional[Array] $processes                 = undef,
-  Optional[Array] $process_matches           = undef,
   Optional[Boolean] $collect_context_switch  = undef,
   Optional[Boolean] $collect_file_descriptor = undef,
   Optional[Boolean] $collect_memory_maps     = undef,
+  Enum['present', 'absent'] $ensure          = 'present',
+  Optional[Numeric] $interval                = undef,
+  Integer $order                             = 10,
+  Optional[Array] $process_matches           = undef,
+  Optional[Array] $processes                 = undef
 ) {
 
   include collectd

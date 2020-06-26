@@ -32,11 +32,11 @@
 #  Defaults to undef
 #
 class collectd::plugin::procevent (
+  Optional[Integer[1, default]] $buffer_length = undef,
   Enum['present', 'absent'] $ensure            = 'present',
   Boolean $manage_package                      = $collectd::manage_package,
   Optional[String[1]] $process                 = undef,
-  Optional[String[1]] $process_regex           = undef,
-  Optional[Integer[1, default]] $buffer_length = undef,
+  Optional[String[1]] $process_regex           = undef
 ) {
 
   include collectd

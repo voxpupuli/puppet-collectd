@@ -50,14 +50,14 @@ class collectd::plugin::rabbitmq (
     'Host'     => $facts['networking']['fqdn'],
     'Realm'    => '"RabbitMQ Management"',
   },
+  $custom_types_db  = undef,
   # lint:endignore
   String $ensure    = 'present',
   $interval         = undef,
   $manage_package   = undef,
   $package_name     = 'collectd-rabbitmq',
   $package_provider = 'pip',
-  $provider_proxy   = undef,
-  $custom_types_db  = undef,
+  $provider_proxy   = undef
 ) {
   include collectd
 

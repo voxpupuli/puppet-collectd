@@ -1,11 +1,11 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_powerdns
 class collectd::plugin::powerdns (
   Enum['present', 'absent'] $ensure       = 'present',
-  Integer $order                          = 10,
   Optional[Numeric] $interval             = undef,
-  Optional[Hash[String, Hash]] $servers   = {},
-  Optional[Hash[String, Hash]] $recursors = {},
   Optional[String] $local_socket          = undef,
+  Integer $order                          = 10,
+  Optional[Hash[String, Hash]] $recursors = {},
+  Optional[Hash[String, Hash]] $servers   = {}
 ) {
 
   include collectd

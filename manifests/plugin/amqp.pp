@@ -1,22 +1,22 @@
 # https://collectd.org/wiki/index.php/Plugin:AMQP
 class collectd::plugin::amqp (
-  Enum['present', 'absent'] $ensure  = 'present',
-  Boolean $manage_package            = $collectd::manage_package,
-  Stdlib::Host $amqphost             = 'localhost',
-  Stdlib::Port $amqpport             = 5672,
-  String $amqpvhost                  = 'graphite',
-  String $amqpuser                   = 'graphite',
-  String $amqppass                   = 'graphite',
-  Collectd::Amqp::Format $amqpformat = 'Graphite',
-  Boolean $amqpstorerates            = false,
   String $amqpexchange               = 'metrics',
+  Collectd::Amqp::Format $amqpformat = 'Graphite',
+  Stdlib::Host $amqphost             = 'localhost',
+  String $amqppass                   = 'graphite',
   Boolean $amqppersistent            = true,
+  Stdlib::Port $amqpport             = 5672,
   String $amqproutingkey             = 'collectd',
-  String $graphiteprefix             = 'collectd.',
+  Boolean $amqpstorerates            = false,
+  String $amqpuser                   = 'graphite',
+  String $amqpvhost                  = 'graphite',
+  Enum['present', 'absent'] $ensure  = 'present',
   String[1] $escapecharacter         = '_',
-  Optional[Integer[1]] $interval     = undef,
-  Boolean $graphiteseparateinstances = false,
   Boolean $graphitealwaysappendds    = false,
+  String $graphiteprefix             = 'collectd.',
+  Boolean $graphiteseparateinstances = false,
+  Optional[Integer[1]] $interval     = undef,
+  Boolean $manage_package            = $collectd::manage_package
 ) {
 
   include collectd

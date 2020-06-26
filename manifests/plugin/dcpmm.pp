@@ -3,19 +3,18 @@
 # The dcpmm plugin will collect Intel(R) Optane(TM) DC Persistent Memory related performance statistics.
 # Plugin requires root privileges to perform the statistics collection.
 #
-# @param ensure Ensure param for collectd::plugin type.
-# @param interval Sets interval (in seconds) in which the values will be collected.
 # @param collect_health Collects health information. collect_health and collect_perf_metrics cannot be true at the same time.
 # @param collect_perf_metrics Collects memory performance metrics. collect_health and collect_perf_metrics cannot be true at the same time.
 # @param enable_dispatch_all This parameter helps to seamlessly enable simultaneous health and memory perf metrics collection in future. Unused at the moment and must always be false.
+# @param ensure Ensure param for collectd::plugin type.
+# @param interval Sets interval (in seconds) in which the values will be collected.
 #
 class collectd::plugin::dcpmm (
-  Enum['present', 'absent'] $ensure               = 'present',
-  Float                     $interval             = 10.0,
   Boolean                   $collect_health       = false,
   Boolean                   $collect_perf_metrics = true,
   Boolean                   $enable_dispatch_all  = false,
-
+  Enum['present', 'absent'] $ensure               = 'present',
+  Float                     $interval             = 10.0
 ) {
 
   include collectd

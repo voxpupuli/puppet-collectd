@@ -6,9 +6,9 @@
 #
 class collectd::plugin::write_http (
   Enum['present', 'absent']          $ensure = 'present',
-  Hash[String, Hash[String, Scalar]] $nodes = {},
-  Hash[String, Hash[String, Scalar]] $urls  = {},
   Optional[Boolean]                  $manage_package = undef,
+  Hash[String, Hash[String, Scalar]] $nodes = {},
+  Hash[String, Hash[String, Scalar]] $urls  = {}
 ) {
 
   include collectd

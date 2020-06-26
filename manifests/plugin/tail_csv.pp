@@ -1,9 +1,9 @@
 #https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
 class collectd::plugin::tail_csv (
-  Hash[String, Collectd::Tail_Csv::Metric, 1] $metrics,
   Hash[String, Collectd::Tail_Csv::File, 1] $files,
+  Hash[String, Collectd::Tail_Csv::Metric, 1] $metrics,
   Enum['present', 'absent'] $ensure = 'present',
-  Integer $order                    = 10,
+  Integer $order                    = 10
 ) {
   include collectd
 

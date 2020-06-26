@@ -1,8 +1,8 @@
 # collectd::plugin::aggregation
 class collectd::plugin::aggregation (
-  Enum['present', 'absent'] $ensure = 'present',
-  Optional[Integer[1]] $interval    = undef,
   Hash $aggregators                 = {},
+  Enum['present', 'absent'] $ensure = 'present',
+  Optional[Integer[1]] $interval    = undef
 ) {
 
   include collectd

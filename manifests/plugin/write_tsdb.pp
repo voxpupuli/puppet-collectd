@@ -1,12 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_TSDB
 class collectd::plugin::write_tsdb (
+  Boolean $always_append_ds = false,
   $ensure                   = present,
   Boolean $globals          = false,
   Stdlib::Host $host        = 'localhost',
-  Stdlib::Port $port        = 4242,
   Array $host_tags          = [],
-  Boolean $store_rates      = false,
-  Boolean $always_append_ds = false,
+  Stdlib::Port $port        = 4242,
+  Boolean $store_rates      = false
 ) {
 
   include collectd

@@ -35,9 +35,9 @@
 #
 class collectd::plugin::ceph (
   Array $daemons,
+  Boolean $convertspecialmetrictypes = true,
   Enum['present', 'absent'] $ensure  = 'present',
   Boolean $longrunavglatency         = false,
-  Boolean $convertspecialmetrictypes = true,
   Boolean $manage_package            = $collectd::manage_package,
   String $package_name               = 'collectd-ceph'
 ) {

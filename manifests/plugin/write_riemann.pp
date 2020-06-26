@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 class collectd::plugin::write_riemann (
   Array[Collectd::Write_riemann::Node] $nodes,
+  Hash[String[1],String[1]] $attributes = {},
   Enum['present', 'absent'] $ensure     = 'present',
   Boolean $manage_package               = $collectd::manage_package,
-  Array[String[1]] $tags                = [],
-  Hash[String[1],String[1]] $attributes = {},
+  Array[String[1]] $tags                = []
 ) {
 
   include collectd

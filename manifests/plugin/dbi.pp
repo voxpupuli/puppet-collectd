@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:DBI
 class collectd::plugin::dbi (
-  $ensure         = 'present',
   $databases      = { },
-  $queries        = { },
-  $packages       = undef,
+  $ensure         = 'present',
   $interval       = undef,
   $manage_package = undef,
+  $packages       = undef,
+  $queries        = { }
 ) {
 
   include collectd

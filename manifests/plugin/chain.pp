@@ -1,8 +1,8 @@
 #
 class collectd::plugin::chain (
   String $chainname                       = 'Main',
-  Enum['present', 'absent'] $ensure       = 'present',
   Collectd::Filter::Target $defaulttarget = 'write',
+  Enum['present', 'absent'] $ensure       = 'present',
   Array $rules                            = []
 ) {
 

@@ -1,5 +1,6 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
 class collectd::plugin::python (
+  $conf_name           = 'python-config.conf',
   # Python 2 defaults to 'ascii' and Python 3 to 'utf-8'
   $encoding            = undef,
   $ensure              = 'present',
@@ -12,8 +13,7 @@ class collectd::plugin::python (
   $manage_package      = undef,
   Array $modulepaths   = [],
   Hash $modules        = {},
-  $order               = '10',
-  $conf_name           = 'python-config.conf',
+  $order               = '10'
 ) {
 
   include collectd

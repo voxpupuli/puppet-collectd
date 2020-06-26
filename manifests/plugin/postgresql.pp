@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:PostgreSQL
 class collectd::plugin::postgresql (
-  $ensure         = 'present',
-  $manage_package = undef,
   $databases      = { },
+  $ensure         = 'present',
   $interval       = undef,
+  $manage_package = undef,
   $queries        = { },
-  $writers        = { },
+  $writers        = { }
 ) {
 
   include collectd

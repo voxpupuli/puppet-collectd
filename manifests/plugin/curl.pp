@@ -1,9 +1,9 @@
 #
 class collectd::plugin::curl (
   $ensure         = 'present',
-  $manage_package = undef,
   $interval       = undef,
-  $pages          = { },
+  $manage_package = undef,
+  $pages          = { }
 ) {
 
   include collectd

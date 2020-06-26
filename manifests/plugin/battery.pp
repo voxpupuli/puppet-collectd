@@ -36,9 +36,9 @@
 class collectd::plugin::battery (
   Enum['present', 'absent'] $ensure   = 'present',
   Optional[Integer] $interval         = undef,
-  Boolean $values_percentage          = false,
-  Boolean $report_degraded            = false,
   Boolean $query_state_fs             = false,
+  Boolean $report_degraded            = false,
+  Boolean $values_percentage          = false
 ) {
 
   include collectd

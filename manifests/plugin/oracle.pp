@@ -2,8 +2,8 @@
 # https://collectd.org/wiki/index.php/Plugin:Oracle
 class collectd::plugin::oracle (
   Enum['present', 'absent'] $ensure = 'present',
-  Boolean $manage_package           = false,
   Optional[Integer[1]] $interval    = undef,
+  Boolean $manage_package           = false
 ) {
 
   include collectd

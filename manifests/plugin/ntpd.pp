@@ -2,10 +2,10 @@
 class collectd::plugin::ntpd (
   $ensure           = 'present',
   Stdlib::Host $host = 'localhost',
-  Stdlib::Port $port = 123,
-  $reverselookups   = false,
   $includeunitid    = false,
   $interval         = undef,
+  Stdlib::Port $port = 123,
+  $reverselookups   = false
 ) {
 
   include collectd

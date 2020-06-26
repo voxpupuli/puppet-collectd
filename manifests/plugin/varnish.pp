@@ -1,12 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:Varnish
 class collectd::plugin::varnish (
   $ensure         = 'present',
-  $manage_package = undef,
   Hash $instances = {
     'localhost' => {
     },
   },
   $interval       = undef,
+  $manage_package = undef
 ) {
 
   include collectd

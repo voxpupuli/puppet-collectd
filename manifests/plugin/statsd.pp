@@ -1,19 +1,19 @@
 # https://collectd.org/wiki/index.php/Plugin:StatsD
 class collectd::plugin::statsd (
-  $ensure                = 'present',
-  Optional[Stdlib::Host] $host = undef,
-  Optional[Stdlib::Port] $port = undef,
+  $countersum            = undef,
   $deletecounters        = undef,
-  $deletetimers          = undef,
   $deletegauges          = undef,
   $deletesets            = undef,
-  $countersum            = undef,
+  $deletetimers          = undef,
+  $ensure                = 'present',
+  Optional[Stdlib::Host] $host = undef,
   $interval              = undef,
-  Array $timerpercentile = [],
-  $timerlower            = undef,
-  $timerupper            = undef,
-  $timersum              = undef,
+  Optional[Stdlib::Port] $port = undef,
   $timercount            = undef,
+  $timerlower            = undef,
+  Array $timerpercentile = [],
+  $timersum              = undef,
+  $timerupper            = undef
 ) {
 
   include collectd

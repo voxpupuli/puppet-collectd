@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Plugin:UUID
 class collectd::plugin::uuid (
-  $uuid_file = '/etc/uuid',
   $ensure    = 'present',
   $interval  = undef,
+  $uuid_file = '/etc/uuid'
 ) {
 
   include collectd

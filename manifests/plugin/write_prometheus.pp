@@ -1,6 +1,6 @@
 class collectd::plugin::write_prometheus (
-  Stdlib::Port $port = 9103,
-  $ensure = 'present',
+  $ensure            = 'present',
+  Stdlib::Port $port = 9103
 ) {
 
   include collectd

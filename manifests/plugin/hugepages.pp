@@ -44,9 +44,9 @@ class collectd::plugin::hugepages (
   Optional[Integer] $interval         = undef,
   Boolean $report_per_node_hp         = true,
   Boolean $report_root_hp             = true,
-  Boolean $values_pages               = true,
   Boolean $values_bytes               = false,
-  Boolean $values_percentage          = false,
+  Boolean $values_pages               = true,
+  Boolean $values_percentage          = false
 ) {
 
   include collectd

@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:DF
 class collectd::plugin::df (
-  $ensure                   = 'present',
   Array $devices            = [],
+  $ensure                   = 'present',
   Array $fstypes            = [],
   Boolean $ignoreselected   = false,
   $interval                 = undef,
@@ -10,7 +10,7 @@ class collectd::plugin::df (
   Boolean $reportinodes     = true,
   Boolean $reportreserved   = true,
   Boolean $valuesabsolute   = true,
-  Boolean $valuespercentage = false,
+  Boolean $valuespercentage = false
 ) {
 
   include collectd

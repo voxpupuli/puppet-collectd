@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:Java
 class collectd::plugin::java (
   $ensure                                   = 'present',
+  $interval                                 = undef,
+  Optional[Stdlib::Absolutepath] $java_home = undef,
   $jvmarg                                   = [],
   $loadplugin                               = {},
-  $interval                                 = undef,
-  $manage_package                           = undef,
-  Optional[Stdlib::Absolutepath] $java_home = undef,
+  $manage_package                           = undef
 ) {
 
   include collectd

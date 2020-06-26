@@ -1,13 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:CPU
 class collectd::plugin::cpu (
   Enum['present', 'absent'] $ensure = 'present',
-  Boolean $reportbystate            = true,
-  Boolean $reportbycpu              = true,
-  Boolean $valuespercentage         = false,
-  Boolean $reportnumcpu             = false,
-  Boolean $reportgueststate         = false,
-  Boolean $subtractgueststate       = true,
   Optional[Integer[1]] $interval    = undef,
+  Boolean $reportbycpu              = true,
+  Boolean $reportbystate            = true,
+  Boolean $reportgueststate         = false,
+  Boolean $reportnumcpu             = false,
+  Boolean $subtractgueststate       = true,
+  Boolean $valuespercentage         = false
 ) {
 
   include collectd

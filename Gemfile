@@ -12,6 +12,7 @@ end
 
 group :test do
   gem 'voxpupuli-test', '>= 1.0.0',  :require => false
+  gem 'puppet-lint-class_parameter-check', :require => false, :git => 'https://github.com/bastelfreak/puppet-lint-class_parameter-check', :branch => 'fix'
   gem 'coveralls',                   :require => false
   gem 'simplecov-console',           :require => false
 end

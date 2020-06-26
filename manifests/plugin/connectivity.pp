@@ -21,8 +21,8 @@
 #
 class collectd::plugin::connectivity (
   Enum['present', 'absent'] $ensure = 'present',
-  Boolean $manage_package           = $collectd::manage_package,
   Array[String[1]] $interfaces      = [],
+  Boolean $manage_package           = $collectd::manage_package
 ) {
 
   include collectd

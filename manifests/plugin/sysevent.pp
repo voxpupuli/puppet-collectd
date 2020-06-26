@@ -40,13 +40,13 @@
 #  Defaults to undef
 #
 class collectd::plugin::sysevent (
+  Optional[Integer[1, default]] $buffer_length = undef,
+  Optional[Integer[0]] $buffer_size            = undef,
   Enum['present', 'absent'] $ensure            = 'present',
-  Boolean $manage_package                      = $collectd::manage_package,
   Stdlib::Host $listen_host                    = '127.0.0.1',
   Stdlib::Port $listen_port                    = 6666,
-  String $regex_filter                         = '/.*/',
-  Optional[Integer[0]] $buffer_size            = undef,
-  Optional[Integer[1, default]] $buffer_length = undef,
+  Boolean $manage_package                      = $collectd::manage_package,
+  String $regex_filter                         = '/.*/'
 ) {
 
   include collectd

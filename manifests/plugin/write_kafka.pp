@@ -3,9 +3,9 @@ class collectd::plugin::write_kafka (
   $kafka_host                = undef,
   Array[String] $kafka_hosts = ['localhost:9092'],
   Stdlib::Port $kafka_port   = 9092,
-  Hash $topics               = {},
-  Hash $properties           = {},
   Hash $meta                 = {},
+  Hash $properties           = {},
+  Hash $topics               = {}
 ) {
 
   include collectd

@@ -1,9 +1,9 @@
 # https://collectd.org/wiki/index.php/Graphite
 class collectd::plugin::write_graphite (
-  Hash $carbons      = {},
   $carbon_defaults   = {},
+  Hash $carbons      = {},
   $ensure            = 'present',
-  $globals           = false,
+  $globals           = false
 ) {
 
   include collectd

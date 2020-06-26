@@ -1,8 +1,8 @@
 # See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
 class collectd::plugin::perl (
   $ensure           = 'present',
-  $manage_package   = undef,
   $interval         = undef,
+  $manage_package   = undef,
   $order            = 20
 ) {
 

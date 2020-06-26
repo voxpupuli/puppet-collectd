@@ -1,14 +1,14 @@
 # https://collectd.org/wiki/index.php/Plugin:Netlink
 class collectd::plugin::netlink (
-  $ensure                  = 'present',
-  $manage_package          = undef,
-  Array $interfaces        = [],
-  Array $verboseinterfaces = [],
-  Array $qdiscs            = [],
   Array $classes           = [],
+  $ensure                  = 'present',
   Array $filters           = [],
   Boolean $ignoreselected  = false,
+  Array $interfaces        = [],
   $interval                = undef,
+  $manage_package          = undef,
+  Array $qdiscs            = [],
+  Array $verboseinterfaces = []
 ) {
 
   include collectd

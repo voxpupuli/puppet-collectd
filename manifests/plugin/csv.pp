@@ -1,7 +1,7 @@
 # https://collectd.org/wiki/index.php/Plugin:CSV
 class collectd::plugin::csv (
-  $ensure     = 'present',
   $datadir    = '/etc/collectd/var/lib/collectd/csv',
+  $ensure     = 'present',
   $interval   = undef,
   $storerates = false
 ) {

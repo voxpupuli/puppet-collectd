@@ -1,17 +1,17 @@
 # https://collectd.org/wiki/index.php/Plugin:virt
 class collectd::plugin::virt (
   String $connection,
-  $ensure                                      = 'present',
-  $manage_package                              = undef,
-  Optional[Pattern[/^\d+$/]] $refresh_interval = undef,
-  Optional[String] $domain                     = undef,
   Optional[String] $block_device               = undef,
-  Optional[String]$interface_device            = undef,
-  Optional[Boolean] $ignore_selected           = undef,
-  Optional[String] $hostname_format            = undef,
-  Optional[String] $interface_format           = undef,
+  Optional[String] $domain                     = undef,
+  $ensure                                      = 'present',
   Optional[String] $extra_stats                = undef,
+  Optional[String] $hostname_format            = undef,
+  Optional[Boolean] $ignore_selected           = undef,
+  Optional[String]$interface_device            = undef,
+  Optional[String] $interface_format           = undef,
   $interval                                    = undef,
+  $manage_package                              = undef,
+  Optional[Pattern[/^\d+$/]] $refresh_interval = undef
 ) {
 
   include collectd

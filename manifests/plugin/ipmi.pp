@@ -6,9 +6,9 @@ class collectd::plugin::ipmi (
   $interval                          = undef,
   $manage_package                    = undef,
   Boolean $notify_sensor_add         = false,
-  Boolean $notify_sensor_remove      = true,
   Boolean $notify_sensor_not_present = false,
-  Array $sensors                     = [],
+  Boolean $notify_sensor_remove      = true,
+  Array $sensors                     = []
 ) {
 
   include collectd

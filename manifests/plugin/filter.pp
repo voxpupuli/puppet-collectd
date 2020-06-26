@@ -1,8 +1,8 @@
 # https://collectd.org/wiki/index.php/Chains
 class collectd::plugin::filter (
   $ensure          = 'present',
-  $precachechain   = 'PreChain',
   $postcachechain  = 'PostChain',
+  $precachechain   = 'PreChain'
 ) {
   include collectd
 

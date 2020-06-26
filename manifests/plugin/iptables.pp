@@ -1,11 +1,11 @@
 # https://collectd.org/wiki/index.php/Plugin:IPTables
 class collectd::plugin::iptables (
-  $ensure         = 'present',
-  $ensure_package = 'present',
-  $manage_package = undef,
   Hash $chains    = {},
   Hash $chains6   = {},
+  $ensure         = 'present',
+  $ensure_package = 'present',
   $interval       = undef,
+  $manage_package = undef
 ) {
 
   include collectd

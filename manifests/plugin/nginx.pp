@@ -1,14 +1,14 @@
 # https://collectd.org/wiki/index.php/Plugin:nginx
 class collectd::plugin::nginx (
   $url,
-  $manage_package   = undef,
-  $ensure           = 'present',
-  $user             = undef,
-  $password         = undef,
-  $verifypeer       = undef,
-  $verifyhost       = undef,
   $cacert           = undef,
+  $ensure           = 'present',
   $interval         = undef,
+  $manage_package   = undef,
+  $password         = undef,
+  $user             = undef,
+  $verifyhost       = undef,
+  $verifypeer       = undef
 ) {
 
   include collectd

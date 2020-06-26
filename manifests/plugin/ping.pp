@@ -1,15 +1,15 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 class collectd::plugin::ping (
   Array $hosts,
-  Enum['present', 'absent'] $ensure = 'present',
-  Optional[Boolean] $manage_package = undef,
-  Optional[Numeric] $interval       = undef,
-  Optional[Numeric] $timeout        = undef,
-  Optional[Integer[0,255]] $ttl     = undef,
-  Optional[String] $source_address  = undef,
   Optional[String] $device          = undef,
+  Enum['present', 'absent'] $ensure = 'present',
+  Optional[Numeric] $interval       = undef,
+  Optional[Boolean] $manage_package = undef,
   Optional[Integer[-1]] $max_missed = undef,
   Optional[Integer[0]] $size        = undef,
+  Optional[String] $source_address  = undef,
+  Optional[Numeric] $timeout        = undef,
+  Optional[Integer[0,255]] $ttl     = undef
 ) {
 
   include collectd

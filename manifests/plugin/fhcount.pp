@@ -1,9 +1,9 @@
 # https://collectd.org/wiki/index.php/Plugin:Fhcount
 class collectd::plugin::fhcount (
   $ensure                   = 'present',
-  Boolean $valuesabsolute   = true,
-  Boolean $valuespercentage = false,
   $interval                 = undef,
+  Boolean $valuesabsolute   = true,
+  Boolean $valuespercentage = false
 ) {
 
   include collectd

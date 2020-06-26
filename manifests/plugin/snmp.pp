@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Plugin:SNMP
 class collectd::plugin::snmp (
-  Enum['present', 'absent']             $ensure         = 'present',
-  Optional[Boolean]                     $manage_package = undef,
   Hash[String[1], Collectd::SNMP::Data] $data           = {},
+  Enum['present', 'absent']             $ensure         = 'present',
   Hash[String[1], Collectd::SNMP::Host] $hosts          = {},
   Optional[Integer[0]]                  $interval       = undef,
+  Optional[Boolean]                     $manage_package = undef
 ) {
 
   include collectd

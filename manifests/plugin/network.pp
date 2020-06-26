@@ -1,13 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:Network
 class collectd::plugin::network (
   Enum['present', 'absent'] $ensure          = 'present',
-  Optional[Pattern[/[0-9]+/]] $timetolive    = undef,
-  Optional[Pattern[/[0-9]+/]] $maxpacketsize = undef,
   Optional[Boolean] $forward                 = undef,
   Optional[Integer[1]] $interval             = undef,
-  Optional[Boolean] $reportstats             = undef,
   Hash $listeners                            = {},
+  Optional[Pattern[/[0-9]+/]] $maxpacketsize = undef,
+  Optional[Boolean] $reportstats             = undef,
   Hash $servers                              = {},
+  Optional[Pattern[/[0-9]+/]] $timetolive    = undef
 ) {
 
   include collectd

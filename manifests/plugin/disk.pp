@@ -1,13 +1,13 @@
 # https://collectd.org/wiki/index.php/Plugin:Disk
 class collectd::plugin::disk (
-  Array $disks            = [],
-  $ensure                 = 'present',
-  Boolean $ignoreselected = false,
-  $interval               = undef,
-  $manage_package         = undef,
-  $package_name           = 'collectd-disk',
-  $udevnameattr           = undef,
-  Optional[Array[String]] $package_install_options = undef
+  Array $disks                                     = [],
+  $ensure                                          = 'present',
+  Boolean $ignoreselected                          = false,
+  $interval                                        = undef,
+  $manage_package                                  = undef,
+  Optional[Array[String]] $package_install_options = undef,
+  $package_name                                    = 'collectd-disk',
+  $udevnameattr                                    = undef
 ) {
 
   include collectd

@@ -1,12 +1,12 @@
 # https://collectd.org/wiki/index.php/Plugin:OpenVPN
 class collectd::plugin::openvpn (
-  $ensure                                                                = 'present',
-  Variant[Array[Stdlib::Absolutepath], Stdlib::Absolutepath] $statusfile = '/etc/openvpn/openvpn-status.log',
-  Boolean $improvednamingschema                                          = false,
   Boolean $collectcompression                                            = true,
   Boolean $collectindividualusers                                        = true,
   Boolean $collectusercount                                              = false,
+  $ensure                                                                = 'present',
+  Boolean $improvednamingschema                                          = false,
   $interval                                                              = undef,
+  Variant[Array[Stdlib::Absolutepath], Stdlib::Absolutepath] $statusfile = '/etc/openvpn/openvpn-status.log'
 ) {
 
   include collectd

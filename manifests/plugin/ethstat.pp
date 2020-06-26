@@ -2,9 +2,9 @@
 class collectd::plugin::ethstat (
   $ensure           = 'present',
   Array $interfaces = [],
-  Array $maps       = [],
-  $mappedonly       = false,
   $interval         = undef,
+  $mappedonly       = false,
+  Array $maps       = []
 ) {
 
   include collectd
