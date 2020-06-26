@@ -9,7 +9,6 @@ define collectd::plugin::network::server (
   Optional[Boolean] $forward                                = undef,
   Optional[Integer[1]] $resolveinterval                     = undef,
 ) {
-
   include collectd
   include collectd::plugin::network
 

@@ -7,7 +7,6 @@ class collectd::plugin::smart (
   $manage_package         = undef,
   $package_name           = 'collectd-smart',
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

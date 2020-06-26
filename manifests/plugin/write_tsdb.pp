@@ -8,10 +8,9 @@ class collectd::plugin::write_tsdb (
   Boolean $store_rates      = false,
   Boolean $always_append_ds = false,
 ) {
-
   include collectd
 
-  collectd::plugin {'write_tsdb':
+  collectd::plugin { 'write_tsdb':
     ensure  => $collectd::plugin::write_tsdb::ensure,
     content => template('collectd/plugin/write_tsdb.conf.erb'),
   }

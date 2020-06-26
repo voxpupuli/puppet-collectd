@@ -40,7 +40,6 @@ class collectd::plugin::battery (
   Boolean $report_degraded            = false,
   Boolean $query_state_fs             = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'battery':

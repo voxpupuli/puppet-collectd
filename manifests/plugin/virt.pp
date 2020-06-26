@@ -6,14 +6,13 @@ class collectd::plugin::virt (
   Optional[Pattern[/^\d+$/]] $refresh_interval = undef,
   Optional[String] $domain                     = undef,
   Optional[String] $block_device               = undef,
-  Optional[String]$interface_device            = undef,
+  Optional[String] $interface_device           = undef,
   Optional[Boolean] $ignore_selected           = undef,
   Optional[String] $hostname_format            = undef,
   Optional[String] $interface_format           = undef,
   Optional[String] $extra_stats                = undef,
   $interval                                    = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

@@ -5,7 +5,6 @@ define collectd::plugin::tail::file (
   Array[Hash] $matches,
   $ensure = 'present',
 ) {
-
   include collectd
   include collectd::plugin::tail
 

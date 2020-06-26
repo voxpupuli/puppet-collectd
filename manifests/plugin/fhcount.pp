@@ -5,7 +5,6 @@ class collectd::plugin::fhcount (
   Boolean $valuespercentage = false,
   $interval                 = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'fhcount':

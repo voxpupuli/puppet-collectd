@@ -11,7 +11,8 @@ def location_for(place, fake_version = nil)
 end
 
 group :test do
-  gem 'voxpupuli-test', '>= 1.0.0',  :require => false
+  gem 'voxpupuli-test', '>= 1.4.0',  :require => false
+  gem 'puppet-lint-manifest_whitespace-check', :require => false
   gem 'coveralls',                   :require => false
   gem 'simplecov-console',           :require => false
 end

@@ -8,7 +8,6 @@ class collectd::plugin::swap (
   Boolean $valuespercentage = false,
   Boolean $reportio         = true,
 ) {
-
   include collectd
 
   collectd::plugin { 'swap':

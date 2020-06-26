@@ -9,7 +9,6 @@ class collectd::plugin::disk (
   $udevnameattr           = undef,
   Optional[Array[String]] $package_install_options = undef
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

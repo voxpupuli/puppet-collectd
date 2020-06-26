@@ -9,7 +9,6 @@ class collectd::plugin::network (
   Hash $listeners                            = {},
   Hash $servers                              = {},
 ) {
-
   include collectd
 
   $listeners_defaults = {

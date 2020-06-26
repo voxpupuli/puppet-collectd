@@ -1,12 +1,10 @@
 class collectd::repo::debian {
-
   contain apt
   if $collectd::manage_package {
     Class['apt::update'] -> Package[$collectd::package_name]
   }
 
   if $collectd::ci_package_repo {
-
     apt::source { 'collectd-ci':
       location => 'https://pkg.ci.collectd.org/deb/',
       repos    => "collectd-${$collectd::ci_package_repo}",
@@ -30,5 +28,4 @@ class collectd::repo::debian {
       }
     }
   }
-
 }

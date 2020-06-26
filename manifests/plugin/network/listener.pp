@@ -6,7 +6,6 @@ define collectd::plugin::network::listener (
   Optional[Collectd::Network::SecurityLevel] $securitylevel = undef,
   Optional[String] $interface                               = undef,
 ) {
-
   include collectd
   include collectd::plugin::network
 

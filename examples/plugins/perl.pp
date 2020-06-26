@@ -17,14 +17,14 @@ collectd::plugin::perl::plugin { 'foo':
   order       => 99,
   config      => {
     'foo' => 'bar',
-    'key' => [ 'val1', 'val2' ],
+    'key' => ['val1', 'val2'],
   },
 }
 
 collectd::plugin::perl::plugin { 'bar':
   module          => 'B',
   enable_debugger => 'DProf',
-  include_dir     => ['/tmp', '/tmp/lib' ],
+  include_dir     => ['/tmp', '/tmp/lib'],
 }
 
 #collectd::plugin::perl {
@@ -44,10 +44,10 @@ collectd::plugin::perl::plugin {
       'foo'  => 'bar',
       'more' => {
         'complex' => 'structure',
-        'no'      => [ 'a', 'b' ],
+        'no'      => ['a', 'b'],
         'yes'     => {
           'last' => 'level',
-          'and'  => [ 'array' , 'thing' ],
+          'and'  => ['array' , 'thing'],
         },
       },
     },

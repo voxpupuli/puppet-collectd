@@ -18,7 +18,6 @@ class collectd::plugin::amqp (
   Boolean $graphiteseparateinstances = false,
   Boolean $graphitealwaysappendds    = false,
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

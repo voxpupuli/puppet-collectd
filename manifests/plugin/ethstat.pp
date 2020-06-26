@@ -6,7 +6,6 @@ class collectd::plugin::ethstat (
   $mappedonly       = false,
   $interval         = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'ethstat':

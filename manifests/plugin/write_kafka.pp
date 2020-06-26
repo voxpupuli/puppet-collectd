@@ -7,11 +7,10 @@ class collectd::plugin::write_kafka (
   Hash $properties           = {},
   Hash $meta                 = {},
 ) {
-
   include collectd
 
   if($kafka_host and $kafka_port) {
-    $real_kafka_hosts = [ "${kafka_host}:${kafka_port}" ]
+    $real_kafka_hosts = ["${kafka_host}:${kafka_port}"]
   } else {
     $real_kafka_hosts = $kafka_hosts
   }

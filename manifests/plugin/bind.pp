@@ -13,7 +13,6 @@ class collectd::plugin::bind (
   Array[Collectd::Bind::View] $views = [],
   Optional[Integer[1]] $interval     = undef,
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

@@ -18,7 +18,6 @@ class collectd::plugin::dpdk_telemetry (
   Stdlib::Absolutepath      $client_socket_path = '/var/run/.client',
   Stdlib::Absolutepath      $dpdk_socket_path   = '/var/run/dpdk/rte/telemetry',
 ) {
-
   include collectd
 
   collectd::plugin { 'dpdk_telemetry':

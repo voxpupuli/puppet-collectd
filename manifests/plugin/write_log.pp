@@ -2,7 +2,6 @@ class collectd::plugin::write_log (
   String $format = 'JSON',
   $ensure        = 'present',
 ) {
-
   include collectd
 
   collectd::plugin { 'write_log':

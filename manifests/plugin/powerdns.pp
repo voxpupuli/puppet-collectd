@@ -7,7 +7,6 @@ class collectd::plugin::powerdns (
   Optional[Hash[String, Hash]] $recursors = {},
   Optional[String] $local_socket          = undef,
 ) {
-
   include collectd
 
   $servers_defaults   = { 'ensure' => $ensure }

@@ -13,7 +13,6 @@ class collectd::plugin::pcie_errors (
   Boolean                   $report_masked            = false,
   Boolean                   $persistent_notifications = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'pcie_errors':

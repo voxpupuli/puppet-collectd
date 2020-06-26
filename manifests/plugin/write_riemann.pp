@@ -6,7 +6,6 @@ class collectd::plugin::write_riemann (
   Array[String[1]] $tags                = [],
   Hash[String[1],String[1]] $attributes = {},
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

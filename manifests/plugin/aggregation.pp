@@ -4,7 +4,6 @@ class collectd::plugin::aggregation (
   Optional[Integer[1]] $interval    = undef,
   Hash $aggregators                 = {},
 ) {
-
   include collectd
 
   collectd::plugin { 'aggregation':

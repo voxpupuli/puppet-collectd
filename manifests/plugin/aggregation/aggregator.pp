@@ -18,7 +18,6 @@ define collectd::plugin::aggregation::aggregator (
   Optional[Boolean] $calculatemaximum     = undef,
   Optional[Boolean] $calculatestddev      = undef,
 ) {
-
   include collectd
   include collectd::plugin::aggregation
 

@@ -7,7 +7,6 @@ class collectd::plugin::intel_pmu (
   Optional[String]          $event_list                   = undef,
   Optional[Array[String]]   $hardware_events              = undef,
 ) {
-
   include collectd
 
   if $hardware_events and $event_list == undef {

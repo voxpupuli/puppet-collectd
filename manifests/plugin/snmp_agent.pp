@@ -7,7 +7,7 @@
 # @param ensure String Passed to package and collectd::plugin resources (both). Default: present
 # @param data Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] Defines scalar field, must be put outside Table block.
 # @param table Hash[String[1], Collectd::SNMP_AGENT::Table] Defines a table consisting of several Data blocks being its columns
-class collectd::plugin::snmp_agent(
+class collectd::plugin::snmp_agent (
   Enum['present', 'absent'] $ensure = 'present',
   Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] $data = {
     'memAvailReal' => {
@@ -39,7 +39,6 @@ class collectd::plugin::snmp_agent(
     },
   }
 ) {
-
   include collectd
 
   collectd::plugin { 'snmp_agent':
@@ -50,5 +49,3 @@ class collectd::plugin::snmp_agent(
     }),
   }
 }
-
-

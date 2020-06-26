@@ -11,7 +11,6 @@ class collectd::plugin::ping (
   Optional[Integer[-1]] $max_missed = undef,
   Optional[Integer[0]] $size        = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)
