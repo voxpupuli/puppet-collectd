@@ -44,7 +44,6 @@ class collectd (
   Integer[1] $write_threads                            = $collectd::params::write_threads,
   Boolean    $utils                                    = $collectd::params::utils,
 ) inherits collectd::params {
-
   $collectd_version_real = pick_default($facts['collectd_version'], $minimum_version)
 
   contain collectd::repo

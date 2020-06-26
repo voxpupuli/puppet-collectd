@@ -4,7 +4,6 @@ class collectd::plugin::tail (
   $interval             = undef,
   Optional[Hash] $files = {},
 ) {
-
   collectd::plugin { 'tail':
     interval => $interval,
   }

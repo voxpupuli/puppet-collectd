@@ -10,7 +10,6 @@ class collectd::plugin::mongodb (
   Optional[Array] $configured_dbs           = undef,
   $collectd_dir                             = '/usr/lib/collectd',
 ) {
-
   include collectd
 
   if $configured_dbs {

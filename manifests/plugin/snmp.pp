@@ -6,7 +6,6 @@ class collectd::plugin::snmp (
   Hash[String[1], Collectd::SNMP::Host] $hosts          = {},
   Optional[Integer[0]]                  $interval       = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

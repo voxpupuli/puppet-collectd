@@ -19,7 +19,7 @@ class collectd::plugin::logparser (
                   'ismandatory' => false,
                 },
                 'root port' => {
-                  'regex' =>'pcieport (.*): AER:',
+                  'regex' => 'pcieport (.*): AER:',
                   'submatchidx' => 1,
                   'ismandatory' => true,
                 },
@@ -63,7 +63,7 @@ class collectd::plugin::logparser (
         ],
       }
   }]
-){
+) {
   include collectd
 
   collectd::plugin { 'logparser':

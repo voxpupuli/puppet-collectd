@@ -10,7 +10,6 @@ class collectd::plugin::write_http (
   Hash[String, Hash[String, Scalar]] $urls  = {},
   Optional[Boolean]                  $manage_package = undef,
 ) {
-
   include collectd
 
   if !empty($nodes) and !empty($urls) {
@@ -27,7 +26,7 @@ class collectd::plugin::write_http (
     }
   }
   if $_manage_package {
-    package{'collectd-write_http':
+    package { 'collectd-write_http':
       ensure => $ensure,
     }
   }

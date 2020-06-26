@@ -7,7 +7,6 @@ class collectd::plugin::iptables (
   Hash $chains6   = {},
   $interval       = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

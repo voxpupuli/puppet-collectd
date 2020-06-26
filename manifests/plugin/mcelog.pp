@@ -8,7 +8,6 @@ class collectd::plugin::mcelog (
     'persistentnotification' => false,
   }
 ) {
-
   include collectd
 
   collectd::plugin { 'mcelog':

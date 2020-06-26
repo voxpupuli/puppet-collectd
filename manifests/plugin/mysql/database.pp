@@ -21,7 +21,6 @@ define collectd::plugin::mysql::database (
   Optional[String] $sslcapath          = undef,
   Optional[String] $sslcipher          = undef,
 ) {
-
   include collectd
   include collectd::plugin::mysql
 

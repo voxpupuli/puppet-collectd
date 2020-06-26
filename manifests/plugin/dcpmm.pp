@@ -17,7 +17,6 @@ class collectd::plugin::dcpmm (
   Boolean                   $enable_dispatch_all  = false,
 
 ) {
-
   include collectd
 
   if $collect_health and $collect_perf_metrics {

@@ -53,7 +53,6 @@ class collectd::plugin::ovs_events (
   Optional[Stdlib::Port] $port         = undef,
   Optional[String] $socket             = undef,
 ) {
-
   include collectd
 
   if $manage_package {

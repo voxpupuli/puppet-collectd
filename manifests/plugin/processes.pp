@@ -9,7 +9,6 @@ class collectd::plugin::processes (
   Optional[Boolean] $collect_file_descriptor = undef,
   Optional[Boolean] $collect_memory_maps     = undef,
 ) {
-
   include collectd
 
   $processes_defaults       = { 'ensure' => $ensure }

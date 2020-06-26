@@ -2,12 +2,11 @@
 class collectd::plugin::postgresql (
   $ensure         = 'present',
   $manage_package = undef,
-  $databases      = { },
+  $databases      = {},
   $interval       = undef,
-  $queries        = { },
-  $writers        = { },
+  $queries        = {},
+  $writers        = {},
 ) {
-
   include collectd
 
   $_manage_package    = pick($manage_package, $collectd::manage_package)

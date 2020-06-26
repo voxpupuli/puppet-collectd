@@ -5,7 +5,6 @@ class collectd::plugin::thermal (
   Boolean $ignoreselected = false,
   $interval               = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'thermal':

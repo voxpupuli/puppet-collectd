@@ -3,11 +3,10 @@ define collectd::plugin::powerdns::recursor (
   Optional[String[1]] $socket       = undef,
   Array[String[1]] $collect         = [],
 ) {
-
   include collectd::plugin::powerdns
   include collectd
 
-  concat::fragment{ "collectd_plugin_powerdns_conf_recursor_${name}":
+  concat::fragment { "collectd_plugin_powerdns_conf_recursor_${name}":
     order   => '51',
     content => epp('collectd/plugin/powerdns/recursor.conf.epp', {
         'name'    => $name,

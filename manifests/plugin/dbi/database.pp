@@ -10,11 +10,10 @@ define collectd::plugin::dbi::database (
   Array $query                            = [],
   Optional[Integer[1]] $db_query_interval = undef,
 ) {
-
   include collectd
   include collectd::plugin::dbi
 
-  concat::fragment{ "collectd_plugin_dbi_conf_db_${title}":
+  concat::fragment { "collectd_plugin_dbi_conf_db_${title}":
     order   => '50',
     target  => "${collectd::plugin_conf_dir}/dbi-config.conf",
     content => template('collectd/plugin/dbi/database.conf.erb'),

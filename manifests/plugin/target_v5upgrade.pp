@@ -2,7 +2,6 @@
 class collectd::plugin::target_v5upgrade (
   $ensure = 'present',
 ) {
-
   include collectd
 
   collectd::plugin { 'target_v5upgrade':

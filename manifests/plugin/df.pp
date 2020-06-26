@@ -12,7 +12,6 @@ class collectd::plugin::df (
   Boolean $valuesabsolute   = true,
   Boolean $valuespercentage = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'df':

@@ -4,13 +4,12 @@ define collectd::plugin::filter::chain (
   Optional[Collectd::Filter::Target] $target = undef,
   Optional[Hash] $target_options             = undef,
 ) {
-
   include collectd
   include collectd::plugin::filter
 
   $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${title}.conf"
 
-  concat{ $conf_file:
+  concat { $conf_file:
     ensure         => $ensure,
     mode           => $collectd::config_mode,
     owner          => $collectd::config_owner,
@@ -20,13 +19,13 @@ define collectd::plugin::filter::chain (
   }
 
   if $ensure == 'present' {
-    concat::fragment{ "${conf_file}_${title}_head":
+    concat::fragment { "${conf_file}_${title}_head":
       order   => '00',
       content => "<Chain \"${title}\">",
       target  => $conf_file,
     }
 
-    concat::fragment{ "${conf_file}_${title}_footer":
+    concat::fragment { "${conf_file}_${title}_footer":
       order   => '99',
       content => '</Chain>',
       target  => $conf_file,
@@ -34,7 +33,7 @@ define collectd::plugin::filter::chain (
 
     #add simple target if provided at the end
     if $target {
-      collectd::plugin::filter::target{ "z_chain-${title}-target":
+      collectd::plugin::filter::target { "z_chain-${title}-target":
         chain   => $title,
         plugin  => $target,
         rule    => undef,

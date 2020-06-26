@@ -1,11 +1,9 @@
 # https://collectd.org/wiki/index.php/Plugin:Nut
 class collectd::plugin::nut (
   $ensure        = 'present',
-  $upss       = { },
+  $upss       = {},
 ) {
-
   include collectd
-
 
   collectd::plugin { 'nut':
     ensure   => $ensure,

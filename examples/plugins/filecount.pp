@@ -7,11 +7,11 @@ class { 'collectd::plugin::filecount':
   },
 }
 
-collectd::plugin::filecount::directory {'foodir':
+collectd::plugin::filecount::directory { 'foodir':
   path => '/path/to/dir',
 }
 
-collectd::plugin::filecount::directory {'aborted-uploads':
+collectd::plugin::filecount::directory { 'aborted-uploads':
   path          => '/var/spool/foo/upload',
   pattern       => '.part.*',
   mtime         => '5m',

@@ -7,7 +7,6 @@ class collectd::plugin::ntpd (
   $includeunitid    = false,
   $interval         = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'ntpd':

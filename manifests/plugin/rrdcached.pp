@@ -14,7 +14,6 @@ class collectd::plugin::rrdcached (
   $collectstatistics        = undef,
   $manage_package           = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

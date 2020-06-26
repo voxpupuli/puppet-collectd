@@ -5,7 +5,6 @@ define collectd::plugin::genericjmx::mbean (
   Optional[String] $instance_prefix = undef,
   Array $instance_from              = [],
 ) {
-
   include collectd
   include collectd::plugin::genericjmx
 

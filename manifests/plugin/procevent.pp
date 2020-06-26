@@ -38,7 +38,6 @@ class collectd::plugin::procevent (
   Optional[String[1]] $process_regex           = undef,
   Optional[Integer[1, default]] $buffer_length = undef,
 ) {
-
   include collectd
 
   if $manage_package and $facts['os']['family'] == 'RedHat' {

@@ -7,7 +7,6 @@ class collectd::plugin::tcpconns (
   Optional[Boolean] $allportssummary = undef,
   $ensure                            = 'present'
 ) {
-
   include collectd
 
   collectd::plugin { 'tcpconns':

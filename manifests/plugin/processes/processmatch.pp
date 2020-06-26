@@ -6,11 +6,10 @@ define collectd::plugin::processes::processmatch (
   Optional[Boolean] $collect_file_descriptor = undef,
   Optional[Boolean] $collect_memory_maps     = undef,
 ) {
-
   include collectd::plugin::processes
   include collectd
 
-  concat::fragment{ "collectd_plugin_processes_conf_processmatch_${matchname}":
+  concat::fragment { "collectd_plugin_processes_conf_processmatch_${matchname}":
     order   => '51',
     content => epp('collectd/plugin/processes/processmatch.conf.epp', {
         'matchname'               => $matchname,

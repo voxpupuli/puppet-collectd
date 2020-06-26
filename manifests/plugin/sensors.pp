@@ -8,7 +8,6 @@ class collectd::plugin::sensors (
   $interval         = undef,
   Optional[Array[String]] $package_install_options = undef
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

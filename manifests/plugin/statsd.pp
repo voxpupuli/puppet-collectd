@@ -15,7 +15,6 @@ class collectd::plugin::statsd (
   $timersum              = undef,
   $timercount            = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'statsd':

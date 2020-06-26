@@ -14,7 +14,6 @@
 class collectd::plugin::ipc (
   Enum['present', 'absent'] $ensure   = 'present',
 ) {
-
   include collectd
 
   collectd::plugin { 'ipc':

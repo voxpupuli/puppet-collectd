@@ -5,7 +5,6 @@ class collectd::plugin::irq (
   Boolean $ignoreselected = false,
   $interval               = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'irq':

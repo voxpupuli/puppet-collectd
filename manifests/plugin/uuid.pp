@@ -4,7 +4,6 @@ class collectd::plugin::uuid (
   $ensure    = 'present',
   $interval  = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'uuid':

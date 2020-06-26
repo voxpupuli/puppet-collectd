@@ -5,14 +5,13 @@ define collectd::plugin::filter::target (
   Optional[Hash] $options = undef,
   Optional[String] $rule  = undef,
 ) {
-
   include collectd
   include collectd::plugin::filter
 
   # Load plugins
   if $plugin in $collectd::plugin::filter::plugin_targets {
     $order = 30
-    ensure_resource('collectd::plugin', "target_${plugin}", { 'order' => '02'} )
+    ensure_resource('collectd::plugin', "target_${plugin}", { 'order' => '02' })
   } else {
     # Built in plugins
     $order = 50
@@ -28,7 +27,7 @@ define collectd::plugin::filter::target (
 
   $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${chain}.conf"
 
-  concat::fragment{ "${conf_file}_${fragment_order}":
+  concat::fragment { "${conf_file}_${fragment_order}":
     order   => $fragment_order,
     content => template('collectd/plugin/filter/target.erb'),
     target  => $conf_file,

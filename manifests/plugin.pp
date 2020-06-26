@@ -8,7 +8,6 @@ define collectd::plugin (
   $plugin   = $name,
   Optional[Integer] $flushinterval = undef,
 ) {
-
   include collectd
 
   $conf_dir = $collectd::plugin_conf_dir

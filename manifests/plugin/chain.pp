@@ -5,7 +5,6 @@ class collectd::plugin::chain (
   Collectd::Filter::Target $defaulttarget = 'write',
   Array $rules                            = []
 ) {
-
   include collectd
 
   $conf_dir = $collectd::plugin_conf_dir

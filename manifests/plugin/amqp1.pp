@@ -112,7 +112,6 @@ class collectd::plugin::amqp1 (
   Optional[Integer] $retry_delay     = undef,
   Optional[Integer] $interval        = undef,
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {

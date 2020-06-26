@@ -10,7 +10,6 @@ define collectd::plugin::perl::plugin (
   String $order                                = '01',
   Hash $config                                 = {},
 ) {
-
   include collectd
 
   if ! defined(Class['Collectd::Plugin::Perl']) {
@@ -19,7 +18,7 @@ define collectd::plugin::perl::plugin (
 
   if $include_dir {
     if $include_dir =~ String {
-      $include_dirs = [ $include_dir ]
+      $include_dirs = [$include_dir]
     } elsif $include_dir =~ Array {
       $include_dirs = $include_dir
     } else {

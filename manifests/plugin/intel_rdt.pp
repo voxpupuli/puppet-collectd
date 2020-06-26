@@ -31,7 +31,6 @@ class collectd::plugin::intel_rdt (
   Optional[Integer] $interval         = undef,
   Array[String[1]] $cores             = [],
 ) {
-
   include collectd
 
   collectd::plugin { 'intel_rdt':

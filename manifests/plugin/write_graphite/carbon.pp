@@ -14,7 +14,6 @@ define collectd::plugin::write_graphite::carbon (
   Boolean $logsenderrors     = true,
   Integer $reconnectinterval = 0,
 ) {
-
   include collectd
   include collectd::plugin::write_graphite
 

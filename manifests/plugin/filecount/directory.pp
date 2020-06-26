@@ -9,7 +9,6 @@ define collectd::plugin::filecount::directory (
   Optional[Boolean] $recursive      = undef,
   Optional[Boolean] $includehidden  = undef,
 ) {
-
   include collectd
   include collectd::plugin::filecount
 

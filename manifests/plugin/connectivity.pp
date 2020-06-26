@@ -24,7 +24,6 @@ class collectd::plugin::connectivity (
   Boolean $manage_package           = $collectd::manage_package,
   Array[String[1]] $interfaces      = [],
 ) {
-
   include collectd
 
   if $manage_package and $facts['os']['family'] == 'RedHat' {

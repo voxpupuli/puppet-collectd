@@ -42,7 +42,6 @@ class collectd::plugin::ovs_stats (
   Optional[Stdlib::Port] $port = undef,
   Optional[String] $socket  = undef,
 ) {
-
   include collectd
 
   if $manage_package {

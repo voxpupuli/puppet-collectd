@@ -5,7 +5,6 @@ class collectd::plugin::oracle (
   Boolean $manage_package           = false,
   Optional[Integer[1]] $interval    = undef,
 ) {
-
   include collectd
 
   $conf_dir = $collectd::plugin_conf_dir

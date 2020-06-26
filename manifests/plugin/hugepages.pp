@@ -48,7 +48,6 @@ class collectd::plugin::hugepages (
   Boolean $values_bytes               = false,
   Boolean $values_percentage          = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'hugepages':

@@ -1,9 +1,8 @@
 # A define to make a generic network output for collectd
 class collectd::plugin::write_network (
   $ensure       = 'present',
-  Hash $servers = { 'localhost'  =>  { 'serverport' => '25826' } },
+  Hash $servers = { 'localhost'  => { 'serverport' => '25826' } },
 ) {
-
   include collectd
 
   $servernames = keys($servers)

@@ -5,7 +5,6 @@ class collectd::plugin::perl (
   $interval         = undef,
   $order            = 20
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)
@@ -35,4 +34,3 @@ class collectd::plugin::perl (
     group  => $collectd::config_group,
   }
 }
-
