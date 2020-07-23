@@ -8,6 +8,9 @@
 <% unless $::collectd::plugin::amqp1::retry_delay =~ Undef { -%>
     RetryDelay <%= $::collectd::plugin::amqp1::retry_delay %>
 <% } -%>
+<% unless $::collectd::plugin::amqp1::send_queue_limit =~ Undef { -%>
+    SendQueueLimit <%= $::collectd::plugin::amqp1::send_queue_limit %>
+<% } -%>
 <% $::collectd::plugin::amqp1::instances.keys.sort.each |$name| { -%>
     <Instance "<%= $name %>">
 <% $::collectd::plugin::amqp1::instances[$name].keys.sort.each |$key| { -%>
