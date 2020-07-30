@@ -7,44 +7,44 @@ describe 'python_dir', type: :fact do
     context 'default path' do
       before do
         # This is needed to make this spec work on Fedora, apparently
-        Facter.fact(:osfamily).stubs(:value).returns('AnythingNotRedHat')
-        Facter::Util::Resolution.stubs(:which).with('python').returns(true)
-        Facter::Util::Resolution.stubs(:exec).with('python -c "import site; print(site.getsitepackages()[0])"').returns('/usr/local/lib/python2.7/dist-packages')
+        allow(Facter).to receive(:value).with(:osfamily).and_return('AnythingNotRedHat')
+        allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(true)
+        allow(Facter::Util::Resolution).to receive(:exec).with('python -c "import site; print(site.getsitepackages()[0])"').and_return('/usr/local/lib/python2.7/dist-packages')
       end
       it do
-        expect(Facter.value(:python_dir)).to eq('/usr/local/lib/python2.7/dist-packages')
+        expect(Facter.fact(:python_dir).value).to eq('/usr/local/lib/python2.7/dist-packages')
       end
     end
 
     context 'RedHat' do
       before do
-        Facter.fact(:osfamily).stubs(:value).returns('RedHat')
-        Facter::Util::Resolution.stubs(:which).with('python').returns(true)
-        Facter::Util::Resolution.stubs(:exec).with('python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').returns('/usr/lib/python2.7/site-packages')
+        allow(Facter).to receive(:value).with(:osfamily).and_return('RedHat')
+        allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(true)
+        allow(Facter::Util::Resolution).to receive(:exec).with('python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').and_return('/usr/lib/python2.7/site-packages')
       end
       it do
-        expect(Facter.value(:python_dir)).to eq('/usr/lib/python2.7/site-packages')
+        expect(Facter.fact(:python_dir).value).to eq('/usr/lib/python2.7/site-packages')
       end
     end
 
     context 'RedHat versioned python' do
       before do
-        Facter.fact(:osfamily).stubs(:value).returns('RedHat')
-        Facter::Util::Resolution.stubs(:which).with('python').returns(false)
-        Facter::Util::Resolution.stubs(:which).with('python3').returns(true)
-        Facter::Util::Resolution.stubs(:exec).with('python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').returns('/usr/lib/python3.6/site-packages')
+        allow(Facter).to receive(:value).with(:osfamily).and_return('RedHat')
+        allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(false)
+        allow(Facter::Util::Resolution).to receive(:which).with('python3').and_return(true)
+        allow(Facter::Util::Resolution).to receive(:exec).with('python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').and_return('/usr/lib/python3.6/site-packages')
       end
       it do
-        expect(Facter.value(:python_dir)).to eq('/usr/lib/python3.6/site-packages')
+        expect(Facter.fact(:python_dir).value).to eq('/usr/lib/python3.6/site-packages')
       end
     end
   end
 
   it 'is empty string if python not installed' do
-    Facter::Util::Resolution.stubs(:which).with('python').returns(nil)
-    Facter::Util::Resolution.stubs(:which).with('python2').returns(nil)
-    Facter::Util::Resolution.stubs(:which).with('python3').returns(nil)
-    File.stubs(:exist?).with('/usr/libexec/platform-python').returns(nil)
+    allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(nil)
+    allow(Facter::Util::Resolution).to receive(:which).with('python2').and_return(nil)
+    allow(Facter::Util::Resolution).to receive(:which).with('python3').and_return(nil)
+    allow(File).to receive(:exist?).with('/usr/libexec/platform-python').and_return(nil)
     expect(Facter.fact(:python_dir).value).to eq('')
   end
 end
