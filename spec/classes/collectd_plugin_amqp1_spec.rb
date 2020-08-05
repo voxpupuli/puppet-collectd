@@ -45,6 +45,7 @@ describe 'collectd::plugin::amqp1', type: :class do
             password: 'password',
             address: 'address',
             retry_delay: 30,
+            send_queue_limit: 40,
             instances: {
               instance: {
                 format: 'JSON',
@@ -68,6 +69,7 @@ describe 'collectd::plugin::amqp1', type: :class do
         it { is_expected.to contain_file('amqp1.load').with(content: %r{Password "password"}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{Address "address"}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{RetryDelay 30}) }
+        it { is_expected.to contain_file('amqp1.load').with(content: %r{SendQueueLimit 40}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{<Instance "instance">}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{Format "JSON"}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{PreSettle true}) }
