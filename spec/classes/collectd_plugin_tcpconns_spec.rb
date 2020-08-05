@@ -75,7 +75,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
         end
 
         it 'Will raise an error about :allportssummary being a String' do
-          expect { is_expected.to.to raise_error(Puppet::Error, %r{String}) }
+          is_expected.to compile.and_raise_error(%r{String})
         end
       end
 

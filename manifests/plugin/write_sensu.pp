@@ -11,7 +11,6 @@ class collectd::plugin::write_sensu (
   $notifications    = false,
   $notifs_handler   = 'example_notification_handler',
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

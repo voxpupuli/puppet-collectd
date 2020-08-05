@@ -1,6 +1,5 @@
 #
 class collectd::params {
-
   $autoloadplugin            = false
   $fqdnlookup                = true
   $collectd_hostname         = $facts['networking']['hostname']
@@ -16,7 +15,7 @@ class collectd::params {
   $read_threads              = 5
   $write_threads             = 5
   $timeout                   = 2
-  $typesdb                   = [ '/usr/share/collectd/types.db' ]
+  $typesdb                   = ['/usr/share/collectd/types.db']
   $write_queue_limit_high    = undef
   $write_queue_limit_low     = undef
   $package_ensure            = 'present'
@@ -38,7 +37,7 @@ class collectd::params {
 
   case $facts['os']['family'] {
     'Debian': {
-      $package_name       = [ 'collectd', 'collectd-core' ]
+      $package_name       = ['collectd', 'collectd-core']
       $package_provider   = 'apt'
       $collectd_dir       = '/etc/collectd'
       $plugin_conf_dir    = "${collectd_dir}/conf.d"

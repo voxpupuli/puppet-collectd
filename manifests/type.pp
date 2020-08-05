@@ -9,18 +9,18 @@ define collectd::type (
   # BC compatible .... ending
 
   Array[Struct[{
-    min     => Variant[Numeric, Enum['U']],
-    max     => Variant[Numeric, Enum['U']],
-    ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
-    ds_name => String,
+        min     => Variant[Numeric, Enum['U']],
+        max     => Variant[Numeric, Enum['U']],
+        ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
+        ds_name => String,
   }]]                                                         $types = [],
 ) {
   if empty($types) {
     $_types = [{
-      min     => $min,
-      max     => $max,
-      ds_type => $ds_type,
-      ds_name => $ds_name,
+        min     => $min,
+        max     => $max,
+        ds_type => $ds_type,
+        ds_name => $ds_name,
     }]
   } else {
     $_types = $types

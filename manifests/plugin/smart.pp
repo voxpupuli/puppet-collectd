@@ -7,7 +7,6 @@ class collectd::plugin::smart (
   $manage_package         = undef,
   $package_name           = 'collectd-smart',
 ) {
-
   include collectd
 
   if $facts['os']['family'] == 'RedHat' {
@@ -16,7 +15,7 @@ class collectd::plugin::smart (
     } else {
       if versioncmp($collectd::collectd_version_real, '5.5') >= 0 {
         $_manage_package = true
-    } else {
+      } else {
         $_manage_package = false
       }
     }

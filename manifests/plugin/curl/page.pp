@@ -13,7 +13,6 @@ define collectd::plugin::curl::page (
   Optional[Array[Hash]] $matches         = undef,
   String $plugininstance                 = $name, # You can have multiple <Page> with the same name.
 ) {
-
   include collectd
   include collectd::plugin::curl
 

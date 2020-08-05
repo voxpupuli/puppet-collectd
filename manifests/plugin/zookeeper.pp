@@ -4,7 +4,6 @@ class collectd::plugin::zookeeper (
   Stdlib::Host              $zookeeper_host   = 'localhost',
   Stdlib::Port              $zookeeper_port   = 2181,
 ) {
-
   include collectd
 
   collectd::plugin { 'zookeeper':

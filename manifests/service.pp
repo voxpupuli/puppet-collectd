@@ -1,6 +1,5 @@
 #
 class collectd::service {
-
   assert_private()
 
   if $collectd::manage_service {
@@ -10,5 +9,4 @@ class collectd::service {
       enable => $collectd::service_enable,
     }
   }
-
 }

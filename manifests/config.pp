@@ -1,6 +1,5 @@
 # private
 class collectd::config inherits collectd {
-
   assert_private()
 
   $_conf_content = $collectd::purge_config ? {
@@ -42,5 +41,4 @@ class collectd::config inherits collectd {
   }
 
   File['collectd.d'] -> Concat <| tag == 'collectd' |>
-
 }

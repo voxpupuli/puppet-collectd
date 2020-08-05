@@ -7,7 +7,6 @@ class collectd::plugin::java (
   $manage_package                           = undef,
   Optional[Stdlib::Absolutepath] $java_home = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

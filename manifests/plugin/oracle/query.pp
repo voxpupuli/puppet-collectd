@@ -4,7 +4,6 @@ define collectd::plugin::oracle::query (
   Array $results,
   String $query = $name,
 ) {
-
   include collectd
   include collectd::plugin::oracle
 

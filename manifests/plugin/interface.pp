@@ -6,7 +6,6 @@ class collectd::plugin::interface (
   Boolean $reportinactive = true,
   $interval               = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'interface':

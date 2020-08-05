@@ -5,7 +5,6 @@ class collectd::plugin::write_graphite (
   $ensure            = 'present',
   $globals           = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'write_graphite':

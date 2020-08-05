@@ -10,7 +10,6 @@ class collectd::plugin::netlink (
   Boolean $ignoreselected  = false,
   $interval                = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

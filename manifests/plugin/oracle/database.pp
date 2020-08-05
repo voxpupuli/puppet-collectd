@@ -6,7 +6,6 @@ define collectd::plugin::oracle::database (
   String $connect_id = $name,
   String $database   = $name,
 ) {
-
   include collectd
   include collectd::plugin::oracle
 

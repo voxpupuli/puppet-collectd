@@ -4,7 +4,6 @@ class collectd::plugin::openldap (
   Hash $instances = { 'localhost' => { 'url' => 'ldap://localhost/' } },
   $interval       = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'openldap':

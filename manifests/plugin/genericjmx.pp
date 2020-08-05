@@ -4,7 +4,6 @@ class collectd::plugin::genericjmx (
   $jvmarg         = [],
   $manage_package = undef,
 ) {
-
   include collectd
   include collectd::plugin::java
 

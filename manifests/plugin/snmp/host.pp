@@ -16,7 +16,6 @@ define collectd::plugin::snmp::host (
   Optional[Collectd::SNMP::PrivacyProtocol] $privacy_protocol   = undef,
   Optional[String[1]]                       $privacy_passphrase = undef,
 ) {
-
   include collectd
   include collectd::plugin::snmp
 

@@ -7,7 +7,6 @@ define collectd::plugin::python::module (
   Optional[Stdlib::Absolutepath] $modulepath = undef,
   Optional[String] $script_source = undef,
 ) {
-
   include collectd
   include collectd::plugin::python
 
@@ -48,7 +47,7 @@ define collectd::plugin::python::module (
   )
 
   # Possibly many per instance of a module configuration.
-  concat::fragment{ "collectd_plugin_python_conf_${title}_config":
+  concat::fragment { "collectd_plugin_python_conf_${title}_config":
     order   => "50_${module}_50",
     target  => $collectd::plugin::python::python_conf,
     content => epp('collectd/plugin/python/module.conf_config.epp',

@@ -2,7 +2,6 @@
 class collectd::plugin::zfs_arc (
   $ensure = 'present',
 ) {
-
   include collectd
 
   collectd::plugin { 'zfs_arc':

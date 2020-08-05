@@ -41,7 +41,6 @@ class collectd::plugin::ceph (
   Boolean $manage_package            = $collectd::manage_package,
   String $package_name               = 'collectd-ceph'
 ) {
-
   include collectd
 
   if $manage_package {

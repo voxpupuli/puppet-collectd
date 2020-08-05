@@ -4,7 +4,6 @@ class collectd::plugin::vmem (
   $interval = undef,
   $verbose  = false,
 ) {
-
   include collectd
 
   collectd::plugin { 'vmem':

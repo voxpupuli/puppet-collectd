@@ -7,7 +7,6 @@ define collectd::plugin::genericjmx::connection (
   Optional[String] $password        = undef,
   Optional[String] $instance_prefix = undef,
 ) {
-
   include collectd
   include collectd::plugin::genericjmx
 

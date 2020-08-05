@@ -14,7 +14,6 @@
 class collectd::plugin::numa (
   Enum['present', 'absent'] $ensure   = 'present',
 ) {
-
   include collectd
 
   collectd::plugin { 'numa':

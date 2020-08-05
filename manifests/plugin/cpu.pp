@@ -9,7 +9,6 @@ class collectd::plugin::cpu (
   Boolean $subtractgueststate       = true,
   Optional[Integer[1]] $interval    = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'cpu':

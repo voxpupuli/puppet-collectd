@@ -48,7 +48,6 @@ class collectd::plugin::sysevent (
   Optional[Integer[0]] $buffer_size            = undef,
   Optional[Integer[1, default]] $buffer_length = undef,
 ) {
-
   include collectd
 
   if $manage_package and $facts['os']['family'] == 'RedHat' {

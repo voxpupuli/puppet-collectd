@@ -11,7 +11,6 @@ define collectd::plugin::snmp::data (
   Optional[Variant[String[1], Array[String[1], 1]]] $ignore          = undef,
   Boolean                                           $invert_match    = false,
 ) {
-
   include collectd
   include collectd::plugin::snmp
 

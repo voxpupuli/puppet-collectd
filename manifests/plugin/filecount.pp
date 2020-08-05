@@ -4,7 +4,6 @@ class collectd::plugin::filecount (
   Hash $directories = {},
   $interval         = undef,
 ) {
-
   include collectd
 
   # We support two formats for directories:

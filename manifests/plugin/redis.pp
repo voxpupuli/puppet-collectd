@@ -17,7 +17,6 @@ class collectd::plugin::redis (
     },
   },
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

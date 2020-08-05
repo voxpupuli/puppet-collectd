@@ -10,7 +10,6 @@ class collectd::plugin::ipmi (
   Boolean $notify_sensor_not_present = false,
   Array $sensors                     = [],
 ) {
-
   include collectd
 
   $manage_package_real = pick($manage_package, $collectd::manage_package)

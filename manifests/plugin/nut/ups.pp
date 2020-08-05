@@ -2,7 +2,6 @@
 define collectd::plugin::nut::ups (
   $ensure          = 'present',
 ) {
-
   include collectd
   include collectd::plugin::nut
 

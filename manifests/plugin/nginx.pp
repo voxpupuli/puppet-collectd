@@ -10,7 +10,6 @@ class collectd::plugin::nginx (
   $cacert           = undef,
   $interval         = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

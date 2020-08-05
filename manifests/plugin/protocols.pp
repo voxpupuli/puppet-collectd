@@ -4,7 +4,6 @@ class collectd::plugin::protocols (
   Boolean $ignoreselected = false,
   Array $values           = []
 ) {
-
   include collectd
 
   collectd::plugin { 'protocols':

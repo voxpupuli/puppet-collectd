@@ -5,7 +5,6 @@ class collectd::plugin::memory (
   Boolean $valuespercentage = false,
   $interval                 = undef,
 ) {
-
   include collectd
 
   collectd::plugin { 'memory':

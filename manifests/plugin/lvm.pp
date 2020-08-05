@@ -4,7 +4,6 @@ class collectd::plugin::lvm (
   $manage_package   = undef,
   $interval         = undef,
 ) {
-
   include collectd
 
   $_manage_package = pick($manage_package, $collectd::manage_package)

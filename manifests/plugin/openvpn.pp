@@ -8,11 +8,10 @@ class collectd::plugin::openvpn (
   Boolean $collectusercount                                              = false,
   $interval                                                              = undef,
 ) {
-
   include collectd
 
   if $statusfile =~ String {
-    $statusfiles = [ $statusfile ]
+    $statusfiles = [$statusfile]
   } else {
     $statusfiles = $statusfile
   }

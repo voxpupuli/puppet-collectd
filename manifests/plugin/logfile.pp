@@ -7,7 +7,6 @@ class collectd::plugin::logfile (
   $log_timestamp  = true,
   $print_severity = false
 ) {
-
   include collectd
 
   collectd::plugin { 'logfile':

@@ -98,7 +98,7 @@ class collectd::plugin::rabbitmq (
   }
 
   if ($_manage_package) and ($provider_proxy) {
-    $install_options = [{'--proxy' => $provider_proxy}]
+    $install_options = [{ '--proxy' => $provider_proxy }]
   } else {
     $install_options = undef
   }
