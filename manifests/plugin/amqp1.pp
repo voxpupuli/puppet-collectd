@@ -104,18 +104,18 @@
 #      preserved, i.e. passed through.
 #
 class collectd::plugin::amqp1 (
-  Enum['present', 'absent'] $ensure   = 'present',
-  Boolean $manage_package             = $collectd::manage_package,
-  String $transport                   = 'metrics',
-  Stdlib::Host $host                  = 'localhost',
-  Stdlib::Port $port                  = 5672,
-  String $user                        = 'guest',
-  String $password                    = 'guest',
-  String $address                     = 'collectd',
-  Hash $instances                     = {},
-  Optional[Integer] $retry_delay      = undef,
-  Optional[Integer] $send_queue_limit = undef,
-  Optional[Integer] $interval         = undef,
+  Enum['present', 'absent'] $ensure      = 'present',
+  Boolean $manage_package                = $collectd::manage_package,
+  String $transport                      = 'metrics',
+  Stdlib::Host $host                     = 'localhost',
+  Stdlib::Port $port                     = 5672,
+  String $user                           = 'guest',
+  String $password                       = 'guest',
+  String $address                        = 'collectd',
+  Hash $instances                        = {},
+  Optional[Integer] $retry_delay         = undef,
+  Optional[Integer[0]] $send_queue_limit = undef,
+  Optional[Integer] $interval            = undef,
 ) {
   include collectd
 
