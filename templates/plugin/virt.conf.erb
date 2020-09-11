@@ -19,6 +19,11 @@
 <% if @ignore_selected != nil -%>
   IgnoreSelected <%= @ignore_selected %>
 <% end -%>
+<%- if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.5']) >= 0) -%>
+<% if @plugin_instance_format != nil -%>
+  PluginInstanceFormat <%= @plugin_instance_format %>
+<% end -%>
+<%- end -%>
 <% if @hostname_format != nil -%>
   HostnameFormat "<%= @hostname_format %>"
 <% end -%>
