@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v12.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.1.0) (2020-05-03)
+## [v12.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.2.0) (2020-09-18)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.1.0...v12.2.0)
+
+**Implemented enhancements:**
+
+- Add PluginInstanceFormat parameter to virt plugin [\#955](https://github.com/voxpupuli/puppet-collectd/pull/955) ([leifmadsen](https://github.com/leifmadsen))
+- Add support for Header and Metrics configuration for write\_http plugin [\#944](https://github.com/voxpupuli/puppet-collectd/pull/944) ([paramite](https://github.com/paramite))
+
+**Fixed bugs:**
+
+- Remove redundant white space from python templates [\#943](https://github.com/voxpupuli/puppet-collectd/pull/943) ([traylenator](https://github.com/traylenator))
+- Fix unixsock default path [\#940](https://github.com/voxpupuli/puppet-collectd/pull/940) ([smortex](https://github.com/smortex))
+
+**Merged pull requests:**
+
+- Convert mocha tests to rspec [\#952](https://github.com/voxpupuli/puppet-collectd/pull/952) ([KeithWard](https://github.com/KeithWard))
+- modulesync 3.0.0 / fix several puppet-ling warnings [\#951](https://github.com/voxpupuli/puppet-collectd/pull/951) ([bastelfreak](https://github.com/bastelfreak))
+- Add options to limit the send queue length [\#950](https://github.com/voxpupuli/puppet-collectd/pull/950) ([mrunge](https://github.com/mrunge))
+- Allow to set separate interval for database resource [\#945](https://github.com/voxpupuli/puppet-collectd/pull/945) ([oleksandriegorov](https://github.com/oleksandriegorov))
+
+## [v12.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.1.0) (2020-05-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.0.0...v12.1.0)
 
