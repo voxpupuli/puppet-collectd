@@ -32,6 +32,30 @@ describe 'collectd::plugin::protocols', type: :class do
         end
       end
 
+      describe 'ignoreselected' do
+        context ':ignoreselected => false' do
+          let :params do
+            {
+              values: %w[protocol1 protocol2],
+              ignoreselected: false
+            }
+          end
+
+          it { is_expected.to contain_file('protocols.load').with_content(%r{<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n\s*IgnoreSelected false\n</Plugin>}) }
+        end
+
+        context ':ignoreselected => true' do
+          let :params do
+            {
+              values: %w[protocol1 protocol2],
+              ignoreselected: true
+            }
+          end
+
+          it { is_expected.to contain_file('protocols.load').with_content(%r{<Plugin "protocols">\n\s*Value "protocol1"\n\s*Value "protocol2"\n\s*IgnoreSelected true\n</Plugin>}) }
+        end
+      end
+
       context ':ensure => absent' do
         let :params do
           { ensure: 'absent' }
