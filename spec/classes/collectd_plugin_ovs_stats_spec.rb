@@ -26,7 +26,7 @@ describe 'collectd::plugin::ovs_stats', type: :class do
 
         it 'will create config which will contain port configuration' do
           is_expected.to contain_file('ovs_stats.load').with(
-            content: %r{Port 666}
+            content: %r{Port "666"}
           )
         end
 
