@@ -37,9 +37,9 @@ class collectd::plugin::python (
       package { 'collectd-python':
         ensure => $ensure_real,
       }
-      if (defined(Class['::epel'])) {
+      if (defined(Class['epel'])) {
         Package['collectd-python'] {
-          require => Class['::epel'],
+          require => Class['epel'],
         }
       }
     }

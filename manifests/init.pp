@@ -51,8 +51,8 @@ class collectd (
   contain collectd::config
   contain collectd::service
 
-  Class['::collectd::repo']
-  ~> Class['::collectd::install']
+  Class['collectd::repo']
+  ~> Class['collectd::install']
   -> Class['collectd::config']
   ~> Class['collectd::service']
 }
