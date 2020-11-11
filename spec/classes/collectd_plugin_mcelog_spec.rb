@@ -7,6 +7,10 @@ describe 'collectd::plugin::mcelog', type: :class do
         facts
       end
 
+      let :pre_condition do
+        'include collectd'
+      end
+
       it { is_expected.to compile.with_all_deps }
 
       options = os_specific_options(facts)
@@ -20,6 +24,13 @@ describe 'collectd::plugin::mcelog', type: :class do
         it { is_expected.to contain_file('mcelog.load').with(content: %r{<Memory>}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{McelogClientSocket "/var/run/mcelog-client"}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{PersistentNotification false}) }
+      end
+
+      case facts[:os]['family']
+      when 'RedHat'
+        context 'on osfamily => RedHat' do
+          it { is_expected.to contain_package('collectd-mcelog').with(ensure: 'present') }
+        end
       end
 
       context ':ensure => :mceloglogfile => true' do
