@@ -9,16 +9,14 @@
     <%- if ($value =~ Numeric or $value =~ Boolean) { -%>
     <%= $key %> <%= $value %>
     <%- } elsif $value =~ Array { -%>
-      <%#- Render arrays as key "Value 1" "Value2" 22 false -%>
-    <%= $key -%> 
+      <%#- Render arrays as key "Value 1" \n key "Value 2" \n key 22 \n key false -%>
       <%- $value.each |$v| { -%>
         <%- if ($v =~ Boolean or $v =~ Numeric) { -%>
- <%= $v -%>
+    <%= $key %> <%= $v %>
         <%- } else { -%>
- "<%= $v -%><%= '"' -%>
+    <%= $key %> "<%= $v %>"
         <%- } -%>
       <%- } -%>
-<%= "\n" -%>
     <%- } else { -%>
     <%= $key %> "<%= $value %>"
     <%- } -%>
