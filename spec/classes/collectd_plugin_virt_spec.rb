@@ -11,6 +11,48 @@ describe 'collectd::plugin::virt', type: :class do
         'include collectd'
       end
 
+      context 'hostname_format in virt.conf' do
+        let :params do
+          {
+            connection: 'qemu:///system',
+            hostname_format: 'name metadata uuid'
+          }
+        end
+
+        context 'with collectd_version < 5.0' do
+          let :facts do
+            facts.merge(collectd_version: '4.10.1')
+          end
+
+          it 'contains appropriate configuration' do
+            is_expected.to contain_file('libvirt.load').
+              with_content(%r{.*HostnameFormat name metadata uuid.*})
+          end
+        end
+
+        context 'with collectd_version >= 5.0' do
+          let :facts do
+            facts.merge(collectd_version: '5.0.0')
+          end
+
+          it 'contains appropriate configuration' do
+            is_expected.to contain_file('libvirt.load').
+              with_content(%r{.*HostnameFormat name metadata uuid.*})
+          end
+        end
+
+        context 'with collectd_version >= 5.5.0' do
+          let :facts do
+            facts.merge(collectd_version: '5.5.0')
+          end
+
+          it 'contains appropriate configuration' do
+            is_expected.to contain_file('virt.load').
+              with_content(%r{.*HostnameFormat name metadata uuid.*})
+          end
+        end
+      end
+
       context 'plugin_instance_format in virt.conf' do
         let :params do
           {
