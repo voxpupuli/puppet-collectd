@@ -150,9 +150,7 @@ describe 'collectd::plugin::python', type: :class do
               target: "#{options[:plugin_conf_dir]}/python-config.conf"
             )
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Beta 4.2})
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta "a"})
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta 4})
-            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta 5})
+            is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta "a" 4 5})
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Gamma "b"})
           end
         end
