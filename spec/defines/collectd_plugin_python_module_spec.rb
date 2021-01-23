@@ -31,10 +31,7 @@ describe 'collectd::plugin::python::module', type: :define do
           )
 
           is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam_config').with(
-            content: %r{spam "wonderful"}
-          )
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_spam_config').with(
-            content: %r{spam "lovely"}
+            content: %r{spam "wonderful" "lovely"}
           )
         end
 
@@ -111,8 +108,7 @@ describe 'collectd::plugin::python::module', type: :define do
 
         it 'includes foo module configuration' do
           is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k1 "v1"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k2 "v21"})
-          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k2 "v22"})
+          is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{k2 "v21" "v22"})
         end
       end
     end
