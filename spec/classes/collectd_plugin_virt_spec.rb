@@ -57,7 +57,7 @@ describe 'collectd::plugin::virt', type: :class do
         let :params do
           {
             connection: 'qemu:///system',
-            plugin_instance_format: 'name'
+            plugin_instance_format: 'name metadata uuid'
           }
         end
 
@@ -68,7 +68,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is ignored' do
             is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*PluginInstanceFormat name.*})
+              without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
@@ -79,7 +79,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is included' do
             is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*PluginInstanceFormat name.*})
+              without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
@@ -90,7 +90,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is included' do
             is_expected.to contain_file('virt.load').
-              with_content(%r{.*PluginInstanceFormat name.*})
+              with_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
