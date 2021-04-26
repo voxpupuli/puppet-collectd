@@ -8,7 +8,7 @@ class collectd::plugin::virt (
   Optional[String] $block_device                                             = undef,
   Optional[String] $interface_device                                         = undef,
   Optional[Boolean] $ignore_selected                                         = undef,
-  Optional[String[1]] $plugin_instance_format                                   = undef,
+  Optional[String[1]] $plugin_instance_format                                = undef,
   Optional[String] $hostname_format                                          = undef,
   Optional[String] $interface_format                                         = undef,
   Optional[String] $extra_stats                                              = undef,
