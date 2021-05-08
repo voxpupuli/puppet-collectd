@@ -4,10 +4,10 @@ define collectd::plugin::mysql::database (
   String $database                     = $name,
   String $host                         = 'UNSET',
   String $username                     = 'UNSET',
-  String $password                     = 'UNSET',
   Stdlib::Port $port                   = 3306,
   Boolean $masterstats                 = false,
   Boolean $slavestats                  = false,
+  Optional[String] $password           = undef,
   Optional[String] $socket             = undef,
   Optional[Boolean] $innodbstats       = undef,
   # FIXME(sileht): Should be boolean

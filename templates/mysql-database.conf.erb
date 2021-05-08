@@ -4,7 +4,9 @@
   <Database "<%= @database %>">
     Host "<%= @host %>"
     User "<%= @username %>"
+<%- if @password -%>
     Password "<%= @password %>"
+<%- end -%>
 <% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0 -%>
     Port "<%= @port %>"
 <% else -%>
