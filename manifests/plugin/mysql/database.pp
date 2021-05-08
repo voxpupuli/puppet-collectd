@@ -2,7 +2,7 @@
 define collectd::plugin::mysql::database (
   Enum['present', 'absent'] $ensure    = 'present',
   String $database                     = $name,
-  String $host                         = 'UNSET',
+  String $host                         = 'localhost',
   String $username                     = 'UNSET',
   Stdlib::Port $port                   = 3306,
   Boolean $masterstats                 = false,
