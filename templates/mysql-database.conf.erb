@@ -3,7 +3,9 @@
 <Plugin mysql>
   <Database "<%= @database %>">
     Host "<%= @host %>"
+<%- if @username -%>
     User "<%= @username %>"
+<%- end -%>
 <%- if @password -%>
     Password "<%= @password %>"
 <%- end -%>
