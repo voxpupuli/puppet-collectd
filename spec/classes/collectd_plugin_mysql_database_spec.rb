@@ -90,9 +90,7 @@ EOS
 
 <Plugin mysql>
   <Database "dbname">
-    Host "UNSET"
-    User "UNSET"
-    Password "UNSET"
+    Host "localhost"
     Port "3306"
     MasterStats false
     SlaveStats false
