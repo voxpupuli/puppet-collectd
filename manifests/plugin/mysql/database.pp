@@ -2,12 +2,12 @@
 define collectd::plugin::mysql::database (
   Enum['present', 'absent'] $ensure    = 'present',
   String $database                     = $name,
-  String $host                         = 'UNSET',
-  String $username                     = 'UNSET',
-  String $password                     = 'UNSET',
+  Stdlib::Host $host                   = 'localhost',
   Stdlib::Port $port                   = 3306,
   Boolean $masterstats                 = false,
   Boolean $slavestats                  = false,
+  Optional[String[1]] $username        = undef,
+  Optional[String[1]] $password        = undef,
   Optional[String] $socket             = undef,
   Optional[Boolean] $innodbstats       = undef,
   # FIXME(sileht): Should be boolean

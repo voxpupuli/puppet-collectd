@@ -3,8 +3,12 @@
 <Plugin mysql>
   <Database "<%= @database %>">
     Host "<%= @host %>"
+<%- if @username -%>
     User "<%= @username %>"
+<%- end -%>
+<%- if @password -%>
     Password "<%= @password %>"
+<%- end -%>
 <% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0 -%>
     Port "<%= @port %>"
 <% else -%>
