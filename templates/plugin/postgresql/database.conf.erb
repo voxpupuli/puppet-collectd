@@ -12,7 +12,7 @@
     Password "<%= @password %>"
 <% end -%>
 <% if @interval -%>
-    Interval <%= @interval %>
+    <% if @writer -%>Commit<% end -%>Interval <%= @interval %>
 <% end -%>
 <% if @instance -%>
     Instance "<%= @instance %>"

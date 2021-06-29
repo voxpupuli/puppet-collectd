@@ -49,12 +49,6 @@ describe 'collectd::plugin::postgresql', type: :class do
                   'valuesfrom'     => 'log_delay'
                 }]
               }
-            },
-            writers: {
-              'sqlstore' => {
-                'statement'  => 'SELECT collectd_insert($1, $2, $3, $4, $5, $6, $7, $8, $9);',
-                'storerates' => true
-              }
             }
           }
         end
@@ -66,6 +60,33 @@ describe 'collectd::plugin::postgresql', type: :class do
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Param \"database\"})
+        end
+      end
+
+      context ':ensure => present and create a db with a custom writer' do
+        let(:params) do
+          {
+            databases: {
+              'postgres' => {
+                'host'     => 'localhost',
+                'user'     => 'postgres',
+                'password' => 'postgres',
+                'interval' => 10,
+                'writer'   => 'sqlstore'
+              },
+            },
+            writers: {
+              'sqlstore' => {
+                'statement'  => 'SELECT collectd_insert($1, $2, $3, $4, $5, $6, $7, $8, $9);',
+                'storerates' => true
+              }
+            }
+          }
+        end
+
+        it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Writer \"sqlstore\"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{CommitInterval 10})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
         end
       end
