@@ -12,6 +12,7 @@ jobs:
   deploy:
     name: 'deploy to forge'
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'voxpupuli'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
