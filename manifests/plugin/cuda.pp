@@ -11,11 +11,11 @@
 # @param package_provider Optional[String] Passed to package resource. Default: pip
 # @param provider_proxy Optional[String] Proxy for provider. Default: undef
 class collectd::plugin::cuda (
-  Optional[String] $ensure           = 'present',
-  Optional[Boolean] $manage_package  = undef,
-  Optional[String] $package_name     = 'collectd-cuda',
-  Optional[String] $package_provider = undef,
-  Optional[String] $provider_proxy   = undef,
+  Enum['present', 'absent'] $ensure     = 'present',
+  Optional[Boolean] $manage_package     = undef,
+  String[1] $package_name               = 'collectd-cuda',
+  Optional[String[1]] $package_provider = undef,
+  Optional[String[1]] $provider_proxy   = undef,
 ) {
   include collectd
 

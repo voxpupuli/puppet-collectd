@@ -1,9 +1,9 @@
 # https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_intel_pmu
 class collectd::plugin::intel_pmu (
   Enum['present', 'absent'] $ensure                       = 'present',
-  Optional[Boolean]         $report_hardware_cache_events = false,
-  Optional[Boolean]         $report_kernel_pmu_events     = false,
-  Optional[Boolean]         $report_software_events       = false,
+  Boolean                   $report_hardware_cache_events = false,
+  Boolean                   $report_kernel_pmu_events     = false,
+  Boolean                   $report_software_events       = false,
   Optional[String]          $event_list                   = undef,
   Optional[Array[String]]   $hardware_events              = undef,
 ) {

@@ -3,9 +3,9 @@ class collectd::plugin::powerdns (
   Enum['present', 'absent'] $ensure       = 'present',
   Integer $order                          = 10,
   Optional[Numeric] $interval             = undef,
-  Optional[Hash[String, Hash]] $servers   = {},
-  Optional[Hash[String, Hash]] $recursors = {},
-  Optional[String] $local_socket          = undef,
+  Hash[String, Hash] $servers             = {},
+  Hash[String, Hash] $recursors           = {},
+  Optional[String[1]] $local_socket       = undef,
 ) {
   include collectd
 

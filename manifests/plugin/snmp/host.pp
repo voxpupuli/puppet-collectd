@@ -6,7 +6,7 @@ define collectd::plugin::snmp::host (
   Collectd::SNMP::Version                   $version            = '1',
   Optional[Integer[0]]                      $interval           = undef,
   # SNMPv1/2c
-  Optional[String[1]]                       $community          = 'public',
+  String[1]                                 $community          = 'public',
   # SNMPv3
   Optional[String[1]]                       $username           = undef,
   Optional[Collectd::SNMP::SecurityLevel]   $security_level     = undef,

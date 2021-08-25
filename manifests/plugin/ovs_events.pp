@@ -45,13 +45,13 @@
 class collectd::plugin::ovs_events (
   Optional[Stdlib::Host] $address      = undef,
   Optional[Boolean] $dispatch          = undef,
-  String $ensure                       = 'present',
-  Optional[Array] $interfaces          = [],
+  Enum['present', 'absent']  $ensure   = 'present',
+  Array $interfaces                    = [],
   Boolean $manage_package              = true,
   Optional[Boolean] $send_notification = undef,
-  String $package_name                 = 'collectd-ovs-events',
+  String[1] $package_name              = 'collectd-ovs-events',
   Optional[Stdlib::Port] $port         = undef,
-  Optional[String] $socket             = undef,
+  Optional[String[1]] $socket          = undef,
 ) {
   include collectd
 

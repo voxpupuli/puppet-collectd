@@ -5,12 +5,12 @@ class collectd::plugin::rrdtool (
   Stdlib::Absolutepath $datadir      = '/var/lib/collectd/rrd',
   Boolean $createfilesasync          = false,
   $interval                          = undef,
-  Optional[Integer] $rrarows         = 1200,
+  Integer $rrarows                   = 1200,
   Array[Integer] $rratimespan        = [3600, 86400, 604800, 2678400, 31622400],
-  Optional[Float] $xff               = 0.1,
-  Optional[Integer] $cacheflush      = 900,
-  Optional[Integer] $cachetimeout    = 120,
-  Optional[Integer] $writespersecond = 50
+  Float $xff                         = 0.1,
+  Integer $cacheflush                = 900,
+  Integer $cachetimeout              = 120,
+  Integer $writespersecond           = 50
 ) {
   include collectd
 

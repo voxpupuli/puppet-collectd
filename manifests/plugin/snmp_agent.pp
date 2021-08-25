@@ -9,7 +9,7 @@
 # @param table Hash[String[1], Collectd::SNMP_AGENT::Table] Defines a table consisting of several Data blocks being its columns
 class collectd::plugin::snmp_agent (
   Enum['present', 'absent'] $ensure = 'present',
-  Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] $data = {
+  Hash[String[1],Collectd::SNMP_AGENT::Data] $data = {
     'memAvailReal' => {
       'oids' => '1.3.6.1.4.1.2021.4.6.0',
       'plugin' => 'memory',

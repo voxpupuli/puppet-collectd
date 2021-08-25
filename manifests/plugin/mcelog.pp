@@ -5,7 +5,7 @@ class collectd::plugin::mcelog (
   Optional[Array] $package_install_options = $collectd::package_install_options,
   # Log file option and memory option are mutualy exclusive.
   Optional[String] $mceloglogfile = undef,
-  Optional[Collectd::MCELOG::Memory] $memory = {
+  Collectd::MCELOG::Memory $memory = {
     'mcelogclientsocket' => '/var/run/mcelog-client',
     'persistentnotification' => false,
   }
