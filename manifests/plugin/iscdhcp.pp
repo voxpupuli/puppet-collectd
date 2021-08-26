@@ -10,11 +10,11 @@
 # @param package_provider Optional[String] Passed to package resource. Default: pip
 # @param provider_proxy Optional[String] Proxy for provider. Default: undef
 class collectd::plugin::iscdhcp (
-  Optional[String] $ensure           = 'present',
-  Optional[Boolean] $manage_package  = undef,
-  Optional[String] $package_name     = 'collectd-iscdhcp',
-  Optional[String] $package_provider = undef,
-  Optional[String] $provider_proxy   = undef,
+  Enum['present', 'absent'] $ensure     = 'present',
+  Optional[Boolean] $manage_package     = undef,
+  String[1] $package_name               = 'collectd-iscdhcp',
+  Optional[String[1]] $package_provider = undef,
+  Optional[String[1]] $provider_proxy   = undef,
 ) {
   include collectd
 

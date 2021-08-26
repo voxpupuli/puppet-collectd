@@ -2,7 +2,7 @@
 # https://collectd.org/wiki/index.php/Plugin:Tail
 class collectd::plugin::tail (
   $interval             = undef,
-  Optional[Hash] $files = {},
+  Hash $files           = {},
 ) {
   collectd::plugin { 'tail':
     interval => $interval,
