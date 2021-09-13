@@ -4,6 +4,47 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v13.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v13.0.0) (2021-09-13)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.2.0...v13.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Puppet 5 support; Add Puppet 7 support / Allow latest dependencies / Drop EoL Debian 8 [\#975](https://github.com/voxpupuli/puppet-collectd/pull/975) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- plugin::mysql::database - remove default 'UNSET' values [\#724](https://github.com/voxpupuli/puppet-collectd/issues/724)
+- Add support for Debian 11 [\#984](https://github.com/voxpupuli/puppet-collectd/pull/984) ([smortex](https://github.com/smortex))
+- MySQL database plugin: allow no password; default Host, User, and Password to undef [\#970](https://github.com/voxpupuli/puppet-collectd/pull/970) ([ph448](https://github.com/ph448))
+- Add ubuntu 20 support [\#941](https://github.com/voxpupuli/puppet-collectd/pull/941) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- postgresql plugin does not produce working database configuration with writer query [\#971](https://github.com/voxpupuli/puppet-collectd/issues/971)
+- .sync.yml: load spec\_helper\_methods in spec\_helper.rb [\#979](https://github.com/voxpupuli/puppet-collectd/pull/979) ([bastelfreak](https://github.com/bastelfreak))
+- Removing extra whitespaces wrom carbon template [\#978](https://github.com/voxpupuli/puppet-collectd/pull/978) ([markasammut](https://github.com/markasammut))
+- Emit CommitInterval when writer is configured for database [\#972](https://github.com/voxpupuli/puppet-collectd/pull/972) ([ph448](https://github.com/ph448))
+- Convert plugin\_instance\_format from Enum to String [\#969](https://github.com/voxpupuli/puppet-collectd/pull/969) ([leifmadsen](https://github.com/leifmadsen))
+- Fix dbi query.conf.erg template [\#960](https://github.com/voxpupuli/puppet-collectd/pull/960) ([VtG242](https://github.com/VtG242))
+- Fix type mismatch for ovs\_stats port [\#959](https://github.com/voxpupuli/puppet-collectd/pull/959) ([mrunge](https://github.com/mrunge))
+- Fix `ignoreselected` typo in protocols.conf.erb template [\#957](https://github.com/voxpupuli/puppet-collectd/pull/957) ([VtG242](https://github.com/VtG242))
+- Drop erroneous double quotes from virt plugin template [\#954](https://github.com/voxpupuli/puppet-collectd/pull/954) ([leifmadsen](https://github.com/leifmadsen))
+
+**Closed issues:**
+
+- collectd::plugin::virt plugin\_instance\_format should not be Enum [\#968](https://github.com/voxpupuli/puppet-collectd/issues/968)
+- Python plugin template does not create valid module configuration [\#964](https://github.com/voxpupuli/puppet-collectd/issues/964)
+- ovs\_stats port number mismatch [\#958](https://github.com/voxpupuli/puppet-collectd/issues/958)
+- collectd fails to load when using multiple hostname format values [\#953](https://github.com/voxpupuli/puppet-collectd/issues/953)
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#983](https://github.com/voxpupuli/puppet-collectd/pull/983) ([smortex](https://github.com/smortex))
+- Update badges in README.md [\#982](https://github.com/voxpupuli/puppet-collectd/pull/982) ([bastelfreak](https://github.com/bastelfreak))
+- Adding Reverse Host parameter [\#973](https://github.com/voxpupuli/puppet-collectd/pull/973) ([markasammut](https://github.com/markasammut))
+- Install collectd-mcelog package on RedHat [\#962](https://github.com/voxpupuli/puppet-collectd/pull/962) ([uvNikita](https://github.com/uvNikita))
+
 ## [v12.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v12.2.0) (2020-09-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.1.0...v12.2.0)
@@ -449,9 +490,9 @@ These should not affect the functionality of the module.
 - Add tests for the AMQP plugin and fix broken StoreRates configuration when amqpformat = JSON [\#661](https://github.com/voxpupuli/puppet-collectd/pull/661) ([oranenj](https://github.com/oranenj))
 - provide sane defaults for manage\_repo [\#658](https://github.com/voxpupuli/puppet-collectd/pull/658) ([bastelfreak](https://github.com/bastelfreak))
 - openldap - add binddn and password parameters [\#657](https://github.com/voxpupuli/puppet-collectd/pull/657) ([leonkyneur](https://github.com/leonkyneur))
-- Added ISC DHCP pool metrics plugin [\#650](https://github.com/voxpupuli/puppet-collectd/pull/650) ([Yuav](https://github.com/Yuav))
+- Added ISC DHCP pool metrics plugin [\#650](https://github.com/voxpupuli/puppet-collectd/pull/650) ([jskarpe](https://github.com/jskarpe))
 - df: add devices parameter [\#646](https://github.com/voxpupuli/puppet-collectd/pull/646) ([maage](https://github.com/maage))
-- Added cuda GPU plugin [\#645](https://github.com/voxpupuli/puppet-collectd/pull/645) ([Yuav](https://github.com/Yuav))
+- Added cuda GPU plugin [\#645](https://github.com/voxpupuli/puppet-collectd/pull/645) ([jskarpe](https://github.com/jskarpe))
 - Plugin turbostat [\#642](https://github.com/voxpupuli/puppet-collectd/pull/642) ([jkroepke](https://github.com/jkroepke))
 - Parametrize destination of python config [\#637](https://github.com/voxpupuli/puppet-collectd/pull/637) ([Pigueiras](https://github.com/Pigueiras))
 - Stop specifying $name as the default host value [\#631](https://github.com/voxpupuli/puppet-collectd/pull/631) ([jamtur01](https://github.com/jamtur01))
