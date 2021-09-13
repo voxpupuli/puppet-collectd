@@ -20,7 +20,7 @@ class collectd::plugin::iscdhcp (
 
   $_manage_package = pick($manage_package, $collectd::manage_package)
 
-  if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8' {
+  if ($facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '8') or ($facts['os']['name'] == 'Ubuntu' and $facts['os']['release']['major'] == '20.04') {
     $_python_pip_package = 'python3-pip'
     if $package_provider =~ Undef {
       $_package_provider = 'pip3'

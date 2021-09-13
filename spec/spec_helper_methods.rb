@@ -15,32 +15,6 @@ def os_specific_options(facts)
   end
 end
 
-def all_supported_os_hash
-  {
-    supported_os: [
-      {
-        'operatingsystem' => 'Debian',
-        'operatingsystemrelease' => ['8']
-      },
-      {
-        'operatingsystem' => 'CentOS',
-        'operatingsystemrelease' => %w[7 8]
-      },
-      {
-        'operatingsystem' => 'Ubuntu',
-        'operatingsystemrelease' => %w[16.04 18.04]
-      },
-      {
-        'operatingsystem' => 'FreeBSD',
-        'operatingsystemrelease' => %w[11 12]
-      },
-      {
-        'operatingsystem' => 'Archlinux'
-      }
-    ]
-  }
-end
-
 def baseline_os_hash
   {
     supported_os: [
