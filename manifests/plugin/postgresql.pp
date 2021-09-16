@@ -15,9 +15,15 @@ class collectd::plugin::postgresql (
   $writers_defaults   = { 'ensure' => $ensure }
 
   if $facts['os']['family'] == 'RedHat' {
+    if $ensure == 'present' {
+      $ensure_real = $collectd::package_ensure
+    } elsif $ensure == 'absent' {
+      $ensure_real = 'absent'
+    }
+
     if $_manage_package {
       package { 'collectd-postgresql':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }

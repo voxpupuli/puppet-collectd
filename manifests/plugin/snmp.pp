@@ -12,8 +12,14 @@ class collectd::plugin::snmp (
 
   if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
+      if $ensure == 'present' {
+        $ensure_real = $collectd::package_ensure
+      } elsif $ensure == 'absent' {
+        $ensure_real = 'absent'
+      }
+
       package { 'collectd-snmp':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }

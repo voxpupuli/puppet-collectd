@@ -2,17 +2,21 @@
 
 <Plugin mysql>
   <Database "<%= @database %>">
+<%- if @host -%>
     Host "<%= @host %>"
+<%- end -%>
 <%- if @username -%>
     User "<%= @username %>"
 <%- end -%>
 <%- if @password -%>
     Password "<%= @password %>"
 <%- end -%>
+<%- if @port -%>
 <% if scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.0']) >= 0 -%>
     Port "<%= @port %>"
 <% else -%>
     Port <%= @port %>
+<%- end -%>
 <%- end -%>
     MasterStats <%= @masterstats %>
     SlaveStats <%= @slavestats %>
