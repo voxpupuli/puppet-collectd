@@ -21,7 +21,7 @@
         InstancesFrom "<%= result['instancesfrom'] %>"
 <% end -%>
 <%- if result['valuesfrom'].is_a?(Array) -%>
-<%- value.each do |v| -%>
+<%- result['valuesfrom'].each do |v| -%>
         ValuesFrom "<%= v %>"
 <%- end -%>
 <%- else -%>
