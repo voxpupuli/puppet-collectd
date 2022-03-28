@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::network::server', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -39,6 +41,19 @@ describe 'collectd::plugin::network::server', type: :define do
 
         it "Will not create #{options[:plugin_conf_dir]}/network-server-node1.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/network-server-node1.conf").with(ensure: 'absent')
+        end
+      end
+
+      context 'with specifique title' do
+        let(:title) { 'eatapples' }
+        let :params do
+          { server: '10.0.0.1', port: 1234 }
+        end
+
+        it do
+          is_expected.to contain_file(
+            "#{options[:plugin_conf_dir]}/network-server-eatapples.conf"
+          ).with_content(%r{<Server "10\.0\.0\.1" "1234">\n})
         end
       end
     end
