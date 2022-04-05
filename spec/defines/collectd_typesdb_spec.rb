@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::typesdb', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -31,6 +33,20 @@ describe 'collectd::typesdb', type: :define do
             ensure: 'present',
             path: '/etc/collectd/types.db'
           ).with_mode('0644')
+        end
+      end
+
+      context 'with include at true' do
+        let(:pre_condition) { 'class {"collectd": purge_config => true }' }
+        let(:title) { '/etc/collectd/types.db' }
+        let(:params) { { include: true } }
+
+        it do
+          is_expected.to contain_concat__fragment('include_typedb_/etc/collectd/types.db').with(
+            order: '50',
+            target: 'collectd_typesdb',
+            content: "TypesDB \"/etc/collectd/types.db\"\n"
+          )
         end
       end
     end

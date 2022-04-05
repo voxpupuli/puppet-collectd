@@ -1,0 +1,3 @@
+<% if @typesdb and not @typesdb.empty? -%>
+TypesDB<% @typesdb.each do |path| -%> "<%= path %>"<% end %>
+<% end -%>

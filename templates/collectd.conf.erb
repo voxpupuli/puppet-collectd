@@ -13,9 +13,7 @@ AutoLoadPlugin false
 <% end -%>
 #BaseDir "/var/lib/collectd"
 #PluginDir "/usr/lib/collectd"
-<% if @typesdb and not @typesdb.empty? -%>
-TypesDB<% @typesdb.each do |path| -%> "<%= path %>"<% end %>
-<% end -%>
+Include "<%= scope['collectd::collectd_dir'] %>/typesdb.conf"
 <% if @write_queue_limit_high -%>
 WriteQueueLimitHigh <%= @write_queue_limit_high %>
 <% end -%>
