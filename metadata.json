@@ -80,9 +80,6 @@
     },
     {
       "operatingsystem": "Gentoo"
-    },
-    {
-      "operatingsystem": "Archlinux"
     }
   ],
   "requirements": [
