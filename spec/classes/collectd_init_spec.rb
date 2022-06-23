@@ -49,7 +49,7 @@ describe 'collectd', type: :class do
         let(:params) { { utils: true } }
 
         case "#{facts[:os]['family']}-#{facts[:os]['release']['major']}"
-        when %r{^Debian-.+}, 'RedHat-8'
+        when %r{^Debian-.+}, 'RedHat-8', 'RedHat-9'
           it { is_expected.to contain_package('collectd-utils') }
         else
           it { is_expected.not_to contain_package('collectd-utils') }
