@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::virt', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -119,7 +121,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is ignored' do
             is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*InterfaceFormat \"address\".*})
+              without_content(%r{.*InterfaceFormat "address".*})
           end
         end
 
@@ -130,7 +132,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is included' do
             is_expected.to contain_file('libvirt.load').
-              with_content(%r{.*InterfaceFormat \"address\".*})
+              with_content(%r{.*InterfaceFormat "address".*})
           end
         end
 
@@ -141,7 +143,7 @@ describe 'collectd::plugin::virt', type: :class do
 
           it 'is included' do
             is_expected.to contain_file('virt.load').
-              with_content(%r{.*InterfaceFormat \"address\".*})
+              with_content(%r{.*InterfaceFormat "address".*})
           end
         end
 

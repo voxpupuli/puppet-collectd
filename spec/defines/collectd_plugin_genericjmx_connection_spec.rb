@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx::connection', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       options = os_specific_options(facts)
       let :facts do
         facts
@@ -81,7 +83,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{Password "aoeuhtns"}) }
       end
 
-      context 'instance_prefix ' do
+      context 'instance_prefix' do
         let(:params) do
           default_params.merge(
             instance_prefix: 'bat',

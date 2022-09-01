@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd_version', type: :fact do
   before { Facter.clear }
+
   after { Facter.clear }
 
   it 'is 5.1.0 according to output' do

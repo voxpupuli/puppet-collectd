@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::ceph', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -18,29 +20,29 @@ describe 'collectd::plugin::ceph', type: :class do
           { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2', 'test-osd.0', 'ceph-mon.mon01'] }
         end
 
-        content = <<EOS
-<Plugin ceph>
-  LongRunAvgLatency false
-  ConvertSpecialMetricTypes true
+        content = <<~EOS
+          <Plugin ceph>
+            LongRunAvgLatency false
+            ConvertSpecialMetricTypes true
 
-  <Daemon "ceph-osd.0">
-    SocketPath "/var/run/ceph/ceph-osd.0.asok"
-  </Daemon>
-  <Daemon "ceph-osd.1">
-    SocketPath "/var/run/ceph/ceph-osd.1.asok"
-  </Daemon>
-  <Daemon "ceph-osd.2">
-    SocketPath "/var/run/ceph/ceph-osd.2.asok"
-  </Daemon>
-  <Daemon "test-osd.0">
-    SocketPath "/var/run/ceph/test-osd.0.asok"
-  </Daemon>
-  <Daemon "ceph-mon.mon01">
-    SocketPath "/var/run/ceph/ceph-mon.mon01.asok"
-  </Daemon>
+            <Daemon "ceph-osd.0">
+              SocketPath "/var/run/ceph/ceph-osd.0.asok"
+            </Daemon>
+            <Daemon "ceph-osd.1">
+              SocketPath "/var/run/ceph/ceph-osd.1.asok"
+            </Daemon>
+            <Daemon "ceph-osd.2">
+              SocketPath "/var/run/ceph/ceph-osd.2.asok"
+            </Daemon>
+            <Daemon "test-osd.0">
+              SocketPath "/var/run/ceph/test-osd.0.asok"
+            </Daemon>
+            <Daemon "ceph-mon.mon01">
+              SocketPath "/var/run/ceph/ceph-mon.mon01.asok"
+            </Daemon>
 
-</Plugin>
-EOS
+          </Plugin>
+        EOS
         it "Will create #{options[:plugin_conf_dir]}/10-ceph.conf" do
           is_expected.to contain_collectd__plugin('ceph').with_content(content)
         end

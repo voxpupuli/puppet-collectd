@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Fact: python_dir
 #
 # Purpose: Retrieve python package dir used by pip install

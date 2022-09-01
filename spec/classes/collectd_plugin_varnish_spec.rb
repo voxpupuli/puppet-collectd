@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::varnish', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -17,27 +19,28 @@ describe 'collectd::plugin::varnish', type: :class do
         end
 
         it 'renders the template with the default values' do
-          content = <<EOS
-<Plugin varnish>
-  <Instance "localhost">
-  </Instance>
-</Plugin>
-EOS
+          content = <<~EOS
+            <Plugin varnish>
+              <Instance "localhost">
+              </Instance>
+            </Plugin>
+          EOS
           is_expected.to contain_collectd__plugin('varnish').with_content(content)
         end
       end
+
       context 'When the version is nil' do
         let :facts do
           facts.merge(collectd_version: nil)
         end
 
         it 'renders the template with the default values' do
-          content = <<EOS
-<Plugin varnish>
-  <Instance "localhost">
-  </Instance>
-</Plugin>
-EOS
+          content = <<~EOS
+            <Plugin varnish>
+              <Instance "localhost">
+              </Instance>
+            </Plugin>
+          EOS
           is_expected.to contain_collectd__plugin('varnish').with_content(content)
         end
       end
@@ -49,15 +52,16 @@ EOS
 
         context 'when there are no params given' do
           it 'renders the template with the default values' do
-            content = <<EOS
-<Plugin varnish>
-  <Instance "localhost">
-  </Instance>
-</Plugin>
-EOS
+            content = <<~EOS
+              <Plugin varnish>
+                <Instance "localhost">
+                </Instance>
+              </Plugin>
+            EOS
             is_expected.to contain_collectd__plugin('varnish').with_content(content)
           end
         end
+
         context 'when there are params given' do
           let :params do
             {
@@ -71,14 +75,14 @@ EOS
           end
 
           it 'renders the template with the values passed in the params' do
-            content = <<EOS
-<Plugin varnish>
-  <Instance "warble">
-    BATMAN true
-    Robin false
-  </Instance>
-</Plugin>
-EOS
+            content = <<~EOS
+              <Plugin varnish>
+                <Instance "warble">
+                  BATMAN true
+                  Robin false
+                </Instance>
+              </Plugin>
+            EOS
             is_expected.to contain_collectd__plugin('varnish').with_content(content)
           end
         end

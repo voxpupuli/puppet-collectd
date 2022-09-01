@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'collectd::plugin::disk class' do
@@ -38,9 +40,8 @@ describe 'collectd::plugin::disk class' do
       # module being loaded is an exercise for the reader.
       # For CentOS 7 it works on my laptop but not in travis.
       # disk plugin is probably very sensitive to environment.
-      if fact('os.family') == 'Redhat' && fact('os.release.major') == '8'
-        its(:stdout) { is_expected.to match %r{disk_time} }
-      end
+
+      its(:stdout) { is_expected.to match %r{disk_time} } if fact('os.family') == 'Redhat' && fact('os.release.major') == '8'
     end
   end
 end

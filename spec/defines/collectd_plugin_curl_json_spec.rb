@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::curl_json', type: :define do
   on_supported_os.each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       options = os_specific_options(facts)
       let :facts do
         facts.merge(collectd_version: '4.8.0')

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::hddtemp', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -19,6 +21,7 @@ describe 'collectd::plugin::hddtemp', type: :class do
         it { is_expected.to contain_collectd__plugin('hddtemp') }
         it { is_expected.to contain_file('old_hddtemp.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_hddtemp.load').with_ensure('absent') }
+
         it 'Will create 10-hddtemp.conf' do
           is_expected.to contain_file('hddtemp.load').with(
             ensure: 'present',

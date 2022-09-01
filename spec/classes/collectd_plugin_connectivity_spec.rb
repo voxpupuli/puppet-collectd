@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::connectivity', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -21,12 +23,14 @@ describe 'collectd::plugin::connectivity', type: :class do
         it { is_expected.to contain_collectd__plugin('connectivity') }
         it { is_expected.to contain_file('old_connectivity.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_connectivity.load').with_ensure('absent') }
+
         it 'Will create 10-connectivity.conf' do
           is_expected.to contain_file('connectivity.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-connectivity.conf"
           )
         end
+
         it { is_expected.to contain_file('connectivity.load').with(content: %r{<Plugin connectivity>}) }
       end
 

@@ -18,6 +18,7 @@ describe 'collectd', type: :class do
         it { is_expected.to contain_file_line('include_conf_d_dot_conf').with_ensure('present') }
         it { is_expected.to contain_package(options[:package]).with_ensure('present') }
         it { is_expected.to contain_package(options[:package]).with_install_options(nil) }
+
         it do
           is_expected.to contain_service('collectd').with(
             ensure: 'running',
@@ -25,9 +26,7 @@ describe 'collectd', type: :class do
           )
         end
 
-        if facts[:osfamily] == 'RedHat'
-          it { is_expected.to contain_class('epel') }
-        end
+        it { is_expected.to contain_class('epel') } if facts[:osfamily] == 'RedHat'
       end
 
       context 'with collectd::install::package_install_options' do
@@ -182,11 +181,13 @@ describe 'collectd', type: :class do
             it { is_expected.to contain_file('collectd.conf').with_content(%r{^CollectInternalStats true}) }
           end
         end
+
         context 'when custom package_name is set' do
           let(:params) { { package_name: 'collectd-core' } }
 
           it { is_expected.to contain_package('collectd-core').with_ensure('present') }
         end
+
         context 'when manage_package is false' do
           let(:params) { { manage_package: false } }
 
@@ -209,9 +210,7 @@ describe 'collectd', type: :class do
           context 'and ci_package_repo empty' do
             let(:params) { { manage_repo: true } }
 
-            if facts[:osfamily] == 'RedHat'
-              it { is_expected.to contain_class('epel') }
-            end
+            it { is_expected.to contain_class('epel') } if facts[:osfamily] == 'RedHat'
           end
 
           context 'and manage_package is true' do
@@ -222,9 +221,7 @@ describe 'collectd', type: :class do
               }
             end
 
-            if facts[:osfamily] == 'Debian'
-              it { is_expected.to contain_package(options[:package]).that_requires('Class[Apt::Update]') }
-            end
+            it { is_expected.to contain_package(options[:package]).that_requires('Class[Apt::Update]') } if facts[:osfamily] == 'Debian'
           end
 
           context 'and manage_package is false' do
@@ -235,9 +232,7 @@ describe 'collectd', type: :class do
               }
             end
 
-            if facts[:osfamily] == 'Debian'
-              it { is_expected.not_to contain_class('Class[Apt::Update]').that_comes_before('Package[collectd]') }
-            end
+            it { is_expected.not_to contain_class('Class[Apt::Update]').that_comes_before('Package[collectd]') } if facts[:osfamily] == 'Debian'
           end
 
           context 'and ci_package_repo set to a version' do
@@ -249,9 +244,7 @@ describe 'collectd', type: :class do
                 }
               end
 
-              if facts[:osfamily] == 'RedHat'
-                it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") }
-              end
+              it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") } if facts[:osfamily] == 'RedHat'
               if facts[:osfamily] == 'Debian'
                 it do
                   is_expected.to contain_apt__source('collectd-ci').
@@ -264,6 +257,7 @@ describe 'collectd', type: :class do
                 end
               end
             end
+
             context 'and package_keyserver is set' do
               let(:params) do
                 {
@@ -273,9 +267,7 @@ describe 'collectd', type: :class do
                 }
               end
 
-              if facts[:osfamily] == 'RedHat'
-                it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") }
-              end
+              it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") } if facts[:osfamily] == 'RedHat'
               if facts[:osfamily] == 'Debian'
                 it do
                   is_expected.to contain_apt__source('collectd-ci').
@@ -314,6 +306,7 @@ describe 'collectd', type: :class do
 
           it { is_expected.to contain_file('collectd.conf').with_content(%r{Hello World}) }
         end
+
         context 'on non supported operating systems' do
           let(:facts) { { os: { family: 'foo' } } }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def os_specific_options(facts)
   case facts[:os]['family']
   when 'Gentoo'

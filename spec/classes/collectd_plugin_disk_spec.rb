@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::disk', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -110,7 +112,7 @@ describe 'collectd::plugin::disk', type: :class do
 
       case [facts[:os]['family'], facts[:os]['release']['major']]
       when %w[RedHat 8]
-        context ':manage_package => undef  with collectd 5.5 and up' do
+        context ':manage_package => undef with collectd 5.5 and up' do
           let :facts do
             facts.merge(collectd_version: '5.5')
           end
@@ -122,6 +124,7 @@ describe 'collectd::plugin::disk', type: :class do
             )
           end
         end
+
         context ':manage_package => true' do
           let :params do
             {
@@ -136,6 +139,7 @@ describe 'collectd::plugin::disk', type: :class do
             )
           end
         end
+
         context ':install_options install package with install options' do
           let :params do
             {

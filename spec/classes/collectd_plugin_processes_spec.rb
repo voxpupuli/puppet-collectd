@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::processes', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -35,6 +37,7 @@ describe 'collectd::plugin::processes', type: :class do
             )
           end
         end
+
         context ':ensure => present and overrided parameters' do
           let :params do
             {
@@ -147,6 +150,7 @@ describe 'collectd::plugin::processes', type: :class do
               is_expected.to contain_file('package_processes.load').with_ensure('absent')
               is_expected.to contain_file('package_processes.load').with_path('/etc/collectd.d/processes-config.conf')
             end
+
             it 'Will not clash with package file' do
               is_expected.not_to contain_concat('/etc/collectd.d/processes-config.conf')
             end

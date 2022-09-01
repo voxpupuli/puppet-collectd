@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'collectd::plugin::load class' do
@@ -38,6 +40,7 @@ describe 'collectd::plugin::load class' do
       its(:stdout) { is_expected.not_to match %r{load/load-relative$} }
     end
   end
+
   context 'report relative false' do
     # Using puppet_apply as a helper
     it 'works idempotently with no errors' do
@@ -77,6 +80,7 @@ describe 'collectd::plugin::load class' do
       its(:stdout) { is_expected.not_to match %r{load/load-relative$} }
     end
   end
+
   context 'report relative true' do
     # Using puppet_apply as a helper
     it 'works idempotently with no errors' do
@@ -114,8 +118,9 @@ describe 'collectd::plugin::load class' do
       its(:exit_status) { is_expected.to eq 0 }
       # https://github.com/voxpupuli/puppet-collectd/issues/901
       # following will fail once 5.9.1 is released in EPEL8
-      if fact('osfamily') == 'RedHat' && fact('os.release.major') == '8' ||
-         fact('osfamily') == 'Debian' && fact('os.release.major') == '8'
+
+      if (fact('osfamily') == 'RedHat' && fact('os.release.major') == '8') ||
+         (fact('osfamily') == 'Debian' && fact('os.release.major') == '8')
         its(:stdout) { is_expected.not_to match %r{load/load-relative$} }
         its(:stdout) { is_expected.to match %r{load/load$} }
       else

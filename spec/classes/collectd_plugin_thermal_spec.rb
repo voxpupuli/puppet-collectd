@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::thermal', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -17,6 +19,7 @@ describe 'collectd::plugin::thermal', type: :class do
         end
 
         it { is_expected.to contain_collectd__plugin('thermal') }
+
         it 'Will create 10-thermal.conf' do
           is_expected.to contain_file('thermal.load').with(
             ensure: 'present',

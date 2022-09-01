@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::sysevent', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -21,12 +23,14 @@ describe 'collectd::plugin::sysevent', type: :class do
         it { is_expected.to contain_collectd__plugin('sysevent') }
         it { is_expected.to contain_file('old_sysevent.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_sysevent.load').with_ensure('absent') }
+
         it 'Will create 10-sysevent.conf' do
           is_expected.to contain_file('sysevent.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-sysevent.conf"
           )
         end
+
         it { is_expected.to contain_file('sysevent.load').with(content: %r{Listen "127.0.0.1" "6666"}) }
         it { is_expected.to contain_file('sysevent.load').with(content: %r{RegexFilter "/.*/"}) }
       end

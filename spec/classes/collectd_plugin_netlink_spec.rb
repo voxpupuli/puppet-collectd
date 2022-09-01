@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::netlink', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -27,6 +29,7 @@ describe 'collectd::plugin::netlink', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-netlink.conf"
           )
         end
+
         it { is_expected.to contain_file('netlink.load').with_content(%r{^<Plugin netlink>$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Interface "eth0"$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Interface "eth1"$}) }
@@ -36,9 +39,8 @@ describe 'collectd::plugin::netlink', type: :class do
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Class "ppp0" "htb-1:10"$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Filter "ppp0" "u32-1:0"$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  IgnoreSelected false$}) }
-        if facts[:os]['family'] == 'RedHat'
-          it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') }
-        end
+
+        it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') } if facts[:os]['family'] == 'RedHat'
       end
 
       context ':ensure => absent' do
@@ -52,6 +54,7 @@ describe 'collectd::plugin::netlink', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-netlink.conf"
           )
         end
+
         if facts[:os]['family'] == 'RedHat'
           it do
             is_expected.to contain_package('collectd-netlink').with(

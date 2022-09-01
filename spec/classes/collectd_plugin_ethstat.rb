@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::ethstat', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -23,6 +25,7 @@ describe 'collectd::plugin::ethstat', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-ethstat.conf"
           )
         end
+
         it { is_expected.to contain_file('ethstat.load').with_content(%r{^<Plugin ethstat>$}) }
         it { is_expected.to contain_file('ethstat.load').with_content(%r{^  Interface "eth0"$}) }
         it { is_expected.to contain_file('ethstat.load').with_content(%r{^  Interface "eth1"$}) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'python_dir', type: :fact do
@@ -11,6 +13,7 @@ describe 'python_dir', type: :fact do
         allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(true)
         allow(Facter::Util::Resolution).to receive(:exec).with('python -c "import site; print(site.getsitepackages()[0])"').and_return('/usr/local/lib/python2.7/dist-packages')
       end
+
       it do
         expect(Facter.fact(:python_dir).value).to eq('/usr/local/lib/python2.7/dist-packages')
       end
@@ -22,6 +25,7 @@ describe 'python_dir', type: :fact do
         allow(Facter::Util::Resolution).to receive(:which).with('python').and_return(true)
         allow(Facter::Util::Resolution).to receive(:exec).with('python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').and_return('/usr/lib/python2.7/site-packages')
       end
+
       it do
         expect(Facter.fact(:python_dir).value).to eq('/usr/lib/python2.7/site-packages')
       end
@@ -34,6 +38,7 @@ describe 'python_dir', type: :fact do
         allow(Facter::Util::Resolution).to receive(:which).with('python3').and_return(true)
         allow(Facter::Util::Resolution).to receive(:exec).with('python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"').and_return('/usr/lib/python3.6/site-packages')
       end
+
       it do
         expect(Facter.fact(:python_dir).value).to eq('/usr/lib/python3.6/site-packages')
       end
