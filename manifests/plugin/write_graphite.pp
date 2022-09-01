@@ -23,6 +23,7 @@ class collectd::plugin::write_graphite (
         group          => $collectd::config_group,
         notify         => Service[$collectd::service_name],
         ensure_newline => true,
+        require        => File['collectd.d'],
       }
 
       concat::fragment { 'collectd_plugin_write_graphite_conf_header':

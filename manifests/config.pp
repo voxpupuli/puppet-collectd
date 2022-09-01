@@ -42,10 +42,11 @@ class collectd::config inherits collectd {
 
   if $_conf_content {
     concat { 'collectd_typesdb':
-      ensure => present,
-      mode   => $collectd::config_mode,
-      owner  => $collectd::config_group,
-      path   => "${collectd::collectd_dir}/typesdb.conf",
+      ensure  => present,
+      mode    => $collectd::config_mode,
+      owner   => $collectd::config_group,
+      path    => "${collectd::collectd_dir}/typesdb.conf",
+      require => File['collectd.d'],
     }
 
     concat::fragment { 'collectd_typesdb_header':
@@ -54,6 +55,4 @@ class collectd::config inherits collectd {
       target  => 'collectd_typesdb',
     }
   }
-
-  File['collectd.d'] -> Concat <| tag == 'collectd' |>
 }

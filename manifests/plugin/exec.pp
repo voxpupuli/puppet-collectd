@@ -24,6 +24,7 @@ class collectd::plugin::exec (
     group          => $collectd::config_group,
     notify         => Service[$collectd::service_name],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
 
   concat::fragment { 'collectd_plugin_exec_conf_header':

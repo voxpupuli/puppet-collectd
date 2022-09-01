@@ -16,6 +16,7 @@ define collectd::plugin::filter::chain (
     group          => $collectd::config_group,
     notify         => Service[$collectd::service_name],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
 
   if $ensure == 'present' {

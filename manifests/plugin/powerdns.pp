@@ -25,6 +25,7 @@ class collectd::plugin::powerdns (
     group          => $collectd::config_group,
     notify         => Service[$collectd::service_name],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
   concat::fragment { 'collectd_plugin_powerdns_conf_header':
     order   => '00',

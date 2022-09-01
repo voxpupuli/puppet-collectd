@@ -23,6 +23,7 @@ define collectd::typesdb (
     mode           => $mode,
     ensure_newline => true,
     notify         => Service[$collectd::service_name],
+    require        => File['collectd.d'],
   }
 
   if $include and $collectd::purge_config {

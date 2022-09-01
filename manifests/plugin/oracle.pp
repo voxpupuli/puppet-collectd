@@ -27,6 +27,7 @@ class collectd::plugin::oracle (
     group          => $collectd::config_group,
     notify         => Service[$collectd::service_name],
     ensure_newline => true,
+    require        => File['collectd.d'],
   }
 
   concat::fragment {
