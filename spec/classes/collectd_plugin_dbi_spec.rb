@@ -31,10 +31,10 @@ describe 'collectd::plugin::dbi', type: :class do
           {
             databases: {
               'mydatabase' => {
-                'host'         => 'localhost',
-                'driver'       => 'mysql',
+                'host' => 'localhost',
+                'driver' => 'mysql',
                 'driveroption' => {
-                  'host'     => 'db.example.com',
+                  'host' => 'db.example.com',
                   'username' => 'dbuser',
                   'password' => 'dbpasswd'
                 },
