@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::mcelog', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -21,6 +23,7 @@ describe 'collectd::plugin::mcelog', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
           )
         end
+
         it { is_expected.to contain_file('mcelog.load').with(content: %r{<Memory>}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{McelogClientSocket "/var/run/mcelog-client"}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{PersistentNotification false}) }
@@ -46,6 +49,7 @@ describe 'collectd::plugin::mcelog', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
           )
         end
+
         it { is_expected.to contain_file('mcelog.load').with(content: %r{McelogLogfile "/var/log/mcelog"}) }
       end
 
@@ -65,6 +69,7 @@ describe 'collectd::plugin::mcelog', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
           )
         end
+
         it { is_expected.to contain_file('mcelog.load').with(content: %r{<Memory>}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{McelogClientSocket "/var/run/mcelog-client"}) }
         it { is_expected.to contain_file('mcelog.load').with(content: %r{PersistentNotification true}) }

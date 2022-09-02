@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::cuda', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -48,13 +50,13 @@ describe 'collectd::plugin::cuda', type: :class do
                         'provider' => provider
                       )
                     end
-                  end # packagename
-                end # ensure set
-              end # provider
-            end # present absent
-          end # context set
-        end # 'true', true
-      end # describe with manage_package
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
     end
   end
 end

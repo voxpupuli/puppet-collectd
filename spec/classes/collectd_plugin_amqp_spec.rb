@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::amqp', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -20,12 +22,14 @@ describe 'collectd::plugin::amqp', type: :class do
         it { is_expected.to contain_collectd__plugin('amqp') }
         it { is_expected.to contain_file('old_amqp.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_amqp.load').with_ensure('absent') }
+
         it 'Will create 10-amqp.conf' do
           is_expected.to contain_file('amqp.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-amqp.conf"
           )
         end
+
         it { is_expected.to contain_file('amqp.load').with(content: %r{<Publish "graphite">}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{Host "localhost"}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{Port "5672"}) }
@@ -40,6 +44,7 @@ describe 'collectd::plugin::amqp', type: :class do
         it { is_expected.to contain_file('amqp.load').with(content: %r{GraphiteEscapeChar "_"}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{</Publish>}) }
       end
+
       context 'overriding default parameters' do
         let(:params) do
           { amqphost: 'myhost',
@@ -70,6 +75,7 @@ describe 'collectd::plugin::amqp', type: :class do
         it { is_expected.to contain_file('amqp.load').with(content: %r{GraphitePrefix "prefix"}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{GraphiteEscapeChar "\|"}) }
         it { is_expected.to contain_file('amqp.load').with(content: %r{</Publish>}) }
+
         context 'with collectd 5.5+' do
           let :facts do
             facts.merge(collectd_version: '5.6.0')

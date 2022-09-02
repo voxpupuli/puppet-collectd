@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::amqp1', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -21,12 +23,14 @@ describe 'collectd::plugin::amqp1', type: :class do
         it { is_expected.to contain_collectd__plugin('amqp1') }
         it { is_expected.to contain_file('old_amqp1.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_amqp1.load').with_ensure('absent') }
+
         it 'Will create 10-amqp1.conf' do
           is_expected.to contain_file('amqp1.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-amqp1.conf"
           )
         end
+
         it { is_expected.to contain_file('amqp1.load').with(content: %r{<Transport "metrics">}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{Host "localhost"}) }
         it { is_expected.to contain_file('amqp1.load').with(content: %r{Port "5672"}) }

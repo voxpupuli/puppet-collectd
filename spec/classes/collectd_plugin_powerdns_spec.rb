@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::powerdns', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -35,6 +37,7 @@ describe 'collectd::plugin::powerdns', type: :class do
             )
           end
         end
+
         context ':ensure => present and overrided parameters' do
           let :params do
             {

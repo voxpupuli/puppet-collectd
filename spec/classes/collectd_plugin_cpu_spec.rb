@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::cpu', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -37,6 +39,7 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
+
           it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
@@ -69,6 +72,7 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
+
           it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
@@ -91,6 +95,7 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
+
           it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
@@ -110,6 +115,7 @@ describe 'collectd::plugin::cpu', type: :class do
           it "Will include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportGuestState true})
           end
+
           it "Will include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{SubtractGuestState false})
           end

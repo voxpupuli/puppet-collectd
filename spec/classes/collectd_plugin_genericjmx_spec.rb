@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       options = os_specific_options(facts)
       let :facts do
         facts
@@ -54,6 +56,7 @@ describe 'collectd::plugin::genericjmx', type: :class do
         it 'has one jvmarg parameter' do
           is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').with_content(%r{JVMArg "bat"})
         end
+
         it 'has ONLY one jvmarg parameter other than classpath' do
           is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').without_content(%r{(.*JVMArg.*){3,}}m)
         end

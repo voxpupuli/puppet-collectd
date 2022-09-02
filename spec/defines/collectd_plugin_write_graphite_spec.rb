@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::write_graphite::carbon', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -21,7 +23,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         end
 
         it "does not include protocol in #{options[:plugin_conf_dir]}/write_graphite.conf for collectd < 5.4" do
-          is_expected.not_to contain_concat__fragment('collectd_plugin_write_graphite_conf_localhost_2003').with_content(%r{.*Protocol \"udp\".*})
+          is_expected.not_to contain_concat__fragment('collectd_plugin_write_graphite_conf_localhost_2003').with_content(%r{.*Protocol "udp".*})
         end
       end
 
@@ -37,7 +39,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         end
 
         it "includes protocol in #{options[:plugin_conf_dir]}/write_graphite.conf for collectd >= 5.4" do
-          is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with_content(%r{.*Protocol \"udp\".*})
+          is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with_content(%r{.*Protocol "udp".*})
         end
 
         it 'uses Node definition' do

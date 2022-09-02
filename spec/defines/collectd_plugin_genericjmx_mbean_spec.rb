@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::genericjmx::mbean', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       options = os_specific_options(facts)
       let :facts do
         facts
@@ -57,6 +59,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
         it { is_expected.to contain_concat__fragment(concat_fragment_name).with_content(%r{InstanceFrom "bat"}) }
         it { is_expected.to contain_concat__fragment(concat_fragment_name).without_content(%r{(.*InstanceFrom.*){2,}}) }
       end
+
       context 'with default_values_args' do
         let(:default_values_args) do
           {

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::openldap', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -14,13 +16,13 @@ describe 'collectd::plugin::openldap', type: :class do
 
       context ':ensure => present, default params' do
         it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf" do
-          content = <<EOS
-<Plugin "openldap">
-  <Instance "localhost">
-    URL "ldap://localhost/"
-  </Instance>
-</Plugin>
-EOS
+          content = <<~EOS
+            <Plugin "openldap">
+              <Instance "localhost">
+                URL "ldap://localhost/"
+              </Instance>
+            </Plugin>
+          EOS
           is_expected.to contain_collectd__plugin('openldap').with_content(content)
         end
       end
@@ -34,7 +36,7 @@ EOS
               },
               'ldap2' => {
                 'url' => 'ldap://ldap2.example.com',
-                'binddn'   => 'cn=Monitor',
+                'binddn' => 'cn=Monitor',
                 'password' => 'password'
               }
             }
@@ -42,18 +44,18 @@ EOS
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf with two :instances params" do
-          content = <<EOS
-<Plugin "openldap">
-  <Instance "ldap1">
-    URL "ldap://ldap1.example.com"
-  </Instance>
-  <Instance "ldap2">
-    URL "ldap://ldap2.example.com"
-    BindDN "cn=Monitor"
-    Password "password"
-  </Instance>
-</Plugin>
-EOS
+          content = <<~EOS
+            <Plugin "openldap">
+              <Instance "ldap1">
+                URL "ldap://ldap1.example.com"
+              </Instance>
+              <Instance "ldap2">
+                URL "ldap://ldap2.example.com"
+                BindDN "cn=Monitor"
+                Password "password"
+              </Instance>
+            </Plugin>
+          EOS
           is_expected.to contain_collectd__plugin('openldap').with_content(content)
         end
       end

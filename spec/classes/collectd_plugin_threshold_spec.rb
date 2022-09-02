@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::threshold', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -12,9 +14,9 @@ describe 'collectd::plugin::threshold', type: :class do
           'types' => [
             {
               'name'        => 'foo',
-              'warning_min' =>    0.00,
+              'warning_min' => 0.00,
               'warning_max' => 1000.00,
-              'failure_min' =>    0.00,
+              'failure_min' => 0.00,
               'failure_max' => 1200.00,
               'invert'      => false,
               'instance'    => 'bar'
@@ -35,7 +37,7 @@ describe 'collectd::plugin::threshold', type: :class do
           ],
           'hosts' => [
             {
-              'name'  => 'hostname',
+              'name' => 'hostname',
               'types' => [
                 {
                   'name'        => 'cpu',

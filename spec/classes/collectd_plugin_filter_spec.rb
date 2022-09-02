@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::filter', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -13,7 +15,7 @@ describe 'collectd::plugin::filter', type: :class do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/01-filter.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/01-filter.conf",
-            content: %r{PreCacheChain \"PreChain\"\nPostCacheChain \"PostChain\"}
+            content: %r{PreCacheChain "PreChain"\nPostCacheChain "PostChain"}
           )
         end
       end
@@ -31,7 +33,7 @@ describe 'collectd::plugin::filter', type: :class do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/01-filter.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/01-filter.conf",
-            content: %r{PreCacheChain \"MyPreChain\"\nPostCacheChain \"MyPostChain\"}
+            content: %r{PreCacheChain "MyPreChain"\nPostCacheChain "MyPostChain"}
           )
         end
       end

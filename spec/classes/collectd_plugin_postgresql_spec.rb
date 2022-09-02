@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::postgresql', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -20,11 +22,13 @@ describe 'collectd::plugin::postgresql', type: :class do
             content: %r{LoadPlugin postgresql}
           )
         end
+
         it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
           is_expected.to contain_concat("#{options[:plugin_conf_dir]}/postgresql-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
         end
       end
+
       context ':ensure => present and create a db with a custom query' do
         let(:params) do
           {
@@ -54,12 +58,12 @@ describe 'collectd::plugin::postgresql', type: :class do
         end
 
         it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
-          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host \"localhost\"})
-          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query \"disk_io\"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Host "localhost"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Query "disk_io"})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Interval 60})
-          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement \"SELECT \* FROM log_delay_repli;\"\n})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Statement "SELECT \* FROM log_delay_repli;"\n})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{<Result>\n})
-          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Param \"database\"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_query_log_delay').with(content: %r{Param "database"})
         end
       end
 
@@ -85,7 +89,7 @@ describe 'collectd::plugin::postgresql', type: :class do
         end
 
         it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
-          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Writer \"sqlstore\"})
+          is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{Writer "sqlstore"})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres').with(content: %r{CommitInterval 10})
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_writer_sqlstore').with(content: %r{<Writer sqlstore>\n})
         end
@@ -120,10 +124,10 @@ describe 'collectd::plugin::postgresql', type: :class do
 
         it "'Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5432').with(
-            content: %r{Instance \"postgres\"}
+            content: %r{Instance "postgres"}
           )
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_db_postgres_port_5433').with(
-            content: %r{Instance \"postgres\"}
+            content: %r{Instance "postgres"}
           )
         end
       end

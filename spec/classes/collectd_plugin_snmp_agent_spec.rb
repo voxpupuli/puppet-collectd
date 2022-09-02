@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::snmp_agent', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
 
       it { is_expected.to compile.with_all_deps }
+
       options = os_specific_options(facts)
 
       context ':ensure => present and default parameters' do

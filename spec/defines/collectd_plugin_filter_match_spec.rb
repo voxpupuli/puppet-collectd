@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::filter::match', type: :define do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       options = os_specific_options(facts)
       let :facts do
         facts
@@ -27,6 +29,7 @@ describe 'collectd::plugin::filter::match', type: :define do
         it 'Will ensure that plugin is loaded' do
           is_expected.to contain_collectd__plugin('match_regex').with(order: '02')
         end
+
         it 'Will add match to rule' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,
@@ -46,6 +49,7 @@ describe 'collectd::plugin::filter::match', type: :define do
         it 'Will ensure that plugin is loaded' do
           is_expected.to contain_collectd__plugin('match_empty_counter').with(order: '02')
         end
+
         it 'Will add match to rule' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,

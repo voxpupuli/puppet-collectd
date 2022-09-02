@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::bind', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -28,12 +30,14 @@ describe 'collectd::plugin::bind', type: :class do
         it { is_expected.to contain_collectd__plugin('bind') }
         it { is_expected.to contain_file('old_bind.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_bind.load').with_ensure('absent') }
+
         it 'Will create 10-bind.conf' do
           is_expected.to contain_file('bind.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-bind.conf"
           )
         end
+
         it { is_expected.to contain_file('bind.load').with(content: %r{<Plugin bind>}) }
         it { is_expected.to contain_file('bind.load').with(content: %r{URL "http://localhost:8053/"}) }
         it { is_expected.to contain_file('bind.load').with(content: %r{ParseTime false}) }

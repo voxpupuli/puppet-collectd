@@ -1,0 +1,4 @@
+---
+# Is very common in this module
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

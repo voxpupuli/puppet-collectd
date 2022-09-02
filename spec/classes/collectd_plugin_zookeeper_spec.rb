@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'collectd::plugin::zookeeper', type: :class do
   on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -27,7 +29,7 @@ describe 'collectd::plugin::zookeeper', type: :class do
           { zookeeper_host: 'myhost', ensure: 'absent' }
         end
 
-        it 'Will not create ' do
+        it 'Will not create' do
           is_expected.to contain_file('zookeeper.load').with(
             ensure: 'absent',
             path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf"
