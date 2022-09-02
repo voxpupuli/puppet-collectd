@@ -12,8 +12,7 @@ describe 'collectd::plugin::filter::chain', type: :define do
         let(:title) { 'MyChain' }
 
         it "Will create #{options[:plugin_conf_dir]}/filter-chain-MyChain.conf" do
-          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf").with(ensure: 'present').
-            that_requires('File[collectd.d]')
+          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf").with(ensure: 'present')
           is_expected.to contain_concat__fragment("#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf_MyChain_head").with(
             order: '00',
             content: '<Chain "MyChain">',

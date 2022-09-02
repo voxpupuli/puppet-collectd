@@ -17,7 +17,7 @@ describe 'collectd::plugin::write_graphite', type: :class do
         end
 
         it "Will create #{options[:plugin_conf_dir]}/write_graphite-config.conf" do
-          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/write_graphite-config.conf").that_requires('File[collectd.d]')
+          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/write_graphite-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_header').with(
             content: %r{<Plugin write_graphite>},
             target: "#{options[:plugin_conf_dir]}/write_graphite-config.conf",

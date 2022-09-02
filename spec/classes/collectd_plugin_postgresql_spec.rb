@@ -21,7 +21,7 @@ describe 'collectd::plugin::postgresql', type: :class do
           )
         end
         it "Will create #{options[:plugin_conf_dir]}/postgresql-config.conf" do
-          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/postgresql-config.conf").that_requires('File[collectd.d]')
+          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/postgresql-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_postgresql_conf_header').with(content: %r{<Plugin postgresql>})
         end
       end

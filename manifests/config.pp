@@ -54,6 +54,4 @@ class collectd::config inherits collectd {
       target  => 'collectd_typesdb',
     }
   }
-
-  File['collectd.d'] -> Concat <| tag == 'collectd' |>
 }

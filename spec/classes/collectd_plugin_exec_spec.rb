@@ -29,8 +29,7 @@ describe 'collectd::plugin::exec', type: :class do
         end
 
         it "Will create #{options[:plugin_conf_dir]}/exec-config" do
-          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/exec-config.conf").
-            that_requires('File[collectd.d]')
+          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/exec-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_footer').with(
             content: %r{</Plugin>},
             target: "#{options[:plugin_conf_dir]}/exec-config.conf",

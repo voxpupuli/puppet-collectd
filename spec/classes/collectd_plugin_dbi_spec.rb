@@ -17,8 +17,7 @@ describe 'collectd::plugin::dbi', type: :class do
           )
         end
         it "Will create #{options[:plugin_conf_dir]}/dbi-config.conf" do
-          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/dbi-config.conf").
-            that_requires('File[collectd.d]')
+          is_expected.to contain_concat("#{options[:plugin_conf_dir]}/dbi-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_dbi_conf_header').with(content: %r{<Plugin dbi>})
         end
       end

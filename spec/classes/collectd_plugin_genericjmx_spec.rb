@@ -23,7 +23,6 @@ describe 'collectd::plugin::genericjmx', type: :class do
         end
 
         it { is_expected.to contain_concat(config_filename).that_notifies('Service[collectd]') }
-        it { is_expected.to contain_concat(config_filename).that_requires('File[collectd.d]') }
 
         it do
           is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
