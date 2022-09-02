@@ -24,8 +24,7 @@ describe 'collectd::plugin::python', type: :class do
           end
 
           it "Will create #{options[:plugin_conf_dir]}/python-config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/python-config.conf").
-              that_requires('File[collectd.d]')
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/python-config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{<Plugin "python">},
               target: "#{options[:plugin_conf_dir]}/python-config.conf",
@@ -262,8 +261,7 @@ describe 'collectd::plugin::python', type: :class do
           end
 
           it "Will create #{options[:plugin_conf_dir]}/custom-location-config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/custom-location-config.conf").
-              that_requires('File[collectd.d]')
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/custom-location-config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{<Plugin "python">},
               target: "#{options[:plugin_conf_dir]}/custom-location-config.conf",

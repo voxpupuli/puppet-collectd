@@ -19,7 +19,7 @@ describe 'collectd::plugin::processes', type: :class do
           end
 
           it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf").that_requires('File[collectd.d]')
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
               content: "<Plugin processes>\n",
               target: "#{options[:plugin_conf_dir]}/processes_config.conf",
@@ -67,7 +67,7 @@ describe 'collectd::plugin::processes', type: :class do
           end
 
           it "Will create #{options[:plugin_conf_dir]}/processes_config.conf" do
-            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf").that_requires('File[collectd.d]')
+            is_expected.to contain_concat("#{options[:plugin_conf_dir]}/processes_config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_processes_conf_header').with(
               content: "<Plugin processes>
   CollectContextSwitch true
