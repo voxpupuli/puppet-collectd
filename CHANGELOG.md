@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v14.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v14.0.0) (2022-09-07)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v13.0.0...v14.0.0)
+
+**Breaking changes:**
+
+- Drop support of Debian 9, Ubuntu 16.04 and FreeBSD 11 \(EOL\) [\#990](https://github.com/voxpupuli/puppet-collectd/pull/990) ([smortex](https://github.com/smortex))
+- Make port and host optional for mysql plugin [\#988](https://github.com/voxpupuli/puppet-collectd/pull/988) ([jovandeginste](https://github.com/jovandeginste))
+
+**Implemented enhancements:**
+
+- Add support for EL9 [\#1005](https://github.com/voxpupuli/puppet-collectd/pull/1005) ([jovandeginste](https://github.com/jovandeginste))
+- puppet/epel: Allow 4.x [\#1004](https://github.com/voxpupuli/puppet-collectd/pull/1004) ([jovandeginste](https://github.com/jovandeginste))
+- move typesdb with concat resources [\#996](https://github.com/voxpupuli/puppet-collectd/pull/996) ([fe80](https://github.com/fe80))
+- Add support for FreeBSD 13 [\#991](https://github.com/voxpupuli/puppet-collectd/pull/991) ([smortex](https://github.com/smortex))
+
+**Fixed bugs:**
+
+- Rely on autorequires of files when using concat [\#1003](https://github.com/voxpupuli/puppet-collectd/pull/1003) ([traylenator](https://github.com/traylenator))
+
+**Closed issues:**
+
+- File\['collectd.d'\] -\> Concat \<| tag == 'collectd' |\> is too greedy [\#1000](https://github.com/voxpupuli/puppet-collectd/issues/1000)
+
+**Merged pull requests:**
+
+- rubocop compliance for modulesync\_config 5.3.0 [\#1001](https://github.com/voxpupuli/puppet-collectd/pull/1001) ([traylenator](https://github.com/traylenator))
+- Drop Arch Linux support [\#997](https://github.com/voxpupuli/puppet-collectd/pull/997) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v13.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v13.0.0) (2021-09-13)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v12.2.0...v13.0.0)
@@ -33,6 +62,7 @@ These should not affect the functionality of the module.
 
 **Closed issues:**
 
+- \[release request\] v12.3.0 [\#974](https://github.com/voxpupuli/puppet-collectd/issues/974)
 - collectd::plugin::virt plugin\_instance\_format should not be Enum [\#968](https://github.com/voxpupuli/puppet-collectd/issues/968)
 - Python plugin template does not create valid module configuration [\#964](https://github.com/voxpupuli/puppet-collectd/issues/964)
 - ovs\_stats port number mismatch [\#958](https://github.com/voxpupuli/puppet-collectd/issues/958)
