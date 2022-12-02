@@ -33,13 +33,17 @@
 #   to be used with manage_package; if manage_package is true, this gives the name
 #   of the package to manage. Defaults to 'collectd-ceph'
 #
+# [*ceph_fsid*]
+#   The Ceph cluster FSID. Must be a UUID.
+#
 class collectd::plugin::ceph (
   Array $daemons,
   Enum['present', 'absent'] $ensure  = 'present',
   Boolean $longrunavglatency         = false,
   Boolean $convertspecialmetrictypes = true,
   Boolean $manage_package            = $collectd::manage_package,
-  String $package_name               = 'collectd-ceph'
+  String $package_name               = 'collectd-ceph',
+  Optional[String] $ceph_fsid        = undef,
 ) {
   include collectd
 

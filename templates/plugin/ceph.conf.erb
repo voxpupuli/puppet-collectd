@@ -4,7 +4,11 @@
 
 <% @daemons.each do |daemon| -%>
   <Daemon "<%= daemon %>">
+    <%- if defined? @ceph_fsid -%>
+    SocketPath "/var/run/ceph/<%= @ceph_fsid %>/<%= daemon %>.asok"
+    <%- else -%>
     SocketPath "/var/run/ceph/<%= daemon %>.asok"
+    <%- end -%>
   </Daemon>
 <% end -%>
 
