@@ -48,6 +48,36 @@ describe 'collectd::plugin::ceph', type: :class do
         end
       end
 
+      context ':ensure => present and :daemons => [ \'ceph-osd.0\, \ceph-osd.1\, \ceph-mon.mon01\ ] and ceph_fsid => acd038fe-ce5c-5350-bfd2-0a2c17ad2c59' do
+        let :params do
+          {
+            daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-mon.mon01'],
+            ceph_fsid: 'acd038fe-ce5c-5350-bfd2-0a2c17ad2c59'
+          }
+        end
+
+        content = <<~EOS
+          <Plugin ceph>
+            LongRunAvgLatency false
+            ConvertSpecialMetricTypes true
+
+            <Daemon "ceph-osd.0">
+              SocketPath "/var/run/ceph/acd038fe-ce5c-5350-bfd2-0a2c17ad2c59/ceph-osd.0.asok"
+            </Daemon>
+            <Daemon "ceph-osd.1">
+              SocketPath "/var/run/ceph/acd038fe-ce5c-5350-bfd2-0a2c17ad2c59/ceph-osd.1.asok"
+            </Daemon>
+            <Daemon "ceph-mon.mon01">
+              SocketPath "/var/run/ceph/acd038fe-ce5c-5350-bfd2-0a2c17ad2c59/ceph-mon.mon01.asok"
+            </Daemon>
+
+          </Plugin>
+        EOS
+        it "Will create #{options[:plugin_conf_dir]}/10-ceph.conf" do
+          is_expected.to contain_collectd__plugin('ceph').with_content(content)
+        end
+      end
+
       context ':ensure => absent' do
         let :params do
           { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2'], ensure: 'absent' }
