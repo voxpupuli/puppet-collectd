@@ -10,9 +10,15 @@ class collectd::plugin::curl (
   $_manage_package = pick($manage_package, $collectd::manage_package)
 
   if $facts['os']['family'] == 'RedHat' {
+    if $ensure == 'present' {
+      $ensure_real = $collectd::package_ensure
+    } elsif $ensure == 'absent' {
+      $ensure_real = 'absent'
+    }
+
     if $_manage_package {
       package { 'collectd-curl':
-        ensure => $ensure,
+        ensure => $ensure_real,
       }
     }
   }
