@@ -20,13 +20,10 @@
 <% if result['instancesfrom'] -%>
         InstancesFrom "<%= result['instancesfrom'] %>"
 <% end -%>
-<%- if result['valuesfrom'].is_a?(Array) -%>
-<%- result['valuesfrom'].each do |v| -%>
+<%- [result['valuesfrom']].flatten.each do |v| -%>
         ValuesFrom "<%= v %>"
-<%- end -%>
-<%- else -%>
         ValuesFrom "<%= result['valuesfrom'] %>"
 <%- end -%>
-    </Result>
+      </Result>
 <% end -%>
   </Query>
