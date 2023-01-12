@@ -2067,8 +2067,11 @@ class { 'collectd::plugin::write_log':
 
 #### Class: `collectd::plugin::write_prometheus`
 
+* The "host" option requires collectd 5.9 or later and will be ignored otherwise.
+
 ```puppet
 class { 'collectd::plugin::write_prometheus':
+  host => 'localhost',
   port => '9103',
 }
 ```

@@ -7089,8 +7089,13 @@ The collectd::plugin::write_prometheus class.
 
 The following parameters are available in the `collectd::plugin::write_prometheus` class:
 
+* [`host`](#host)
 * [`port`](#port)
 * [`ensure`](#ensure)
+
+##### <a name="host"></a>`host`
+
+Data type: `Optional[Stdlib::Host]`
 
 ##### <a name="port"></a>`port`
 
