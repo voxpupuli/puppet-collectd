@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'collectd::plugin::write_prometheus', type: :class do
-  host = '192.0.0.1'
+  ip = '192.0.0.1'
   port = 9103
   host_opt_min_collectd_ver = '5.9'
   on_supported_os(baseline_os_hash).each do |os, facts|
@@ -13,11 +13,11 @@ describe 'collectd::plugin::write_prometheus', type: :class do
       end
 
       options = os_specific_options(facts)
-      context ":ensure => present and :port => #{port} and host => #{host}" do
+      context ":ensure => present and :port => #{port} and ip => #{ip}" do
         let :params do
           {
             port: port,
-            host: host,
+            ip: ip,
           }
         end
 
@@ -27,7 +27,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
             path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
             content: %r{Port "#{port}"}
           ).without(
-            content: %r{Host "#{host}"}
+            content: %r{Host "#{ip}"}
           )
         end
 
@@ -42,7 +42,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
               path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
               content: %r{Port "#{port}"}
             ).with(
-              content: %r{Host "#{host}"}
+              content: %r{Host "#{ip}"}
             )
           end
         end
@@ -62,7 +62,7 @@ describe 'collectd::plugin::write_prometheus', type: :class do
               path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
               content: %r{Port "#{port}"}
             ).without(
-              content: %r{Host "#{host}"}
+              content: %r{Host "#{ip}"}
             )
           end
         end
