@@ -50,7 +50,7 @@ describe 'collectd::plugin::postgresql', type: :class do
                   'type'           => 'gauge',
                   'instanceprefix' => 'log_delay',
                   'instancesfrom'  => 'inet_server_port',
-                  'valuesfrom'     => ['max_age', 'percent_of_threshold']
+                  'valuesfrom'     => %w[max_age percent_of_threshold]
                 }]
               }
             }
