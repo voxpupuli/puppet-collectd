@@ -9,122 +9,122 @@
 #### Public Classes
 
 * [`collectd`](#collectd): installs and configures collectd
-* [`collectd::config`](#collectdconfig): private
-* [`collectd::params`](#collectdparams)
-* [`collectd::plugin::aggregation`](#collectdpluginaggregation): collectd::plugin::aggregation
-* [`collectd::plugin::amqp`](#collectdpluginamqp): https://collectd.org/wiki/index.php/Plugin:AMQP
-* [`collectd::plugin::amqp1`](#collectdpluginamqp1): == Class: collectd::plugin::amqp1  Class to manage amqp1 write plugin for collectd  Documentation:   https://collectd.org/documentation/manpa
-* [`collectd::plugin::apache`](#collectdpluginapache): https://collectd.org/wiki/index.php/Plugin:Apache
-* [`collectd::plugin::battery`](#collectdpluginbattery): == Class: collectd::plugin::battery  Class to manage battery write plugin for collectd  Documentation:   https://collectd.org/documentation/m
-* [`collectd::plugin::bind`](#collectdpluginbind): https://collectd.org/wiki/index.php/Plugin:BIND
-* [`collectd::plugin::ceph`](#collectdpluginceph): == Class: collectd::plugin::ceph  Class to manage ceph plugin for collectd === Parameters [*ensure*]   ensure param for collectd::plugin type
-* [`collectd::plugin::cgroups`](#collectdplugincgroups): https://collectd.org/wiki/index.php/Plugin:cgroups
-* [`collectd::plugin::chain`](#collectdpluginchain)
-* [`collectd::plugin::connectivity`](#collectdpluginconnectivity): == Class: collectd::plugin::connectivity  Class to manage connectivity plugin for collectd  Documentation:   https://collectd.org/documentati
-* [`collectd::plugin::conntrack`](#collectdpluginconntrack): https://collectd.org/wiki/index.php/Plugin:ConnTrack
-* [`collectd::plugin::contextswitch`](#collectdplugincontextswitch): https://collectd.org/wiki/index.php/Plugin:ContextSwitch
-* [`collectd::plugin::cpu`](#collectdplugincpu): https://collectd.org/wiki/index.php/Plugin:CPU
-* [`collectd::plugin::cpufreq`](#collectdplugincpufreq): https://collectd.org/wiki/index.php/Plugin:CPUFreq
-* [`collectd::plugin::csv`](#collectdplugincsv): https://collectd.org/wiki/index.php/Plugin:CSV
-* [`collectd::plugin::cuda`](#collectdplugincuda): Class: collectd::plugin::cuda
-* [`collectd::plugin::curl`](#collectdplugincurl)
-* [`collectd::plugin::dbi`](#collectdplugindbi): https://collectd.org/wiki/index.php/Plugin:DBI
-* [`collectd::plugin::dcpmm`](#collectdplugindcpmm): Class to manage dcpmm plugin for collectd.  The dcpmm plugin will collect Intel(R) Optane(TM) DC Persistent Memory related performance statis
-* [`collectd::plugin::df`](#collectdplugindf): https://collectd.org/wiki/index.php/Plugin:DF
-* [`collectd::plugin::disk`](#collectdplugindisk): https://collectd.org/wiki/index.php/Plugin:Disk
-* [`collectd::plugin::dns`](#collectdplugindns): Class: collectd::plugin::dns
-* [`collectd::plugin::dpdk_telemetry`](#collectdplugindpdk_telemetry): Class to manage dpdk_telemetry plugin for collectd.  The dpdk_telemetry plugin collects DPDK ethernet device metrics via dpdk_telemetry libra
-* [`collectd::plugin::entropy`](#collectdpluginentropy): https://collectd.org/wiki/index.php/Plugin:Entropy
-* [`collectd::plugin::ethstat`](#collectdpluginethstat): https://collectd.org/wiki/index.php/Plugin:Ethstat
-* [`collectd::plugin::exec`](#collectdpluginexec): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
-* [`collectd::plugin::fhcount`](#collectdpluginfhcount): https://collectd.org/wiki/index.php/Plugin:Fhcount
-* [`collectd::plugin::filecount`](#collectdpluginfilecount): https://collectd.org/wiki/index.php/Plugin:FileCount
-* [`collectd::plugin::filter`](#collectdpluginfilter): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::fscache`](#collectdpluginfscache): https://collectd.org/wiki/index.php/Plugin:FSCache
-* [`collectd::plugin::genericjmx`](#collectdplugingenericjmx): https://collectd.org/wiki/index.php/Plugin:GenericJMX
-* [`collectd::plugin::hddtemp`](#collectdpluginhddtemp): https://collectd.org/wiki/index.php/Plugin:HDDTemp
-* [`collectd::plugin::hugepages`](#collectdpluginhugepages): == Class: collectd::plugin::hugepages  Class to manage hugepages write plugin for collectd  Documentation:   https://collectd.org/documentati
-* [`collectd::plugin::intel_pmu`](#collectdpluginintel_pmu): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_intel_pmu
-* [`collectd::plugin::intel_rdt`](#collectdpluginintel_rdt): == Class: collectd::plugin::intel_rdt  Class to manage intel_rdt write plugin for collectd  Documentation:   https://collectd.org/documentati
-* [`collectd::plugin::interface`](#collectdplugininterface): https://collectd.org/wiki/index.php/Plugin:Interface
-* [`collectd::plugin::ipc`](#collectdpluginipc): == Class: collectd::plugin::ipc  Class to manage ipc write plugin for collectd  Documentation:   https://collectd.org/documentation/manpages/
-* [`collectd::plugin::ipmi`](#collectdpluginipmi): https://collectd.org/wiki/index.php/Plugin:IPMI
-* [`collectd::plugin::iptables`](#collectdpluginiptables): https://collectd.org/wiki/index.php/Plugin:IPTables
-* [`collectd::plugin::irq`](#collectdpluginirq): https://collectd.org/wiki/index.php/Plugin:IRQ
-* [`collectd::plugin::iscdhcp`](#collectdpluginiscdhcp): Class: collectd::plugin::iscdhcp
-* [`collectd::plugin::java`](#collectdpluginjava): https://collectd.org/wiki/index.php/Plugin:Java
-* [`collectd::plugin::load`](#collectdpluginload): https://collectd.org/wiki/index.php/Plugin:Load
-* [`collectd::plugin::logfile`](#collectdpluginlogfile): https://collectd.org/wiki/index.php/Plugin:LogFile
-* [`collectd::plugin::logparser`](#collectdpluginlogparser): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-* [`collectd::plugin::lvm`](#collectdpluginlvm): https://collectd.org/wiki/index.php/Plugin:LVM
-* [`collectd::plugin::mcelog`](#collectdpluginmcelog): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
-* [`collectd::plugin::memcached`](#collectdpluginmemcached): https://collectd.org/wiki/index.php/Plugin:memcached
-* [`collectd::plugin::memory`](#collectdpluginmemory): https://collectd.org/wiki/index.php/Plugin:Memory
-* [`collectd::plugin::mongodb`](#collectdpluginmongodb): Class: collectd::plugin::mongodb
-* [`collectd::plugin::mysql`](#collectdpluginmysql): MySQL plugin https://collectd.org/wiki/index.php/Plugin:MySQL
-* [`collectd::plugin::netlink`](#collectdpluginnetlink): https://collectd.org/wiki/index.php/Plugin:Netlink
-* [`collectd::plugin::network`](#collectdpluginnetwork): https://collectd.org/wiki/index.php/Plugin:Network
-* [`collectd::plugin::nfs`](#collectdpluginnfs): https://collectd.org/wiki/index.php/Plugin:NFS
-* [`collectd::plugin::nginx`](#collectdpluginnginx): https://collectd.org/wiki/index.php/Plugin:nginx
-* [`collectd::plugin::ntpd`](#collectdpluginntpd): https://collectd.org/wiki/index.php/Plugin:NTPd
-* [`collectd::plugin::numa`](#collectdpluginnuma): == Class: collectd::plugin::numa  Class to manage numa write plugin for collectd  Documentation:   https://collectd.org/documentation/manpage
-* [`collectd::plugin::nut`](#collectdpluginnut): https://collectd.org/wiki/index.php/Plugin:Nut
-* [`collectd::plugin::openldap`](#collectdpluginopenldap): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_openldap
-* [`collectd::plugin::openvpn`](#collectdpluginopenvpn): https://collectd.org/wiki/index.php/Plugin:OpenVPN
-* [`collectd::plugin::oracle`](#collectdpluginoracle): Oracle plugin https://collectd.org/wiki/index.php/Plugin:Oracle
-* [`collectd::plugin::ovs_events`](#collectdpluginovs_events): == Class: collectd::plugin::ovs_events  Class to manage ovs_events plugin for collectd  Documentation:   https://collectd.org/documentation/m
-* [`collectd::plugin::ovs_stats`](#collectdpluginovs_stats): == Class: collectd::plugin::ovs_stats  Class to manage ovs_stats plugin for collectd  Documentation:   https://collectd.org/documentation/man
-* [`collectd::plugin::pcie_errors`](#collectdpluginpcie_errors): Class to manage pcie_errors plugin for collectd
-* [`collectd::plugin::perl`](#collectdpluginperl): See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
-* [`collectd::plugin::ping`](#collectdpluginping): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
-* [`collectd::plugin::postgresql`](#collectdpluginpostgresql): https://collectd.org/wiki/index.php/Plugin:PostgreSQL
-* [`collectd::plugin::powerdns`](#collectdpluginpowerdns): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_powerdns
-* [`collectd::plugin::processes`](#collectdpluginprocesses): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
-* [`collectd::plugin::procevent`](#collectdpluginprocevent): == Class: collectd::plugin::procevent  Class to manage procevent plugin for collectd  Documentation:   https://collectd.org/documentation/man
-* [`collectd::plugin::protocols`](#collectdpluginprotocols): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols
-* [`collectd::plugin::python`](#collectdpluginpython): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
-* [`collectd::plugin::rabbitmq`](#collectdpluginrabbitmq): rabbitmq plugin https://pypi.python.org/pypi/collectd-rabbitmq  == Class collectd::plugin::rabbitmq   Configures rabbitmq metrics collection.
-* [`collectd::plugin::redis`](#collectdpluginredis): https://collectd.org/wiki/index.php/Plugin:Redis
-* [`collectd::plugin::rrdcached`](#collectdpluginrrdcached): https://collectd.org/wiki/index.php/Rrdcached
-* [`collectd::plugin::rrdtool`](#collectdpluginrrdtool): https://collectd.org/wiki/index.php/Plugin:RRDtool
-* [`collectd::plugin::sensors`](#collectdpluginsensors): https://collectd.org/wiki/index.php/Plugin:Sensors
-* [`collectd::plugin::smart`](#collectdpluginsmart): https://collectd.org/wiki/index.php/Plugin:SMART
-* [`collectd::plugin::snmp`](#collectdpluginsnmp): https://collectd.org/wiki/index.php/Plugin:SNMP
-* [`collectd::plugin::snmp_agent`](#collectdpluginsnmp_agent): Class: collectd::plugin::snmp_agent
-* [`collectd::plugin::statsd`](#collectdpluginstatsd): https://collectd.org/wiki/index.php/Plugin:StatsD
-* [`collectd::plugin::swap`](#collectdpluginswap): https://collectd.org/wiki/index.php/Plugin:Swap
-* [`collectd::plugin::sysevent`](#collectdpluginsysevent): == Class: collectd::plugin::sysevent  Class to manage sysevent plugin for collectd  Documentation:   https://collectd.org/documentation/manpa
-* [`collectd::plugin::syslog`](#collectdpluginsyslog): https://collectd.org/wiki/index.php/Plugin:SysLog
-* [`collectd::plugin::table`](#collectdplugintable): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::tail`](#collectdplugintail): Tail plugin https://collectd.org/wiki/index.php/Plugin:Tail
-* [`collectd::plugin::tail_csv`](#collectdplugintail_csv): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
-* [`collectd::plugin::target_v5upgrade`](#collectdplugintarget_v5upgrade): https://collectd.org/wiki/index.php/Target:v5_upgrade
-* [`collectd::plugin::tcpconns`](#collectdplugintcpconns): https://collectd.org/wiki/index.php/Plugin:TCPConns
-* [`collectd::plugin::thermal`](#collectdpluginthermal): https://collectd.org/wiki/index.php/Plugin:thermal
-* [`collectd::plugin::threshold`](#collectdpluginthreshold): http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_threshold
-* [`collectd::plugin::turbostat`](#collectdpluginturbostat): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_turbostat
-* [`collectd::plugin::unixsock`](#collectdpluginunixsock): https://collectd.org/wiki/index.php/Plugin:UnixSock
-* [`collectd::plugin::uptime`](#collectdpluginuptime): https://collectd.org/wiki/index.php/Plugin:Uptime
-* [`collectd::plugin::users`](#collectdpluginusers): https://collectd.org/wiki/index.php/Plugin:Users
-* [`collectd::plugin::uuid`](#collectdpluginuuid): https://collectd.org/wiki/index.php/Plugin:UUID
-* [`collectd::plugin::varnish`](#collectdpluginvarnish): https://collectd.org/wiki/index.php/Plugin:Varnish
-* [`collectd::plugin::virt`](#collectdpluginvirt): https://collectd.org/wiki/index.php/Plugin:virt
-* [`collectd::plugin::vmem`](#collectdpluginvmem): https://collectd.org/wiki/index.php/Plugin:vmem
-* [`collectd::plugin::write_graphite`](#collectdpluginwrite_graphite): https://collectd.org/wiki/index.php/Graphite
-* [`collectd::plugin::write_http`](#collectdpluginwrite_http): Enable write_http plugin
-* [`collectd::plugin::write_kafka`](#collectdpluginwrite_kafka)
-* [`collectd::plugin::write_log`](#collectdpluginwrite_log)
-* [`collectd::plugin::write_network`](#collectdpluginwrite_network): A define to make a generic network output for collectd
-* [`collectd::plugin::write_prometheus`](#collectdpluginwrite_prometheus)
-* [`collectd::plugin::write_riemann`](#collectdpluginwrite_riemann): https://collectd.org/wiki/index.php/Plugin:Write_Riemann
-* [`collectd::plugin::write_sensu`](#collectdpluginwrite_sensu): https://collectd.org/wiki/index.php/Plugin:Write_Sensu
-* [`collectd::plugin::write_tsdb`](#collectdpluginwrite_tsdb): https://collectd.org/wiki/index.php/Plugin:Write_TSDB
-* [`collectd::plugin::zfs_arc`](#collectdpluginzfs_arc): https://collectd.org/wiki/index.php/Plugin:ZFS_ARC
-* [`collectd::plugin::zookeeper`](#collectdpluginzookeeper)
-* [`collectd::repo`](#collectdrepo): collectd::repo Handle package repo configuration
-* [`collectd::repo::debian`](#collectdrepodebian)
-* [`collectd::repo::redhat`](#collectdreporedhat)
-* [`collectd::service`](#collectdservice)
+* [`collectd::config`](#collectd--config): private
+* [`collectd::params`](#collectd--params)
+* [`collectd::plugin::aggregation`](#collectd--plugin--aggregation): collectd::plugin::aggregation
+* [`collectd::plugin::amqp`](#collectd--plugin--amqp): https://collectd.org/wiki/index.php/Plugin:AMQP
+* [`collectd::plugin::amqp1`](#collectd--plugin--amqp1): == Class: collectd::plugin::amqp1  Class to manage amqp1 write plugin for collectd  Documentation:   https://collectd.org/documentation/manpa
+* [`collectd::plugin::apache`](#collectd--plugin--apache): https://collectd.org/wiki/index.php/Plugin:Apache
+* [`collectd::plugin::battery`](#collectd--plugin--battery): == Class: collectd::plugin::battery  Class to manage battery write plugin for collectd  Documentation:   https://collectd.org/documentation/m
+* [`collectd::plugin::bind`](#collectd--plugin--bind): https://collectd.org/wiki/index.php/Plugin:BIND
+* [`collectd::plugin::ceph`](#collectd--plugin--ceph): == Class: collectd::plugin::ceph  Class to manage ceph plugin for collectd === Parameters [*ensure*]   ensure param for collectd::plugin type
+* [`collectd::plugin::cgroups`](#collectd--plugin--cgroups): https://collectd.org/wiki/index.php/Plugin:cgroups
+* [`collectd::plugin::chain`](#collectd--plugin--chain)
+* [`collectd::plugin::connectivity`](#collectd--plugin--connectivity): == Class: collectd::plugin::connectivity  Class to manage connectivity plugin for collectd  Documentation:   https://collectd.org/documentati
+* [`collectd::plugin::conntrack`](#collectd--plugin--conntrack): https://collectd.org/wiki/index.php/Plugin:ConnTrack
+* [`collectd::plugin::contextswitch`](#collectd--plugin--contextswitch): https://collectd.org/wiki/index.php/Plugin:ContextSwitch
+* [`collectd::plugin::cpu`](#collectd--plugin--cpu): https://collectd.org/wiki/index.php/Plugin:CPU
+* [`collectd::plugin::cpufreq`](#collectd--plugin--cpufreq): https://collectd.org/wiki/index.php/Plugin:CPUFreq
+* [`collectd::plugin::csv`](#collectd--plugin--csv): https://collectd.org/wiki/index.php/Plugin:CSV
+* [`collectd::plugin::cuda`](#collectd--plugin--cuda): Class: collectd::plugin::cuda
+* [`collectd::plugin::curl`](#collectd--plugin--curl)
+* [`collectd::plugin::dbi`](#collectd--plugin--dbi): https://collectd.org/wiki/index.php/Plugin:DBI
+* [`collectd::plugin::dcpmm`](#collectd--plugin--dcpmm): Class to manage dcpmm plugin for collectd.  The dcpmm plugin will collect Intel(R) Optane(TM) DC Persistent Memory related performance statis
+* [`collectd::plugin::df`](#collectd--plugin--df): https://collectd.org/wiki/index.php/Plugin:DF
+* [`collectd::plugin::disk`](#collectd--plugin--disk): https://collectd.org/wiki/index.php/Plugin:Disk
+* [`collectd::plugin::dns`](#collectd--plugin--dns): Class: collectd::plugin::dns
+* [`collectd::plugin::dpdk_telemetry`](#collectd--plugin--dpdk_telemetry): Class to manage dpdk_telemetry plugin for collectd.  The dpdk_telemetry plugin collects DPDK ethernet device metrics via dpdk_telemetry libra
+* [`collectd::plugin::entropy`](#collectd--plugin--entropy): https://collectd.org/wiki/index.php/Plugin:Entropy
+* [`collectd::plugin::ethstat`](#collectd--plugin--ethstat): https://collectd.org/wiki/index.php/Plugin:Ethstat
+* [`collectd::plugin::exec`](#collectd--plugin--exec): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
+* [`collectd::plugin::fhcount`](#collectd--plugin--fhcount): https://collectd.org/wiki/index.php/Plugin:Fhcount
+* [`collectd::plugin::filecount`](#collectd--plugin--filecount): https://collectd.org/wiki/index.php/Plugin:FileCount
+* [`collectd::plugin::filter`](#collectd--plugin--filter): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::fscache`](#collectd--plugin--fscache): https://collectd.org/wiki/index.php/Plugin:FSCache
+* [`collectd::plugin::genericjmx`](#collectd--plugin--genericjmx): https://collectd.org/wiki/index.php/Plugin:GenericJMX
+* [`collectd::plugin::hddtemp`](#collectd--plugin--hddtemp): https://collectd.org/wiki/index.php/Plugin:HDDTemp
+* [`collectd::plugin::hugepages`](#collectd--plugin--hugepages): == Class: collectd::plugin::hugepages  Class to manage hugepages write plugin for collectd  Documentation:   https://collectd.org/documentati
+* [`collectd::plugin::intel_pmu`](#collectd--plugin--intel_pmu): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_intel_pmu
+* [`collectd::plugin::intel_rdt`](#collectd--plugin--intel_rdt): == Class: collectd::plugin::intel_rdt  Class to manage intel_rdt write plugin for collectd  Documentation:   https://collectd.org/documentati
+* [`collectd::plugin::interface`](#collectd--plugin--interface): https://collectd.org/wiki/index.php/Plugin:Interface
+* [`collectd::plugin::ipc`](#collectd--plugin--ipc): == Class: collectd::plugin::ipc  Class to manage ipc write plugin for collectd  Documentation:   https://collectd.org/documentation/manpages/
+* [`collectd::plugin::ipmi`](#collectd--plugin--ipmi): https://collectd.org/wiki/index.php/Plugin:IPMI
+* [`collectd::plugin::iptables`](#collectd--plugin--iptables): https://collectd.org/wiki/index.php/Plugin:IPTables
+* [`collectd::plugin::irq`](#collectd--plugin--irq): https://collectd.org/wiki/index.php/Plugin:IRQ
+* [`collectd::plugin::iscdhcp`](#collectd--plugin--iscdhcp): Class: collectd::plugin::iscdhcp
+* [`collectd::plugin::java`](#collectd--plugin--java): https://collectd.org/wiki/index.php/Plugin:Java
+* [`collectd::plugin::load`](#collectd--plugin--load): https://collectd.org/wiki/index.php/Plugin:Load
+* [`collectd::plugin::logfile`](#collectd--plugin--logfile): https://collectd.org/wiki/index.php/Plugin:LogFile
+* [`collectd::plugin::logparser`](#collectd--plugin--logparser): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
+* [`collectd::plugin::lvm`](#collectd--plugin--lvm): https://collectd.org/wiki/index.php/Plugin:LVM
+* [`collectd::plugin::mcelog`](#collectd--plugin--mcelog): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
+* [`collectd::plugin::memcached`](#collectd--plugin--memcached): https://collectd.org/wiki/index.php/Plugin:memcached
+* [`collectd::plugin::memory`](#collectd--plugin--memory): https://collectd.org/wiki/index.php/Plugin:Memory
+* [`collectd::plugin::mongodb`](#collectd--plugin--mongodb): Class: collectd::plugin::mongodb
+* [`collectd::plugin::mysql`](#collectd--plugin--mysql): MySQL plugin https://collectd.org/wiki/index.php/Plugin:MySQL
+* [`collectd::plugin::netlink`](#collectd--plugin--netlink): https://collectd.org/wiki/index.php/Plugin:Netlink
+* [`collectd::plugin::network`](#collectd--plugin--network): https://collectd.org/wiki/index.php/Plugin:Network
+* [`collectd::plugin::nfs`](#collectd--plugin--nfs): https://collectd.org/wiki/index.php/Plugin:NFS
+* [`collectd::plugin::nginx`](#collectd--plugin--nginx): https://collectd.org/wiki/index.php/Plugin:nginx
+* [`collectd::plugin::ntpd`](#collectd--plugin--ntpd): https://collectd.org/wiki/index.php/Plugin:NTPd
+* [`collectd::plugin::numa`](#collectd--plugin--numa): == Class: collectd::plugin::numa  Class to manage numa write plugin for collectd  Documentation:   https://collectd.org/documentation/manpage
+* [`collectd::plugin::nut`](#collectd--plugin--nut): https://collectd.org/wiki/index.php/Plugin:Nut
+* [`collectd::plugin::openldap`](#collectd--plugin--openldap): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_openldap
+* [`collectd::plugin::openvpn`](#collectd--plugin--openvpn): https://collectd.org/wiki/index.php/Plugin:OpenVPN
+* [`collectd::plugin::oracle`](#collectd--plugin--oracle): Oracle plugin https://collectd.org/wiki/index.php/Plugin:Oracle
+* [`collectd::plugin::ovs_events`](#collectd--plugin--ovs_events): == Class: collectd::plugin::ovs_events  Class to manage ovs_events plugin for collectd  Documentation:   https://collectd.org/documentation/m
+* [`collectd::plugin::ovs_stats`](#collectd--plugin--ovs_stats): == Class: collectd::plugin::ovs_stats  Class to manage ovs_stats plugin for collectd  Documentation:   https://collectd.org/documentation/man
+* [`collectd::plugin::pcie_errors`](#collectd--plugin--pcie_errors): Class to manage pcie_errors plugin for collectd
+* [`collectd::plugin::perl`](#collectd--plugin--perl): See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
+* [`collectd::plugin::ping`](#collectd--plugin--ping): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
+* [`collectd::plugin::postgresql`](#collectd--plugin--postgresql): https://collectd.org/wiki/index.php/Plugin:PostgreSQL
+* [`collectd::plugin::powerdns`](#collectd--plugin--powerdns): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_powerdns
+* [`collectd::plugin::processes`](#collectd--plugin--processes): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
+* [`collectd::plugin::procevent`](#collectd--plugin--procevent): == Class: collectd::plugin::procevent  Class to manage procevent plugin for collectd  Documentation:   https://collectd.org/documentation/man
+* [`collectd::plugin::protocols`](#collectd--plugin--protocols): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols
+* [`collectd::plugin::python`](#collectd--plugin--python): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
+* [`collectd::plugin::rabbitmq`](#collectd--plugin--rabbitmq): rabbitmq plugin https://pypi.python.org/pypi/collectd-rabbitmq  == Class collectd::plugin::rabbitmq   Configures rabbitmq metrics collection.
+* [`collectd::plugin::redis`](#collectd--plugin--redis): https://collectd.org/wiki/index.php/Plugin:Redis
+* [`collectd::plugin::rrdcached`](#collectd--plugin--rrdcached): https://collectd.org/wiki/index.php/Rrdcached
+* [`collectd::plugin::rrdtool`](#collectd--plugin--rrdtool): https://collectd.org/wiki/index.php/Plugin:RRDtool
+* [`collectd::plugin::sensors`](#collectd--plugin--sensors): https://collectd.org/wiki/index.php/Plugin:Sensors
+* [`collectd::plugin::smart`](#collectd--plugin--smart): https://collectd.org/wiki/index.php/Plugin:SMART
+* [`collectd::plugin::snmp`](#collectd--plugin--snmp): https://collectd.org/wiki/index.php/Plugin:SNMP
+* [`collectd::plugin::snmp_agent`](#collectd--plugin--snmp_agent): Class: collectd::plugin::snmp_agent
+* [`collectd::plugin::statsd`](#collectd--plugin--statsd): https://collectd.org/wiki/index.php/Plugin:StatsD
+* [`collectd::plugin::swap`](#collectd--plugin--swap): https://collectd.org/wiki/index.php/Plugin:Swap
+* [`collectd::plugin::sysevent`](#collectd--plugin--sysevent): == Class: collectd::plugin::sysevent  Class to manage sysevent plugin for collectd  Documentation:   https://collectd.org/documentation/manpa
+* [`collectd::plugin::syslog`](#collectd--plugin--syslog): https://collectd.org/wiki/index.php/Plugin:SysLog
+* [`collectd::plugin::table`](#collectd--plugin--table): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::tail`](#collectd--plugin--tail): Tail plugin https://collectd.org/wiki/index.php/Plugin:Tail
+* [`collectd::plugin::tail_csv`](#collectd--plugin--tail_csv): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
+* [`collectd::plugin::target_v5upgrade`](#collectd--plugin--target_v5upgrade): https://collectd.org/wiki/index.php/Target:v5_upgrade
+* [`collectd::plugin::tcpconns`](#collectd--plugin--tcpconns): https://collectd.org/wiki/index.php/Plugin:TCPConns
+* [`collectd::plugin::thermal`](#collectd--plugin--thermal): https://collectd.org/wiki/index.php/Plugin:thermal
+* [`collectd::plugin::threshold`](#collectd--plugin--threshold): http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_threshold
+* [`collectd::plugin::turbostat`](#collectd--plugin--turbostat): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_turbostat
+* [`collectd::plugin::unixsock`](#collectd--plugin--unixsock): https://collectd.org/wiki/index.php/Plugin:UnixSock
+* [`collectd::plugin::uptime`](#collectd--plugin--uptime): https://collectd.org/wiki/index.php/Plugin:Uptime
+* [`collectd::plugin::users`](#collectd--plugin--users): https://collectd.org/wiki/index.php/Plugin:Users
+* [`collectd::plugin::uuid`](#collectd--plugin--uuid): https://collectd.org/wiki/index.php/Plugin:UUID
+* [`collectd::plugin::varnish`](#collectd--plugin--varnish): https://collectd.org/wiki/index.php/Plugin:Varnish
+* [`collectd::plugin::virt`](#collectd--plugin--virt): https://collectd.org/wiki/index.php/Plugin:virt
+* [`collectd::plugin::vmem`](#collectd--plugin--vmem): https://collectd.org/wiki/index.php/Plugin:vmem
+* [`collectd::plugin::write_graphite`](#collectd--plugin--write_graphite): https://collectd.org/wiki/index.php/Graphite
+* [`collectd::plugin::write_http`](#collectd--plugin--write_http): Enable write_http plugin
+* [`collectd::plugin::write_kafka`](#collectd--plugin--write_kafka)
+* [`collectd::plugin::write_log`](#collectd--plugin--write_log)
+* [`collectd::plugin::write_network`](#collectd--plugin--write_network): A define to make a generic network output for collectd
+* [`collectd::plugin::write_prometheus`](#collectd--plugin--write_prometheus): Configures write_prometheus plugin.
+* [`collectd::plugin::write_riemann`](#collectd--plugin--write_riemann): https://collectd.org/wiki/index.php/Plugin:Write_Riemann
+* [`collectd::plugin::write_sensu`](#collectd--plugin--write_sensu): https://collectd.org/wiki/index.php/Plugin:Write_Sensu
+* [`collectd::plugin::write_tsdb`](#collectd--plugin--write_tsdb): https://collectd.org/wiki/index.php/Plugin:Write_TSDB
+* [`collectd::plugin::zfs_arc`](#collectd--plugin--zfs_arc): https://collectd.org/wiki/index.php/Plugin:ZFS_ARC
+* [`collectd::plugin::zookeeper`](#collectd--plugin--zookeeper)
+* [`collectd::repo`](#collectd--repo): collectd::repo Handle package repo configuration
+* [`collectd::repo::debian`](#collectd--repo--debian)
+* [`collectd::repo::redhat`](#collectd--repo--redhat)
+* [`collectd::service`](#collectd--service)
 
 #### Private Classes
 
@@ -132,84 +132,84 @@
 
 ### Defined types
 
-* [`collectd::plugin`](#collectdplugin)
-* [`collectd::plugin::aggregation::aggregator`](#collectdpluginaggregationaggregator)
-* [`collectd::plugin::apache::instance`](#collectdpluginapacheinstance): https://collectd.org/wiki/index.php/Plugin:Apache
-* [`collectd::plugin::curl::page`](#collectdplugincurlpage)
-* [`collectd::plugin::curl_json`](#collectdplugincurl_json): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_curl_json
-* [`collectd::plugin::dbi::database`](#collectdplugindbidatabase): database allows you to create <Database> blocks with the same name of database,
-* [`collectd::plugin::dbi::query`](#collectdplugindbiquery)
-* [`collectd::plugin::exec::cmd`](#collectdpluginexeccmd)
-* [`collectd::plugin::filecount::directory`](#collectdpluginfilecountdirectory): https://collectd.org/wiki/index.php/Plugin:FileCount
-* [`collectd::plugin::filter::chain`](#collectdpluginfilterchain): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::filter::match`](#collectdpluginfiltermatch): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::filter::rule`](#collectdpluginfilterrule): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::filter::target`](#collectdpluginfiltertarget): https://collectd.org/wiki/index.php/Chains
-* [`collectd::plugin::genericjmx::connection`](#collectdplugingenericjmxconnection): https://collectd.org/wiki/index.php/Plugin:GenericJMX
-* [`collectd::plugin::genericjmx::mbean`](#collectdplugingenericjmxmbean): https://collectd.org/wiki/index.php/Plugin:GenericJMX
-* [`collectd::plugin::mysql::database`](#collectdpluginmysqldatabase)
-* [`collectd::plugin::network::listener`](#collectdpluginnetworklistener)
-* [`collectd::plugin::network::server`](#collectdpluginnetworkserver)
-* [`collectd::plugin::nut::ups`](#collectdpluginnutups)
-* [`collectd::plugin::oracle::database`](#collectdpluginoracledatabase): https://collectd.org/wiki/index.php/Plugin:Oracle
-* [`collectd::plugin::oracle::query`](#collectdpluginoraclequery): https://collectd.org/wiki/index.php/Plugin:Oracle
-* [`collectd::plugin::perl::plugin`](#collectdpluginperlplugin)
-* [`collectd::plugin::postgresql::database`](#collectdpluginpostgresqldatabase): databasename allows you to create <Database> blocks with the same name of database, useful if you have multiple instances of different versio
-* [`collectd::plugin::postgresql::query`](#collectdpluginpostgresqlquery)
-* [`collectd::plugin::postgresql::writer`](#collectdpluginpostgresqlwriter)
-* [`collectd::plugin::powerdns::recursor`](#collectdpluginpowerdnsrecursor)
-* [`collectd::plugin::powerdns::server`](#collectdpluginpowerdnsserver)
-* [`collectd::plugin::processes::process`](#collectdpluginprocessesprocess)
-* [`collectd::plugin::processes::processmatch`](#collectdpluginprocessesprocessmatch)
-* [`collectd::plugin::python::module`](#collectdpluginpythonmodule): Single module definition
-* [`collectd::plugin::snmp::data`](#collectdpluginsnmpdata): https://collectd.org/wiki/index.php/Plugin:SNMP
-* [`collectd::plugin::snmp::host`](#collectdpluginsnmphost): https://collectd.org/wiki/index.php/Plugin:SNMP
-* [`collectd::plugin::tail::file`](#collectdplugintailfile)
-* [`collectd::plugin::write_graphite::carbon`](#collectdpluginwrite_graphitecarbon): a single graphite backend
-* [`collectd::type`](#collectdtype)
-* [`collectd::typesdb`](#collectdtypesdb): This define initialize a collectd typesdb file
+* [`collectd::plugin`](#collectd--plugin)
+* [`collectd::plugin::aggregation::aggregator`](#collectd--plugin--aggregation--aggregator)
+* [`collectd::plugin::apache::instance`](#collectd--plugin--apache--instance): https://collectd.org/wiki/index.php/Plugin:Apache
+* [`collectd::plugin::curl::page`](#collectd--plugin--curl--page)
+* [`collectd::plugin::curl_json`](#collectd--plugin--curl_json): See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_curl_json
+* [`collectd::plugin::dbi::database`](#collectd--plugin--dbi--database): database allows you to create <Database> blocks with the same name of database,
+* [`collectd::plugin::dbi::query`](#collectd--plugin--dbi--query)
+* [`collectd::plugin::exec::cmd`](#collectd--plugin--exec--cmd)
+* [`collectd::plugin::filecount::directory`](#collectd--plugin--filecount--directory): https://collectd.org/wiki/index.php/Plugin:FileCount
+* [`collectd::plugin::filter::chain`](#collectd--plugin--filter--chain): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::filter::match`](#collectd--plugin--filter--match): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::filter::rule`](#collectd--plugin--filter--rule): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::filter::target`](#collectd--plugin--filter--target): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::genericjmx::connection`](#collectd--plugin--genericjmx--connection): https://collectd.org/wiki/index.php/Plugin:GenericJMX
+* [`collectd::plugin::genericjmx::mbean`](#collectd--plugin--genericjmx--mbean): https://collectd.org/wiki/index.php/Plugin:GenericJMX
+* [`collectd::plugin::mysql::database`](#collectd--plugin--mysql--database)
+* [`collectd::plugin::network::listener`](#collectd--plugin--network--listener)
+* [`collectd::plugin::network::server`](#collectd--plugin--network--server)
+* [`collectd::plugin::nut::ups`](#collectd--plugin--nut--ups)
+* [`collectd::plugin::oracle::database`](#collectd--plugin--oracle--database): https://collectd.org/wiki/index.php/Plugin:Oracle
+* [`collectd::plugin::oracle::query`](#collectd--plugin--oracle--query): https://collectd.org/wiki/index.php/Plugin:Oracle
+* [`collectd::plugin::perl::plugin`](#collectd--plugin--perl--plugin)
+* [`collectd::plugin::postgresql::database`](#collectd--plugin--postgresql--database): databasename allows you to create <Database> blocks with the same name of database, useful if you have multiple instances of different versio
+* [`collectd::plugin::postgresql::query`](#collectd--plugin--postgresql--query)
+* [`collectd::plugin::postgresql::writer`](#collectd--plugin--postgresql--writer)
+* [`collectd::plugin::powerdns::recursor`](#collectd--plugin--powerdns--recursor)
+* [`collectd::plugin::powerdns::server`](#collectd--plugin--powerdns--server)
+* [`collectd::plugin::processes::process`](#collectd--plugin--processes--process)
+* [`collectd::plugin::processes::processmatch`](#collectd--plugin--processes--processmatch)
+* [`collectd::plugin::python::module`](#collectd--plugin--python--module): Single module definition
+* [`collectd::plugin::snmp::data`](#collectd--plugin--snmp--data): https://collectd.org/wiki/index.php/Plugin:SNMP
+* [`collectd::plugin::snmp::host`](#collectd--plugin--snmp--host): https://collectd.org/wiki/index.php/Plugin:SNMP
+* [`collectd::plugin::tail::file`](#collectd--plugin--tail--file)
+* [`collectd::plugin::write_graphite::carbon`](#collectd--plugin--write_graphite--carbon): a single graphite backend
+* [`collectd::type`](#collectd--type)
+* [`collectd::typesdb`](#collectd--typesdb): This define initialize a collectd typesdb file
 
 ### Functions
 
-* [`collectd::indent`](#collectdindent)
+* [`collectd::indent`](#collectd--indent)
 * [`collectd_convert_processes`](#collectd_convert_processes): Converts the array from the old style to define process or processmatch in the processes plugin into a create_resources compatible hash which
 
 ### Data types
 
-* [`Collectd::Amqp::Format`](#collectdamqpformat): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_amqp
-* [`Collectd::Bind::View`](#collectdbindview): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_bind
-* [`Collectd::Filter::Builtintarget`](#collectdfilterbuiltintarget): https://collectd.org/wiki/index.php/Chains#Built-in_targets
-* [`Collectd::Filter::Match`](#collectdfiltermatch): https://collectd.org/wiki/index.php/Table_of_Matches
-* [`Collectd::Filter::Plugintarget`](#collectdfilterplugintarget): https://collectd.org/wiki/index.php/Table_of_Targets
-* [`Collectd::Filter::Target`](#collectdfiltertarget): https://collectd.org/wiki/index.php/Chains
-* [`Collectd::LOGPARSER::Logfile`](#collectdlogparserlogfile): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-* [`Collectd::LOGPARSER::Match`](#collectdlogparsermatch): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-* [`Collectd::LOGPARSER::Message`](#collectdlogparsermessage): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
-* [`Collectd::MCELOG::Memory`](#collectdmcelogmemory): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
-* [`Collectd::Manifests::Init`](#collectdmanifestsinit)
-* [`Collectd::Network::SecurityLevel`](#collectdnetworksecuritylevel)
-* [`Collectd::Redis::Node`](#collectdredisnode)
-* [`Collectd::SNMP::AuthProtocol`](#collectdsnmpauthprotocol)
-* [`Collectd::SNMP::Data`](#collectdsnmpdata)
-* [`Collectd::SNMP::Host`](#collectdsnmphost)
-* [`Collectd::SNMP::Host::V2`](#collectdsnmphostv2)
-* [`Collectd::SNMP::Host::V3`](#collectdsnmphostv3)
-* [`Collectd::SNMP::PrivacyProtocol`](#collectdsnmpprivacyprotocol)
-* [`Collectd::SNMP::SecurityLevel`](#collectdsnmpsecuritylevel)
-* [`Collectd::SNMP::Version`](#collectdsnmpversion)
-* [`Collectd::SNMP::Version::V2`](#collectdsnmpversionv2)
-* [`Collectd::SNMP::Version::V3`](#collectdsnmpversionv3)
-* [`Collectd::SNMP_AGENT::Data`](#collectdsnmp_agentdata): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
-* [`Collectd::SNMP_AGENT::IndexKey`](#collectdsnmp_agentindexkey): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
-* [`Collectd::SNMP_AGENT::Table`](#collectdsnmp_agenttable): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
-* [`Collectd::Table::Result`](#collectdtableresult): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
-* [`Collectd::Table::Table`](#collectdtabletable): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
-* [`Collectd::Tail_Csv::File`](#collectdtail_csvfile): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
-* [`Collectd::Tail_Csv::Metric`](#collectdtail_csvmetric): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
-* [`Collectd::Threshold::Host`](#collectdthresholdhost)
-* [`Collectd::Threshold::Plugin`](#collectdthresholdplugin)
-* [`Collectd::Threshold::Type`](#collectdthresholdtype)
-* [`Collectd::Write_riemann::Node`](#collectdwrite_riemannnode)
+* [`Collectd::Amqp::Format`](#Collectd--Amqp--Format): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_amqp
+* [`Collectd::Bind::View`](#Collectd--Bind--View): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_bind
+* [`Collectd::Filter::Builtintarget`](#Collectd--Filter--Builtintarget): https://collectd.org/wiki/index.php/Chains#Built-in_targets
+* [`Collectd::Filter::Match`](#Collectd--Filter--Match): https://collectd.org/wiki/index.php/Table_of_Matches
+* [`Collectd::Filter::Plugintarget`](#Collectd--Filter--Plugintarget): https://collectd.org/wiki/index.php/Table_of_Targets
+* [`Collectd::Filter::Target`](#Collectd--Filter--Target): https://collectd.org/wiki/index.php/Chains
+* [`Collectd::LOGPARSER::Logfile`](#Collectd--LOGPARSER--Logfile): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
+* [`Collectd::LOGPARSER::Match`](#Collectd--LOGPARSER--Match): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
+* [`Collectd::LOGPARSER::Message`](#Collectd--LOGPARSER--Message): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
+* [`Collectd::MCELOG::Memory`](#Collectd--MCELOG--Memory): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
+* [`Collectd::Manifests::Init`](#Collectd--Manifests--Init)
+* [`Collectd::Network::SecurityLevel`](#Collectd--Network--SecurityLevel)
+* [`Collectd::Redis::Node`](#Collectd--Redis--Node)
+* [`Collectd::SNMP::AuthProtocol`](#Collectd--SNMP--AuthProtocol)
+* [`Collectd::SNMP::Data`](#Collectd--SNMP--Data)
+* [`Collectd::SNMP::Host`](#Collectd--SNMP--Host)
+* [`Collectd::SNMP::Host::V2`](#Collectd--SNMP--Host--V2)
+* [`Collectd::SNMP::Host::V3`](#Collectd--SNMP--Host--V3)
+* [`Collectd::SNMP::PrivacyProtocol`](#Collectd--SNMP--PrivacyProtocol)
+* [`Collectd::SNMP::SecurityLevel`](#Collectd--SNMP--SecurityLevel)
+* [`Collectd::SNMP::Version`](#Collectd--SNMP--Version)
+* [`Collectd::SNMP::Version::V2`](#Collectd--SNMP--Version--V2)
+* [`Collectd::SNMP::Version::V3`](#Collectd--SNMP--Version--V3)
+* [`Collectd::SNMP_AGENT::Data`](#Collectd--SNMP_AGENT--Data): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
+* [`Collectd::SNMP_AGENT::IndexKey`](#Collectd--SNMP_AGENT--IndexKey): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
+* [`Collectd::SNMP_AGENT::Table`](#Collectd--SNMP_AGENT--Table): https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
+* [`Collectd::Table::Result`](#Collectd--Table--Result): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
+* [`Collectd::Table::Table`](#Collectd--Table--Table): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
+* [`Collectd::Tail_Csv::File`](#Collectd--Tail_Csv--File): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
+* [`Collectd::Tail_Csv::Metric`](#Collectd--Tail_Csv--Metric): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
+* [`Collectd::Threshold::Host`](#Collectd--Threshold--Host)
+* [`Collectd::Threshold::Plugin`](#Collectd--Threshold--Plugin)
+* [`Collectd::Threshold::Type`](#Collectd--Threshold--Type)
+* [`Collectd::Write_riemann::Node`](#Collectd--Write_riemann--Node)
 
 ### Tasks
 
@@ -236,45 +236,45 @@ class{'collectd':
 
 The following parameters are available in the `collectd` class:
 
-* [`utils`](#utils)
-* [`autoloadplugin`](#autoloadplugin)
-* [`collectd_hostname`](#collectd_hostname)
-* [`conf_content`](#conf_content)
-* [`config_file`](#config_file)
-* [`fqdnlookup`](#fqdnlookup)
-* [`has_wordexp`](#has_wordexp)
-* [`include`](#include)
-* [`interval`](#interval)
-* [`internal_stats`](#internal_stats)
-* [`manage_package`](#manage_package)
-* [`manage_repo`](#manage_repo)
-* [`ci_package_repo`](#ci_package_repo)
-* [`manage_service`](#manage_service)
-* [`minimum_version`](#minimum_version)
-* [`package_ensure`](#package_ensure)
-* [`package_install_options`](#package_install_options)
-* [`package_keyserver`](#package_keyserver)
-* [`package_name`](#package_name)
-* [`package_provider`](#package_provider)
-* [`plugin_conf_dir`](#plugin_conf_dir)
-* [`plugin_conf_dir_mode`](#plugin_conf_dir_mode)
-* [`purge`](#purge)
-* [`purge_config`](#purge_config)
-* [`read_threads`](#read_threads)
-* [`recurse`](#recurse)
-* [`config_group`](#config_group)
-* [`config_mode`](#config_mode)
-* [`config_owner`](#config_owner)
-* [`service_enable`](#service_enable)
-* [`service_ensure`](#service_ensure)
-* [`service_name`](#service_name)
-* [`timeout`](#timeout)
-* [`typesdb`](#typesdb)
-* [`write_queue_limit_high`](#write_queue_limit_high)
-* [`write_queue_limit_low`](#write_queue_limit_low)
-* [`write_threads`](#write_threads)
+* [`utils`](#-collectd--utils)
+* [`autoloadplugin`](#-collectd--autoloadplugin)
+* [`collectd_hostname`](#-collectd--collectd_hostname)
+* [`conf_content`](#-collectd--conf_content)
+* [`config_file`](#-collectd--config_file)
+* [`fqdnlookup`](#-collectd--fqdnlookup)
+* [`has_wordexp`](#-collectd--has_wordexp)
+* [`include`](#-collectd--include)
+* [`interval`](#-collectd--interval)
+* [`internal_stats`](#-collectd--internal_stats)
+* [`manage_package`](#-collectd--manage_package)
+* [`manage_repo`](#-collectd--manage_repo)
+* [`ci_package_repo`](#-collectd--ci_package_repo)
+* [`manage_service`](#-collectd--manage_service)
+* [`minimum_version`](#-collectd--minimum_version)
+* [`package_ensure`](#-collectd--package_ensure)
+* [`package_install_options`](#-collectd--package_install_options)
+* [`package_keyserver`](#-collectd--package_keyserver)
+* [`package_name`](#-collectd--package_name)
+* [`package_provider`](#-collectd--package_provider)
+* [`plugin_conf_dir`](#-collectd--plugin_conf_dir)
+* [`plugin_conf_dir_mode`](#-collectd--plugin_conf_dir_mode)
+* [`purge`](#-collectd--purge)
+* [`purge_config`](#-collectd--purge_config)
+* [`read_threads`](#-collectd--read_threads)
+* [`recurse`](#-collectd--recurse)
+* [`config_group`](#-collectd--config_group)
+* [`config_mode`](#-collectd--config_mode)
+* [`config_owner`](#-collectd--config_owner)
+* [`service_enable`](#-collectd--service_enable)
+* [`service_ensure`](#-collectd--service_ensure)
+* [`service_name`](#-collectd--service_name)
+* [`timeout`](#-collectd--timeout)
+* [`typesdb`](#-collectd--typesdb)
+* [`write_queue_limit_high`](#-collectd--write_queue_limit_high)
+* [`write_queue_limit_low`](#-collectd--write_queue_limit_low)
+* [`write_threads`](#-collectd--write_threads)
 
-##### <a name="utils"></a>`utils`
+##### <a name="-collectd--utils"></a>`utils`
 
 Data type: `Boolean`
 
@@ -282,7 +282,7 @@ Install collectd utilities package containing collectdctl, collectd-nagios
 
 Default value: `$collectd::params::utils`
 
-##### <a name="autoloadplugin"></a>`autoloadplugin`
+##### <a name="-collectd--autoloadplugin"></a>`autoloadplugin`
 
 Data type: `Boolean`
 
@@ -290,7 +290,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::autoloadplugin`
 
-##### <a name="collectd_hostname"></a>`collectd_hostname`
+##### <a name="-collectd--collectd_hostname"></a>`collectd_hostname`
 
 Data type: `String`
 
@@ -298,7 +298,7 @@ Data type: `String`
 
 Default value: `$collectd::params::collectd_hostname`
 
-##### <a name="conf_content"></a>`conf_content`
+##### <a name="-collectd--conf_content"></a>`conf_content`
 
 Data type: `Optional[String]`
 
@@ -306,7 +306,7 @@ Data type: `Optional[String]`
 
 Default value: `$collectd::params::conf_content`
 
-##### <a name="config_file"></a>`config_file`
+##### <a name="-collectd--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -314,7 +314,7 @@ Data type: `String`
 
 Default value: `$collectd::params::config_file`
 
-##### <a name="fqdnlookup"></a>`fqdnlookup`
+##### <a name="-collectd--fqdnlookup"></a>`fqdnlookup`
 
 Data type: `Boolean`
 
@@ -322,7 +322,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::fqdnlookup`
 
-##### <a name="has_wordexp"></a>`has_wordexp`
+##### <a name="-collectd--has_wordexp"></a>`has_wordexp`
 
 Data type: `Boolean`
 
@@ -330,7 +330,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::has_wordexp`
 
-##### <a name="include"></a>`include`
+##### <a name="-collectd--include"></a>`include`
 
 Data type: `Array`
 
@@ -338,7 +338,7 @@ Data type: `Array`
 
 Default value: `$collectd::params::include`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--interval"></a>`interval`
 
 Data type: `Integer[1]`
 
@@ -346,7 +346,7 @@ Data type: `Integer[1]`
 
 Default value: `$collectd::params::interval`
 
-##### <a name="internal_stats"></a>`internal_stats`
+##### <a name="-collectd--internal_stats"></a>`internal_stats`
 
 Data type: `Boolean`
 
@@ -354,7 +354,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::internal_stats`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -362,7 +362,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::manage_package`
 
-##### <a name="manage_repo"></a>`manage_repo`
+##### <a name="-collectd--manage_repo"></a>`manage_repo`
 
 Data type: `Boolean`
 
@@ -370,7 +370,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::manage_repo`
 
-##### <a name="ci_package_repo"></a>`ci_package_repo`
+##### <a name="-collectd--ci_package_repo"></a>`ci_package_repo`
 
 Data type: `Optional[Collectd::Manifests::Init]`
 
@@ -378,7 +378,7 @@ Data type: `Optional[Collectd::Manifests::Init]`
 
 Default value: `$collectd::params::ci_package_repo`
 
-##### <a name="manage_service"></a>`manage_service`
+##### <a name="-collectd--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
@@ -386,7 +386,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::manage_service`
 
-##### <a name="minimum_version"></a>`minimum_version`
+##### <a name="-collectd--minimum_version"></a>`minimum_version`
 
 Data type: `String`
 
@@ -394,7 +394,7 @@ Data type: `String`
 
 Default value: `$collectd::params::minimum_version`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-collectd--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -402,7 +402,7 @@ Data type: `String`
 
 Default value: `$collectd::params::package_ensure`
 
-##### <a name="package_install_options"></a>`package_install_options`
+##### <a name="-collectd--package_install_options"></a>`package_install_options`
 
 Data type: `Optional[Array]`
 
@@ -410,7 +410,7 @@ Data type: `Optional[Array]`
 
 Default value: `$collectd::params::package_install_options`
 
-##### <a name="package_keyserver"></a>`package_keyserver`
+##### <a name="-collectd--package_keyserver"></a>`package_keyserver`
 
 Data type: `Stdlib::Fqdn`
 
@@ -418,7 +418,7 @@ Data type: `Stdlib::Fqdn`
 
 Default value: `$collectd::params::package_keyserver`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--package_name"></a>`package_name`
 
 Data type: `Variant[String[1],Array[String[1]]]`
 
@@ -426,7 +426,7 @@ Data type: `Variant[String[1],Array[String[1]]]`
 
 Default value: `$collectd::params::package_name`
 
-##### <a name="package_provider"></a>`package_provider`
+##### <a name="-collectd--package_provider"></a>`package_provider`
 
 Data type: `Optional[String]`
 
@@ -434,7 +434,7 @@ Data type: `Optional[String]`
 
 Default value: `$collectd::params::package_provider`
 
-##### <a name="plugin_conf_dir"></a>`plugin_conf_dir`
+##### <a name="-collectd--plugin_conf_dir"></a>`plugin_conf_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -442,7 +442,7 @@ Data type: `Stdlib::Absolutepath`
 
 Default value: `$collectd::params::plugin_conf_dir`
 
-##### <a name="plugin_conf_dir_mode"></a>`plugin_conf_dir_mode`
+##### <a name="-collectd--plugin_conf_dir_mode"></a>`plugin_conf_dir_mode`
 
 Data type: `String`
 
@@ -450,7 +450,7 @@ Data type: `String`
 
 Default value: `$collectd::params::plugin_conf_dir_mode`
 
-##### <a name="purge"></a>`purge`
+##### <a name="-collectd--purge"></a>`purge`
 
 Data type: `Boolean`
 
@@ -458,7 +458,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::purge`
 
-##### <a name="purge_config"></a>`purge_config`
+##### <a name="-collectd--purge_config"></a>`purge_config`
 
 Data type: `Boolean`
 
@@ -466,7 +466,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::purge_config`
 
-##### <a name="read_threads"></a>`read_threads`
+##### <a name="-collectd--read_threads"></a>`read_threads`
 
 Data type: `Integer[1]`
 
@@ -474,7 +474,7 @@ Data type: `Integer[1]`
 
 Default value: `$collectd::params::read_threads`
 
-##### <a name="recurse"></a>`recurse`
+##### <a name="-collectd--recurse"></a>`recurse`
 
 Data type: `Boolean`
 
@@ -482,7 +482,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::recurse`
 
-##### <a name="config_group"></a>`config_group`
+##### <a name="-collectd--config_group"></a>`config_group`
 
 Data type: `String`
 
@@ -490,7 +490,7 @@ Data type: `String`
 
 Default value: `$collectd::params::config_group`
 
-##### <a name="config_mode"></a>`config_mode`
+##### <a name="-collectd--config_mode"></a>`config_mode`
 
 Data type: `String`
 
@@ -498,7 +498,7 @@ Data type: `String`
 
 Default value: `$collectd::params::config_mode`
 
-##### <a name="config_owner"></a>`config_owner`
+##### <a name="-collectd--config_owner"></a>`config_owner`
 
 Data type: `String`
 
@@ -506,7 +506,7 @@ Data type: `String`
 
 Default value: `$collectd::params::config_owner`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-collectd--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
@@ -514,7 +514,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::params::service_enable`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-collectd--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
@@ -522,7 +522,7 @@ Data type: `String`
 
 Default value: `$collectd::params::service_ensure`
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-collectd--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -530,7 +530,7 @@ Data type: `String`
 
 Default value: `$collectd::params::service_name`
 
-##### <a name="timeout"></a>`timeout`
+##### <a name="-collectd--timeout"></a>`timeout`
 
 Data type: `Integer[1]`
 
@@ -538,7 +538,7 @@ Data type: `Integer[1]`
 
 Default value: `$collectd::params::timeout`
 
-##### <a name="typesdb"></a>`typesdb`
+##### <a name="-collectd--typesdb"></a>`typesdb`
 
 Data type: `Array`
 
@@ -546,7 +546,7 @@ Data type: `Array`
 
 Default value: `$collectd::params::typesdb`
 
-##### <a name="write_queue_limit_high"></a>`write_queue_limit_high`
+##### <a name="-collectd--write_queue_limit_high"></a>`write_queue_limit_high`
 
 Data type: `Optional[Integer]`
 
@@ -554,7 +554,7 @@ Data type: `Optional[Integer]`
 
 Default value: `$collectd::params::write_queue_limit_high`
 
-##### <a name="write_queue_limit_low"></a>`write_queue_limit_low`
+##### <a name="-collectd--write_queue_limit_low"></a>`write_queue_limit_low`
 
 Data type: `Optional[Integer]`
 
@@ -562,7 +562,7 @@ Data type: `Optional[Integer]`
 
 Default value: `$collectd::params::write_queue_limit_low`
 
-##### <a name="write_threads"></a>`write_threads`
+##### <a name="-collectd--write_threads"></a>`write_threads`
 
 Data type: `Integer[1]`
 
@@ -570,15 +570,15 @@ Data type: `Integer[1]`
 
 Default value: `$collectd::params::write_threads`
 
-### <a name="collectdconfig"></a>`collectd::config`
+### <a name="collectd--config"></a>`collectd::config`
 
 private
 
-### <a name="collectdparams"></a>`collectd::params`
+### <a name="collectd--params"></a>`collectd::params`
 
 The collectd::params class.
 
-### <a name="collectdpluginaggregation"></a>`collectd::plugin::aggregation`
+### <a name="collectd--plugin--aggregation"></a>`collectd::plugin::aggregation`
 
 collectd::plugin::aggregation
 
@@ -586,11 +586,11 @@ collectd::plugin::aggregation
 
 The following parameters are available in the `collectd::plugin::aggregation` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`aggregators`](#aggregators)
+* [`ensure`](#-collectd--plugin--aggregation--ensure)
+* [`interval`](#-collectd--plugin--aggregation--interval)
+* [`aggregators`](#-collectd--plugin--aggregation--aggregators)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--aggregation--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -598,15 +598,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--aggregation--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="aggregators"></a>`aggregators`
+##### <a name="-collectd--plugin--aggregation--aggregators"></a>`aggregators`
 
 Data type: `Hash`
 
@@ -614,7 +614,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-### <a name="collectdpluginamqp"></a>`collectd::plugin::amqp`
+### <a name="collectd--plugin--amqp"></a>`collectd::plugin::amqp`
 
 https://collectd.org/wiki/index.php/Plugin:AMQP
 
@@ -622,25 +622,25 @@ https://collectd.org/wiki/index.php/Plugin:AMQP
 
 The following parameters are available in the `collectd::plugin::amqp` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`amqphost`](#amqphost)
-* [`amqpport`](#amqpport)
-* [`amqpvhost`](#amqpvhost)
-* [`amqpuser`](#amqpuser)
-* [`amqppass`](#amqppass)
-* [`amqpformat`](#amqpformat)
-* [`amqpstorerates`](#amqpstorerates)
-* [`amqpexchange`](#amqpexchange)
-* [`amqppersistent`](#amqppersistent)
-* [`amqproutingkey`](#amqproutingkey)
-* [`graphiteprefix`](#graphiteprefix)
-* [`escapecharacter`](#escapecharacter)
-* [`interval`](#interval)
-* [`graphiteseparateinstances`](#graphiteseparateinstances)
-* [`graphitealwaysappendds`](#graphitealwaysappendds)
+* [`ensure`](#-collectd--plugin--amqp--ensure)
+* [`manage_package`](#-collectd--plugin--amqp--manage_package)
+* [`amqphost`](#-collectd--plugin--amqp--amqphost)
+* [`amqpport`](#-collectd--plugin--amqp--amqpport)
+* [`amqpvhost`](#-collectd--plugin--amqp--amqpvhost)
+* [`amqpuser`](#-collectd--plugin--amqp--amqpuser)
+* [`amqppass`](#-collectd--plugin--amqp--amqppass)
+* [`amqpformat`](#-collectd--plugin--amqp--amqpformat)
+* [`amqpstorerates`](#-collectd--plugin--amqp--amqpstorerates)
+* [`amqpexchange`](#-collectd--plugin--amqp--amqpexchange)
+* [`amqppersistent`](#-collectd--plugin--amqp--amqppersistent)
+* [`amqproutingkey`](#-collectd--plugin--amqp--amqproutingkey)
+* [`graphiteprefix`](#-collectd--plugin--amqp--graphiteprefix)
+* [`escapecharacter`](#-collectd--plugin--amqp--escapecharacter)
+* [`interval`](#-collectd--plugin--amqp--interval)
+* [`graphiteseparateinstances`](#-collectd--plugin--amqp--graphiteseparateinstances)
+* [`graphitealwaysappendds`](#-collectd--plugin--amqp--graphitealwaysappendds)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--amqp--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -648,7 +648,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--amqp--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -656,7 +656,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="amqphost"></a>`amqphost`
+##### <a name="-collectd--plugin--amqp--amqphost"></a>`amqphost`
 
 Data type: `Stdlib::Host`
 
@@ -664,7 +664,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="amqpport"></a>`amqpport`
+##### <a name="-collectd--plugin--amqp--amqpport"></a>`amqpport`
 
 Data type: `Stdlib::Port`
 
@@ -672,7 +672,7 @@ Data type: `Stdlib::Port`
 
 Default value: `5672`
 
-##### <a name="amqpvhost"></a>`amqpvhost`
+##### <a name="-collectd--plugin--amqp--amqpvhost"></a>`amqpvhost`
 
 Data type: `String`
 
@@ -680,7 +680,7 @@ Data type: `String`
 
 Default value: `'graphite'`
 
-##### <a name="amqpuser"></a>`amqpuser`
+##### <a name="-collectd--plugin--amqp--amqpuser"></a>`amqpuser`
 
 Data type: `String`
 
@@ -688,7 +688,7 @@ Data type: `String`
 
 Default value: `'graphite'`
 
-##### <a name="amqppass"></a>`amqppass`
+##### <a name="-collectd--plugin--amqp--amqppass"></a>`amqppass`
 
 Data type: `String`
 
@@ -696,7 +696,7 @@ Data type: `String`
 
 Default value: `'graphite'`
 
-##### <a name="amqpformat"></a>`amqpformat`
+##### <a name="-collectd--plugin--amqp--amqpformat"></a>`amqpformat`
 
 Data type: `Collectd::Amqp::Format`
 
@@ -704,15 +704,15 @@ Data type: `Collectd::Amqp::Format`
 
 Default value: `'Graphite'`
 
-##### <a name="amqpstorerates"></a>`amqpstorerates`
+##### <a name="-collectd--plugin--amqp--amqpstorerates"></a>`amqpstorerates`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="amqpexchange"></a>`amqpexchange`
+##### <a name="-collectd--plugin--amqp--amqpexchange"></a>`amqpexchange`
 
 Data type: `String`
 
@@ -720,15 +720,15 @@ Data type: `String`
 
 Default value: `'metrics'`
 
-##### <a name="amqppersistent"></a>`amqppersistent`
+##### <a name="-collectd--plugin--amqp--amqppersistent"></a>`amqppersistent`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="amqproutingkey"></a>`amqproutingkey`
+##### <a name="-collectd--plugin--amqp--amqproutingkey"></a>`amqproutingkey`
 
 Data type: `String`
 
@@ -736,7 +736,7 @@ Data type: `String`
 
 Default value: `'collectd'`
 
-##### <a name="graphiteprefix"></a>`graphiteprefix`
+##### <a name="-collectd--plugin--amqp--graphiteprefix"></a>`graphiteprefix`
 
 Data type: `String`
 
@@ -744,7 +744,7 @@ Data type: `String`
 
 Default value: `'collectd.'`
 
-##### <a name="escapecharacter"></a>`escapecharacter`
+##### <a name="-collectd--plugin--amqp--escapecharacter"></a>`escapecharacter`
 
 Data type: `String[1]`
 
@@ -752,31 +752,31 @@ Data type: `String[1]`
 
 Default value: `'_'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--amqp--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="graphiteseparateinstances"></a>`graphiteseparateinstances`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="graphitealwaysappendds"></a>`graphitealwaysappendds`
+##### <a name="-collectd--plugin--amqp--graphiteseparateinstances"></a>`graphiteseparateinstances`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginamqp1"></a>`collectd::plugin::amqp1`
+##### <a name="-collectd--plugin--amqp--graphitealwaysappendds"></a>`graphitealwaysappendds`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+### <a name="collectd--plugin--amqp1"></a>`collectd::plugin::amqp1`
 
 == Class: collectd::plugin::amqp1
 
@@ -887,20 +887,20 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::amqp1` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`transport`](#transport)
-* [`host`](#host)
-* [`port`](#port)
-* [`user`](#user)
-* [`password`](#password)
-* [`address`](#address)
-* [`instances`](#instances)
-* [`retry_delay`](#retry_delay)
-* [`send_queue_limit`](#send_queue_limit)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--amqp1--ensure)
+* [`manage_package`](#-collectd--plugin--amqp1--manage_package)
+* [`transport`](#-collectd--plugin--amqp1--transport)
+* [`host`](#-collectd--plugin--amqp1--host)
+* [`port`](#-collectd--plugin--amqp1--port)
+* [`user`](#-collectd--plugin--amqp1--user)
+* [`password`](#-collectd--plugin--amqp1--password)
+* [`address`](#-collectd--plugin--amqp1--address)
+* [`instances`](#-collectd--plugin--amqp1--instances)
+* [`retry_delay`](#-collectd--plugin--amqp1--retry_delay)
+* [`send_queue_limit`](#-collectd--plugin--amqp1--send_queue_limit)
+* [`interval`](#-collectd--plugin--amqp1--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--amqp1--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -908,7 +908,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--amqp1--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -916,7 +916,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="transport"></a>`transport`
+##### <a name="-collectd--plugin--amqp1--transport"></a>`transport`
 
 Data type: `String`
 
@@ -924,7 +924,7 @@ Data type: `String`
 
 Default value: `'metrics'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--amqp1--host"></a>`host`
 
 Data type: `Stdlib::Host`
 
@@ -932,7 +932,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--amqp1--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
@@ -940,7 +940,7 @@ Data type: `Stdlib::Port`
 
 Default value: `5672`
 
-##### <a name="user"></a>`user`
+##### <a name="-collectd--plugin--amqp1--user"></a>`user`
 
 Data type: `String`
 
@@ -948,7 +948,7 @@ Data type: `String`
 
 Default value: `'guest'`
 
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--amqp1--password"></a>`password`
 
 Data type: `String`
 
@@ -956,7 +956,7 @@ Data type: `String`
 
 Default value: `'guest'`
 
-##### <a name="address"></a>`address`
+##### <a name="-collectd--plugin--amqp1--address"></a>`address`
 
 Data type: `String`
 
@@ -964,7 +964,7 @@ Data type: `String`
 
 Default value: `'collectd'`
 
-##### <a name="instances"></a>`instances`
+##### <a name="-collectd--plugin--amqp1--instances"></a>`instances`
 
 Data type: `Hash`
 
@@ -972,31 +972,31 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="retry_delay"></a>`retry_delay`
+##### <a name="-collectd--plugin--amqp1--retry_delay"></a>`retry_delay`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="send_queue_limit"></a>`send_queue_limit`
+##### <a name="-collectd--plugin--amqp1--send_queue_limit"></a>`send_queue_limit`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--amqp1--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginapache"></a>`collectd::plugin::apache`
+### <a name="collectd--plugin--apache"></a>`collectd::plugin::apache`
 
 https://collectd.org/wiki/index.php/Plugin:Apache
 
@@ -1004,13 +1004,13 @@ https://collectd.org/wiki/index.php/Plugin:Apache
 
 The following parameters are available in the `collectd::plugin::apache` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`instances`](#instances)
-* [`interval`](#interval)
-* [`package_install_options`](#package_install_options)
+* [`ensure`](#-collectd--plugin--apache--ensure)
+* [`manage_package`](#-collectd--plugin--apache--manage_package)
+* [`instances`](#-collectd--plugin--apache--instances)
+* [`interval`](#-collectd--plugin--apache--interval)
+* [`package_install_options`](#-collectd--plugin--apache--package_install_options)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--apache--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1018,7 +1018,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--apache--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -1026,7 +1026,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="instances"></a>`instances`
+##### <a name="-collectd--plugin--apache--instances"></a>`instances`
 
 Data type: `Hash`
 
@@ -1034,15 +1034,15 @@ Data type: `Hash`
 
 Default value: `{ 'localhost' => { 'url' => 'http://localhost/mod_status?auto' } }`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--apache--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_install_options"></a>`package_install_options`
+##### <a name="-collectd--plugin--apache--package_install_options"></a>`package_install_options`
 
 Data type: `Optional[Array]`
 
@@ -1050,7 +1050,7 @@ Data type: `Optional[Array]`
 
 Default value: `$collectd::package_install_options`
 
-### <a name="collectdpluginbattery"></a>`collectd::plugin::battery`
+### <a name="collectd--plugin--battery"></a>`collectd::plugin::battery`
 
 == Class: collectd::plugin::battery
 
@@ -1091,13 +1091,13 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::battery` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`values_percentage`](#values_percentage)
-* [`report_degraded`](#report_degraded)
-* [`query_state_fs`](#query_state_fs)
+* [`ensure`](#-collectd--plugin--battery--ensure)
+* [`interval`](#-collectd--plugin--battery--interval)
+* [`values_percentage`](#-collectd--plugin--battery--values_percentage)
+* [`report_degraded`](#-collectd--plugin--battery--report_degraded)
+* [`query_state_fs`](#-collectd--plugin--battery--query_state_fs)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--battery--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1105,39 +1105,39 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--battery--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="values_percentage"></a>`values_percentage`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="report_degraded"></a>`report_degraded`
+##### <a name="-collectd--plugin--battery--values_percentage"></a>`values_percentage`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="query_state_fs"></a>`query_state_fs`
+##### <a name="-collectd--plugin--battery--report_degraded"></a>`report_degraded`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginbind"></a>`collectd::plugin::bind`
+##### <a name="-collectd--plugin--battery--query_state_fs"></a>`query_state_fs`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+### <a name="collectd--plugin--bind"></a>`collectd::plugin::bind`
 
 https://collectd.org/wiki/index.php/Plugin:BIND
 
@@ -1145,26 +1145,26 @@ https://collectd.org/wiki/index.php/Plugin:BIND
 
 The following parameters are available in the `collectd::plugin::bind` class:
 
-* [`url`](#url)
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`memorystats`](#memorystats)
-* [`opcodes`](#opcodes)
-* [`parsetime`](#parsetime)
-* [`qtypes`](#qtypes)
-* [`resolverstats`](#resolverstats)
-* [`serverstats`](#serverstats)
-* [`zonemaintstats`](#zonemaintstats)
-* [`views`](#views)
-* [`interval`](#interval)
+* [`url`](#-collectd--plugin--bind--url)
+* [`ensure`](#-collectd--plugin--bind--ensure)
+* [`manage_package`](#-collectd--plugin--bind--manage_package)
+* [`memorystats`](#-collectd--plugin--bind--memorystats)
+* [`opcodes`](#-collectd--plugin--bind--opcodes)
+* [`parsetime`](#-collectd--plugin--bind--parsetime)
+* [`qtypes`](#-collectd--plugin--bind--qtypes)
+* [`resolverstats`](#-collectd--plugin--bind--resolverstats)
+* [`serverstats`](#-collectd--plugin--bind--serverstats)
+* [`zonemaintstats`](#-collectd--plugin--bind--zonemaintstats)
+* [`views`](#-collectd--plugin--bind--views)
+* [`interval`](#-collectd--plugin--bind--interval)
 
-##### <a name="url"></a>`url`
+##### <a name="-collectd--plugin--bind--url"></a>`url`
 
 Data type: `Stdlib::Httpurl`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--bind--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1172,7 +1172,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--bind--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -1180,63 +1180,63 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="memorystats"></a>`memorystats`
+##### <a name="-collectd--plugin--bind--memorystats"></a>`memorystats`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="opcodes"></a>`opcodes`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="parsetime"></a>`parsetime`
+##### <a name="-collectd--plugin--bind--opcodes"></a>`opcodes`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-##### <a name="qtypes"></a>`qtypes`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="resolverstats"></a>`resolverstats`
+##### <a name="-collectd--plugin--bind--parsetime"></a>`parsetime`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="serverstats"></a>`serverstats`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="zonemaintstats"></a>`zonemaintstats`
+##### <a name="-collectd--plugin--bind--qtypes"></a>`qtypes`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="views"></a>`views`
+##### <a name="-collectd--plugin--bind--resolverstats"></a>`resolverstats`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--bind--serverstats"></a>`serverstats`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--bind--zonemaintstats"></a>`zonemaintstats`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--bind--views"></a>`views`
 
 Data type: `Array[Collectd::Bind::View]`
 
@@ -1244,15 +1244,15 @@ Data type: `Array[Collectd::Bind::View]`
 
 Default value: `[]`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--bind--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginceph"></a>`collectd::plugin::ceph`
+### <a name="collectd--plugin--ceph"></a>`collectd::plugin::ceph`
 
 == Class: collectd::plugin::ceph
 
@@ -1289,24 +1289,28 @@ Class to manage ceph plugin for collectd
   to be used with manage_package; if manage_package is true, this gives the name
   of the package to manage. Defaults to 'collectd-ceph'
 
+[*ceph_fsid*]
+  The Ceph cluster FSID. Must be a UUID.
+
 #### Parameters
 
 The following parameters are available in the `collectd::plugin::ceph` class:
 
-* [`daemons`](#daemons)
-* [`ensure`](#ensure)
-* [`longrunavglatency`](#longrunavglatency)
-* [`convertspecialmetrictypes`](#convertspecialmetrictypes)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
+* [`daemons`](#-collectd--plugin--ceph--daemons)
+* [`ensure`](#-collectd--plugin--ceph--ensure)
+* [`longrunavglatency`](#-collectd--plugin--ceph--longrunavglatency)
+* [`convertspecialmetrictypes`](#-collectd--plugin--ceph--convertspecialmetrictypes)
+* [`manage_package`](#-collectd--plugin--ceph--manage_package)
+* [`package_name`](#-collectd--plugin--ceph--package_name)
+* [`ceph_fsid`](#-collectd--plugin--ceph--ceph_fsid)
 
-##### <a name="daemons"></a>`daemons`
+##### <a name="-collectd--plugin--ceph--daemons"></a>`daemons`
 
 Data type: `Array`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ceph--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1314,23 +1318,23 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="longrunavglatency"></a>`longrunavglatency`
+##### <a name="-collectd--plugin--ceph--longrunavglatency"></a>`longrunavglatency`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="convertspecialmetrictypes"></a>`convertspecialmetrictypes`
+##### <a name="-collectd--plugin--ceph--convertspecialmetrictypes"></a>`convertspecialmetrictypes`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--ceph--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -1338,7 +1342,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--ceph--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -1346,7 +1350,15 @@ Data type: `String`
 
 Default value: `'collectd-ceph'`
 
-### <a name="collectdplugincgroups"></a>`collectd::plugin::cgroups`
+##### <a name="-collectd--plugin--ceph--ceph_fsid"></a>`ceph_fsid`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--cgroups"></a>`collectd::plugin::cgroups`
 
 https://collectd.org/wiki/index.php/Plugin:cgroups
 
@@ -1354,12 +1366,12 @@ https://collectd.org/wiki/index.php/Plugin:cgroups
 
 The following parameters are available in the `collectd::plugin::cgroups` class:
 
-* [`cgroups`](#cgroups)
-* [`ensure`](#ensure)
-* [`ignore_selected`](#ignore_selected)
-* [`interval`](#interval)
+* [`cgroups`](#-collectd--plugin--cgroups--cgroups)
+* [`ensure`](#-collectd--plugin--cgroups--ensure)
+* [`ignore_selected`](#-collectd--plugin--cgroups--ignore_selected)
+* [`interval`](#-collectd--plugin--cgroups--interval)
 
-##### <a name="cgroups"></a>`cgroups`
+##### <a name="-collectd--plugin--cgroups--cgroups"></a>`cgroups`
 
 Data type: `Array`
 
@@ -1367,7 +1379,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--cgroups--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1375,23 +1387,23 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="ignore_selected"></a>`ignore_selected`
+##### <a name="-collectd--plugin--cgroups--ignore_selected"></a>`ignore_selected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--cgroups--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginchain"></a>`collectd::plugin::chain`
+### <a name="collectd--plugin--chain"></a>`collectd::plugin::chain`
 
 The collectd::plugin::chain class.
 
@@ -1399,12 +1411,12 @@ The collectd::plugin::chain class.
 
 The following parameters are available in the `collectd::plugin::chain` class:
 
-* [`chainname`](#chainname)
-* [`ensure`](#ensure)
-* [`defaulttarget`](#defaulttarget)
-* [`rules`](#rules)
+* [`chainname`](#-collectd--plugin--chain--chainname)
+* [`ensure`](#-collectd--plugin--chain--ensure)
+* [`defaulttarget`](#-collectd--plugin--chain--defaulttarget)
+* [`rules`](#-collectd--plugin--chain--rules)
 
-##### <a name="chainname"></a>`chainname`
+##### <a name="-collectd--plugin--chain--chainname"></a>`chainname`
 
 Data type: `String`
 
@@ -1412,7 +1424,7 @@ Data type: `String`
 
 Default value: `'Main'`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--chain--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1420,7 +1432,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="defaulttarget"></a>`defaulttarget`
+##### <a name="-collectd--plugin--chain--defaulttarget"></a>`defaulttarget`
 
 Data type: `Collectd::Filter::Target`
 
@@ -1428,7 +1440,7 @@ Data type: `Collectd::Filter::Target`
 
 Default value: `'write'`
 
-##### <a name="rules"></a>`rules`
+##### <a name="-collectd--plugin--chain--rules"></a>`rules`
 
 Data type: `Array`
 
@@ -1436,7 +1448,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-### <a name="collectdpluginconnectivity"></a>`collectd::plugin::connectivity`
+### <a name="collectd--plugin--connectivity"></a>`collectd::plugin::connectivity`
 
 == Class: collectd::plugin::connectivity
 
@@ -1463,11 +1475,11 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::connectivity` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interfaces`](#interfaces)
+* [`ensure`](#-collectd--plugin--connectivity--ensure)
+* [`manage_package`](#-collectd--plugin--connectivity--manage_package)
+* [`interfaces`](#-collectd--plugin--connectivity--interfaces)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--connectivity--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1475,7 +1487,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--connectivity--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -1483,7 +1495,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="interfaces"></a>`interfaces`
+##### <a name="-collectd--plugin--connectivity--interfaces"></a>`interfaces`
 
 Data type: `Array[String[1]]`
 
@@ -1491,7 +1503,7 @@ Data type: `Array[String[1]]`
 
 Default value: `[]`
 
-### <a name="collectdpluginconntrack"></a>`collectd::plugin::conntrack`
+### <a name="collectd--plugin--conntrack"></a>`collectd::plugin::conntrack`
 
 https://collectd.org/wiki/index.php/Plugin:ConnTrack
 
@@ -1499,9 +1511,9 @@ https://collectd.org/wiki/index.php/Plugin:ConnTrack
 
 The following parameters are available in the `collectd::plugin::conntrack` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--conntrack--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--conntrack--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1509,7 +1521,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-### <a name="collectdplugincontextswitch"></a>`collectd::plugin::contextswitch`
+### <a name="collectd--plugin--contextswitch"></a>`collectd::plugin::contextswitch`
 
 https://collectd.org/wiki/index.php/Plugin:ContextSwitch
 
@@ -1517,10 +1529,10 @@ https://collectd.org/wiki/index.php/Plugin:ContextSwitch
 
 The following parameters are available in the `collectd::plugin::contextswitch` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--contextswitch--ensure)
+* [`interval`](#-collectd--plugin--contextswitch--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--contextswitch--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1528,15 +1540,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--contextswitch--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugincpu"></a>`collectd::plugin::cpu`
+### <a name="collectd--plugin--cpu"></a>`collectd::plugin::cpu`
 
 https://collectd.org/wiki/index.php/Plugin:CPU
 
@@ -1544,16 +1556,16 @@ https://collectd.org/wiki/index.php/Plugin:CPU
 
 The following parameters are available in the `collectd::plugin::cpu` class:
 
-* [`ensure`](#ensure)
-* [`reportbystate`](#reportbystate)
-* [`reportbycpu`](#reportbycpu)
-* [`valuespercentage`](#valuespercentage)
-* [`reportnumcpu`](#reportnumcpu)
-* [`reportgueststate`](#reportgueststate)
-* [`subtractgueststate`](#subtractgueststate)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--cpu--ensure)
+* [`reportbystate`](#-collectd--plugin--cpu--reportbystate)
+* [`reportbycpu`](#-collectd--plugin--cpu--reportbycpu)
+* [`valuespercentage`](#-collectd--plugin--cpu--valuespercentage)
+* [`reportnumcpu`](#-collectd--plugin--cpu--reportnumcpu)
+* [`reportgueststate`](#-collectd--plugin--cpu--reportgueststate)
+* [`subtractgueststate`](#-collectd--plugin--cpu--subtractgueststate)
+* [`interval`](#-collectd--plugin--cpu--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--cpu--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1561,63 +1573,63 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="reportbystate"></a>`reportbystate`
+##### <a name="-collectd--plugin--cpu--reportbystate"></a>`reportbystate`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="reportbycpu"></a>`reportbycpu`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="valuespercentage"></a>`valuespercentage`
+##### <a name="-collectd--plugin--cpu--reportbycpu"></a>`reportbycpu`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-##### <a name="reportnumcpu"></a>`reportnumcpu`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="reportgueststate"></a>`reportgueststate`
+##### <a name="-collectd--plugin--cpu--valuespercentage"></a>`valuespercentage`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="subtractgueststate"></a>`subtractgueststate`
+##### <a name="-collectd--plugin--cpu--reportnumcpu"></a>`reportnumcpu`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--cpu--reportgueststate"></a>`reportgueststate`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--cpu--subtractgueststate"></a>`subtractgueststate`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--cpu--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugincpufreq"></a>`collectd::plugin::cpufreq`
+### <a name="collectd--plugin--cpufreq"></a>`collectd::plugin::cpufreq`
 
 https://collectd.org/wiki/index.php/Plugin:CPUFreq
 
@@ -1625,9 +1637,9 @@ https://collectd.org/wiki/index.php/Plugin:CPUFreq
 
 The following parameters are available in the `collectd::plugin::cpufreq` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--cpufreq--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--cpufreq--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1635,7 +1647,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-### <a name="collectdplugincsv"></a>`collectd::plugin::csv`
+### <a name="collectd--plugin--csv"></a>`collectd::plugin::csv`
 
 https://collectd.org/wiki/index.php/Plugin:CSV
 
@@ -1643,12 +1655,12 @@ https://collectd.org/wiki/index.php/Plugin:CSV
 
 The following parameters are available in the `collectd::plugin::csv` class:
 
-* [`ensure`](#ensure)
-* [`datadir`](#datadir)
-* [`interval`](#interval)
-* [`storerates`](#storerates)
+* [`ensure`](#-collectd--plugin--csv--ensure)
+* [`datadir`](#-collectd--plugin--csv--datadir)
+* [`interval`](#-collectd--plugin--csv--interval)
+* [`storerates`](#-collectd--plugin--csv--storerates)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--csv--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -1656,7 +1668,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="datadir"></a>`datadir`
+##### <a name="-collectd--plugin--csv--datadir"></a>`datadir`
 
 Data type: `Any`
 
@@ -1664,23 +1676,23 @@ Data type: `Any`
 
 Default value: `'/etc/collectd/var/lib/collectd/csv'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--csv--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="storerates"></a>`storerates`
+##### <a name="-collectd--plugin--csv--storerates"></a>`storerates`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdplugincuda"></a>`collectd::plugin::cuda`
+### <a name="collectd--plugin--cuda"></a>`collectd::plugin::cuda`
 
 Class: collectd::plugin::cuda
 
@@ -1693,53 +1705,53 @@ Note, it is up to you to support package installation and sources
 
 The following parameters are available in the `collectd::plugin::cuda` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`package_provider`](#package_provider)
-* [`provider_proxy`](#provider_proxy)
+* [`ensure`](#-collectd--plugin--cuda--ensure)
+* [`manage_package`](#-collectd--plugin--cuda--manage_package)
+* [`package_name`](#-collectd--plugin--cuda--package_name)
+* [`package_provider`](#-collectd--plugin--cuda--package_provider)
+* [`provider_proxy`](#-collectd--plugin--cuda--provider_proxy)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--cuda--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
-Optional[String] Passed to package and collectd::plugin resources (both). Default: present
+Passed to package and collectd::plugin resources (both)
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--cuda--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
-Optional[Boolean] Toggles installation of plugin. Default: undef
+Toggles installation of plugin
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--cuda--package_name"></a>`package_name`
 
 Data type: `String[1]`
 
-Optional[String] Name of plugin package to install. Default: collectd-cuda
+Name of plugin package to install
 
 Default value: `'collectd-cuda'`
 
-##### <a name="package_provider"></a>`package_provider`
+##### <a name="-collectd--plugin--cuda--package_provider"></a>`package_provider`
 
 Data type: `Optional[String[1]]`
 
-Optional[String] Passed to package resource. Default: pip
+Passed to package resource
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="provider_proxy"></a>`provider_proxy`
+##### <a name="-collectd--plugin--cuda--provider_proxy"></a>`provider_proxy`
 
 Data type: `Optional[String[1]]`
 
-Optional[String] Proxy for provider. Default: undef
+Proxy for provider
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugincurl"></a>`collectd::plugin::curl`
+### <a name="collectd--plugin--curl"></a>`collectd::plugin::curl`
 
 The collectd::plugin::curl class.
 
@@ -1747,12 +1759,12 @@ The collectd::plugin::curl class.
 
 The following parameters are available in the `collectd::plugin::curl` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
-* [`pages`](#pages)
+* [`ensure`](#-collectd--plugin--curl--ensure)
+* [`manage_package`](#-collectd--plugin--curl--manage_package)
+* [`interval`](#-collectd--plugin--curl--interval)
+* [`pages`](#-collectd--plugin--curl--pages)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--curl--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -1760,23 +1772,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--curl--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--curl--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="pages"></a>`pages`
+##### <a name="-collectd--plugin--curl--pages"></a>`pages`
 
 Data type: `Any`
 
@@ -1784,7 +1796,7 @@ Data type: `Any`
 
 Default value: `{}`
 
-### <a name="collectdplugindbi"></a>`collectd::plugin::dbi`
+### <a name="collectd--plugin--dbi"></a>`collectd::plugin::dbi`
 
 https://collectd.org/wiki/index.php/Plugin:DBI
 
@@ -1792,14 +1804,14 @@ https://collectd.org/wiki/index.php/Plugin:DBI
 
 The following parameters are available in the `collectd::plugin::dbi` class:
 
-* [`ensure`](#ensure)
-* [`databases`](#databases)
-* [`queries`](#queries)
-* [`packages`](#packages)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
+* [`ensure`](#-collectd--plugin--dbi--ensure)
+* [`databases`](#-collectd--plugin--dbi--databases)
+* [`queries`](#-collectd--plugin--dbi--queries)
+* [`packages`](#-collectd--plugin--dbi--packages)
+* [`interval`](#-collectd--plugin--dbi--interval)
+* [`manage_package`](#-collectd--plugin--dbi--manage_package)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dbi--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -1807,7 +1819,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="databases"></a>`databases`
+##### <a name="-collectd--plugin--dbi--databases"></a>`databases`
 
 Data type: `Any`
 
@@ -1815,7 +1827,7 @@ Data type: `Any`
 
 Default value: `{}`
 
-##### <a name="queries"></a>`queries`
+##### <a name="-collectd--plugin--dbi--queries"></a>`queries`
 
 Data type: `Any`
 
@@ -1823,31 +1835,31 @@ Data type: `Any`
 
 Default value: `{}`
 
-##### <a name="packages"></a>`packages`
+##### <a name="-collectd--plugin--dbi--packages"></a>`packages`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--dbi--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugindcpmm"></a>`collectd::plugin::dcpmm`
+##### <a name="-collectd--plugin--dbi--manage_package"></a>`manage_package`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--dcpmm"></a>`collectd::plugin::dcpmm`
 
 Class to manage dcpmm plugin for collectd.
 
@@ -1858,13 +1870,13 @@ Plugin requires root privileges to perform the statistics collection.
 
 The following parameters are available in the `collectd::plugin::dcpmm` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`collect_health`](#collect_health)
-* [`collect_perf_metrics`](#collect_perf_metrics)
-* [`enable_dispatch_all`](#enable_dispatch_all)
+* [`ensure`](#-collectd--plugin--dcpmm--ensure)
+* [`interval`](#-collectd--plugin--dcpmm--interval)
+* [`collect_health`](#-collectd--plugin--dcpmm--collect_health)
+* [`collect_perf_metrics`](#-collectd--plugin--dcpmm--collect_perf_metrics)
+* [`enable_dispatch_all`](#-collectd--plugin--dcpmm--enable_dispatch_all)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dcpmm--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -1872,7 +1884,7 @@ Ensure param for collectd::plugin type.
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--dcpmm--interval"></a>`interval`
 
 Data type: `Float`
 
@@ -1880,31 +1892,31 @@ Sets interval (in seconds) in which the values will be collected.
 
 Default value: `10.0`
 
-##### <a name="collect_health"></a>`collect_health`
+##### <a name="-collectd--plugin--dcpmm--collect_health"></a>`collect_health`
 
 Data type: `Boolean`
 
 Collects health information. collect_health and collect_perf_metrics cannot be true at the same time.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="collect_perf_metrics"></a>`collect_perf_metrics`
+##### <a name="-collectd--plugin--dcpmm--collect_perf_metrics"></a>`collect_perf_metrics`
 
 Data type: `Boolean`
 
 Collects memory performance metrics. collect_health and collect_perf_metrics cannot be true at the same time.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="enable_dispatch_all"></a>`enable_dispatch_all`
+##### <a name="-collectd--plugin--dcpmm--enable_dispatch_all"></a>`enable_dispatch_all`
 
 Data type: `Boolean`
 
 This parameter helps to seamlessly enable simultaneous health and memory perf metrics collection in future. Unused at the moment and must always be false.
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdplugindf"></a>`collectd::plugin::df`
+### <a name="collectd--plugin--df"></a>`collectd::plugin::df`
 
 https://collectd.org/wiki/index.php/Plugin:DF
 
@@ -1912,19 +1924,19 @@ https://collectd.org/wiki/index.php/Plugin:DF
 
 The following parameters are available in the `collectd::plugin::df` class:
 
-* [`ensure`](#ensure)
-* [`devices`](#devices)
-* [`fstypes`](#fstypes)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
-* [`mountpoints`](#mountpoints)
-* [`reportbydevice`](#reportbydevice)
-* [`reportinodes`](#reportinodes)
-* [`reportreserved`](#reportreserved)
-* [`valuesabsolute`](#valuesabsolute)
-* [`valuespercentage`](#valuespercentage)
+* [`ensure`](#-collectd--plugin--df--ensure)
+* [`devices`](#-collectd--plugin--df--devices)
+* [`fstypes`](#-collectd--plugin--df--fstypes)
+* [`ignoreselected`](#-collectd--plugin--df--ignoreselected)
+* [`interval`](#-collectd--plugin--df--interval)
+* [`mountpoints`](#-collectd--plugin--df--mountpoints)
+* [`reportbydevice`](#-collectd--plugin--df--reportbydevice)
+* [`reportinodes`](#-collectd--plugin--df--reportinodes)
+* [`reportreserved`](#-collectd--plugin--df--reportreserved)
+* [`valuesabsolute`](#-collectd--plugin--df--valuesabsolute)
+* [`valuespercentage`](#-collectd--plugin--df--valuespercentage)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--df--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -1932,7 +1944,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="devices"></a>`devices`
+##### <a name="-collectd--plugin--df--devices"></a>`devices`
 
 Data type: `Array`
 
@@ -1940,7 +1952,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="fstypes"></a>`fstypes`
+##### <a name="-collectd--plugin--df--fstypes"></a>`fstypes`
 
 Data type: `Array`
 
@@ -1948,23 +1960,23 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--df--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--df--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="mountpoints"></a>`mountpoints`
+##### <a name="-collectd--plugin--df--mountpoints"></a>`mountpoints`
 
 Data type: `Array`
 
@@ -1972,47 +1984,47 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="reportbydevice"></a>`reportbydevice`
+##### <a name="-collectd--plugin--df--reportbydevice"></a>`reportbydevice`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="reportinodes"></a>`reportinodes`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="reportreserved"></a>`reportreserved`
+##### <a name="-collectd--plugin--df--reportinodes"></a>`reportinodes`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="valuesabsolute"></a>`valuesabsolute`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="valuespercentage"></a>`valuespercentage`
+##### <a name="-collectd--plugin--df--reportreserved"></a>`reportreserved`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-### <a name="collectdplugindisk"></a>`collectd::plugin::disk`
+##### <a name="-collectd--plugin--df--valuesabsolute"></a>`valuesabsolute`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--df--valuespercentage"></a>`valuespercentage`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+### <a name="collectd--plugin--disk"></a>`collectd::plugin::disk`
 
 https://collectd.org/wiki/index.php/Plugin:Disk
 
@@ -2020,16 +2032,16 @@ https://collectd.org/wiki/index.php/Plugin:Disk
 
 The following parameters are available in the `collectd::plugin::disk` class:
 
-* [`disks`](#disks)
-* [`ensure`](#ensure)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`udevnameattr`](#udevnameattr)
-* [`package_install_options`](#package_install_options)
+* [`disks`](#-collectd--plugin--disk--disks)
+* [`ensure`](#-collectd--plugin--disk--ensure)
+* [`ignoreselected`](#-collectd--plugin--disk--ignoreselected)
+* [`interval`](#-collectd--plugin--disk--interval)
+* [`manage_package`](#-collectd--plugin--disk--manage_package)
+* [`package_name`](#-collectd--plugin--disk--package_name)
+* [`udevnameattr`](#-collectd--plugin--disk--udevnameattr)
+* [`package_install_options`](#-collectd--plugin--disk--package_install_options)
 
-##### <a name="disks"></a>`disks`
+##### <a name="-collectd--plugin--disk--disks"></a>`disks`
 
 Data type: `Array`
 
@@ -2037,7 +2049,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--disk--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2045,31 +2057,31 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--disk--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--disk--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--disk--manage_package"></a>`manage_package`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--disk--package_name"></a>`package_name`
 
 Data type: `Any`
 
@@ -2077,23 +2089,23 @@ Data type: `Any`
 
 Default value: `'collectd-disk'`
 
-##### <a name="udevnameattr"></a>`udevnameattr`
+##### <a name="-collectd--plugin--disk--udevnameattr"></a>`udevnameattr`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_install_options"></a>`package_install_options`
+##### <a name="-collectd--plugin--disk--package_install_options"></a>`package_install_options`
 
 Data type: `Optional[Array[String]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugindns"></a>`collectd::plugin::dns`
+### <a name="collectd--plugin--dns"></a>`collectd::plugin::dns`
 
 Class: collectd::plugin::dns
 
@@ -2101,15 +2113,15 @@ Class: collectd::plugin::dns
 
 The following parameters are available in the `collectd::plugin::dns` class:
 
-* [`ensure`](#ensure)
-* [`ignoresource`](#ignoresource)
-* [`interface`](#interface)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`selectnumericquerytypes`](#selectnumericquerytypes)
+* [`ensure`](#-collectd--plugin--dns--ensure)
+* [`ignoresource`](#-collectd--plugin--dns--ignoresource)
+* [`interface`](#-collectd--plugin--dns--interface)
+* [`interval`](#-collectd--plugin--dns--interval)
+* [`manage_package`](#-collectd--plugin--dns--manage_package)
+* [`package_name`](#-collectd--plugin--dns--package_name)
+* [`selectnumericquerytypes`](#-collectd--plugin--dns--selectnumericquerytypes)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dns--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent']`
 
@@ -2117,15 +2129,15 @@ Data type: `Enum['present','absent']`
 
 Default value: `'present'`
 
-##### <a name="ignoresource"></a>`ignoresource`
+##### <a name="-collectd--plugin--dns--ignoresource"></a>`ignoresource`
 
 Data type: `Optional[Stdlib::IP::Address]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interface"></a>`interface`
+##### <a name="-collectd--plugin--dns--interface"></a>`interface`
 
 Data type: `String`
 
@@ -2133,23 +2145,23 @@ Data type: `String`
 
 Default value: `'any'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--dns--interval"></a>`interval`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--dns--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--dns--package_name"></a>`package_name`
 
 Data type: `Any`
 
@@ -2157,15 +2169,15 @@ Data type: `Any`
 
 Default value: `'collectd-dns'`
 
-##### <a name="selectnumericquerytypes"></a>`selectnumericquerytypes`
+##### <a name="-collectd--plugin--dns--selectnumericquerytypes"></a>`selectnumericquerytypes`
 
 Data type: `Variant[String,Boolean]`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="collectdplugindpdk_telemetry"></a>`collectd::plugin::dpdk_telemetry`
+### <a name="collectd--plugin--dpdk_telemetry"></a>`collectd::plugin::dpdk_telemetry`
 
 Class to manage dpdk_telemetry plugin for collectd.
 
@@ -2182,11 +2194,11 @@ and publishes the metric values to collectd for further use.
 
 The following parameters are available in the `collectd::plugin::dpdk_telemetry` class:
 
-* [`ensure`](#ensure)
-* [`client_socket_path`](#client_socket_path)
-* [`dpdk_socket_path`](#dpdk_socket_path)
+* [`ensure`](#-collectd--plugin--dpdk_telemetry--ensure)
+* [`client_socket_path`](#-collectd--plugin--dpdk_telemetry--client_socket_path)
+* [`dpdk_socket_path`](#-collectd--plugin--dpdk_telemetry--dpdk_socket_path)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dpdk_telemetry--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -2194,7 +2206,7 @@ Ensure param for collectd::plugin type.
 
 Default value: `'present'`
 
-##### <a name="client_socket_path"></a>`client_socket_path`
+##### <a name="-collectd--plugin--dpdk_telemetry--client_socket_path"></a>`client_socket_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -2202,7 +2214,7 @@ UNIX domain client socket to receive messages from DPDK telemetry library.
 
 Default value: `'/var/run/.client'`
 
-##### <a name="dpdk_socket_path"></a>`dpdk_socket_path`
+##### <a name="-collectd--plugin--dpdk_telemetry--dpdk_socket_path"></a>`dpdk_socket_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -2210,7 +2222,7 @@ UNIX domain DPDK telemetry socket to be connected to send messages.
 
 Default value: `'/var/run/dpdk/rte/telemetry'`
 
-### <a name="collectdpluginentropy"></a>`collectd::plugin::entropy`
+### <a name="collectd--plugin--entropy"></a>`collectd::plugin::entropy`
 
 https://collectd.org/wiki/index.php/Plugin:Entropy
 
@@ -2218,10 +2230,10 @@ https://collectd.org/wiki/index.php/Plugin:Entropy
 
 The following parameters are available in the `collectd::plugin::entropy` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--entropy--ensure)
+* [`interval`](#-collectd--plugin--entropy--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--entropy--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2229,15 +2241,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--entropy--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginethstat"></a>`collectd::plugin::ethstat`
+### <a name="collectd--plugin--ethstat"></a>`collectd::plugin::ethstat`
 
 https://collectd.org/wiki/index.php/Plugin:Ethstat
 
@@ -2245,13 +2257,13 @@ https://collectd.org/wiki/index.php/Plugin:Ethstat
 
 The following parameters are available in the `collectd::plugin::ethstat` class:
 
-* [`ensure`](#ensure)
-* [`interfaces`](#interfaces)
-* [`maps`](#maps)
-* [`mappedonly`](#mappedonly)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--ethstat--ensure)
+* [`interfaces`](#-collectd--plugin--ethstat--interfaces)
+* [`maps`](#-collectd--plugin--ethstat--maps)
+* [`mappedonly`](#-collectd--plugin--ethstat--mappedonly)
+* [`interval`](#-collectd--plugin--ethstat--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ethstat--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2259,7 +2271,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interfaces"></a>`interfaces`
+##### <a name="-collectd--plugin--ethstat--interfaces"></a>`interfaces`
 
 Data type: `Array`
 
@@ -2267,7 +2279,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="maps"></a>`maps`
+##### <a name="-collectd--plugin--ethstat--maps"></a>`maps`
 
 Data type: `Array`
 
@@ -2275,23 +2287,23 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="mappedonly"></a>`mappedonly`
+##### <a name="-collectd--plugin--ethstat--mappedonly"></a>`mappedonly`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--ethstat--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginexec"></a>`collectd::plugin::exec`
+### <a name="collectd--plugin--exec"></a>`collectd::plugin::exec`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
 
@@ -2299,21 +2311,13 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_exec
 
 The following parameters are available in the `collectd::plugin::exec` class:
 
-* [`commands`](#commands)
-* [`commands_defaults`](#commands_defaults)
-* [`interval`](#interval)
-* [`ensure`](#ensure)
-* [`globals`](#globals)
+* [`commands`](#-collectd--plugin--exec--commands)
+* [`commands_defaults`](#-collectd--plugin--exec--commands_defaults)
+* [`interval`](#-collectd--plugin--exec--interval)
+* [`ensure`](#-collectd--plugin--exec--ensure)
+* [`globals`](#-collectd--plugin--exec--globals)
 
-##### <a name="commands"></a>`commands`
-
-Data type: `Hash`
-
-
-
-Default value: `{}`
-
-##### <a name="commands_defaults"></a>`commands_defaults`
+##### <a name="-collectd--plugin--exec--commands"></a>`commands`
 
 Data type: `Hash`
 
@@ -2321,15 +2325,23 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--exec--commands_defaults"></a>`commands_defaults`
+
+Data type: `Hash`
+
+
+
+Default value: `{}`
+
+##### <a name="-collectd--plugin--exec--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--exec--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2337,15 +2349,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="globals"></a>`globals`
+##### <a name="-collectd--plugin--exec--globals"></a>`globals`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginfhcount"></a>`collectd::plugin::fhcount`
+### <a name="collectd--plugin--fhcount"></a>`collectd::plugin::fhcount`
 
 https://collectd.org/wiki/index.php/Plugin:Fhcount
 
@@ -2353,12 +2365,12 @@ https://collectd.org/wiki/index.php/Plugin:Fhcount
 
 The following parameters are available in the `collectd::plugin::fhcount` class:
 
-* [`ensure`](#ensure)
-* [`valuesabsolute`](#valuesabsolute)
-* [`valuespercentage`](#valuespercentage)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--fhcount--ensure)
+* [`valuesabsolute`](#-collectd--plugin--fhcount--valuesabsolute)
+* [`valuespercentage`](#-collectd--plugin--fhcount--valuespercentage)
+* [`interval`](#-collectd--plugin--fhcount--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--fhcount--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2366,31 +2378,31 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="valuesabsolute"></a>`valuesabsolute`
+##### <a name="-collectd--plugin--fhcount--valuesabsolute"></a>`valuesabsolute`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="valuespercentage"></a>`valuespercentage`
+##### <a name="-collectd--plugin--fhcount--valuespercentage"></a>`valuespercentage`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--fhcount--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginfilecount"></a>`collectd::plugin::filecount`
+### <a name="collectd--plugin--filecount"></a>`collectd::plugin::filecount`
 
 https://collectd.org/wiki/index.php/Plugin:FileCount
 
@@ -2398,11 +2410,11 @@ https://collectd.org/wiki/index.php/Plugin:FileCount
 
 The following parameters are available in the `collectd::plugin::filecount` class:
 
-* [`ensure`](#ensure)
-* [`directories`](#directories)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--filecount--ensure)
+* [`directories`](#-collectd--plugin--filecount--directories)
+* [`interval`](#-collectd--plugin--filecount--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--filecount--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2410,7 +2422,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="directories"></a>`directories`
+##### <a name="-collectd--plugin--filecount--directories"></a>`directories`
 
 Data type: `Hash`
 
@@ -2418,15 +2430,15 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--filecount--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginfilter"></a>`collectd::plugin::filter`
+### <a name="collectd--plugin--filter"></a>`collectd::plugin::filter`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -2434,11 +2446,11 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::filter` class:
 
-* [`ensure`](#ensure)
-* [`precachechain`](#precachechain)
-* [`postcachechain`](#postcachechain)
+* [`ensure`](#-collectd--plugin--filter--ensure)
+* [`precachechain`](#-collectd--plugin--filter--precachechain)
+* [`postcachechain`](#-collectd--plugin--filter--postcachechain)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--filter--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2446,7 +2458,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="precachechain"></a>`precachechain`
+##### <a name="-collectd--plugin--filter--precachechain"></a>`precachechain`
 
 Data type: `Any`
 
@@ -2454,7 +2466,7 @@ Data type: `Any`
 
 Default value: `'PreChain'`
 
-##### <a name="postcachechain"></a>`postcachechain`
+##### <a name="-collectd--plugin--filter--postcachechain"></a>`postcachechain`
 
 Data type: `Any`
 
@@ -2462,7 +2474,7 @@ Data type: `Any`
 
 Default value: `'PostChain'`
 
-### <a name="collectdpluginfscache"></a>`collectd::plugin::fscache`
+### <a name="collectd--plugin--fscache"></a>`collectd::plugin::fscache`
 
 https://collectd.org/wiki/index.php/Plugin:FSCache
 
@@ -2470,9 +2482,9 @@ https://collectd.org/wiki/index.php/Plugin:FSCache
 
 The following parameters are available in the `collectd::plugin::fscache` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--fscache--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--fscache--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2480,7 +2492,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdplugingenericjmx"></a>`collectd::plugin::genericjmx`
+### <a name="collectd--plugin--genericjmx"></a>`collectd::plugin::genericjmx`
 
 https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
@@ -2488,11 +2500,11 @@ https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
 The following parameters are available in the `collectd::plugin::genericjmx` class:
 
-* [`ensure`](#ensure)
-* [`jvmarg`](#jvmarg)
-* [`manage_package`](#manage_package)
+* [`ensure`](#-collectd--plugin--genericjmx--ensure)
+* [`jvmarg`](#-collectd--plugin--genericjmx--jvmarg)
+* [`manage_package`](#-collectd--plugin--genericjmx--manage_package)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--genericjmx--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2500,7 +2512,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="jvmarg"></a>`jvmarg`
+##### <a name="-collectd--plugin--genericjmx--jvmarg"></a>`jvmarg`
 
 Data type: `Any`
 
@@ -2508,15 +2520,15 @@ Data type: `Any`
 
 Default value: `[]`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--genericjmx--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginhddtemp"></a>`collectd::plugin::hddtemp`
+### <a name="collectd--plugin--hddtemp"></a>`collectd::plugin::hddtemp`
 
 https://collectd.org/wiki/index.php/Plugin:HDDTemp
 
@@ -2524,12 +2536,12 @@ https://collectd.org/wiki/index.php/Plugin:HDDTemp
 
 The following parameters are available in the `collectd::plugin::hddtemp` class:
 
-* [`host`](#host)
-* [`port`](#port)
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`host`](#-collectd--plugin--hddtemp--host)
+* [`port`](#-collectd--plugin--hddtemp--port)
+* [`ensure`](#-collectd--plugin--hddtemp--ensure)
+* [`interval`](#-collectd--plugin--hddtemp--interval)
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--hddtemp--host"></a>`host`
 
 Data type: `Stdlib::Host`
 
@@ -2537,7 +2549,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'127.0.0.1'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--hddtemp--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
@@ -2545,7 +2557,7 @@ Data type: `Stdlib::Port`
 
 Default value: `7634`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--hddtemp--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2553,15 +2565,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--hddtemp--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginhugepages"></a>`collectd::plugin::hugepages`
+### <a name="collectd--plugin--hugepages"></a>`collectd::plugin::hugepages`
 
 == Class: collectd::plugin::hugepages
 
@@ -2608,15 +2620,15 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::hugepages` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`report_per_node_hp`](#report_per_node_hp)
-* [`report_root_hp`](#report_root_hp)
-* [`values_pages`](#values_pages)
-* [`values_bytes`](#values_bytes)
-* [`values_percentage`](#values_percentage)
+* [`ensure`](#-collectd--plugin--hugepages--ensure)
+* [`interval`](#-collectd--plugin--hugepages--interval)
+* [`report_per_node_hp`](#-collectd--plugin--hugepages--report_per_node_hp)
+* [`report_root_hp`](#-collectd--plugin--hugepages--report_root_hp)
+* [`values_pages`](#-collectd--plugin--hugepages--values_pages)
+* [`values_bytes`](#-collectd--plugin--hugepages--values_bytes)
+* [`values_percentage`](#-collectd--plugin--hugepages--values_percentage)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--hugepages--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -2624,55 +2636,55 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--hugepages--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="report_per_node_hp"></a>`report_per_node_hp`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="report_root_hp"></a>`report_root_hp`
+##### <a name="-collectd--plugin--hugepages--report_per_node_hp"></a>`report_per_node_hp`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="values_pages"></a>`values_pages`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="values_bytes"></a>`values_bytes`
+##### <a name="-collectd--plugin--hugepages--report_root_hp"></a>`report_root_hp`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-##### <a name="values_percentage"></a>`values_percentage`
+##### <a name="-collectd--plugin--hugepages--values_pages"></a>`values_pages`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-### <a name="collectdpluginintel_pmu"></a>`collectd::plugin::intel_pmu`
+##### <a name="-collectd--plugin--hugepages--values_bytes"></a>`values_bytes`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--hugepages--values_percentage"></a>`values_percentage`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+### <a name="collectd--plugin--intel_pmu"></a>`collectd::plugin::intel_pmu`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_intel_pmu
 
@@ -2680,14 +2692,14 @@ https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_intel_p
 
 The following parameters are available in the `collectd::plugin::intel_pmu` class:
 
-* [`ensure`](#ensure)
-* [`report_hardware_cache_events`](#report_hardware_cache_events)
-* [`report_kernel_pmu_events`](#report_kernel_pmu_events)
-* [`report_software_events`](#report_software_events)
-* [`event_list`](#event_list)
-* [`hardware_events`](#hardware_events)
+* [`ensure`](#-collectd--plugin--intel_pmu--ensure)
+* [`report_hardware_cache_events`](#-collectd--plugin--intel_pmu--report_hardware_cache_events)
+* [`report_kernel_pmu_events`](#-collectd--plugin--intel_pmu--report_kernel_pmu_events)
+* [`report_software_events`](#-collectd--plugin--intel_pmu--report_software_events)
+* [`event_list`](#-collectd--plugin--intel_pmu--event_list)
+* [`hardware_events`](#-collectd--plugin--intel_pmu--hardware_events)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--intel_pmu--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -2695,47 +2707,47 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="report_hardware_cache_events"></a>`report_hardware_cache_events`
+##### <a name="-collectd--plugin--intel_pmu--report_hardware_cache_events"></a>`report_hardware_cache_events`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="report_kernel_pmu_events"></a>`report_kernel_pmu_events`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="report_software_events"></a>`report_software_events`
+##### <a name="-collectd--plugin--intel_pmu--report_kernel_pmu_events"></a>`report_kernel_pmu_events`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="event_list"></a>`event_list`
+##### <a name="-collectd--plugin--intel_pmu--report_software_events"></a>`report_software_events`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--intel_pmu--event_list"></a>`event_list`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hardware_events"></a>`hardware_events`
+##### <a name="-collectd--plugin--intel_pmu--hardware_events"></a>`hardware_events`
 
 Data type: `Optional[Array[String]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginintel_rdt"></a>`collectd::plugin::intel_rdt`
+### <a name="collectd--plugin--intel_rdt"></a>`collectd::plugin::intel_rdt`
 
 == Class: collectd::plugin::intel_rdt
 
@@ -2769,11 +2781,11 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::intel_rdt` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`cores`](#cores)
+* [`ensure`](#-collectd--plugin--intel_rdt--ensure)
+* [`interval`](#-collectd--plugin--intel_rdt--interval)
+* [`cores`](#-collectd--plugin--intel_rdt--cores)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--intel_rdt--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -2781,15 +2793,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--intel_rdt--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="cores"></a>`cores`
+##### <a name="-collectd--plugin--intel_rdt--cores"></a>`cores`
 
 Data type: `Array[String[1]]`
 
@@ -2797,7 +2809,7 @@ Data type: `Array[String[1]]`
 
 Default value: `[]`
 
-### <a name="collectdplugininterface"></a>`collectd::plugin::interface`
+### <a name="collectd--plugin--interface"></a>`collectd::plugin::interface`
 
 https://collectd.org/wiki/index.php/Plugin:Interface
 
@@ -2805,13 +2817,13 @@ https://collectd.org/wiki/index.php/Plugin:Interface
 
 The following parameters are available in the `collectd::plugin::interface` class:
 
-* [`ensure`](#ensure)
-* [`interfaces`](#interfaces)
-* [`ignoreselected`](#ignoreselected)
-* [`reportinactive`](#reportinactive)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--interface--ensure)
+* [`interfaces`](#-collectd--plugin--interface--interfaces)
+* [`ignoreselected`](#-collectd--plugin--interface--ignoreselected)
+* [`reportinactive`](#-collectd--plugin--interface--reportinactive)
+* [`interval`](#-collectd--plugin--interface--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--interface--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2819,7 +2831,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interfaces"></a>`interfaces`
+##### <a name="-collectd--plugin--interface--interfaces"></a>`interfaces`
 
 Data type: `Array`
 
@@ -2827,31 +2839,31 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--interface--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="reportinactive"></a>`reportinactive`
+##### <a name="-collectd--plugin--interface--reportinactive"></a>`reportinactive`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--interface--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginipc"></a>`collectd::plugin::ipc`
+### <a name="collectd--plugin--ipc"></a>`collectd::plugin::ipc`
 
 == Class: collectd::plugin::ipc
 
@@ -2870,9 +2882,9 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::ipc` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--ipc--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ipc--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -2880,7 +2892,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-### <a name="collectdpluginipmi"></a>`collectd::plugin::ipmi`
+### <a name="collectd--plugin--ipmi"></a>`collectd::plugin::ipmi`
 
 https://collectd.org/wiki/index.php/Plugin:IPMI
 
@@ -2888,25 +2900,17 @@ https://collectd.org/wiki/index.php/Plugin:IPMI
 
 The following parameters are available in the `collectd::plugin::ipmi` class:
 
-* [`ensure`](#ensure)
-* [`ensure_package`](#ensure_package)
-* [`ignore_selected`](#ignore_selected)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`notify_sensor_add`](#notify_sensor_add)
-* [`notify_sensor_remove`](#notify_sensor_remove)
-* [`notify_sensor_not_present`](#notify_sensor_not_present)
-* [`sensors`](#sensors)
+* [`ensure`](#-collectd--plugin--ipmi--ensure)
+* [`ensure_package`](#-collectd--plugin--ipmi--ensure_package)
+* [`ignore_selected`](#-collectd--plugin--ipmi--ignore_selected)
+* [`interval`](#-collectd--plugin--ipmi--interval)
+* [`manage_package`](#-collectd--plugin--ipmi--manage_package)
+* [`notify_sensor_add`](#-collectd--plugin--ipmi--notify_sensor_add)
+* [`notify_sensor_remove`](#-collectd--plugin--ipmi--notify_sensor_remove)
+* [`notify_sensor_not_present`](#-collectd--plugin--ipmi--notify_sensor_not_present)
+* [`sensors`](#-collectd--plugin--ipmi--sensors)
 
-##### <a name="ensure"></a>`ensure`
-
-Data type: `Any`
-
-
-
-Default value: `'present'`
-
-##### <a name="ensure_package"></a>`ensure_package`
+##### <a name="-collectd--plugin--ipmi--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -2914,55 +2918,63 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="ignore_selected"></a>`ignore_selected`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--ipmi--ensure_package"></a>`ensure_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--ipmi--ignore_selected"></a>`ignore_selected`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--ipmi--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="notify_sensor_add"></a>`notify_sensor_add`
+##### <a name="-collectd--plugin--ipmi--manage_package"></a>`manage_package`
 
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="notify_sensor_remove"></a>`notify_sensor_remove`
-
-Data type: `Boolean`
+Data type: `Any`
 
 
 
-Default value: ``true``
+Default value: `undef`
 
-##### <a name="notify_sensor_not_present"></a>`notify_sensor_not_present`
+##### <a name="-collectd--plugin--ipmi--notify_sensor_add"></a>`notify_sensor_add`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="sensors"></a>`sensors`
+##### <a name="-collectd--plugin--ipmi--notify_sensor_remove"></a>`notify_sensor_remove`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--ipmi--notify_sensor_not_present"></a>`notify_sensor_not_present`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--ipmi--sensors"></a>`sensors`
 
 Data type: `Array`
 
@@ -2970,7 +2982,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-### <a name="collectdpluginiptables"></a>`collectd::plugin::iptables`
+### <a name="collectd--plugin--iptables"></a>`collectd::plugin::iptables`
 
 https://collectd.org/wiki/index.php/Plugin:IPTables
 
@@ -2978,22 +2990,14 @@ https://collectd.org/wiki/index.php/Plugin:IPTables
 
 The following parameters are available in the `collectd::plugin::iptables` class:
 
-* [`ensure`](#ensure)
-* [`ensure_package`](#ensure_package)
-* [`manage_package`](#manage_package)
-* [`chains`](#chains)
-* [`chains6`](#chains6)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--iptables--ensure)
+* [`ensure_package`](#-collectd--plugin--iptables--ensure_package)
+* [`manage_package`](#-collectd--plugin--iptables--manage_package)
+* [`chains`](#-collectd--plugin--iptables--chains)
+* [`chains6`](#-collectd--plugin--iptables--chains6)
+* [`interval`](#-collectd--plugin--iptables--interval)
 
-##### <a name="ensure"></a>`ensure`
-
-Data type: `Any`
-
-
-
-Default value: `'present'`
-
-##### <a name="ensure_package"></a>`ensure_package`
+##### <a name="-collectd--plugin--iptables--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3001,15 +3005,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--iptables--ensure_package"></a>`ensure_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `'present'`
 
-##### <a name="chains"></a>`chains`
+##### <a name="-collectd--plugin--iptables--manage_package"></a>`manage_package`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--iptables--chains"></a>`chains`
 
 Data type: `Hash`
 
@@ -3017,7 +3029,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="chains6"></a>`chains6`
+##### <a name="-collectd--plugin--iptables--chains6"></a>`chains6`
 
 Data type: `Hash`
 
@@ -3025,15 +3037,15 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--iptables--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginirq"></a>`collectd::plugin::irq`
+### <a name="collectd--plugin--irq"></a>`collectd::plugin::irq`
 
 https://collectd.org/wiki/index.php/Plugin:IRQ
 
@@ -3041,12 +3053,12 @@ https://collectd.org/wiki/index.php/Plugin:IRQ
 
 The following parameters are available in the `collectd::plugin::irq` class:
 
-* [`ensure`](#ensure)
-* [`irqs`](#irqs)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--irq--ensure)
+* [`irqs`](#-collectd--plugin--irq--irqs)
+* [`ignoreselected`](#-collectd--plugin--irq--ignoreselected)
+* [`interval`](#-collectd--plugin--irq--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--irq--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3054,7 +3066,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="irqs"></a>`irqs`
+##### <a name="-collectd--plugin--irq--irqs"></a>`irqs`
 
 Data type: `Array`
 
@@ -3062,23 +3074,23 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--irq--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--irq--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginiscdhcp"></a>`collectd::plugin::iscdhcp`
+### <a name="collectd--plugin--iscdhcp"></a>`collectd::plugin::iscdhcp`
 
 Class: collectd::plugin::iscdhcp
 
@@ -3090,53 +3102,53 @@ Class: collectd::plugin::iscdhcp
 
 The following parameters are available in the `collectd::plugin::iscdhcp` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`package_provider`](#package_provider)
-* [`provider_proxy`](#provider_proxy)
+* [`ensure`](#-collectd--plugin--iscdhcp--ensure)
+* [`manage_package`](#-collectd--plugin--iscdhcp--manage_package)
+* [`package_name`](#-collectd--plugin--iscdhcp--package_name)
+* [`package_provider`](#-collectd--plugin--iscdhcp--package_provider)
+* [`provider_proxy`](#-collectd--plugin--iscdhcp--provider_proxy)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--iscdhcp--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
-Optional[String] Passed to package and collectd::plugin resources (both). Default: present
+Passed to package and collectd::plugin resources (both)
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--iscdhcp--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
-Optional[Boolean] Toggles installation of plugin. Default: undef
+Toggles installation of plugin
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--iscdhcp--package_name"></a>`package_name`
 
 Data type: `String[1]`
 
-Optional[String] Name of plugin package to install. Default: collectd-iscdhcp
+Name of plugin package to install
 
 Default value: `'collectd-iscdhcp'`
 
-##### <a name="package_provider"></a>`package_provider`
+##### <a name="-collectd--plugin--iscdhcp--package_provider"></a>`package_provider`
 
 Data type: `Optional[String[1]]`
 
-Optional[String] Passed to package resource. Default: pip
+Passed to package resource
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="provider_proxy"></a>`provider_proxy`
+##### <a name="-collectd--plugin--iscdhcp--provider_proxy"></a>`provider_proxy`
 
 Data type: `Optional[String[1]]`
 
-Optional[String] Proxy for provider. Default: undef
+Proxy for provider
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginjava"></a>`collectd::plugin::java`
+### <a name="collectd--plugin--java"></a>`collectd::plugin::java`
 
 https://collectd.org/wiki/index.php/Plugin:Java
 
@@ -3144,14 +3156,14 @@ https://collectd.org/wiki/index.php/Plugin:Java
 
 The following parameters are available in the `collectd::plugin::java` class:
 
-* [`ensure`](#ensure)
-* [`jvmarg`](#jvmarg)
-* [`loadplugin`](#loadplugin)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`java_home`](#java_home)
+* [`ensure`](#-collectd--plugin--java--ensure)
+* [`jvmarg`](#-collectd--plugin--java--jvmarg)
+* [`loadplugin`](#-collectd--plugin--java--loadplugin)
+* [`interval`](#-collectd--plugin--java--interval)
+* [`manage_package`](#-collectd--plugin--java--manage_package)
+* [`java_home`](#-collectd--plugin--java--java_home)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--java--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3159,7 +3171,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="jvmarg"></a>`jvmarg`
+##### <a name="-collectd--plugin--java--jvmarg"></a>`jvmarg`
 
 Data type: `Any`
 
@@ -3167,7 +3179,7 @@ Data type: `Any`
 
 Default value: `[]`
 
-##### <a name="loadplugin"></a>`loadplugin`
+##### <a name="-collectd--plugin--java--loadplugin"></a>`loadplugin`
 
 Data type: `Any`
 
@@ -3175,31 +3187,31 @@ Data type: `Any`
 
 Default value: `{}`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--java--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--java--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="java_home"></a>`java_home`
+##### <a name="-collectd--plugin--java--java_home"></a>`java_home`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginload"></a>`collectd::plugin::load`
+### <a name="collectd--plugin--load"></a>`collectd::plugin::load`
 
 https://collectd.org/wiki/index.php/Plugin:Load
 
@@ -3207,11 +3219,11 @@ https://collectd.org/wiki/index.php/Plugin:Load
 
 The following parameters are available in the `collectd::plugin::load` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`report_relative`](#report_relative)
+* [`ensure`](#-collectd--plugin--load--ensure)
+* [`interval`](#-collectd--plugin--load--interval)
+* [`report_relative`](#-collectd--plugin--load--report_relative)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--load--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3219,23 +3231,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--load--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="report_relative"></a>`report_relative`
+##### <a name="-collectd--plugin--load--report_relative"></a>`report_relative`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginlogfile"></a>`collectd::plugin::logfile`
+### <a name="collectd--plugin--logfile"></a>`collectd::plugin::logfile`
 
 https://collectd.org/wiki/index.php/Plugin:LogFile
 
@@ -3243,14 +3255,14 @@ https://collectd.org/wiki/index.php/Plugin:LogFile
 
 The following parameters are available in the `collectd::plugin::logfile` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`log_level`](#log_level)
-* [`log_file`](#log_file)
-* [`log_timestamp`](#log_timestamp)
-* [`print_severity`](#print_severity)
+* [`ensure`](#-collectd--plugin--logfile--ensure)
+* [`interval`](#-collectd--plugin--logfile--interval)
+* [`log_level`](#-collectd--plugin--logfile--log_level)
+* [`log_file`](#-collectd--plugin--logfile--log_file)
+* [`log_timestamp`](#-collectd--plugin--logfile--log_timestamp)
+* [`print_severity`](#-collectd--plugin--logfile--print_severity)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--logfile--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3258,15 +3270,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--logfile--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="log_level"></a>`log_level`
+##### <a name="-collectd--plugin--logfile--log_level"></a>`log_level`
 
 Data type: `Any`
 
@@ -3274,7 +3286,7 @@ Data type: `Any`
 
 Default value: `'info'`
 
-##### <a name="log_file"></a>`log_file`
+##### <a name="-collectd--plugin--logfile--log_file"></a>`log_file`
 
 Data type: `Any`
 
@@ -3282,23 +3294,23 @@ Data type: `Any`
 
 Default value: `'/var/log/collectd.log'`
 
-##### <a name="log_timestamp"></a>`log_timestamp`
+##### <a name="-collectd--plugin--logfile--log_timestamp"></a>`log_timestamp`
 
 Data type: `Any`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="print_severity"></a>`print_severity`
+##### <a name="-collectd--plugin--logfile--print_severity"></a>`print_severity`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginlogparser"></a>`collectd::plugin::logparser`
+### <a name="collectd--plugin--logparser"></a>`collectd::plugin::logparser`
 
 https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 
@@ -3306,10 +3318,10 @@ https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 
 The following parameters are available in the `collectd::plugin::logparser` class:
 
-* [`ensure`](#ensure)
-* [`logfile`](#logfile)
+* [`ensure`](#-collectd--plugin--logparser--ensure)
+* [`logfile`](#-collectd--plugin--logparser--logfile)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--logparser--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3317,13 +3329,16 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="logfile"></a>`logfile`
+##### <a name="-collectd--plugin--logparser--logfile"></a>`logfile`
 
 Data type: `Array[Hash[String[1],Collectd::LOGPARSER::Logfile]]`
 
 
 
-Default value: `[{
+Default value:
+
+```puppet
+[{
       '/var/log/syslog' => {
         'firstfullread' => false,
         'message' => [
@@ -3384,9 +3399,10 @@ Default value: `[{
           },
         ],
       }
-  }]`
+  }]
+```
 
-### <a name="collectdpluginlvm"></a>`collectd::plugin::lvm`
+### <a name="collectd--plugin--lvm"></a>`collectd::plugin::lvm`
 
 https://collectd.org/wiki/index.php/Plugin:LVM
 
@@ -3394,11 +3410,11 @@ https://collectd.org/wiki/index.php/Plugin:LVM
 
 The following parameters are available in the `collectd::plugin::lvm` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--lvm--ensure)
+* [`manage_package`](#-collectd--plugin--lvm--manage_package)
+* [`interval`](#-collectd--plugin--lvm--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--lvm--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3406,23 +3422,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--lvm--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--lvm--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginmcelog"></a>`collectd::plugin::mcelog`
+### <a name="collectd--plugin--mcelog"></a>`collectd::plugin::mcelog`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
 
@@ -3430,13 +3446,13 @@ https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
 
 The following parameters are available in the `collectd::plugin::mcelog` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`package_install_options`](#package_install_options)
-* [`mceloglogfile`](#mceloglogfile)
-* [`memory`](#memory)
+* [`ensure`](#-collectd--plugin--mcelog--ensure)
+* [`manage_package`](#-collectd--plugin--mcelog--manage_package)
+* [`package_install_options`](#-collectd--plugin--mcelog--package_install_options)
+* [`mceloglogfile`](#-collectd--plugin--mcelog--mceloglogfile)
+* [`memory`](#-collectd--plugin--mcelog--memory)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--mcelog--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -3444,15 +3460,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--mcelog--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_install_options"></a>`package_install_options`
+##### <a name="-collectd--plugin--mcelog--package_install_options"></a>`package_install_options`
 
 Data type: `Optional[Array]`
 
@@ -3460,26 +3476,30 @@ Data type: `Optional[Array]`
 
 Default value: `$collectd::package_install_options`
 
-##### <a name="mceloglogfile"></a>`mceloglogfile`
+##### <a name="-collectd--plugin--mcelog--mceloglogfile"></a>`mceloglogfile`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="memory"></a>`memory`
+##### <a name="-collectd--plugin--mcelog--memory"></a>`memory`
 
 Data type: `Collectd::MCELOG::Memory`
 
 
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'mcelogclientsocket' => '/var/run/mcelog-client',
     'persistentnotification' => false,
-  }`
+  }
+```
 
-### <a name="collectdpluginmemcached"></a>`collectd::plugin::memcached`
+### <a name="collectd--plugin--memcached"></a>`collectd::plugin::memcached`
 
 https://collectd.org/wiki/index.php/Plugin:memcached
 
@@ -3487,11 +3507,11 @@ https://collectd.org/wiki/index.php/Plugin:memcached
 
 The following parameters are available in the `collectd::plugin::memcached` class:
 
-* [`ensure`](#ensure)
-* [`instances`](#instances)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--memcached--ensure)
+* [`instances`](#-collectd--plugin--memcached--instances)
+* [`interval`](#-collectd--plugin--memcached--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--memcached--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3499,29 +3519,33 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="instances"></a>`instances`
+##### <a name="-collectd--plugin--memcached--instances"></a>`instances`
 
 Data type: `Hash`
 
 
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'default' => {
       'host'    => 'localhost',
       'address' => '127.0.0.1',
       'port'    => 11211,
     },
-  }`
+  }
+```
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--memcached--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginmemory"></a>`collectd::plugin::memory`
+### <a name="collectd--plugin--memory"></a>`collectd::plugin::memory`
 
 https://collectd.org/wiki/index.php/Plugin:Memory
 
@@ -3529,12 +3553,12 @@ https://collectd.org/wiki/index.php/Plugin:Memory
 
 The following parameters are available in the `collectd::plugin::memory` class:
 
-* [`ensure`](#ensure)
-* [`valuesabsolute`](#valuesabsolute)
-* [`valuespercentage`](#valuespercentage)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--memory--ensure)
+* [`valuesabsolute`](#-collectd--plugin--memory--valuesabsolute)
+* [`valuespercentage`](#-collectd--plugin--memory--valuespercentage)
+* [`interval`](#-collectd--plugin--memory--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--memory--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3542,31 +3566,31 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="valuesabsolute"></a>`valuesabsolute`
+##### <a name="-collectd--plugin--memory--valuesabsolute"></a>`valuesabsolute`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="valuespercentage"></a>`valuespercentage`
+##### <a name="-collectd--plugin--memory--valuespercentage"></a>`valuespercentage`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--memory--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginmongodb"></a>`collectd::plugin::mongodb`
+### <a name="collectd--plugin--mongodb"></a>`collectd::plugin::mongodb`
 
 Class: collectd::plugin::mongodb
 
@@ -3574,28 +3598,28 @@ Class: collectd::plugin::mongodb
 
 The following parameters are available in the `collectd::plugin::mongodb` class:
 
-* [`db_user`](#db_user)
-* [`db_pass`](#db_pass)
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`db_host`](#db_host)
-* [`db_port`](#db_port)
-* [`configured_dbs`](#configured_dbs)
-* [`collectd_dir`](#collectd_dir)
+* [`db_user`](#-collectd--plugin--mongodb--db_user)
+* [`db_pass`](#-collectd--plugin--mongodb--db_pass)
+* [`ensure`](#-collectd--plugin--mongodb--ensure)
+* [`interval`](#-collectd--plugin--mongodb--interval)
+* [`db_host`](#-collectd--plugin--mongodb--db_host)
+* [`db_port`](#-collectd--plugin--mongodb--db_port)
+* [`configured_dbs`](#-collectd--plugin--mongodb--configured_dbs)
+* [`collectd_dir`](#-collectd--plugin--mongodb--collectd_dir)
 
-##### <a name="db_user"></a>`db_user`
-
-Data type: `String`
-
-
-
-##### <a name="db_pass"></a>`db_pass`
+##### <a name="-collectd--plugin--mongodb--db_user"></a>`db_user`
 
 Data type: `String`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--mongodb--db_pass"></a>`db_pass`
+
+Data type: `String`
+
+
+
+##### <a name="-collectd--plugin--mongodb--ensure"></a>`ensure`
 
 Data type: `Enum['absent','present']`
 
@@ -3603,15 +3627,15 @@ Data type: `Enum['absent','present']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--mongodb--interval"></a>`interval`
 
 Data type: `Optional[Variant[String,Float]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="db_host"></a>`db_host`
+##### <a name="-collectd--plugin--mongodb--db_host"></a>`db_host`
 
 Data type: `Stdlib::Host`
 
@@ -3619,23 +3643,23 @@ Data type: `Stdlib::Host`
 
 Default value: `'127.0.0.1'`
 
-##### <a name="db_port"></a>`db_port`
+##### <a name="-collectd--plugin--mongodb--db_port"></a>`db_port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="configured_dbs"></a>`configured_dbs`
+##### <a name="-collectd--plugin--mongodb--configured_dbs"></a>`configured_dbs`
 
 Data type: `Optional[Array]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collectd_dir"></a>`collectd_dir`
+##### <a name="-collectd--plugin--mongodb--collectd_dir"></a>`collectd_dir`
 
 Data type: `Any`
 
@@ -3643,7 +3667,7 @@ Data type: `Any`
 
 Default value: `'/usr/lib/collectd'`
 
-### <a name="collectdpluginmysql"></a>`collectd::plugin::mysql`
+### <a name="collectd--plugin--mysql"></a>`collectd::plugin::mysql`
 
 MySQL plugin
 https://collectd.org/wiki/index.php/Plugin:MySQL
@@ -3652,11 +3676,11 @@ https://collectd.org/wiki/index.php/Plugin:MySQL
 
 The following parameters are available in the `collectd::plugin::mysql` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--mysql--ensure)
+* [`manage_package`](#-collectd--plugin--mysql--manage_package)
+* [`interval`](#-collectd--plugin--mysql--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--mysql--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3664,23 +3688,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--mysql--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--mysql--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnetlink"></a>`collectd::plugin::netlink`
+### <a name="collectd--plugin--netlink"></a>`collectd::plugin::netlink`
 
 https://collectd.org/wiki/index.php/Plugin:Netlink
 
@@ -3688,17 +3712,17 @@ https://collectd.org/wiki/index.php/Plugin:Netlink
 
 The following parameters are available in the `collectd::plugin::netlink` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interfaces`](#interfaces)
-* [`verboseinterfaces`](#verboseinterfaces)
-* [`qdiscs`](#qdiscs)
-* [`classes`](#classes)
-* [`filters`](#filters)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--netlink--ensure)
+* [`manage_package`](#-collectd--plugin--netlink--manage_package)
+* [`interfaces`](#-collectd--plugin--netlink--interfaces)
+* [`verboseinterfaces`](#-collectd--plugin--netlink--verboseinterfaces)
+* [`qdiscs`](#-collectd--plugin--netlink--qdiscs)
+* [`classes`](#-collectd--plugin--netlink--classes)
+* [`filters`](#-collectd--plugin--netlink--filters)
+* [`ignoreselected`](#-collectd--plugin--netlink--ignoreselected)
+* [`interval`](#-collectd--plugin--netlink--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--netlink--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3706,23 +3730,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--netlink--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interfaces"></a>`interfaces`
-
-Data type: `Array`
-
-
-
-Default value: `[]`
-
-##### <a name="verboseinterfaces"></a>`verboseinterfaces`
+##### <a name="-collectd--plugin--netlink--interfaces"></a>`interfaces`
 
 Data type: `Array`
 
@@ -3730,7 +3746,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="qdiscs"></a>`qdiscs`
+##### <a name="-collectd--plugin--netlink--verboseinterfaces"></a>`verboseinterfaces`
 
 Data type: `Array`
 
@@ -3738,7 +3754,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="classes"></a>`classes`
+##### <a name="-collectd--plugin--netlink--qdiscs"></a>`qdiscs`
 
 Data type: `Array`
 
@@ -3746,7 +3762,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="filters"></a>`filters`
+##### <a name="-collectd--plugin--netlink--classes"></a>`classes`
 
 Data type: `Array`
 
@@ -3754,23 +3770,31 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--netlink--filters"></a>`filters`
+
+Data type: `Array`
+
+
+
+Default value: `[]`
+
+##### <a name="-collectd--plugin--netlink--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--netlink--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnetwork"></a>`collectd::plugin::network`
+### <a name="collectd--plugin--network"></a>`collectd::plugin::network`
 
 https://collectd.org/wiki/index.php/Plugin:Network
 
@@ -3778,16 +3802,16 @@ https://collectd.org/wiki/index.php/Plugin:Network
 
 The following parameters are available in the `collectd::plugin::network` class:
 
-* [`ensure`](#ensure)
-* [`timetolive`](#timetolive)
-* [`maxpacketsize`](#maxpacketsize)
-* [`forward`](#forward)
-* [`interval`](#interval)
-* [`reportstats`](#reportstats)
-* [`listeners`](#listeners)
-* [`servers`](#servers)
+* [`ensure`](#-collectd--plugin--network--ensure)
+* [`timetolive`](#-collectd--plugin--network--timetolive)
+* [`maxpacketsize`](#-collectd--plugin--network--maxpacketsize)
+* [`forward`](#-collectd--plugin--network--forward)
+* [`interval`](#-collectd--plugin--network--interval)
+* [`reportstats`](#-collectd--plugin--network--reportstats)
+* [`listeners`](#-collectd--plugin--network--listeners)
+* [`servers`](#-collectd--plugin--network--servers)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--network--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -3795,55 +3819,47 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="timetolive"></a>`timetolive`
+##### <a name="-collectd--plugin--network--timetolive"></a>`timetolive`
 
 Data type: `Optional[Pattern[/[0-9]+/]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="maxpacketsize"></a>`maxpacketsize`
+##### <a name="-collectd--plugin--network--maxpacketsize"></a>`maxpacketsize`
 
 Data type: `Optional[Pattern[/[0-9]+/]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="forward"></a>`forward`
+##### <a name="-collectd--plugin--network--forward"></a>`forward`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--network--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="reportstats"></a>`reportstats`
+##### <a name="-collectd--plugin--network--reportstats"></a>`reportstats`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="listeners"></a>`listeners`
-
-Data type: `Hash`
-
-
-
-Default value: `{}`
-
-##### <a name="servers"></a>`servers`
+##### <a name="-collectd--plugin--network--listeners"></a>`listeners`
 
 Data type: `Hash`
 
@@ -3851,7 +3867,15 @@ Data type: `Hash`
 
 Default value: `{}`
 
-### <a name="collectdpluginnfs"></a>`collectd::plugin::nfs`
+##### <a name="-collectd--plugin--network--servers"></a>`servers`
+
+Data type: `Hash`
+
+
+
+Default value: `{}`
+
+### <a name="collectd--plugin--nfs"></a>`collectd::plugin::nfs`
 
 https://collectd.org/wiki/index.php/Plugin:NFS
 
@@ -3859,10 +3883,10 @@ https://collectd.org/wiki/index.php/Plugin:NFS
 
 The following parameters are available in the `collectd::plugin::nfs` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--nfs--ensure)
+* [`interval`](#-collectd--plugin--nfs--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--nfs--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3870,15 +3894,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--nfs--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnginx"></a>`collectd::plugin::nginx`
+### <a name="collectd--plugin--nginx"></a>`collectd::plugin::nginx`
 
 https://collectd.org/wiki/index.php/Plugin:nginx
 
@@ -3886,31 +3910,31 @@ https://collectd.org/wiki/index.php/Plugin:nginx
 
 The following parameters are available in the `collectd::plugin::nginx` class:
 
-* [`url`](#url)
-* [`manage_package`](#manage_package)
-* [`ensure`](#ensure)
-* [`user`](#user)
-* [`password`](#password)
-* [`verifypeer`](#verifypeer)
-* [`verifyhost`](#verifyhost)
-* [`cacert`](#cacert)
-* [`interval`](#interval)
+* [`url`](#-collectd--plugin--nginx--url)
+* [`manage_package`](#-collectd--plugin--nginx--manage_package)
+* [`ensure`](#-collectd--plugin--nginx--ensure)
+* [`user`](#-collectd--plugin--nginx--user)
+* [`password`](#-collectd--plugin--nginx--password)
+* [`verifypeer`](#-collectd--plugin--nginx--verifypeer)
+* [`verifyhost`](#-collectd--plugin--nginx--verifyhost)
+* [`cacert`](#-collectd--plugin--nginx--cacert)
+* [`interval`](#-collectd--plugin--nginx--interval)
 
-##### <a name="url"></a>`url`
-
-Data type: `Any`
-
-
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--nginx--url"></a>`url`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+##### <a name="-collectd--plugin--nginx--manage_package"></a>`manage_package`
 
-##### <a name="ensure"></a>`ensure`
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--nginx--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3918,55 +3942,55 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="user"></a>`user`
+##### <a name="-collectd--plugin--nginx--user"></a>`user`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="verifypeer"></a>`verifypeer`
+##### <a name="-collectd--plugin--nginx--password"></a>`password`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="verifyhost"></a>`verifyhost`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="cacert"></a>`cacert`
+##### <a name="-collectd--plugin--nginx--verifypeer"></a>`verifypeer`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--nginx--verifyhost"></a>`verifyhost`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginntpd"></a>`collectd::plugin::ntpd`
+##### <a name="-collectd--plugin--nginx--cacert"></a>`cacert`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--nginx--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--ntpd"></a>`collectd::plugin::ntpd`
 
 https://collectd.org/wiki/index.php/Plugin:NTPd
 
@@ -3974,14 +3998,14 @@ https://collectd.org/wiki/index.php/Plugin:NTPd
 
 The following parameters are available in the `collectd::plugin::ntpd` class:
 
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`port`](#port)
-* [`reverselookups`](#reverselookups)
-* [`includeunitid`](#includeunitid)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--ntpd--ensure)
+* [`host`](#-collectd--plugin--ntpd--host)
+* [`port`](#-collectd--plugin--ntpd--port)
+* [`reverselookups`](#-collectd--plugin--ntpd--reverselookups)
+* [`includeunitid`](#-collectd--plugin--ntpd--includeunitid)
+* [`interval`](#-collectd--plugin--ntpd--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ntpd--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -3989,7 +4013,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--ntpd--host"></a>`host`
 
 Data type: `Stdlib::Host`
 
@@ -3997,7 +4021,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--ntpd--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
@@ -4005,31 +4029,31 @@ Data type: `Stdlib::Port`
 
 Default value: `123`
 
-##### <a name="reverselookups"></a>`reverselookups`
+##### <a name="-collectd--plugin--ntpd--reverselookups"></a>`reverselookups`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="includeunitid"></a>`includeunitid`
-
-Data type: `Any`
-
-
-
-Default value: ``false``
-
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--ntpd--includeunitid"></a>`includeunitid`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `false`
 
-### <a name="collectdpluginnuma"></a>`collectd::plugin::numa`
+##### <a name="-collectd--plugin--ntpd--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--numa"></a>`collectd::plugin::numa`
 
 == Class: collectd::plugin::numa
 
@@ -4048,9 +4072,9 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::numa` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--numa--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--numa--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4058,7 +4082,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-### <a name="collectdpluginnut"></a>`collectd::plugin::nut`
+### <a name="collectd--plugin--nut"></a>`collectd::plugin::nut`
 
 https://collectd.org/wiki/index.php/Plugin:Nut
 
@@ -4066,10 +4090,10 @@ https://collectd.org/wiki/index.php/Plugin:Nut
 
 The following parameters are available in the `collectd::plugin::nut` class:
 
-* [`ensure`](#ensure)
-* [`upss`](#upss)
+* [`ensure`](#-collectd--plugin--nut--ensure)
+* [`upss`](#-collectd--plugin--nut--upss)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--nut--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4077,7 +4101,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="upss"></a>`upss`
+##### <a name="-collectd--plugin--nut--upss"></a>`upss`
 
 Data type: `Any`
 
@@ -4085,7 +4109,7 @@ Data type: `Any`
 
 Default value: `{}`
 
-### <a name="collectdpluginopenldap"></a>`collectd::plugin::openldap`
+### <a name="collectd--plugin--openldap"></a>`collectd::plugin::openldap`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_openldap
 
@@ -4093,11 +4117,11 @@ https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_openlda
 
 The following parameters are available in the `collectd::plugin::openldap` class:
 
-* [`ensure`](#ensure)
-* [`instances`](#instances)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--openldap--ensure)
+* [`instances`](#-collectd--plugin--openldap--instances)
+* [`interval`](#-collectd--plugin--openldap--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--openldap--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4105,7 +4129,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="instances"></a>`instances`
+##### <a name="-collectd--plugin--openldap--instances"></a>`instances`
 
 Data type: `Hash`
 
@@ -4113,15 +4137,15 @@ Data type: `Hash`
 
 Default value: `{ 'localhost' => { 'url' => 'ldap://localhost/' } }`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--openldap--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginopenvpn"></a>`collectd::plugin::openvpn`
+### <a name="collectd--plugin--openvpn"></a>`collectd::plugin::openvpn`
 
 https://collectd.org/wiki/index.php/Plugin:OpenVPN
 
@@ -4129,15 +4153,15 @@ https://collectd.org/wiki/index.php/Plugin:OpenVPN
 
 The following parameters are available in the `collectd::plugin::openvpn` class:
 
-* [`ensure`](#ensure)
-* [`statusfile`](#statusfile)
-* [`improvednamingschema`](#improvednamingschema)
-* [`collectcompression`](#collectcompression)
-* [`collectindividualusers`](#collectindividualusers)
-* [`collectusercount`](#collectusercount)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--openvpn--ensure)
+* [`statusfile`](#-collectd--plugin--openvpn--statusfile)
+* [`improvednamingschema`](#-collectd--plugin--openvpn--improvednamingschema)
+* [`collectcompression`](#-collectd--plugin--openvpn--collectcompression)
+* [`collectindividualusers`](#-collectd--plugin--openvpn--collectindividualusers)
+* [`collectusercount`](#-collectd--plugin--openvpn--collectusercount)
+* [`interval`](#-collectd--plugin--openvpn--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--openvpn--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4145,7 +4169,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="statusfile"></a>`statusfile`
+##### <a name="-collectd--plugin--openvpn--statusfile"></a>`statusfile`
 
 Data type: `Variant[Array[Stdlib::Absolutepath], Stdlib::Absolutepath]`
 
@@ -4153,47 +4177,47 @@ Data type: `Variant[Array[Stdlib::Absolutepath], Stdlib::Absolutepath]`
 
 Default value: `'/etc/openvpn/openvpn-status.log'`
 
-##### <a name="improvednamingschema"></a>`improvednamingschema`
+##### <a name="-collectd--plugin--openvpn--improvednamingschema"></a>`improvednamingschema`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="collectcompression"></a>`collectcompression`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="collectindividualusers"></a>`collectindividualusers`
+##### <a name="-collectd--plugin--openvpn--collectcompression"></a>`collectcompression`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="collectusercount"></a>`collectusercount`
+##### <a name="-collectd--plugin--openvpn--collectindividualusers"></a>`collectindividualusers`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--openvpn--collectusercount"></a>`collectusercount`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--openvpn--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginoracle"></a>`collectd::plugin::oracle`
+### <a name="collectd--plugin--oracle"></a>`collectd::plugin::oracle`
 
 Oracle plugin
 https://collectd.org/wiki/index.php/Plugin:Oracle
@@ -4202,11 +4226,11 @@ https://collectd.org/wiki/index.php/Plugin:Oracle
 
 The following parameters are available in the `collectd::plugin::oracle` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--oracle--ensure)
+* [`manage_package`](#-collectd--plugin--oracle--manage_package)
+* [`interval`](#-collectd--plugin--oracle--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--oracle--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4214,23 +4238,23 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--oracle--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--oracle--interval"></a>`interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginovs_events"></a>`collectd::plugin::ovs_events`
+### <a name="collectd--plugin--ovs_events"></a>`collectd::plugin::ovs_events`
 
 == Class: collectd::plugin::ovs_events
 
@@ -4280,33 +4304,33 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::ovs_events` class:
 
-* [`address`](#address)
-* [`dispatch`](#dispatch)
-* [`ensure`](#ensure)
-* [`interfaces`](#interfaces)
-* [`manage_package`](#manage_package)
-* [`send_notification`](#send_notification)
-* [`package_name`](#package_name)
-* [`port`](#port)
-* [`socket`](#socket)
+* [`address`](#-collectd--plugin--ovs_events--address)
+* [`dispatch`](#-collectd--plugin--ovs_events--dispatch)
+* [`ensure`](#-collectd--plugin--ovs_events--ensure)
+* [`interfaces`](#-collectd--plugin--ovs_events--interfaces)
+* [`manage_package`](#-collectd--plugin--ovs_events--manage_package)
+* [`send_notification`](#-collectd--plugin--ovs_events--send_notification)
+* [`package_name`](#-collectd--plugin--ovs_events--package_name)
+* [`port`](#-collectd--plugin--ovs_events--port)
+* [`socket`](#-collectd--plugin--ovs_events--socket)
 
-##### <a name="address"></a>`address`
+##### <a name="-collectd--plugin--ovs_events--address"></a>`address`
 
 Data type: `Optional[Stdlib::Host]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dispatch"></a>`dispatch`
+##### <a name="-collectd--plugin--ovs_events--dispatch"></a>`dispatch`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ovs_events--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4314,7 +4338,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interfaces"></a>`interfaces`
+##### <a name="-collectd--plugin--ovs_events--interfaces"></a>`interfaces`
 
 Data type: `Array`
 
@@ -4322,23 +4346,23 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--ovs_events--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="send_notification"></a>`send_notification`
+##### <a name="-collectd--plugin--ovs_events--send_notification"></a>`send_notification`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--ovs_events--package_name"></a>`package_name`
 
 Data type: `String[1]`
 
@@ -4346,23 +4370,23 @@ Data type: `String[1]`
 
 Default value: `'collectd-ovs-events'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--ovs_events--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-collectd--plugin--ovs_events--socket"></a>`socket`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginovs_stats"></a>`collectd::plugin::ovs_stats`
+### <a name="collectd--plugin--ovs_stats"></a>`collectd::plugin::ovs_stats`
 
 == Class: collectd::plugin::ovs_stats
 
@@ -4403,31 +4427,31 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::ovs_stats` class:
 
-* [`address`](#address)
-* [`bridges`](#bridges)
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`port`](#port)
-* [`socket`](#socket)
+* [`address`](#-collectd--plugin--ovs_stats--address)
+* [`bridges`](#-collectd--plugin--ovs_stats--bridges)
+* [`ensure`](#-collectd--plugin--ovs_stats--ensure)
+* [`manage_package`](#-collectd--plugin--ovs_stats--manage_package)
+* [`package_name`](#-collectd--plugin--ovs_stats--package_name)
+* [`port`](#-collectd--plugin--ovs_stats--port)
+* [`socket`](#-collectd--plugin--ovs_stats--socket)
 
-##### <a name="address"></a>`address`
+##### <a name="-collectd--plugin--ovs_stats--address"></a>`address`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="bridges"></a>`bridges`
+##### <a name="-collectd--plugin--ovs_stats--bridges"></a>`bridges`
 
 Data type: `Optional[Array]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ovs_stats--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -4435,15 +4459,15 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--ovs_stats--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--ovs_stats--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -4451,23 +4475,23 @@ Data type: `String`
 
 Default value: `'collectd-ovs-stats'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--ovs_stats--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-collectd--plugin--ovs_stats--socket"></a>`socket`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpcie_errors"></a>`collectd::plugin::pcie_errors`
+### <a name="collectd--plugin--pcie_errors"></a>`collectd::plugin::pcie_errors`
 
 Class to manage pcie_errors plugin for collectd
 
@@ -4475,13 +4499,13 @@ Class to manage pcie_errors plugin for collectd
 
 The following parameters are available in the `collectd::plugin::pcie_errors` class:
 
-* [`ensure`](#ensure)
-* [`source`](#source)
-* [`access_dir`](#access_dir)
-* [`report_masked`](#report_masked)
-* [`persistent_notifications`](#persistent_notifications)
+* [`ensure`](#-collectd--plugin--pcie_errors--ensure)
+* [`source`](#-collectd--plugin--pcie_errors--source)
+* [`access_dir`](#-collectd--plugin--pcie_errors--access_dir)
+* [`report_masked`](#-collectd--plugin--pcie_errors--report_masked)
+* [`persistent_notifications`](#-collectd--plugin--pcie_errors--persistent_notifications)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--pcie_errors--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4489,7 +4513,7 @@ Ensure param for collectd::plugin type.
 
 Default value: `'present'`
 
-##### <a name="source"></a>`source`
+##### <a name="-collectd--plugin--pcie_errors--source"></a>`source`
 
 Data type: `Enum['sysfs', 'proc']`
 
@@ -4497,31 +4521,31 @@ Use sysfs or proc to read data from /sysfs or /proc.
 
 Default value: `'sysfs'`
 
-##### <a name="access_dir"></a>`access_dir`
+##### <a name="-collectd--plugin--pcie_errors--access_dir"></a>`access_dir`
 
 Data type: `Optional[String]`
 
 Directory used to access device config space.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="report_masked"></a>`report_masked`
+##### <a name="-collectd--plugin--pcie_errors--report_masked"></a>`report_masked`
 
 Data type: `Boolean`
 
 If true plugin will notify about errors that are set to masked in Error Mask register.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="persistent_notifications"></a>`persistent_notifications`
+##### <a name="-collectd--plugin--pcie_errors--persistent_notifications"></a>`persistent_notifications`
 
 Data type: `Boolean`
 
 If false plugin will dispatch notification only on set/clear of error.
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginperl"></a>`collectd::plugin::perl`
+### <a name="collectd--plugin--perl"></a>`collectd::plugin::perl`
 
 See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
 
@@ -4529,12 +4553,12 @@ See http://collectd.org/documentation/manpages/collectd-perl.5.shtml
 
 The following parameters are available in the `collectd::plugin::perl` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
-* [`order`](#order)
+* [`ensure`](#-collectd--plugin--perl--ensure)
+* [`manage_package`](#-collectd--plugin--perl--manage_package)
+* [`interval`](#-collectd--plugin--perl--interval)
+* [`order`](#-collectd--plugin--perl--order)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--perl--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4542,23 +4566,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--perl--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--perl--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--perl--order"></a>`order`
 
 Data type: `Any`
 
@@ -4566,7 +4590,7 @@ Data type: `Any`
 
 Default value: `20`
 
-### <a name="collectdpluginping"></a>`collectd::plugin::ping`
+### <a name="collectd--plugin--ping"></a>`collectd::plugin::ping`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 
@@ -4574,24 +4598,24 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_ping
 
 The following parameters are available in the `collectd::plugin::ping` class:
 
-* [`hosts`](#hosts)
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`interval`](#interval)
-* [`timeout`](#timeout)
-* [`ttl`](#ttl)
-* [`source_address`](#source_address)
-* [`device`](#device)
-* [`max_missed`](#max_missed)
-* [`size`](#size)
+* [`hosts`](#-collectd--plugin--ping--hosts)
+* [`ensure`](#-collectd--plugin--ping--ensure)
+* [`manage_package`](#-collectd--plugin--ping--manage_package)
+* [`interval`](#-collectd--plugin--ping--interval)
+* [`timeout`](#-collectd--plugin--ping--timeout)
+* [`ttl`](#-collectd--plugin--ping--ttl)
+* [`source_address`](#-collectd--plugin--ping--source_address)
+* [`device`](#-collectd--plugin--ping--device)
+* [`max_missed`](#-collectd--plugin--ping--max_missed)
+* [`size`](#-collectd--plugin--ping--size)
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-collectd--plugin--ping--hosts"></a>`hosts`
 
 Data type: `Array`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ping--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4599,71 +4623,71 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--ping--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Optional[Numeric]`
-
-
-
-Default value: ``undef``
-
-##### <a name="timeout"></a>`timeout`
+##### <a name="-collectd--plugin--ping--interval"></a>`interval`
 
 Data type: `Optional[Numeric]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ttl"></a>`ttl`
+##### <a name="-collectd--plugin--ping--timeout"></a>`timeout`
+
+Data type: `Optional[Numeric]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--ping--ttl"></a>`ttl`
 
 Data type: `Optional[Integer[0,255]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="source_address"></a>`source_address`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="device"></a>`device`
+##### <a name="-collectd--plugin--ping--source_address"></a>`source_address`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="max_missed"></a>`max_missed`
+##### <a name="-collectd--plugin--ping--device"></a>`device`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--ping--max_missed"></a>`max_missed`
 
 Data type: `Optional[Integer[-1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="size"></a>`size`
+##### <a name="-collectd--plugin--ping--size"></a>`size`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpostgresql"></a>`collectd::plugin::postgresql`
+### <a name="collectd--plugin--postgresql"></a>`collectd::plugin::postgresql`
 
 https://collectd.org/wiki/index.php/Plugin:PostgreSQL
 
@@ -4671,14 +4695,14 @@ https://collectd.org/wiki/index.php/Plugin:PostgreSQL
 
 The following parameters are available in the `collectd::plugin::postgresql` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`databases`](#databases)
-* [`interval`](#interval)
-* [`queries`](#queries)
-* [`writers`](#writers)
+* [`ensure`](#-collectd--plugin--postgresql--ensure)
+* [`manage_package`](#-collectd--plugin--postgresql--manage_package)
+* [`databases`](#-collectd--plugin--postgresql--databases)
+* [`interval`](#-collectd--plugin--postgresql--interval)
+* [`queries`](#-collectd--plugin--postgresql--queries)
+* [`writers`](#-collectd--plugin--postgresql--writers)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--postgresql--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4686,31 +4710,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--postgresql--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="databases"></a>`databases`
-
-Data type: `Any`
-
-
-
-Default value: `{}`
-
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="queries"></a>`queries`
+##### <a name="-collectd--plugin--postgresql--databases"></a>`databases`
 
 Data type: `Any`
 
@@ -4718,7 +4726,15 @@ Data type: `Any`
 
 Default value: `{}`
 
-##### <a name="writers"></a>`writers`
+##### <a name="-collectd--plugin--postgresql--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--postgresql--queries"></a>`queries`
 
 Data type: `Any`
 
@@ -4726,7 +4742,15 @@ Data type: `Any`
 
 Default value: `{}`
 
-### <a name="collectdpluginpowerdns"></a>`collectd::plugin::powerdns`
+##### <a name="-collectd--plugin--postgresql--writers"></a>`writers`
+
+Data type: `Any`
+
+
+
+Default value: `{}`
+
+### <a name="collectd--plugin--powerdns"></a>`collectd::plugin::powerdns`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_powerdns
 
@@ -4734,14 +4758,14 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_powe
 
 The following parameters are available in the `collectd::plugin::powerdns` class:
 
-* [`ensure`](#ensure)
-* [`order`](#order)
-* [`interval`](#interval)
-* [`servers`](#servers)
-* [`recursors`](#recursors)
-* [`local_socket`](#local_socket)
+* [`ensure`](#-collectd--plugin--powerdns--ensure)
+* [`order`](#-collectd--plugin--powerdns--order)
+* [`interval`](#-collectd--plugin--powerdns--interval)
+* [`servers`](#-collectd--plugin--powerdns--servers)
+* [`recursors`](#-collectd--plugin--powerdns--recursors)
+* [`local_socket`](#-collectd--plugin--powerdns--local_socket)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--powerdns--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4749,7 +4773,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--powerdns--order"></a>`order`
 
 Data type: `Integer`
 
@@ -4757,23 +4781,15 @@ Data type: `Integer`
 
 Default value: `10`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--powerdns--interval"></a>`interval`
 
 Data type: `Optional[Numeric]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="servers"></a>`servers`
-
-Data type: `Hash[String, Hash]`
-
-
-
-Default value: `{}`
-
-##### <a name="recursors"></a>`recursors`
+##### <a name="-collectd--plugin--powerdns--servers"></a>`servers`
 
 Data type: `Hash[String, Hash]`
 
@@ -4781,15 +4797,23 @@ Data type: `Hash[String, Hash]`
 
 Default value: `{}`
 
-##### <a name="local_socket"></a>`local_socket`
+##### <a name="-collectd--plugin--powerdns--recursors"></a>`recursors`
+
+Data type: `Hash[String, Hash]`
+
+
+
+Default value: `{}`
+
+##### <a name="-collectd--plugin--powerdns--local_socket"></a>`local_socket`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginprocesses"></a>`collectd::plugin::processes`
+### <a name="collectd--plugin--processes"></a>`collectd::plugin::processes`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 
@@ -4797,16 +4821,16 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_proc
 
 The following parameters are available in the `collectd::plugin::processes` class:
 
-* [`ensure`](#ensure)
-* [`order`](#order)
-* [`interval`](#interval)
-* [`processes`](#processes)
-* [`process_matches`](#process_matches)
-* [`collect_context_switch`](#collect_context_switch)
-* [`collect_file_descriptor`](#collect_file_descriptor)
-* [`collect_memory_maps`](#collect_memory_maps)
+* [`ensure`](#-collectd--plugin--processes--ensure)
+* [`order`](#-collectd--plugin--processes--order)
+* [`interval`](#-collectd--plugin--processes--interval)
+* [`processes`](#-collectd--plugin--processes--processes)
+* [`process_matches`](#-collectd--plugin--processes--process_matches)
+* [`collect_context_switch`](#-collectd--plugin--processes--collect_context_switch)
+* [`collect_file_descriptor`](#-collectd--plugin--processes--collect_file_descriptor)
+* [`collect_memory_maps`](#-collectd--plugin--processes--collect_memory_maps)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--processes--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4814,7 +4838,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--processes--order"></a>`order`
 
 Data type: `Integer`
 
@@ -4822,55 +4846,55 @@ Data type: `Integer`
 
 Default value: `10`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--processes--interval"></a>`interval`
 
 Data type: `Optional[Numeric]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="processes"></a>`processes`
-
-Data type: `Optional[Array]`
-
-
-
-Default value: ``undef``
-
-##### <a name="process_matches"></a>`process_matches`
+##### <a name="-collectd--plugin--processes--processes"></a>`processes`
 
 Data type: `Optional[Array]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect_context_switch"></a>`collect_context_switch`
+##### <a name="-collectd--plugin--processes--process_matches"></a>`process_matches`
 
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="collect_file_descriptor"></a>`collect_file_descriptor`
-
-Data type: `Optional[Boolean]`
+Data type: `Optional[Array]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect_memory_maps"></a>`collect_memory_maps`
+##### <a name="-collectd--plugin--processes--collect_context_switch"></a>`collect_context_switch`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginprocevent"></a>`collectd::plugin::procevent`
+##### <a name="-collectd--plugin--processes--collect_file_descriptor"></a>`collect_file_descriptor`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--processes--collect_memory_maps"></a>`collect_memory_maps`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--procevent"></a>`collectd::plugin::procevent`
 
 == Class: collectd::plugin::procevent
 
@@ -4909,13 +4933,13 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::procevent` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`process`](#process)
-* [`process_regex`](#process_regex)
-* [`buffer_length`](#buffer_length)
+* [`ensure`](#-collectd--plugin--procevent--ensure)
+* [`manage_package`](#-collectd--plugin--procevent--manage_package)
+* [`process`](#-collectd--plugin--procevent--process)
+* [`process_regex`](#-collectd--plugin--procevent--process_regex)
+* [`buffer_length`](#-collectd--plugin--procevent--buffer_length)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--procevent--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -4923,7 +4947,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--procevent--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -4931,31 +4955,31 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="process"></a>`process`
+##### <a name="-collectd--plugin--procevent--process"></a>`process`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="process_regex"></a>`process_regex`
+##### <a name="-collectd--plugin--procevent--process_regex"></a>`process_regex`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="buffer_length"></a>`buffer_length`
+##### <a name="-collectd--plugin--procevent--buffer_length"></a>`buffer_length`
 
 Data type: `Optional[Integer[1, default]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginprotocols"></a>`collectd::plugin::protocols`
+### <a name="collectd--plugin--protocols"></a>`collectd::plugin::protocols`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_protocols
 
@@ -4963,11 +4987,11 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_prot
 
 The following parameters are available in the `collectd::plugin::protocols` class:
 
-* [`ensure`](#ensure)
-* [`ignoreselected`](#ignoreselected)
-* [`values`](#values)
+* [`ensure`](#-collectd--plugin--protocols--ensure)
+* [`ignoreselected`](#-collectd--plugin--protocols--ignoreselected)
+* [`values`](#-collectd--plugin--protocols--values)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--protocols--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -4975,15 +4999,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--protocols--ignoreselected"></a>`ignoreselected`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="values"></a>`values`
+##### <a name="-collectd--plugin--protocols--values"></a>`values`
 
 Data type: `Array`
 
@@ -4991,7 +5015,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-### <a name="collectdpluginpython"></a>`collectd::plugin::python`
+### <a name="collectd--plugin--python"></a>`collectd::plugin::python`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_python
 
@@ -4999,27 +5023,27 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_pyth
 
 The following parameters are available in the `collectd::plugin::python` class:
 
-* [`encoding`](#encoding)
-* [`ensure`](#ensure)
-* [`globals`](#globals)
-* [`interactive`](#interactive)
-* [`interval`](#interval)
-* [`logtraces`](#logtraces)
-* [`manage_package`](#manage_package)
-* [`modulepaths`](#modulepaths)
-* [`modules`](#modules)
-* [`order`](#order)
-* [`conf_name`](#conf_name)
+* [`encoding`](#-collectd--plugin--python--encoding)
+* [`ensure`](#-collectd--plugin--python--ensure)
+* [`globals`](#-collectd--plugin--python--globals)
+* [`interactive`](#-collectd--plugin--python--interactive)
+* [`interval`](#-collectd--plugin--python--interval)
+* [`logtraces`](#-collectd--plugin--python--logtraces)
+* [`manage_package`](#-collectd--plugin--python--manage_package)
+* [`modulepaths`](#-collectd--plugin--python--modulepaths)
+* [`modules`](#-collectd--plugin--python--modules)
+* [`order`](#-collectd--plugin--python--order)
+* [`conf_name`](#-collectd--plugin--python--conf_name)
 
-##### <a name="encoding"></a>`encoding`
+##### <a name="-collectd--plugin--python--encoding"></a>`encoding`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--python--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5027,47 +5051,47 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="globals"></a>`globals`
+##### <a name="-collectd--plugin--python--globals"></a>`globals`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="interactive"></a>`interactive`
+##### <a name="-collectd--plugin--python--interactive"></a>`interactive`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--python--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="logtraces"></a>`logtraces`
+##### <a name="-collectd--plugin--python--logtraces"></a>`logtraces`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--python--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="modulepaths"></a>`modulepaths`
+##### <a name="-collectd--plugin--python--modulepaths"></a>`modulepaths`
 
 Data type: `Array`
 
@@ -5075,7 +5099,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="modules"></a>`modules`
+##### <a name="-collectd--plugin--python--modules"></a>`modules`
 
 Data type: `Hash`
 
@@ -5083,7 +5107,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--python--order"></a>`order`
 
 Data type: `Any`
 
@@ -5091,7 +5115,7 @@ Data type: `Any`
 
 Default value: `'10'`
 
-##### <a name="conf_name"></a>`conf_name`
+##### <a name="-collectd--plugin--python--conf_name"></a>`conf_name`
 
 Data type: `Any`
 
@@ -5099,7 +5123,7 @@ Data type: `Any`
 
 Default value: `'python-config.conf'`
 
-### <a name="collectdpluginrabbitmq"></a>`collectd::plugin::rabbitmq`
+### <a name="collectd--plugin--rabbitmq"></a>`collectd::plugin::rabbitmq`
 
 rabbitmq plugin
 https://pypi.python.org/pypi/collectd-rabbitmq
@@ -5147,31 +5171,35 @@ https://pypi.python.org/pypi/collectd-rabbitmq
 
 The following parameters are available in the `collectd::plugin::rabbitmq` class:
 
-* [`config`](#config)
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
-* [`package_provider`](#package_provider)
-* [`provider_proxy`](#provider_proxy)
-* [`custom_types_db`](#custom_types_db)
+* [`config`](#-collectd--plugin--rabbitmq--config)
+* [`ensure`](#-collectd--plugin--rabbitmq--ensure)
+* [`interval`](#-collectd--plugin--rabbitmq--interval)
+* [`manage_package`](#-collectd--plugin--rabbitmq--manage_package)
+* [`package_name`](#-collectd--plugin--rabbitmq--package_name)
+* [`package_provider`](#-collectd--plugin--rabbitmq--package_provider)
+* [`provider_proxy`](#-collectd--plugin--rabbitmq--provider_proxy)
+* [`custom_types_db`](#-collectd--plugin--rabbitmq--custom_types_db)
 
-##### <a name="config"></a>`config`
+##### <a name="-collectd--plugin--rabbitmq--config"></a>`config`
 
 Data type: `Hash`
 
 
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'Username' => 'guest',
     'Password' => 'guest',
     'Scheme'   => 'http',
     'Port'     => '15672',
     'Host'     => $facts['networking']['fqdn'],
     'Realm'    => '"RabbitMQ Management"',
-  }`
+  }
+```
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--rabbitmq--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -5179,23 +5207,23 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--rabbitmq--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--rabbitmq--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--rabbitmq--package_name"></a>`package_name`
 
 Data type: `Any`
 
@@ -5203,7 +5231,7 @@ Data type: `Any`
 
 Default value: `'collectd-rabbitmq'`
 
-##### <a name="package_provider"></a>`package_provider`
+##### <a name="-collectd--plugin--rabbitmq--package_provider"></a>`package_provider`
 
 Data type: `Any`
 
@@ -5211,23 +5239,23 @@ Data type: `Any`
 
 Default value: `'pip'`
 
-##### <a name="provider_proxy"></a>`provider_proxy`
+##### <a name="-collectd--plugin--rabbitmq--provider_proxy"></a>`provider_proxy`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="custom_types_db"></a>`custom_types_db`
+##### <a name="-collectd--plugin--rabbitmq--custom_types_db"></a>`custom_types_db`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginredis"></a>`collectd::plugin::redis`
+### <a name="collectd--plugin--redis"></a>`collectd::plugin::redis`
 
 https://collectd.org/wiki/index.php/Plugin:Redis
 
@@ -5235,12 +5263,12 @@ https://collectd.org/wiki/index.php/Plugin:Redis
 
 The following parameters are available in the `collectd::plugin::redis` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`nodes`](#nodes)
+* [`ensure`](#-collectd--plugin--redis--ensure)
+* [`interval`](#-collectd--plugin--redis--interval)
+* [`manage_package`](#-collectd--plugin--redis--manage_package)
+* [`nodes`](#-collectd--plugin--redis--nodes)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--redis--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -5248,29 +5276,32 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--redis--interval"></a>`interval`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--redis--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="nodes"></a>`nodes`
+##### <a name="-collectd--plugin--redis--nodes"></a>`nodes`
 
 Data type: `Hash[String[1], Collectd::Redis::Node]`
 
 
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'redis' => {
       'host'    => 'localhost',
       'port'    => 6379,
@@ -5282,9 +5313,10 @@ Default value: `{
         },
       },
     },
-  }`
+  }
+```
 
-### <a name="collectdpluginrrdcached"></a>`collectd::plugin::rrdcached`
+### <a name="collectd--plugin--rrdcached"></a>`collectd::plugin::rrdcached`
 
 https://collectd.org/wiki/index.php/Rrdcached
 
@@ -5292,21 +5324,21 @@ https://collectd.org/wiki/index.php/Rrdcached
 
 The following parameters are available in the `collectd::plugin::rrdcached` class:
 
-* [`ensure`](#ensure)
-* [`daemonaddress`](#daemonaddress)
-* [`datadir`](#datadir)
-* [`createfiles`](#createfiles)
-* [`createfilesasync`](#createfilesasync)
-* [`stepsize`](#stepsize)
-* [`heartbeat`](#heartbeat)
-* [`interval`](#interval)
-* [`rrarows`](#rrarows)
-* [`rratimespan`](#rratimespan)
-* [`xff`](#xff)
-* [`collectstatistics`](#collectstatistics)
-* [`manage_package`](#manage_package)
+* [`ensure`](#-collectd--plugin--rrdcached--ensure)
+* [`daemonaddress`](#-collectd--plugin--rrdcached--daemonaddress)
+* [`datadir`](#-collectd--plugin--rrdcached--datadir)
+* [`createfiles`](#-collectd--plugin--rrdcached--createfiles)
+* [`createfilesasync`](#-collectd--plugin--rrdcached--createfilesasync)
+* [`stepsize`](#-collectd--plugin--rrdcached--stepsize)
+* [`heartbeat`](#-collectd--plugin--rrdcached--heartbeat)
+* [`interval`](#-collectd--plugin--rrdcached--interval)
+* [`rrarows`](#-collectd--plugin--rrdcached--rrarows)
+* [`rratimespan`](#-collectd--plugin--rrdcached--rratimespan)
+* [`xff`](#-collectd--plugin--rrdcached--xff)
+* [`collectstatistics`](#-collectd--plugin--rrdcached--collectstatistics)
+* [`manage_package`](#-collectd--plugin--rrdcached--manage_package)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--rrdcached--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5314,7 +5346,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="daemonaddress"></a>`daemonaddress`
+##### <a name="-collectd--plugin--rrdcached--daemonaddress"></a>`daemonaddress`
 
 Data type: `Any`
 
@@ -5322,7 +5354,7 @@ Data type: `Any`
 
 Default value: `'unix:/tmp/rrdcached.sock'`
 
-##### <a name="datadir"></a>`datadir`
+##### <a name="-collectd--plugin--rrdcached--datadir"></a>`datadir`
 
 Data type: `Any`
 
@@ -5330,55 +5362,55 @@ Data type: `Any`
 
 Default value: `'/var/lib/rrdcached/db/collectd'`
 
-##### <a name="createfiles"></a>`createfiles`
+##### <a name="-collectd--plugin--rrdcached--createfiles"></a>`createfiles`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="createfilesasync"></a>`createfilesasync`
+##### <a name="-collectd--plugin--rrdcached--createfilesasync"></a>`createfilesasync`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="stepsize"></a>`stepsize`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="heartbeat"></a>`heartbeat`
+##### <a name="-collectd--plugin--rrdcached--stepsize"></a>`stepsize`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="rrarows"></a>`rrarows`
+##### <a name="-collectd--plugin--rrdcached--heartbeat"></a>`heartbeat`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="rratimespan"></a>`rratimespan`
+##### <a name="-collectd--plugin--rrdcached--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--rrdcached--rrarows"></a>`rrarows`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--rrdcached--rratimespan"></a>`rratimespan`
 
 Data type: `Array`
 
@@ -5386,31 +5418,31 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="xff"></a>`xff`
+##### <a name="-collectd--plugin--rrdcached--xff"></a>`xff`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collectstatistics"></a>`collectstatistics`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--rrdcached--collectstatistics"></a>`collectstatistics`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginrrdtool"></a>`collectd::plugin::rrdtool`
+##### <a name="-collectd--plugin--rrdcached--manage_package"></a>`manage_package`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--rrdtool"></a>`collectd::plugin::rrdtool`
 
 https://collectd.org/wiki/index.php/Plugin:RRDtool
 
@@ -5418,19 +5450,19 @@ https://collectd.org/wiki/index.php/Plugin:RRDtool
 
 The following parameters are available in the `collectd::plugin::rrdtool` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`datadir`](#datadir)
-* [`createfilesasync`](#createfilesasync)
-* [`interval`](#interval)
-* [`rrarows`](#rrarows)
-* [`rratimespan`](#rratimespan)
-* [`xff`](#xff)
-* [`cacheflush`](#cacheflush)
-* [`cachetimeout`](#cachetimeout)
-* [`writespersecond`](#writespersecond)
+* [`ensure`](#-collectd--plugin--rrdtool--ensure)
+* [`manage_package`](#-collectd--plugin--rrdtool--manage_package)
+* [`datadir`](#-collectd--plugin--rrdtool--datadir)
+* [`createfilesasync`](#-collectd--plugin--rrdtool--createfilesasync)
+* [`interval`](#-collectd--plugin--rrdtool--interval)
+* [`rrarows`](#-collectd--plugin--rrdtool--rrarows)
+* [`rratimespan`](#-collectd--plugin--rrdtool--rratimespan)
+* [`xff`](#-collectd--plugin--rrdtool--xff)
+* [`cacheflush`](#-collectd--plugin--rrdtool--cacheflush)
+* [`cachetimeout`](#-collectd--plugin--rrdtool--cachetimeout)
+* [`writespersecond`](#-collectd--plugin--rrdtool--writespersecond)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--rrdtool--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5438,15 +5470,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--rrdtool--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="datadir"></a>`datadir`
+##### <a name="-collectd--plugin--rrdtool--datadir"></a>`datadir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -5454,23 +5486,23 @@ Data type: `Stdlib::Absolutepath`
 
 Default value: `'/var/lib/collectd/rrd'`
 
-##### <a name="createfilesasync"></a>`createfilesasync`
+##### <a name="-collectd--plugin--rrdtool--createfilesasync"></a>`createfilesasync`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--rrdtool--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="rrarows"></a>`rrarows`
+##### <a name="-collectd--plugin--rrdtool--rrarows"></a>`rrarows`
 
 Data type: `Integer`
 
@@ -5478,7 +5510,7 @@ Data type: `Integer`
 
 Default value: `1200`
 
-##### <a name="rratimespan"></a>`rratimespan`
+##### <a name="-collectd--plugin--rrdtool--rratimespan"></a>`rratimespan`
 
 Data type: `Array[Integer]`
 
@@ -5486,7 +5518,7 @@ Data type: `Array[Integer]`
 
 Default value: `[3600, 86400, 604800, 2678400, 31622400]`
 
-##### <a name="xff"></a>`xff`
+##### <a name="-collectd--plugin--rrdtool--xff"></a>`xff`
 
 Data type: `Float`
 
@@ -5494,7 +5526,7 @@ Data type: `Float`
 
 Default value: `0.1`
 
-##### <a name="cacheflush"></a>`cacheflush`
+##### <a name="-collectd--plugin--rrdtool--cacheflush"></a>`cacheflush`
 
 Data type: `Integer`
 
@@ -5502,7 +5534,7 @@ Data type: `Integer`
 
 Default value: `900`
 
-##### <a name="cachetimeout"></a>`cachetimeout`
+##### <a name="-collectd--plugin--rrdtool--cachetimeout"></a>`cachetimeout`
 
 Data type: `Integer`
 
@@ -5510,7 +5542,7 @@ Data type: `Integer`
 
 Default value: `120`
 
-##### <a name="writespersecond"></a>`writespersecond`
+##### <a name="-collectd--plugin--rrdtool--writespersecond"></a>`writespersecond`
 
 Data type: `Integer`
 
@@ -5518,7 +5550,7 @@ Data type: `Integer`
 
 Default value: `50`
 
-### <a name="collectdpluginsensors"></a>`collectd::plugin::sensors`
+### <a name="collectd--plugin--sensors"></a>`collectd::plugin::sensors`
 
 https://collectd.org/wiki/index.php/Plugin:Sensors
 
@@ -5526,15 +5558,15 @@ https://collectd.org/wiki/index.php/Plugin:Sensors
 
 The following parameters are available in the `collectd::plugin::sensors` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`sensorconfigfile`](#sensorconfigfile)
-* [`sensors`](#sensors)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
-* [`package_install_options`](#package_install_options)
+* [`ensure`](#-collectd--plugin--sensors--ensure)
+* [`manage_package`](#-collectd--plugin--sensors--manage_package)
+* [`sensorconfigfile`](#-collectd--plugin--sensors--sensorconfigfile)
+* [`sensors`](#-collectd--plugin--sensors--sensors)
+* [`ignoreselected`](#-collectd--plugin--sensors--ignoreselected)
+* [`interval`](#-collectd--plugin--sensors--interval)
+* [`package_install_options`](#-collectd--plugin--sensors--package_install_options)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--sensors--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5542,55 +5574,55 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--sensors--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sensorconfigfile"></a>`sensorconfigfile`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="sensors"></a>`sensors`
+##### <a name="-collectd--plugin--sensors--sensorconfigfile"></a>`sensorconfigfile`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--sensors--sensors"></a>`sensors`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_install_options"></a>`package_install_options`
+##### <a name="-collectd--plugin--sensors--ignoreselected"></a>`ignoreselected`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--sensors--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--sensors--package_install_options"></a>`package_install_options`
 
 Data type: `Optional[Array[String]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginsmart"></a>`collectd::plugin::smart`
+### <a name="collectd--plugin--smart"></a>`collectd::plugin::smart`
 
 https://collectd.org/wiki/index.php/Plugin:SMART
 
@@ -5598,14 +5630,14 @@ https://collectd.org/wiki/index.php/Plugin:SMART
 
 The following parameters are available in the `collectd::plugin::smart` class:
 
-* [`disks`](#disks)
-* [`ensure`](#ensure)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
-* [`manage_package`](#manage_package)
-* [`package_name`](#package_name)
+* [`disks`](#-collectd--plugin--smart--disks)
+* [`ensure`](#-collectd--plugin--smart--ensure)
+* [`ignoreselected`](#-collectd--plugin--smart--ignoreselected)
+* [`interval`](#-collectd--plugin--smart--interval)
+* [`manage_package`](#-collectd--plugin--smart--manage_package)
+* [`package_name`](#-collectd--plugin--smart--package_name)
 
-##### <a name="disks"></a>`disks`
+##### <a name="-collectd--plugin--smart--disks"></a>`disks`
 
 Data type: `Array`
 
@@ -5613,7 +5645,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--smart--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5621,31 +5653,31 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--smart--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--smart--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-collectd--plugin--smart--manage_package"></a>`manage_package`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--smart--package_name"></a>`package_name`
 
 Data type: `Any`
 
@@ -5653,7 +5685,7 @@ Data type: `Any`
 
 Default value: `'collectd-smart'`
 
-### <a name="collectdpluginsnmp"></a>`collectd::plugin::snmp`
+### <a name="collectd--plugin--snmp"></a>`collectd::plugin::snmp`
 
 https://collectd.org/wiki/index.php/Plugin:SNMP
 
@@ -5661,13 +5693,13 @@ https://collectd.org/wiki/index.php/Plugin:SNMP
 
 The following parameters are available in the `collectd::plugin::snmp` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`data`](#data)
-* [`hosts`](#hosts)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--snmp--ensure)
+* [`manage_package`](#-collectd--plugin--snmp--manage_package)
+* [`data`](#-collectd--plugin--snmp--data)
+* [`hosts`](#-collectd--plugin--snmp--hosts)
+* [`interval`](#-collectd--plugin--snmp--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--snmp--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -5675,15 +5707,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--snmp--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="data"></a>`data`
+##### <a name="-collectd--plugin--snmp--data"></a>`data`
 
 Data type: `Hash[String[1], Collectd::SNMP::Data]`
 
@@ -5691,7 +5723,7 @@ Data type: `Hash[String[1], Collectd::SNMP::Data]`
 
 Default value: `{}`
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-collectd--plugin--snmp--hosts"></a>`hosts`
 
 Data type: `Hash[String[1], Collectd::SNMP::Host]`
 
@@ -5699,15 +5731,15 @@ Data type: `Hash[String[1], Collectd::SNMP::Host]`
 
 Default value: `{}`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--snmp--interval"></a>`interval`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginsnmp_agent"></a>`collectd::plugin::snmp_agent`
+### <a name="collectd--plugin--snmp_agent"></a>`collectd::plugin::snmp_agent`
 
 Class: collectd::plugin::snmp_agent
 
@@ -5719,40 +5751,47 @@ Class: collectd::plugin::snmp_agent
 
 The following parameters are available in the `collectd::plugin::snmp_agent` class:
 
-* [`ensure`](#ensure)
-* [`data`](#data)
-* [`table`](#table)
+* [`ensure`](#-collectd--plugin--snmp_agent--ensure)
+* [`data`](#-collectd--plugin--snmp_agent--data)
+* [`table`](#-collectd--plugin--snmp_agent--table)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--snmp_agent--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
-String Passed to package and collectd::plugin resources (both). Default: present
+Passed to package and collectd::plugin resources (both)
 
 Default value: `'present'`
 
-##### <a name="data"></a>`data`
+##### <a name="-collectd--plugin--snmp_agent--data"></a>`data`
 
 Data type: `Hash[String[1],Collectd::SNMP_AGENT::Data]`
 
-Optional[Hash[String[1],Collectd::SNMP_AGENT::Data]] Defines scalar field, must be put outside Table block.
+Defines scalar field, must be put outside Table block.
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'memAvailReal' => {
       'oids' => '1.3.6.1.4.1.2021.4.6.0',
       'plugin' => 'memory',
       'type' => 'memory',
       'typeinstance' => 'free',
     },
-  }`
+  }
+```
 
-##### <a name="table"></a>`table`
+##### <a name="-collectd--plugin--snmp_agent--table"></a>`table`
 
 Data type: `Hash[String[1], Collectd::SNMP_AGENT::Table]`
 
-Hash[String[1], Collectd::SNMP_AGENT::Table] Defines a table consisting of several Data blocks being its columns
+Defines a table consisting of several Data blocks being its columns
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'ifTable' => {
       'indexoid' => 'IF-MIB::ifIndex',
       'sizeoid' => 'IF-MIB::ifNumber',
@@ -5772,9 +5811,10 @@ Default value: `{
         },
       },
     },
-  }`
+  }
+```
 
-### <a name="collectdpluginstatsd"></a>`collectd::plugin::statsd`
+### <a name="collectd--plugin--statsd"></a>`collectd::plugin::statsd`
 
 https://collectd.org/wiki/index.php/Plugin:StatsD
 
@@ -5782,22 +5822,22 @@ https://collectd.org/wiki/index.php/Plugin:StatsD
 
 The following parameters are available in the `collectd::plugin::statsd` class:
 
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`port`](#port)
-* [`deletecounters`](#deletecounters)
-* [`deletetimers`](#deletetimers)
-* [`deletegauges`](#deletegauges)
-* [`deletesets`](#deletesets)
-* [`countersum`](#countersum)
-* [`interval`](#interval)
-* [`timerpercentile`](#timerpercentile)
-* [`timerlower`](#timerlower)
-* [`timerupper`](#timerupper)
-* [`timersum`](#timersum)
-* [`timercount`](#timercount)
+* [`ensure`](#-collectd--plugin--statsd--ensure)
+* [`host`](#-collectd--plugin--statsd--host)
+* [`port`](#-collectd--plugin--statsd--port)
+* [`deletecounters`](#-collectd--plugin--statsd--deletecounters)
+* [`deletetimers`](#-collectd--plugin--statsd--deletetimers)
+* [`deletegauges`](#-collectd--plugin--statsd--deletegauges)
+* [`deletesets`](#-collectd--plugin--statsd--deletesets)
+* [`countersum`](#-collectd--plugin--statsd--countersum)
+* [`interval`](#-collectd--plugin--statsd--interval)
+* [`timerpercentile`](#-collectd--plugin--statsd--timerpercentile)
+* [`timerlower`](#-collectd--plugin--statsd--timerlower)
+* [`timerupper`](#-collectd--plugin--statsd--timerupper)
+* [`timersum`](#-collectd--plugin--statsd--timersum)
+* [`timercount`](#-collectd--plugin--statsd--timercount)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--statsd--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5805,71 +5845,71 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--statsd--host"></a>`host`
 
 Data type: `Optional[Stdlib::Host]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--statsd--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="deletecounters"></a>`deletecounters`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="deletetimers"></a>`deletetimers`
+##### <a name="-collectd--plugin--statsd--deletecounters"></a>`deletecounters`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="deletegauges"></a>`deletegauges`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="deletesets"></a>`deletesets`
+##### <a name="-collectd--plugin--statsd--deletetimers"></a>`deletetimers`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="countersum"></a>`countersum`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--statsd--deletegauges"></a>`deletegauges`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timerpercentile"></a>`timerpercentile`
+##### <a name="-collectd--plugin--statsd--deletesets"></a>`deletesets`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--statsd--countersum"></a>`countersum`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--statsd--interval"></a>`interval`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--statsd--timerpercentile"></a>`timerpercentile`
 
 Data type: `Array`
 
@@ -5877,39 +5917,39 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="timerlower"></a>`timerlower`
+##### <a name="-collectd--plugin--statsd--timerlower"></a>`timerlower`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timerupper"></a>`timerupper`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="timersum"></a>`timersum`
+##### <a name="-collectd--plugin--statsd--timerupper"></a>`timerupper`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timercount"></a>`timercount`
+##### <a name="-collectd--plugin--statsd--timersum"></a>`timersum`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginswap"></a>`collectd::plugin::swap`
+##### <a name="-collectd--plugin--statsd--timercount"></a>`timercount`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--swap"></a>`collectd::plugin::swap`
 
 https://collectd.org/wiki/index.php/Plugin:Swap
 
@@ -5917,15 +5957,15 @@ https://collectd.org/wiki/index.php/Plugin:Swap
 
 The following parameters are available in the `collectd::plugin::swap` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`reportbydevice`](#reportbydevice)
-* [`reportbytes`](#reportbytes)
-* [`valuesabsolute`](#valuesabsolute)
-* [`valuespercentage`](#valuespercentage)
-* [`reportio`](#reportio)
+* [`ensure`](#-collectd--plugin--swap--ensure)
+* [`interval`](#-collectd--plugin--swap--interval)
+* [`reportbydevice`](#-collectd--plugin--swap--reportbydevice)
+* [`reportbytes`](#-collectd--plugin--swap--reportbytes)
+* [`valuesabsolute`](#-collectd--plugin--swap--valuesabsolute)
+* [`valuespercentage`](#-collectd--plugin--swap--valuespercentage)
+* [`reportio`](#-collectd--plugin--swap--reportio)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--swap--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -5933,55 +5973,55 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--swap--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="reportbydevice"></a>`reportbydevice`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="reportbytes"></a>`reportbytes`
+##### <a name="-collectd--plugin--swap--reportbydevice"></a>`reportbydevice`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `false`
 
-##### <a name="valuesabsolute"></a>`valuesabsolute`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="valuespercentage"></a>`valuespercentage`
+##### <a name="-collectd--plugin--swap--reportbytes"></a>`reportbytes`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `true`
 
-##### <a name="reportio"></a>`reportio`
+##### <a name="-collectd--plugin--swap--valuesabsolute"></a>`valuesabsolute`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="collectdpluginsysevent"></a>`collectd::plugin::sysevent`
+##### <a name="-collectd--plugin--swap--valuespercentage"></a>`valuespercentage`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--swap--reportio"></a>`reportio`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
+### <a name="collectd--plugin--sysevent"></a>`collectd::plugin::sysevent`
 
 == Class: collectd::plugin::sysevent
 
@@ -6028,15 +6068,15 @@ Documentation:
 
 The following parameters are available in the `collectd::plugin::sysevent` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`listen_host`](#listen_host)
-* [`listen_port`](#listen_port)
-* [`regex_filter`](#regex_filter)
-* [`buffer_size`](#buffer_size)
-* [`buffer_length`](#buffer_length)
+* [`ensure`](#-collectd--plugin--sysevent--ensure)
+* [`manage_package`](#-collectd--plugin--sysevent--manage_package)
+* [`listen_host`](#-collectd--plugin--sysevent--listen_host)
+* [`listen_port`](#-collectd--plugin--sysevent--listen_port)
+* [`regex_filter`](#-collectd--plugin--sysevent--regex_filter)
+* [`buffer_size`](#-collectd--plugin--sysevent--buffer_size)
+* [`buffer_length`](#-collectd--plugin--sysevent--buffer_length)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--sysevent--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6044,7 +6084,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--sysevent--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -6052,7 +6092,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="listen_host"></a>`listen_host`
+##### <a name="-collectd--plugin--sysevent--listen_host"></a>`listen_host`
 
 Data type: `Stdlib::Host`
 
@@ -6060,7 +6100,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'127.0.0.1'`
 
-##### <a name="listen_port"></a>`listen_port`
+##### <a name="-collectd--plugin--sysevent--listen_port"></a>`listen_port`
 
 Data type: `Stdlib::Port`
 
@@ -6068,7 +6108,7 @@ Data type: `Stdlib::Port`
 
 Default value: `6666`
 
-##### <a name="regex_filter"></a>`regex_filter`
+##### <a name="-collectd--plugin--sysevent--regex_filter"></a>`regex_filter`
 
 Data type: `String`
 
@@ -6076,23 +6116,23 @@ Data type: `String`
 
 Default value: `'/.*/'`
 
-##### <a name="buffer_size"></a>`buffer_size`
+##### <a name="-collectd--plugin--sysevent--buffer_size"></a>`buffer_size`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="buffer_length"></a>`buffer_length`
+##### <a name="-collectd--plugin--sysevent--buffer_length"></a>`buffer_length`
 
 Data type: `Optional[Integer[1, default]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginsyslog"></a>`collectd::plugin::syslog`
+### <a name="collectd--plugin--syslog"></a>`collectd::plugin::syslog`
 
 https://collectd.org/wiki/index.php/Plugin:SysLog
 
@@ -6100,12 +6140,12 @@ https://collectd.org/wiki/index.php/Plugin:SysLog
 
 The following parameters are available in the `collectd::plugin::syslog` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`log_level`](#log_level)
-* [`notify_level`](#notify_level)
+* [`ensure`](#-collectd--plugin--syslog--ensure)
+* [`interval`](#-collectd--plugin--syslog--interval)
+* [`log_level`](#-collectd--plugin--syslog--log_level)
+* [`notify_level`](#-collectd--plugin--syslog--notify_level)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--syslog--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6113,15 +6153,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--syslog--interval"></a>`interval`
 
 Data type: `Optional[Float]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="log_level"></a>`log_level`
+##### <a name="-collectd--plugin--syslog--log_level"></a>`log_level`
 
 Data type: `Enum['debug', 'info', 'notice', 'warning', 'err']`
 
@@ -6129,15 +6169,15 @@ Data type: `Enum['debug', 'info', 'notice', 'warning', 'err']`
 
 Default value: `'info'`
 
-##### <a name="notify_level"></a>`notify_level`
+##### <a name="-collectd--plugin--syslog--notify_level"></a>`notify_level`
 
 Data type: `Optional[Enum['OKAY', 'WARNING', 'FAILURE']]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugintable"></a>`collectd::plugin::table`
+### <a name="collectd--plugin--table"></a>`collectd::plugin::table`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -6145,17 +6185,17 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::table` class:
 
-* [`tables`](#tables)
-* [`ensure`](#ensure)
-* [`order`](#order)
+* [`tables`](#-collectd--plugin--table--tables)
+* [`ensure`](#-collectd--plugin--table--ensure)
+* [`order`](#-collectd--plugin--table--order)
 
-##### <a name="tables"></a>`tables`
+##### <a name="-collectd--plugin--table--tables"></a>`tables`
 
 Data type: `Hash[String, Collectd::Table::Table, 1]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--table--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6163,7 +6203,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--table--order"></a>`order`
 
 Data type: `Integer`
 
@@ -6171,7 +6211,7 @@ Data type: `Integer`
 
 Default value: `10`
 
-### <a name="collectdplugintail"></a>`collectd::plugin::tail`
+### <a name="collectd--plugin--tail"></a>`collectd::plugin::tail`
 
 Tail plugin
 https://collectd.org/wiki/index.php/Plugin:Tail
@@ -6180,18 +6220,18 @@ https://collectd.org/wiki/index.php/Plugin:Tail
 
 The following parameters are available in the `collectd::plugin::tail` class:
 
-* [`interval`](#interval)
-* [`files`](#files)
+* [`interval`](#-collectd--plugin--tail--interval)
+* [`files`](#-collectd--plugin--tail--files)
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--tail--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="files"></a>`files`
+##### <a name="-collectd--plugin--tail--files"></a>`files`
 
 Data type: `Hash`
 
@@ -6199,7 +6239,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-### <a name="collectdplugintail_csv"></a>`collectd::plugin::tail_csv`
+### <a name="collectd--plugin--tail_csv"></a>`collectd::plugin::tail_csv`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
 
@@ -6207,24 +6247,24 @@ https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_cs
 
 The following parameters are available in the `collectd::plugin::tail_csv` class:
 
-* [`metrics`](#metrics)
-* [`files`](#files)
-* [`ensure`](#ensure)
-* [`order`](#order)
+* [`metrics`](#-collectd--plugin--tail_csv--metrics)
+* [`files`](#-collectd--plugin--tail_csv--files)
+* [`ensure`](#-collectd--plugin--tail_csv--ensure)
+* [`order`](#-collectd--plugin--tail_csv--order)
 
-##### <a name="metrics"></a>`metrics`
+##### <a name="-collectd--plugin--tail_csv--metrics"></a>`metrics`
 
 Data type: `Hash[String, Collectd::Tail_Csv::Metric, 1]`
 
 
 
-##### <a name="files"></a>`files`
+##### <a name="-collectd--plugin--tail_csv--files"></a>`files`
 
 Data type: `Hash[String, Collectd::Tail_Csv::File, 1]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--tail_csv--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6232,7 +6272,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--tail_csv--order"></a>`order`
 
 Data type: `Integer`
 
@@ -6240,7 +6280,7 @@ Data type: `Integer`
 
 Default value: `10`
 
-### <a name="collectdplugintarget_v5upgrade"></a>`collectd::plugin::target_v5upgrade`
+### <a name="collectd--plugin--target_v5upgrade"></a>`collectd::plugin::target_v5upgrade`
 
 https://collectd.org/wiki/index.php/Target:v5_upgrade
 
@@ -6248,9 +6288,9 @@ https://collectd.org/wiki/index.php/Target:v5_upgrade
 
 The following parameters are available in the `collectd::plugin::target_v5upgrade` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--target_v5upgrade--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--target_v5upgrade--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6258,7 +6298,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdplugintcpconns"></a>`collectd::plugin::tcpconns`
+### <a name="collectd--plugin--tcpconns"></a>`collectd::plugin::tcpconns`
 
 https://collectd.org/wiki/index.php/Plugin:TCPConns
 
@@ -6266,54 +6306,54 @@ https://collectd.org/wiki/index.php/Plugin:TCPConns
 
 The following parameters are available in the `collectd::plugin::tcpconns` class:
 
-* [`localports`](#localports)
-* [`remoteports`](#remoteports)
-* [`listening`](#listening)
-* [`interval`](#interval)
-* [`allportssummary`](#allportssummary)
-* [`ensure`](#ensure)
+* [`localports`](#-collectd--plugin--tcpconns--localports)
+* [`remoteports`](#-collectd--plugin--tcpconns--remoteports)
+* [`listening`](#-collectd--plugin--tcpconns--listening)
+* [`interval`](#-collectd--plugin--tcpconns--interval)
+* [`allportssummary`](#-collectd--plugin--tcpconns--allportssummary)
+* [`ensure`](#-collectd--plugin--tcpconns--ensure)
 
-##### <a name="localports"></a>`localports`
-
-Data type: `Optional[Array[Stdlib::Port]]`
-
-
-
-Default value: ``undef``
-
-##### <a name="remoteports"></a>`remoteports`
+##### <a name="-collectd--plugin--tcpconns--localports"></a>`localports`
 
 Data type: `Optional[Array[Stdlib::Port]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="listening"></a>`listening`
+##### <a name="-collectd--plugin--tcpconns--remoteports"></a>`remoteports`
+
+Data type: `Optional[Array[Stdlib::Port]]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--tcpconns--listening"></a>`listening`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--tcpconns--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="allportssummary"></a>`allportssummary`
+##### <a name="-collectd--plugin--tcpconns--allportssummary"></a>`allportssummary`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--tcpconns--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6321,7 +6361,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginthermal"></a>`collectd::plugin::thermal`
+### <a name="collectd--plugin--thermal"></a>`collectd::plugin::thermal`
 
 https://collectd.org/wiki/index.php/Plugin:thermal
 
@@ -6329,12 +6369,12 @@ https://collectd.org/wiki/index.php/Plugin:thermal
 
 The following parameters are available in the `collectd::plugin::thermal` class:
 
-* [`devices`](#devices)
-* [`ensure`](#ensure)
-* [`ignoreselected`](#ignoreselected)
-* [`interval`](#interval)
+* [`devices`](#-collectd--plugin--thermal--devices)
+* [`ensure`](#-collectd--plugin--thermal--ensure)
+* [`ignoreselected`](#-collectd--plugin--thermal--ignoreselected)
+* [`interval`](#-collectd--plugin--thermal--interval)
 
-##### <a name="devices"></a>`devices`
+##### <a name="-collectd--plugin--thermal--devices"></a>`devices`
 
 Data type: `Array`
 
@@ -6342,7 +6382,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--thermal--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6350,23 +6390,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="ignoreselected"></a>`ignoreselected`
+##### <a name="-collectd--plugin--thermal--ignoreselected"></a>`ignoreselected`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--thermal--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginthreshold"></a>`collectd::plugin::threshold`
+### <a name="collectd--plugin--threshold"></a>`collectd::plugin::threshold`
 
 http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_threshold
 
@@ -6374,13 +6414,13 @@ http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_threshol
 
 The following parameters are available in the `collectd::plugin::threshold` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`types`](#types)
-* [`plugins`](#plugins)
-* [`hosts`](#hosts)
+* [`ensure`](#-collectd--plugin--threshold--ensure)
+* [`interval`](#-collectd--plugin--threshold--interval)
+* [`types`](#-collectd--plugin--threshold--types)
+* [`plugins`](#-collectd--plugin--threshold--plugins)
+* [`hosts`](#-collectd--plugin--threshold--hosts)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--threshold--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6388,15 +6428,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--threshold--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="types"></a>`types`
+##### <a name="-collectd--plugin--threshold--types"></a>`types`
 
 Data type: `Array[Collectd::Threshold::Type]`
 
@@ -6404,7 +6444,7 @@ Data type: `Array[Collectd::Threshold::Type]`
 
 Default value: `[]`
 
-##### <a name="plugins"></a>`plugins`
+##### <a name="-collectd--plugin--threshold--plugins"></a>`plugins`
 
 Data type: `Array[Collectd::Threshold::Plugin]`
 
@@ -6412,7 +6452,7 @@ Data type: `Array[Collectd::Threshold::Plugin]`
 
 Default value: `[]`
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-collectd--plugin--threshold--hosts"></a>`hosts`
 
 Data type: `Array[Collectd::Threshold::Host]`
 
@@ -6420,7 +6460,7 @@ Data type: `Array[Collectd::Threshold::Host]`
 
 Default value: `[]`
 
-### <a name="collectdpluginturbostat"></a>`collectd::plugin::turbostat`
+### <a name="collectd--plugin--turbostat"></a>`collectd::plugin::turbostat`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_turbostat
 
@@ -6428,16 +6468,16 @@ https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_turbost
 
 The following parameters are available in the `collectd::plugin::turbostat` class:
 
-* [`ensure`](#ensure)
-* [`core_c_states`](#core_c_states)
-* [`package_c_states`](#package_c_states)
-* [`system_management_interrupt`](#system_management_interrupt)
-* [`digital_temperature_sensor`](#digital_temperature_sensor)
-* [`tcc_activation_temp`](#tcc_activation_temp)
-* [`running_average_power_limit`](#running_average_power_limit)
-* [`logical_core_names`](#logical_core_names)
+* [`ensure`](#-collectd--plugin--turbostat--ensure)
+* [`core_c_states`](#-collectd--plugin--turbostat--core_c_states)
+* [`package_c_states`](#-collectd--plugin--turbostat--package_c_states)
+* [`system_management_interrupt`](#-collectd--plugin--turbostat--system_management_interrupt)
+* [`digital_temperature_sensor`](#-collectd--plugin--turbostat--digital_temperature_sensor)
+* [`tcc_activation_temp`](#-collectd--plugin--turbostat--tcc_activation_temp)
+* [`running_average_power_limit`](#-collectd--plugin--turbostat--running_average_power_limit)
+* [`logical_core_names`](#-collectd--plugin--turbostat--logical_core_names)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--turbostat--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6445,63 +6485,63 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="core_c_states"></a>`core_c_states`
+##### <a name="-collectd--plugin--turbostat--core_c_states"></a>`core_c_states`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_c_states"></a>`package_c_states`
+##### <a name="-collectd--plugin--turbostat--package_c_states"></a>`package_c_states`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="system_management_interrupt"></a>`system_management_interrupt`
+##### <a name="-collectd--plugin--turbostat--system_management_interrupt"></a>`system_management_interrupt`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="digital_temperature_sensor"></a>`digital_temperature_sensor`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="tcc_activation_temp"></a>`tcc_activation_temp`
-
-Data type: `Optional[Integer]`
-
-
-
-Default value: ``undef``
-
-##### <a name="running_average_power_limit"></a>`running_average_power_limit`
-
-Data type: `Optional[Integer]`
-
-
-
-Default value: ``undef``
-
-##### <a name="logical_core_names"></a>`logical_core_names`
+##### <a name="-collectd--plugin--turbostat--digital_temperature_sensor"></a>`digital_temperature_sensor`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginunixsock"></a>`collectd::plugin::unixsock`
+##### <a name="-collectd--plugin--turbostat--tcc_activation_temp"></a>`tcc_activation_temp`
+
+Data type: `Optional[Integer]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--turbostat--running_average_power_limit"></a>`running_average_power_limit`
+
+Data type: `Optional[Integer]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--turbostat--logical_core_names"></a>`logical_core_names`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--unixsock"></a>`collectd::plugin::unixsock`
 
 https://collectd.org/wiki/index.php/Plugin:UnixSock
 
@@ -6509,14 +6549,14 @@ https://collectd.org/wiki/index.php/Plugin:UnixSock
 
 The following parameters are available in the `collectd::plugin::unixsock` class:
 
-* [`socketfile`](#socketfile)
-* [`socketgroup`](#socketgroup)
-* [`socketperms`](#socketperms)
-* [`deletesocket`](#deletesocket)
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`socketfile`](#-collectd--plugin--unixsock--socketfile)
+* [`socketgroup`](#-collectd--plugin--unixsock--socketgroup)
+* [`socketperms`](#-collectd--plugin--unixsock--socketperms)
+* [`deletesocket`](#-collectd--plugin--unixsock--deletesocket)
+* [`ensure`](#-collectd--plugin--unixsock--ensure)
+* [`interval`](#-collectd--plugin--unixsock--interval)
 
-##### <a name="socketfile"></a>`socketfile`
+##### <a name="-collectd--plugin--unixsock--socketfile"></a>`socketfile`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -6524,7 +6564,7 @@ Data type: `Stdlib::Absolutepath`
 
 Default value: `'/var/run/collectd-unixsock'`
 
-##### <a name="socketgroup"></a>`socketgroup`
+##### <a name="-collectd--plugin--unixsock--socketgroup"></a>`socketgroup`
 
 Data type: `Any`
 
@@ -6532,7 +6572,7 @@ Data type: `Any`
 
 Default value: `'collectd'`
 
-##### <a name="socketperms"></a>`socketperms`
+##### <a name="-collectd--plugin--unixsock--socketperms"></a>`socketperms`
 
 Data type: `Any`
 
@@ -6540,15 +6580,15 @@ Data type: `Any`
 
 Default value: `'0770'`
 
-##### <a name="deletesocket"></a>`deletesocket`
+##### <a name="-collectd--plugin--unixsock--deletesocket"></a>`deletesocket`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--unixsock--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6556,15 +6596,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--unixsock--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginuptime"></a>`collectd::plugin::uptime`
+### <a name="collectd--plugin--uptime"></a>`collectd::plugin::uptime`
 
 https://collectd.org/wiki/index.php/Plugin:Uptime
 
@@ -6572,10 +6612,10 @@ https://collectd.org/wiki/index.php/Plugin:Uptime
 
 The following parameters are available in the `collectd::plugin::uptime` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--uptime--ensure)
+* [`interval`](#-collectd--plugin--uptime--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--uptime--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6583,15 +6623,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--uptime--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginusers"></a>`collectd::plugin::users`
+### <a name="collectd--plugin--users"></a>`collectd::plugin::users`
 
 https://collectd.org/wiki/index.php/Plugin:Users
 
@@ -6599,10 +6639,10 @@ https://collectd.org/wiki/index.php/Plugin:Users
 
 The following parameters are available in the `collectd::plugin::users` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--users--ensure)
+* [`interval`](#-collectd--plugin--users--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--users--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6610,15 +6650,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--users--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginuuid"></a>`collectd::plugin::uuid`
+### <a name="collectd--plugin--uuid"></a>`collectd::plugin::uuid`
 
 https://collectd.org/wiki/index.php/Plugin:UUID
 
@@ -6626,11 +6666,11 @@ https://collectd.org/wiki/index.php/Plugin:UUID
 
 The following parameters are available in the `collectd::plugin::uuid` class:
 
-* [`uuid_file`](#uuid_file)
-* [`ensure`](#ensure)
-* [`interval`](#interval)
+* [`uuid_file`](#-collectd--plugin--uuid--uuid_file)
+* [`ensure`](#-collectd--plugin--uuid--ensure)
+* [`interval`](#-collectd--plugin--uuid--interval)
 
-##### <a name="uuid_file"></a>`uuid_file`
+##### <a name="-collectd--plugin--uuid--uuid_file"></a>`uuid_file`
 
 Data type: `Any`
 
@@ -6638,7 +6678,7 @@ Data type: `Any`
 
 Default value: `'/etc/uuid'`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--uuid--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6646,15 +6686,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--uuid--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginvarnish"></a>`collectd::plugin::varnish`
+### <a name="collectd--plugin--varnish"></a>`collectd::plugin::varnish`
 
 https://collectd.org/wiki/index.php/Plugin:Varnish
 
@@ -6662,12 +6702,12 @@ https://collectd.org/wiki/index.php/Plugin:Varnish
 
 The following parameters are available in the `collectd::plugin::varnish` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`instances`](#instances)
-* [`interval`](#interval)
+* [`ensure`](#-collectd--plugin--varnish--ensure)
+* [`manage_package`](#-collectd--plugin--varnish--manage_package)
+* [`instances`](#-collectd--plugin--varnish--instances)
+* [`interval`](#-collectd--plugin--varnish--interval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--varnish--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6675,34 +6715,38 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--varnish--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="instances"></a>`instances`
+##### <a name="-collectd--plugin--varnish--instances"></a>`instances`
 
 Data type: `Hash`
 
 
 
-Default value: `{
+Default value:
+
+```puppet
+{
     'localhost' => {
     },
-  }`
+  }
+```
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--varnish--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginvirt"></a>`collectd::plugin::virt`
+### <a name="collectd--plugin--virt"></a>`collectd::plugin::virt`
 
 https://collectd.org/wiki/index.php/Plugin:virt
 
@@ -6710,27 +6754,27 @@ https://collectd.org/wiki/index.php/Plugin:virt
 
 The following parameters are available in the `collectd::plugin::virt` class:
 
-* [`connection`](#connection)
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`refresh_interval`](#refresh_interval)
-* [`domain`](#domain)
-* [`block_device`](#block_device)
-* [`interface_device`](#interface_device)
-* [`ignore_selected`](#ignore_selected)
-* [`plugin_instance_format`](#plugin_instance_format)
-* [`hostname_format`](#hostname_format)
-* [`interface_format`](#interface_format)
-* [`extra_stats`](#extra_stats)
-* [`interval`](#interval)
+* [`connection`](#-collectd--plugin--virt--connection)
+* [`ensure`](#-collectd--plugin--virt--ensure)
+* [`manage_package`](#-collectd--plugin--virt--manage_package)
+* [`refresh_interval`](#-collectd--plugin--virt--refresh_interval)
+* [`domain`](#-collectd--plugin--virt--domain)
+* [`block_device`](#-collectd--plugin--virt--block_device)
+* [`interface_device`](#-collectd--plugin--virt--interface_device)
+* [`ignore_selected`](#-collectd--plugin--virt--ignore_selected)
+* [`plugin_instance_format`](#-collectd--plugin--virt--plugin_instance_format)
+* [`hostname_format`](#-collectd--plugin--virt--hostname_format)
+* [`interface_format`](#-collectd--plugin--virt--interface_format)
+* [`extra_stats`](#-collectd--plugin--virt--extra_stats)
+* [`interval`](#-collectd--plugin--virt--interval)
 
-##### <a name="connection"></a>`connection`
+##### <a name="-collectd--plugin--virt--connection"></a>`connection`
 
 Data type: `String`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--virt--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6738,95 +6782,95 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--virt--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="refresh_interval"></a>`refresh_interval`
+##### <a name="-collectd--plugin--virt--refresh_interval"></a>`refresh_interval`
 
 Data type: `Optional[Pattern[/^\d+$/]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="domain"></a>`domain`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="block_device"></a>`block_device`
+##### <a name="-collectd--plugin--virt--domain"></a>`domain`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interface_device"></a>`interface_device`
+##### <a name="-collectd--plugin--virt--block_device"></a>`block_device`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ignore_selected"></a>`ignore_selected`
+##### <a name="-collectd--plugin--virt--interface_device"></a>`interface_device`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--virt--ignore_selected"></a>`ignore_selected`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="plugin_instance_format"></a>`plugin_instance_format`
+##### <a name="-collectd--plugin--virt--plugin_instance_format"></a>`plugin_instance_format`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hostname_format"></a>`hostname_format`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="interface_format"></a>`interface_format`
+##### <a name="-collectd--plugin--virt--hostname_format"></a>`hostname_format`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="extra_stats"></a>`extra_stats`
+##### <a name="-collectd--plugin--virt--interface_format"></a>`interface_format`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--virt--extra_stats"></a>`extra_stats`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--virt--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginvmem"></a>`collectd::plugin::vmem`
+### <a name="collectd--plugin--vmem"></a>`collectd::plugin::vmem`
 
 https://collectd.org/wiki/index.php/Plugin:vmem
 
@@ -6834,11 +6878,11 @@ https://collectd.org/wiki/index.php/Plugin:vmem
 
 The following parameters are available in the `collectd::plugin::vmem` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`verbose`](#verbose)
+* [`ensure`](#-collectd--plugin--vmem--ensure)
+* [`interval`](#-collectd--plugin--vmem--interval)
+* [`verbose`](#-collectd--plugin--vmem--verbose)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--vmem--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6846,23 +6890,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--vmem--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="verbose"></a>`verbose`
+##### <a name="-collectd--plugin--vmem--verbose"></a>`verbose`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginwrite_graphite"></a>`collectd::plugin::write_graphite`
+### <a name="collectd--plugin--write_graphite"></a>`collectd::plugin::write_graphite`
 
 https://collectd.org/wiki/index.php/Graphite
 
@@ -6870,12 +6914,12 @@ https://collectd.org/wiki/index.php/Graphite
 
 The following parameters are available in the `collectd::plugin::write_graphite` class:
 
-* [`carbons`](#carbons)
-* [`carbon_defaults`](#carbon_defaults)
-* [`ensure`](#ensure)
-* [`globals`](#globals)
+* [`carbons`](#-collectd--plugin--write_graphite--carbons)
+* [`carbon_defaults`](#-collectd--plugin--write_graphite--carbon_defaults)
+* [`ensure`](#-collectd--plugin--write_graphite--ensure)
+* [`globals`](#-collectd--plugin--write_graphite--globals)
 
-##### <a name="carbons"></a>`carbons`
+##### <a name="-collectd--plugin--write_graphite--carbons"></a>`carbons`
 
 Data type: `Hash`
 
@@ -6883,7 +6927,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="carbon_defaults"></a>`carbon_defaults`
+##### <a name="-collectd--plugin--write_graphite--carbon_defaults"></a>`carbon_defaults`
 
 Data type: `Any`
 
@@ -6891,7 +6935,7 @@ Data type: `Any`
 
 Default value: `{}`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_graphite--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6899,15 +6943,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="globals"></a>`globals`
+##### <a name="-collectd--plugin--write_graphite--globals"></a>`globals`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginwrite_http"></a>`collectd::plugin::write_http`
+### <a name="collectd--plugin--write_http"></a>`collectd::plugin::write_http`
 
 Enable write_http plugin
 
@@ -6918,12 +6962,12 @@ Enable write_http plugin
 
 The following parameters are available in the `collectd::plugin::write_http` class:
 
-* [`ensure`](#ensure)
-* [`nodes`](#nodes)
-* [`urls`](#urls)
-* [`manage_package`](#manage_package)
+* [`ensure`](#-collectd--plugin--write_http--ensure)
+* [`nodes`](#-collectd--plugin--write_http--nodes)
+* [`urls`](#-collectd--plugin--write_http--urls)
+* [`manage_package`](#-collectd--plugin--write_http--manage_package)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_http--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -6931,7 +6975,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="nodes"></a>`nodes`
+##### <a name="-collectd--plugin--write_http--nodes"></a>`nodes`
 
 Data type: `Hash[String, Hash[String, Scalar]]`
 
@@ -6939,7 +6983,7 @@ Data type: `Hash[String, Hash[String, Scalar]]`
 
 Default value: `{}`
 
-##### <a name="urls"></a>`urls`
+##### <a name="-collectd--plugin--write_http--urls"></a>`urls`
 
 Data type: `Hash[String, Hash[String, Scalar]]`
 
@@ -6947,15 +6991,15 @@ Data type: `Hash[String, Hash[String, Scalar]]`
 
 Default value: `{}`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--write_http--manage_package"></a>`manage_package`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginwrite_kafka"></a>`collectd::plugin::write_kafka`
+### <a name="collectd--plugin--write_kafka"></a>`collectd::plugin::write_kafka`
 
 The collectd::plugin::write_kafka class.
 
@@ -6963,15 +7007,15 @@ The collectd::plugin::write_kafka class.
 
 The following parameters are available in the `collectd::plugin::write_kafka` class:
 
-* [`ensure`](#ensure)
-* [`kafka_host`](#kafka_host)
-* [`kafka_hosts`](#kafka_hosts)
-* [`kafka_port`](#kafka_port)
-* [`topics`](#topics)
-* [`properties`](#properties)
-* [`meta`](#meta)
+* [`ensure`](#-collectd--plugin--write_kafka--ensure)
+* [`kafka_host`](#-collectd--plugin--write_kafka--kafka_host)
+* [`kafka_hosts`](#-collectd--plugin--write_kafka--kafka_hosts)
+* [`kafka_port`](#-collectd--plugin--write_kafka--kafka_port)
+* [`topics`](#-collectd--plugin--write_kafka--topics)
+* [`properties`](#-collectd--plugin--write_kafka--properties)
+* [`meta`](#-collectd--plugin--write_kafka--meta)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_kafka--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -6979,15 +7023,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="kafka_host"></a>`kafka_host`
+##### <a name="-collectd--plugin--write_kafka--kafka_host"></a>`kafka_host`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="kafka_hosts"></a>`kafka_hosts`
+##### <a name="-collectd--plugin--write_kafka--kafka_hosts"></a>`kafka_hosts`
 
 Data type: `Array[String]`
 
@@ -6995,7 +7039,7 @@ Data type: `Array[String]`
 
 Default value: `['localhost:9092']`
 
-##### <a name="kafka_port"></a>`kafka_port`
+##### <a name="-collectd--plugin--write_kafka--kafka_port"></a>`kafka_port`
 
 Data type: `Stdlib::Port`
 
@@ -7003,7 +7047,7 @@ Data type: `Stdlib::Port`
 
 Default value: `9092`
 
-##### <a name="topics"></a>`topics`
+##### <a name="-collectd--plugin--write_kafka--topics"></a>`topics`
 
 Data type: `Hash`
 
@@ -7011,7 +7055,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="properties"></a>`properties`
+##### <a name="-collectd--plugin--write_kafka--properties"></a>`properties`
 
 Data type: `Hash`
 
@@ -7019,7 +7063,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="meta"></a>`meta`
+##### <a name="-collectd--plugin--write_kafka--meta"></a>`meta`
 
 Data type: `Hash`
 
@@ -7027,7 +7071,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-### <a name="collectdpluginwrite_log"></a>`collectd::plugin::write_log`
+### <a name="collectd--plugin--write_log"></a>`collectd::plugin::write_log`
 
 The collectd::plugin::write_log class.
 
@@ -7035,10 +7079,10 @@ The collectd::plugin::write_log class.
 
 The following parameters are available in the `collectd::plugin::write_log` class:
 
-* [`format`](#format)
-* [`ensure`](#ensure)
+* [`format`](#-collectd--plugin--write_log--format)
+* [`ensure`](#-collectd--plugin--write_log--ensure)
 
-##### <a name="format"></a>`format`
+##### <a name="-collectd--plugin--write_log--format"></a>`format`
 
 Data type: `String`
 
@@ -7046,7 +7090,7 @@ Data type: `String`
 
 Default value: `'JSON'`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_log--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7054,7 +7098,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginwrite_network"></a>`collectd::plugin::write_network`
+### <a name="collectd--plugin--write_network"></a>`collectd::plugin::write_network`
 
 A define to make a generic network output for collectd
 
@@ -7062,10 +7106,10 @@ A define to make a generic network output for collectd
 
 The following parameters are available in the `collectd::plugin::write_network` class:
 
-* [`ensure`](#ensure)
-* [`servers`](#servers)
+* [`ensure`](#-collectd--plugin--write_network--ensure)
+* [`servers`](#-collectd--plugin--write_network--servers)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_network--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7073,7 +7117,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="servers"></a>`servers`
+##### <a name="-collectd--plugin--write_network--servers"></a>`servers`
 
 Data type: `Hash`
 
@@ -7081,31 +7125,35 @@ Data type: `Hash`
 
 Default value: `{ 'localhost'  => { 'serverport' => '25826' } }`
 
-### <a name="collectdpluginwrite_prometheus"></a>`collectd::plugin::write_prometheus`
+### <a name="collectd--plugin--write_prometheus"></a>`collectd::plugin::write_prometheus`
 
-The collectd::plugin::write_prometheus class.
+Configures write_prometheus plugin.
 
 #### Parameters
 
 The following parameters are available in the `collectd::plugin::write_prometheus` class:
 
-* [`host`](#host)
-* [`port`](#port)
-* [`ensure`](#ensure)
+* [`port`](#-collectd--plugin--write_prometheus--port)
+* [`ip`](#-collectd--plugin--write_prometheus--ip)
+* [`ensure`](#-collectd--plugin--write_prometheus--ensure)
 
-##### <a name="host"></a>`host`
-
-Data type: `Optional[Stdlib::Host]`
-
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--write_prometheus--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
-
+Defines the port on which to accept scrape requests from Prometheus.
 
 Default value: `9103`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_prometheus--ip"></a>`ip`
+
+Data type: `Optional[Stdlib::IP::Address]`
+
+Defines the IP address to bind to. In not specified, the listener will bind to all IPs present.
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--write_prometheus--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7113,7 +7161,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginwrite_riemann"></a>`collectd::plugin::write_riemann`
+### <a name="collectd--plugin--write_riemann"></a>`collectd::plugin::write_riemann`
 
 https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 
@@ -7121,19 +7169,19 @@ https://collectd.org/wiki/index.php/Plugin:Write_Riemann
 
 The following parameters are available in the `collectd::plugin::write_riemann` class:
 
-* [`nodes`](#nodes)
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`tags`](#tags)
-* [`attributes`](#attributes)
+* [`nodes`](#-collectd--plugin--write_riemann--nodes)
+* [`ensure`](#-collectd--plugin--write_riemann--ensure)
+* [`manage_package`](#-collectd--plugin--write_riemann--manage_package)
+* [`tags`](#-collectd--plugin--write_riemann--tags)
+* [`attributes`](#-collectd--plugin--write_riemann--attributes)
 
-##### <a name="nodes"></a>`nodes`
+##### <a name="-collectd--plugin--write_riemann--nodes"></a>`nodes`
 
 Data type: `Array[Collectd::Write_riemann::Node]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_riemann--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -7141,7 +7189,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--write_riemann--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -7149,7 +7197,7 @@ Data type: `Boolean`
 
 Default value: `$collectd::manage_package`
 
-##### <a name="tags"></a>`tags`
+##### <a name="-collectd--plugin--write_riemann--tags"></a>`tags`
 
 Data type: `Array[String[1]]`
 
@@ -7157,7 +7205,7 @@ Data type: `Array[String[1]]`
 
 Default value: `[]`
 
-##### <a name="attributes"></a>`attributes`
+##### <a name="-collectd--plugin--write_riemann--attributes"></a>`attributes`
 
 Data type: `Hash[String[1],String[1]]`
 
@@ -7165,7 +7213,7 @@ Data type: `Hash[String[1],String[1]]`
 
 Default value: `{}`
 
-### <a name="collectdpluginwrite_sensu"></a>`collectd::plugin::write_sensu`
+### <a name="collectd--plugin--write_sensu"></a>`collectd::plugin::write_sensu`
 
 https://collectd.org/wiki/index.php/Plugin:Write_Sensu
 
@@ -7173,18 +7221,18 @@ https://collectd.org/wiki/index.php/Plugin:Write_Sensu
 
 The following parameters are available in the `collectd::plugin::write_sensu` class:
 
-* [`ensure`](#ensure)
-* [`manage_package`](#manage_package)
-* [`sensu_host`](#sensu_host)
-* [`sensu_port`](#sensu_port)
-* [`store_rates`](#store_rates)
-* [`always_append_ds`](#always_append_ds)
-* [`metrics`](#metrics)
-* [`metrics_handler`](#metrics_handler)
-* [`notifications`](#notifications)
-* [`notifs_handler`](#notifs_handler)
+* [`ensure`](#-collectd--plugin--write_sensu--ensure)
+* [`manage_package`](#-collectd--plugin--write_sensu--manage_package)
+* [`sensu_host`](#-collectd--plugin--write_sensu--sensu_host)
+* [`sensu_port`](#-collectd--plugin--write_sensu--sensu_port)
+* [`store_rates`](#-collectd--plugin--write_sensu--store_rates)
+* [`always_append_ds`](#-collectd--plugin--write_sensu--always_append_ds)
+* [`metrics`](#-collectd--plugin--write_sensu--metrics)
+* [`metrics_handler`](#-collectd--plugin--write_sensu--metrics_handler)
+* [`notifications`](#-collectd--plugin--write_sensu--notifications)
+* [`notifs_handler`](#-collectd--plugin--write_sensu--notifs_handler)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_sensu--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7192,15 +7240,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--write_sensu--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sensu_host"></a>`sensu_host`
+##### <a name="-collectd--plugin--write_sensu--sensu_host"></a>`sensu_host`
 
 Data type: `Stdlib::Host`
 
@@ -7208,7 +7256,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="sensu_port"></a>`sensu_port`
+##### <a name="-collectd--plugin--write_sensu--sensu_port"></a>`sensu_port`
 
 Data type: `Stdlib::Port`
 
@@ -7216,31 +7264,31 @@ Data type: `Stdlib::Port`
 
 Default value: `3030`
 
-##### <a name="store_rates"></a>`store_rates`
+##### <a name="-collectd--plugin--write_sensu--store_rates"></a>`store_rates`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="always_append_ds"></a>`always_append_ds`
+##### <a name="-collectd--plugin--write_sensu--always_append_ds"></a>`always_append_ds`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="metrics"></a>`metrics`
+##### <a name="-collectd--plugin--write_sensu--metrics"></a>`metrics`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="metrics_handler"></a>`metrics_handler`
+##### <a name="-collectd--plugin--write_sensu--metrics_handler"></a>`metrics_handler`
 
 Data type: `Any`
 
@@ -7248,15 +7296,15 @@ Data type: `Any`
 
 Default value: `'example_metric_handler'`
 
-##### <a name="notifications"></a>`notifications`
+##### <a name="-collectd--plugin--write_sensu--notifications"></a>`notifications`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="notifs_handler"></a>`notifs_handler`
+##### <a name="-collectd--plugin--write_sensu--notifs_handler"></a>`notifs_handler`
 
 Data type: `Any`
 
@@ -7264,7 +7312,7 @@ Data type: `Any`
 
 Default value: `'example_notification_handler'`
 
-### <a name="collectdpluginwrite_tsdb"></a>`collectd::plugin::write_tsdb`
+### <a name="collectd--plugin--write_tsdb"></a>`collectd::plugin::write_tsdb`
 
 https://collectd.org/wiki/index.php/Plugin:Write_TSDB
 
@@ -7272,15 +7320,15 @@ https://collectd.org/wiki/index.php/Plugin:Write_TSDB
 
 The following parameters are available in the `collectd::plugin::write_tsdb` class:
 
-* [`ensure`](#ensure)
-* [`globals`](#globals)
-* [`host`](#host)
-* [`port`](#port)
-* [`host_tags`](#host_tags)
-* [`store_rates`](#store_rates)
-* [`always_append_ds`](#always_append_ds)
+* [`ensure`](#-collectd--plugin--write_tsdb--ensure)
+* [`globals`](#-collectd--plugin--write_tsdb--globals)
+* [`host`](#-collectd--plugin--write_tsdb--host)
+* [`port`](#-collectd--plugin--write_tsdb--port)
+* [`host_tags`](#-collectd--plugin--write_tsdb--host_tags)
+* [`store_rates`](#-collectd--plugin--write_tsdb--store_rates)
+* [`always_append_ds`](#-collectd--plugin--write_tsdb--always_append_ds)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_tsdb--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7288,15 +7336,15 @@ Data type: `Any`
 
 Default value: `present`
 
-##### <a name="globals"></a>`globals`
+##### <a name="-collectd--plugin--write_tsdb--globals"></a>`globals`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--write_tsdb--host"></a>`host`
 
 Data type: `Stdlib::Host`
 
@@ -7304,7 +7352,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--write_tsdb--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
@@ -7312,7 +7360,7 @@ Data type: `Stdlib::Port`
 
 Default value: `4242`
 
-##### <a name="host_tags"></a>`host_tags`
+##### <a name="-collectd--plugin--write_tsdb--host_tags"></a>`host_tags`
 
 Data type: `Array`
 
@@ -7320,23 +7368,23 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="store_rates"></a>`store_rates`
+##### <a name="-collectd--plugin--write_tsdb--store_rates"></a>`store_rates`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="always_append_ds"></a>`always_append_ds`
+##### <a name="-collectd--plugin--write_tsdb--always_append_ds"></a>`always_append_ds`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginzfs_arc"></a>`collectd::plugin::zfs_arc`
+### <a name="collectd--plugin--zfs_arc"></a>`collectd::plugin::zfs_arc`
 
 https://collectd.org/wiki/index.php/Plugin:ZFS_ARC
 
@@ -7344,9 +7392,9 @@ https://collectd.org/wiki/index.php/Plugin:ZFS_ARC
 
 The following parameters are available in the `collectd::plugin::zfs_arc` class:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--zfs_arc--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--zfs_arc--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7354,7 +7402,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginzookeeper"></a>`collectd::plugin::zookeeper`
+### <a name="collectd--plugin--zookeeper"></a>`collectd::plugin::zookeeper`
 
 The collectd::plugin::zookeeper class.
 
@@ -7362,12 +7410,12 @@ The collectd::plugin::zookeeper class.
 
 The following parameters are available in the `collectd::plugin::zookeeper` class:
 
-* [`ensure`](#ensure)
-* [`interval`](#interval)
-* [`zookeeper_host`](#zookeeper_host)
-* [`zookeeper_port`](#zookeeper_port)
+* [`ensure`](#-collectd--plugin--zookeeper--ensure)
+* [`interval`](#-collectd--plugin--zookeeper--interval)
+* [`zookeeper_host`](#-collectd--plugin--zookeeper--zookeeper_host)
+* [`zookeeper_port`](#-collectd--plugin--zookeeper--zookeeper_port)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--zookeeper--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -7375,15 +7423,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--zookeeper--interval"></a>`interval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="zookeeper_host"></a>`zookeeper_host`
+##### <a name="-collectd--plugin--zookeeper--zookeeper_host"></a>`zookeeper_host`
 
 Data type: `Stdlib::Host`
 
@@ -7391,7 +7439,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="zookeeper_port"></a>`zookeeper_port`
+##### <a name="-collectd--plugin--zookeeper--zookeeper_port"></a>`zookeeper_port`
 
 Data type: `Stdlib::Port`
 
@@ -7399,26 +7447,26 @@ Data type: `Stdlib::Port`
 
 Default value: `2181`
 
-### <a name="collectdrepo"></a>`collectd::repo`
+### <a name="collectd--repo"></a>`collectd::repo`
 
 collectd::repo
 Handle package repo configuration
 
-### <a name="collectdrepodebian"></a>`collectd::repo::debian`
+### <a name="collectd--repo--debian"></a>`collectd::repo::debian`
 
 The collectd::repo::debian class.
 
-### <a name="collectdreporedhat"></a>`collectd::repo::redhat`
+### <a name="collectd--repo--redhat"></a>`collectd::repo::redhat`
 
 The collectd::repo::redhat class.
 
-### <a name="collectdservice"></a>`collectd::service`
+### <a name="collectd--service"></a>`collectd::service`
 
 The collectd::service class.
 
 ## Defined types
 
-### <a name="collectdplugin"></a>`collectd::plugin`
+### <a name="collectd--plugin"></a>`collectd::plugin`
 
 The collectd::plugin class.
 
@@ -7426,15 +7474,15 @@ The collectd::plugin class.
 
 The following parameters are available in the `collectd::plugin` defined type:
 
-* [`ensure`](#ensure)
-* [`content`](#content)
-* [`order`](#order)
-* [`globals`](#globals)
-* [`interval`](#interval)
-* [`plugin`](#plugin)
-* [`flushinterval`](#flushinterval)
+* [`ensure`](#-collectd--plugin--ensure)
+* [`content`](#-collectd--plugin--content)
+* [`order`](#-collectd--plugin--order)
+* [`globals`](#-collectd--plugin--globals)
+* [`interval`](#-collectd--plugin--interval)
+* [`plugin`](#-collectd--plugin--plugin)
+* [`flushinterval`](#-collectd--plugin--flushinterval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7442,15 +7490,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="content"></a>`content`
+##### <a name="-collectd--plugin--content"></a>`content`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--order"></a>`order`
 
 Data type: `Any`
 
@@ -7458,23 +7506,23 @@ Data type: `Any`
 
 Default value: `'10'`
 
-##### <a name="globals"></a>`globals`
+##### <a name="-collectd--plugin--globals"></a>`globals`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="plugin"></a>`plugin`
+##### <a name="-collectd--plugin--plugin"></a>`plugin`
 
 Data type: `Any`
 
@@ -7482,15 +7530,15 @@ Data type: `Any`
 
 Default value: `$name`
 
-##### <a name="flushinterval"></a>`flushinterval`
+##### <a name="-collectd--plugin--flushinterval"></a>`flushinterval`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginaggregationaggregator"></a>`collectd::plugin::aggregation::aggregator`
+### <a name="collectd--plugin--aggregation--aggregator"></a>`collectd::plugin::aggregation::aggregator`
 
 The collectd::plugin::aggregation::aggregator class.
 
@@ -7498,25 +7546,25 @@ The collectd::plugin::aggregation::aggregator class.
 
 The following parameters are available in the `collectd::plugin::aggregation::aggregator` defined type:
 
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`plugin`](#plugin)
-* [`plugininstance`](#plugininstance)
-* [`agg_type`](#agg_type)
-* [`typeinstance`](#typeinstance)
-* [`sethost`](#sethost)
-* [`setplugin`](#setplugin)
-* [`setplugininstance`](#setplugininstance)
-* [`settypeinstance`](#settypeinstance)
-* [`groupby`](#groupby)
-* [`calculatesum`](#calculatesum)
-* [`calculatenum`](#calculatenum)
-* [`calculateaverage`](#calculateaverage)
-* [`calculateminimum`](#calculateminimum)
-* [`calculatemaximum`](#calculatemaximum)
-* [`calculatestddev`](#calculatestddev)
+* [`ensure`](#-collectd--plugin--aggregation--aggregator--ensure)
+* [`host`](#-collectd--plugin--aggregation--aggregator--host)
+* [`plugin`](#-collectd--plugin--aggregation--aggregator--plugin)
+* [`plugininstance`](#-collectd--plugin--aggregation--aggregator--plugininstance)
+* [`agg_type`](#-collectd--plugin--aggregation--aggregator--agg_type)
+* [`typeinstance`](#-collectd--plugin--aggregation--aggregator--typeinstance)
+* [`sethost`](#-collectd--plugin--aggregation--aggregator--sethost)
+* [`setplugin`](#-collectd--plugin--aggregation--aggregator--setplugin)
+* [`setplugininstance`](#-collectd--plugin--aggregation--aggregator--setplugininstance)
+* [`settypeinstance`](#-collectd--plugin--aggregation--aggregator--settypeinstance)
+* [`groupby`](#-collectd--plugin--aggregation--aggregator--groupby)
+* [`calculatesum`](#-collectd--plugin--aggregation--aggregator--calculatesum)
+* [`calculatenum`](#-collectd--plugin--aggregation--aggregator--calculatenum)
+* [`calculateaverage`](#-collectd--plugin--aggregation--aggregator--calculateaverage)
+* [`calculateminimum`](#-collectd--plugin--aggregation--aggregator--calculateminimum)
+* [`calculatemaximum`](#-collectd--plugin--aggregation--aggregator--calculatemaximum)
+* [`calculatestddev`](#-collectd--plugin--aggregation--aggregator--calculatestddev)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--aggregation--aggregator--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -7524,79 +7572,79 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--aggregation--aggregator--host"></a>`host`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="plugin"></a>`plugin`
+##### <a name="-collectd--plugin--aggregation--aggregator--plugin"></a>`plugin`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="plugininstance"></a>`plugininstance`
+##### <a name="-collectd--plugin--aggregation--aggregator--plugininstance"></a>`plugininstance`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="agg_type"></a>`agg_type`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="typeinstance"></a>`typeinstance`
+##### <a name="-collectd--plugin--aggregation--aggregator--agg_type"></a>`agg_type`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sethost"></a>`sethost`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="setplugin"></a>`setplugin`
+##### <a name="-collectd--plugin--aggregation--aggregator--typeinstance"></a>`typeinstance`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="setplugininstance"></a>`setplugininstance`
+##### <a name="-collectd--plugin--aggregation--aggregator--sethost"></a>`sethost`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--aggregation--aggregator--setplugin"></a>`setplugin`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--aggregation--aggregator--setplugininstance"></a>`setplugininstance`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="settypeinstance"></a>`settypeinstance`
+##### <a name="-collectd--plugin--aggregation--aggregator--settypeinstance"></a>`settypeinstance`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="groupby"></a>`groupby`
+##### <a name="-collectd--plugin--aggregation--aggregator--groupby"></a>`groupby`
 
 Data type: `Array[String]`
 
@@ -7604,55 +7652,55 @@ Data type: `Array[String]`
 
 Default value: `[]`
 
-##### <a name="calculatesum"></a>`calculatesum`
+##### <a name="-collectd--plugin--aggregation--aggregator--calculatesum"></a>`calculatesum`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="calculatenum"></a>`calculatenum`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="calculateaverage"></a>`calculateaverage`
+##### <a name="-collectd--plugin--aggregation--aggregator--calculatenum"></a>`calculatenum`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="calculateminimum"></a>`calculateminimum`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="calculatemaximum"></a>`calculatemaximum`
+##### <a name="-collectd--plugin--aggregation--aggregator--calculateaverage"></a>`calculateaverage`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="calculatestddev"></a>`calculatestddev`
+##### <a name="-collectd--plugin--aggregation--aggregator--calculateminimum"></a>`calculateminimum`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginapacheinstance"></a>`collectd::plugin::apache::instance`
+##### <a name="-collectd--plugin--aggregation--aggregator--calculatemaximum"></a>`calculatemaximum`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--aggregation--aggregator--calculatestddev"></a>`calculatestddev`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--apache--instance"></a>`collectd::plugin::apache::instance`
 
 https://collectd.org/wiki/index.php/Plugin:Apache
 
@@ -7660,23 +7708,23 @@ https://collectd.org/wiki/index.php/Plugin:Apache
 
 The following parameters are available in the `collectd::plugin::apache::instance` defined type:
 
-* [`url`](#url)
-* [`ensure`](#ensure)
-* [`user`](#user)
-* [`password`](#password)
-* [`verifypeer`](#verifypeer)
-* [`verifyhost`](#verifyhost)
-* [`cacert`](#cacert)
-* [`sslciphers`](#sslciphers)
-* [`timeout`](#timeout)
+* [`url`](#-collectd--plugin--apache--instance--url)
+* [`ensure`](#-collectd--plugin--apache--instance--ensure)
+* [`user`](#-collectd--plugin--apache--instance--user)
+* [`password`](#-collectd--plugin--apache--instance--password)
+* [`verifypeer`](#-collectd--plugin--apache--instance--verifypeer)
+* [`verifyhost`](#-collectd--plugin--apache--instance--verifyhost)
+* [`cacert`](#-collectd--plugin--apache--instance--cacert)
+* [`sslciphers`](#-collectd--plugin--apache--instance--sslciphers)
+* [`timeout`](#-collectd--plugin--apache--instance--timeout)
 
-##### <a name="url"></a>`url`
+##### <a name="-collectd--plugin--apache--instance--url"></a>`url`
 
 Data type: `Stdlib::Httpurl`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--apache--instance--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -7684,63 +7732,63 @@ Data type: `String`
 
 Default value: `present`
 
-##### <a name="user"></a>`user`
+##### <a name="-collectd--plugin--apache--instance--user"></a>`user`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--apache--instance--password"></a>`password`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="verifypeer"></a>`verifypeer`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="verifyhost"></a>`verifyhost`
+##### <a name="-collectd--plugin--apache--instance--verifypeer"></a>`verifypeer`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="cacert"></a>`cacert`
+##### <a name="-collectd--plugin--apache--instance--verifyhost"></a>`verifyhost`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--apache--instance--cacert"></a>`cacert`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sslciphers"></a>`sslciphers`
+##### <a name="-collectd--plugin--apache--instance--sslciphers"></a>`sslciphers`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timeout"></a>`timeout`
+##### <a name="-collectd--plugin--apache--instance--timeout"></a>`timeout`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugincurlpage"></a>`collectd::plugin::curl::page`
+### <a name="collectd--plugin--curl--page"></a>`collectd::plugin::curl::page`
 
 The collectd::plugin::curl::page class.
 
@@ -7748,26 +7796,26 @@ The collectd::plugin::curl::page class.
 
 The following parameters are available in the `collectd::plugin::curl::page` defined type:
 
-* [`url`](#url)
-* [`ensure`](#ensure)
-* [`user`](#user)
-* [`password`](#password)
-* [`verifypeer`](#verifypeer)
-* [`verifyhost`](#verifyhost)
-* [`cacert`](#cacert)
-* [`header`](#header)
-* [`measureresponsetime`](#measureresponsetime)
-* [`measureresponsecode`](#measureresponsecode)
-* [`matches`](#matches)
-* [`plugininstance`](#plugininstance)
+* [`url`](#-collectd--plugin--curl--page--url)
+* [`ensure`](#-collectd--plugin--curl--page--ensure)
+* [`user`](#-collectd--plugin--curl--page--user)
+* [`password`](#-collectd--plugin--curl--page--password)
+* [`verifypeer`](#-collectd--plugin--curl--page--verifypeer)
+* [`verifyhost`](#-collectd--plugin--curl--page--verifyhost)
+* [`cacert`](#-collectd--plugin--curl--page--cacert)
+* [`header`](#-collectd--plugin--curl--page--header)
+* [`measureresponsetime`](#-collectd--plugin--curl--page--measureresponsetime)
+* [`measureresponsecode`](#-collectd--plugin--curl--page--measureresponsecode)
+* [`matches`](#-collectd--plugin--curl--page--matches)
+* [`plugininstance`](#-collectd--plugin--curl--page--plugininstance)
 
-##### <a name="url"></a>`url`
+##### <a name="-collectd--plugin--curl--page--url"></a>`url`
 
 Data type: `String`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--curl--page--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -7775,79 +7823,79 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="user"></a>`user`
+##### <a name="-collectd--plugin--curl--page--user"></a>`user`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--curl--page--password"></a>`password`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="verifypeer"></a>`verifypeer`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="verifyhost"></a>`verifyhost`
+##### <a name="-collectd--plugin--curl--page--verifypeer"></a>`verifypeer`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="cacert"></a>`cacert`
+##### <a name="-collectd--plugin--curl--page--verifyhost"></a>`verifyhost`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl--page--cacert"></a>`cacert`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="header"></a>`header`
+##### <a name="-collectd--plugin--curl--page--header"></a>`header`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="measureresponsetime"></a>`measureresponsetime`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="measureresponsecode"></a>`measureresponsecode`
+##### <a name="-collectd--plugin--curl--page--measureresponsetime"></a>`measureresponsetime`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="matches"></a>`matches`
+##### <a name="-collectd--plugin--curl--page--measureresponsecode"></a>`measureresponsecode`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl--page--matches"></a>`matches`
 
 Data type: `Optional[Array[Hash]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="plugininstance"></a>`plugininstance`
+##### <a name="-collectd--plugin--curl--page--plugininstance"></a>`plugininstance`
 
 Data type: `String`
 
@@ -7855,7 +7903,7 @@ Data type: `String`
 
 Default value: `$name`
 
-### <a name="collectdplugincurl_json"></a>`collectd::plugin::curl_json`
+### <a name="collectd--plugin--curl_json"></a>`collectd::plugin::curl_json`
 
 See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_curl_json
 
@@ -7863,43 +7911,43 @@ See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_curl
 
 The following parameters are available in the `collectd::plugin::curl_json` defined type:
 
-* [`url`](#url)
-* [`instance`](#instance)
-* [`keys`](#keys)
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`interval`](#interval)
-* [`user`](#user)
-* [`password`](#password)
-* [`digest`](#digest)
-* [`verifypeer`](#verifypeer)
-* [`verifyhost`](#verifyhost)
-* [`cacert`](#cacert)
-* [`header`](#header)
-* [`post`](#post)
-* [`timeout`](#timeout)
-* [`order`](#order)
-* [`manage_package`](#manage_package)
+* [`url`](#-collectd--plugin--curl_json--url)
+* [`instance`](#-collectd--plugin--curl_json--instance)
+* [`keys`](#-collectd--plugin--curl_json--keys)
+* [`ensure`](#-collectd--plugin--curl_json--ensure)
+* [`host`](#-collectd--plugin--curl_json--host)
+* [`interval`](#-collectd--plugin--curl_json--interval)
+* [`user`](#-collectd--plugin--curl_json--user)
+* [`password`](#-collectd--plugin--curl_json--password)
+* [`digest`](#-collectd--plugin--curl_json--digest)
+* [`verifypeer`](#-collectd--plugin--curl_json--verifypeer)
+* [`verifyhost`](#-collectd--plugin--curl_json--verifyhost)
+* [`cacert`](#-collectd--plugin--curl_json--cacert)
+* [`header`](#-collectd--plugin--curl_json--header)
+* [`post`](#-collectd--plugin--curl_json--post)
+* [`timeout`](#-collectd--plugin--curl_json--timeout)
+* [`order`](#-collectd--plugin--curl_json--order)
+* [`manage_package`](#-collectd--plugin--curl_json--manage_package)
 
-##### <a name="url"></a>`url`
-
-Data type: `Any`
-
-
-
-##### <a name="instance"></a>`instance`
+##### <a name="-collectd--plugin--curl_json--url"></a>`url`
 
 Data type: `Any`
 
 
 
-##### <a name="keys"></a>`keys`
+##### <a name="-collectd--plugin--curl_json--instance"></a>`instance`
+
+Data type: `Any`
+
+
+
+##### <a name="-collectd--plugin--curl_json--keys"></a>`keys`
 
 Data type: `Hash`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--curl_json--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -7907,95 +7955,95 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--curl_json--host"></a>`host`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="user"></a>`user`
+##### <a name="-collectd--plugin--curl_json--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="digest"></a>`digest`
+##### <a name="-collectd--plugin--curl_json--user"></a>`user`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="verifypeer"></a>`verifypeer`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="verifyhost"></a>`verifyhost`
+##### <a name="-collectd--plugin--curl_json--password"></a>`password`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="cacert"></a>`cacert`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="header"></a>`header`
+##### <a name="-collectd--plugin--curl_json--digest"></a>`digest`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="post"></a>`post`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="timeout"></a>`timeout`
+##### <a name="-collectd--plugin--curl_json--verifypeer"></a>`verifypeer`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--curl_json--verifyhost"></a>`verifyhost`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl_json--cacert"></a>`cacert`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl_json--header"></a>`header`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl_json--post"></a>`post`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl_json--timeout"></a>`timeout`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--curl_json--order"></a>`order`
 
 Data type: `Any`
 
@@ -8003,15 +8051,15 @@ Data type: `Any`
 
 Default value: `'10'`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--curl_json--manage_package"></a>`manage_package`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugindbidatabase"></a>`collectd::plugin::dbi::database`
+### <a name="collectd--plugin--dbi--database"></a>`collectd::plugin::dbi::database`
 
 database allows you to create <Database> blocks with the same name of database,
 
@@ -8019,22 +8067,22 @@ database allows you to create <Database> blocks with the same name of database,
 
 The following parameters are available in the `collectd::plugin::dbi::database` defined type:
 
-* [`driver`](#driver)
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`databasename`](#databasename)
-* [`driveroption`](#driveroption)
-* [`selectdb`](#selectdb)
-* [`query`](#query)
-* [`db_query_interval`](#db_query_interval)
+* [`driver`](#-collectd--plugin--dbi--database--driver)
+* [`ensure`](#-collectd--plugin--dbi--database--ensure)
+* [`host`](#-collectd--plugin--dbi--database--host)
+* [`databasename`](#-collectd--plugin--dbi--database--databasename)
+* [`driveroption`](#-collectd--plugin--dbi--database--driveroption)
+* [`selectdb`](#-collectd--plugin--dbi--database--selectdb)
+* [`query`](#-collectd--plugin--dbi--database--query)
+* [`db_query_interval`](#-collectd--plugin--dbi--database--db_query_interval)
 
-##### <a name="driver"></a>`driver`
+##### <a name="-collectd--plugin--dbi--database--driver"></a>`driver`
 
 Data type: `String`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dbi--database--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -8042,15 +8090,15 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--dbi--database--host"></a>`host`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="databasename"></a>`databasename`
+##### <a name="-collectd--plugin--dbi--database--databasename"></a>`databasename`
 
 Data type: `String`
 
@@ -8058,7 +8106,7 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="driveroption"></a>`driveroption`
+##### <a name="-collectd--plugin--dbi--database--driveroption"></a>`driveroption`
 
 Data type: `Hash`
 
@@ -8066,15 +8114,15 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="selectdb"></a>`selectdb`
+##### <a name="-collectd--plugin--dbi--database--selectdb"></a>`selectdb`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="query"></a>`query`
+##### <a name="-collectd--plugin--dbi--database--query"></a>`query`
 
 Data type: `Array`
 
@@ -8082,15 +8130,15 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="db_query_interval"></a>`db_query_interval`
+##### <a name="-collectd--plugin--dbi--database--db_query_interval"></a>`db_query_interval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugindbiquery"></a>`collectd::plugin::dbi::query`
+### <a name="collectd--plugin--dbi--query"></a>`collectd::plugin::dbi::query`
 
 The collectd::plugin::dbi::query class.
 
@@ -8098,19 +8146,19 @@ The collectd::plugin::dbi::query class.
 
 The following parameters are available in the `collectd::plugin::dbi::query` defined type:
 
-* [`statement`](#statement)
-* [`ensure`](#ensure)
-* [`results`](#results)
-* [`minversion`](#minversion)
-* [`maxversion`](#maxversion)
+* [`statement`](#-collectd--plugin--dbi--query--statement)
+* [`ensure`](#-collectd--plugin--dbi--query--ensure)
+* [`results`](#-collectd--plugin--dbi--query--results)
+* [`minversion`](#-collectd--plugin--dbi--query--minversion)
+* [`maxversion`](#-collectd--plugin--dbi--query--maxversion)
 
-##### <a name="statement"></a>`statement`
+##### <a name="-collectd--plugin--dbi--query--statement"></a>`statement`
 
 Data type: `String`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--dbi--query--ensure"></a>`ensure`
 
 Data type: `String`
 
@@ -8118,7 +8166,7 @@ Data type: `String`
 
 Default value: `'present'`
 
-##### <a name="results"></a>`results`
+##### <a name="-collectd--plugin--dbi--query--results"></a>`results`
 
 Data type: `Array`
 
@@ -8126,23 +8174,23 @@ Data type: `Array`
 
 Default value: `[{}]`
 
-##### <a name="minversion"></a>`minversion`
+##### <a name="-collectd--plugin--dbi--query--minversion"></a>`minversion`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="maxversion"></a>`maxversion`
+##### <a name="-collectd--plugin--dbi--query--maxversion"></a>`maxversion`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginexeccmd"></a>`collectd::plugin::exec::cmd`
+### <a name="collectd--plugin--exec--cmd"></a>`collectd::plugin::exec::cmd`
 
 The collectd::plugin::exec::cmd class.
 
@@ -8150,24 +8198,24 @@ The collectd::plugin::exec::cmd class.
 
 The following parameters are available in the `collectd::plugin::exec::cmd` defined type:
 
-* [`user`](#user)
-* [`group`](#group)
-* [`exec`](#exec)
-* [`notification_exec`](#notification_exec)
+* [`user`](#-collectd--plugin--exec--cmd--user)
+* [`group`](#-collectd--plugin--exec--cmd--group)
+* [`exec`](#-collectd--plugin--exec--cmd--exec)
+* [`notification_exec`](#-collectd--plugin--exec--cmd--notification_exec)
 
-##### <a name="user"></a>`user`
-
-Data type: `String`
-
-
-
-##### <a name="group"></a>`group`
+##### <a name="-collectd--plugin--exec--cmd--user"></a>`user`
 
 Data type: `String`
 
 
 
-##### <a name="exec"></a>`exec`
+##### <a name="-collectd--plugin--exec--cmd--group"></a>`group`
+
+Data type: `String`
+
+
+
+##### <a name="-collectd--plugin--exec--cmd--exec"></a>`exec`
 
 Data type: `Array`
 
@@ -8175,7 +8223,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="notification_exec"></a>`notification_exec`
+##### <a name="-collectd--plugin--exec--cmd--notification_exec"></a>`notification_exec`
 
 Data type: `Array`
 
@@ -8183,7 +8231,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-### <a name="collectdpluginfilecountdirectory"></a>`collectd::plugin::filecount::directory`
+### <a name="collectd--plugin--filecount--directory"></a>`collectd::plugin::filecount::directory`
 
 https://collectd.org/wiki/index.php/Plugin:FileCount
 
@@ -8191,22 +8239,22 @@ https://collectd.org/wiki/index.php/Plugin:FileCount
 
 The following parameters are available in the `collectd::plugin::filecount::directory` defined type:
 
-* [`path`](#path)
-* [`ensure`](#ensure)
-* [`instance`](#instance)
-* [`pattern`](#pattern)
-* [`mtime`](#mtime)
-* [`size`](#size)
-* [`recursive`](#recursive)
-* [`includehidden`](#includehidden)
+* [`path`](#-collectd--plugin--filecount--directory--path)
+* [`ensure`](#-collectd--plugin--filecount--directory--ensure)
+* [`instance`](#-collectd--plugin--filecount--directory--instance)
+* [`pattern`](#-collectd--plugin--filecount--directory--pattern)
+* [`mtime`](#-collectd--plugin--filecount--directory--mtime)
+* [`size`](#-collectd--plugin--filecount--directory--size)
+* [`recursive`](#-collectd--plugin--filecount--directory--recursive)
+* [`includehidden`](#-collectd--plugin--filecount--directory--includehidden)
 
-##### <a name="path"></a>`path`
+##### <a name="-collectd--plugin--filecount--directory--path"></a>`path`
 
 Data type: `Stdlib::Absolutepath`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--filecount--directory--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -8214,7 +8262,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="instance"></a>`instance`
+##### <a name="-collectd--plugin--filecount--directory--instance"></a>`instance`
 
 Data type: `String`
 
@@ -8222,47 +8270,47 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="pattern"></a>`pattern`
+##### <a name="-collectd--plugin--filecount--directory--pattern"></a>`pattern`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="mtime"></a>`mtime`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="size"></a>`size`
+##### <a name="-collectd--plugin--filecount--directory--mtime"></a>`mtime`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="recursive"></a>`recursive`
+##### <a name="-collectd--plugin--filecount--directory--size"></a>`size`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--filecount--directory--recursive"></a>`recursive`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="includehidden"></a>`includehidden`
+##### <a name="-collectd--plugin--filecount--directory--includehidden"></a>`includehidden`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginfilterchain"></a>`collectd::plugin::filter::chain`
+### <a name="collectd--plugin--filter--chain"></a>`collectd::plugin::filter::chain`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -8270,11 +8318,11 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::filter::chain` defined type:
 
-* [`ensure`](#ensure)
-* [`target`](#target)
-* [`target_options`](#target_options)
+* [`ensure`](#-collectd--plugin--filter--chain--ensure)
+* [`target`](#-collectd--plugin--filter--chain--target)
+* [`target_options`](#-collectd--plugin--filter--chain--target_options)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--filter--chain--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -8282,23 +8330,23 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="target"></a>`target`
+##### <a name="-collectd--plugin--filter--chain--target"></a>`target`
 
 Data type: `Optional[Collectd::Filter::Target]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="target_options"></a>`target_options`
+##### <a name="-collectd--plugin--filter--chain--target_options"></a>`target_options`
 
 Data type: `Optional[Hash]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginfiltermatch"></a>`collectd::plugin::filter::match`
+### <a name="collectd--plugin--filter--match"></a>`collectd::plugin::filter::match`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -8306,38 +8354,38 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::filter::match` defined type:
 
-* [`chain`](#chain)
-* [`rule`](#rule)
-* [`plugin`](#plugin)
-* [`options`](#options)
+* [`chain`](#-collectd--plugin--filter--match--chain)
+* [`rule`](#-collectd--plugin--filter--match--rule)
+* [`plugin`](#-collectd--plugin--filter--match--plugin)
+* [`options`](#-collectd--plugin--filter--match--options)
 
-##### <a name="chain"></a>`chain`
-
-Data type: `String`
-
-
-
-##### <a name="rule"></a>`rule`
+##### <a name="-collectd--plugin--filter--match--chain"></a>`chain`
 
 Data type: `String`
 
 
 
-##### <a name="plugin"></a>`plugin`
+##### <a name="-collectd--plugin--filter--match--rule"></a>`rule`
+
+Data type: `String`
+
+
+
+##### <a name="-collectd--plugin--filter--match--plugin"></a>`plugin`
 
 Data type: `Collectd::Filter::Match`
 
 
 
-##### <a name="options"></a>`options`
+##### <a name="-collectd--plugin--filter--match--options"></a>`options`
 
 Data type: `Optional[Hash]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginfilterrule"></a>`collectd::plugin::filter::rule`
+### <a name="collectd--plugin--filter--rule"></a>`collectd::plugin::filter::rule`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -8345,15 +8393,15 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::filter::rule` defined type:
 
-* [`chain`](#chain)
+* [`chain`](#-collectd--plugin--filter--rule--chain)
 
-##### <a name="chain"></a>`chain`
+##### <a name="-collectd--plugin--filter--rule--chain"></a>`chain`
 
 Data type: `String`
 
 
 
-### <a name="collectdpluginfiltertarget"></a>`collectd::plugin::filter::target`
+### <a name="collectd--plugin--filter--target"></a>`collectd::plugin::filter::target`
 
 https://collectd.org/wiki/index.php/Chains
 
@@ -8361,40 +8409,40 @@ https://collectd.org/wiki/index.php/Chains
 
 The following parameters are available in the `collectd::plugin::filter::target` defined type:
 
-* [`chain`](#chain)
-* [`plugin`](#plugin)
-* [`options`](#options)
-* [`rule`](#rule)
+* [`chain`](#-collectd--plugin--filter--target--chain)
+* [`plugin`](#-collectd--plugin--filter--target--plugin)
+* [`options`](#-collectd--plugin--filter--target--options)
+* [`rule`](#-collectd--plugin--filter--target--rule)
 
-##### <a name="chain"></a>`chain`
+##### <a name="-collectd--plugin--filter--target--chain"></a>`chain`
 
 Data type: `String`
 
 
 
-##### <a name="plugin"></a>`plugin`
+##### <a name="-collectd--plugin--filter--target--plugin"></a>`plugin`
 
 Data type: `Collectd::Filter::Target`
 
 
 
-##### <a name="options"></a>`options`
+##### <a name="-collectd--plugin--filter--target--options"></a>`options`
 
 Data type: `Optional[Hash]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="rule"></a>`rule`
+##### <a name="-collectd--plugin--filter--target--rule"></a>`rule`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugingenericjmxconnection"></a>`collectd::plugin::genericjmx::connection`
+### <a name="collectd--plugin--genericjmx--connection"></a>`collectd::plugin::genericjmx::connection`
 
 https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
@@ -8402,58 +8450,58 @@ https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
 The following parameters are available in the `collectd::plugin::genericjmx::connection` defined type:
 
-* [`collect`](#collect)
-* [`service_url`](#service_url)
-* [`host`](#host)
-* [`user`](#user)
-* [`password`](#password)
-* [`instance_prefix`](#instance_prefix)
+* [`collect`](#-collectd--plugin--genericjmx--connection--collect)
+* [`service_url`](#-collectd--plugin--genericjmx--connection--service_url)
+* [`host`](#-collectd--plugin--genericjmx--connection--host)
+* [`user`](#-collectd--plugin--genericjmx--connection--user)
+* [`password`](#-collectd--plugin--genericjmx--connection--password)
+* [`instance_prefix`](#-collectd--plugin--genericjmx--connection--instance_prefix)
 
-##### <a name="collect"></a>`collect`
+##### <a name="-collectd--plugin--genericjmx--connection--collect"></a>`collect`
 
 Data type: `Array`
 
 
 
-##### <a name="service_url"></a>`service_url`
+##### <a name="-collectd--plugin--genericjmx--connection--service_url"></a>`service_url`
 
 Data type: `String`
 
 
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--genericjmx--connection--host"></a>`host`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="user"></a>`user`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--genericjmx--connection--user"></a>`user`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="instance_prefix"></a>`instance_prefix`
+##### <a name="-collectd--plugin--genericjmx--connection--password"></a>`password`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugingenericjmxmbean"></a>`collectd::plugin::genericjmx::mbean`
+##### <a name="-collectd--plugin--genericjmx--connection--instance_prefix"></a>`instance_prefix`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--genericjmx--mbean"></a>`collectd::plugin::genericjmx::mbean`
 
 https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
@@ -8461,32 +8509,32 @@ https://collectd.org/wiki/index.php/Plugin:GenericJMX
 
 The following parameters are available in the `collectd::plugin::genericjmx::mbean` defined type:
 
-* [`object_name`](#object_name)
-* [`values`](#values)
-* [`instance_prefix`](#instance_prefix)
-* [`instance_from`](#instance_from)
+* [`object_name`](#-collectd--plugin--genericjmx--mbean--object_name)
+* [`values`](#-collectd--plugin--genericjmx--mbean--values)
+* [`instance_prefix`](#-collectd--plugin--genericjmx--mbean--instance_prefix)
+* [`instance_from`](#-collectd--plugin--genericjmx--mbean--instance_from)
 
-##### <a name="object_name"></a>`object_name`
+##### <a name="-collectd--plugin--genericjmx--mbean--object_name"></a>`object_name`
 
 Data type: `String`
 
 
 
-##### <a name="values"></a>`values`
+##### <a name="-collectd--plugin--genericjmx--mbean--values"></a>`values`
 
 Data type: `Array`
 
 
 
-##### <a name="instance_prefix"></a>`instance_prefix`
+##### <a name="-collectd--plugin--genericjmx--mbean--instance_prefix"></a>`instance_prefix`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="instance_from"></a>`instance_from`
+##### <a name="-collectd--plugin--genericjmx--mbean--instance_from"></a>`instance_from`
 
 Data type: `Array`
 
@@ -8494,7 +8542,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-### <a name="collectdpluginmysqldatabase"></a>`collectd::plugin::mysql::database`
+### <a name="collectd--plugin--mysql--database"></a>`collectd::plugin::mysql::database`
 
 The collectd::plugin::mysql::database class.
 
@@ -8502,27 +8550,27 @@ The collectd::plugin::mysql::database class.
 
 The following parameters are available in the `collectd::plugin::mysql::database` defined type:
 
-* [`ensure`](#ensure)
-* [`database`](#database)
-* [`host`](#host)
-* [`port`](#port)
-* [`masterstats`](#masterstats)
-* [`slavestats`](#slavestats)
-* [`username`](#username)
-* [`password`](#password)
-* [`socket`](#socket)
-* [`innodbstats`](#innodbstats)
-* [`slavenotifications`](#slavenotifications)
-* [`wsrepstats`](#wsrepstats)
-* [`aliasname`](#aliasname)
-* [`connecttimeout`](#connecttimeout)
-* [`sslkey`](#sslkey)
-* [`sslcert`](#sslcert)
-* [`sslca`](#sslca)
-* [`sslcapath`](#sslcapath)
-* [`sslcipher`](#sslcipher)
+* [`ensure`](#-collectd--plugin--mysql--database--ensure)
+* [`database`](#-collectd--plugin--mysql--database--database)
+* [`host`](#-collectd--plugin--mysql--database--host)
+* [`port`](#-collectd--plugin--mysql--database--port)
+* [`masterstats`](#-collectd--plugin--mysql--database--masterstats)
+* [`slavestats`](#-collectd--plugin--mysql--database--slavestats)
+* [`username`](#-collectd--plugin--mysql--database--username)
+* [`password`](#-collectd--plugin--mysql--database--password)
+* [`socket`](#-collectd--plugin--mysql--database--socket)
+* [`innodbstats`](#-collectd--plugin--mysql--database--innodbstats)
+* [`slavenotifications`](#-collectd--plugin--mysql--database--slavenotifications)
+* [`wsrepstats`](#-collectd--plugin--mysql--database--wsrepstats)
+* [`aliasname`](#-collectd--plugin--mysql--database--aliasname)
+* [`connecttimeout`](#-collectd--plugin--mysql--database--connecttimeout)
+* [`sslkey`](#-collectd--plugin--mysql--database--sslkey)
+* [`sslcert`](#-collectd--plugin--mysql--database--sslcert)
+* [`sslca`](#-collectd--plugin--mysql--database--sslca)
+* [`sslcapath`](#-collectd--plugin--mysql--database--sslcapath)
+* [`sslcipher`](#-collectd--plugin--mysql--database--sslcipher)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--mysql--database--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -8530,7 +8578,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="database"></a>`database`
+##### <a name="-collectd--plugin--mysql--database--database"></a>`database`
 
 Data type: `String`
 
@@ -8538,143 +8586,143 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--mysql--database--host"></a>`host`
 
 Data type: `Optional[Stdlib::Host]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--mysql--database--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="masterstats"></a>`masterstats`
-
-Data type: `Boolean`
-
-
-
-Default value: ``false``
-
-##### <a name="slavestats"></a>`slavestats`
+##### <a name="-collectd--plugin--mysql--database--masterstats"></a>`masterstats`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="username"></a>`username`
+##### <a name="-collectd--plugin--mysql--database--slavestats"></a>`slavestats`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--mysql--database--username"></a>`username`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--mysql--database--password"></a>`password`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-collectd--plugin--mysql--database--socket"></a>`socket`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="innodbstats"></a>`innodbstats`
+##### <a name="-collectd--plugin--mysql--database--innodbstats"></a>`innodbstats`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="slavenotifications"></a>`slavenotifications`
+##### <a name="-collectd--plugin--mysql--database--slavenotifications"></a>`slavenotifications`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="wsrepstats"></a>`wsrepstats`
+##### <a name="-collectd--plugin--mysql--database--wsrepstats"></a>`wsrepstats`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="aliasname"></a>`aliasname`
+##### <a name="-collectd--plugin--mysql--database--aliasname"></a>`aliasname`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="connecttimeout"></a>`connecttimeout`
+##### <a name="-collectd--plugin--mysql--database--connecttimeout"></a>`connecttimeout`
 
 Data type: `Optional[Integer]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sslkey"></a>`sslkey`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="sslcert"></a>`sslcert`
+##### <a name="-collectd--plugin--mysql--database--sslkey"></a>`sslkey`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sslca"></a>`sslca`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="sslcapath"></a>`sslcapath`
+##### <a name="-collectd--plugin--mysql--database--sslcert"></a>`sslcert`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sslcipher"></a>`sslcipher`
+##### <a name="-collectd--plugin--mysql--database--sslca"></a>`sslca`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnetworklistener"></a>`collectd::plugin::network::listener`
+##### <a name="-collectd--plugin--mysql--database--sslcapath"></a>`sslcapath`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--mysql--database--sslcipher"></a>`sslcipher`
+
+Data type: `Optional[String]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--network--listener"></a>`collectd::plugin::network::listener`
 
 The collectd::plugin::network::listener class.
 
@@ -8682,13 +8730,13 @@ The collectd::plugin::network::listener class.
 
 The following parameters are available in the `collectd::plugin::network::listener` defined type:
 
-* [`ensure`](#ensure)
-* [`authfile`](#authfile)
-* [`port`](#port)
-* [`securitylevel`](#securitylevel)
-* [`interface`](#interface)
+* [`ensure`](#-collectd--plugin--network--listener--ensure)
+* [`authfile`](#-collectd--plugin--network--listener--authfile)
+* [`port`](#-collectd--plugin--network--listener--port)
+* [`securitylevel`](#-collectd--plugin--network--listener--securitylevel)
+* [`interface`](#-collectd--plugin--network--listener--interface)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--network--listener--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -8696,39 +8744,39 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="authfile"></a>`authfile`
+##### <a name="-collectd--plugin--network--listener--authfile"></a>`authfile`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--network--listener--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="securitylevel"></a>`securitylevel`
+##### <a name="-collectd--plugin--network--listener--securitylevel"></a>`securitylevel`
 
 Data type: `Optional[Collectd::Network::SecurityLevel]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interface"></a>`interface`
+##### <a name="-collectd--plugin--network--listener--interface"></a>`interface`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnetworkserver"></a>`collectd::plugin::network::server`
+### <a name="collectd--plugin--network--server"></a>`collectd::plugin::network::server`
 
 The collectd::plugin::network::server class.
 
@@ -8736,16 +8784,16 @@ The collectd::plugin::network::server class.
 
 The following parameters are available in the `collectd::plugin::network::server` defined type:
 
-* [`ensure`](#ensure)
-* [`username`](#username)
-* [`password`](#password)
-* [`port`](#port)
-* [`securitylevel`](#securitylevel)
-* [`interface`](#interface)
-* [`forward`](#forward)
-* [`resolveinterval`](#resolveinterval)
+* [`ensure`](#-collectd--plugin--network--server--ensure)
+* [`username`](#-collectd--plugin--network--server--username)
+* [`password`](#-collectd--plugin--network--server--password)
+* [`port`](#-collectd--plugin--network--server--port)
+* [`securitylevel`](#-collectd--plugin--network--server--securitylevel)
+* [`interface`](#-collectd--plugin--network--server--interface)
+* [`forward`](#-collectd--plugin--network--server--forward)
+* [`resolveinterval`](#-collectd--plugin--network--server--resolveinterval)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--network--server--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -8753,63 +8801,63 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="username"></a>`username`
+##### <a name="-collectd--plugin--network--server--username"></a>`username`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--network--server--password"></a>`password`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--network--server--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="securitylevel"></a>`securitylevel`
+##### <a name="-collectd--plugin--network--server--securitylevel"></a>`securitylevel`
 
 Data type: `Optional[Collectd::Network::SecurityLevel]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interface"></a>`interface`
+##### <a name="-collectd--plugin--network--server--interface"></a>`interface`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="forward"></a>`forward`
+##### <a name="-collectd--plugin--network--server--forward"></a>`forward`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="resolveinterval"></a>`resolveinterval`
+##### <a name="-collectd--plugin--network--server--resolveinterval"></a>`resolveinterval`
 
 Data type: `Optional[Integer[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginnutups"></a>`collectd::plugin::nut::ups`
+### <a name="collectd--plugin--nut--ups"></a>`collectd::plugin::nut::ups`
 
 The collectd::plugin::nut::ups class.
 
@@ -8817,9 +8865,9 @@ The collectd::plugin::nut::ups class.
 
 The following parameters are available in the `collectd::plugin::nut::ups` defined type:
 
-* [`ensure`](#ensure)
+* [`ensure`](#-collectd--plugin--nut--ups--ensure)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--nut--ups--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -8827,7 +8875,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginoracledatabase"></a>`collectd::plugin::oracle::database`
+### <a name="collectd--plugin--oracle--database"></a>`collectd::plugin::oracle::database`
 
 https://collectd.org/wiki/index.php/Plugin:Oracle
 
@@ -8835,31 +8883,31 @@ https://collectd.org/wiki/index.php/Plugin:Oracle
 
 The following parameters are available in the `collectd::plugin::oracle::database` defined type:
 
-* [`username`](#username)
-* [`password`](#password)
-* [`query`](#query)
-* [`connect_id`](#connect_id)
-* [`database`](#database)
+* [`username`](#-collectd--plugin--oracle--database--username)
+* [`password`](#-collectd--plugin--oracle--database--password)
+* [`query`](#-collectd--plugin--oracle--database--query)
+* [`connect_id`](#-collectd--plugin--oracle--database--connect_id)
+* [`database`](#-collectd--plugin--oracle--database--database)
 
-##### <a name="username"></a>`username`
-
-Data type: `String`
-
-
-
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--oracle--database--username"></a>`username`
 
 Data type: `String`
 
 
 
-##### <a name="query"></a>`query`
+##### <a name="-collectd--plugin--oracle--database--password"></a>`password`
+
+Data type: `String`
+
+
+
+##### <a name="-collectd--plugin--oracle--database--query"></a>`query`
 
 Data type: `Array`
 
 
 
-##### <a name="connect_id"></a>`connect_id`
+##### <a name="-collectd--plugin--oracle--database--connect_id"></a>`connect_id`
 
 Data type: `String`
 
@@ -8867,7 +8915,7 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="database"></a>`database`
+##### <a name="-collectd--plugin--oracle--database--database"></a>`database`
 
 Data type: `String`
 
@@ -8875,7 +8923,7 @@ Data type: `String`
 
 Default value: `$name`
 
-### <a name="collectdpluginoraclequery"></a>`collectd::plugin::oracle::query`
+### <a name="collectd--plugin--oracle--query"></a>`collectd::plugin::oracle::query`
 
 https://collectd.org/wiki/index.php/Plugin:Oracle
 
@@ -8883,23 +8931,23 @@ https://collectd.org/wiki/index.php/Plugin:Oracle
 
 The following parameters are available in the `collectd::plugin::oracle::query` defined type:
 
-* [`statement`](#statement)
-* [`results`](#results)
-* [`query`](#query)
+* [`statement`](#-collectd--plugin--oracle--query--statement)
+* [`results`](#-collectd--plugin--oracle--query--results)
+* [`query`](#-collectd--plugin--oracle--query--query)
 
-##### <a name="statement"></a>`statement`
+##### <a name="-collectd--plugin--oracle--query--statement"></a>`statement`
 
 Data type: `String`
 
 
 
-##### <a name="results"></a>`results`
+##### <a name="-collectd--plugin--oracle--query--results"></a>`results`
 
 Data type: `Array`
 
 
 
-##### <a name="query"></a>`query`
+##### <a name="-collectd--plugin--oracle--query--query"></a>`query`
 
 Data type: `String`
 
@@ -8907,7 +8955,7 @@ Data type: `String`
 
 Default value: `$name`
 
-### <a name="collectdpluginperlplugin"></a>`collectd::plugin::perl::plugin`
+### <a name="collectd--plugin--perl--plugin"></a>`collectd::plugin::perl::plugin`
 
 The collectd::plugin::perl::plugin class.
 
@@ -8915,71 +8963,71 @@ The collectd::plugin::perl::plugin class.
 
 The following parameters are available in the `collectd::plugin::perl::plugin` defined type:
 
-* [`module`](#module)
-* [`manage_package`](#manage_package)
-* [`enable_debugger`](#enable_debugger)
-* [`include_dir`](#include_dir)
-* [`provider`](#provider)
-* [`source`](#source)
-* [`destination`](#destination)
-* [`order`](#order)
-* [`config`](#config)
+* [`module`](#-collectd--plugin--perl--plugin--module)
+* [`manage_package`](#-collectd--plugin--perl--plugin--manage_package)
+* [`enable_debugger`](#-collectd--plugin--perl--plugin--enable_debugger)
+* [`include_dir`](#-collectd--plugin--perl--plugin--include_dir)
+* [`provider`](#-collectd--plugin--perl--plugin--provider)
+* [`source`](#-collectd--plugin--perl--plugin--source)
+* [`destination`](#-collectd--plugin--perl--plugin--destination)
+* [`order`](#-collectd--plugin--perl--plugin--order)
+* [`config`](#-collectd--plugin--perl--plugin--config)
 
-##### <a name="module"></a>`module`
-
-Data type: `Any`
-
-
-
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-collectd--plugin--perl--plugin--module"></a>`module`
 
 Data type: `Any`
 
 
 
-Default value: ``true``
+##### <a name="-collectd--plugin--perl--plugin--manage_package"></a>`manage_package`
 
-##### <a name="enable_debugger"></a>`enable_debugger`
+Data type: `Any`
+
+
+
+Default value: `true`
+
+##### <a name="-collectd--plugin--perl--plugin--enable_debugger"></a>`enable_debugger`
 
 Data type: `Variant[Boolean, String]`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="include_dir"></a>`include_dir`
+##### <a name="-collectd--plugin--perl--plugin--include_dir"></a>`include_dir`
 
 Data type: `Variant[Boolean, String, Array]`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="provider"></a>`provider`
+##### <a name="-collectd--plugin--perl--plugin--provider"></a>`provider`
 
 Data type: `Any`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="source"></a>`source`
-
-Data type: `Variant[Boolean, String]`
-
-
-
-Default value: ``false``
-
-##### <a name="destination"></a>`destination`
+##### <a name="-collectd--plugin--perl--plugin--source"></a>`source`
 
 Data type: `Variant[Boolean, String]`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="order"></a>`order`
+##### <a name="-collectd--plugin--perl--plugin--destination"></a>`destination`
+
+Data type: `Variant[Boolean, String]`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--perl--plugin--order"></a>`order`
 
 Data type: `String`
 
@@ -8987,7 +9035,7 @@ Data type: `String`
 
 Default value: `'01'`
 
-##### <a name="config"></a>`config`
+##### <a name="-collectd--plugin--perl--plugin--config"></a>`config`
 
 Data type: `Hash`
 
@@ -8995,7 +9043,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-### <a name="collectdpluginpostgresqldatabase"></a>`collectd::plugin::postgresql::database`
+### <a name="collectd--plugin--postgresql--database"></a>`collectd::plugin::postgresql::database`
 
 databasename allows you to create <Database> blocks with the same name of database,
 useful if you have multiple instances of different version of pg
@@ -9004,21 +9052,21 @@ useful if you have multiple instances of different version of pg
 
 The following parameters are available in the `collectd::plugin::postgresql::database` defined type:
 
-* [`ensure`](#ensure)
-* [`host`](#host)
-* [`databasename`](#databasename)
-* [`port`](#port)
-* [`user`](#user)
-* [`password`](#password)
-* [`sslmode`](#sslmode)
-* [`query`](#query)
-* [`interval`](#interval)
-* [`instance`](#instance)
-* [`krbsrvname`](#krbsrvname)
-* [`writer`](#writer)
-* [`service`](#service)
+* [`ensure`](#-collectd--plugin--postgresql--database--ensure)
+* [`host`](#-collectd--plugin--postgresql--database--host)
+* [`databasename`](#-collectd--plugin--postgresql--database--databasename)
+* [`port`](#-collectd--plugin--postgresql--database--port)
+* [`user`](#-collectd--plugin--postgresql--database--user)
+* [`password`](#-collectd--plugin--postgresql--database--password)
+* [`sslmode`](#-collectd--plugin--postgresql--database--sslmode)
+* [`query`](#-collectd--plugin--postgresql--database--query)
+* [`interval`](#-collectd--plugin--postgresql--database--interval)
+* [`instance`](#-collectd--plugin--postgresql--database--instance)
+* [`krbsrvname`](#-collectd--plugin--postgresql--database--krbsrvname)
+* [`writer`](#-collectd--plugin--postgresql--database--writer)
+* [`service`](#-collectd--plugin--postgresql--database--service)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--postgresql--database--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9026,15 +9074,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="host"></a>`host`
+##### <a name="-collectd--plugin--postgresql--database--host"></a>`host`
 
 Data type: `Optional[Stdlib::Host]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="databasename"></a>`databasename`
+##### <a name="-collectd--plugin--postgresql--database--databasename"></a>`databasename`
 
 Data type: `Any`
 
@@ -9042,39 +9090,39 @@ Data type: `Any`
 
 Default value: `$name`
 
-##### <a name="port"></a>`port`
+##### <a name="-collectd--plugin--postgresql--database--port"></a>`port`
 
 Data type: `Optional[Stdlib::Port]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="user"></a>`user`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="password"></a>`password`
+##### <a name="-collectd--plugin--postgresql--database--user"></a>`user`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sslmode"></a>`sslmode`
+##### <a name="-collectd--plugin--postgresql--database--password"></a>`password`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="query"></a>`query`
+##### <a name="-collectd--plugin--postgresql--database--sslmode"></a>`sslmode`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--postgresql--database--query"></a>`query`
 
 Data type: `Any`
 
@@ -9082,47 +9130,47 @@ Data type: `Any`
 
 Default value: `[]`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--postgresql--database--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="instance"></a>`instance`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="krbsrvname"></a>`krbsrvname`
+##### <a name="-collectd--plugin--postgresql--database--instance"></a>`instance`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="writer"></a>`writer`
-
-Data type: `Any`
-
-
-
-Default value: ``undef``
-
-##### <a name="service"></a>`service`
+##### <a name="-collectd--plugin--postgresql--database--krbsrvname"></a>`krbsrvname`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpostgresqlquery"></a>`collectd::plugin::postgresql::query`
+##### <a name="-collectd--plugin--postgresql--database--writer"></a>`writer`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--postgresql--database--service"></a>`service`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--postgresql--query"></a>`collectd::plugin::postgresql::query`
 
 The collectd::plugin::postgresql::query class.
 
@@ -9130,14 +9178,14 @@ The collectd::plugin::postgresql::query class.
 
 The following parameters are available in the `collectd::plugin::postgresql::query` defined type:
 
-* [`ensure`](#ensure)
-* [`statement`](#statement)
-* [`params`](#params)
-* [`results`](#results)
-* [`minversion`](#minversion)
-* [`maxversion`](#maxversion)
+* [`ensure`](#-collectd--plugin--postgresql--query--ensure)
+* [`statement`](#-collectd--plugin--postgresql--query--statement)
+* [`params`](#-collectd--plugin--postgresql--query--params)
+* [`results`](#-collectd--plugin--postgresql--query--results)
+* [`minversion`](#-collectd--plugin--postgresql--query--minversion)
+* [`maxversion`](#-collectd--plugin--postgresql--query--maxversion)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--postgresql--query--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9145,15 +9193,15 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="statement"></a>`statement`
+##### <a name="-collectd--plugin--postgresql--query--statement"></a>`statement`
 
 Data type: `String`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="params"></a>`params`
+##### <a name="-collectd--plugin--postgresql--query--params"></a>`params`
 
 Data type: `Array`
 
@@ -9161,7 +9209,7 @@ Data type: `Array`
 
 Default value: `[]`
 
-##### <a name="results"></a>`results`
+##### <a name="-collectd--plugin--postgresql--query--results"></a>`results`
 
 Data type: `Array`
 
@@ -9169,23 +9217,23 @@ Data type: `Array`
 
 Default value: `[{}]`
 
-##### <a name="minversion"></a>`minversion`
+##### <a name="-collectd--plugin--postgresql--query--minversion"></a>`minversion`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="maxversion"></a>`maxversion`
+##### <a name="-collectd--plugin--postgresql--query--maxversion"></a>`maxversion`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpostgresqlwriter"></a>`collectd::plugin::postgresql::writer`
+### <a name="collectd--plugin--postgresql--writer"></a>`collectd::plugin::postgresql::writer`
 
 The collectd::plugin::postgresql::writer class.
 
@@ -9193,11 +9241,11 @@ The collectd::plugin::postgresql::writer class.
 
 The following parameters are available in the `collectd::plugin::postgresql::writer` defined type:
 
-* [`ensure`](#ensure)
-* [`statement`](#statement)
-* [`storerates`](#storerates)
+* [`ensure`](#-collectd--plugin--postgresql--writer--ensure)
+* [`statement`](#-collectd--plugin--postgresql--writer--statement)
+* [`storerates`](#-collectd--plugin--postgresql--writer--storerates)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--postgresql--writer--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9205,23 +9253,23 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="statement"></a>`statement`
+##### <a name="-collectd--plugin--postgresql--writer--statement"></a>`statement`
 
 Data type: `String`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="storerates"></a>`storerates`
+##### <a name="-collectd--plugin--postgresql--writer--storerates"></a>`storerates`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpowerdnsrecursor"></a>`collectd::plugin::powerdns::recursor`
+### <a name="collectd--plugin--powerdns--recursor"></a>`collectd::plugin::powerdns::recursor`
 
 The collectd::plugin::powerdns::recursor class.
 
@@ -9229,11 +9277,11 @@ The collectd::plugin::powerdns::recursor class.
 
 The following parameters are available in the `collectd::plugin::powerdns::recursor` defined type:
 
-* [`ensure`](#ensure)
-* [`socket`](#socket)
-* [`collect`](#collect)
+* [`ensure`](#-collectd--plugin--powerdns--recursor--ensure)
+* [`socket`](#-collectd--plugin--powerdns--recursor--socket)
+* [`collect`](#-collectd--plugin--powerdns--recursor--collect)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--powerdns--recursor--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -9241,15 +9289,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-collectd--plugin--powerdns--recursor--socket"></a>`socket`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect"></a>`collect`
+##### <a name="-collectd--plugin--powerdns--recursor--collect"></a>`collect`
 
 Data type: `Array[String[1]]`
 
@@ -9257,7 +9305,7 @@ Data type: `Array[String[1]]`
 
 Default value: `[]`
 
-### <a name="collectdpluginpowerdnsserver"></a>`collectd::plugin::powerdns::server`
+### <a name="collectd--plugin--powerdns--server"></a>`collectd::plugin::powerdns::server`
 
 The collectd::plugin::powerdns::server class.
 
@@ -9265,11 +9313,11 @@ The collectd::plugin::powerdns::server class.
 
 The following parameters are available in the `collectd::plugin::powerdns::server` defined type:
 
-* [`ensure`](#ensure)
-* [`socket`](#socket)
-* [`collect`](#collect)
+* [`ensure`](#-collectd--plugin--powerdns--server--ensure)
+* [`socket`](#-collectd--plugin--powerdns--server--socket)
+* [`collect`](#-collectd--plugin--powerdns--server--collect)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--powerdns--server--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -9277,15 +9325,15 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-collectd--plugin--powerdns--server--socket"></a>`socket`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect"></a>`collect`
+##### <a name="-collectd--plugin--powerdns--server--collect"></a>`collect`
 
 Data type: `Array[String[1]]`
 
@@ -9293,7 +9341,7 @@ Data type: `Array[String[1]]`
 
 Default value: `[]`
 
-### <a name="collectdpluginprocessesprocess"></a>`collectd::plugin::processes::process`
+### <a name="collectd--plugin--processes--process"></a>`collectd::plugin::processes::process`
 
 The collectd::plugin::processes::process class.
 
@@ -9301,13 +9349,13 @@ The collectd::plugin::processes::process class.
 
 The following parameters are available in the `collectd::plugin::processes::process` defined type:
 
-* [`process`](#process)
-* [`ensure`](#ensure)
-* [`collect_context_switch`](#collect_context_switch)
-* [`collect_file_descriptor`](#collect_file_descriptor)
-* [`collect_memory_maps`](#collect_memory_maps)
+* [`process`](#-collectd--plugin--processes--process--process)
+* [`ensure`](#-collectd--plugin--processes--process--ensure)
+* [`collect_context_switch`](#-collectd--plugin--processes--process--collect_context_switch)
+* [`collect_file_descriptor`](#-collectd--plugin--processes--process--collect_file_descriptor)
+* [`collect_memory_maps`](#-collectd--plugin--processes--process--collect_memory_maps)
 
-##### <a name="process"></a>`process`
+##### <a name="-collectd--plugin--processes--process--process"></a>`process`
 
 Data type: `String`
 
@@ -9315,7 +9363,7 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--processes--process--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -9323,31 +9371,31 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="collect_context_switch"></a>`collect_context_switch`
+##### <a name="-collectd--plugin--processes--process--collect_context_switch"></a>`collect_context_switch`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect_file_descriptor"></a>`collect_file_descriptor`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="collect_memory_maps"></a>`collect_memory_maps`
+##### <a name="-collectd--plugin--processes--process--collect_file_descriptor"></a>`collect_file_descriptor`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginprocessesprocessmatch"></a>`collectd::plugin::processes::processmatch`
+##### <a name="-collectd--plugin--processes--process--collect_memory_maps"></a>`collect_memory_maps`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--processes--processmatch"></a>`collectd::plugin::processes::processmatch`
 
 The collectd::plugin::processes::processmatch class.
 
@@ -9355,20 +9403,20 @@ The collectd::plugin::processes::processmatch class.
 
 The following parameters are available in the `collectd::plugin::processes::processmatch` defined type:
 
-* [`regex`](#regex)
-* [`ensure`](#ensure)
-* [`matchname`](#matchname)
-* [`collect_context_switch`](#collect_context_switch)
-* [`collect_file_descriptor`](#collect_file_descriptor)
-* [`collect_memory_maps`](#collect_memory_maps)
+* [`regex`](#-collectd--plugin--processes--processmatch--regex)
+* [`ensure`](#-collectd--plugin--processes--processmatch--ensure)
+* [`matchname`](#-collectd--plugin--processes--processmatch--matchname)
+* [`collect_context_switch`](#-collectd--plugin--processes--processmatch--collect_context_switch)
+* [`collect_file_descriptor`](#-collectd--plugin--processes--processmatch--collect_file_descriptor)
+* [`collect_memory_maps`](#-collectd--plugin--processes--processmatch--collect_memory_maps)
 
-##### <a name="regex"></a>`regex`
+##### <a name="-collectd--plugin--processes--processmatch--regex"></a>`regex`
 
 Data type: `Any`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--processes--processmatch--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9376,7 +9424,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="matchname"></a>`matchname`
+##### <a name="-collectd--plugin--processes--processmatch--matchname"></a>`matchname`
 
 Data type: `Any`
 
@@ -9384,31 +9432,31 @@ Data type: `Any`
 
 Default value: `$name`
 
-##### <a name="collect_context_switch"></a>`collect_context_switch`
+##### <a name="-collectd--plugin--processes--processmatch--collect_context_switch"></a>`collect_context_switch`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="collect_file_descriptor"></a>`collect_file_descriptor`
-
-Data type: `Optional[Boolean]`
-
-
-
-Default value: ``undef``
-
-##### <a name="collect_memory_maps"></a>`collect_memory_maps`
+##### <a name="-collectd--plugin--processes--processmatch--collect_file_descriptor"></a>`collect_file_descriptor`
 
 Data type: `Optional[Boolean]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginpythonmodule"></a>`collectd::plugin::python::module`
+##### <a name="-collectd--plugin--processes--processmatch--collect_memory_maps"></a>`collect_memory_maps`
+
+Data type: `Optional[Boolean]`
+
+
+
+Default value: `undef`
+
+### <a name="collectd--plugin--python--module"></a>`collectd::plugin::python::module`
 
 Single module definition
 
@@ -9416,14 +9464,14 @@ Single module definition
 
 The following parameters are available in the `collectd::plugin::python::module` defined type:
 
-* [`config`](#config)
-* [`ensure`](#ensure)
-* [`module`](#module)
-* [`module_import`](#module_import)
-* [`modulepath`](#modulepath)
-* [`script_source`](#script_source)
+* [`config`](#-collectd--plugin--python--module--config)
+* [`ensure`](#-collectd--plugin--python--module--ensure)
+* [`module`](#-collectd--plugin--python--module--module)
+* [`module_import`](#-collectd--plugin--python--module--module_import)
+* [`modulepath`](#-collectd--plugin--python--module--modulepath)
+* [`script_source`](#-collectd--plugin--python--module--script_source)
 
-##### <a name="config"></a>`config`
+##### <a name="-collectd--plugin--python--module--config"></a>`config`
 
 Data type: `Array[Hash[String,Variant[String,Boolean,Numeric,Array[Variant[Boolean,String,Numeric]]]]]`
 
@@ -9431,7 +9479,7 @@ Data type: `Array[Hash[String,Variant[String,Boolean,Numeric,Array[Variant[Boole
 
 Default value: `[]`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--python--module--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent']`
 
@@ -9439,7 +9487,7 @@ Data type: `Enum['present','absent']`
 
 Default value: `'present'`
 
-##### <a name="module"></a>`module`
+##### <a name="-collectd--plugin--python--module--module"></a>`module`
 
 Data type: `String`
 
@@ -9447,31 +9495,31 @@ Data type: `String`
 
 Default value: `$title`
 
-##### <a name="module_import"></a>`module_import`
+##### <a name="-collectd--plugin--python--module--module_import"></a>`module_import`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="modulepath"></a>`modulepath`
+##### <a name="-collectd--plugin--python--module--modulepath"></a>`modulepath`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="script_source"></a>`script_source`
+##### <a name="-collectd--plugin--python--module--script_source"></a>`script_source`
 
 Data type: `Optional[String]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdpluginsnmpdata"></a>`collectd::plugin::snmp::data`
+### <a name="collectd--plugin--snmp--data"></a>`collectd::plugin::snmp::data`
 
 https://collectd.org/wiki/index.php/Plugin:SNMP
 
@@ -9479,36 +9527,36 @@ https://collectd.org/wiki/index.php/Plugin:SNMP
 
 The following parameters are available in the `collectd::plugin::snmp::data` defined type:
 
-* [`instance`](#instance)
-* [`type`](#type)
-* [`values`](#values)
-* [`ensure`](#ensure)
-* [`instance_prefix`](#instance_prefix)
-* [`scale`](#scale)
-* [`shift`](#shift)
-* [`table`](#table)
-* [`ignore`](#ignore)
-* [`invert_match`](#invert_match)
+* [`instance`](#-collectd--plugin--snmp--data--instance)
+* [`type`](#-collectd--plugin--snmp--data--type)
+* [`values`](#-collectd--plugin--snmp--data--values)
+* [`ensure`](#-collectd--plugin--snmp--data--ensure)
+* [`instance_prefix`](#-collectd--plugin--snmp--data--instance_prefix)
+* [`scale`](#-collectd--plugin--snmp--data--scale)
+* [`shift`](#-collectd--plugin--snmp--data--shift)
+* [`table`](#-collectd--plugin--snmp--data--table)
+* [`ignore`](#-collectd--plugin--snmp--data--ignore)
+* [`invert_match`](#-collectd--plugin--snmp--data--invert_match)
 
-##### <a name="instance"></a>`instance`
+##### <a name="-collectd--plugin--snmp--data--instance"></a>`instance`
 
 Data type: `String`
 
 
 
-##### <a name="type"></a>`type`
+##### <a name="-collectd--plugin--snmp--data--type"></a>`type`
 
 Data type: `String[1]`
 
 
 
-##### <a name="values"></a>`values`
+##### <a name="-collectd--plugin--snmp--data--values"></a>`values`
 
 Data type: `Variant[String[1], Array[String[1], 1]]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--snmp--data--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -9516,55 +9564,55 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="instance_prefix"></a>`instance_prefix`
+##### <a name="-collectd--plugin--snmp--data--instance_prefix"></a>`instance_prefix`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="scale"></a>`scale`
-
-Data type: `Optional[Numeric]`
-
-
-
-Default value: ``undef``
-
-##### <a name="shift"></a>`shift`
+##### <a name="-collectd--plugin--snmp--data--scale"></a>`scale`
 
 Data type: `Optional[Numeric]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="table"></a>`table`
+##### <a name="-collectd--plugin--snmp--data--shift"></a>`shift`
+
+Data type: `Optional[Numeric]`
+
+
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--snmp--data--table"></a>`table`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ignore"></a>`ignore`
+##### <a name="-collectd--plugin--snmp--data--ignore"></a>`ignore`
 
 Data type: `Optional[Variant[String[1], Array[String[1], 1]]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="invert_match"></a>`invert_match`
+##### <a name="-collectd--plugin--snmp--data--invert_match"></a>`invert_match`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdpluginsnmphost"></a>`collectd::plugin::snmp::host`
+### <a name="collectd--plugin--snmp--host"></a>`collectd::plugin::snmp::host`
 
 https://collectd.org/wiki/index.php/Plugin:SNMP
 
@@ -9572,27 +9620,27 @@ https://collectd.org/wiki/index.php/Plugin:SNMP
 
 The following parameters are available in the `collectd::plugin::snmp::host` defined type:
 
-* [`collect`](#collect)
-* [`ensure`](#ensure)
-* [`address`](#address)
-* [`version`](#version)
-* [`interval`](#interval)
-* [`community`](#community)
-* [`username`](#username)
-* [`security_level`](#security_level)
-* [`context`](#context)
-* [`auth_protocol`](#auth_protocol)
-* [`auth_passphrase`](#auth_passphrase)
-* [`privacy_protocol`](#privacy_protocol)
-* [`privacy_passphrase`](#privacy_passphrase)
+* [`collect`](#-collectd--plugin--snmp--host--collect)
+* [`ensure`](#-collectd--plugin--snmp--host--ensure)
+* [`address`](#-collectd--plugin--snmp--host--address)
+* [`version`](#-collectd--plugin--snmp--host--version)
+* [`interval`](#-collectd--plugin--snmp--host--interval)
+* [`community`](#-collectd--plugin--snmp--host--community)
+* [`username`](#-collectd--plugin--snmp--host--username)
+* [`security_level`](#-collectd--plugin--snmp--host--security_level)
+* [`context`](#-collectd--plugin--snmp--host--context)
+* [`auth_protocol`](#-collectd--plugin--snmp--host--auth_protocol)
+* [`auth_passphrase`](#-collectd--plugin--snmp--host--auth_passphrase)
+* [`privacy_protocol`](#-collectd--plugin--snmp--host--privacy_protocol)
+* [`privacy_passphrase`](#-collectd--plugin--snmp--host--privacy_passphrase)
 
-##### <a name="collect"></a>`collect`
+##### <a name="-collectd--plugin--snmp--host--collect"></a>`collect`
 
 Data type: `Variant[String[1], Array[String[1], 1]]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--snmp--host--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -9600,7 +9648,7 @@ Data type: `Enum['present', 'absent']`
 
 Default value: `'present'`
 
-##### <a name="address"></a>`address`
+##### <a name="-collectd--plugin--snmp--host--address"></a>`address`
 
 Data type: `String[1]`
 
@@ -9608,7 +9656,7 @@ Data type: `String[1]`
 
 Default value: `$name`
 
-##### <a name="version"></a>`version`
+##### <a name="-collectd--plugin--snmp--host--version"></a>`version`
 
 Data type: `Collectd::SNMP::Version`
 
@@ -9616,15 +9664,15 @@ Data type: `Collectd::SNMP::Version`
 
 Default value: `'1'`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--snmp--host--interval"></a>`interval`
 
 Data type: `Optional[Integer[0]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="community"></a>`community`
+##### <a name="-collectd--plugin--snmp--host--community"></a>`community`
 
 Data type: `String[1]`
 
@@ -9632,63 +9680,63 @@ Data type: `String[1]`
 
 Default value: `'public'`
 
-##### <a name="username"></a>`username`
+##### <a name="-collectd--plugin--snmp--host--username"></a>`username`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="security_level"></a>`security_level`
+##### <a name="-collectd--plugin--snmp--host--security_level"></a>`security_level`
 
 Data type: `Optional[Collectd::SNMP::SecurityLevel]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="context"></a>`context`
+##### <a name="-collectd--plugin--snmp--host--context"></a>`context`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="auth_protocol"></a>`auth_protocol`
+##### <a name="-collectd--plugin--snmp--host--auth_protocol"></a>`auth_protocol`
 
 Data type: `Optional[Collectd::SNMP::AuthProtocol]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="auth_passphrase"></a>`auth_passphrase`
+##### <a name="-collectd--plugin--snmp--host--auth_passphrase"></a>`auth_passphrase`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="privacy_protocol"></a>`privacy_protocol`
+##### <a name="-collectd--plugin--snmp--host--privacy_protocol"></a>`privacy_protocol`
 
 Data type: `Optional[Collectd::SNMP::PrivacyProtocol]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="privacy_passphrase"></a>`privacy_passphrase`
+##### <a name="-collectd--plugin--snmp--host--privacy_passphrase"></a>`privacy_passphrase`
 
 Data type: `Optional[String[1]]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="collectdplugintailfile"></a>`collectd::plugin::tail::file`
+### <a name="collectd--plugin--tail--file"></a>`collectd::plugin::tail::file`
 
 The collectd::plugin::tail::file class.
 
@@ -9696,30 +9744,30 @@ The collectd::plugin::tail::file class.
 
 The following parameters are available in the `collectd::plugin::tail::file` defined type:
 
-* [`filename`](#filename)
-* [`instance`](#instance)
-* [`matches`](#matches)
-* [`ensure`](#ensure)
+* [`filename`](#-collectd--plugin--tail--file--filename)
+* [`instance`](#-collectd--plugin--tail--file--instance)
+* [`matches`](#-collectd--plugin--tail--file--matches)
+* [`ensure`](#-collectd--plugin--tail--file--ensure)
 
-##### <a name="filename"></a>`filename`
+##### <a name="-collectd--plugin--tail--file--filename"></a>`filename`
 
 Data type: `Stdlib::Absolutepath`
 
 
 
-##### <a name="instance"></a>`instance`
+##### <a name="-collectd--plugin--tail--file--instance"></a>`instance`
 
 Data type: `String`
 
 
 
-##### <a name="matches"></a>`matches`
+##### <a name="-collectd--plugin--tail--file--matches"></a>`matches`
 
 Data type: `Array[Hash]`
 
 
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--tail--file--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9727,7 +9775,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-### <a name="collectdpluginwrite_graphitecarbon"></a>`collectd::plugin::write_graphite::carbon`
+### <a name="collectd--plugin--write_graphite--carbon"></a>`collectd::plugin::write_graphite::carbon`
 
 a single graphite backend
 
@@ -9735,22 +9783,22 @@ a single graphite backend
 
 The following parameters are available in the `collectd::plugin::write_graphite::carbon` defined type:
 
-* [`ensure`](#ensure)
-* [`graphitehost`](#graphitehost)
-* [`graphiteport`](#graphiteport)
-* [`storerates`](#storerates)
-* [`graphiteprefix`](#graphiteprefix)
-* [`graphitepostfix`](#graphitepostfix)
-* [`interval`](#interval)
-* [`escapecharacter`](#escapecharacter)
-* [`alwaysappendds`](#alwaysappendds)
-* [`protocol`](#protocol)
-* [`separateinstances`](#separateinstances)
-* [`logsenderrors`](#logsenderrors)
-* [`reconnectinterval`](#reconnectinterval)
-* [`reversehost`](#reversehost)
+* [`ensure`](#-collectd--plugin--write_graphite--carbon--ensure)
+* [`graphitehost`](#-collectd--plugin--write_graphite--carbon--graphitehost)
+* [`graphiteport`](#-collectd--plugin--write_graphite--carbon--graphiteport)
+* [`storerates`](#-collectd--plugin--write_graphite--carbon--storerates)
+* [`graphiteprefix`](#-collectd--plugin--write_graphite--carbon--graphiteprefix)
+* [`graphitepostfix`](#-collectd--plugin--write_graphite--carbon--graphitepostfix)
+* [`interval`](#-collectd--plugin--write_graphite--carbon--interval)
+* [`escapecharacter`](#-collectd--plugin--write_graphite--carbon--escapecharacter)
+* [`alwaysappendds`](#-collectd--plugin--write_graphite--carbon--alwaysappendds)
+* [`protocol`](#-collectd--plugin--write_graphite--carbon--protocol)
+* [`separateinstances`](#-collectd--plugin--write_graphite--carbon--separateinstances)
+* [`logsenderrors`](#-collectd--plugin--write_graphite--carbon--logsenderrors)
+* [`reconnectinterval`](#-collectd--plugin--write_graphite--carbon--reconnectinterval)
+* [`reversehost`](#-collectd--plugin--write_graphite--carbon--reversehost)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-collectd--plugin--write_graphite--carbon--ensure"></a>`ensure`
 
 Data type: `Any`
 
@@ -9758,7 +9806,7 @@ Data type: `Any`
 
 Default value: `'present'`
 
-##### <a name="graphitehost"></a>`graphitehost`
+##### <a name="-collectd--plugin--write_graphite--carbon--graphitehost"></a>`graphitehost`
 
 Data type: `Stdlib::Host`
 
@@ -9766,7 +9814,7 @@ Data type: `Stdlib::Host`
 
 Default value: `'localhost'`
 
-##### <a name="graphiteport"></a>`graphiteport`
+##### <a name="-collectd--plugin--write_graphite--carbon--graphiteport"></a>`graphiteport`
 
 Data type: `Stdlib::Port`
 
@@ -9774,15 +9822,15 @@ Data type: `Stdlib::Port`
 
 Default value: `2003`
 
-##### <a name="storerates"></a>`storerates`
+##### <a name="-collectd--plugin--write_graphite--carbon--storerates"></a>`storerates`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="graphiteprefix"></a>`graphiteprefix`
+##### <a name="-collectd--plugin--write_graphite--carbon--graphiteprefix"></a>`graphiteprefix`
 
 Data type: `Any`
 
@@ -9790,23 +9838,23 @@ Data type: `Any`
 
 Default value: `'collectd.'`
 
-##### <a name="graphitepostfix"></a>`graphitepostfix`
+##### <a name="-collectd--plugin--write_graphite--carbon--graphitepostfix"></a>`graphitepostfix`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interval"></a>`interval`
+##### <a name="-collectd--plugin--write_graphite--carbon--interval"></a>`interval`
 
 Data type: `Any`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="escapecharacter"></a>`escapecharacter`
+##### <a name="-collectd--plugin--write_graphite--carbon--escapecharacter"></a>`escapecharacter`
 
 Data type: `Any`
 
@@ -9814,15 +9862,15 @@ Data type: `Any`
 
 Default value: `'_'`
 
-##### <a name="alwaysappendds"></a>`alwaysappendds`
+##### <a name="-collectd--plugin--write_graphite--carbon--alwaysappendds"></a>`alwaysappendds`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="protocol"></a>`protocol`
+##### <a name="-collectd--plugin--write_graphite--carbon--protocol"></a>`protocol`
 
 Data type: `Any`
 
@@ -9830,23 +9878,23 @@ Data type: `Any`
 
 Default value: `'tcp'`
 
-##### <a name="separateinstances"></a>`separateinstances`
+##### <a name="-collectd--plugin--write_graphite--carbon--separateinstances"></a>`separateinstances`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="logsenderrors"></a>`logsenderrors`
+##### <a name="-collectd--plugin--write_graphite--carbon--logsenderrors"></a>`logsenderrors`
 
 Data type: `Boolean`
 
 
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="reconnectinterval"></a>`reconnectinterval`
+##### <a name="-collectd--plugin--write_graphite--carbon--reconnectinterval"></a>`reconnectinterval`
 
 Data type: `Integer`
 
@@ -9854,15 +9902,15 @@ Data type: `Integer`
 
 Default value: `0`
 
-##### <a name="reversehost"></a>`reversehost`
+##### <a name="-collectd--plugin--write_graphite--carbon--reversehost"></a>`reversehost`
 
 Data type: `Boolean`
 
 
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="collectdtype"></a>`collectd::type`
+### <a name="collectd--type"></a>`collectd::type`
 
 The collectd::type class.
 
@@ -9870,21 +9918,21 @@ The collectd::type class.
 
 The following parameters are available in the `collectd::type` defined type:
 
-* [`target`](#target)
-* [`ds`](#ds)
-* [`ds_type`](#ds_type)
-* [`min`](#min)
-* [`max`](#max)
-* [`ds_name`](#ds_name)
-* [`types`](#types)
+* [`target`](#-collectd--type--target)
+* [`ds`](#-collectd--type--ds)
+* [`ds_type`](#-collectd--type--ds_type)
+* [`min`](#-collectd--type--min)
+* [`max`](#-collectd--type--max)
+* [`ds_name`](#-collectd--type--ds_name)
+* [`types`](#-collectd--type--types)
 
-##### <a name="target"></a>`target`
+##### <a name="-collectd--type--target"></a>`target`
 
 Data type: `String`
 
 
 
-##### <a name="ds"></a>`ds`
+##### <a name="-collectd--type--ds"></a>`ds`
 
 Data type: `String`
 
@@ -9892,23 +9940,15 @@ Data type: `String`
 
 Default value: `$name`
 
-##### <a name="ds_type"></a>`ds_type`
+##### <a name="-collectd--type--ds_type"></a>`ds_type`
 
 Data type: `Optional[Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE']]`
 
 
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="min"></a>`min`
-
-Data type: `Variant[Numeric, Enum['U']]`
-
-
-
-Default value: `'U'`
-
-##### <a name="max"></a>`max`
+##### <a name="-collectd--type--min"></a>`min`
 
 Data type: `Variant[Numeric, Enum['U']]`
 
@@ -9916,7 +9956,15 @@ Data type: `Variant[Numeric, Enum['U']]`
 
 Default value: `'U'`
 
-##### <a name="ds_name"></a>`ds_name`
+##### <a name="-collectd--type--max"></a>`max`
+
+Data type: `Variant[Numeric, Enum['U']]`
+
+
+
+Default value: `'U'`
+
+##### <a name="-collectd--type--ds_name"></a>`ds_name`
 
 Data type: `String`
 
@@ -9924,20 +9972,24 @@ Data type: `String`
 
 Default value: `'value'`
 
-##### <a name="types"></a>`types`
+##### <a name="-collectd--type--types"></a>`types`
 
-Data type: `Array[Struct[{
+Data type:
+
+```puppet
+Array[Struct[{
         min     => Variant[Numeric, Enum['U']],
         max     => Variant[Numeric, Enum['U']],
         ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
         ds_name => String,
-  }]]`
+  }]]
+```
 
 
 
 Default value: `[]`
 
-### <a name="collectdtypesdb"></a>`collectd::typesdb`
+### <a name="collectd--typesdb"></a>`collectd::typesdb`
 
 This define initialize a collectd typesdb file
 
@@ -9945,13 +9997,13 @@ This define initialize a collectd typesdb file
 
 The following parameters are available in the `collectd::typesdb` defined type:
 
-* [`path`](#path)
-* [`group`](#group)
-* [`mode`](#mode)
-* [`owner`](#owner)
-* [`include`](#include)
+* [`path`](#-collectd--typesdb--path)
+* [`group`](#-collectd--typesdb--group)
+* [`mode`](#-collectd--typesdb--mode)
+* [`owner`](#-collectd--typesdb--owner)
+* [`include`](#-collectd--typesdb--include)
 
-##### <a name="path"></a>`path`
+##### <a name="-collectd--typesdb--path"></a>`path`
 
 Data type: `String`
 
@@ -9959,7 +10011,7 @@ File path
 
 Default value: `$title`
 
-##### <a name="group"></a>`group`
+##### <a name="-collectd--typesdb--group"></a>`group`
 
 Data type: `String`
 
@@ -9967,7 +10019,7 @@ File
 
 Default value: `$collectd::config_group`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-collectd--typesdb--mode"></a>`mode`
 
 Data type: `String`
 
@@ -9975,7 +10027,7 @@ File mode
 
 Default value: `$collectd::config_mode`
 
-##### <a name="owner"></a>`owner`
+##### <a name="-collectd--typesdb--owner"></a>`owner`
 
 Data type: `String`
 
@@ -9983,17 +10035,17 @@ File owner
 
 Default value: `$collectd::config_owner`
 
-##### <a name="include"></a>`include`
+##### <a name="-collectd--typesdb--include"></a>`include`
 
 Data type: `Boolean`
 
 Include the file in the typesdb config (require collectd::purge_config at true)
 
-Default value: ``false``
+Default value: `false`
 
 ## Functions
 
-### <a name="collectdindent"></a>`collectd::indent`
+### <a name="collectd--indent"></a>`collectd::indent`
 
 Type: Puppet Language
 
@@ -10039,17 +10091,13 @@ Returns: `Any`
 
 ## Data types
 
-### <a name="collectdamqpformat"></a>`Collectd::Amqp::Format`
+### <a name="Collectd--Amqp--Format"></a>`Collectd::Amqp::Format`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_amqp
 
-Alias of
+Alias of `Enum['Command', 'JSON', 'Graphite']`
 
-```puppet
-Enum['Command', 'JSON', 'Graphite']
-```
-
-### <a name="collectdbindview"></a>`Collectd::Bind::View`
+### <a name="Collectd--Bind--View"></a>`Collectd::Bind::View`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_bind
 
@@ -10065,47 +10113,31 @@ Struct[{
 }]
 ```
 
-### <a name="collectdfilterbuiltintarget"></a>`Collectd::Filter::Builtintarget`
+### <a name="Collectd--Filter--Builtintarget"></a>`Collectd::Filter::Builtintarget`
 
 https://collectd.org/wiki/index.php/Chains#Built-in_targets
 
-Alias of
+Alias of `Enum['jump', 'stop', 'return', 'write']`
 
-```puppet
-Enum['jump', 'stop', 'return', 'write']
-```
-
-### <a name="collectdfiltermatch"></a>`Collectd::Filter::Match`
+### <a name="Collectd--Filter--Match"></a>`Collectd::Filter::Match`
 
 https://collectd.org/wiki/index.php/Table_of_Matches
 
-Alias of
+Alias of `Enum['empty_counter', 'hashed', 'regex', 'timediff', 'value']`
 
-```puppet
-Enum['empty_counter', 'hashed', 'regex', 'timediff', 'value']
-```
-
-### <a name="collectdfilterplugintarget"></a>`Collectd::Filter::Plugintarget`
+### <a name="Collectd--Filter--Plugintarget"></a>`Collectd::Filter::Plugintarget`
 
 https://collectd.org/wiki/index.php/Table_of_Targets
 
-Alias of
+Alias of `Enum['notification', 'replace', 'scale', 'set']`
 
-```puppet
-Enum['notification', 'replace', 'scale', 'set']
-```
-
-### <a name="collectdfiltertarget"></a>`Collectd::Filter::Target`
+### <a name="Collectd--Filter--Target"></a>`Collectd::Filter::Target`
 
 https://collectd.org/wiki/index.php/Chains
 
-Alias of
+Alias of `Variant[Collectd::Filter::Builtintarget, Collectd::Filter::Plugintarget]`
 
-```puppet
-Variant[Collectd::Filter::Builtintarget, Collectd::Filter::Plugintarget]
-```
-
-### <a name="collectdlogparserlogfile"></a>`Collectd::LOGPARSER::Logfile`
+### <a name="Collectd--LOGPARSER--Logfile"></a>`Collectd::LOGPARSER::Logfile`
 
 https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 
@@ -10118,7 +10150,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdlogparsermatch"></a>`Collectd::LOGPARSER::Match`
+### <a name="Collectd--LOGPARSER--Match"></a>`Collectd::LOGPARSER::Match`
 
 https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 
@@ -10137,7 +10169,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdlogparsermessage"></a>`Collectd::LOGPARSER::Message`
+### <a name="Collectd--LOGPARSER--Message"></a>`Collectd::LOGPARSER::Message`
 
 https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 
@@ -10153,7 +10185,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdmcelogmemory"></a>`Collectd::MCELOG::Memory`
+### <a name="Collectd--MCELOG--Memory"></a>`Collectd::MCELOG::Memory`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
 
@@ -10166,137 +10198,85 @@ Struct[{
 }]
 ```
 
-### <a name="collectdmanifestsinit"></a>`Collectd::Manifests::Init`
+### <a name="Collectd--Manifests--Init"></a>`Collectd::Manifests::Init`
 
 The Collectd::Manifests::Init data type.
 
-Alias of
+Alias of `Pattern[/(^5.4|^5.5|^5.6|^5.7|^5.8|^master)/]`
 
-```puppet
-Pattern[/(^5.4|^5.5|^5.6|^5.7|^5.8|^master)/]
-```
-
-### <a name="collectdnetworksecuritylevel"></a>`Collectd::Network::SecurityLevel`
+### <a name="Collectd--Network--SecurityLevel"></a>`Collectd::Network::SecurityLevel`
 
 The Collectd::Network::SecurityLevel data type.
 
-Alias of
+Alias of `Enum['Encrypt', 'Sign', 'None']`
 
-```puppet
-Enum['Encrypt', 'Sign', 'None']
-```
-
-### <a name="collectdredisnode"></a>`Collectd::Redis::Node`
+### <a name="Collectd--Redis--Node"></a>`Collectd::Redis::Node`
 
 The Collectd::Redis::Node data type.
 
-Alias of
+Alias of `Struct[{Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]]}]`
 
-```puppet
-Struct[{Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]]}]
-```
-
-### <a name="collectdsnmpauthprotocol"></a>`Collectd::SNMP::AuthProtocol`
+### <a name="Collectd--SNMP--AuthProtocol"></a>`Collectd::SNMP::AuthProtocol`
 
 The Collectd::SNMP::AuthProtocol data type.
 
-Alias of
+Alias of `Enum['MD5', 'SHA']`
 
-```puppet
-Enum['MD5', 'SHA']
-```
-
-### <a name="collectdsnmpdata"></a>`Collectd::SNMP::Data`
+### <a name="Collectd--SNMP--Data"></a>`Collectd::SNMP::Data`
 
 The Collectd::SNMP::Data data type.
 
-Alias of
+Alias of `Struct[{Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean}]`
 
-```puppet
-Struct[{Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean}]
-```
-
-### <a name="collectdsnmphost"></a>`Collectd::SNMP::Host`
+### <a name="Collectd--SNMP--Host"></a>`Collectd::SNMP::Host`
 
 The Collectd::SNMP::Host data type.
 
-Alias of
+Alias of `Variant[Collectd::SNMP::Host::V2, Collectd::SNMP::Host::V3]`
 
-```puppet
-Variant[Collectd::SNMP::Host::V2, Collectd::SNMP::Host::V3]
-```
-
-### <a name="collectdsnmphostv2"></a>`Collectd::SNMP::Host::V2`
+### <a name="Collectd--SNMP--Host--V2"></a>`Collectd::SNMP::Host::V2`
 
 The Collectd::SNMP::Host::V2 data type.
 
-Alias of
+Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
 
-```puppet
-Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]
-```
-
-### <a name="collectdsnmphostv3"></a>`Collectd::SNMP::Host::V3`
+### <a name="Collectd--SNMP--Host--V3"></a>`Collectd::SNMP::Host::V3`
 
 The Collectd::SNMP::Host::V3 data type.
 
-Alias of
+Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
 
-```puppet
-Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]
-```
-
-### <a name="collectdsnmpprivacyprotocol"></a>`Collectd::SNMP::PrivacyProtocol`
+### <a name="Collectd--SNMP--PrivacyProtocol"></a>`Collectd::SNMP::PrivacyProtocol`
 
 The Collectd::SNMP::PrivacyProtocol data type.
 
-Alias of
+Alias of `Enum['AES', 'DES']`
 
-```puppet
-Enum['AES', 'DES']
-```
-
-### <a name="collectdsnmpsecuritylevel"></a>`Collectd::SNMP::SecurityLevel`
+### <a name="Collectd--SNMP--SecurityLevel"></a>`Collectd::SNMP::SecurityLevel`
 
 The Collectd::SNMP::SecurityLevel data type.
 
-Alias of
+Alias of `Enum['authPriv', 'authNoPriv', 'noAuthNoPriv']`
 
-```puppet
-Enum['authPriv', 'authNoPriv', 'noAuthNoPriv']
-```
-
-### <a name="collectdsnmpversion"></a>`Collectd::SNMP::Version`
+### <a name="Collectd--SNMP--Version"></a>`Collectd::SNMP::Version`
 
 The Collectd::SNMP::Version data type.
 
-Alias of
+Alias of `Variant[Collectd::SNMP::Version::V2, Collectd::SNMP::Version::V3]`
 
-```puppet
-Variant[Collectd::SNMP::Version::V2, Collectd::SNMP::Version::V3]
-```
-
-### <a name="collectdsnmpversionv2"></a>`Collectd::SNMP::Version::V2`
+### <a name="Collectd--SNMP--Version--V2"></a>`Collectd::SNMP::Version::V2`
 
 The Collectd::SNMP::Version::V2 data type.
 
-Alias of
+Alias of `Variant[Integer[1, 2], Enum['1', '2']]`
 
-```puppet
-Variant[Integer[1, 2], Enum['1', '2']]
-```
-
-### <a name="collectdsnmpversionv3"></a>`Collectd::SNMP::Version::V3`
+### <a name="Collectd--SNMP--Version--V3"></a>`Collectd::SNMP::Version::V3`
 
 The Collectd::SNMP::Version::V3 data type.
 
-Alias of
+Alias of `Variant[Integer[3, 3], Enum['3']]`
 
-```puppet
-Variant[Integer[3, 3], Enum['3']]
-```
-
-### <a name="collectdsnmp_agentdata"></a>`Collectd::SNMP_AGENT::Data`
+### <a name="Collectd--SNMP_AGENT--Data"></a>`Collectd::SNMP_AGENT::Data`
 
 https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
 
@@ -10315,17 +10295,19 @@ Struct[{
 }]
 ```
 
-### <a name="collectdsnmp_agentindexkey"></a>`Collectd::SNMP_AGENT::IndexKey`
+### <a name="Collectd--SNMP_AGENT--IndexKey"></a>`Collectd::SNMP_AGENT::IndexKey`
 
 https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
 
 Alias of
 
 ```puppet
-Struct[=>]
+Struct['source' => String,
+  Optional['regex'] => String,
+  Optional['group'] => String]
 ```
 
-### <a name="collectdsnmp_agenttable"></a>`Collectd::SNMP_AGENT::Table`
+### <a name="Collectd--SNMP_AGENT--Table"></a>`Collectd::SNMP_AGENT::Table`
 
 https://wiki.opnfv.org/display/fastpath/SNMP+Agent+HLD
 
@@ -10339,7 +10321,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdtableresult"></a>`Collectd::Table::Result`
+### <a name="Collectd--Table--Result"></a>`Collectd::Table::Result`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
 
@@ -10354,7 +10336,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdtabletable"></a>`Collectd::Table::Table`
+### <a name="Collectd--Table--Table"></a>`Collectd::Table::Table`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_table
 
@@ -10369,7 +10351,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdtail_csvfile"></a>`Collectd::Tail_Csv::File`
+### <a name="Collectd--Tail_Csv--File"></a>`Collectd::Tail_Csv::File`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
 
@@ -10385,7 +10367,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdtail_csvmetric"></a>`Collectd::Tail_Csv::Metric`
+### <a name="Collectd--Tail_Csv--Metric"></a>`Collectd::Tail_Csv::Metric`
 
 https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
 
@@ -10399,7 +10381,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdthresholdhost"></a>`Collectd::Threshold::Host`
+### <a name="Collectd--Threshold--Host"></a>`Collectd::Threshold::Host`
 
 The Collectd::Threshold::Host data type.
 
@@ -10413,7 +10395,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdthresholdplugin"></a>`Collectd::Threshold::Plugin`
+### <a name="Collectd--Threshold--Plugin"></a>`Collectd::Threshold::Plugin`
 
 The Collectd::Threshold::Plugin data type.
 
@@ -10427,7 +10409,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdthresholdtype"></a>`Collectd::Threshold::Type`
+### <a name="Collectd--Threshold--Type"></a>`Collectd::Threshold::Type`
 
 The Collectd::Threshold::Type data type.
 
@@ -10452,7 +10434,7 @@ Struct[{
 }]
 ```
 
-### <a name="collectdwrite_riemannnode"></a>`Collectd::Write_riemann::Node`
+### <a name="Collectd--Write_riemann--Node"></a>`Collectd::Write_riemann::Node`
 
 The Collectd::Write_riemann::Node data type.
 

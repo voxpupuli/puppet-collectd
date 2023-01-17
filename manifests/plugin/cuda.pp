@@ -5,11 +5,11 @@
 #  Configures cuda metrics collection. Optionally installs the plugin
 #  Note, it is up to you to support package installation and sources
 #
-# @param ensure Optional[String] Passed to package and collectd::plugin resources (both). Default: present
-# @param manage_package Optional[Boolean] Toggles installation of plugin. Default: undef
-# @param package_name Optional[String] Name of plugin package to install. Default: collectd-cuda
-# @param package_provider Optional[String] Passed to package resource. Default: pip
-# @param provider_proxy Optional[String] Proxy for provider. Default: undef
+# @param ensure Passed to package and collectd::plugin resources (both)
+# @param manage_package Toggles installation of plugin
+# @param package_name Name of plugin package to install
+# @param package_provider Passed to package resource
+# @param provider_proxy Proxy for provider
 class collectd::plugin::cuda (
   Enum['present', 'absent'] $ensure     = 'present',
   Optional[Boolean] $manage_package     = undef,
