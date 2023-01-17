@@ -2000,15 +2000,16 @@ backend should have unique title:
 
 ```puppet
 collectd::plugin::write_graphite::carbon {'secondary_graphite':
-  graphitehost      => 'graphite.example.org',
-  graphiteport      => 2004,
-  graphiteprefix    => '',
-  protocol          => 'udp',
-  escapecharacter   => '_',
-  alwaysappendds    => true,
-  storerates        => true,
-  separateinstances => false,
-  logsenderrors     => true
+  graphitehost        => 'graphite.example.org',
+  graphiteport        => 2004,
+  graphiteprefix      => '',
+  protocol            => 'udp',
+  dropduplicatefields => false,
+  escapecharacter     => '_',
+  alwaysappendds      => true,
+  storerates          => true,
+  separateinstances   => false,
+  logsenderrors       => true
 }
 ```
 
