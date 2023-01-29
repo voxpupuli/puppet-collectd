@@ -69,5 +69,34 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         it { is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{Port "2003"}) }
       end
     end
+
+    context 'starting with version 5.7 the preserveseparator and dropduplicatefields options should be supported' do
+      let(:title) { 'graphite_default' }
+
+      let :params do
+        {
+          preserveseparator: true,
+          dropduplicatefields: true,
+        }
+      end
+
+      context 'version 5.6' do
+        let :facts do
+          facts.merge(collectd_version: '5.6')
+        end
+
+        it { is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').without(content: %r{PreserveSeparator}) }
+        it { is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').without(content: %r{DropDuplicateFields}) }
+      end
+
+      context 'version 5.7' do
+        let :facts do
+          facts.merge(collectd_version: '5.7')
+        end
+
+        it { is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{PreserveSeparator true}) }
+        it { is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(content: %r{DropDuplicateFields true}) }
+      end
+    end
   end
 end
