@@ -2009,8 +2009,13 @@ collectd::plugin::write_graphite::carbon {'secondary_graphite':
   storerates        => true,
   separateinstances => false,
   logsenderrors     => true
+  preserveseparator   => false,
+  dropduplicatefields => false,
 }
 ```
+
+The `preserveseparator` and `dropduplicatefields` fields are supported as of
+collectd version >= 5.7.
 
 #### Class: `collectd::plugin::write_http`
 
