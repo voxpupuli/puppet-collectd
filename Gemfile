@@ -17,6 +17,7 @@ end
 
 group :system_tests do
   gem 'voxpupuli-acceptance', '~> 1.0',  :require => false
+  gem 'beaker-docker', git: 'https://github.com/rwaffen/beaker-docker', branch: 'container2container'
 end
 
 group :release do
