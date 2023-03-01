@@ -9797,6 +9797,8 @@ The following parameters are available in the `collectd::plugin::write_graphite:
 * [`logsenderrors`](#-collectd--plugin--write_graphite--carbon--logsenderrors)
 * [`reconnectinterval`](#-collectd--plugin--write_graphite--carbon--reconnectinterval)
 * [`reversehost`](#-collectd--plugin--write_graphite--carbon--reversehost)
+* [`preserveseparator`](#-collectd--plugin--write_graphite--carbon--preserveseparator)
+* [`dropduplicatefields`](#-collectd--plugin--write_graphite--carbon--dropduplicatefields)
 
 ##### <a name="-collectd--plugin--write_graphite--carbon--ensure"></a>`ensure`
 
@@ -9903,6 +9905,22 @@ Data type: `Integer`
 Default value: `0`
 
 ##### <a name="-collectd--plugin--write_graphite--carbon--reversehost"></a>`reversehost`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--write_graphite--carbon--preserveseparator"></a>`preserveseparator`
+
+Data type: `Boolean`
+
+
+
+Default value: `false`
+
+##### <a name="-collectd--plugin--write_graphite--carbon--dropduplicatefields"></a>`dropduplicatefields`
 
 Data type: `Boolean`
 
