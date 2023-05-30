@@ -95,7 +95,7 @@
 * [`collectd::plugin::swap`](#collectd--plugin--swap): https://collectd.org/wiki/index.php/Plugin:Swap
 * [`collectd::plugin::sysevent`](#collectd--plugin--sysevent): == Class: collectd::plugin::sysevent  Class to manage sysevent plugin for collectd  Documentation:   https://collectd.org/documentation/manpa
 * [`collectd::plugin::syslog`](#collectd--plugin--syslog): https://collectd.org/wiki/index.php/Plugin:SysLog
-* [`collectd::plugin::table`](#collectd--plugin--table): https://collectd.org/wiki/index.php/Chains
+* [`collectd::plugin::table`](#collectd--plugin--table): Load and configure the table plugin
 * [`collectd::plugin::tail`](#collectd--plugin--tail): Tail plugin https://collectd.org/wiki/index.php/Plugin:Tail
 * [`collectd::plugin::tail_csv`](#collectd--plugin--tail_csv): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_tail_csv
 * [`collectd::plugin::target_v5upgrade`](#collectd--plugin--target_v5upgrade): https://collectd.org/wiki/index.php/Target:v5_upgrade
@@ -164,6 +164,7 @@
 * [`collectd::plugin::python::module`](#collectd--plugin--python--module): Single module definition
 * [`collectd::plugin::snmp::data`](#collectd--plugin--snmp--data): https://collectd.org/wiki/index.php/Plugin:SNMP
 * [`collectd::plugin::snmp::host`](#collectd--plugin--snmp--host): https://collectd.org/wiki/index.php/Plugin:SNMP
+* [`collectd::plugin::table::table`](#collectd--plugin--table--table): table definition for table plugin
 * [`collectd::plugin::tail::file`](#collectd--plugin--tail--file)
 * [`collectd::plugin::write_graphite::carbon`](#collectd--plugin--write_graphite--carbon): a single graphite backend
 * [`collectd::type`](#collectd--type)
@@ -6179,7 +6180,32 @@ Default value: `undef`
 
 ### <a name="collectd--plugin--table"></a>`collectd::plugin::table`
 
-https://collectd.org/wiki/index.php/Chains
+Load and configure the table plugin
+
+* **See also**
+  * https://collectd.org/wiki/index.php/Plugin:Table
+
+#### Examples
+
+##### Parse `/proc/pressure/cpu`
+
+```puppet
+class {'collectd::plugin::table':
+  tables => {
+    '/proc/pressure/cpu' => {
+      'plugin'    => 'psi',
+      'instance   => 'cpu',
+      'seperator' => ' =',
+      'results'   => [{
+        'type'            => 'gauge',
+        'instance_from'   => [0],
+        'instance_prefix' => 'arg10',
+        'values_from'     => [2],
+      }],
+    }
+  }
+}
+```
 
 #### Parameters
 
@@ -6191,15 +6217,17 @@ The following parameters are available in the `collectd::plugin::table` class:
 
 ##### <a name="-collectd--plugin--table--tables"></a>`tables`
 
-Data type: `Hash[String, Collectd::Table::Table, 1]`
+Data type: `Optional[Hash[String, Collectd::Table::Table, 1]]`
 
+`<Table>` blocks for table plugin
 
+Default value: `undef`
 
 ##### <a name="-collectd--plugin--table--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
-
+Should the plugin be configured
 
 Default value: `'present'`
 
@@ -6207,7 +6235,7 @@ Default value: `'present'`
 
 Data type: `Integer`
 
-
+Prefix of file in collectd config directory
 
 Default value: `10`
 
@@ -9735,6 +9763,68 @@ Data type: `Optional[String[1]]`
 
 
 Default value: `undef`
+
+### <a name="collectd--plugin--table--table"></a>`collectd::plugin::table::table`
+
+table definition for table plugin
+
+#### Examples
+
+##### Parse the /proc/uptime file
+
+```puppet
+collectd::plugin::table::table{'/proc/uptime':
+  table => {
+    'plugin'    => 'uptime',
+    'instance'  => 'first',
+    'separator' => ' ',
+    'results' => [{
+      'type'        => 'gauge',
+      'values_from' => [0],
+    }],
+  }
+}
+```
+
+#### Parameters
+
+The following parameters are available in the `collectd::plugin::table::table` defined type:
+
+* [`$tablename`](#-collectd--plugin--table--table---tablename)
+* [`$table`](#-collectd--plugin--table--table---table)
+* [`ensure`](#-collectd--plugin--table--table--ensure)
+* [`tablename`](#-collectd--plugin--table--table--tablename)
+* [`table`](#-collectd--plugin--table--table--table)
+
+##### <a name="-collectd--plugin--table--table---tablename"></a>`$tablename`
+
+Name of table typically a filename
+
+##### <a name="-collectd--plugin--table--table---table"></a>`$table`
+
+Table definition
+
+##### <a name="-collectd--plugin--table--table--ensure"></a>`ensure`
+
+Data type: `Enum['present', 'absent']`
+
+
+
+Default value: `'present'`
+
+##### <a name="-collectd--plugin--table--table--tablename"></a>`tablename`
+
+Data type: `Stdlib::Unixpath`
+
+
+
+Default value: `$name`
+
+##### <a name="-collectd--plugin--table--table--table"></a>`table`
+
+Data type: `Collectd::Table::Table`
+
+
 
 ### <a name="collectd--plugin--tail--file"></a>`collectd::plugin::tail::file`
 
