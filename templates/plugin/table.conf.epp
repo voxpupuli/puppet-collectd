@@ -1,5 +1,8 @@
+<%-|
+  Hash[String, Collectd::Table::Table, 1] $tables,
+|-%>
 <Plugin "table">
-<% $collectd::plugin::table::tables.each |$path, $table| { -%>
+<% $tables.each |$path, $table| { -%>
   <Table "<%= $path %>">
 <% unless $table['plugin'] =~ Undef { -%>
     Plugin "<%= $table['plugin'] %>"
