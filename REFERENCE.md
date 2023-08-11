@@ -9792,9 +9792,9 @@ The following parameters are available in the `collectd::plugin::table::table` d
 
 * [`$tablename`](#-collectd--plugin--table--table---tablename)
 * [`$table`](#-collectd--plugin--table--table---table)
+* [`table`](#-collectd--plugin--table--table--table)
 * [`ensure`](#-collectd--plugin--table--table--ensure)
 * [`tablename`](#-collectd--plugin--table--table--tablename)
-* [`table`](#-collectd--plugin--table--table--table)
 
 ##### <a name="-collectd--plugin--table--table---tablename"></a>`$tablename`
 
@@ -9803,6 +9803,12 @@ Name of table typically a filename
 ##### <a name="-collectd--plugin--table--table---table"></a>`$table`
 
 Table definition
+
+##### <a name="-collectd--plugin--table--table--table"></a>`table`
+
+Data type: `Collectd::Table::Table`
+
+
 
 ##### <a name="-collectd--plugin--table--table--ensure"></a>`ensure`
 
@@ -9819,12 +9825,6 @@ Data type: `Stdlib::Unixpath`
 
 
 Default value: `$name`
-
-##### <a name="-collectd--plugin--table--table--table"></a>`table`
-
-Data type: `Collectd::Table::Table`
-
-
 
 ### <a name="collectd--plugin--tail--file"></a>`collectd::plugin::tail::file`
 
