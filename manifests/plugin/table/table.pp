@@ -16,9 +16,9 @@
 #   }
 #
 define collectd::plugin::table::table (
+  Collectd::Table::Table    $table,
   Enum['present', 'absent'] $ensure    = 'present',
   Stdlib::Unixpath          $tablename = $name,
-  Collectd::Table::Table    $table,
 ) {
   include collectd::plugin::table
 
