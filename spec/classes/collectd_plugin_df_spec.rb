@@ -12,8 +12,7 @@ describe 'collectd::plugin::df', type: :class do
       options = os_specific_options(facts)
       context 'simple case' do
         let :params do
-          {
-          }
+          {}
         end
 
         it "Will create #{options[:plugin_conf_dir]}/10-df.conf" do
