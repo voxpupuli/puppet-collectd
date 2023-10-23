@@ -21,6 +21,13 @@ describe 'collectd_version', type: :fact do
     expect(Facter.fact(:collectd_version).value).to eq('5.1.0.git')
   end
 
+  it 'is 5.12.0.167.g7c5ce9f+ according to output' do
+    allow(Facter::Util::Resolution).to receive(:which).with('collectd').and_return('/usr/sbin/collectd')
+    sample_collectd_help_git_plus = File.read(fixtures('facts', 'collectd_help_git_plus'))
+    allow(Facter::Util::Resolution).to receive(:exec).with('collectd -h').and_return(sample_collectd_help_git_plus)
+    expect(Facter.fact(:collectd_version).value).to eq('5.12.0.167.g7c5ce9f+')
+  end
+
   it 'is not defined if collectd not installed' do
     allow(Facter::Util::Resolution).to receive(:which).with('collectd').and_return(nil)
     expect(Facter.fact(:collectd_version).value).to be_nil
