@@ -20,7 +20,7 @@ the default `collectd.conf` file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
-include ::collectd
+include collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
@@ -30,7 +30,7 @@ configurations. Configure a node with the following class
 declaration:
 
 ```puppet
-class { '::collectd':
+class { 'collectd':
   purge           => true,
   recurse         => true,
   purge_config    => true,
@@ -1635,7 +1635,7 @@ collectd::config::typesdb:
 ```
 
 ```puppet
-class { '::collectd::plugin::rabbitmq':
+class { 'collectd::plugin::rabbitmq':
   config           => {
     'Username' => 'admin',
     'Password' => $admin_pass,
@@ -1683,7 +1683,7 @@ class {'collectd::plugin::sensors':
 #### Class: `collectd::plugin::smart`
 
 ```puppet
-class { '::collectd::plugin::smart':
+class { 'collectd::plugin::smart':
   disks          => ['/^dm/'],
   ignoreselected => true,
 }
@@ -1848,7 +1848,7 @@ collectd::plugin::tail::file { 'exim-log':
 #### Class: `collectd::plugin::tail_csv`
 
 ```puppet
-class { '::collectd::plugin::tail_csv':
+class { 'collectd::plugin::tail_csv':
   metrics => {
     'snort-dropped' => {
       'type'        => 'gauge',
@@ -1871,7 +1871,7 @@ class { '::collectd::plugin::tail_csv':
 #### Class: `collectd::plugin::thermal`
 
 ```puppet
-class { '::collectd::plugin::thermal':
+class { 'collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
 }
