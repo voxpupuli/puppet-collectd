@@ -29,9 +29,9 @@ describe 'collectd class' do
   context 'install plugins' do
     it 'works idemptontently' do
       pp = <<-EOS
-      class { '::collectd': }
+      class { 'collectd': }
 
-      class { '::collectd::plugin::memory': }
+      class { 'collectd::plugin::memory': }
 
       class { 'collectd::plugin::csv':}
       EOS
