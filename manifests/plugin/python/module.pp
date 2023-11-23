@@ -33,29 +33,31 @@ define collectd::plugin::python::module (
     }
   }
 
-  # Exactly one per module.
-  ensure_resource('concat::fragment',"collectd_plugin_python_conf_${module}_header",
-    {
-      'order'   => "50_${module}_00",
-      'target'  => $collectd::plugin::python::python_conf,
-      'content' => epp('collectd/plugin/python/module.conf_header.epp',
+  if $ensure == 'present' {
+    # Exactly one per module.
+    ensure_resource('concat::fragment',"collectd_plugin_python_conf_${module}_header",
+      {
+        'order'   => "50_${module}_00",
+        'target'  => $collectd::plugin::python::python_conf,
+        'content' => epp('collectd/plugin/python/module.conf_header.epp',
+          {
+            'module_import' => $_module_import,
+          },
+        ),
+      }
+    )
+
+    # Possibly many per instance of a module configuration.
+    concat::fragment { "collectd_plugin_python_conf_${title}_config":
+      order   => "50_${module}_50",
+      target  => $collectd::plugin::python::python_conf,
+      content => epp('collectd/plugin/python/module.conf_config.epp',
         {
-          'module_import' => $_module_import,
+          'title'  => $title,
+          'config' => $config,
+          'module' => $_module_import,
         },
       ),
     }
-  )
-
-  # Possibly many per instance of a module configuration.
-  concat::fragment { "collectd_plugin_python_conf_${title}_config":
-    order   => "50_${module}_50",
-    target  => $collectd::plugin::python::python_conf,
-    content => epp('collectd/plugin/python/module.conf_config.epp',
-      {
-        'title'  => $title,
-        'config' => $config,
-        'module' => $_module_import,
-      },
-    ),
   }
 }
