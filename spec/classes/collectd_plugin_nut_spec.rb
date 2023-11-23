@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'collectd::plugin::nut', type: :class do
   let :pre_condition do
-    'include ::collectd'
+    'include collectd'
   end
 
   on_supported_os(baseline_os_hash).each do |os, facts|
