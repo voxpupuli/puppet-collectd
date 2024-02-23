@@ -63,7 +63,7 @@ class collectd::plugin::rabbitmq (
 
   if $facts['os']['family'] == 'Debian' or
   $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'], '8') >= 0 or
-  $facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'], '20.04') >= 0 {
+  $facts['os']['name'] == 'Ubuntu' {
     fail('https://pypi.org/project/collectd-rabbitmq/ does not support Python 3')
   }
 
