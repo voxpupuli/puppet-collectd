@@ -78,7 +78,7 @@ describe 'collectd::plugin::ovs_events', type: :class do
         end
       end
 
-      case facts[:os]['family']
+      case facts['os']['family']
       when 'RedHat'
         context 'on osfamily => RedHat' do
           it 'Will delete packaging config file' do

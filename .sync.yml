@@ -4,3 +4,4 @@
     timeout_minutes: 75
 spec/spec_helper.rb:
   spec_overrides: "require 'spec_helper_methods'"
+  facterdb_string_keys: true

@@ -96,7 +96,7 @@ describe 'collectd::plugin::virt', type: :class do
           end
         end
 
-        case facts[:os]['family']
+        case facts['os']['family']
         when 'RedHat'
           context 'on osfamily => RedHat' do
             it 'Will delete packaging config file' do
@@ -147,7 +147,7 @@ describe 'collectd::plugin::virt', type: :class do
           end
         end
 
-        case facts[:os]['family']
+        case facts['os']['family']
         when 'RedHat'
           context 'on osfamily => RedHat' do
             it 'Will delete packaging config file' do

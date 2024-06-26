@@ -29,7 +29,7 @@ describe 'collectd::plugin::mcelog', type: :class do
         it { is_expected.to contain_file('mcelog.load').with(content: %r{PersistentNotification false}) }
       end
 
-      case facts[:os]['family']
+      case facts['os']['family']
       when 'RedHat'
         context 'on osfamily => RedHat' do
           it { is_expected.to contain_package('collectd-mcelog').with(ensure: 'present') }

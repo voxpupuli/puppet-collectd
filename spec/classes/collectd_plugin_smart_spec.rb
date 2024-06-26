@@ -37,7 +37,7 @@ describe 'collectd::plugin::smart', type: :class do
         end
       end
 
-      case facts[:os]['family']
+      case facts['os']['family']
       when 'RedHat'
         context ':manage_package => true on osfamily => RedHat' do
           let :params do
