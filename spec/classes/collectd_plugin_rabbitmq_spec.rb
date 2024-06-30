@@ -25,7 +25,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
+          case [facts['os']['family'], facts['os']['release']['major']]
           when %w[RedHat 8], %w[Ubuntu 20.04]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
@@ -68,7 +68,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { custom_types_db: '/var/custom/types.db' }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
+          case [facts['os']['family'], facts['os']['release']['major']]
           when %w[RedHat 8], %w[Ubuntu 20.04]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
@@ -83,7 +83,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Username' => 'foo' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
+          case [facts['os']['family'], facts['os']['release']['major']]
           when %w[RedHat 8], %w[Ubuntu 20.04]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
@@ -98,7 +98,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Password' => 'foo' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
+          case [facts['os']['family'], facts['os']['release']['major']]
           when %w[RedHat 8], %w[Ubuntu 20.04]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
@@ -113,7 +113,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Scheme' => 'https' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
+          case [facts['os']['family'], facts['os']['release']['major']]
           when %w[RedHat 8], %w[Ubuntu 20.04]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
@@ -129,7 +129,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           { ensure: 'absent' }
         end
 
-        case [facts[:os]['family'], facts[:os]['release']['major']]
+        case [facts['os']['family'], facts['os']['release']['major']]
         when %w[RedHat 8], %w[Ubuntu 20.04]
           it { is_expected.to raise_error(%r{does not support Python 3}) }
         else
@@ -156,7 +156,7 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                       }
                     end
 
-                    case [facts[:os]['family'], facts[:os]['release']['major']]
+                    case [facts['os']['family'], facts['os']['release']['major']]
                     when %w[RedHat 8], %w[Ubuntu 20.04]
                       it { is_expected.to raise_error(%r{does not support Python 3}) }
                     else

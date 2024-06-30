@@ -19,7 +19,7 @@ describe 'collectd::plugin::rrdtool', type: :class do
           )
         end
 
-        case facts[:os]['family']
+        case facts['os']['family']
         when 'RedHat'
 
           it { is_expected.to contain_package('collectd-rrdtool').with(ensure: 'present') }

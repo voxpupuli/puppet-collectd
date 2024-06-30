@@ -40,7 +40,7 @@ describe 'collectd::plugin::netlink', type: :class do
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Filter "ppp0" "u32-1:0"$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  IgnoreSelected false$}) }
 
-        it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') } if facts[:os]['family'] == 'RedHat'
+        it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') } if facts['os']['family'] == 'RedHat'
       end
 
       context ':ensure => absent' do
@@ -55,7 +55,7 @@ describe 'collectd::plugin::netlink', type: :class do
           )
         end
 
-        if facts[:os]['family'] == 'RedHat'
+        if facts['os']['family'] == 'RedHat'
           it do
             is_expected.to contain_package('collectd-netlink').with(
               ensure: 'absent'

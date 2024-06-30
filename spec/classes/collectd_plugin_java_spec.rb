@@ -118,7 +118,7 @@ describe 'collectd::plugin::java', type: :class do
         end
       end
 
-      case facts[:os]['family']
+      case facts['os']['family']
       when 'RedHat'
         context 'java_home option is empty' do
           it 'will not contain libjvm' do
