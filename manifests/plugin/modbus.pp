@@ -26,7 +26,10 @@ class collectd::plugin::modbus (
   }
 
   collectd::plugin { 'modbus':
-    ensure   => $ensure,
-    content  => template('collectd/plugin/modbus.conf.erb'),
+    ensure  => $ensure,
+    content => epp('collectd/plugin/modbus.conf', {
+        'data'  => $data,
+        'hosts' => $hosts,
+    }),
   }
 }
