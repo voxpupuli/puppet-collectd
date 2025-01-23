@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe 'collectd::plugin::snmp', type: :class do
-  on_supported_os(baseline_os_hash).each do |os, facts|
-    context "on #{os} " do
+describe 'collectd::plugin::modbus' do
+  on_supported_os(baseline_os_hash).each do |os, os_facts|
+    context "on #{os}" do
       let :facts do
-        facts
+        os_facts
       end
       let :pre_condition do
         'include collectd'
       end
 
-      options = os_specific_options(facts)
+      options = os_specific_options(os_facts)
 
       context ':ensure => present and dataset for Current Phase A' do
         let :params do
@@ -25,13 +27,13 @@ describe 'collectd::plugin::snmp', type: :class do
             },
             hosts: {
               'power123' => {
-                'address'   => '127.0.0.1',
-                'port'      => 502,
-                'interval'  => 10,
-                'slaves'    => {
+                'address' => '127.0.0.1',
+                'port' => 502,
+                'interval' => 10,
+                'slaves' => {
                   255 => {
                     'instance' => 'power meter 255',
-                    'collect'   => ['current_phase_a'],
+                    'collect' => ['current_phase_a'],
                   }
                 }
               }
@@ -62,13 +64,13 @@ describe 'collectd::plugin::snmp', type: :class do
             },
             hosts: {
               'power123' => {
-                'address'   => '127.0.0.1',
-                'port'      => 502,
-                'interval'  => 10,
-                'slaves'    => {
+                'address' => '127.0.0.1',
+                'port' => 502,
+                'interval' => 10,
+                'slaves' => {
                   255 => {
                     'instance' => 'power meter 255',
-                    'collect'   => ['current_phase_a'],
+                    'collect' => ['current_phase_a'],
                   }
                 }
               }
