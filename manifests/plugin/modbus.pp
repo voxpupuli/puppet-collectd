@@ -1,4 +1,11 @@
-# https://collectd.org/wiki/index.php/Plugin:Modbus
+# @summary Install and configure the modbus plugin
+#
+# @see https://collectd.org/wiki/index.php/Plugin:Modbus
+#
+# @param ensure Enable/Disable modbus support
+# @param manage_package Install collectd-modbus package?
+# @param data modbus data entries
+# @param hosts modbus host entries
 class collectd::plugin::modbus (
   Enum['present', 'absent']               $ensure         = 'present',
   Optional[Boolean]                       $manage_package = undef,
