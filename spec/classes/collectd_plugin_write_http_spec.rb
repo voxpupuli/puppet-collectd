@@ -33,8 +33,8 @@ describe 'collectd::plugin::write_http', type: :class do
           )
         end
 
-        case [facts['os']['family'], facts['os']['release']['major']]
-        when %w[RedHat 8]
+        case facts['os']['family']
+        when 'RedHat'
           it { is_expected.to contain_package('collectd-write_http') }
         else
           it { is_expected.not_to contain_package('collectd-write_http') }

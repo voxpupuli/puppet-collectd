@@ -19,10 +19,10 @@ class collectd::plugin::write_http (
   if $manage_package !~ Undef {
     $_manage_package = $manage_package
   } else {
-    if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'8') >= 0 {
-      $_manage_package = true
+    $_manage_package = if $facts['os']['family'] == 'RedHat' {
+      true
     } else {
-      $_manage_package = false
+      false
     }
   }
   if $_manage_package {
