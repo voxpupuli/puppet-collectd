@@ -3623,7 +3623,7 @@ Default value: `'present'`
 
 Data type: `Optional[Boolean]`
 
-Install collectd-modbus package?
+Install collectd-modbus package? Currently supports RedHat and Debian os family.
 
 Default value: `undef`
 

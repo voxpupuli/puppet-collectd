@@ -3,7 +3,7 @@
 # @see https://collectd.org/wiki/index.php/Plugin:Modbus
 #
 # @param ensure Enable/Disable modbus support
-# @param manage_package Install collectd-modbus package?
+# @param manage_package Install collectd-modbus package? Currently supports RedHat and Debian os family.
 # @param data modbus data entries
 # @param hosts modbus host entries
 class collectd::plugin::modbus (
@@ -16,19 +16,15 @@ class collectd::plugin::modbus (
 
   $_manage_package = pick($manage_package, $collectd::manage_package)
 
-  if $facts['os']['family'] == 'RedHat' {
-    if $_manage_package {
-      package { 'collectd-modbus':
-        ensure => $ensure,
-      }
-    }
+  $_package_name = $facts['os']['family'] ? {
+    'RedHat' => 'collectd-modbus',
+    'Debian' => 'libmodbus5',
+    default  => undef,
   }
 
-  if $facts['os']['family'] == 'Debian' {
-    if $_manage_package {
-      package { 'libmodbus5':
-        ensure => $ensure,
-      }
+  if $_package_name and $_manage_package {
+    package { $_package_name:
+      ensure => $ensure,
     }
   }
 
