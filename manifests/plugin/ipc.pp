@@ -17,6 +17,6 @@ class collectd::plugin::ipc (
   include collectd
 
   collectd::plugin { 'ipc':
-    ensure   => $ensure,
+    ensure => $ensure,
   }
 }
