@@ -6,7 +6,7 @@ class collectd::plugin::nut (
   include collectd
 
   collectd::plugin { 'nut':
-    ensure   => $ensure,
+    ensure => $ensure,
   }
   $upss.each |String $ups| {
     collectd::plugin::nut::ups { $upss:
