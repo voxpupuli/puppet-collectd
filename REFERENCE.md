@@ -10265,11 +10265,11 @@ Alias of
 
 ```puppet
 Struct[{
-  name          => String,
-  qtypes        => Optional[Boolean],
-  resolverstats => Optional[Boolean],
-  cacherrsets   => Optional[Boolean],
-  zones         => Optional[Array[String]],
+    name          => String,
+    qtypes        => Optional[Boolean],
+    resolverstats => Optional[Boolean],
+    cacherrsets   => Optional[Boolean],
+    zones         => Optional[Array[String]],
 }]
 ```
 
@@ -10305,8 +10305,8 @@ Alias of
 
 ```puppet
 Struct[{
-  'firstfullread' => Boolean,
-  'message' => Array[Hash[String[1],Collectd::LOGPARSER::Message]]
+    'firstfullread' => Boolean,
+    'message' => Array[Hash[String[1],Collectd::LOGPARSER::Message]]
 }]
 ```
 
@@ -10318,14 +10318,14 @@ Alias of
 
 ```puppet
 Struct[{
-  'regex' => String,
-  Optional['submatchidx'] => Integer,
-  Optional['excluderegex'] => String,
-  Optional['ismandatory'] => Variant[Boolean, String],
-  Optional['severity'] => String,
-  Optional['plugininstance'] => Variant[Boolean, String],
-  Optional['type'] => Variant[Boolean, String],
-  Optional['typeinstance'] => Variant[Boolean, String],
+    'regex' => String,
+    Optional['submatchidx'] => Integer,
+    Optional['excluderegex'] => String,
+    Optional['ismandatory'] => Variant[Boolean, String],
+    Optional['severity'] => String,
+    Optional['plugininstance'] => Variant[Boolean, String],
+    Optional['type'] => Variant[Boolean, String],
+    Optional['typeinstance'] => Variant[Boolean, String],
 }]
 ```
 
@@ -10337,11 +10337,11 @@ Alias of
 
 ```puppet
 Struct[{
-  Optional['defaultplugininstance'] => String,
-  Optional['defaulttype'] => String,
-  Optional['defaulttypeinstance'] => String,
-  Optional['defaultseverity'] => String,
-  Optional['match'] => Array[Hash[String[1],Collectd::LOGPARSER::Match]]
+    Optional['defaultplugininstance'] => String,
+    Optional['defaulttype'] => String,
+    Optional['defaulttypeinstance'] => String,
+    Optional['defaultseverity'] => String,
+    Optional['match'] => Array[Hash[String[1],Collectd::LOGPARSER::Match]]
 }]
 ```
 
@@ -10353,8 +10353,8 @@ Alias of
 
 ```puppet
 Struct[{
-  NotUndef['mcelogclientsocket'] => String[1],
-  NotUndef['persistentnotification'] => Boolean,
+    NotUndef['mcelogclientsocket'] => String[1],
+    NotUndef['persistentnotification'] => Boolean,
 }]
 ```
 
@@ -10433,7 +10433,7 @@ Alias of `Enum['Encrypt', 'Sign', 'None']`
 
 The Collectd::Redis::Node data type.
 
-Alias of `Struct[{Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]]}]`
+Alias of `Struct[{ Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]] }]`
 
 ### <a name="Collectd--SNMP--AuthProtocol"></a>`Collectd::SNMP::AuthProtocol`
 
@@ -10445,7 +10445,7 @@ Alias of `Enum['MD5', 'SHA']`
 
 The Collectd::SNMP::Data data type.
 
-Alias of `Struct[{Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean}]`
+Alias of `Struct[{ Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean }]`
 
 ### <a name="Collectd--SNMP--Host"></a>`Collectd::SNMP::Host`
 
@@ -10457,13 +10457,13 @@ Alias of `Variant[Collectd::SNMP::Host::V2, Collectd::SNMP::Host::V3]`
 
 The Collectd::SNMP::Host::V2 data type.
 
-Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
+Alias of `Struct[{ NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0] }]`
 
 ### <a name="Collectd--SNMP--Host--V3"></a>`Collectd::SNMP::Host::V3`
 
 The Collectd::SNMP::Host::V3 data type.
 
-Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
+Alias of `Struct[{ NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0] }]`
 
 ### <a name="Collectd--SNMP--PrivacyProtocol"></a>`Collectd::SNMP::PrivacyProtocol`
 
@@ -10503,14 +10503,14 @@ Alias of
 
 ```puppet
 Struct[{
-  'plugin' => String,
-  'oids' => String,
-  Optional['type'] => String,
-  Optional['typeinstance'] => String,
-  Optional['scale'] => String,
-  Optional['shift'] => String,
-  Optional['indexkey'] => Collectd::SNMP_AGENT::IndexKey,
-  Optional['plugininstance'] => String,
+    'plugin' => String,
+    'oids' => String,
+    Optional['type'] => String,
+    Optional['typeinstance'] => String,
+    Optional['scale'] => String,
+    Optional['shift'] => String,
+    Optional['indexkey'] => Collectd::SNMP_AGENT::IndexKey,
+    Optional['plugininstance'] => String,
 }]
 ```
 
@@ -10534,9 +10534,9 @@ Alias of
 
 ```puppet
 Struct[{
-  Optional['indexoid'] => String,
-  Optional['sizeoid'] => String,
-  Optional['data'] => Hash[String[1], Collectd::SNMP_AGENT::Data]
+    Optional['indexoid'] => String,
+    Optional['sizeoid'] => String,
+    Optional['data'] => Hash[String[1], Collectd::SNMP_AGENT::Data]
 }]
 ```
 
@@ -10548,10 +10548,10 @@ Alias of
 
 ```puppet
 Struct[{
-  'type'            => String,
-  'values_from'     => Array[Integer, 1],
-  'instance_prefix' => Optional[String],
-  'instances_from'  => Optional[Array[Integer, 1]]
+    'type'            => String,
+    'values_from'     => Array[Integer, 1],
+    'instance_prefix' => Optional[String],
+    'instances_from'  => Optional[Array[Integer, 1]]
 }]
 ```
 
@@ -10563,10 +10563,10 @@ Alias of
 
 ```puppet
 Struct[{
-  'plugin'    => Optional[String],
-  'separator' => Optional[String],
-  'instance'  => Optional[String],
-  'results'   => Array[Collectd::Table::Result, 1]
+    'plugin'    => Optional[String],
+    'separator' => Optional[String],
+    'instance'  => Optional[String],
+    'results'   => Array[Collectd::Table::Result, 1]
 }]
 ```
 
@@ -10578,11 +10578,11 @@ Alias of
 
 ```puppet
 Struct[{
-  'collect'   => Array[String, 1],
-  'plugin'    => Optional[String[1]],
-  'instance'  => Optional[String[1]],
-  'interval'  => Optional[Numeric],
-  'time_from' => Optional[Integer[0]],
+    'collect'   => Array[String, 1],
+    'plugin'    => Optional[String[1]],
+    'instance'  => Optional[String[1]],
+    'interval'  => Optional[Numeric],
+    'time_from' => Optional[Integer[0]],
 }]
 ```
 
@@ -10594,9 +10594,9 @@ Alias of
 
 ```puppet
 Struct[{
-  'type'       => String[1],
-  'value_from' => Integer[0],
-  'instance'   => Optional[String[1]],
+    'type'       => String[1],
+    'value_from' => Integer[0],
+    'instance'   => Optional[String[1]],
 }]
 ```
 
@@ -10608,9 +10608,9 @@ Alias of
 
 ```puppet
 Struct[{
-  name    => String[1],
-  plugins => Optional[Array[Collectd::Threshold::Plugin]],
-  types   => Optional[Array[Collectd::Threshold::Type]],
+    name    => String[1],
+    plugins => Optional[Array[Collectd::Threshold::Plugin]],
+    types   => Optional[Array[Collectd::Threshold::Type]],
 }]
 ```
 
@@ -10622,9 +10622,9 @@ Alias of
 
 ```puppet
 Struct[{
-  name     => String[1],
-  instance => Optional[String[1]],
-  types    => Optional[Array[Collectd::Threshold::Type]],
+    name     => String[1],
+    instance => Optional[String[1]],
+    types    => Optional[Array[Collectd::Threshold::Type]],
 }]
 ```
 
@@ -10636,20 +10636,20 @@ Alias of
 
 ```puppet
 Struct[{
-  name        => String[1],
-  instance    => Optional[String[1]],
-  failure_max => Optional[Numeric],
-  warning_max => Optional[Numeric],
-  failure_min => Optional[Numeric],
-  warning_min => Optional[Numeric],
-  data_source => Optional[String[1]],
-  invert      => Optional[Boolean],
-  persist     => Optional[Boolean],
-  persist_ok  => Optional[Boolean],
-  percentage  => Optional[Boolean],
-  hits        => Optional[Integer],
-  hysteresis  => Optional[Integer],
-  interesting => Optional[Boolean],
+    name        => String[1],
+    instance    => Optional[String[1]],
+    failure_max => Optional[Numeric],
+    warning_max => Optional[Numeric],
+    failure_min => Optional[Numeric],
+    warning_min => Optional[Numeric],
+    data_source => Optional[String[1]],
+    invert      => Optional[Boolean],
+    persist     => Optional[Boolean],
+    persist_ok  => Optional[Boolean],
+    percentage  => Optional[Boolean],
+    hits        => Optional[Integer],
+    hysteresis  => Optional[Integer],
+    interesting => Optional[Boolean],
 }]
 ```
 
@@ -10661,22 +10661,22 @@ Alias of
 
 ```puppet
 Struct[{
-  name                 => String[1],
-  host                 => Optional[String[1]],
-  port                 => Optional[Integer],
-  protocol             => Optional[Enum['TCP', 'TLS', 'UDP']],
-  tls_cert_file        => Optional[String[1]],
-  tls_ca_file          => Optional[String[1]],
-  tls_key_file         => Optional[String[1]],
-  batch                => Optional[Boolean],
-  batch_max_size       => Optional[Integer],
-  batch_flush_timeout  => Optional[Integer],
-  store_rates          => Optional[Boolean],
-  always_append_ds     => Optional[Boolean],
-  ttl_factor           => Optional[Float],
-  notifications        => Optional[Boolean],
-  check_thresholds     => Optional[Boolean],
-  event_service_prefix => Optional[String[1]],
+    name                 => String[1],
+    host                 => Optional[String[1]],
+    port                 => Optional[Integer],
+    protocol             => Optional[Enum['TCP', 'TLS', 'UDP']],
+    tls_cert_file        => Optional[String[1]],
+    tls_ca_file          => Optional[String[1]],
+    tls_key_file         => Optional[String[1]],
+    batch                => Optional[Boolean],
+    batch_max_size       => Optional[Integer],
+    batch_flush_timeout  => Optional[Integer],
+    store_rates          => Optional[Boolean],
+    always_append_ds     => Optional[Boolean],
+    ttl_factor           => Optional[Float],
+    notifications        => Optional[Boolean],
+    check_thresholds     => Optional[Boolean],
+    event_service_prefix => Optional[String[1]],
 }]
 ```
 
