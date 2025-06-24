@@ -4,7 +4,51 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v14.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v14.0.0) (2022-09-07)
+## [v15.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v15.0.0) (2025-06-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v14.0.0...v15.0.0)
+
+**Breaking changes:**
+
+- Plugins should have a default of collectd::package\_ensure, not their own [\#430](https://github.com/voxpupuli/puppet-collectd/issues/430)
+- chore: drop EOL Ubuntu 20.04 [\#1065](https://github.com/voxpupuli/puppet-collectd/pull/1065) ([d1nuc0m](https://github.com/d1nuc0m))
+- Drop EoL EL7 / CentOS 8 / FreeBSD 12 support [\#1056](https://github.com/voxpupuli/puppet-collectd/pull/1056) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Ubuntu 18.04 support [\#1038](https://github.com/voxpupuli/puppet-collectd/pull/1038) ([zilchms](https://github.com/zilchms))
+- Drop Debian 10 support [\#1037](https://github.com/voxpupuli/puppet-collectd/pull/1037) ([zilchms](https://github.com/zilchms))
+- Drop Puppet 6 support [\#1019](https://github.com/voxpupuli/puppet-collectd/pull/1019) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Allow puppetlabs/apt 10.x [\#1061](https://github.com/voxpupuli/puppet-collectd/pull/1061) ([smortex](https://github.com/smortex))
+- Add support for FreeBSD 14 [\#1046](https://github.com/voxpupuli/puppet-collectd/pull/1046) ([smortex](https://github.com/smortex))
+- Add Debian 12 support [\#1040](https://github.com/voxpupuli/puppet-collectd/pull/1040) ([zilchms](https://github.com/zilchms))
+- Add Ubuntu 22.04 support [\#1039](https://github.com/voxpupuli/puppet-collectd/pull/1039) ([zilchms](https://github.com/zilchms))
+- puppet/epel: Allow 5.x [\#1036](https://github.com/voxpupuli/puppet-collectd/pull/1036) ([zilchms](https://github.com/zilchms))
+- Ensure that a python module's config is also removed whenever a python module `ensure` is not `present` [\#1033](https://github.com/voxpupuli/puppet-collectd/pull/1033) ([sp-ricard-valverde](https://github.com/sp-ricard-valverde))
+- Accept + in collectd\_version Fact [\#1030](https://github.com/voxpupuli/puppet-collectd/pull/1030) ([quartsize](https://github.com/quartsize))
+- Add Puppet 8 support [\#1024](https://github.com/voxpupuli/puppet-collectd/pull/1024) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#1023](https://github.com/voxpupuli/puppet-collectd/pull/1023) ([bastelfreak](https://github.com/bastelfreak))
+- Relax dependencies version requirements [\#1022](https://github.com/voxpupuli/puppet-collectd/pull/1022) ([smortex](https://github.com/smortex))
+- New collectd::plugin::table::table type [\#1021](https://github.com/voxpupuli/puppet-collectd/pull/1021) ([traylenator](https://github.com/traylenator))
+- Add write\_graphite options introduced in collectd 5.7.0 [\#1014](https://github.com/voxpupuli/puppet-collectd/pull/1014) ([gerases](https://github.com/gerases))
+- Add AlmaLinux/Rocky support [\#1012](https://github.com/voxpupuli/puppet-collectd/pull/1012) ([bastelfreak](https://github.com/bastelfreak))
+- Add support for the Host option for the write\_prometheus plugin [\#1011](https://github.com/voxpupuli/puppet-collectd/pull/1011) ([gerases](https://github.com/gerases))
+- ValuesFrom in postgresql query.conf should allow multiple values [\#1009](https://github.com/voxpupuli/puppet-collectd/pull/1009) ([markasammut](https://github.com/markasammut))
+- Update socket path of ceph services in ceph plugin [\#1007](https://github.com/voxpupuli/puppet-collectd/pull/1007) ([yadneshk](https://github.com/yadneshk))
+- Add modbus plugin [\#994](https://github.com/voxpupuli/puppet-collectd/pull/994) ([ruleant](https://github.com/ruleant))
+
+**Fixed bugs:**
+
+- Ensure plugin version is same version as main collectd package [\#1010](https://github.com/voxpupuli/puppet-collectd/pull/1010) ([markasammut](https://github.com/markasammut))
+
+**Merged pull requests:**
+
+- Remove legacy top-scope syntax [\#1032](https://github.com/voxpupuli/puppet-collectd/pull/1032) ([smortex](https://github.com/smortex))
+- Remove legacy top-scope syntax [\#1031](https://github.com/voxpupuli/puppet-collectd/pull/1031) ([smortex](https://github.com/smortex))
+- puppet-lint: Fix parameter\_order [\#1028](https://github.com/voxpupuli/puppet-collectd/pull/1028) ([bastelfreak](https://github.com/bastelfreak))
+- cleanup puppet-strings documentation [\#1013](https://github.com/voxpupuli/puppet-collectd/pull/1013) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v14.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v14.0.0) (2022-09-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v13.0.0...v14.0.0)
 
@@ -221,8 +265,6 @@ These should not affect the functionality of the module.
 
 - Replace create\_resources\(\) calls [\#716](https://github.com/voxpupuli/puppet-collectd/issues/716)
 - Add puppet tasks to call collectdctl [\#882](https://github.com/voxpupuli/puppet-collectd/pull/882) ([traylenator](https://github.com/traylenator))
-- replace create\_resources with resource types [\#874](https://github.com/voxpupuli/puppet-collectd/pull/874) ([zoojar](https://github.com/zoojar))
-- add flushinterval param to loadplugin config [\#873](https://github.com/voxpupuli/puppet-collectd/pull/873) ([zoojar](https://github.com/zoojar))
 - add Ubuntu 18.04 support [\#868](https://github.com/voxpupuli/puppet-collectd/pull/868) ([bastelfreak](https://github.com/bastelfreak))
 - Add address field to memcached plugin [\#853](https://github.com/voxpupuli/puppet-collectd/pull/853) ([mrunge](https://github.com/mrunge))
 
