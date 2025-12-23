@@ -44,7 +44,7 @@ class collectd::config inherits collectd {
     concat { 'collectd_typesdb':
       ensure => present,
       mode   => $collectd::config_mode,
-      owner  => $collectd::config_group,
+      owner  => $collectd::config_owner,
       path   => "${collectd::collectd_dir}/typesdb.conf",
     }
 
