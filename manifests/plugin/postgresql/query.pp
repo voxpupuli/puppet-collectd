@@ -1,7 +1,7 @@
 #
 define collectd::plugin::postgresql::query (
+  String $statement,
   $ensure           = 'present',
-  String $statement = undef,
   Array $params     = [],
   Array $results    = [{}],
   $minversion       = undef,

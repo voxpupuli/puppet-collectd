@@ -65,9 +65,11 @@ define collectd::plugin::perl::plugin (
       # this will fail if perl collectd plugin module is not installed
       $include_dirs_prefixed = prefix($include_dirs, '-I')
       $include_dirs_prefixed_joined = join($include_dirs_prefixed,' ')
+      # lint:ignore:exec_idempotency
       exec { "perl ${include_dirs_prefixed_joined} -e 'my\$m=shift;eval\"use \$m\";exit!exists\$INC{\$m=~s!::!/!gr.\".pm\"}' ${module}":
         path => $facts['path'],
       }
+      # lint:endignore
     }
     default: {
       fail("Unsupported provider: ${provider}. Use 'package', 'cpan', 'file' or false.")

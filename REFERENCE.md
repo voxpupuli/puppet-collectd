@@ -9258,12 +9258,18 @@ The collectd::plugin::postgresql::query class.
 
 The following parameters are available in the `collectd::plugin::postgresql::query` defined type:
 
-* [`ensure`](#-collectd--plugin--postgresql--query--ensure)
 * [`statement`](#-collectd--plugin--postgresql--query--statement)
+* [`ensure`](#-collectd--plugin--postgresql--query--ensure)
 * [`params`](#-collectd--plugin--postgresql--query--params)
 * [`results`](#-collectd--plugin--postgresql--query--results)
 * [`minversion`](#-collectd--plugin--postgresql--query--minversion)
 * [`maxversion`](#-collectd--plugin--postgresql--query--maxversion)
+
+##### <a name="-collectd--plugin--postgresql--query--statement"></a>`statement`
+
+Data type: `String`
+
+
 
 ##### <a name="-collectd--plugin--postgresql--query--ensure"></a>`ensure`
 
@@ -9272,14 +9278,6 @@ Data type: `Any`
 
 
 Default value: `'present'`
-
-##### <a name="-collectd--plugin--postgresql--query--statement"></a>`statement`
-
-Data type: `String`
-
-
-
-Default value: `undef`
 
 ##### <a name="-collectd--plugin--postgresql--query--params"></a>`params`
 
@@ -9321,9 +9319,15 @@ The collectd::plugin::postgresql::writer class.
 
 The following parameters are available in the `collectd::plugin::postgresql::writer` defined type:
 
-* [`ensure`](#-collectd--plugin--postgresql--writer--ensure)
 * [`statement`](#-collectd--plugin--postgresql--writer--statement)
+* [`ensure`](#-collectd--plugin--postgresql--writer--ensure)
 * [`storerates`](#-collectd--plugin--postgresql--writer--storerates)
+
+##### <a name="-collectd--plugin--postgresql--writer--statement"></a>`statement`
+
+Data type: `String`
+
+
 
 ##### <a name="-collectd--plugin--postgresql--writer--ensure"></a>`ensure`
 
@@ -9332,14 +9336,6 @@ Data type: `Any`
 
 
 Default value: `'present'`
-
-##### <a name="-collectd--plugin--postgresql--writer--statement"></a>`statement`
-
-Data type: `String`
-
-
-
-Default value: `undef`
 
 ##### <a name="-collectd--plugin--postgresql--writer--storerates"></a>`storerates`
 

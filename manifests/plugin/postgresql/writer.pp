@@ -1,7 +1,7 @@
 #
 define collectd::plugin::postgresql::writer (
+  String $statement,
   $ensure           = 'present',
-  String $statement = undef,
   $storerates       = undef,
 ) {
   include collectd
