@@ -33,7 +33,7 @@ describe 'collectd::plugin::apache', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('apache.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-apache.conf"
+            path: "#{options[:plugin_conf_dir]}/10-apache.conf",
           )
         end
       end
@@ -49,7 +49,7 @@ describe 'collectd::plugin::apache', type: :class do
                 'password' => 'hidden',
                 'verifypeer' => true,
                 'verifyhost' => false,
-                'cacert' => '/etc/barfoo/ca.crt'
+                'cacert' => '/etc/barfoo/ca.crt',
               },
               site2: {
                 'url' => 'https://another.example.com',
@@ -59,9 +59,9 @@ describe 'collectd::plugin::apache', type: :class do
                 'verifyhost' => true,
                 'cacert' => '/etc/foobar/ca.crt',
                 'sslciphers' => 'TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256',
-                'timeout' => 120
-              }
-            }
+                'timeout' => 120,
+              },
+            },
           }
         end
 
@@ -98,7 +98,7 @@ describe 'collectd::plugin::apache', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('apache.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-apache.conf"
+            path: "#{options[:plugin_conf_dir]}/10-apache.conf",
           )
         end
       end
@@ -108,11 +108,11 @@ describe 'collectd::plugin::apache', type: :class do
         context ':manage_package => true on osfamily => RedHat' do
           let :params do
             {
-              manage_package: true
+              manage_package: true,
             }
           end
 
-          it 'Will manage collectd-apache' do
+          it 'manages collectd-apache' do
             is_expected.to compile.with_all_deps
             is_expected.to contain_package('collectd-apache').with(ensure: 'present',
                                                                    name: 'collectd-apache')
@@ -124,11 +124,11 @@ describe 'collectd::plugin::apache', type: :class do
         context ':manage_package => false on osfamily => RedHat' do
           let :params do
             {
-              manage_package: false
+              manage_package: false,
             }
           end
 
-          it 'Will not manage collectd-apache' do
+          it 'does not manage collectd-apache' do
             is_expected.to compile.with_all_deps
             is_expected.not_to contain_package('collectd-apache').with(ensure: 'present',
                                                                        name: 'collectd-apache')

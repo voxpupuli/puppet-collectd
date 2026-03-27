@@ -15,7 +15,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
       let(:default_params) do
         {
           object_name: 'bar',
-          values: []
+          values: [],
         }
       end
 
@@ -26,7 +26,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
         it 'provides an MBean stanza concat fragment' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             target: config_filename,
-            order: '10'
+            order: '10',
           )
         end
 
@@ -64,7 +64,7 @@ describe 'collectd::plugin::genericjmx::mbean', type: :define do
         let(:default_values_args) do
           {
             'mbean_type' => 'foo',
-            'attribute'  => 'bar'
+            'attribute'  => 'bar',
           }
         end
 

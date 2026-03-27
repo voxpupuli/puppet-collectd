@@ -14,7 +14,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-genericjmx.conf" }
       let(:default_params) do
         {
-          service_url: 'foo:bar:baz'
+          service_url: 'foo:bar:baz',
         }
       end
 
@@ -26,7 +26,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         it 'provides a Connection concat fragment' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             target: config_filename,
-            order: '20'
+            order: '20',
           )
         end
 
@@ -46,7 +46,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         it 'provides a Connection concat fragment' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             target: config_filename,
-            order: '20'
+            order: '20',
           )
         end
 
@@ -75,7 +75,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
           default_params.merge(
             user: 'alice',
             password: 'aoeuhtns',
-            collect: []
+            collect: [],
           )
         end
 
@@ -87,7 +87,7 @@ describe 'collectd::plugin::genericjmx::connection', type: :define do
         let(:params) do
           default_params.merge(
             instance_prefix: 'bat',
-            collect: []
+            collect: [],
           )
         end
 

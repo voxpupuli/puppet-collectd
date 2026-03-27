@@ -20,12 +20,12 @@ describe 'collectd::plugin::table::table' do
             'table' => {
               'results' => [{
                 'type' => 'gauge',
-                'values_from' => [0, 1]
+                'values_from' => [0, 1],
               }, {
                 'type' => 'counter',
-                'values_from' => [2, 3]
-              }]
-            }
+                'values_from' => [2, 3],
+              },],
+            },
           }
         end
 
@@ -50,7 +50,7 @@ describe 'collectd::plugin::table::table' do
           is_expected.to contain_class('collectd::plugin::table')
           is_expected.to contain_file('table-/proc/bar.conf').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-tabletable-_proc_bar.conf"
+            path: "#{options[:plugin_conf_dir]}/10-tabletable-_proc_bar.conf",
           )
         end
       end
@@ -66,9 +66,9 @@ describe 'collectd::plugin::table::table' do
                 'type' => 'gauge',
                 'values_from' => [0, 1],
                 'instances_from' => [3, 4],
-                'instance_prefix' => 'foo-'
-              }]
-            }
+                'instance_prefix' => 'foo-',
+              }],
+            },
           }
         end
 
@@ -93,7 +93,7 @@ describe 'collectd::plugin::table::table' do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('table-/proc/bar.conf').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-tabletable-_proc_bar.conf"
+            path: "#{options[:plugin_conf_dir]}/10-tabletable-_proc_bar.conf",
           )
         end
       end

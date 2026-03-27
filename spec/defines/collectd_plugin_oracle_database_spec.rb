@@ -17,7 +17,7 @@ describe 'collectd::plugin::oracle::database', type: :define do
           connect_id: 'connect_id',
           username: 'username',
           password: 'password',
-          query: []
+          query: [],
         }
       end
 

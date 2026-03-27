@@ -19,7 +19,7 @@ describe 'collectd::plugin::bind', type: :class do
           {
             ensure: 'present',
             url: 'http://localhost:8053/',
-            views: views
+            views: views,
           }
         end
 
@@ -31,10 +31,10 @@ describe 'collectd::plugin::bind', type: :class do
         it { is_expected.to contain_file('old_bind.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_bind.load').with_ensure('absent') }
 
-        it 'Will create 10-bind.conf' do
+        it 'creates 10-bind.conf' do
           is_expected.to contain_file('bind.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-bind.conf"
+            path: "#{options[:plugin_conf_dir]}/10-bind.conf",
           )
         end
 
@@ -56,15 +56,15 @@ describe 'collectd::plugin::bind', type: :class do
                 name: 'internal',
                 qtypes: true,
                 resolverstats: true,
-                cacherrsets: true
+                cacherrsets: true,
               },
               {
                 name: 'external',
                 qtypes: true,
                 resolverstats: true,
                 cacherrsets: true,
-                zones: ['example.com/IN']
-              }
+                zones: ['example.com/IN'],
+              },
             ]
           end
 

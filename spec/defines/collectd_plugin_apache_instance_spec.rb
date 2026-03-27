@@ -11,7 +11,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
       let(:title) { 'foo.example.com' }
       let(:required_params) do
         {
-          url: 'http://localhost/mod_status?auto'
+          url: 'http://localhost/mod_status?auto',
         }
       end
       let(:filename) { 'apache-instance-foo.example.com.conf' }
@@ -24,7 +24,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
         it do
           is_expected.to contain_file(filename).with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/25-apache-instance-foo.example.com.conf"
+            path: "#{options[:plugin_conf_dir]}/25-apache-instance-foo.example.com.conf",
           )
         end
 
@@ -46,7 +46,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
             password: 'admin123',
             verifypeer: false,
             verifyhost: false,
-            cacert: '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+            cacert: '/etc/ssl/certs/ssl-cert-snakeoil.pem',
           )
         end
 

@@ -23,7 +23,7 @@ describe 'collectd::plugin::modbus' do
                 'instance'      => 'Current Phase A',
                 'register_base' => 1234,
                 'register_type' => 'Float',
-              }
+              },
             },
             hosts: {
               'power123' => {
@@ -34,18 +34,18 @@ describe 'collectd::plugin::modbus' do
                   255 => {
                     'instance' => 'power meter 255',
                     'collect' => ['current_phase_a'],
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-modbus.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-modbus.conf" do
           is_expected.to contain_file('modbus.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-modbus.conf",
-            content: %r{Data "current_phase_a".+Instance "Current Phase A".+Host "power123".+Slave 255}m
+            content: %r{Data "current_phase_a".+Instance "Current Phase A".+Host "power123".+Slave 255}m,
           )
         end
       end
@@ -60,7 +60,7 @@ describe 'collectd::plugin::modbus' do
                 'instance'      => 'Current Phase A',
                 'register_base' => 1234,
                 'register_type' => 'Float',
-              }
+              },
             },
             hosts: {
               'power123' => {
@@ -71,17 +71,17 @@ describe 'collectd::plugin::modbus' do
                   255 => {
                     'instance' => 'power meter 255',
                     'collect' => ['current_phase_a'],
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-modbus.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-modbus.conf" do
           is_expected.to contain_file('modbus.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-modbus.conf"
+            path: "#{options[:plugin_conf_dir]}/10-modbus.conf",
           )
         end
       end

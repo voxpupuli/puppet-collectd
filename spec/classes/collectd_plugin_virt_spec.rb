@@ -17,7 +17,7 @@ describe 'collectd::plugin::virt', type: :class do
         let :params do
           {
             connection: 'qemu:///system',
-            hostname_format: 'name metadata uuid'
+            hostname_format: 'name metadata uuid',
           }
         end
 
@@ -27,8 +27,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'contains appropriate configuration' do
-            is_expected.to contain_file('libvirt.load').
-              with_content(%r{.*HostnameFormat name metadata uuid.*})
+            is_expected.to contain_file('libvirt.load')
+              .with_content(%r{.*HostnameFormat name metadata uuid.*})
           end
         end
 
@@ -38,8 +38,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'contains appropriate configuration' do
-            is_expected.to contain_file('libvirt.load').
-              with_content(%r{.*HostnameFormat name metadata uuid.*})
+            is_expected.to contain_file('libvirt.load')
+              .with_content(%r{.*HostnameFormat name metadata uuid.*})
           end
         end
 
@@ -49,8 +49,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'contains appropriate configuration' do
-            is_expected.to contain_file('virt.load').
-              with_content(%r{.*HostnameFormat name metadata uuid.*})
+            is_expected.to contain_file('virt.load')
+              .with_content(%r{.*HostnameFormat name metadata uuid.*})
           end
         end
       end
@@ -59,7 +59,7 @@ describe 'collectd::plugin::virt', type: :class do
         let :params do
           {
             connection: 'qemu:///system',
-            plugin_instance_format: 'name metadata uuid'
+            plugin_instance_format: 'name metadata uuid',
           }
         end
 
@@ -69,8 +69,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is ignored' do
-            is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
+            is_expected.to contain_file('libvirt.load')
+              .without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
@@ -80,8 +80,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is included' do
-            is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
+            is_expected.to contain_file('libvirt.load')
+              .without_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
@@ -91,15 +91,15 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is included' do
-            is_expected.to contain_file('virt.load').
-              with_content(%r{.*PluginInstanceFormat name metadata uuid.*})
+            is_expected.to contain_file('virt.load')
+              .with_content(%r{.*PluginInstanceFormat name metadata uuid.*})
           end
         end
 
         case facts['os']['family']
         when 'RedHat'
           context 'on osfamily => RedHat' do
-            it 'Will delete packaging config file' do
+            it 'deletes packaging config file' do
               is_expected.to contain_file('package_virt.load').with_ensure('absent')
             end
           end
@@ -110,7 +110,7 @@ describe 'collectd::plugin::virt', type: :class do
         let :params do
           {
             connection: 'qemu:///system',
-            interface_format: 'address'
+            interface_format: 'address',
           }
         end
 
@@ -120,8 +120,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is ignored' do
-            is_expected.to contain_file('libvirt.load').
-              without_content(%r{.*InterfaceFormat "address".*})
+            is_expected.to contain_file('libvirt.load')
+              .without_content(%r{.*InterfaceFormat "address".*})
           end
         end
 
@@ -131,8 +131,8 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is included' do
-            is_expected.to contain_file('libvirt.load').
-              with_content(%r{.*InterfaceFormat "address".*})
+            is_expected.to contain_file('libvirt.load')
+              .with_content(%r{.*InterfaceFormat "address".*})
           end
         end
 
@@ -142,15 +142,15 @@ describe 'collectd::plugin::virt', type: :class do
           end
 
           it 'is included' do
-            is_expected.to contain_file('virt.load').
-              with_content(%r{.*InterfaceFormat "address".*})
+            is_expected.to contain_file('virt.load')
+              .with_content(%r{.*InterfaceFormat "address".*})
           end
         end
 
         case facts['os']['family']
         when 'RedHat'
           context 'on osfamily => RedHat' do
-            it 'Will delete packaging config file' do
+            it 'deletes packaging config file' do
               is_expected.to contain_file('package_virt.load').with_ensure('absent')
             end
           end

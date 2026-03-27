@@ -18,12 +18,12 @@ describe 'collectd::plugin::filter::rule', type: :define do
           is_expected.to contain_concat__fragment("#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf_10_MyRule_0").with(
             order: '10_MyRule_0',
             content: '  <Rule "MyRule">',
-            target: "#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf"
+            target: "#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf",
           )
           is_expected.to contain_concat__fragment("#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf_10_MyRule_99").with(
             order: '10_MyRule_99',
             content: '  </Rule>',
-            target: "#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf"
+            target: "#{options[:plugin_conf_dir]}/filter-chain-MyChain.conf",
           )
         end
       end

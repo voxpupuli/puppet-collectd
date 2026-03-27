@@ -23,10 +23,10 @@ describe 'collectd::plugin::amqp', type: :class do
         it { is_expected.to contain_file('old_amqp.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_amqp.load').with_ensure('absent') }
 
-        it 'Will create 10-amqp.conf' do
+        it 'creates 10-amqp.conf' do
           is_expected.to contain_file('amqp.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-amqp.conf"
+            path: "#{options[:plugin_conf_dir]}/10-amqp.conf",
           )
         end
 
@@ -59,7 +59,7 @@ describe 'collectd::plugin::amqp', type: :class do
             graphiteprefix: 'prefix',
             escapecharacter: '|',
             graphiteseparateinstances: true,
-            graphitealwaysappendds: true }
+            graphitealwaysappendds: true, }
         end
 
         it { is_expected.to contain_file('amqp.load').with(content: %r{<Publish "graphite">}) }
@@ -91,10 +91,10 @@ describe 'collectd::plugin::amqp', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create 10-amqp.conf' do
+        it 'does not create 10-amqp.conf' do
           is_expected.to contain_file('amqp.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-amqp.conf"
+            path: "#{options[:plugin_conf_dir]}/10-amqp.conf",
           )
         end
       end

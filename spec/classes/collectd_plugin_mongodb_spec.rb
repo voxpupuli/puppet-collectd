@@ -10,7 +10,7 @@ describe 'collectd::plugin::mongodb', type: :class do
   let :default_params do
     {
       db_user: 'test_user',
-      db_pass: 'password'
+      db_pass: 'password',
     }
   end
 
@@ -29,7 +29,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
         it do
           is_expected.to contain_file('mongodb.load').with(
-            'ensure' => 'present'
+            'ensure' => 'present',
           )
         end
 
@@ -46,7 +46,7 @@ describe 'collectd::plugin::mongodb', type: :class do
 
             it do
               is_expected.to contain_file('mongodb.load').with(
-                'ensure' => value
+                'ensure' => value,
               )
             end
           end

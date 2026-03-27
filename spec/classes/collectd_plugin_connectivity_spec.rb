@@ -24,10 +24,10 @@ describe 'collectd::plugin::connectivity', type: :class do
         it { is_expected.to contain_file('old_connectivity.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_connectivity.load').with_ensure('absent') }
 
-        it 'Will create 10-connectivity.conf' do
+        it 'creates 10-connectivity.conf' do
           is_expected.to contain_file('connectivity.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-connectivity.conf"
+            path: "#{options[:plugin_conf_dir]}/10-connectivity.conf",
           )
         end
 
@@ -37,7 +37,7 @@ describe 'collectd::plugin::connectivity', type: :class do
       context 'overriding default parameters' do
         let(:params) do
           { ensure: 'present',
-            interfaces: %w[eth0 eth1] }
+            interfaces: %w[eth0 eth1], }
         end
 
         it { is_expected.to contain_file('connectivity.load').with(content: %r{Interface "eth0"}) }
@@ -49,10 +49,10 @@ describe 'collectd::plugin::connectivity', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create 10-connectivity.conf' do
+        it 'does not create 10-connectivity.conf' do
           is_expected.to contain_file('connectivity.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-connectivity.conf"
+            path: "#{options[:plugin_conf_dir]}/10-connectivity.conf",
           )
         end
       end

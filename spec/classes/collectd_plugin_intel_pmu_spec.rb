@@ -11,10 +11,10 @@ describe 'collectd::plugin::intel_pmu', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf"
+            path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
           )
         end
       end
@@ -24,11 +24,11 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { report_hardware_cache_events: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportHardwareCacheEvents true}m
+            content: %r{ReportHardwareCacheEvents true}m,
           )
         end
       end
@@ -38,11 +38,11 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { report_kernel_pmu_events: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportKernelPMUEvents true}m
+            content: %r{ReportKernelPMUEvents true}m,
           )
         end
       end
@@ -52,11 +52,11 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { report_software_events: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{ReportSoftwareEvents true}m
+            content: %r{ReportSoftwareEvents true}m,
           )
         end
       end
@@ -66,11 +66,11 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { event_list: '/var/cache/pmu/GenuineIntel-6-2D-core.json' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{EventList "/var/cache/pmu/GenuineIntel-6-2D-core.json"}m
+            content: %r{EventList "/var/cache/pmu/GenuineIntel-6-2D-core.json"}m,
           )
         end
       end
@@ -78,14 +78,14 @@ describe 'collectd::plugin::intel_pmu', type: :class do
       context ':ensure => present and :hardware_events => L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS with event_list' do
         let :params do
           { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'],
-            event_list: '/var/cache/pmu/GenuineIntel-6-2D-core.json' }
+            event_list: '/var/cache/pmu/GenuineIntel-6-2D-core.json', }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-intel_pmu.conf" do
           is_expected.to contain_file('intel_pmu.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-intel_pmu.conf",
-            content: %r{HardwareEvents "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS"}m
+            content: %r{HardwareEvents "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS"}m,
           )
         end
       end
@@ -95,7 +95,7 @@ describe 'collectd::plugin::intel_pmu', type: :class do
           { hardware_events: ['L2_RQSTS.CODE_RD_HIT', 'L2_RQSTS.CODE_RD_MISS'] }
         end
 
-        it 'Will raise error' do
+        it 'raises error' do
           is_expected.to compile.and_raise_error(%r{event_list must be defined if hardware_events is used})
         end
       end

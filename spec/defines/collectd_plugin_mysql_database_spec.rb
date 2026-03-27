@@ -20,7 +20,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           { socket: '/var/run/mysqld/mysqld.sock' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/mysql-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/mysql-test.conf" do
           is_expected.to contain_file('test.conf').with_content(%r{Socket "/var/run/mysqld/mysqld\.sock"$})
         end
       end
@@ -28,7 +28,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
       context 'no custom socket' do
         let(:title) { 'test' }
 
-        it "Will create #{options[:plugin_conf_dir]}/mysql-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/mysql-test.conf" do
           is_expected.to contain_file('test.conf').without_content(%r{Socket})
         end
       end
@@ -39,7 +39,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           { wsrepstats: :undef }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/mysql-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/mysql-test.conf" do
           is_expected.to contain_file('test.conf').without_content(%r{WsrepStats})
         end
       end
@@ -50,7 +50,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           { wsrepstats: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/mysql-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/mysql-test.conf" do
           is_expected.to contain_file('test.conf').with_content(%r{WsrepStats true})
         end
       end
@@ -61,7 +61,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           { wsrepstats: false }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/mysql-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/mysql-test.conf" do
           is_expected.to contain_file('test.conf').with_content(%r{WsrepStats false})
         end
       end

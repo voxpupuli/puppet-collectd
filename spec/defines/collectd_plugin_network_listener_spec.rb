@@ -14,15 +14,15 @@ describe 'collectd::plugin::network::listener', type: :define do
         let(:title) { 'mylistener' }
         let :params do
           {
-            port: 1234
+            port: 1234,
           }
         end
 
-        it 'Will create /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
+        it 'creates /etc/collectd.d/network-listener-mylistener.conf for collectd >= 4.7' do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/network-listener-mylistener.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/network-listener-mylistener.conf",
-            content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n"
+            content: "<Plugin network>\n  <Listen \"mylistener\" \"1234\">\n\n  </Listen>\n</Plugin>\n",
           )
         end
       end

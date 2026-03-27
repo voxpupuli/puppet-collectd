@@ -24,10 +24,10 @@ describe 'collectd::plugin::sysevent', type: :class do
         it { is_expected.to contain_file('old_sysevent.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_sysevent.load').with_ensure('absent') }
 
-        it 'Will create 10-sysevent.conf' do
+        it 'creates 10-sysevent.conf' do
           is_expected.to contain_file('sysevent.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-sysevent.conf"
+            path: "#{options[:plugin_conf_dir]}/10-sysevent.conf",
           )
         end
 
@@ -42,7 +42,7 @@ describe 'collectd::plugin::sysevent', type: :class do
             listen_port: 1234,
             regex_filter: '/foobar/',
             buffer_size: 4096,
-            buffer_length: 10 }
+            buffer_length: 10, }
         end
 
         it { is_expected.to contain_file('sysevent.load').with(content: %r{Listen "1.2.3.4" "1234"}) }
@@ -56,10 +56,10 @@ describe 'collectd::plugin::sysevent', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create 10-sysevent.conf' do
+        it 'does not create 10-sysevent.conf' do
           is_expected.to contain_file('sysevent.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-sysevent.conf"
+            path: "#{options[:plugin_conf_dir]}/10-sysevent.conf",
           )
         end
       end

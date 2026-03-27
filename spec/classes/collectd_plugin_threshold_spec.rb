@@ -19,8 +19,8 @@ describe 'collectd::plugin::threshold', type: :class do
               'failure_min' => 0.00,
               'failure_max' => 1200.00,
               'invert'      => false,
-              'instance'    => 'bar'
-            }
+              'instance'    => 'bar',
+            },
           ],
           'plugins' => [
             {
@@ -30,10 +30,10 @@ describe 'collectd::plugin::threshold', type: :class do
                 {
                   'name'        => 'if_octets',
                   'failure_max' => 10_000_000,
-                  'data_source' => 'rx'
-                }
-              ]
-            }
+                  'data_source' => 'rx',
+                },
+              ],
+            },
           ],
           'hosts' => [
             {
@@ -42,15 +42,15 @@ describe 'collectd::plugin::threshold', type: :class do
                 {
                   'name'        => 'cpu',
                   'instance'    => 'idle',
-                  'failure_min' => 10
+                  'failure_min' => 10,
                 },
                 {
                   'name'        => 'load',
                   'data_source' => 'midterm',
                   'failure_max' => 4,
                   'hits'        => 3,
-                  'hysteresis'  => 3
-                }
+                  'hysteresis'  => 3,
+                },
               ],
               'plugins' => [
                 {
@@ -59,24 +59,24 @@ describe 'collectd::plugin::threshold', type: :class do
                     {
                       'name'        => 'memory',
                       'instance'    => 'cached',
-                      'warning_min' => 100_000_000
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+                      'warning_min' => 100_000_000,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         }
       end
 
       options = os_specific_options(facts)
       context ':ensure => present' do
         context ':ensure => present and default parameters' do
-          it "Will create #{options[:plugin_conf_dir]}/10-threshold.conf to load the plugin" do
+          it "creates #{options[:plugin_conf_dir]}/10-threshold.conf to load the plugin" do
             is_expected.to contain_file('threshold.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-threshold.conf",
-              content: %r{LoadPlugin threshold}
+              content: %r{LoadPlugin threshold},
             )
           end
         end
@@ -86,14 +86,14 @@ describe 'collectd::plugin::threshold', type: :class do
             {
               'hosts' => [
                 {
-                  'name' => 'example.com'
-                }
+                  'name' => 'example.com',
+                },
               ],
               'plugins' => [
                 {
-                  'name' => 'interface'
-                }
-              ]
+                  'name' => 'interface',
+                },
+              ],
             }
           end
 

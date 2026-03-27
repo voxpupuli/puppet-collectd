@@ -15,11 +15,11 @@ describe 'collectd::plugin::df', type: :class do
           {}
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-df.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-df.conf" do
           is_expected.to contain_file('df.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-df.conf",
-            content: %r{LoadPlugin df}
+            content: %r{LoadPlugin df},
           )
         end
       end
@@ -27,15 +27,15 @@ describe 'collectd::plugin::df', type: :class do
       context 'devices case' do
         let :params do
           {
-            devices: %w[proc sysfs]
+            devices: %w[proc sysfs],
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-df.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-df.conf" do
           is_expected.to contain_file('df.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-df.conf",
-            content: %r{  Device "proc"\n  Device "sysfs"\n}
+            content: %r{  Device "proc"\n  Device "sysfs"\n},
           )
         end
       end
@@ -43,14 +43,14 @@ describe 'collectd::plugin::df', type: :class do
       context 'ensure => absent' do
         let :params do
           {
-            ensure: 'absent'
+            ensure: 'absent',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-df.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-df.conf" do
           is_expected.to contain_file('df.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-df.conf"
+            path: "#{options[:plugin_conf_dir]}/10-df.conf",
           )
         end
       end

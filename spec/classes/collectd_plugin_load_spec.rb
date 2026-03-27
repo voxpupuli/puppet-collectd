@@ -16,13 +16,13 @@ describe 'collectd::plugin::load', type: :class do
       context 'report_relative in load.conf' do
         let :params do
           {
-            report_relative: true
+            report_relative: true,
           }
         end
 
         it 'is present' do
-          is_expected.to contain_file('load.load').
-            without_content(%r{\s{2}ReportRelative true\s{2}})
+          is_expected.to contain_file('load.load')
+            .without_content(%r{\s{2}ReportRelative true\s{2}})
         end
       end
     end

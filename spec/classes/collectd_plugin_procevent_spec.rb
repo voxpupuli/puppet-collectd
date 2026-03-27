@@ -24,10 +24,10 @@ describe 'collectd::plugin::procevent', type: :class do
         it { is_expected.to contain_file('old_procevent.load').with_ensure('absent') }
         it { is_expected.to contain_file('older_procevent.load').with_ensure('absent') }
 
-        it 'Will create 10-procevent.conf' do
+        it 'creates 10-procevent.conf' do
           is_expected.to contain_file('procevent.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-procevent.conf"
+            path: "#{options[:plugin_conf_dir]}/10-procevent.conf",
           )
         end
 
@@ -39,7 +39,7 @@ describe 'collectd::plugin::procevent', type: :class do
           { ensure: 'present',
             process: 'foo',
             process_regex: '/bar/',
-            buffer_length: 10 }
+            buffer_length: 10, }
         end
 
         it { is_expected.to contain_file('procevent.load').with(content: %r{Process "foo"}) }
@@ -52,10 +52,10 @@ describe 'collectd::plugin::procevent', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create 10-procevent.conf' do
+        it 'does not create 10-procevent.conf' do
           is_expected.to contain_file('procevent.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-procevent.conf"
+            path: "#{options[:plugin_conf_dir]}/10-procevent.conf",
           )
         end
       end

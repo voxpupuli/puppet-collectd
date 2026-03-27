@@ -14,10 +14,10 @@ describe 'collectd::plugin::snmp_agent', type: :class do
       options = os_specific_options(facts)
 
       context ':ensure => present and default parameters' do
-        it "Will create #{options[:plugin_conf_dir]}/10-snmp_agent.conf to load the plugin" do
+        it "creates #{options[:plugin_conf_dir]}/10-snmp_agent.conf to load the plugin" do
           is_expected.to contain_file('snmp_agent.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-snmp_agent.conf"
+            path: "#{options[:plugin_conf_dir]}/10-snmp_agent.conf",
           )
         end
       end
