@@ -18,49 +18,49 @@ describe 'collectd::plugin::ovs_events', type: :class do
             port: 666,
             socket: '/foo/bar/baz',
             send_notification: true,
-            dispatch: false }
+            dispatch: false, }
         end
 
-        it "will create #{options[:plugin_conf_dir]}/10-ovs_events.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ovs_events.conf" do
           is_expected.to contain_file('ovs_events.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ovs_events.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ovs_events.conf",
           )
         end
 
-        it 'will create config which will contain port configuration' do
+        it 'creates config which will contain port configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{Port 666}
+            content: %r{Port 666},
           )
         end
 
-        it 'will create config which will contain address configuration' do
+        it 'creates config which will contain address configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{Address "foo.bar.baz"}
+            content: %r{Address "foo.bar.baz"},
           )
         end
 
-        it 'will create config which will contain socket configuration' do
+        it 'creates config which will contain socket configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{Socket "/foo/bar/baz"}
+            content: %r{Socket "/foo/bar/baz"},
           )
         end
 
-        it 'will create config which will contain interfaces configuration' do
+        it 'creates config which will contain interfaces configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{Interfaces "bar" "baz"}
+            content: %r{Interfaces "bar" "baz"},
           )
         end
 
-        it 'will create config which will contain send_notification configuration' do
+        it 'creates config which will contain send_notification configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{SendNotification true}
+            content: %r{SendNotification true},
           )
         end
 
-        it 'will create config which will contain dispatch configuration' do
+        it 'creates config which will contain dispatch configuration' do
           is_expected.to contain_file('ovs_events.load').with(
-            content: %r{DispatchValues false}
+            content: %r{DispatchValues false},
           )
         end
       end
@@ -70,10 +70,10 @@ describe 'collectd::plugin::ovs_events', type: :class do
           { ensure: 'absent' }
         end
 
-        it "will not create #{options[:plugin_conf_dir]}/10-ovs_events.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ovs_events.conf" do
           is_expected.to contain_file('ovs_events.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ovs_events.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ovs_events.conf",
           )
         end
       end
@@ -81,7 +81,7 @@ describe 'collectd::plugin::ovs_events', type: :class do
       case facts['os']['family']
       when 'RedHat'
         context 'on osfamily => RedHat' do
-          it 'Will delete packaging config file' do
+          it 'deletes packaging config file' do
             is_expected.to contain_file('package_ovs_events.load').with_ensure('absent')
           end
         end

@@ -17,10 +17,10 @@ describe 'collectd::plugin::mcelog', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-mcelog.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-mcelog.conf" do
           is_expected.to contain_file('mcelog.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
+            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf",
           )
         end
 
@@ -39,14 +39,14 @@ describe 'collectd::plugin::mcelog', type: :class do
       context ':ensure => :mceloglogfile => true' do
         let :params do
           {
-            mceloglogfile: '/var/log/mcelog'
+            mceloglogfile: '/var/log/mcelog',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-mcelog.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-mcelog.conf" do
           is_expected.to contain_file('mcelog.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
+            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf",
           )
         end
 
@@ -58,15 +58,15 @@ describe 'collectd::plugin::mcelog', type: :class do
           {
             memory: {
               'mcelogclientsocket' => '/var/run/mcelog-client',
-              'persistentnotification' => true
-            }
+              'persistentnotification' => true,
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-mcelog.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-mcelog.conf" do
           is_expected.to contain_file('mcelog.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf"
+            path: "#{options[:plugin_conf_dir]}/10-mcelog.conf",
           )
         end
 

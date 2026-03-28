@@ -26,23 +26,23 @@ describe 'collectd::plugin::tail::file', type: :define do
                 'regex'    => 'S=([1-9][0-9]*)',
                 'dstype'   => 'CounterAdd',
                 'type'     => 'ipt_bytes',
-                'instance' => 'total'
+                'instance' => 'total',
               },
               {
                 'regex'    => '\\<R=local_user\\>',
                 'dstype'   => 'CounterInc',
                 'type'     => 'counter',
-                'instance' => 'local_user'
-              }
-            ]
+                'instance' => 'local_user',
+              },
+            ],
           }
         end
 
         describe "#{options[:plugin_conf_dir]}/tail-exim-log.conf" do
-          it "Will create #{options[:plugin_conf_dir]}/tail-exim-log.conf" do
+          it "creates #{options[:plugin_conf_dir]}/tail-exim-log.conf" do
             is_expected.to contain_file('exim-log.conf').with(
               'ensure' => 'present',
-              'path'   => "#{options[:plugin_conf_dir]}/tail-exim-log.conf"
+              'path'   => "#{options[:plugin_conf_dir]}/tail-exim-log.conf",
             ).that_notifies('Service[collectd]')
           end
 
@@ -84,9 +84,9 @@ describe 'collectd::plugin::tail::file', type: :define do
                 'excluderegex' => 'U=root.*S=',
                 'dstype'       => 'CounterAdd',
                 'type'         => 'ipt_bytes',
-                'instance'     => 'total'
-              }
-            ]
+                'instance'     => 'total',
+              },
+            ],
           }
         end
 

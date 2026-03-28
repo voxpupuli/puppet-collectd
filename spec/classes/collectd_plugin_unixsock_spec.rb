@@ -11,11 +11,11 @@ describe 'collectd::plugin::unixsock', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present and default parameters' do
-        it 'Will create /etc/collectd.d/10-unixsock.conf' do
+        it 'creates /etc/collectd.d/10-unixsock.conf' do
           is_expected.to contain_file('unixsock.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-unixsock.conf",
-            content: %r{SocketFile  "/var/run/collectd-unixsock".+SocketGroup "collectd".+SocketPerms "0770"}m
+            content: %r{SocketFile  "/var/run/collectd-unixsock".+SocketGroup "collectd".+SocketPerms "0770"}m,
           )
         end
       end
@@ -25,10 +25,10 @@ describe 'collectd::plugin::unixsock', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create /etc/collectd.d/10-unixsock.conf' do
+        it 'does not create /etc/collectd.d/10-unixsock.conf' do
           is_expected.to contain_file('unixsock.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-unixsock.conf"
+            path: "#{options[:plugin_conf_dir]}/10-unixsock.conf",
           )
         end
       end

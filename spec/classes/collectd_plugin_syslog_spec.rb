@@ -18,7 +18,7 @@ describe 'collectd::plugin::syslog', type: :class do
         let :params do
           {
             log_level: 'debug',
-            notify_level: 'FAILURE'
+            notify_level: 'FAILURE',
           }
         end
 
@@ -37,11 +37,11 @@ describe 'collectd::plugin::syslog', type: :class do
 
         it { is_expected.to compile.with_all_deps }
 
-        it "Will create #{options[:plugin_conf_dir]}/05-syslog.conf" do
+        it "creates #{options[:plugin_conf_dir]}/05-syslog.conf" do
           is_expected.to contain_file('syslog.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/05-syslog.conf",
-            content: content
+            content: content,
           )
         end
       end
@@ -51,10 +51,10 @@ describe 'collectd::plugin::syslog', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/05-syslog.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/05-syslog.conf" do
           is_expected.to contain_file('syslog.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/05-syslog.conf"
+            path: "#{options[:plugin_conf_dir]}/05-syslog.conf",
           )
         end
       end
@@ -64,7 +64,7 @@ describe 'collectd::plugin::syslog', type: :class do
           { notify_level: 'notexist' }
         end
 
-        it 'Will raise an error about :notify_level being Enum' do
+        it 'raises an error about :notify_level being Enum' do
           is_expected.to compile.and_raise_error(%r{Enum})
         end
       end

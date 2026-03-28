@@ -12,32 +12,32 @@ describe 'collectd::plugin::genericjmx', type: :class do
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-genericjmx.conf" }
 
       context 'defaults' do
-        it 'will include the java plugin' do
+        it 'includes the java plugin' do
           is_expected.to contain_class('collectd::plugin::java')
         end
 
-        it 'will load the genericjmx plugin' do
-          is_expected.to contain_concat(config_filename).
-            with(ensure: 'present',
-                 mode: '0640',
-                 owner: 'root',
-                 ensure_newline: true)
+        it 'loads the genericjmx plugin' do
+          is_expected.to contain_concat(config_filename)
+            .with(ensure: 'present',
+                  mode: '0640',
+                  owner: 'root',
+                  ensure_newline: true)
         end
 
         it { is_expected.to contain_concat(config_filename).that_notifies('Service[collectd]') }
 
         it do
-          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
-            with(order: '00',
-                 target: config_filename,
-                 content: %r{<Plugin "java">.+LoadPlugin "org\.collectd\.java\.GenericJMX".+<Plugin "GenericJMX">}m)
+          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header')
+            .with(order: '00',
+                  target: config_filename,
+                  content: %r{<Plugin "java">.+LoadPlugin "org\.collectd\.java\.GenericJMX".+<Plugin "GenericJMX">}m)
         end
 
         it do
-          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_footer').
-            with(order: '99',
-                 target: config_filename,
-                 content: %r{</Plugin>.+</Plugin>}m)
+          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_footer')
+            .with(order: '99',
+                  target: config_filename,
+                  content: %r{</Plugin>.+</Plugin>}m)
         end
       end
 
@@ -45,8 +45,8 @@ describe 'collectd::plugin::genericjmx', type: :class do
         let(:params) { { jvmarg: %w[foo bar baz] } }
 
         it 'has multiple jvmarg parameters' do
-          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header').
-            with_content(%r{JVMArg "foo".*JVMArg "bar".*JVMArg "baz"}m)
+          is_expected.to contain_concat__fragment('collectd_plugin_genericjmx_conf_header')
+            .with_content(%r{JVMArg "foo".*JVMArg "bar".*JVMArg "baz"}m)
         end
       end
 

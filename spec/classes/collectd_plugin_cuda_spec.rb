@@ -22,7 +22,7 @@ describe 'collectd::plugin::cuda', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will remove python-config' do
+        it 'removes python-config' do
           is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_cuda.collectd_plugin_header').with(ensure: 'present')
         end
       end
@@ -40,14 +40,14 @@ describe 'collectd::plugin::cuda', type: :class do
                         ensure: ensure_value,
                         manage_package: value,
                         package_name: packagename,
-                        package_provider: provider
+                        package_provider: provider,
                       }
                     end
 
                     it do
                       is_expected.to contain_package(packagename).with(
                         'ensure' => ensure_value,
-                        'provider' => provider
+                        'provider' => provider,
                       )
                     end
                   end

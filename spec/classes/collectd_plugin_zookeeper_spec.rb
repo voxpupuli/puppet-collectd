@@ -16,7 +16,7 @@ describe 'collectd::plugin::zookeeper', type: :class do
           { zookeeper_host: 'myhost', zookeeper_port: 2181 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-zookeeper.load" do
+        it "creates #{options[:plugin_conf_dir]}/10-zookeeper.load" do
           is_expected.to contain_file('zookeeper.load').with(ensure: 'present')
           is_expected.to contain_file('zookeeper.load').with(path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf")
           is_expected.to contain_file('zookeeper.load').with(content: %r{Host "myhost"})
@@ -29,10 +29,10 @@ describe 'collectd::plugin::zookeeper', type: :class do
           { zookeeper_host: 'myhost', ensure: 'absent' }
         end
 
-        it 'Will not create' do
+        it 'does not create' do
           is_expected.to contain_file('zookeeper.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf"
+            path: "#{options[:plugin_conf_dir]}/10-zookeeper.conf",
           )
         end
       end

@@ -15,14 +15,14 @@ describe 'collectd::plugin::ethstat', type: :class do
           {
             interfaces: %w[eth0 eth1],
             maps: ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'],
-            mappedonly: false
+            mappedonly: false,
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-ethstat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ethstat.conf" do
           is_expected.to contain_file('ethstat.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ethstat.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ethstat.conf",
           )
         end
 
@@ -39,10 +39,10 @@ describe 'collectd::plugin::ethstat', type: :class do
           { maps: ['"rx_csum_offload_errors" "if_rx_errors" checksum_offload"', '"multicast" "if_multicast"'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-ethstat.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ethstat.conf" do
           is_expected.to contain_file('ethstat.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ethstat.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ethstat.conf",
           )
         end
       end
@@ -52,7 +52,7 @@ describe 'collectd::plugin::ethstat', type: :class do
           { interfaces: 'eth0,eth1' }
         end
 
-        it 'Will raise an error about :interfaces being a String' do
+        it 'raises an error about :interfaces being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end
@@ -62,7 +62,7 @@ describe 'collectd::plugin::ethstat', type: :class do
           { maps: '"rx_csum_offload_errors" "if_rx_errors" checksum_offload"' }
         end
 
-        it 'Will raise an error about :maps being a String' do
+        it 'raises an error about :maps being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end

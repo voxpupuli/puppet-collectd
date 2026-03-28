@@ -16,14 +16,14 @@ describe 'collectd::plugin::tail_csv', type: :class do
             'metrics' => {
               'snort-dropped' => {
                 'type' => 'percent',
-                'value_from' => 1
-              }
+                'value_from' => 1,
+              },
             },
             'files' => {
               '/var/log/snort/snort.stats' => {
-                'collect' => %w[snort-dropped]
-              }
-            }
+                'collect' => %w[snort-dropped],
+              },
+            },
           }
         end
 
@@ -50,7 +50,7 @@ describe 'collectd::plugin::tail_csv', type: :class do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('tail_csv.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-tail_csv.conf"
+            path: "#{options[:plugin_conf_dir]}/10-tail_csv.conf",
           )
         end
       end
@@ -62,13 +62,13 @@ describe 'collectd::plugin::tail_csv', type: :class do
               'snort-dropped' => {
                 'type' => 'percent',
                 'value_from' => 1,
-                'instance' => 'dropped'
+                'instance' => 'dropped',
               },
               'snort-reject' => {
                 'type' => 'percent',
                 'value_from' => 2,
-                'instance' => 'reject'
-              }
+                'instance' => 'reject',
+              },
             },
             'files' => {
               '/var/log/snort/snort.stats' => {
@@ -76,9 +76,9 @@ describe 'collectd::plugin::tail_csv', type: :class do
                 'plugin' => 'snortstats',
                 'instance' => 'eth0',
                 'interval' => 600,
-                'time_from' => 5
-              }
-            }
+                'time_from' => 5,
+              },
+            },
           }
         end
 
@@ -116,7 +116,7 @@ describe 'collectd::plugin::tail_csv', type: :class do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('tail_csv.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-tail_csv.conf"
+            path: "#{options[:plugin_conf_dir]}/10-tail_csv.conf",
           )
         end
       end

@@ -17,35 +17,35 @@ describe 'collectd::plugin::python', type: :class do
             is_expected.to contain_file('/usr/local/lib/python2.7/dist-packages').with(ensure: 'directory')
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-python.conf to load the plugin" do
+          it "creates #{options[:plugin_conf_dir]}/10-python.conf to load the plugin" do
             is_expected.to contain_file('python.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-python.conf",
-              content: %r{LoadPlugin python}
+              content: %r{LoadPlugin python},
             )
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/python-config.conf" do
+          it "creates #{options[:plugin_conf_dir]}/python-config.conf" do
             is_expected.to contain_concat("#{options[:plugin_conf_dir]}/python-config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{<Plugin "python">},
               target: "#{options[:plugin_conf_dir]}/python-config.conf",
-              order: '00'
+              order: '00',
             )
           end
 
           it 'set default Python module path' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{ModulePath "/usr/local/lib/python2.7/dist-packages"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
-          it 'Will create /etc/collectd.d/conf.d/python-config.conf' do
+          it 'creates /etc/collectd.d/conf.d/python-config.conf' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_footer').with(
               content: %r{</Plugin>},
               target: "#{options[:plugin_conf_dir]}/python-config.conf",
-              order: '99'
+              order: '99',
             )
           end
         end
@@ -53,25 +53,25 @@ describe 'collectd::plugin::python', type: :class do
         context ':ensure => present and multiple $modulepaths' do
           let :params do
             {
-              modulepaths: ['/tmp/', '/data/']
+              modulepaths: ['/tmp/', '/data/'],
             }
           end
 
-          it 'will ensure the two directories are here' do
+          it 'ensures the two directories are here' do
             is_expected.to contain_file('/tmp/').with(
-              require: 'Package[collectd]'
+              require: 'Package[collectd]',
             )
             is_expected.to contain_file('/data/')
           end
 
-          it 'will set two modulepath in the module conf' do
+          it 'sets two modulepath in the module conf' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{ModulePath "/tmp/"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{ModulePath "/data/"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
         end
@@ -82,50 +82,50 @@ describe 'collectd::plugin::python', type: :class do
               modules: {
                 'elasticsearch' => {
                   'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-                  'config'        => [{ 'Cluster' => 'ES-clust' }, { 'Cluster' => 'Another-ES-clust' }]
+                  'config'        => [{ 'Cluster' => 'ES-clust' }, { 'Cluster' => 'Another-ES-clust' }],
                 },
                 'foo' => {
-                  'config' => [{ 'Verbose' => true, 'Bar' => '"bar"' }]
+                  'config' => [{ 'Verbose' => true, 'Bar' => '"bar"' }],
                 },
                 'alpha' => {
-                  'config' => [{ 'Beta' => 4.2, 'Gamma' => 'b', 'Delta' => ['a', 4, 5] }]
-                }
-              }
+                  'config' => [{ 'Beta' => 4.2, 'Gamma' => 'b', 'Delta' => ['a', 4, 5] }],
+                },
+              },
             }
           end
 
           it 'imports elasticsearch module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_header').with(
               content: %r{Import "elasticsearch"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'includes elasticsearch module configuration' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{<Module "elasticsearch">},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'includes elasticsearch Cluster name' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{Cluster "ES-clust"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'includes second elasticsearch Cluster name' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_elasticsearch_config').with(
               content: %r{Cluster "Another-ES-clust"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'created collectd plugin file' do
             is_expected.to contain_file('elasticsearch.script').with(
               ensure: 'present',
-              path: '/usr/local/lib/python2.7/dist-packages/elasticsearch.py'
+              path: '/usr/local/lib/python2.7/dist-packages/elasticsearch.py',
             )
           end
 
@@ -133,14 +133,14 @@ describe 'collectd::plugin::python', type: :class do
           it 'imports foo module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_header').with(
               content: %r{Import "foo"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'includes foo module configuration' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(
               content: %r{<Module "foo">},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{Verbose true})
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_foo_config').with(content: %r{Bar ""bar""})
@@ -149,7 +149,7 @@ describe 'collectd::plugin::python', type: :class do
           it 'includes alpha module configuration' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(
               content: %r{<Module "alpha">},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Beta 4.2})
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_alpha_config').with(content: %r{Delta "a" 4 5})
@@ -163,62 +163,62 @@ describe 'collectd::plugin::python', type: :class do
               modules: {
                 'One' => {
                   'module' => 'funky',
-                  'config' => [{ 'Verbose' => true }, { 'Junk' => 'help' }]
+                  'config' => [{ 'Verbose' => true }, { 'Junk' => 'help' }],
                 },
                 'Two' => {
                   'module' => 'funky',
-                  'config' => [{ 'Junk' => 'morehelp' }]
-                }
-              }
+                  'config' => [{ 'Junk' => 'morehelp' }],
+                },
+              },
             }
           end
 
           it 'import funky module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_funky_header').with(
               content: %r{Import "funky"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'open instance One of module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
               content: %r{<Module "funky">},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'open instance Two of module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
               content: %r{<Module "funky">},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'configure instance One of module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
               content: %r{Verbose true},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'configure instance Two of module' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
               content: %r{Junk "morehelp"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'close funky module instance One' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_One_config').with(
               content: %r{</Module>},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
 
           it 'close funky module instance Two' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_Two_config').with(
               content: %r{</Module>},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
           end
         end
@@ -231,9 +231,9 @@ describe 'collectd::plugin::python', type: :class do
                 'elasticsearch' => {
                   'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
                   'config'        => [{ 'Cluster' => 'ES-clust' }],
-                  'modulepath'    => '/var/lib/collectd/python'
-                }
-              }
+                  'modulepath'    => '/var/lib/collectd/python',
+                },
+              },
             }
           end
 
@@ -246,7 +246,7 @@ describe 'collectd::plugin::python', type: :class do
           it 'set default Python module paths' do
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{ModulePath "/var/lib/collectd/python"},
-              target: "#{options[:plugin_conf_dir]}/python-config.conf"
+              target: "#{options[:plugin_conf_dir]}/python-config.conf",
             )
 
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(content: %r{ModulePath "/usr/collectd"})
@@ -255,25 +255,25 @@ describe 'collectd::plugin::python', type: :class do
           end
 
           it 'created collectd plugin file' do
-            is_expected.to contain_file('elasticsearch.script').
-              with(ensure: 'present',
-                   path: '/var/lib/collectd/python/elasticsearch.py')
+            is_expected.to contain_file('elasticsearch.script')
+              .with(ensure: 'present',
+                    path: '/var/lib/collectd/python/elasticsearch.py')
           end
         end
 
         context ':ensure => present and custom python config location' do
           let :params do
             {
-              conf_name: 'custom-location-config.conf'
+              conf_name: 'custom-location-config.conf',
             }
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/custom-location-config.conf" do
+          it "creates #{options[:plugin_conf_dir]}/custom-location-config.conf" do
             is_expected.to contain_concat("#{options[:plugin_conf_dir]}/custom-location-config.conf")
             is_expected.to contain_concat__fragment('collectd_plugin_python_conf_header').with(
               content: %r{<Plugin "python">},
               target: "#{options[:plugin_conf_dir]}/custom-location-config.conf",
-              order: '00'
+              order: '00',
             )
           end
         end
@@ -282,15 +282,15 @@ describe 'collectd::plugin::python', type: :class do
       context 'change globals parameter' do
         let :params do
           {
-            globals: false
+            globals: false,
           }
         end
 
-        it 'will change $globals settings' do
+        it 'changes $globals settings' do
           is_expected.to contain_file('python.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-python.conf",
-            content: %r{Globals false}
+            content: %r{Globals false},
           )
         end
       end
@@ -300,7 +300,7 @@ describe 'collectd::plugin::python', type: :class do
           {
             logtraces: true,
             interactive: true,
-            encoding: 'utf-8'
+            encoding: 'utf-8',
           }
         end
 
@@ -319,25 +319,25 @@ describe 'collectd::plugin::python', type: :class do
             modules: {
               'elasticsearch' => {
                 'script_source' => 'puppet:///modules/myorg/elasticsearch_collectd_python.py',
-                'config'        => [{ 'Cluster' => 'ES-clust' }]
-              }
-            }
+                'config'        => [{ 'Cluster' => 'ES-clust' }],
+              },
+            },
           }
         end
 
-        it "will remove #{options[:plugin_conf_dir]}/10-python.conf" do
+        it "removes #{options[:plugin_conf_dir]}/10-python.conf" do
           is_expected.to contain_file('python.load').with(
             ensure: 'absent',
             path: "#{options[:plugin_conf_dir]}/10-python.conf",
-            content: %r{LoadPlugin python}
+            content: %r{LoadPlugin python},
           )
         end
 
-        it "won't create #{options[:plugin_conf_dir]}/python-config.conf (no modules defined)" do
+        it "does not create #{options[:plugin_conf_dir]}/python-config.conf (no modules defined)" do
           is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_header').with(
             ensure: 'absent',
             target: "#{options[:plugin_conf_dir]}/python-config.conf",
-            order: '00'
+            order: '00',
           )
         end
       end

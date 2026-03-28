@@ -11,10 +11,10 @@ describe 'collectd::plugin::turbostat', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf"
+            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
           )
         end
       end
@@ -24,11 +24,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { core_c_states: 392 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{CoreCstates "392"}m
+            content: %r{CoreCstates "392"}m,
           )
         end
       end
@@ -38,11 +38,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { package_c_states: 396 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{PackageCstates "396"}m
+            content: %r{PackageCstates "396"}m,
           )
         end
       end
@@ -52,11 +52,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { system_management_interrupt: false }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{SystemManagementInterrupt "false"}m
+            content: %r{SystemManagementInterrupt "false"}m,
           )
         end
       end
@@ -66,11 +66,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { digital_temperature_sensor: false }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{DigitalTemperatureSensor "false"}m
+            content: %r{DigitalTemperatureSensor "false"}m,
           )
         end
       end
@@ -84,11 +84,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { logical_core_names: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{LogicalCoreNames "true"}m
+            content: %r{LogicalCoreNames "true"}m,
           )
         end
       end
@@ -98,11 +98,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { tcc_activation_temp: 40 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{TCCActivationTemp "40"}m
+            content: %r{TCCActivationTemp "40"}m,
           )
         end
       end
@@ -112,11 +112,11 @@ describe 'collectd::plugin::turbostat', type: :class do
           { running_average_power_limit: 8 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-turbostat.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-turbostat.conf" do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
-            content: %r{RunningAveragePowerLimit "8"}m
+            content: %r{RunningAveragePowerLimit "8"}m,
           )
         end
       end
@@ -126,10 +126,10 @@ describe 'collectd::plugin::turbostat', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create /etc/collectd.d/10-turbostat.conf' do
+        it 'does not create /etc/collectd.d/10-turbostat.conf' do
           is_expected.to contain_file('turbostat.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf"
+            path: "#{options[:plugin_conf_dir]}/10-turbostat.conf",
           )
         end
       end

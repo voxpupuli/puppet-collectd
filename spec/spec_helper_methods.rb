@@ -22,8 +22,8 @@ def baseline_os_hash
     supported_os: [
       {
         'operatingsystem' => 'CentOS',
-        'operatingsystemrelease' => %w[9]
-      }
-    ]
+        'operatingsystemrelease' => %w[9],
+      },
+    ],
   }
 end

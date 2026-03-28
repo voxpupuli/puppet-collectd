@@ -15,11 +15,11 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { localports: [22, 25] }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
           is_expected.to contain_file('tcpconns.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-tcpconns.conf",
-            content: %r{LocalPort "22".+LocalPort "25"}m
+            content: %r{LocalPort "22".+LocalPort "25"}m,
           )
         end
       end
@@ -29,11 +29,11 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { localports: [22, 25], remoteports: [3306] }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
           is_expected.to contain_file('tcpconns.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-tcpconns.conf",
-            content: %r{LocalPort "22".+LocalPort "25".+RemotePort "3306"}m
+            content: %r{LocalPort "22".+LocalPort "25".+RemotePort "3306"}m,
           )
         end
       end
@@ -43,10 +43,10 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { localports: [22], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-tcpconns.conf" do
           is_expected.to contain_file('tcpconns.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-tcpconns.conf"
+            path: "#{options[:plugin_conf_dir]}/10-tcpconns.conf",
           )
         end
       end
@@ -56,7 +56,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { localports: '22' }
         end
 
-        it 'Will raise an error about :localports being a String' do
+        it 'raises an error about :localports being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end
@@ -66,7 +66,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { remoteports: '22' }
         end
 
-        it 'Will raise an error about :remoteports being a String' do
+        it 'raises an error about :remoteports being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end
@@ -76,7 +76,7 @@ describe 'collectd::plugin::tcpconns', type: :class do
           { allportssummary: 'aString' }
         end
 
-        it 'Will raise an error about :allportssummary being a String' do
+        it 'raises an error about :allportssummary being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end

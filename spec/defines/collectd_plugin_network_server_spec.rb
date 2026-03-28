@@ -18,15 +18,15 @@ describe 'collectd::plugin::network::server', type: :define do
             interface: 'eth0',
             securitylevel: 'Encrypt',
             username: 'foo',
-            password: 'bar'
+            password: 'bar',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/network-server-node1.conf for collectd >= 4.7" do
+        it "creates #{options[:plugin_conf_dir]}/network-server-node1.conf for collectd >= 4.7" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/network-server-node1.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/network-server-node1.conf",
-            content: "<Plugin network>\n  <Server \"node1\" \"1234\">\n    SecurityLevel \"Encrypt\"\n    Username \"foo\"\n    Password \"bar\"\n    Interface \"eth0\"\n\n  </Server>\n</Plugin>\n"
+            content: "<Plugin network>\n  <Server \"node1\" \"1234\">\n    SecurityLevel \"Encrypt\"\n    Username \"foo\"\n    Password \"bar\"\n    Interface \"eth0\"\n\n  </Server>\n</Plugin>\n",
           )
         end
       end
@@ -35,11 +35,11 @@ describe 'collectd::plugin::network::server', type: :define do
         let(:title) { 'node1' }
         let :params do
           {
-            ensure: 'absent'
+            ensure: 'absent',
           }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/network-server-node1.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/network-server-node1.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/network-server-node1.conf").with(ensure: 'absent')
         end
       end

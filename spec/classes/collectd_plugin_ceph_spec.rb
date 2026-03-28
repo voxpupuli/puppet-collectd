@@ -43,7 +43,7 @@ describe 'collectd::plugin::ceph', type: :class do
 
           </Plugin>
         EOS
-        it "Will create #{options[:plugin_conf_dir]}/10-ceph.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ceph.conf" do
           is_expected.to contain_collectd__plugin('ceph').with_content(content)
         end
       end
@@ -52,7 +52,7 @@ describe 'collectd::plugin::ceph', type: :class do
         let :params do
           {
             daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-mon.mon01'],
-            ceph_fsid: 'acd038fe-ce5c-5350-bfd2-0a2c17ad2c59'
+            ceph_fsid: 'acd038fe-ce5c-5350-bfd2-0a2c17ad2c59',
           }
         end
 
@@ -73,7 +73,7 @@ describe 'collectd::plugin::ceph', type: :class do
 
           </Plugin>
         EOS
-        it "Will create #{options[:plugin_conf_dir]}/10-ceph.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ceph.conf" do
           is_expected.to contain_collectd__plugin('ceph').with_content(content)
         end
       end
@@ -83,10 +83,10 @@ describe 'collectd::plugin::ceph', type: :class do
           { daemons: ['ceph-osd.0', 'ceph-osd.1', 'ceph-osd.2'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-ceph.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ceph.conf" do
           is_expected.to contain_file('ceph.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ceph.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ceph.conf",
           )
         end
       end
@@ -95,14 +95,14 @@ describe 'collectd::plugin::ceph', type: :class do
         let :params do
           {
             manage_package: true,
-            daemons: ['ceph-osd.0']
+            daemons: ['ceph-osd.0'],
           }
         end
 
-        it 'Will manage collectd-ceph' do
+        it 'manages collectd-ceph' do
           is_expected.to contain_package('collectd-ceph').with(
             ensure: 'present',
-            name: 'collectd-ceph'
+            name: 'collectd-ceph',
           )
         end
       end
@@ -111,14 +111,14 @@ describe 'collectd::plugin::ceph', type: :class do
         let :params do
           {
             manage_package: false,
-            daemons: ['ceph-osd.0']
+            daemons: ['ceph-osd.0'],
           }
         end
 
-        it 'Will not manage collectd-ceph' do
+        it 'does not manage collectd-ceph' do
           is_expected.not_to contain_package('collectd-ceph').with(
             ensure: 'present',
-            name: 'collectd-ceph'
+            name: 'collectd-ceph',
           )
         end
       end

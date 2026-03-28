@@ -22,8 +22,8 @@ describe 'collectd::plugin::snmp', type: :class do
                 'type'     => 'counter',
                 'table'    => false,
                 'instance' => 'amavis.inMsgs',
-                'values'   => ['AMAVIS-MIB::inMsgs.0']
-              }
+                'values'   => ['AMAVIS-MIB::inMsgs.0'],
+              },
             },
             hosts: {
               'scan04' => {
@@ -31,17 +31,17 @@ describe 'collectd::plugin::snmp', type: :class do
                 'version'   => 2,
                 'community' => 'public',
                 'collect'   => ['amavis_incoming_messages'],
-                'interval'  => 10
-              }
-            }
+                'interval'  => 10,
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-snmp.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-snmp.conf" do
           is_expected.to contain_file('snmp.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-snmp.conf",
-            content: %r{Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"}m
+            content: %r{Data "amavis_incoming_messages".+Instance "amavis.inMsgs".+Host "scan04".+Community "public"}m,
           )
         end
       end
@@ -55,8 +55,8 @@ describe 'collectd::plugin::snmp', type: :class do
                 'type'     => 'counter',
                 'table'    => false,
                 'instance' => 'amavis.inMsgs',
-                'values'   => ['AMAVIS-MIB::inMsgs.0']
-              }
+                'values'   => ['AMAVIS-MIB::inMsgs.0'],
+              },
             },
             hosts: {
               'scan04' => {
@@ -64,16 +64,16 @@ describe 'collectd::plugin::snmp', type: :class do
                 'version'   => 2,
                 'community' => 'public',
                 'collect'   => ['amavis_incoming_messages'],
-                'interval'  => 10
-              }
-            }
+                'interval'  => 10,
+              },
+            },
           }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-snmp.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-snmp.conf" do
           is_expected.to contain_file('snmp.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-snmp.conf"
+            path: "#{options[:plugin_conf_dir]}/10-snmp.conf",
           )
         end
       end
@@ -86,8 +86,8 @@ describe 'collectd::plugin::snmp', type: :class do
                 'type'     => 'if_octets',
                 'table'    => true,
                 'instance' => 'IF-MIB::ifName',
-                'values'   => ['IF-MIB::ifHCInOctets', 'IF-MIB::ifHCOutOctets']
-              }
+                'values'   => ['IF-MIB::ifHCInOctets', 'IF-MIB::ifHCOutOctets'],
+              },
             },
             hosts: {
               'router' => {
@@ -100,13 +100,13 @@ describe 'collectd::plugin::snmp', type: :class do
                 'privacy_protocol'   => 'AES',
                 'privacy_passphrase' => 'mekmitasdigoat',
                 'collect'            => ['hc_octets'],
-                'interval'           => 30
-              }
-            }
+                'interval'           => 30,
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-snmp.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-snmp.conf" do
           is_expected.to contain_file('snmp.load').with(ensure: 'present',
                                                         path: "#{options[:plugin_conf_dir]}/10-snmp.conf",
                                                         content: %r{Data "hc_octets".+Instance "IF-MIB::ifName".+Host "router".+Username "collectd".+SecurityLevel "authPriv".+AuthProtocol "SHA".+PrivacyProtocol "AES"}m)
