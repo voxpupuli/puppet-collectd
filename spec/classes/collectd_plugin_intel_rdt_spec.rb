@@ -27,7 +27,7 @@ describe 'collectd::plugin::intel_rdt', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('intel_rdt.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-intel_rdt.conf"
+            path: "#{options[:plugin_conf_dir]}/10-intel_rdt.conf",
           )
         end
       end
@@ -36,7 +36,7 @@ describe 'collectd::plugin::intel_rdt', type: :class do
       context 'multiple instances' do
         let :params do
           {
-            'cores' => ['0-2', '3,4,6', '8-10,15']
+            'cores' => ['0-2', '3,4,6', '8-10,15'],
           }
         end
 
@@ -57,7 +57,7 @@ describe 'collectd::plugin::intel_rdt', type: :class do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('intel_rdt.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-intel_rdt.conf"
+            path: "#{options[:plugin_conf_dir]}/10-intel_rdt.conf",
           )
         end
       end

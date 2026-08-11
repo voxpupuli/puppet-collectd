@@ -19,11 +19,11 @@ describe 'collectd::plugin::iptables', type: :class do
           { chains: { 'nat' => 'In_SSH' } }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-iptables.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-iptables.conf" do
           is_expected.to contain_file('iptables.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-iptables.conf",
-            content: %r{Chain nat In_SSH}
+            content: %r{Chain nat In_SSH},
           )
         end
       end
@@ -33,11 +33,11 @@ describe 'collectd::plugin::iptables', type: :class do
           { chains6: { 'filter' => 'In6_SSH' } }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-iptables.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-iptables.conf" do
           is_expected.to contain_file('iptables.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-iptables.conf",
-            content: %r{Chain6 filter In6_SSH}
+            content: %r{Chain6 filter In6_SSH},
           )
         end
       end
@@ -45,20 +45,20 @@ describe 'collectd::plugin::iptables', type: :class do
       context ':ensure => present and :chains has two chains from the same table' do
         let :params do
           { chains: {
-            'filter' => %w[INPUT OUTPUT]
+            'filter' => %w[INPUT OUTPUT],
           } }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-iptables.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-iptables.conf" do
           is_expected.to contain_file('iptables.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-iptables.conf",
-            content: %r{Chain filter INPUT}
+            content: %r{Chain filter INPUT},
           )
           is_expected.to contain_file('iptables.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-iptables.conf",
-            content: %r{Chain filter OUTPUT}
+            content: %r{Chain filter OUTPUT},
           )
         end
       end

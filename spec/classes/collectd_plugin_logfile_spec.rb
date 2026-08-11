@@ -11,10 +11,10 @@ describe 'collectd::plugin::logfile', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/05-logfile.conf" do
+        it "creates #{options[:plugin_conf_dir]}/05-logfile.conf" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/05-logfile.conf"
+            path: "#{options[:plugin_conf_dir]}/05-logfile.conf",
           )
         end
       end
@@ -27,20 +27,20 @@ describe 'collectd::plugin::logfile', type: :class do
           { print_severity: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/05-logfile.conf for collectd < 4.10" do
+        it "creates #{options[:plugin_conf_dir]}/05-logfile.conf for collectd < 4.10" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/05-logfile.conf"
+            path: "#{options[:plugin_conf_dir]}/05-logfile.conf",
           ).without_content(%r{PrintSeverity})
         end
       end
 
       context ':ensure => present, default params, collectd version 4.10' do
-        it "Will create #{options[:plugin_conf_dir]}/05-logfile.conf for collectd >= 4.10" do
+        it "creates #{options[:plugin_conf_dir]}/05-logfile.conf for collectd >= 4.10" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/05-logfile.conf",
-            content: %r{PrintSeverity false}
+            content: %r{PrintSeverity false},
           )
         end
       end
@@ -50,11 +50,11 @@ describe 'collectd::plugin::logfile', type: :class do
           { print_severity: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}05-logfile.conf for collectd >= 4.10" do
+        it "creates #{options[:plugin_conf_dir]}05-logfile.conf for collectd >= 4.10" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/05-logfile.conf",
-            content: %r{PrintSeverity true}
+            content: %r{PrintSeverity true},
           )
         end
       end
@@ -64,10 +64,10 @@ describe 'collectd::plugin::logfile', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/05-logfile.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/05-logfile.conf" do
           is_expected.to contain_file('logfile.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/05-logfile.conf"
+            path: "#{options[:plugin_conf_dir]}/05-logfile.conf",
           )
         end
       end

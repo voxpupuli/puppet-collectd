@@ -14,10 +14,10 @@ describe 'collectd::plugin::ipmi', type: :class do
       end
 
       context ':ensure => present, default params and legacy collectd 5.4' do
-        it "Will create #{options[:plugin_conf_dir]}/10-ipmi.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ipmi.conf" do
           is_expected.to contain_file('ipmi.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf",
           )
         end
       end
@@ -27,7 +27,7 @@ describe 'collectd::plugin::ipmi', type: :class do
           { sensors: true }
         end
 
-        it 'Will raise an error about :sensors not being an array' do
+        it 'raises an error about :sensors not being an array' do
           is_expected.not_to compile
         end
       end
@@ -37,7 +37,7 @@ describe 'collectd::plugin::ipmi', type: :class do
           { notify_sensor_not_present: 'true' }
         end
 
-        it 'Will raise an error about :notify_sensor_not_present not being a boolean' do
+        it 'raises an error about :notify_sensor_not_present not being a boolean' do
           is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
         end
       end
@@ -47,7 +47,7 @@ describe 'collectd::plugin::ipmi', type: :class do
           { notify_sensor_remove: 'true' }
         end
 
-        it 'Will raise an error about :notify_sensor_remove not being a boolean' do
+        it 'raises an error about :notify_sensor_remove not being a boolean' do
           is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
         end
       end
@@ -57,7 +57,7 @@ describe 'collectd::plugin::ipmi', type: :class do
           { notify_sensor_add: 'true' }
         end
 
-        it 'Will raise an error about :notify_sensor_add not being a boolean' do
+        it 'raises an error about :notify_sensor_add not being a boolean' do
           is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
         end
       end
@@ -67,7 +67,7 @@ describe 'collectd::plugin::ipmi', type: :class do
           { ignore_selected: 'true' }
         end
 
-        it 'Will raise an error about :ignore_selected not being a boolean' do
+        it 'raises an error about :ignore_selected not being a boolean' do
           is_expected.to compile.and_raise_error(%r{"true" is not a boolean.  It looks to be a String})
         end
       end
@@ -77,11 +77,11 @@ describe 'collectd::plugin::ipmi', type: :class do
           { interval: 15 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-ipmi.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ipmi.conf" do
           is_expected.to contain_file('ipmi.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-ipmi.conf",
-            content: %r{^  Interval 15}
+            content: %r{^  Interval 15},
           )
         end
       end
@@ -91,10 +91,10 @@ describe 'collectd::plugin::ipmi', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-ipmi.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ipmi.conf" do
           is_expected.to contain_file('ipmi.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ipmi.conf",
           )
         end
       end

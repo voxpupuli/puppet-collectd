@@ -29,7 +29,7 @@ describe 'collectd::plugin::battery', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('battery.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-battery.conf"
+            path: "#{options[:plugin_conf_dir]}/10-battery.conf",
           )
         end
       end
@@ -40,7 +40,7 @@ describe 'collectd::plugin::battery', type: :class do
           {
             'values_percentage' => true,
             'report_degraded'   => true,
-            'query_state_fs'    => true
+            'query_state_fs'    => true,
           }
         end
 
@@ -63,7 +63,7 @@ describe 'collectd::plugin::battery', type: :class do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('battery.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-battery.conf"
+            path: "#{options[:plugin_conf_dir]}/10-battery.conf",
           )
         end
       end

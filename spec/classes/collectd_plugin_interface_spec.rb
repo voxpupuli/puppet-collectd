@@ -15,11 +15,11 @@ describe 'collectd::plugin::interface', type: :class do
           { interfaces: ['eth0'] }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-interface.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-interface.conf" do
           is_expected.to contain_file('interface.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-interface.conf",
-            content: %r{Interface  "eth0"}
+            content: %r{Interface  "eth0"},
           )
         end
       end
@@ -29,10 +29,10 @@ describe 'collectd::plugin::interface', type: :class do
           { interfaces: ['eth0'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-interface.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-interface.conf" do
           is_expected.to contain_file('interface.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-interface.conf"
+            path: "#{options[:plugin_conf_dir]}/10-interface.conf",
           )
         end
       end
@@ -42,7 +42,7 @@ describe 'collectd::plugin::interface', type: :class do
           { interfaces: 'eth0' }
         end
 
-        it 'Will raise an error about :interfaces being a String' do
+        it 'raises an error about :interfaces being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end
@@ -53,11 +53,11 @@ describe 'collectd::plugin::interface', type: :class do
         end
         let :params do
           {
-            reportinactive: true
+            reportinactive: true,
           }
         end
 
-        it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-interface.conf" do
+        it "includes ValuesPercentage in #{options[:plugin_conf_dir]}/10-interface.conf" do
           is_expected.to contain_file('interface.load').with_content(%r{ReportInactive true})
         end
       end

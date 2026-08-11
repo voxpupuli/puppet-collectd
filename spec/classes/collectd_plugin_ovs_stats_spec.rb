@@ -16,37 +16,37 @@ describe 'collectd::plugin::ovs_stats', type: :class do
           { address: 'foo.bar.baz',
             bridges: %w[bar baz],
             port: 666,
-            socket: '/foo/bar/baz' }
+            socket: '/foo/bar/baz', }
         end
 
-        it "will create #{options[:plugin_conf_dir]}/10-ovs_stats.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ovs_stats.conf" do
           is_expected.to contain_file('ovs_stats.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ovs_stats.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ovs_stats.conf",
           )
         end
 
-        it 'will create config which will contain port configuration' do
+        it 'creates config which will contain port configuration' do
           is_expected.to contain_file('ovs_stats.load').with(
-            content: %r{Port "666"}
+            content: %r{Port "666"},
           )
         end
 
-        it 'will create config which will contain address configuration' do
+        it 'creates config which will contain address configuration' do
           is_expected.to contain_file('ovs_stats.load').with(
-            content: %r{Address "foo.bar.baz"}
+            content: %r{Address "foo.bar.baz"},
           )
         end
 
-        it 'will create config which will contain socket configuration' do
+        it 'creates config which will contain socket configuration' do
           is_expected.to contain_file('ovs_stats.load').with(
-            content: %r{Socket "/foo/bar/baz"}
+            content: %r{Socket "/foo/bar/baz"},
           )
         end
 
-        it 'will create config which will contain bridges configuration' do
+        it 'creates config which will contain bridges configuration' do
           is_expected.to contain_file('ovs_stats.load').with(
-            content: %r{Bridges "bar" "baz"}
+            content: %r{Bridges "bar" "baz"},
           )
         end
       end
@@ -56,10 +56,10 @@ describe 'collectd::plugin::ovs_stats', type: :class do
           { ensure: 'absent' }
         end
 
-        it "will not create #{options[:plugin_conf_dir]}/10-ovs_stats.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ovs_stats.conf" do
           is_expected.to contain_file('ovs_stats.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ovs_stats.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ovs_stats.conf",
           )
         end
       end
@@ -67,7 +67,7 @@ describe 'collectd::plugin::ovs_stats', type: :class do
       case facts['os']['family']
       when 'RedHat'
         context 'on osfamily => RedHat' do
-          it 'Will delete packaging config file' do
+          it 'deletes packaging config file' do
             is_expected.to contain_file('package_ovs_stats.load').with_ensure('absent')
           end
         end

@@ -16,11 +16,11 @@ describe 'collectd::plugin::statsd', type: :class do
 
       context ':ensure => present' do
         context ':ensure => present and default parameters' do
-          it 'Will create /etc/collectd.d/10-statsd.conf' do
+          it 'creates /etc/collectd.d/10-statsd.conf' do
             is_expected.to contain_file('statsd.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-statsd.conf",
-              content: %r{<Plugin statsd>\n</Plugin>}
+              content: %r{<Plugin statsd>\n</Plugin>},
             )
           end
         end
@@ -30,15 +30,15 @@ describe 'collectd::plugin::statsd', type: :class do
             {
               ensure: 'present',
               host: '192.0.0.1',
-              port: 9876
+              port: 9876,
             }
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-statsd.conf" do
+          it "creates #{options[:plugin_conf_dir]}/10-statsd.conf" do
             is_expected.to contain_file('statsd.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-statsd.conf",
-              content: %r{Host "192.0.0.1".+Port 9876}m
+              content: %r{Host "192.0.0.1".+Port 9876}m,
             )
           end
         end
@@ -47,15 +47,15 @@ describe 'collectd::plugin::statsd', type: :class do
           let :params do
             {
               ensure: 'present',
-              countersum: true
+              countersum: true,
             }
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-statsd.conf" do
+          it "creates #{options[:plugin_conf_dir]}/10-statsd.conf" do
             is_expected.to contain_file('statsd.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-statsd.conf",
-              content: %r{CounterSum true}m
+              content: %r{CounterSum true}m,
             )
           end
         end
@@ -64,14 +64,14 @@ describe 'collectd::plugin::statsd', type: :class do
       context ':ensure => absent' do
         let :params do
           {
-            ensure: 'absent'
+            ensure: 'absent',
           }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-statsd.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-statsd.conf" do
           is_expected.to contain_file('statsd.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-statsd.conf"
+            path: "#{options[:plugin_conf_dir]}/10-statsd.conf",
           )
         end
       end

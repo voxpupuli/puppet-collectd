@@ -22,7 +22,7 @@ describe 'collectd', type: :class do
         it do
           is_expected.to contain_service('collectd').with(
             ensure: 'running',
-            name: options[:service]
+            name: options[:service],
           )
         end
 
@@ -77,7 +77,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              fqdnlookup: false
+              fqdnlookup: false,
             }
           end
 
@@ -88,7 +88,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              typesdb: ['/path/to/types.db']
+              typesdb: ['/path/to/types.db'],
             }
           end
 
@@ -99,7 +99,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              write_queue_limit_low: 100
+              write_queue_limit_low: 100,
             }
           end
 
@@ -110,7 +110,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              write_queue_limit_high: 100
+              write_queue_limit_high: 100,
             }
           end
 
@@ -121,7 +121,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              include: ['/some/include/path']
+              include: ['/some/include/path'],
             }
           end
 
@@ -132,7 +132,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              has_wordexp: false
+              has_wordexp: false,
             }
           end
 
@@ -144,7 +144,7 @@ describe 'collectd', type: :class do
           let(:params) do
             {
               purge_config: true,
-              has_wordexp: true
+              has_wordexp: true,
             }
           end
 
@@ -160,7 +160,7 @@ describe 'collectd', type: :class do
             let(:params) do
               {
                 purge_config: true,
-                internal_stats: true
+                internal_stats: true,
               }
             end
 
@@ -174,7 +174,7 @@ describe 'collectd', type: :class do
             let(:params) do
               {
                 purge_config: true,
-                internal_stats: true
+                internal_stats: true,
               }
             end
 
@@ -217,7 +217,7 @@ describe 'collectd', type: :class do
             let(:params) do
               {
                 manage_repo: true,
-                manage_package: true
+                manage_package: true,
               }
             end
 
@@ -228,7 +228,7 @@ describe 'collectd', type: :class do
             let(:params) do
               {
                 manage_repo: true,
-                manage_package: false
+                manage_package: false,
               }
             end
 
@@ -240,20 +240,20 @@ describe 'collectd', type: :class do
               let(:params) do
                 {
                   manage_repo: true,
-                  ci_package_repo: '5.6'
+                  ci_package_repo: '5.6',
                 }
               end
 
               it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") } if facts[:osfamily] == 'RedHat'
               if facts[:osfamily] == 'Debian'
                 it do
-                  is_expected.to contain_apt__source('collectd-ci').
-                    with_location('https://pkg.ci.collectd.org/deb/').
-                    with_key(
+                  is_expected.to contain_apt__source('collectd-ci')
+                    .with_location('https://pkg.ci.collectd.org/deb/')
+                    .with_key(
                       'id'     => 'F806817DC3F5EA417F9FA2963994D24FB8543576',
-                      'server' => 'keyserver.ubuntu.com'
-                    ).
-                    with_repos('collectd-5.6')
+                      'server' => 'keyserver.ubuntu.com',
+                    )
+                    .with_repos('collectd-5.6')
                 end
               end
             end
@@ -263,20 +263,20 @@ describe 'collectd', type: :class do
                 {
                   manage_repo: true,
                   ci_package_repo: '5.6',
-                  package_keyserver: 'pgp.mit.edu'
+                  package_keyserver: 'pgp.mit.edu',
                 }
               end
 
               it { is_expected.to contain_yumrepo('collectd-ci').with_gpgkey('https://pkg.ci.collectd.org/pubkey.asc').with_baseurl("https://pkg.ci.collectd.org/rpm/collectd-5.6/epel-#{facts[:operatingsystemmajrelease]}-x86_64") } if facts[:osfamily] == 'RedHat'
               if facts[:osfamily] == 'Debian'
                 it do
-                  is_expected.to contain_apt__source('collectd-ci').
-                    with_location('https://pkg.ci.collectd.org/deb/').
-                    with_key(
+                  is_expected.to contain_apt__source('collectd-ci')
+                    .with_location('https://pkg.ci.collectd.org/deb/')
+                    .with_key(
                       'id'     => 'F806817DC3F5EA417F9FA2963994D24FB8543576',
-                      'server' => 'pgp.mit.edu'
-                    ).
-                    with_repos('collectd-5.6')
+                      'server' => 'pgp.mit.edu',
+                    )
+                    .with_repos('collectd-5.6')
                 end
               end
             end

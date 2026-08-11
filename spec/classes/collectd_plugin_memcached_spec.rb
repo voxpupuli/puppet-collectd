@@ -12,7 +12,7 @@ describe 'collectd::plugin::memcached', type: :class do
       options = os_specific_options(facts)
 
       context ':ensure => present, default host, address, and port' do
-        it "Will create #{options[:plugin_conf_dir]}/memcached.conf" do
+        it "creates #{options[:plugin_conf_dir]}/memcached.conf" do
           content = <<EOS
   <Instance "default">
     Host "localhost"
@@ -23,7 +23,7 @@ EOS
           is_expected.to contain_file('memcached.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-memcached.conf",
-            content: %r{#{content}}
+            content: %r{#{content}},
           )
         end
       end
@@ -35,21 +35,21 @@ EOS
               'sessions1' => {
                 'host' => 'localhost',
                 'address' => '127.0.0.1',
-                'port' => '11211'
+                'port' => '11211',
               },
               'cache1' => {
                 'host' => 'localhost',
-                'port' => '11212'
+                'port' => '11212',
               },
               'cache3' => {
                 'address' => '127.0.0.1',
-                'port' => '11213'
-              }
-            }
+                'port' => '11213',
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/memcached.conf" do
+        it "creates #{options[:plugin_conf_dir]}/memcached.conf" do
           content = <<EOS
   <Instance "sessions1">
     Host "localhost"
@@ -68,7 +68,7 @@ EOS
           is_expected.to contain_file('memcached.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-memcached.conf",
-            content: %r{#{content}}
+            content: %r{#{content}},
           )
         end
       end
@@ -78,16 +78,16 @@ EOS
           {
             'instances' => {
               'sessions2' => {
-                'socket' => '/var/run/memcached.sessions.sock'
+                'socket' => '/var/run/memcached.sessions.sock',
               },
               'cache2' => {
-                'socket' => '/var/run/memcached.cache.sock'
-              }
-            }
+                'socket' => '/var/run/memcached.cache.sock',
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/memcached.conf" do
+        it "creates #{options[:plugin_conf_dir]}/memcached.conf" do
           content = <<EOS
   <Instance "sessions2">
     Socket "/var/run/memcached.sessions.sock"
@@ -99,7 +99,7 @@ EOS
           is_expected.to contain_file('memcached.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-memcached.conf",
-            content: %r{#{content}}
+            content: %r{#{content}},
           )
         end
       end
@@ -109,10 +109,10 @@ EOS
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/memcached.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/memcached.conf" do
           is_expected.to contain_file('memcached.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-memcached.conf"
+            path: "#{options[:plugin_conf_dir]}/10-memcached.conf",
           )
         end
       end

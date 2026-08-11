@@ -22,19 +22,19 @@ describe 'collectd::plugin::filter::target', type: :define do
             rule: 'MyRule',
             options: {
               'PluginInstance' => 'coretemp',
-              'TypeInstance'   => 'core3'
-            }
+              'TypeInstance'   => 'core3',
+            },
           )
         end
 
-        it 'Will ensure that plugin is loaded' do
+        it 'ensures that plugin is loaded' do
           is_expected.to contain_collectd__plugin('target_set').with(order: '02')
         end
 
-        it 'Will add target to rule' do
+        it 'adds target to rule' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,
-            target: concat_fragment_target
+            target: concat_fragment_target,
           )
         end
 
@@ -54,10 +54,10 @@ describe 'collectd::plugin::filter::target', type: :define do
           is_expected.not_to contain_collectd__plugin('target_return')
         end
 
-        it 'Will add target to chain' do
+        it 'adds target to chain' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,
-            target: concat_fragment_target
+            target: concat_fragment_target,
           )
         end
 

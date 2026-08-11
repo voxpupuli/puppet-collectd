@@ -18,7 +18,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         end
         let :params do
           {
-            protocol: 'udp'
+            protocol: 'udp',
           }
         end
 
@@ -34,7 +34,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         end
         let :params do
           {
-            protocol: 'udp'
+            protocol: 'udp',
           }
         end
 
@@ -45,7 +45,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         it 'uses Node definition' do
           is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_wg_udp_2003').with(
             content: %r{<Node "wg">},
-            target: "#{options[:plugin_conf_dir]}/write_graphite-config.conf"
+            target: "#{options[:plugin_conf_dir]}/write_graphite-config.conf",
           )
         end
       end
@@ -60,7 +60,7 @@ describe 'collectd::plugin::write_graphite::carbon', type: :define do
         it 'includes carbon configuration' do
           is_expected.to contain_concat__fragment('collectd_plugin_write_graphite_conf_graphite_default_tcp_2003').with(
             content: %r{<Carbon>},
-            target: "#{options[:plugin_conf_dir]}/write_graphite-config.conf"
+            target: "#{options[:plugin_conf_dir]}/write_graphite-config.conf",
           )
         end
 

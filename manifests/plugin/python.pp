@@ -31,8 +31,7 @@ class collectd::plugin::python (
     $ensure_real = 'absent'
   }
 
-  if $facts['os']['name'] == 'Amazon' or
-  ($facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'8') >= 0) {
+  if $facts['os']['name'] == 'Amazon' or ($facts['os']['family'] == 'RedHat') {
     if $_manage_package {
       package { 'collectd-python':
         ensure => $ensure_real,

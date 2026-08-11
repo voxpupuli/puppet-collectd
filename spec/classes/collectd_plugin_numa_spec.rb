@@ -24,7 +24,7 @@ describe 'collectd::plugin::numa', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('numa.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-numa.conf"
+            path: "#{options[:plugin_conf_dir]}/10-numa.conf",
           )
         end
       end

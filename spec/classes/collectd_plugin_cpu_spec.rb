@@ -16,31 +16,31 @@ describe 'collectd::plugin::cpu', type: :class do
             facts.merge(collectd_version: '5.4')
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-cpu.conf to load the plugin" do
+          it "creates #{options[:plugin_conf_dir]}/10-cpu.conf to load the plugin" do
             is_expected.to contain_file('cpu.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-cpu.conf",
-              content: %r{LoadPlugin cpu}
+              content: %r{LoadPlugin cpu},
             )
           end
 
-          it "Will not include ReportByState in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "does not include ReportByState in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportByState})
           end
 
-          it "Will not include ReportByCpu in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "does not include ReportByCpu in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportByCpu})
           end
 
-          it "Will not include ValuesPercentage in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include ValuesPercentage in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ValuesPercentage})
           end
 
-          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
 
-          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
         end
@@ -53,27 +53,27 @@ describe 'collectd::plugin::cpu', type: :class do
             {
               reportbystate: false,
               reportbycpu: false,
-              valuespercentage: true
+              valuespercentage: true,
             }
           end
 
-          it "Will include ReportByState in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "includes ReportByState in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportByState false})
           end
 
-          it "Will include ReportByCpu in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "includes ReportByCpu in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportByCpu false})
           end
 
-          it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "includes ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ValuesPercentage true})
           end
 
-          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
 
-          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
         end
@@ -84,19 +84,19 @@ describe 'collectd::plugin::cpu', type: :class do
           end
           let :params do
             {
-              reportnumcpu: true
+              reportnumcpu: true,
             }
           end
 
-          it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
+          it "includes ValuesPercentage in #{options[:plugin_conf_dir]}/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportNumCpu true})
           end
 
-          it "Will not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{ReportGuestState})
           end
 
-          it "Will not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "does not include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.not_to contain_file('cpu.load').with_content(%r{SubtractGuestState})
           end
         end
@@ -108,15 +108,15 @@ describe 'collectd::plugin::cpu', type: :class do
           let :params do
             {
               reportgueststate: true,
-              subtractgueststate: false
+              subtractgueststate: false,
             }
           end
 
-          it "Will include ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "includes ReportGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{ReportGuestState true})
           end
 
-          it "Will include SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
+          it "includes SubtractGuestState in #{options[:plugin_conf_dir]}d/10-cpu.conf" do
             is_expected.to contain_file('cpu.load').with_content(%r{SubtractGuestState false})
           end
         end
@@ -127,11 +127,11 @@ describe 'collectd::plugin::cpu', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will remove #{options[:plugin_conf_dir]}/10-cpu.conf" do
+        it "removes #{options[:plugin_conf_dir]}/10-cpu.conf" do
           is_expected.to contain_file('cpu.load').with(
             ensure: 'absent',
             path: "#{options[:plugin_conf_dir]}/10-cpu.conf",
-            content: %r{LoadPlugin cpu}
+            content: %r{LoadPlugin cpu},
           )
         end
       end

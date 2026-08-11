@@ -24,7 +24,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
             'verifyhost' => true,
             'cacert' => '/etc/foobar/ca.crt',
             'sslciphers' => 'TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256',
-            'timeout' => 120
+            'timeout' => 120,
           }
         end
 
@@ -48,7 +48,7 @@ describe 'collectd::plugin::apache::instance', type: :define do
           is_expected.to contain_class('collectd::plugin::apache')
           is_expected.to contain_file('apache-instance-site2.conf').with(
             content: content_instance_file,
-            path: "#{options[:plugin_conf_dir]}/25-apache-instance-site2.conf"
+            path: "#{options[:plugin_conf_dir]}/25-apache-instance-site2.conf",
           )
         end
       end

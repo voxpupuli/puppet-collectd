@@ -11,11 +11,11 @@ describe 'collectd::plugin::rrdtool', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default args' do
-        it 'Will create /etc/collectd.d/10-rrdtool.conf' do
+        it 'creates /etc/collectd.d/10-rrdtool.conf' do
           is_expected.to contain_file('rrdtool.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-rrdtool.conf",
-            content: %r{DataDir "/var/lib/collectd/rrd}
+            content: %r{DataDir "/var/lib/collectd/rrd},
           )
         end
 
@@ -31,10 +31,10 @@ describe 'collectd::plugin::rrdtool', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-rrdtool.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-rrdtool.conf" do
           is_expected.to contain_file('rrdtool.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-rrdtool.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rrdtool.conf",
           )
         end
       end

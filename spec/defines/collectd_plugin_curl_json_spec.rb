@@ -28,9 +28,9 @@ describe 'collectd::plugin::curl_json', type: :define do
           keys: {
             'message_stats/publish' => {
               'type'     => 'gauge',
-              'instance' => 'overview'
-            }
-          }
+              'instance' => 'overview',
+            },
+          },
         }
       end
       let(:sock_params) do
@@ -40,9 +40,9 @@ describe 'collectd::plugin::curl_json', type: :define do
           keys: {
             'message_stats/publish' => {
               'type'     => 'gauge',
-              'instance' => 'overview'
-            }
-          }
+              'instance' => 'overview',
+            },
+          },
         }
       end
       let(:filename) { 'rabbitmq_overview.load' }
@@ -52,7 +52,7 @@ describe 'collectd::plugin::curl_json', type: :define do
 
         it do
           is_expected.to contain_file(filename).with(
-            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf",
           )
         end
 
@@ -84,7 +84,7 @@ describe 'collectd::plugin::curl_json', type: :define do
 
         it do
           is_expected.to contain_file(filename).with(
-            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf",
           )
         end
 
@@ -117,7 +117,7 @@ describe 'collectd::plugin::curl_json', type: :define do
 
         it do
           is_expected.to contain_file(filename).with(
-            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf",
           )
         end
 
@@ -150,7 +150,7 @@ describe 'collectd::plugin::curl_json', type: :define do
 
         it do
           is_expected.to contain_file(filename).with(
-            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf",
           )
         end
 
@@ -183,7 +183,7 @@ describe 'collectd::plugin::curl_json', type: :define do
 
         it do
           is_expected.to contain_file(filename).with(
-            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf"
+            path: "#{options[:plugin_conf_dir]}/10-rabbitmq_overview.conf",
           )
         end
 
@@ -210,7 +210,7 @@ describe 'collectd::plugin::curl_json', type: :define do
         let(:post) do
           {
             'type' => 'read',
-            'mbean' => 'Catalina:name="http-nio-127.0.0.1-8080",type=GlobalRequestProcessor'
+            'mbean' => 'Catalina:name="http-nio-127.0.0.1-8080",type=GlobalRequestProcessor',
           }.to_json
         end
 

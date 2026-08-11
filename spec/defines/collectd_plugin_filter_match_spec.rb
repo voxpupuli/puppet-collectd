@@ -21,19 +21,19 @@ describe 'collectd::plugin::filter::match', type: :define do
             plugin: 'regex',
             options: {
               'Host'   => 'customer[0-9]+',
-              'Plugin' => '^foobar$'
-            }
+              'Plugin' => '^foobar$',
+            },
           )
         end
 
-        it 'Will ensure that plugin is loaded' do
+        it 'ensures that plugin is loaded' do
           is_expected.to contain_collectd__plugin('match_regex').with(order: '02')
         end
 
-        it 'Will add match to rule' do
+        it 'adds match to rule' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,
-            target: concat_fragment_target
+            target: concat_fragment_target,
           )
           is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{<Match "regex">})
           is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Host "customer\[0-9\]\+"})
@@ -46,14 +46,14 @@ describe 'collectd::plugin::filter::match', type: :define do
           default_params.merge(plugin: 'empty_counter')
         end
 
-        it 'Will ensure that plugin is loaded' do
+        it 'ensures that plugin is loaded' do
           is_expected.to contain_collectd__plugin('match_empty_counter').with(order: '02')
         end
 
-        it 'Will add match to rule' do
+        it 'adds match to rule' do
           is_expected.to contain_concat__fragment(concat_fragment_name).with(
             order: concat_fragment_order,
-            target: concat_fragment_target
+            target: concat_fragment_target,
           )
           is_expected.to contain_concat__fragment(concat_fragment_name).with(content: %r{Match "empty_counter"})
         end

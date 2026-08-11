@@ -32,8 +32,8 @@ class collectd::plugin::mcelog (
   collectd::plugin { 'mcelog':
     ensure  => $ensure,
     content => epp('collectd/plugin/mcelog.conf.epp', {
-        'mceloglogfile' => $mceloglogfile,
-        'memory'        => $memory
+      'mceloglogfile' => $mceloglogfile,
+      'memory'        => $memory
     }),
   }
 }

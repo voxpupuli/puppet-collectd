@@ -60,6 +60,7 @@
 * [`collectd::plugin::mcelog`](#collectd--plugin--mcelog): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
 * [`collectd::plugin::memcached`](#collectd--plugin--memcached): https://collectd.org/wiki/index.php/Plugin:memcached
 * [`collectd::plugin::memory`](#collectd--plugin--memory): https://collectd.org/wiki/index.php/Plugin:Memory
+* [`collectd::plugin::modbus`](#collectd--plugin--modbus): Install and configure the modbus plugin
 * [`collectd::plugin::mongodb`](#collectd--plugin--mongodb): Class: collectd::plugin::mongodb
 * [`collectd::plugin::mysql`](#collectd--plugin--mysql): MySQL plugin https://collectd.org/wiki/index.php/Plugin:MySQL
 * [`collectd::plugin::netlink`](#collectd--plugin--netlink): https://collectd.org/wiki/index.php/Plugin:Netlink
@@ -188,6 +189,9 @@
 * [`Collectd::LOGPARSER::Message`](#Collectd--LOGPARSER--Message): https://wiki.opnfv.org/display/fastpath/Logparser+plugin+HLD
 * [`Collectd::MCELOG::Memory`](#Collectd--MCELOG--Memory): https://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_mcelog
 * [`Collectd::Manifests::Init`](#Collectd--Manifests--Init)
+* [`Collectd::Modbus::Data`](#Collectd--Modbus--Data): represents a modbus data entry
+* [`Collectd::Modbus::Host`](#Collectd--Modbus--Host): represents a modbus host entry
+* [`Collectd::Modbus::Slave`](#Collectd--Modbus--Slave): Represents a modbus host's slave entry
 * [`Collectd::Network::SecurityLevel`](#Collectd--Network--SecurityLevel)
 * [`Collectd::Redis::Node`](#Collectd--Redis--Node)
 * [`Collectd::SNMP::AuthProtocol`](#Collectd--SNMP--AuthProtocol)
@@ -3340,66 +3344,66 @@ Default value:
 
 ```puppet
 [{
-      '/var/log/syslog' => {
-        'firstfullread' => false,
-        'message' => [
-          'pcie_errors' => {
-            'defaulttype' => 'pcie_error',
-            'defaultseverity' => 'warning',
-            'match' => [{
-                'aer error' => {
-                  'regex' => 'AER:.*error received',
-                  'submatchidx' => -1,
-                },
-                'incident time' => {
-                  'regex' => '(... .. ..:..:..) .* pcieport.*AER',
-                  'submatchidx' => 1,
-                  'ismandatory' => false,
-                },
-                'root port' => {
-                  'regex' => 'pcieport (.*): AER:',
-                  'submatchidx' => 1,
-                  'ismandatory' => true,
-                },
-                'device' => {
-                  'plugininstance' => true,
-                  'regex' => ' ([0-9a-fA-F:\\.]*): PCIe Bus Error',
-                  'submatchidx' => 1,
-                  'ismandatory' => false,
-                },
-                'severity_mandatory' => {
-                  'regex' => 'severity=',
-                  'submatchidx' => -1,
-                },
-                'nonfatal' => {
-                  'regex' => 'severity=.*\\([nN]on-[fF]atal',
-                  'typeinstance' => 'non_fatal',
-                  'ismandatory' => false,
-                },
-                'fatal' => {
-                  'regex' => 'severity=.*\\([fF]atal',
-                  'severity' => 'failure',
-                  'typeinstance' => 'fatal',
-                  'ismandatory' => false,
-                },
-                'corrected' => {
-                  'regex' => 'severity=Corrected',
-                  'typeinstance' => 'correctable',
-                  'ismandatory' => false,
-                },
-                'error type' => {
-                  'regex' => 'type=(.*),',
-                  'submatchidx' => 1,
-                  'ismandatory' => false,
-                },
-                'id' => {
-                  'regex' => ', id=(.*)',
-                  'submatchidx' => 1,
-                },
-            }],
-          },
-        ],
-      }
+    '/var/log/syslog' => {
+      'firstfullread' => false,
+      'message' => [
+        'pcie_errors' => {
+          'defaulttype' => 'pcie_error',
+          'defaultseverity' => 'warning',
+          'match' => [{
+            'aer error' => {
+              'regex' => 'AER:.*error received',
+              'submatchidx' => -1,
+            },
+            'incident time' => {
+              'regex' => '(... .. ..:..:..) .* pcieport.*AER',
+              'submatchidx' => 1,
+              'ismandatory' => false,
+            },
+            'root port' => {
+              'regex' => 'pcieport (.*): AER:',
+              'submatchidx' => 1,
+              'ismandatory' => true,
+            },
+            'device' => {
+              'plugininstance' => true,
+              'regex' => ' ([0-9a-fA-F:\\.]*): PCIe Bus Error',
+              'submatchidx' => 1,
+              'ismandatory' => false,
+            },
+            'severity_mandatory' => {
+              'regex' => 'severity=',
+              'submatchidx' => -1,
+            },
+            'nonfatal' => {
+              'regex' => 'severity=.*\\([nN]on-[fF]atal',
+              'typeinstance' => 'non_fatal',
+              'ismandatory' => false,
+            },
+            'fatal' => {
+              'regex' => 'severity=.*\\([fF]atal',
+              'severity' => 'failure',
+              'typeinstance' => 'fatal',
+              'ismandatory' => false,
+            },
+            'corrected' => {
+              'regex' => 'severity=Corrected',
+              'typeinstance' => 'correctable',
+              'ismandatory' => false,
+            },
+            'error type' => {
+              'regex' => 'type=(.*),',
+              'submatchidx' => 1,
+              'ismandatory' => false,
+            },
+            'id' => {
+              'regex' => ', id=(.*)',
+              'submatchidx' => 1,
+            },
+          }],
+        },
+      ],
+    }
   }]
 ```
 
@@ -3590,6 +3594,54 @@ Data type: `Any`
 
 
 Default value: `undef`
+
+### <a name="collectd--plugin--modbus"></a>`collectd::plugin::modbus`
+
+Install and configure the modbus plugin
+
+* **See also**
+  * https://collectd.org/wiki/index.php/Plugin:Modbus
+
+#### Parameters
+
+The following parameters are available in the `collectd::plugin::modbus` class:
+
+* [`ensure`](#-collectd--plugin--modbus--ensure)
+* [`manage_package`](#-collectd--plugin--modbus--manage_package)
+* [`data`](#-collectd--plugin--modbus--data)
+* [`hosts`](#-collectd--plugin--modbus--hosts)
+
+##### <a name="-collectd--plugin--modbus--ensure"></a>`ensure`
+
+Data type: `Enum['present', 'absent']`
+
+Enable/Disable modbus support
+
+Default value: `'present'`
+
+##### <a name="-collectd--plugin--modbus--manage_package"></a>`manage_package`
+
+Data type: `Optional[Boolean]`
+
+Install collectd-modbus package? Currently supports RedHat and Debian os family.
+
+Default value: `undef`
+
+##### <a name="-collectd--plugin--modbus--data"></a>`data`
+
+Data type: `Hash[String[1], Collectd::Modbus::Data]`
+
+modbus data entries
+
+Default value: `{}`
+
+##### <a name="-collectd--plugin--modbus--hosts"></a>`hosts`
+
+Data type: `Hash[String[1], Collectd::Modbus::Host]`
+
+modbus host entries
+
+Default value: `{}`
 
 ### <a name="collectd--plugin--mongodb"></a>`collectd::plugin::mongodb`
 
@@ -9215,12 +9267,18 @@ The collectd::plugin::postgresql::query class.
 
 The following parameters are available in the `collectd::plugin::postgresql::query` defined type:
 
-* [`ensure`](#-collectd--plugin--postgresql--query--ensure)
 * [`statement`](#-collectd--plugin--postgresql--query--statement)
+* [`ensure`](#-collectd--plugin--postgresql--query--ensure)
 * [`params`](#-collectd--plugin--postgresql--query--params)
 * [`results`](#-collectd--plugin--postgresql--query--results)
 * [`minversion`](#-collectd--plugin--postgresql--query--minversion)
 * [`maxversion`](#-collectd--plugin--postgresql--query--maxversion)
+
+##### <a name="-collectd--plugin--postgresql--query--statement"></a>`statement`
+
+Data type: `String`
+
+
 
 ##### <a name="-collectd--plugin--postgresql--query--ensure"></a>`ensure`
 
@@ -9229,14 +9287,6 @@ Data type: `Any`
 
 
 Default value: `'present'`
-
-##### <a name="-collectd--plugin--postgresql--query--statement"></a>`statement`
-
-Data type: `String`
-
-
-
-Default value: `undef`
 
 ##### <a name="-collectd--plugin--postgresql--query--params"></a>`params`
 
@@ -9278,9 +9328,15 @@ The collectd::plugin::postgresql::writer class.
 
 The following parameters are available in the `collectd::plugin::postgresql::writer` defined type:
 
-* [`ensure`](#-collectd--plugin--postgresql--writer--ensure)
 * [`statement`](#-collectd--plugin--postgresql--writer--statement)
+* [`ensure`](#-collectd--plugin--postgresql--writer--ensure)
 * [`storerates`](#-collectd--plugin--postgresql--writer--storerates)
+
+##### <a name="-collectd--plugin--postgresql--writer--statement"></a>`statement`
+
+Data type: `String`
+
+
 
 ##### <a name="-collectd--plugin--postgresql--writer--ensure"></a>`ensure`
 
@@ -9289,14 +9345,6 @@ Data type: `Any`
 
 
 Default value: `'present'`
-
-##### <a name="-collectd--plugin--postgresql--writer--statement"></a>`statement`
-
-Data type: `String`
-
-
-
-Default value: `undef`
 
 ##### <a name="-collectd--plugin--postgresql--writer--storerates"></a>`storerates`
 
@@ -10095,10 +10143,10 @@ Data type:
 
 ```puppet
 Array[Struct[{
-        min     => Variant[Numeric, Enum['U']],
-        max     => Variant[Numeric, Enum['U']],
-        ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
-        ds_name => String,
+    min     => Variant[Numeric, Enum['U']],
+    max     => Variant[Numeric, Enum['U']],
+    ds_type => Enum['ABSOLUTE', 'COUNTER', 'DERIVE', 'GAUGE'],
+    ds_name => String,
   }]]
 ```
 
@@ -10321,6 +10369,65 @@ The Collectd::Manifests::Init data type.
 
 Alias of `Pattern[/(^5.4|^5.5|^5.6|^5.7|^5.8|^master)/]`
 
+### <a name="Collectd--Modbus--Data"></a>`Collectd::Modbus::Data`
+
+https://github.com/collectd/collectd/blob/main/src/modbus.c
+
+Alias of
+
+```puppet
+Struct[{
+  Optional['instance']      => String,
+  NotUndef['type']          => String[1],
+  NotUndef['register_base'] => Integer[0],
+  NotUndef['register_type'] => Enum[
+    'Int16',
+    'Int32',
+    'Int32LE',
+    'Uint16',
+    'Uint32',
+    'Uint32LE',
+    'Float',
+    'FloatLE',
+    'Uint64',
+    'Int64',
+    'Double',
+  ],
+  Optional['register_cmd']  => Enum['ReadHolding', 'ReadInput'],
+}]
+```
+
+### <a name="Collectd--Modbus--Host"></a>`Collectd::Modbus::Host`
+
+represents a modbus host entry
+
+Alias of
+
+```puppet
+Struct[{
+  NotUndef['address'] => String[1],
+  NotUndef['port'] => Stdlib::Port,
+  NotUndef['slaves'] => Hash[Integer, Collectd::Modbus::Slave],
+  Optional['interval'] => Integer[0]
+}]
+```
+
+### <a name="Collectd--Modbus--Slave"></a>`Collectd::Modbus::Slave`
+
+Represents a modbus host's slave entry
+
+Alias of
+
+```puppet
+Struct[{
+  NotUndef['instance'] => String[1],
+  NotUndef['collect'] => Variant[
+    String[1],
+    Array[String[1], 1]
+  ]
+}]
+```
+
 ### <a name="Collectd--Network--SecurityLevel"></a>`Collectd::Network::SecurityLevel`
 
 The Collectd::Network::SecurityLevel data type.
@@ -10331,7 +10438,7 @@ Alias of `Enum['Encrypt', 'Sign', 'None']`
 
 The Collectd::Redis::Node data type.
 
-Alias of `Struct[{Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]]}]`
+Alias of `Struct[{ Optional['host'] => String[1], Optional['port'] => Variant[Stdlib::Port, String[1]], Optional['password'] => String[1], Optional['timeout'] => Integer[0], Optional['queries'] => Hash[String[1], Hash[String[1], String[1]]] }]`
 
 ### <a name="Collectd--SNMP--AuthProtocol"></a>`Collectd::SNMP::AuthProtocol`
 
@@ -10343,7 +10450,7 @@ Alias of `Enum['MD5', 'SHA']`
 
 The Collectd::SNMP::Data data type.
 
-Alias of `Struct[{Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean}]`
+Alias of `Struct[{ Optional['instance'] => String, NotUndef['type'] => String[1], NotUndef['values'] => Variant[String[1], Array[String[1], 1]], Optional['instance_prefix'] => String[1], Optional['scale'] => Numeric, Optional['shift'] => Numeric, Optional['table'] => Boolean, Optional['ignore'] => Variant[String[1], Array[String[1], 1]], Optional['invert_match'] => Boolean }]`
 
 ### <a name="Collectd--SNMP--Host"></a>`Collectd::SNMP::Host`
 
@@ -10355,13 +10462,13 @@ Alias of `Variant[Collectd::SNMP::Host::V2, Collectd::SNMP::Host::V3]`
 
 The Collectd::SNMP::Host::V2 data type.
 
-Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
+Alias of `Struct[{ NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V2, NotUndef['community'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0] }]`
 
 ### <a name="Collectd--SNMP--Host--V3"></a>`Collectd::SNMP::Host::V3`
 
 The Collectd::SNMP::Host::V3 data type.
 
-Alias of `Struct[{NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0]}]`
+Alias of `Struct[{ NotUndef['address'] => String[1], NotUndef['version'] => Collectd::SNMP::Version::V3, NotUndef['username'] => String[1], Optional['context'] => String[1], NotUndef['security_level'] => Collectd::SNMP::SecurityLevel, Optional['auth_protocol'] => Collectd::SNMP::AuthProtocol, Optional['auth_passphrase'] => String[1], Optional['privacy_protocol'] => Collectd::SNMP::PrivacyProtocol, Optional['privacy_passphrase'] => String[1], NotUndef['collect'] => Variant[String[1], Array[String[1], 1]], Optional['interval'] => Integer[0] }]`
 
 ### <a name="Collectd--SNMP--PrivacyProtocol"></a>`Collectd::SNMP::PrivacyProtocol`
 

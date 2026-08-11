@@ -25,12 +25,12 @@ describe 'collectd::plugin::dpdk_telemetry', type: :class do
 
         EOS
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dpdk_telemetry.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf",
-            content: content
+            content: content,
           )
         end
       end
@@ -40,11 +40,11 @@ describe 'collectd::plugin::dpdk_telemetry', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dpdk_telemetry.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf"
+            path: "#{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf",
           )
         end
       end
@@ -54,12 +54,12 @@ describe 'collectd::plugin::dpdk_telemetry', type: :class do
           { client_socket_path: '/test/path/.client' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dpdk_telemetry.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf",
-            content: %r{ClientSocketPath "/test/path/.client"}m
+            content: %r{ClientSocketPath "/test/path/.client"}m,
           )
         end
       end
@@ -69,12 +69,12 @@ describe 'collectd::plugin::dpdk_telemetry', type: :class do
           { dpdk_socket_path: '/test/path/telemetry' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dpdk_telemetry.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dpdk_telemetry.conf",
-            content: %r{DpdkSocketPath "/test/path/telemetry"}m
+            content: %r{DpdkSocketPath "/test/path/telemetry"}m,
           )
         end
       end

@@ -11,11 +11,11 @@ describe 'collectd::plugin::filter', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present and default parameters' do
-        it "Will create #{options[:plugin_conf_dir]}/01-filter.conf to set the default Chains" do
+        it "creates #{options[:plugin_conf_dir]}/01-filter.conf to set the default Chains" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/01-filter.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/01-filter.conf",
-            content: %r{PreCacheChain "PreChain"\nPostCacheChain "PostChain"}
+            content: %r{PreCacheChain "PreChain"\nPostCacheChain "PostChain"},
           )
         end
       end
@@ -25,15 +25,15 @@ describe 'collectd::plugin::filter', type: :class do
           {
             ensure: 'present',
             precachechain: 'MyPreChain',
-            postcachechain: 'MyPostChain'
+            postcachechain: 'MyPostChain',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/01-filter.conf to set the default Chains" do
+        it "creates #{options[:plugin_conf_dir]}/01-filter.conf to set the default Chains" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/01-filter.conf").with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/01-filter.conf",
-            content: %r{PreCacheChain "MyPreChain"\nPostCacheChain "MyPostChain"}
+            content: %r{PreCacheChain "MyPreChain"\nPostCacheChain "MyPostChain"},
           )
         end
       end
@@ -43,14 +43,14 @@ describe 'collectd::plugin::filter', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will remove #{options[:plugin_conf_dir]}/01-filter.conf" do
+        it "removes #{options[:plugin_conf_dir]}/01-filter.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/01-filter.conf").with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/01-filter.conf"
+            path: "#{options[:plugin_conf_dir]}/01-filter.conf",
           )
         end
 
-        it 'Will remove loads of match plugins for filter' do
+        it 'removes loads of match plugins for filter' do
           is_expected.to contain_file('match_regex.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-match_regex.conf")
           is_expected.to contain_file('match_timediff.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-match_timediff.conf")
           is_expected.to contain_file('match_value.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-match_value.conf")
@@ -58,7 +58,7 @@ describe 'collectd::plugin::filter', type: :class do
           is_expected.to contain_file('match_hashed.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-match_hashed.conf")
         end
 
-        it 'Will remove loads of target plugins for filter' do
+        it 'removes loads of target plugins for filter' do
           is_expected.to contain_file('target_notification.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-target_notification.conf")
           is_expected.to contain_file('target_replace.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-target_replace.conf")
           is_expected.to contain_file('target_set.load').with(ensure: 'absent', path: "#{options[:plugin_conf_dir]}/02-target_set.conf")
