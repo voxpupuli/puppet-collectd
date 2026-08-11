@@ -15,7 +15,7 @@ describe 'collectd::plugin::write_kafka', type: :class do
           { kafka_host: 'myhost', kafka_port: 9092, topics: { 'my-topic' => { 'format' => 'JSON' } }, properties: { 'my-property' => 'my-value' }, meta: { 'my-meta' => 'my-value' } }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-write_kafka.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-write_kafka.conf" do
           is_expected.to contain_file('write_kafka.load').with(ensure: 'present')
           is_expected.to contain_file('write_kafka.load').with(path: "#{options[:plugin_conf_dir]}/10-write_kafka.conf")
           is_expected.to contain_file('write_kafka.load').with(content: %r{Property "metadata.broker.list" "myhost:9092"})
@@ -31,10 +31,10 @@ describe 'collectd::plugin::write_kafka', type: :class do
           { kafka_host: ['myhost'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-write_kafka.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-write_kafka.conf" do
           is_expected.to contain_file('write_kafka.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-write_kafka.conf"
+            path: "#{options[:plugin_conf_dir]}/10-write_kafka.conf",
           )
         end
       end

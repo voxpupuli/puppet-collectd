@@ -21,11 +21,11 @@ describe 'collectd::plugin::ping', type: :class do
 
         it { is_expected.to compile.with_all_deps }
 
-        it "Will create #{options[:plugin_conf_dir]}/10-ping.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ping.conf" do
           is_expected.to contain_file('ping.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-ping.conf",
-            content: %r{Host "google.com"}
+            content: %r{Host "google.com"},
           )
         end
       end
@@ -41,7 +41,7 @@ describe 'collectd::plugin::ping', type: :class do
             source_address: '123.123.123.123',
             device: 'eth0',
             max_missed: 12,
-            size: 5
+            size: 5,
           }
         end
 
@@ -65,11 +65,11 @@ describe 'collectd::plugin::ping', type: :class do
 
         EOS
 
-        it "Will create #{options[:plugin_conf_dir]}/10-ping.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ping.conf" do
           is_expected.to contain_file('ping.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-ping.conf",
-            content: content
+            content: content,
           )
         end
       end
@@ -79,14 +79,14 @@ describe 'collectd::plugin::ping', type: :class do
           { hosts: ['google.com', 'puppetlabs.com'] }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-ping.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-ping.conf" do
           is_expected.to contain_file('ping.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-ping.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ping.conf",
           ).with_content(
-            %r{Host "google.com"}
+            %r{Host "google.com"},
           ).with_content(
-            %r{Host "puppetlabs.com"}
+            %r{Host "puppetlabs.com"},
           )
         end
       end
@@ -96,10 +96,10 @@ describe 'collectd::plugin::ping', type: :class do
           { hosts: ['google.com'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-ping.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-ping.conf" do
           is_expected.to contain_file('ping.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-ping.conf"
+            path: "#{options[:plugin_conf_dir]}/10-ping.conf",
           )
         end
       end
@@ -109,7 +109,7 @@ describe 'collectd::plugin::ping', type: :class do
           { hosts: 'google.com' }
         end
 
-        it 'Will raise an error about :interfaces being a String' do
+        it 'raises an error about :interfaces being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end

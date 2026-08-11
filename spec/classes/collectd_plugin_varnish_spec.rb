@@ -68,9 +68,9 @@ describe 'collectd::plugin::varnish', type: :class do
               'instances' => {
                 'warble' => {
                   'BATMAN' => true,
-                  'Robin' => false
-                }
-              }
+                  'Robin' => false,
+                },
+              },
             }
           end
 

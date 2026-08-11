@@ -10,7 +10,7 @@ describe 'collectd::type', type: :define do
       concat_basedir: '/dne',
       path: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       collectd_version: '4.8.0',
-      python_dir: '/usr/local/lib/python2.7/dist-packages'
+      python_dir: '/usr/local/lib/python2.7/dist-packages',
     }
   end
 
@@ -22,7 +22,7 @@ describe 'collectd::type', type: :define do
         ds_type: 'ABSOLUTE',
         min: 4,
         max: 5,
-        ds_name: 'some_name'
+        ds_name: 'some_name',
       }
     end
 
@@ -42,15 +42,15 @@ describe 'collectd::type', type: :define do
             'ds_type' => 'ABSOLUTE',
             'min' => 4,
             'max' => 5,
-            'ds_name' => 'some_name'
+            'ds_name' => 'some_name',
           },
           {
             'ds_type' => 'COUNTER',
             'min' => 7,
             'max' => 'U',
-            'ds_name' => 'other_name'
-          }
-        ]
+            'ds_name' => 'other_name',
+          },
+        ],
       }
     end
 

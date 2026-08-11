@@ -14,7 +14,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
         {
           type: 'bar',
           instance: 'baz',
-          values: 'bat'
+          values: 'bat',
         }
       end
 
@@ -26,7 +26,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
         it do
           is_expected.to contain_file(filename).with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/15-snmp-data-foo.conf"
+            path: "#{options[:plugin_conf_dir]}/15-snmp-data-foo.conf",
           )
         end
 
@@ -72,7 +72,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'table is true' do
         let(:params) do
           {
-            table: true
+            table: true,
           }.merge(required_params)
         end
 
@@ -82,7 +82,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'table is false' do
         let(:params) do
           {
-            table: false
+            table: false,
           }.merge(required_params)
         end
 
@@ -92,7 +92,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'InvertMatch is true' do
         let(:params) do
           {
-            invert_match: true
+            invert_match: true,
           }.merge(required_params)
         end
 
@@ -102,7 +102,7 @@ describe 'collectd::plugin::snmp::data', type: :define do
       context 'InvertMatch is false' do
         let(:params) do
           {
-            invert_match: false
+            invert_match: false,
           }.merge(required_params)
         end
 

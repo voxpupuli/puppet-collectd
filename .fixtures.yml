@@ -1,7 +1,8 @@
+---
 fixtures:
   repositories:
     apt: https://github.com/puppetlabs/puppetlabs-apt.git
-    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
     concat: https://github.com/puppetlabs/puppetlabs-concat.git
     epel: https://github.com/voxpupuli/puppet-epel.git
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
     yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git

@@ -14,13 +14,13 @@ describe 'collectd::plugin::filecount::directory', type: :define do
         let(:title) { 'test' }
         let :params do
           {
-            path: '/var/tmp/test'
+            path: '/var/tmp/test',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/15-filecount-test.conf").with_content(
-            "<Plugin \"filecount\">\n  <Directory \"/var/tmp/test\">\n    Instance \"test\"\n  </Directory>\n</Plugin>\n"
+            "<Plugin \"filecount\">\n  <Directory \"/var/tmp/test\">\n    Instance \"test\"\n  </Directory>\n</Plugin>\n",
           )
         end
       end
@@ -33,13 +33,13 @@ describe 'collectd::plugin::filecount::directory', type: :define do
             pattern: '*.conf',
             mtime: '-5m',
             recursive: true,
-            includehidden: false
+            includehidden: false,
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/15-filecount-test.conf").with_content(
-            "<Plugin \"filecount\">\n  <Directory \"/path/to/dir\">\n    Instance \"test\"\n    Name \"*.conf\"\n    MTime \"-5m\"\n    Recursive true\n    IncludeHidden false\n  </Directory>\n</Plugin>\n"
+            "<Plugin \"filecount\">\n  <Directory \"/path/to/dir\">\n    Instance \"test\"\n    Name \"*.conf\"\n    MTime \"-5m\"\n    Recursive true\n    IncludeHidden false\n  </Directory>\n</Plugin>\n",
           )
         end
       end
@@ -50,13 +50,13 @@ describe 'collectd::plugin::filecount::directory', type: :define do
           {
             path: '/var/tmp/test',
             recursive: false,
-            includehidden: false
+            includehidden: false,
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/15-filecount-test.conf").with_content(
-            "<Plugin \"filecount\">\n  <Directory \"/var/tmp/test\">\n    Instance \"test\"\n    Recursive false\n    IncludeHidden false\n  </Directory>\n</Plugin>\n"
+            "<Plugin \"filecount\">\n  <Directory \"/var/tmp/test\">\n    Instance \"test\"\n    Recursive false\n    IncludeHidden false\n  </Directory>\n</Plugin>\n",
           )
         end
       end
@@ -66,14 +66,14 @@ describe 'collectd::plugin::filecount::directory', type: :define do
         let :params do
           {
             ensure: 'absent',
-            path: '/var/tmp/test'
+            path: '/var/tmp/test',
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
+        it "creates #{options[:plugin_conf_dir]}/15-filecount-test.conf" do
           is_expected.to contain_file("#{options[:plugin_conf_dir]}/15-filecount-test.conf").with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/15-filecount-test.conf"
+            path: "#{options[:plugin_conf_dir]}/15-filecount-test.conf",
           )
         end
       end

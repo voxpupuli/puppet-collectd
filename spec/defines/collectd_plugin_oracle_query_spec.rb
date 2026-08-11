@@ -15,7 +15,7 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
       let(:default_params) do
         {
           statement: "select (select count(*) as count from v$session) ACTUAL_SESSIONS, (select value from v$parameter where name='sessions') MAX_SESSIONS FROM dual",
-          results: []
+          results: [],
         }
       end
 
@@ -38,9 +38,9 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
               {
                 'type' => 'sessions',
                 'instance_prefix' => 'sessions',
-                'values_from' => 'ACTUAL_SESSIONS'
-              }
-            ]
+                'values_from' => 'ACTUAL_SESSIONS',
+              },
+            ],
           )
         end
 
@@ -54,9 +54,9 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
               {
                 'type' => 'sessions',
                 'instance_prefix' => 'sessions',
-                'values_from' => %w[ACTUAL_SESSIONS MAX_SESSIONS]
-              }
-            ]
+                'values_from' => %w[ACTUAL_SESSIONS MAX_SESSIONS],
+              },
+            ],
           )
         end
 
@@ -70,9 +70,9 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
               {
                 'type' => 'sessions',
                 'instances_from' => 'STAT_NAME',
-                'values_from' => 'VALUE'
-              }
-            ]
+                'values_from' => 'VALUE',
+              },
+            ],
           )
         end
 
@@ -86,9 +86,9 @@ describe 'collectd::plugin::oracle::query', 'type' => :define do
               {
                 'type' => 'sessions',
                 'instances_from' => %w[STAT_NAME STAT_VAR],
-                'values_from' => %w[VALUE VALUE2]
-              }
-            ]
+                'values_from' => %w[VALUE VALUE2],
+              },
+            ],
           )
         end
 

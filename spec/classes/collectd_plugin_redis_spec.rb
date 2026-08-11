@@ -11,10 +11,10 @@ describe 'collectd::plugin::redis', type: :class do
 
       options = os_specific_options(facts)
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-redis.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-redis.conf" do
           is_expected.to contain_file('redis.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-redis.conf"
+            path: "#{options[:plugin_conf_dir]}/10-redis.conf",
           )
         end
       end
@@ -27,16 +27,16 @@ describe 'collectd::plugin::redis', type: :class do
                 'host' => 'localhost',
                 'port' => '6379',
                 'password' => 'testpassword',
-                'timeout' => 2000
-              }
-            }
+                'timeout' => 2000,
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-redis.conf with password" do
+        it "creates #{options[:plugin_conf_dir]}/10-redis.conf with password" do
           is_expected.to contain_file('redis.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-redis.conf"
+            path: "#{options[:plugin_conf_dir]}/10-redis.conf",
           )
         end
       end
@@ -46,10 +46,10 @@ describe 'collectd::plugin::redis', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create /etc/collectd.d/10-redis.conf' do
+        it 'does not create /etc/collectd.d/10-redis.conf' do
           is_expected.to contain_file('redis.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-redis.conf"
+            path: "#{options[:plugin_conf_dir]}/10-redis.conf",
           )
         end
       end

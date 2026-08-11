@@ -20,6 +20,7 @@
 /.github/
 /.librarian/
 /Puppetfile.lock
+/Puppetfile
 *.iml
 /.editorconfig
 /.fixtures.yml
@@ -35,3 +36,4 @@
 /.yardoc/
 /.yardopts
 /Dockerfile
+/HISTORY.md

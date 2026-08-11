@@ -18,15 +18,15 @@ describe 'collectd::plugin::fhcount', type: :class do
           let :params do
             {
               valuesabsolute: false,
-              valuespercentage: true
+              valuespercentage: true,
             }
           end
 
-          it "Will include ValuesAbsolute in #{options[:plugin_conf_dir]}/10-fhcount.conf" do
+          it "includes ValuesAbsolute in #{options[:plugin_conf_dir]}/10-fhcount.conf" do
             is_expected.to contain_file('fhcount.load').with_content(%r{ValuesAbsolute false})
           end
 
-          it "Will include ValuesPercentage in #{options[:plugin_conf_dir]}/10-fhcount.conf" do
+          it "includes ValuesPercentage in #{options[:plugin_conf_dir]}/10-fhcount.conf" do
             is_expected.to contain_file('fhcount.load').with_content(%r{ValuesPercentage true})
           end
         end
@@ -37,11 +37,11 @@ describe 'collectd::plugin::fhcount', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will remove #{options[:plugin_conf_dir]}/10-fhcount.conf" do
+        it "removes #{options[:plugin_conf_dir]}/10-fhcount.conf" do
           is_expected.to contain_file('fhcount.load').with(
             ensure: 'absent',
             path: "#{options[:plugin_conf_dir]}/10-fhcount.conf",
-            content: %r{LoadPlugin fhcount}
+            content: %r{LoadPlugin fhcount},
           )
         end
       end

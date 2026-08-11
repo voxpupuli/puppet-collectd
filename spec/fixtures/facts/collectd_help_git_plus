@@ -1,0 +1,23 @@
+Usage: collectd [OPTIONS]
+
+Available options:
+  General:
+    -C <file>       Configuration file.
+                    Default: /etc/collectd.conf
+    -t              Test config and exit.
+    -T              Test plugin read and exit.
+    -P <file>       PID-file.
+                    Default: /var/run/collectd.pid
+    -f              Don't fork to the background.
+    -B              Don't create the BaseDir
+    -h              Display help (this message)
+
+Builtin defaults:
+  Config file       /etc/collectd.conf
+  PID file          /var/run/collectd.pid
+  Plugin directory  /usr/lib64/collectd
+  Data directory    /var/lib/collectd
+
+collectd 5.12.0.167.g7c5ce9f+, http://collectd.org/
+by Florian octo Forster <octo@collectd.org>
+for contributions see `AUTHORS'

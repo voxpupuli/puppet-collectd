@@ -18,15 +18,15 @@ describe 'collectd::plugin::netlink', type: :class do
             qdiscs: ['"eth0" "pfifo_fast-1:0"', '"ppp0"'],
             classes: ['"ppp0" "htb-1:10"'],
             filters: ['"ppp0" "u32-1:0"'],
-            ignoreselected: false
+            ignoreselected: false,
 
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-netlink.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-netlink.conf" do
           is_expected.to contain_file('netlink.load').with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/10-netlink.conf"
+            path: "#{options[:plugin_conf_dir]}/10-netlink.conf",
           )
         end
 
@@ -40,7 +40,7 @@ describe 'collectd::plugin::netlink', type: :class do
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  Filter "ppp0" "u32-1:0"$}) }
         it { is_expected.to contain_file('netlink.load').with_content(%r{^  IgnoreSelected false$}) }
 
-        it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') } if facts[:os]['family'] == 'RedHat'
+        it { is_expected.to contain_package('collectd-netlink').with(ensure: 'present') } if facts['os']['family'] == 'RedHat'
       end
 
       context ':ensure => absent' do
@@ -48,17 +48,17 @@ describe 'collectd::plugin::netlink', type: :class do
           { interfaces: ['eth0'], ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-netlink.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-netlink.conf" do
           is_expected.to contain_file('netlink.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-netlink.conf"
+            path: "#{options[:plugin_conf_dir]}/10-netlink.conf",
           )
         end
 
-        if facts[:os]['family'] == 'RedHat'
+        if facts['os']['family'] == 'RedHat'
           it do
             is_expected.to contain_package('collectd-netlink').with(
-              ensure: 'absent'
+              ensure: 'absent',
             )
           end
         end
@@ -69,7 +69,7 @@ describe 'collectd::plugin::netlink', type: :class do
           { interfaces: 'eth0' }
         end
 
-        it 'Will raise an error about :interfaces being a String' do
+        it 'raises an error about :interfaces being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end

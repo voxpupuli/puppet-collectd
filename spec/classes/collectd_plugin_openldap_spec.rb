@@ -15,7 +15,7 @@ describe 'collectd::plugin::openldap', type: :class do
       options = os_specific_options(facts)
 
       context ':ensure => present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-openldap.conf" do
           content = <<~EOS
             <Plugin "openldap">
               <Instance "localhost">
@@ -32,18 +32,18 @@ describe 'collectd::plugin::openldap', type: :class do
           {
             instances: {
               'ldap1' => {
-                'url' => 'ldap://ldap1.example.com'
+                'url' => 'ldap://ldap1.example.com',
               },
               'ldap2' => {
                 'url' => 'ldap://ldap2.example.com',
                 'binddn' => 'cn=Monitor',
-                'password' => 'password'
-              }
-            }
+                'password' => 'password',
+              },
+            },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf with two :instances params" do
+        it "creates #{options[:plugin_conf_dir]}/10-openldap.conf with two :instances params" do
           content = <<~EOS
             <Plugin "openldap">
               <Instance "ldap1">
@@ -65,11 +65,11 @@ describe 'collectd::plugin::openldap', type: :class do
           { interval: 15 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-openldap.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-openldap.conf" do
           is_expected.to contain_file('openldap.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-openldap.conf",
-            content: %r{^  Interval 15}
+            content: %r{^  Interval 15},
           )
         end
       end
@@ -79,10 +79,10 @@ describe 'collectd::plugin::openldap', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-openldap.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-openldap.conf" do
           is_expected.to contain_file('openldap.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-openldap.conf"
+            path: "#{options[:plugin_conf_dir]}/10-openldap.conf",
           )
         end
       end

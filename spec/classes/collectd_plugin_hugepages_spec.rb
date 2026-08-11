@@ -31,7 +31,7 @@ describe 'collectd::plugin::hugepages', type: :class do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('hugepages.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-hugepages.conf"
+            path: "#{options[:plugin_conf_dir]}/10-hugepages.conf",
           )
         end
       end
@@ -44,7 +44,7 @@ describe 'collectd::plugin::hugepages', type: :class do
             'report_root_hp'     => false,
             'values_pages'       => false,
             'values_bytes'       => true,
-            'values_percentage'  => true
+            'values_percentage'  => true,
           }
         end
 
@@ -69,7 +69,7 @@ describe 'collectd::plugin::hugepages', type: :class do
           is_expected.to contain_class('collectd')
           is_expected.to contain_file('hugepages.load').with(
             content: content,
-            path: "#{options[:plugin_conf_dir]}/10-hugepages.conf"
+            path: "#{options[:plugin_conf_dir]}/10-hugepages.conf",
           )
         end
       end

@@ -20,7 +20,7 @@ the default `collectd.conf` file shipped with collectd. This can
 be done by simply including the class:
 
 ```puppet
-include ::collectd
+include collectd
 ```
 
 Collectd is most useful when configured with customized plugins.
@@ -30,7 +30,7 @@ configurations. Configure a node with the following class
 declaration:
 
 ```puppet
-class { '::collectd':
+class { 'collectd':
   purge           => true,
   recurse         => true,
   purge_config    => true,
@@ -153,6 +153,7 @@ documentation for each plugin for configurable attributes.
 * `memcached`(see [collectd::plugin::memcached](#class-collectdpluginmemcached)
   below )
 * `memory`(see [collectd::plugin::memory](#class-collectdpluginmemory) below )
+* `modbus` (see [collectd::plugin::modbus](#class-collectdpluginmodbus) below)
 * `mongodb`(see [collectd::plugin::mongodb](#class-collectdpluginmongodb) below )
 * `mysql` (see [collectd::plugin::mysql](#class-collectdpluginmysql) below)
 * `netlink` (see [collectd::plugin::netlink](#class-collectdpluginnetlink) below)
@@ -1073,6 +1074,35 @@ class { 'collectd::plugin::memory':
 }
 ```
 
+#### Class: `collectd::plugin::modbus`
+
+```puppet
+class {'collectd::plugin::modbus':
+  ensure => 'present',
+  data   =>  {
+    current_phase_a => {
+      'type'          => 'gauge',
+      'instance'      => 'current phase A',
+      'register_base' => 1234,
+      'register_type' => 'Float',
+    }
+  },
+  hosts  => {
+    meter123 => {
+      'address'   => '127.0.0.1',
+      'port'      => 502,
+      'interval'  => 10,
+      'slaves'    => {
+        255 => {
+          'instance' => 'power meter 255',
+          'collect'  => ['current_phase_a'],
+        }
+      },
+    }
+  },
+}
+```
+
 #### Class: `collectd::plugin::mysql`
 
 ```puppet
@@ -1635,7 +1665,7 @@ collectd::config::typesdb:
 ```
 
 ```puppet
-class { '::collectd::plugin::rabbitmq':
+class { 'collectd::plugin::rabbitmq':
   config           => {
     'Username' => 'admin',
     'Password' => $admin_pass,
@@ -1683,7 +1713,7 @@ class {'collectd::plugin::sensors':
 #### Class: `collectd::plugin::smart`
 
 ```puppet
-class { '::collectd::plugin::smart':
+class { 'collectd::plugin::smart':
   disks          => ['/^dm/'],
   ignoreselected => true,
 }
@@ -1848,7 +1878,7 @@ collectd::plugin::tail::file { 'exim-log':
 #### Class: `collectd::plugin::tail_csv`
 
 ```puppet
-class { '::collectd::plugin::tail_csv':
+class { 'collectd::plugin::tail_csv':
   metrics => {
     'snort-dropped' => {
       'type'        => 'gauge',
@@ -1871,7 +1901,7 @@ class { '::collectd::plugin::tail_csv':
 #### Class: `collectd::plugin::thermal`
 
 ```puppet
-class { '::collectd::plugin::thermal':
+class { 'collectd::plugin::thermal':
   devices        => ['foo0'],
   ignoreselected => false,
 }

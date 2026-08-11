@@ -12,18 +12,18 @@ describe 'collectd::plugin::oracle', type: :class do
       let(:config_filename) { "#{options[:plugin_conf_dir]}/15-oracle.conf" }
 
       context ':ensure => present, default host and port' do
-        it "Will create #{options[:plugin_conf_dir]}/10-oracle.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-oracle.conf" do
           is_expected.to contain_file('oracle.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-oracle.conf",
-            content: %r{LoadPlugin oracle}
+            content: %r{LoadPlugin oracle},
           )
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/15-oracle.conf" do
+        it "creates #{options[:plugin_conf_dir]}/15-oracle.conf" do
           is_expected.to contain_concat(config_filename).with(
             ensure: 'present',
-            path: config_filename
+            path: config_filename,
           )
         end
 
@@ -36,17 +36,17 @@ describe 'collectd::plugin::oracle', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-oracle.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-oracle.conf" do
           is_expected.to contain_file('oracle.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-oracle.conf"
+            path: "#{options[:plugin_conf_dir]}/10-oracle.conf",
           )
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/15-oracle.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/15-oracle.conf" do
           is_expected.to contain_concat(config_filename).with(
             ensure: 'absent',
-            path: config_filename
+            path: config_filename,
           )
         end
       end

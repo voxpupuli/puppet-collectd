@@ -17,32 +17,32 @@ describe 'collectd::plugin::exec', type: :class do
               {
                 'user' => 'nobody',
                 'group' => 'users',
-                'exec' => ['/bin/echo', 'hello world']
-              } }
+                'exec' => ['/bin/echo', 'hello world'],
+              } },
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/exec-config.conf" do
+        it "creates #{options[:plugin_conf_dir]}/exec-config.conf" do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_header').with(
             content: %r{<Plugin exec>},
             target: "#{options[:plugin_conf_dir]}/exec-config.conf",
-            order: '00'
+            order: '00',
           )
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/exec-config" do
+        it "creates #{options[:plugin_conf_dir]}/exec-config" do
           is_expected.to contain_concat("#{options[:plugin_conf_dir]}/exec-config.conf")
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_footer').with(
             content: %r{</Plugin>},
             target: "#{options[:plugin_conf_dir]}/exec-config.conf",
-            order: '99'
+            order: '99',
           )
         end
 
         it 'includes exec statement' do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_hello').with(
             content: %r{Exec "nobody:users" "/bin/echo" "hello world"},
-            target: "#{options[:plugin_conf_dir]}/exec-config.conf"
+            target: "#{options[:plugin_conf_dir]}/exec-config.conf",
           )
         end
       end
@@ -55,29 +55,29 @@ describe 'collectd::plugin::exec', type: :class do
                 {
                   'user' => 'nobody',
                   'group' => 'users',
-                  'exec' => ['/bin/echo', 'hello world']
+                  'exec' => ['/bin/echo', 'hello world'],
                 },
               'my_date' =>
                 {
                   'user' => 'nobody',
                   'group' => 'users',
-                  'exec' => ['/bin/date']
-                }
-            }
+                  'exec' => ['/bin/date'],
+                },
+            },
           }
         end
 
         it 'includes echo statement' do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_hello').with(
             content: %r{Exec "nobody:users" "/bin/echo" "hello world"},
-            target: "#{options[:plugin_conf_dir]}/exec-config.conf"
+            target: "#{options[:plugin_conf_dir]}/exec-config.conf",
           )
         end
 
         it 'includes date statement' do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_my_date').with(
             content: %r{Exec "nobody:users" "/bin/date"},
-            target: "#{options[:plugin_conf_dir]}/exec-config.conf"
+            target: "#{options[:plugin_conf_dir]}/exec-config.conf",
           )
         end
       end

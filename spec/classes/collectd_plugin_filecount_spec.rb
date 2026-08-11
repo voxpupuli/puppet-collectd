@@ -16,11 +16,11 @@ describe 'collectd::plugin::filecount', type: :class do
           { directories: { 'active' => '/var/spool/postfix/active' } }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-filecount.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-filecount.conf" do
           is_expected.to contain_file('filecount.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-filecount.conf",
-            content: %r{Directory "/var/spool/postfix/active"}
+            content: %r{Directory "/var/spool/postfix/active"},
           )
         end
       end
@@ -32,18 +32,18 @@ describe 'collectd::plugin::filecount', type: :class do
             'pattern'       => '*.conf',
             'mtime'         => '-5m',
             'recursive'     => true,
-            'includehidden' => false
+            'includehidden' => false,
           } } }
         end
 
-        it 'Will create foodir collectd::plugin::filecount::directory resource' do
+        it 'creates foodir collectd::plugin::filecount::directory resource' do
           is_expected.to contain_collectd__plugin__filecount__directory('foodir').with(
             ensure: 'present',
             path: '/path/to/dir',
             pattern: '*.conf',
             mtime: '-5m',
             recursive: true,
-            includehidden: false
+            includehidden: false,
           )
         end
       end
@@ -53,10 +53,10 @@ describe 'collectd::plugin::filecount', type: :class do
           { directories: { 'active' => '/var/spool/postfix/active' }, ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-filecount.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-filecount.conf" do
           is_expected.to contain_file('filecount.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-filecount.conf"
+            path: "#{options[:plugin_conf_dir]}/10-filecount.conf",
           )
         end
       end
@@ -66,15 +66,15 @@ describe 'collectd::plugin::filecount', type: :class do
           { directories: '/var/spool/postfix/active' }
         end
 
-        it 'Will raise an error about :directories being a String' do
+        it 'raises an error about :directories being a String' do
           is_expected.to compile.and_raise_error(%r{String})
         end
       end
 
       context ':directories is empty' do
-        it 'Will not create an empty <Plugin "filecount"> block' do
-          is_expected.to contain_file('filecount.load').
-            without_content(%r{<Plugin "filecount">})
+        it 'does not create an empty <Plugin "filecount"> block' do
+          is_expected.to contain_file('filecount.load')
+            .without_content(%r{<Plugin "filecount">})
         end
       end
     end

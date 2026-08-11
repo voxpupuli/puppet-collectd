@@ -20,13 +20,13 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                 'Port'     => '15672',
                 'Scheme'   => 'http',
                 'Host'     => 'testhost.example.com',
-                'Realm'    => 'RabbitMQ Management'
-              }
+                'Realm'    => 'RabbitMQ Management',
+              },
             }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
-          when %w[RedHat 8], %w[Ubuntu 20.04]
+          case [facts['os']['family'], facts['os']['release']['major']]
+          when %w[RedHat 8], %w[RedHat 9]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
             it 'import collectd_rabbitmq.collectd_plugin in python-config' do
@@ -68,8 +68,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { custom_types_db: '/var/custom/types.db' }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
-          when %w[RedHat 8], %w[Ubuntu 20.04]
+          case [facts['os']['family'], facts['os']['release']['major']]
+          when %w[RedHat 8], %w[RedHat 9]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
             it 'override custom TypesDB' do
@@ -83,8 +83,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Username' => 'foo' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
-          when %w[RedHat 8], %w[Ubuntu 20.04]
+          case [facts['os']['family'], facts['os']['release']['major']]
+          when %w[RedHat 8], %w[RedHat 9]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
             it 'override Username to foo in python-config' do
@@ -98,8 +98,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Password' => 'foo' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
-          when %w[RedHat 8], %w[Ubuntu 20.04]
+          case [facts['os']['family'], facts['os']['release']['major']]
+          when %w[RedHat 8], %w[RedHat 9]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
             it 'override Username to foo in python-config' do
@@ -113,8 +113,8 @@ describe 'collectd::plugin::rabbitmq', type: :class do
             { config: { 'Scheme' => 'https' } }
           end
 
-          case [facts[:os]['family'], facts[:os]['release']['major']]
-          when %w[RedHat 8], %w[Ubuntu 20.04]
+          case [facts['os']['family'], facts['os']['release']['major']]
+          when %w[RedHat 8], %w[RedHat 9]
             it { is_expected.to raise_error(%r{does not support Python 3}) }
           else
             it 'override Username to foo in python-config' do
@@ -129,11 +129,11 @@ describe 'collectd::plugin::rabbitmq', type: :class do
           { ensure: 'absent' }
         end
 
-        case [facts[:os]['family'], facts[:os]['release']['major']]
-        when %w[RedHat 8], %w[Ubuntu 20.04]
+        case [facts['os']['family'], facts['os']['release']['major']]
+        when %w[RedHat 8], %w[RedHat 9]
           it { is_expected.to raise_error(%r{does not support Python 3}) }
         else
-          it 'Will remove python-config' do
+          it 'removes python-config' do
             is_expected.not_to contain_concat__fragment('collectd_plugin_python_conf_collectd_rabbitmq.collectd_plugin_config').with(ensure: 'present')
           end
         end
@@ -152,18 +152,18 @@ describe 'collectd::plugin::rabbitmq', type: :class do
                         ensure: ensure_value,
                         manage_package: value,
                         package_name: packagename,
-                        package_provider: provider
+                        package_provider: provider,
                       }
                     end
 
-                    case [facts[:os]['family'], facts[:os]['release']['major']]
-                    when %w[RedHat 8], %w[Ubuntu 20.04]
+                    case [facts['os']['family'], facts['os']['release']['major']]
+                    when %w[RedHat 8], %w[RedHat 9]
                       it { is_expected.to raise_error(%r{does not support Python 3}) }
                     else
                       it do
                         is_expected.to contain_package(packagename).with(
                           'ensure' => ensure_value,
-                          'provider' => provider
+                          'provider' => provider,
                         )
                       end
                     end

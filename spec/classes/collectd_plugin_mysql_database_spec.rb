@@ -37,7 +37,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
             'connecttimeout' => 10,
             'innodbstats' => true,
             'slavenotifications' => 'true',
-            'wsrepstats' => true
+            'wsrepstats' => true,
           }
         end
 
@@ -72,7 +72,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           is_expected.to contain_class('collectd::plugin::mysql')
           is_expected.to contain_file('dbname.conf').with(
             content: content_database_file,
-            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf"
+            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf",
           )
         end
       end
@@ -111,7 +111,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           is_expected.to contain_class('collectd::plugin::mysql')
           is_expected.to contain_file('dbname.conf').with(
             content: content_database_file,
-            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf"
+            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf",
           )
         end
       end
@@ -141,7 +141,7 @@ describe 'collectd::plugin::mysql::database', type: :define do
           is_expected.to contain_class('collectd::plugin::mysql')
           is_expected.to contain_file('dbname.conf').with(
             content: content_database_file,
-            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf"
+            path: "#{options[:plugin_conf_dir]}/mysql-dbname.conf",
           )
         end
       end

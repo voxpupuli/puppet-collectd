@@ -21,13 +21,13 @@ describe 'collectd::plugin::write_prometheus', type: :class do
           }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-write_prometheus.conf without Host" do
+        it "creates #{options[:plugin_conf_dir]}/10-write_prometheus.conf without Host" do
           is_expected.to contain_file('write_prometheus.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
-            content: %r{Port "#{port}"}
+            content: %r{Port "#{port}"},
           ).without(
-            content: %r{Host "#{ip}"}
+            content: %r{Host "#{ip}"},
           )
         end
 
@@ -36,13 +36,13 @@ describe 'collectd::plugin::write_prometheus', type: :class do
             facts.merge(collectd_version: host_opt_min_collectd_ver)
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-write_prometheus.conf with Host" do
+          it "creates #{options[:plugin_conf_dir]}/10-write_prometheus.conf with Host" do
             is_expected.to contain_file('write_prometheus.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
-              content: %r{Port "#{port}"}
+              content: %r{Port "#{port}"},
             ).with(
-              content: %r{Host "#{ip}"}
+              content: %r{Host "#{ip}"},
             )
           end
         end
@@ -56,13 +56,13 @@ describe 'collectd::plugin::write_prometheus', type: :class do
             facts.merge(collectd_version: host_opt_min_collectd_ver)
           end
 
-          it "Will create #{options[:plugin_conf_dir]}/10-write_prometheus.conf without Host" do
+          it "creates #{options[:plugin_conf_dir]}/10-write_prometheus.conf without Host" do
             is_expected.to contain_file('write_prometheus.load').with(
               ensure: 'present',
               path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
-              content: %r{Port "#{port}"}
+              content: %r{Port "#{port}"},
             ).without(
-              content: %r{Host "#{ip}"}
+              content: %r{Host "#{ip}"},
             )
           end
         end
@@ -73,10 +73,10 @@ describe 'collectd::plugin::write_prometheus', type: :class do
           { ensure: 'absent' }
         end
 
-        it 'Will not create' do
+        it 'does not create' do
           is_expected.to contain_file('write_prometheus.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf"
+            path: "#{options[:plugin_conf_dir]}/10-write_prometheus.conf",
           )
         end
       end

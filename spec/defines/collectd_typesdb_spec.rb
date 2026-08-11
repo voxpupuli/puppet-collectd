@@ -19,7 +19,7 @@ describe 'collectd::typesdb', type: :define do
         it 'contains empty types.db' do
           is_expected.to contain_concat('/etc/collectd/types.db').with(
             ensure: 'present',
-            path: '/etc/collectd/types.db'
+            path: '/etc/collectd/types.db',
           ).with_mode('0640')
         end
       end
@@ -31,7 +31,7 @@ describe 'collectd::typesdb', type: :define do
         it 'contains file with different mode' do
           is_expected.to contain_concat('/etc/collectd/types.db').with(
             ensure: 'present',
-            path: '/etc/collectd/types.db'
+            path: '/etc/collectd/types.db',
           ).with_mode('0644')
         end
       end
@@ -45,7 +45,7 @@ describe 'collectd::typesdb', type: :define do
           is_expected.to contain_concat__fragment('include_typedb_/etc/collectd/types.db').with(
             order: '50',
             target: 'collectd_typesdb',
-            content: "TypesDB \"/etc/collectd/types.db\"\n"
+            content: "TypesDB \"/etc/collectd/types.db\"\n",
           )
         end
       end

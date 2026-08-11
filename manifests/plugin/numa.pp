@@ -17,6 +17,6 @@ class collectd::plugin::numa (
   include collectd
 
   collectd::plugin { 'numa':
-    ensure   => $ensure,
+    ensure => $ensure,
   }
 }

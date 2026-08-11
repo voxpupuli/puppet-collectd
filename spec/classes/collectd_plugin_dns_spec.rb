@@ -14,7 +14,7 @@ describe 'collectd::plugin::dns', type: :class do
 
         it do
           is_expected.to contain_file('dns.load').with(
-            'ensure' => 'present'
+            'ensure' => 'present',
           )
         end
 
@@ -94,13 +94,13 @@ describe 'collectd::plugin::dns', type: :class do
                 let :params do
                   {
                     ensure: ensure_value,
-                    manage_package: value
+                    manage_package: value,
                   }
                 end
 
                 it do
                   is_expected.to contain_package('collectd-dns').with(
-                    'ensure' => ensure_value
+                    'ensure' => ensure_value,
                   )
                 end
               end

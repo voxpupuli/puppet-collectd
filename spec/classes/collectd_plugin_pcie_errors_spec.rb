@@ -26,12 +26,12 @@ describe 'collectd::plugin::pcie_errors', type: :class do
 
         EOS
 
-        it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: content
+            content: content,
           )
         end
       end
@@ -41,12 +41,12 @@ describe 'collectd::plugin::pcie_errors', type: :class do
           { source: 'proc' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: %r{Source "proc"}m
+            content: %r{Source "proc"}m,
           )
         end
       end
@@ -56,12 +56,12 @@ describe 'collectd::plugin::pcie_errors', type: :class do
           { access_dir: '/sys/bus/pci' }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: %r{AccessDir "/sys/bus/pci"}m
+            content: %r{AccessDir "/sys/bus/pci"}m,
           )
         end
       end
@@ -71,12 +71,12 @@ describe 'collectd::plugin::pcie_errors', type: :class do
           { report_masked: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: %r{ReportMasked true}m
+            content: %r{ReportMasked true}m,
           )
         end
       end
@@ -86,12 +86,12 @@ describe 'collectd::plugin::pcie_errors', type: :class do
           { persistent_notifications: true }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-pcie_errors.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('pcie_errors.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-pcie_errors.conf",
-            content: %r{PersistentNotifications true}m
+            content: %r{PersistentNotifications true}m,
           )
         end
       end

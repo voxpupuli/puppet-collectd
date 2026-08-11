@@ -11,11 +11,11 @@ describe 'collectd::plugin::write_tsdb', type: :class do
 
       options = os_specific_options(facts)
       context 'ensure: present, default params' do
-        it "Will create #{options[:plugin_conf_dir]}/10-write_tsdb.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-write_tsdb.conf" do
           is_expected.to contain_file('write_tsdb.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-write_tsdb.conf",
-            content: %r{LoadPlugin write_tsdb}
+            content: %r{LoadPlugin write_tsdb},
           )
         end
       end
@@ -25,10 +25,10 @@ describe 'collectd::plugin::write_tsdb', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-write_tsdb.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-write_tsdb.conf" do
           is_expected.to contain_file('write_tsdb.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-write_tsdb.conf"
+            path: "#{options[:plugin_conf_dir]}/10-write_tsdb.conf",
           )
         end
       end

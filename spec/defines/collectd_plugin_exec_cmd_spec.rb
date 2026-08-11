@@ -16,14 +16,14 @@ describe 'collectd::plugin::exec::cmd', type: :define do
           {
             user: 'www-data',
             group: 'users',
-            exec: ['whoami', '--help']
+            exec: ['whoami', '--help'],
           }
         end
 
         it 'executes whoami command' do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_whoami').with(
             content: %r{Exec "www-data:users" "whoami" "--help"},
-            target: "#{options[:plugin_conf_dir]}/exec-config.conf"
+            target: "#{options[:plugin_conf_dir]}/exec-config.conf",
           )
         end
       end
@@ -34,14 +34,14 @@ describe 'collectd::plugin::exec::cmd', type: :define do
           {
             user: 'www-data',
             group: 'users',
-            notification_exec: ['whoami', '--help']
+            notification_exec: ['whoami', '--help'],
           }
         end
 
         it 'executes whoami command' do
           is_expected.to contain_concat__fragment('collectd_plugin_exec_conf_whoami').with(
             content: %r{NotificationExec "www-data:users" "whoami" "--help"},
-            target: "#{options[:plugin_conf_dir]}/exec-config.conf"
+            target: "#{options[:plugin_conf_dir]}/exec-config.conf",
           )
         end
       end

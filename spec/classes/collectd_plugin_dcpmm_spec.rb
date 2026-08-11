@@ -27,12 +27,12 @@ describe 'collectd::plugin::dcpmm', type: :class do
 
         EOS
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dcpmm.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf",
-            content: content
+            content: content,
           )
         end
       end
@@ -42,11 +42,11 @@ describe 'collectd::plugin::dcpmm', type: :class do
           { ensure: 'absent' }
         end
 
-        it "Will not create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
+        it "does not create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dcpmm.load').with(
             ensure: 'absent',
-            path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf"
+            path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf",
           )
         end
       end
@@ -56,12 +56,12 @@ describe 'collectd::plugin::dcpmm', type: :class do
           { interval: 3.14 }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dcpmm.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf",
-            content: %r{Interval 3.14}m
+            content: %r{Interval 3.14}m,
           )
         end
       end
@@ -69,15 +69,15 @@ describe 'collectd::plugin::dcpmm', type: :class do
       context ':ensure => present, :collect_health => true and :collect_perf_metrics => false' do
         let :params do
           { collect_health: true,
-            collect_perf_metrics: false }
+            collect_perf_metrics: false, }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dcpmm.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf",
-            content: %r{CollectHealth true}m
+            content: %r{CollectHealth true}m,
           )
         end
       end
@@ -87,12 +87,12 @@ describe 'collectd::plugin::dcpmm', type: :class do
           { collect_perf_metrics: false }
         end
 
-        it "Will create #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
+        it "creates #{options[:plugin_conf_dir]}/10-dcpmm.conf" do
           is_expected.to compile.with_all_deps
           is_expected.to contain_file('dcpmm.load').with(
             ensure: 'present',
             path: "#{options[:plugin_conf_dir]}/10-dcpmm.conf",
-            content: %r{CollectPerfMetrics false}m
+            content: %r{CollectPerfMetrics false}m,
           )
         end
       end
@@ -100,10 +100,10 @@ describe 'collectd::plugin::dcpmm', type: :class do
       context ':ensure => present, :collect_health => false and :collect_perf_metrics => true' do
         let :params do
           { collect_health: true,
-            collect_perf_metrics: true }
+            collect_perf_metrics: true, }
         end
 
-        it 'Will raise error' do
+        it 'raises error' do
           is_expected.to compile.and_raise_error(%r{collect_health and collect_perf_metrics cannot be true at the same time.})
         end
       end
@@ -113,7 +113,7 @@ describe 'collectd::plugin::dcpmm', type: :class do
           { enable_dispatch_all: true }
         end
 
-        it 'Will raise error' do
+        it 'raises error' do
           is_expected.to compile.and_raise_error(%r{enable_dispatch_all is unused at the moment and must always be false.})
         end
       end

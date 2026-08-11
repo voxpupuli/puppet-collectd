@@ -12,7 +12,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
       let(:filename) { 'snmp-host-foo.example.com.conf' }
       let(:required_params) do
         {
-          collect: 'foo'
+          collect: 'foo',
         }
       end
 
@@ -24,7 +24,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
         it do
           is_expected.to contain_file(filename).with(
             ensure: 'present',
-            path: "#{options[:plugin_conf_dir]}/25-snmp-host-foo.example.com.conf"
+            path: "#{options[:plugin_conf_dir]}/25-snmp-host-foo.example.com.conf",
           )
         end
 
@@ -78,7 +78,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
       context 'collect is an array' do
         let(:params) do
           {
-            collect: %w[foo bar baz]
+            collect: %w[foo bar baz],
           }
         end
 
@@ -88,7 +88,7 @@ describe 'collectd::plugin::snmp::host', type: :define do
       context 'collect is just a string' do
         let(:params) do
           {
-            collect: 'bat'
+            collect: 'bat',
           }
         end
 
