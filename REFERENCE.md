@@ -10706,4 +10706,3 @@ Name of metric, e.g. load/load-relative
 Lists all available collectd metrics
 
 **Supports noop?** false
-
